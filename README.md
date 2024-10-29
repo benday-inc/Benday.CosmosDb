@@ -1,0 +1,1 @@
+# Benday.CosmosDb
