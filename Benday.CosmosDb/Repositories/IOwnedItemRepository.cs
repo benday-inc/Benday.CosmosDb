@@ -14,7 +14,7 @@ public interface IOwnedItemRepository<T> : IRepository<T>
     /// </summary>
     /// <param name="ownerId">Owner id</param>
     /// <returns>Matching items</returns>    
-    Task<IEnumerable<T>> GetAllByOwnerIdAsync(string ownerId);
+    Task<IEnumerable<T>> GetAll(string ownerId);
 
     /// <summary>
     /// Get a specific item by its id and owner id.
@@ -22,7 +22,7 @@ public interface IOwnedItemRepository<T> : IRepository<T>
     /// <param name="ownerId">Owner id</param>
     /// <param name="id">Id for the entity</param>
     /// <returns>The matching item or null</returns>
-    Task<T?> GetByIdAndOwnerAsync(string ownerId, string id);
+    Task<T?> GetByIdAsync(string ownerId, string id);
 
     /// <summary>
     /// Delete an item from the repository.

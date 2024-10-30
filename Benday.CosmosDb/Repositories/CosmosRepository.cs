@@ -1,33 +1,69 @@
 ﻿using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Utilities;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Options;
 using System.Text.Json;
 
 namespace Benday.CosmosDb.Repositories;
 
-
-
+/// <summary>
+/// Basic implementation of a Cosmos DB repository. Provides basic CRUD operations for a Cosmos DB entity, manages the container instance, and provides common functionality for custom queries as protected values and methods.
+/// </summary>
+/// <typeparam name="T">Domain model type managed by this repository</typeparam>
 public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICosmosIdentity, new()
 {
+    /// <summary>
+    /// Cosmos DB client instance. For performance reasons, this instance should be shared across the application.
+    /// </summary>
     private readonly CosmosClient _Client;
+
+    /// <summary>
+    /// Configuration value to create Cosmos DB structures if they don't already exist.
+    /// </summary>
     private readonly bool _WithCreateStructures;
+
+    /// <summary>
+    /// Reference to the cosmos database instance.
+    /// </summary>
     private Database? _Database;
-    private Container? _Container;
+
+    /// <summary>
+    /// Reference to the container instance.
+    /// </summary>
+    private Microsoft.Azure.Cosmos.Container? _Container;
+
+    /// <summary>
+    /// Configuration value for the database name.
+    /// </summary>
     private readonly string _DatabaseName;
+
+    /// <summary>
+    /// Configuration value for the container in the database.
+    /// </summary>
     private readonly string _ContainerName;
+
+    /// <summary>
+    /// Instance of the partition key for the container.
+    /// </summary>
     private readonly PartitionKey _PartitionKey;
+
+    /// <summary>
+    /// Partition key strings for the container. This is used for constructing partition keys for queries.
+    /// </summary>
     private readonly List<string> _PartitionKeyStrings = [];
 
+    /// <summary>
+    /// Get the discriminator value for the entity. By default this is the class name for the domain model type managed by this repository.
+    /// </summary>
     public virtual string DiscriminatorValue => typeof(T).Name;
 
-    protected async Task<Container> GetContainer()
-    {
-        await Initialize();
-
-        return _Container is null ? throw new InvalidOperationException($"Container instance is null.") : _Container;
-    }
-
+    /// <summary>
+    /// Constructor for the repository.
+    /// </summary>
+    /// <param name="options">Configuration options</param>
+    /// <param name="client">Cosmos Db client instance. NOTE: for performance reasons, this should probably be a singleton in the application.</param>
+    /// <exception cref="ArgumentException"></exception>
     public CosmosRepository(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client)
     {
         var opts = options.Value;
@@ -58,7 +94,25 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         _PartitionKeyStrings = CosmosDbUtilities.GetPartitionKeyStrings(opts.PartitionKey);
     }
 
+    /// <summary>
+    /// Get the container instance. This method will initialize the container if it is null.
+    /// </summary>
+    /// <returns>Reference to the container</returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    protected async Task<Microsoft.Azure.Cosmos.Container> GetContainer()
+    {
+        await Initialize();
 
+        return _Container is null ? throw new InvalidOperationException($"Container instance is null.") : _Container;
+    }
+
+
+    /// <summary>
+    /// Delete an item from the Cosmos DB container.
+    /// </summary>
+    /// <param name="id">Id of the item</param>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
     public async Task DeleteAsync(string id)
     {
         var container = await GetContainer();
@@ -83,6 +137,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
     }
 
+    /// <summary>
+    /// Get all items in the repository. NOTE: this almost certainly performs a cross-partition query and should be used with caution.
+    /// </summary>
+    /// <returns>The matching items</returns>
     public async Task<IEnumerable<T>> GetAllAsync()
     {
         var container = await GetContainer();
@@ -97,34 +155,47 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         return items;
     }
 
-    public async Task<IEnumerable<T>> GetAllTerribleQueryAsync(
-        string nameSearchString)
+    /// <summary>
+    /// Gets the results from a query.
+    /// </summary>
+    /// <param name="query"></param>
+    /// <param name="queryDescription"></param>
+    /// <returns></returns>
+    protected async Task<List<T>> GetResults(
+        IOrderedQueryable<T> query, string queryDescription)
     {
-        var container = await GetContainer();
+        var feedIterator = query.ToFeedIterator();
 
-        // var query = $"SELECT * FROM c where c.Name LIKE '%st%'";
-        // var query = $"SELECT * FROM c";
+        var results = await GetResults(feedIterator, queryDescription);
 
-        var query = 
-            "SELECT * FROM c WHERE CONTAINS(LOWER(c.Name), LOWER(@nameSearch))";
+        return results;
+    }
 
-        var queryDefinition = new QueryDefinition(query)
-            .WithParameter("@nameSearch", nameSearchString);
+    /// <summary>
+    /// Gets a description for a query. By default, this will return the type name of the repository and the method name.
+    /// </summary>
+    /// <param name="methodName">Method that's calling the query</param>
+    /// <returns></returns>
+    protected string GetQueryDescription(string methodName)
+    {
+        return GetQueryDescription(GetType().Name, methodName);
+    }
 
-        // Execute the query
-        var resultSetIterator = 
-            container.GetItemQueryIterator<T>(
-                queryDefinition);
-
-        var items = await GetResults(resultSetIterator, nameof(GetAllTerribleQueryAsync));
-
-        return items;
+    /// <summary>
+    /// Gets a description for a query. By default, this will return the type name of the repository and the method name as a formatted string.
+    /// </summary>
+    /// <param name="typeName">Name of the type</param>
+    /// <param name="methodName">Name of the method</param>
+    /// <returns>Formatted query description string</returns>
+    protected string GetQueryDescription(string typeName, string methodName)
+    {
+        return $"{typeName} - {methodName}";
     }
 
     /// <summary>
     /// Get results from a query
     /// </summary>
-    /// <param name="resultSetIterator"></param>
+    /// <param name="resultSetIterator">Feed iterator to read the results from</param>
     /// <param name="queryDescription">Description of this query for logging</param>
     /// <returns></returns>
     protected async Task<List<T>> GetResults(FeedIterator<T> resultSetIterator, string queryDescription)
@@ -159,6 +230,11 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         return items;
     }
 
+    /// <summary>
+    /// Attempt to determine if a query is a cross-partition query based on the diagnostics.
+    /// </summary>
+    /// <param name="diagnostics">Diagnostics for a query response</param>
+    /// <returns>True if it detects a cross-partition query.</returns>
     protected bool IsCrossPartitionQuery(CosmosDiagnostics diagnostics)
     {
         // Convert the diagnostics to a string and analyze it
@@ -176,6 +252,12 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         return isCrossPartition;
     }
 
+    /// <summary>
+    /// Get an item by its id. This method will return null if the item is not found.
+    /// NOTE: this almost certainly performs a cross-partition query and should be used with caution.
+    /// </summary>
+    /// <param name="id">Id of the entity</param>
+    /// <returns>The first matching entity</returns>
     public async Task<T?> GetByIdAsync(string id)
     {
         var container = await GetContainer();
@@ -192,6 +274,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
     }
 
+    /// <summary>
+    /// Initializes the repository. This method will create the database and container if they don't already exist.
+    /// </summary>
+    /// <returns></returns>
     protected async Task Initialize()
     {
         if (_Database == null || _Container == null)
@@ -222,6 +308,12 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
     }
 
+    /// <summary>
+    /// Save an item to the Cosmos DB container. This method will perform an insert if the item does not exist, otherwise it will perform an update.
+    /// </summary>
+    /// <param name="saveThis">The item to save</param>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
     public virtual async Task<T> SaveAsync(T saveThis)
     {
         var container = await GetContainer();
@@ -249,6 +341,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
     }
 
+    /// <summary>
+    /// Save a list of items to the Cosmos DB container. This method will perform an insert if the item does not exist, otherwise it will perform an update.
+    /// Items are saved in batches of 50.
+    /// </summary>
+    /// <param name="items">Items to save</param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     public virtual async Task SaveAsync(IList<T> items)
     {
         if (items.Count == 0)
@@ -286,12 +385,25 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
     }
 
-    protected virtual PartitionKey GetPartitionKey(T saveThis)
+    /// <summary>
+    /// Get the partition key for an item.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    protected virtual PartitionKey GetPartitionKey(T item)
     {
-        return GetPartitionKey(saveThis.PartitionKey, saveThis.DiscriminatorValue);
+        return GetPartitionKey(item.PartitionKey, item.DiscriminatorValue);
     }
 
-    protected virtual PartitionKey GetPartitionKey(string partitionKey, string discriminatorValue)
+    /// <summary>
+    /// Get the partition key for an item.
+    /// </summary>
+    /// <param name="partitionKey">Top-level partition key value</param>
+    /// <param name="discriminatorValue">Second-level partition key value</param>
+    /// <returns></returns>
+
+    protected virtual PartitionKey GetPartitionKey(
+        string partitionKey, string discriminatorValue)
     {
         var builder = new PartitionKeyBuilder();
 
@@ -299,6 +411,28 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         _ = builder.Add(discriminatorValue);
 
         return builder.Build();
+    }
+
+    /// <summary>
+    /// Creates a queryable for the repository with the specified partition key 
+    /// configuration. This is the starting point for all custom LINQ queries built 
+    /// off of this repository by child repository classes.
+    /// </summary>
+    /// <param name="firstLevelPartitionKeyValue">Value to use for the first-level partition key. NOTE: this is probably ownerId.</param>
+    /// <returns>Starting queryable object for LINQ queries</returns>
+    protected virtual async Task<IOrderedQueryable<T>> GetQueryable(
+        string firstLevelPartitionKeyValue)
+    {
+        var pk = new PartitionKeyBuilder().Add(firstLevelPartitionKeyValue).Add(DiscriminatorValue).Build();
+
+        var container = await GetContainer();
+
+        var queryable =
+            container.GetItemLinqQueryable<T>(true,
+            requestOptions: new QueryRequestOptions() { PartitionKey = pk });
+
+        return queryable ?? 
+            throw new InvalidOperationException("Queryable object is null.");
     }
 }
 

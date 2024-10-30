@@ -6,40 +6,43 @@ using System.ComponentModel;
 
 namespace Benday.CosmosDb.Repositories;
 
+/// <summary>
+/// Provides repository implementation for items that are owned by a user.
+/// </summary>
+/// <typeparam name="T">Domain model type managed by the repository</typeparam>
+/// <param name="options">Configuration options for the repository</param>
+/// <param name="client">Instance of the cosmos db client. NOTE: for performance reasons, this should probably be a singleton in the application.</param>
 public abstract class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client) :
     CosmosRepository<T>(options, client), IOwnedItemRepository<T>
     where T : class, IOwnedItem, new()
 {
-    public async Task<IEnumerable<T>> GetAllByOwnerIdAsync(string ownerId)
+    /// <summary>
+    /// Get all items in the repository that have the specified owner id. 
+    /// Default implementation will return items in descending order by timestamp.
+    /// </summary>
+    /// <param name="ownerId">Owner id</param>
+    /// <returns></returns>
+    public async Task<IEnumerable<T>> GetAll(string ownerId)
     {
         var container = await GetContainer();
 
-        var query = $"SELECT * FROM c WHERE c.OwnerId = \"{ownerId}\" and c.{CosmosDbConstants.DiscriminatorPropertyName} = \"{DiscriminatorValue}\" ORDER BY c._ts desc";
+        var queryable = await GetQueryable(ownerId);
 
-        // Execute the query
-        var resultSetIterator = container.GetItemQueryIterator<T>(query);
+        var query = queryable.OrderByDescending(x => x.Timestamp);
+        
+        var results = await GetResults(query, 
+            GetQueryDescription(nameof(GetAll)));
 
-        var items = await GetResults(resultSetIterator, nameof(GetAllByOwnerIdAsync));
-
-        return items;
+        return results;
     }
 
-    protected virtual PartitionKey GetPartitionKey(string ownerId) => GetPartitionKey(ownerId, DiscriminatorValue);    
-
-    protected virtual async Task<IOrderedQueryable<T>> GetQueryable(string ownerId)
-    {
-        var pk = new PartitionKeyBuilder().Add(ownerId).Add(DiscriminatorValue).Build();
-
-        var container = await GetContainer();
-
-        var queryable =
-            container.GetItemLinqQueryable<T>(true, 
-            requestOptions: new QueryRequestOptions() { PartitionKey = pk });
-
-        return queryable;
-    }
-
-    public virtual async Task<T?> GetByIdAndOwnerAsync(string ownerId, string id)
+    /// <summary>
+    /// Gets an entity by its id and owner id.
+    /// </summary>
+    /// <param name="ownerId"></param>
+    /// <param name="id"></param>
+    /// <returns>Matching item or null if not found</returns>
+    public virtual async Task<T?> GetByIdAsync(string ownerId, string id)
     {
         if (string.IsNullOrWhiteSpace(ownerId) == true || 
             string.IsNullOrWhiteSpace(id) == true)
@@ -70,8 +73,10 @@ public abstract class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOpti
             {
                 return null;
             }
-
-            return item;
+            else
+            {
+                return item;
+            }
         }
         catch (Exception ex) 
         {
@@ -80,6 +85,11 @@ public abstract class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOpti
         }
     }
 
+    /// <summary>
+    /// Delete an item from the repository.
+    /// </summary>
+    /// <param name="itemToDelete"></param>
+    /// <returns></returns>
     public async Task DeleteAsync(T itemToDelete)
     {
         var container = await GetContainer();
