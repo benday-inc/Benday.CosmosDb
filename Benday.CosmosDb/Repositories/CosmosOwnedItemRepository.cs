@@ -41,28 +41,43 @@ public abstract class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOpti
 
     public virtual async Task<T?> GetByIdAndOwnerAsync(string ownerId, string id)
     {
-        var container = await GetContainer();
-
-        var pk = new PartitionKeyBuilder().Add(ownerId).Add(DiscriminatorValue).Build();
-
-        var response = await container.ReadItemAsync<T>(id, pk);
-
-        var ruCharge = response.RequestCharge;
-
-        Console.WriteLine($"Request Charge: {ruCharge}");
-
-        if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+        if (string.IsNullOrWhiteSpace(ownerId) == true || 
+            string.IsNullOrWhiteSpace(id) == true)
         {
             return null;
         }
 
-        var item = response.Resource;
+        try
+        {
+            var container = await GetContainer();
 
-        if (item == null) {
-            return null;
+            var pk = new PartitionKeyBuilder().Add(ownerId).Add(DiscriminatorValue).Build();
+
+            var response = await container.ReadItemAsync<T>(id, pk);
+
+            var ruCharge = response.RequestCharge;
+
+            Console.WriteLine($"Request Charge: {ruCharge}");
+
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+
+            var item = response.Resource;
+
+            if (item == null)
+            {
+                return null;
+            }
+
+            return item;
         }
-
-        return item;
+        catch (Exception ex) 
+        {
+            Console.WriteLine(ex.ToString());
+            throw;
+        }
     }
 
     public async Task DeleteAsync(T itemToDelete)
