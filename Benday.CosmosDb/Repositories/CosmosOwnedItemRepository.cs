@@ -22,7 +22,7 @@ public abstract class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOpti
     /// </summary>
     /// <param name="ownerId">Owner id</param>
     /// <returns></returns>
-    public async Task<IEnumerable<T>> GetAll(string ownerId)
+    public async Task<IEnumerable<T>> GetAllAsync(string ownerId)
     {
         var container = await GetContainer();
 
@@ -31,7 +31,7 @@ public abstract class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOpti
         var query = queryable.OrderByDescending(x => x.Timestamp);
         
         var results = await GetResults(query, 
-            GetQueryDescription(nameof(GetAll)));
+            GetQueryDescription(nameof(GetAllAsync)));
 
         return results;
     }

@@ -3,6 +3,7 @@ using Benday.CosmosDb.Utilities;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Options;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace Benday.CosmosDb.Repositories;
@@ -162,7 +163,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="queryDescription"></param>
     /// <returns></returns>
     protected async Task<List<T>> GetResults(
-        IOrderedQueryable<T> query, string queryDescription)
+        IQueryable<T> query, string queryDescription)
     {
         var feedIterator = query.ToFeedIterator();
 
@@ -177,7 +178,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="resultSetIterator">Feed iterator to read the results from</param>
     /// <param name="queryDescription">Description of this query for logging</param>
     /// <returns></returns>
-    private async Task<List<T>> GetResults(FeedIterator<T> resultSetIterator, string queryDescription)
+    protected async Task<List<T>> GetResults(FeedIterator<T> resultSetIterator, string queryDescription)
     {
         var items = new List<T>();
 
@@ -211,10 +212,11 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
     /// <summary>
     /// Gets a description for a query. By default, this will return the type name of the repository and the method name.
+    /// By default, detect and use the method name of the caller.
     /// </summary>
     /// <param name="methodName">Method that's calling the query</param>
     /// <returns></returns>
-    protected string GetQueryDescription(string methodName)
+    protected string GetQueryDescription([CallerMemberName] string methodName = "")
     {
         return GetQueryDescription(GetType().Name, methodName);
     }
