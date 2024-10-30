@@ -172,6 +172,44 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     }
 
     /// <summary>
+    /// Get results from a query
+    /// </summary>
+    /// <param name="resultSetIterator">Feed iterator to read the results from</param>
+    /// <param name="queryDescription">Description of this query for logging</param>
+    /// <returns></returns>
+    private async Task<List<T>> GetResults(FeedIterator<T> resultSetIterator, string queryDescription)
+    {
+        var items = new List<T>();
+
+        var totalRequestCharge = 0.0;
+
+        while (resultSetIterator.HasMoreResults)
+        {
+            var response = await resultSetIterator.ReadNextAsync();
+
+            var diagnostics = response.Diagnostics;
+            var ruCharge = response.RequestCharge;
+
+            Console.WriteLine($"Request Charge ({queryDescription}): {ruCharge}");
+
+            totalRequestCharge += ruCharge;
+
+            var isCrossPartition = IsCrossPartitionQuery(diagnostics);
+
+            if (isCrossPartition)
+            {
+                Console.WriteLine($"*** WARNING ***: Cross-partition query for {queryDescription}");
+            }
+
+            items.AddRange(response);
+        }
+
+        Console.WriteLine($"Total request charge ({queryDescription}): {totalRequestCharge}");
+
+        return items;
+    }
+
+    /// <summary>
     /// Gets a description for a query. By default, this will return the type name of the repository and the method name.
     /// </summary>
     /// <param name="methodName">Method that's calling the query</param>
@@ -190,44 +228,6 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     protected string GetQueryDescription(string typeName, string methodName)
     {
         return $"{typeName} - {methodName}";
-    }
-
-    /// <summary>
-    /// Get results from a query
-    /// </summary>
-    /// <param name="resultSetIterator">Feed iterator to read the results from</param>
-    /// <param name="queryDescription">Description of this query for logging</param>
-    /// <returns></returns>
-    protected async Task<List<T>> GetResults(FeedIterator<T> resultSetIterator, string queryDescription)
-    {
-        var items = new List<T>();
-
-        var totalRequestCharge = 0.0;
-
-        while (resultSetIterator.HasMoreResults)
-        {
-            var response = await resultSetIterator.ReadNextAsync();
-
-            var diagnostics = response.Diagnostics;
-            var ruCharge = response.RequestCharge;
-
-            Console.WriteLine($"Request Charge ({queryDescription}): {ruCharge}");
-
-            totalRequestCharge += ruCharge;
-           
-            var isCrossPartition = IsCrossPartitionQuery(diagnostics);
-
-            if (isCrossPartition)
-            {
-                Console.WriteLine($"*** WARNING ***: Cross-partition query for {queryDescription}");
-            }
-
-            items.AddRange(response);
-        }
-
-        Console.WriteLine($"Total request charge ({queryDescription}): {totalRequestCharge}");
-
-        return items;
     }
 
     /// <summary>
