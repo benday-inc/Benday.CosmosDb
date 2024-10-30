@@ -1,0 +1,11 @@
+<footer>
+  <div class="footer">
+    <div class="container">
+      <span class="pull-right">
+        <a href="#top">Back to top</a>
+      </span>
+      {{{_appFooter}}}
+      {{^_appFooter}}Copyright © <a href="https://www.benday.com/">www.benday.com</a> | <a href="mailto:info@benday.com">info@benday.com</a>{{/_appFooter}}
+    </div>
+  </div>
+</footer>

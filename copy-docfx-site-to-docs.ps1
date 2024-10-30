@@ -1,0 +1,1 @@
+Copy-Item -Recurse -Force -Path ./docfx_project/_site/* -Destination ./docs

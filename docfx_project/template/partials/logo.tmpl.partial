@@ -1,0 +1,6 @@
+<div class="navbar-brand">
+  <a href="{{_rel}}">
+    <img id="logo" src="{{_rel}}logo.png" alt="{{_appName}}" alt="asdf" width="50" height="50">
+  </a>
+
+</div>
