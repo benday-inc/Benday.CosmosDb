@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Benday.CosmosDb.Utilities;
 
+/// <summary>
+/// Converts a Unix timestamp to a DateTime and vice versa.
+/// </summary>
 public class UnixDateTimeConverter : JsonConverter
 {
     public override void WriteJson(

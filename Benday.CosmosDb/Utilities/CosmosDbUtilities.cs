@@ -2,6 +2,9 @@ using Microsoft.Azure.Cosmos;
 
 namespace Benday.CosmosDb.Utilities;
 
+/// <summary>
+/// Utility class for working with CosmosDb.
+/// </summary>
 public static class CosmosDbUtilities
 {
     public static PartitionKey GetPartitionKey(string keyString)

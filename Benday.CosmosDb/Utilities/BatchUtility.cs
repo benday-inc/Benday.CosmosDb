@@ -1,7 +1,17 @@
 namespace Benday.CosmosDb.Utilities;
 
+/// <summary>
+/// Utility class for working with batches of items.
+/// </summary>
 public static class BatchUtility
 {
+    /// <summary>
+    /// Gets a list of arrays of items that are batched.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="values">Values to convert to batches</param>
+    /// <param name="batchSize">Number of items per batch</param>
+    /// <returns></returns>
     public static List<T[]> GetBatches<T>(IEnumerable<T> values, int batchSize)
     {
         var batchCount = GetBatchCount(values.Count(), batchSize);
@@ -18,6 +28,15 @@ public static class BatchUtility
         return batches;
     }
 
+    /// <summary>
+    /// Creates an array of items for a specific batch number.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="results"></param>
+    /// <param name="batchSize"></param>
+    /// <param name="batchNumber"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public static T[] CreateArrayForBatch<T>(
         List<T> results, int batchSize, int batchNumber)
     {
@@ -38,6 +57,12 @@ public static class BatchUtility
         return itemsToReturn;
     }
 
+    /// <summary>
+    /// Gets the number of batches that will be created.
+    /// </summary>
+    /// <param name="itemCount"></param>
+    /// <param name="batchSize"></param>
+    /// <returns></returns>
     public static int GetBatchCount(int itemCount, int batchSize)
     {
         int numberOfBatches = itemCount / batchSize;

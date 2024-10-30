@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class BatchUtility ">
     
-    
+    <meta name="description" content="Utility class for working with batches of items.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -72,7 +72,8 @@
 
 
   <h1 id="Benday_CosmosDb_Utilities_BatchUtility" data-uid="Benday.CosmosDb.Utilities.BatchUtility" class="text-break">Class BatchUtility</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Utility class for working with batches of items.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_BatchUtility_CreateArrayForBatch__1_System_Collections_Generic_List___0__System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.BatchUtility.CreateArrayForBatch%60%601(System.Collections.Generic.List%7B%60%600%7D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/BatchUtility.cs/#L21">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/BatchUtility.cs/#L40">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_BatchUtility_CreateArrayForBatch_" data-uid="Benday.CosmosDb.Utilities.BatchUtility.CreateArrayForBatch*"></a>
   <h4 id="Benday_CosmosDb_Utilities_BatchUtility_CreateArrayForBatch__1_System_Collections_Generic_List___0__System_Int32_System_Int32_" data-uid="Benday.CosmosDb.Utilities.BatchUtility.CreateArrayForBatch``1(System.Collections.Generic.List{``0},System.Int32,System.Int32)">CreateArrayForBatch&lt;T&gt;(List&lt;T&gt;, int, int)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates an array of items for a specific batch number.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -183,16 +185,32 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_BatchUtility_GetBatchCount_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.BatchUtility.GetBatchCount(System.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/BatchUtility.cs/#L41">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/BatchUtility.cs/#L66">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_BatchUtility_GetBatchCount_" data-uid="Benday.CosmosDb.Utilities.BatchUtility.GetBatchCount*"></a>
   <h4 id="Benday_CosmosDb_Utilities_BatchUtility_GetBatchCount_System_Int32_System_Int32_" data-uid="Benday.CosmosDb.Utilities.BatchUtility.GetBatchCount(System.Int32,System.Int32)">GetBatchCount(int, int)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the number of batches that will be created.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -240,11 +258,12 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_BatchUtility_GetBatches__1_System_Collections_Generic_IEnumerable___0__System_Int32_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.BatchUtility.GetBatches%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/BatchUtility.cs/#L5">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/BatchUtility.cs/#L15">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_BatchUtility_GetBatches_" data-uid="Benday.CosmosDb.Utilities.BatchUtility.GetBatches*"></a>
   <h4 id="Benday_CosmosDb_Utilities_BatchUtility_GetBatches__1_System_Collections_Generic_IEnumerable___0__System_Int32_" data-uid="Benday.CosmosDb.Utilities.BatchUtility.GetBatches``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">GetBatches&lt;T&gt;(IEnumerable&lt;T&gt;, int)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets a list of arrays of items that are batched.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -263,12 +282,14 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
         <td><span class="parametername">values</span></td>
-        <td></td>
+        <td><p>Values to convert to batches</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">batchSize</span></td>
-        <td></td>
+        <td><p>Number of items per batch</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -314,7 +335,7 @@
                     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_BatchUtility.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.BatchUtility%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/BatchUtility.cs/#L3" class="contribution-link">View Source</a>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/BatchUtility.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
