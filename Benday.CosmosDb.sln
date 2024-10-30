@@ -3,7 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benday.CosmosDb", "Benday.CosmosDb\Benday.CosmosDb.csproj", "{613F5EA4-2263-4CD5-A044-D239CF4E53C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benday.CosmosDb", "Benday.CosmosDb\Benday.CosmosDb.csproj", "{613F5EA4-2263-4CD5-A044-D239CF4E53C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{A18EA386-A34C-444D-8C42-713C5D19AD04}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		bdc_mark_128_128.png = bdc_mark_128_128.png
+		copy-docfx-site-to-docs.ps1 = copy-docfx-site-to-docs.ps1
+		copy-docfx-site-to-docs.sh = copy-docfx-site-to-docs.sh
+		generate-docfx-docs.ps1 = generate-docfx-docs.ps1
+		generate-docfx-docs.sh = generate-docfx-docs.sh
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+		serve-docfx-docs.ps1 = serve-docfx-docs.ps1
+		serve-docfx-docs.sh = serve-docfx-docs.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
