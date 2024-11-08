@@ -1,7 +1,7 @@
 ﻿using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.Utilities;
-using Newtonsoft.Json;
-
+using System.Text.Json;
+using System.Text.Json.Serialization;
 namespace Benday.CosmosDb.DomainModels;
 
 /// <summary>
@@ -12,13 +12,13 @@ public abstract class CosmosIdentityBase : IOwnedItem
     /// <summary>
     /// Id of the entity.
     /// </summary>
-    [JsonProperty("id")]
+    [JsonPropertyName("id")]
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
     /// <summary>
     /// Top-level partition key of the entity.
     /// </summary>
-    [JsonProperty("pk")]
+    [JsonPropertyName("pk")]
     public abstract string PartitionKey { get; set; }
 
     /// <summary>
@@ -30,20 +30,20 @@ public abstract class CosmosIdentityBase : IOwnedItem
     /// <summary>
     /// Get the timestamp of the entity as a DateTime object.
     /// </summary>
-    [JsonProperty("_ts")]
+    [JsonPropertyName("_ts")]
     [JsonConverter(typeof(UnixDateTimeConverter))]
     public DateTime Timestamp { get; set; }
 
     /// <summary>
     /// Optimistic concurrency token for the entity.
     /// </summary>
-    [JsonProperty("_etag")]
+    [JsonPropertyName("_etag")]
     public string Etag { get; set; } = string.Empty;
 
     /// <summary>
     /// Second-level partition key for the entity.  This value describes the domain model type for the entity.
     /// </summary>
-    [JsonProperty(CosmosDbConstants.DiscriminatorPropertyName)]
+    [JsonPropertyName(CosmosDbConstants.DiscriminatorPropertyName)]
     public virtual string DiscriminatorValue
     {
         get

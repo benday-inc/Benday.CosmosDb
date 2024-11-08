@@ -1,33 +1,23 @@
 using Microsoft.Azure.Cosmos;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Benday.CosmosDb.Utilities;
 
 /// <summary>
 /// Converts a Unix timestamp to a DateTime and vice versa.
 /// </summary>
-public class UnixDateTimeConverter : JsonConverter
+public class UnixDateTimeConverter : JsonConverter<DateTime>
 {
-    public override void WriteJson(
-        JsonWriter writer, object? value, JsonSerializer serializer)
+    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     {
-        if (value is DateTime dateTime)
-        {
-            var unixTime = ((DateTimeOffset)dateTime).ToUnixTimeSeconds();
-            writer.WriteValue(unixTime);
-        }
+        var unixTime = ((DateTimeOffset)value).ToUnixTimeSeconds();
+        writer.WriteNumberValue(unixTime);
     }
 
-    public override object ReadJson(
-        JsonReader reader, Type objectType, object? existingValue,
-        JsonSerializer serializer)
+    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        var unixTimestamp = Convert.ToInt64(reader.Value);
+        var unixTimestamp = reader.GetInt64();
         return DateTimeOffset.FromUnixTimeSeconds(unixTimestamp).UtcDateTime;
-    }
-
-    public override bool CanConvert(Type objectType)
-    {
-        return objectType == typeof(DateTime);
     }
 }

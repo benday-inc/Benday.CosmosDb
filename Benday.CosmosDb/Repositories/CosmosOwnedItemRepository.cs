@@ -12,7 +12,7 @@ namespace Benday.CosmosDb.Repositories;
 /// <typeparam name="T">Domain model type managed by the repository</typeparam>
 /// <param name="options">Configuration options for the repository</param>
 /// <param name="client">Instance of the cosmos db client. NOTE: for performance reasons, this should probably be a singleton in the application.</param>
-public abstract class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client) :
+public class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client) :
     CosmosRepository<T>(options, client), IOwnedItemRepository<T>
     where T : class, IOwnedItem, new()
 {
