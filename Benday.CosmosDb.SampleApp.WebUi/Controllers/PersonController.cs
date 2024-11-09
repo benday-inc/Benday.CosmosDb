@@ -89,15 +89,14 @@ public class PersonController : Controller
 
     // POST: PersonController/Edit/5
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public async Task<ActionResult> Edit(string id, Person person)
     {
         try
         {
-
             if (string.IsNullOrEmpty(id) == true)
             {
                 person.Id = Guid.NewGuid().ToString();
+                person.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
             }
             else
             {
