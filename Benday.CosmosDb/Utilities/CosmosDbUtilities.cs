@@ -1,4 +1,6 @@
+using Benday.CosmosDb.Repositories;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json;
 
 namespace Benday.CosmosDb.Utilities;
@@ -27,36 +29,5 @@ public static class CosmosDbUtilities
         var keys = keyString.Split(',').ToList();
 
         return keys;
-    }
-
-    /// <summary>
-    /// Gets the default CosmosClientOptions for a Cosmos DB client that uses System.Text.Json.
-    /// This version of the method uses the default JsonNamingPolicy for the JsonSerializerOptions
-    /// </summary>
-    /// <returns>Client options object</returns>
-    public static CosmosClientOptions GetCosmosDbClientOptions()
-    {
-        return GetCosmosDbClientOptions(null);
-    }
-
-    /// <summary>
-    /// Gets the default CosmosClientOptions for a Cosmos DB client that uses System.Text.Json
-    /// and provides an option to customize the JsonNamingPolicy for the JsonSerializerOptions.
-    /// </summary>
-    /// <param name="jsonNamingPolicy">Naming policy or null to not use a policy</param>
-    /// <returns></returns>
-    public static CosmosClientOptions GetCosmosDbClientOptions(JsonNamingPolicy? jsonNamingPolicy)
-    {
-        var options = new CosmosClientOptions
-        {
-            Serializer = new SystemTextJsonCosmosSerializer(new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = jsonNamingPolicy,
-                WriteIndented = true
-                // Add additional JsonSerializerOptions settings as needed
-            })
-        };
-
-        return options;
     }
 }

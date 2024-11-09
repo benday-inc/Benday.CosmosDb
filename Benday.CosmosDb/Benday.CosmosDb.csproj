@@ -21,6 +21,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Utilities\CosmosConfigurationUtilities.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\bdc_mark_128_128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
