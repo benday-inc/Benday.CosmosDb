@@ -12,13 +12,13 @@ public abstract class CosmosIdentityBase : IOwnedItem
     /// <summary>
     /// Id of the entity.
     /// </summary>
-    [JsonPropertyName("id")]
+    [JsonPropertyName(CosmosDbConstants.PropertyName_Id)]
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
     /// <summary>
     /// Top-level partition key of the entity.
     /// </summary>
-    [JsonPropertyName("pk")]
+    [JsonPropertyName(CosmosDbConstants.PropertyName_PartitionKey)]
     public abstract string PartitionKey { get; set; }
 
     /// <summary>
@@ -30,20 +30,20 @@ public abstract class CosmosIdentityBase : IOwnedItem
     /// <summary>
     /// Get the timestamp of the entity as a DateTime object.
     /// </summary>
-    [JsonPropertyName("_ts")]
+    [JsonPropertyName(CosmosDbConstants.PropertyName_Timestamp)]
     [JsonConverter(typeof(UnixDateTimeConverter))]
     public DateTime Timestamp { get; set; }
 
     /// <summary>
     /// Optimistic concurrency token for the entity.
     /// </summary>
-    [JsonPropertyName("_etag")]
+    [JsonPropertyName(CosmosDbConstants.PropertyName_Etag)]
     public string Etag { get; set; } = string.Empty;
 
     /// <summary>
     /// Second-level partition key for the entity.  This value describes the domain model type for the entity.
     /// </summary>
-    [JsonPropertyName(CosmosDbConstants.DiscriminatorPropertyName)]
+    [JsonPropertyName(CosmosDbConstants.PropertyName_Discriminator)]
     public virtual string DiscriminatorValue
     {
         get

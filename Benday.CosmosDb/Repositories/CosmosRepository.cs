@@ -111,7 +111,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <summary>
     /// Delete an item from the Cosmos DB container.
     /// </summary>
-    /// <param name="id">Id of the item</param>
+    /// <param name=CosmosDbConstants.PropertyName_Id>Id of the item</param>
     /// <returns></returns>
     /// <exception cref="InvalidOperationException"></exception>
     public async Task DeleteAsync(string id)
@@ -146,7 +146,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         var container = await GetContainer();
 
-        var query = $"SELECT * FROM c where c.{CosmosDbConstants.DiscriminatorPropertyName} = \"" + DiscriminatorValue + "\"";
+        var query = $"SELECT * FROM c where c.{CosmosDbConstants.PropertyName_Discriminator} = \"" + DiscriminatorValue + "\"";
 
         // Execute the query
         var resultSetIterator = container.GetItemQueryIterator<T>(query);
@@ -258,7 +258,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// Get an item by its id. This method will return null if the item is not found.
     /// NOTE: this almost certainly performs a cross-partition query and should be used with caution.
     /// </summary>
-    /// <param name="id">Id of the entity</param>
+    /// <param name=CosmosDbConstants.PropertyName_Id>Id of the entity</param>
     /// <returns>The first matching entity</returns>
     public async Task<T?> GetByIdAsync(string id)
     {
