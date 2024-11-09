@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{A18EA386-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benday.CosmosDb.UnitTests", "Benday.CosmosDb.UnitTests\Benday.CosmosDb.UnitTests.csproj", "{3406DA59-0087-4EAD-97C4-9B71FE607641}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benday.CosmosDb.SampleApp.WebUi", "Benday.CosmosDb.SampleApp.WebUi\Benday.CosmosDb.SampleApp.WebUi.csproj", "{E292635D-DF4C-4EB6-91B4-230910219194}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benday.CosmosDb.SampleApp.Api", "Benday.CosmosDb.SampleApp.Api\Benday.CosmosDb.SampleApp.Api.csproj", "{EE8621D1-CD01-45F7-B6F4-91FD9A1845C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,14 @@ Global
 		{3406DA59-0087-4EAD-97C4-9B71FE607641}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3406DA59-0087-4EAD-97C4-9B71FE607641}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3406DA59-0087-4EAD-97C4-9B71FE607641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E292635D-DF4C-4EB6-91B4-230910219194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E292635D-DF4C-4EB6-91B4-230910219194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E292635D-DF4C-4EB6-91B4-230910219194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E292635D-DF4C-4EB6-91B4-230910219194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8621D1-CD01-45F7-B6F4-91FD9A1845C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8621D1-CD01-45F7-B6F4-91FD9A1845C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8621D1-CD01-45F7-B6F4-91FD9A1845C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8621D1-CD01-45F7-B6F4-91FD9A1845C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
