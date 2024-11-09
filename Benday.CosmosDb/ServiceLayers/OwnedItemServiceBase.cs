@@ -3,7 +3,7 @@ using Benday.CosmosDb.Repositories;
 using System;
 using System.Linq;
 
-namespace Benday.CosmosDb.SampleApp.Api.ServiceLayers;
+namespace Benday.CosmosDb.ServiceLayers;
 
 public class OwnedItemServiceBase<T> : IOwnedItemServiceBase<T>
 where T : class, IOwnedItem, new()

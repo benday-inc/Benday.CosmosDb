@@ -2,6 +2,7 @@
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.Repositories;
+using Benday.CosmosDb.ServiceLayers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
