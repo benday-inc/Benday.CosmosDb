@@ -52,7 +52,7 @@ public static class CosmosClientOptionsUtilities
         services.AddSingleton(new CosmosClient(connectionString, options));
     }
 
-    public static void ConfigureRepository<TInterface, TImplementation>(
+    public static void ConfigureRepository<TEntity, TInterface, TImplementation>(
         this IServiceCollection services,
         string connectionString,
         string databaseName,
@@ -62,7 +62,7 @@ public static class CosmosClientOptionsUtilities
         where TImplementation : class, TInterface
         where TInterface : class
     {
-        services.RegisterOptionsForRepository<TImplementation>(
+        services.RegisterOptionsForRepository<TEntity>(
             connectionString, databaseName, containerName, partitionKey, createStructures);
 
         services.AddTransient<TInterface, TImplementation>();

@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Benday.CosmosDb.SampleApp.Api\Benday.CosmosDb.SampleApp.Api.csproj" />
     <ProjectReference Include="..\Benday.CosmosDb\Benday.CosmosDb.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
   </ItemGroup>
 
 </Project>

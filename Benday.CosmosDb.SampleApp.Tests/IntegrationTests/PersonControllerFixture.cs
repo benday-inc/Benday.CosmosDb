@@ -18,7 +18,7 @@ public class PersonControllerFixture
         var client = factory.CreateClient();
 
         // act
-        var response = await client.GetAsync("person/");
+        var response = await client.GetAsync("/person");
 
         // assert
         Assert.NotNull(response);
