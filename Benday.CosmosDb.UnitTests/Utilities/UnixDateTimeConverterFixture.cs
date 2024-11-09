@@ -12,11 +12,11 @@ namespace Benday.CosmosDb.UnitTests.Utilities;
 
 public class UnixDateTimeConverterTests
 {
-    private readonly JsonSerializerOptions _options;
+    private readonly JsonSerializerOptions _Options;
 
     public UnixDateTimeConverterTests()
     {
-        _options = new JsonSerializerOptions
+        _Options = new JsonSerializerOptions
         {
             Converters = { new UnixDateTimeConverter() }
         };
@@ -30,7 +30,7 @@ public class UnixDateTimeConverterTests
         var expectedUnixTime = ((DateTimeOffset)dateTime).ToUnixTimeSeconds();
 
         // Act
-        var json = JsonSerializer.Serialize(dateTime, _options);
+        var json = JsonSerializer.Serialize(dateTime, _Options);
 
         // Assert
         Assert.Equal(expectedUnixTime.ToString(), json);
@@ -45,7 +45,7 @@ public class UnixDateTimeConverterTests
         var expectedDateTime = DateTimeOffset.FromUnixTimeSeconds(unixTime).UtcDateTime;
 
         // Act
-        var result = JsonSerializer.Deserialize<DateTime>(json, _options);
+        var result = JsonSerializer.Deserialize<DateTime>(json, _Options);
 
         // Assert
         Assert.Equal(expectedDateTime, result);
