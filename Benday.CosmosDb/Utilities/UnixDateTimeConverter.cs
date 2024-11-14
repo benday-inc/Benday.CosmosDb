@@ -12,12 +12,16 @@ public class UnixDateTimeConverter : JsonConverter<DateTime>
     public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     {
         var unixTime = ((DateTimeOffset)value).ToUnixTimeSeconds();
+
         writer.WriteNumberValue(unixTime);
     }
 
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var unixTimestamp = reader.GetInt64();
-        return DateTimeOffset.FromUnixTimeSeconds(unixTimestamp).UtcDateTime;
+
+        var returnValue = DateTimeOffset.FromUnixTimeSeconds(unixTimestamp).UtcDateTime;
+
+        return returnValue;
     }
 }

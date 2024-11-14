@@ -1,6 +1,7 @@
 ﻿using Benday.CosmosDb.DomainModels;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.ComponentModel;
 
@@ -12,8 +13,8 @@ namespace Benday.CosmosDb.Repositories;
 /// <typeparam name="T">Domain model type managed by the repository</typeparam>
 /// <param name="options">Configuration options for the repository</param>
 /// <param name="client">Instance of the cosmos db client. NOTE: for performance reasons, this should probably be a singleton in the application.</param>
-public class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client) :
-    CosmosRepository<T>(options, client), IOwnedItemRepository<T>
+public class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client, ILogger logger) :
+    CosmosRepository<T>(options, client, logger), IOwnedItemRepository<T>
     where T : class, IOwnedItem, new()
 {
     /// <summary>
@@ -28,10 +29,10 @@ public class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOptions<T>> o
 
         var queryable = await GetQueryable(ownerId);
 
-        var query = queryable.OrderByDescending(x => x.Timestamp);
+        var query = queryable.Queryable.OrderByDescending(x => x.Timestamp);
         
         var results = await GetResults(query, 
-            GetQueryDescription(nameof(GetAllAsync)));
+            GetQueryDescription(nameof(GetAllAsync)), queryable.PartitionKey);
 
         return results;
     }
@@ -56,11 +57,23 @@ public class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOptions<T>> o
 
             var pk = new PartitionKeyBuilder().Add(ownerId).Add(DiscriminatorValue).Build();
 
-            var response = await container.ReadItemAsync<T>(id, pk);
+            ItemResponse<T?>? response;
+
+            try
+            {
+                response = await container.ReadItemAsync<T?>(id, pk);
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound) 
+            {
+                Logger.LogDebug($"{nameof(GetByIdAsync)}() -- Not found. Partition key: {pk}, Id: {id}");
+                
+
+                return null;
+            }
 
             var ruCharge = response.RequestCharge;
 
-            Console.WriteLine($"Request Charge: {ruCharge}");
+            Logger.LogInformation($"Request Charge: {ruCharge}");
 
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -80,7 +93,8 @@ public class CosmosOwnedItemRepository<T>(IOptions<CosmosRepositoryOptions<T>> o
         }
         catch (Exception ex) 
         {
-            Console.WriteLine(ex.ToString());
+            Logger.LogError(ex, $"Error in {nameof(GetByIdAsync)}().");
+            
             throw;
         }
     }

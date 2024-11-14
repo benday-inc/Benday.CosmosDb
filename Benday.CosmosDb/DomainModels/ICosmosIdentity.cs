@@ -25,15 +25,23 @@ public interface ICosmosIdentity
     /// <summary>
     /// Timestamp of the entity.
     /// </summary>
-    [JsonPropertyName(CosmosDbConstants.PropertyName_Timestamp)]
-    [JsonConverter(typeof(UnixDateTimeConverter))]
-    public DateTime Timestamp { get; set; }
+    [JsonPropertyName(CosmosDbConstants.PropertyName_Timestamp)]    
+    long TimestampUnixStyle { get; set; }
+
+    /// <summary>
+    /// Timestamp of the entity.
+    /// </summary>
+    DateTime Timestamp 
+    {
+        get;
+        set;
+    }
 
     /// <summary>
     /// Optimistic concurrency token for the entity.
     /// </summary>
     [JsonPropertyName(CosmosDbConstants.PropertyName_Etag)]
-    public string Etag { get; set; }
+    string Etag { get; set; }
 
     /// <summary>
     /// Second-level partition key for the entity.  This value describes the domain model type for the entity.

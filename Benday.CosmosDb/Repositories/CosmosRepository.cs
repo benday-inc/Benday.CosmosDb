@@ -2,7 +2,9 @@
 using Benday.CosmosDb.Utilities;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 
@@ -59,14 +61,18 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// </summary>
     public virtual string DiscriminatorValue => typeof(T).Name;
 
+    protected ILogger Logger { get; }
+
     /// <summary>
     /// Constructor for the repository.
     /// </summary>
     /// <param name="options">Configuration options</param>
     /// <param name="client">Cosmos Db client instance. NOTE: for performance reasons, this should probably be a singleton in the application.</param>
     /// <exception cref="ArgumentException"></exception>
-    public CosmosRepository(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client)
+    public CosmosRepository(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client, ILogger logger)
     {
+        Logger = logger;
+
         var opts = options.Value;
 
         _Client = client;
@@ -131,6 +137,27 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         try
         {
             response = await container.DeleteItemAsync<T>(id, partitionKey);
+
+            if (response == null)
+            {
+                throw new InvalidOperationException($"Response was null");
+            }
+            else
+            {
+                // print diagnostics
+                var diagnostics = response.Diagnostics;
+                var diagnosticsString = diagnostics.ToString();
+                Logger.LogInformation($"Request Charge (DeleteAsync): {response.RequestCharge}");
+                Logger.LogInformation($"Diagnostics (DeleteAsync): {diagnosticsString}");
+                if (response.StatusCode is System.Net.HttpStatusCode.OK or System.Net.HttpStatusCode.NoContent)
+                {
+                    return;
+                }
+                else
+                {
+                    throw new InvalidOperationException($"Response status code was {response.StatusCode}");
+                }
+            }
         }
         catch (Exception)
         {
@@ -146,12 +173,11 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         var container = await GetContainer();
 
-        var query = $"SELECT * FROM c where c.{CosmosDbConstants.PropertyName_Discriminator} = \"" + DiscriminatorValue + "\"";
+        var queryable = await GetQueryable();
 
-        // Execute the query
-        var resultSetIterator = container.GetItemQueryIterator<T>(query);
+        var query = queryable.Queryable.Where(x => x.DiscriminatorValue == DiscriminatorValue);
 
-        var items = await GetResults(resultSetIterator, nameof(GetAllAsync));
+        var items = await GetResults(query, nameof(GetAllAsync), queryable.PartitionKey);
 
         return items;
     }
@@ -159,12 +185,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <summary>
     /// Gets the results from a query.
     /// </summary>
-    /// <param name="query"></param>
-    /// <param name="queryDescription"></param>
+    /// <param name="query">query to run</param>
+    /// <param name="queryDescription">logging description for the query</param>
+    /// <param name="partitionKey">partition key that's configured for this query. NOTE: this is purely to logging purposes</param>
     /// <returns></returns>
     protected async Task<List<T>> GetResults(
-        IQueryable<T> query, string queryDescription)
+        IQueryable<T> query, string queryDescription, PartitionKey partitionKey)
     {
+        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResults)} - {queryDescription} query {query} with partition key {partitionKey}");
+
         var feedIterator = query.ToFeedIterator();
 
         var results = await GetResults(feedIterator, queryDescription);
@@ -191,7 +220,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             var diagnostics = response.Diagnostics;
             var ruCharge = response.RequestCharge;
 
-            Console.WriteLine($"Request Charge ({queryDescription}): {ruCharge}");
+            Logger.LogInformation($"Request Charge ({queryDescription}): {ruCharge}");
 
             totalRequestCharge += ruCharge;
 
@@ -199,13 +228,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
             if (isCrossPartition)
             {
-                Console.WriteLine($"*** WARNING ***: Cross-partition query for {queryDescription}");
+                Logger.LogInformation($"*** WARNING ***: Cross-partition query for {queryDescription}");
             }
 
             items.AddRange(response);
         }
 
-        Console.WriteLine($"Total request charge ({queryDescription}): {totalRequestCharge}");
+        Logger.LogInformation($"Total request charge ({queryDescription}): {totalRequestCharge}");
 
         return items;
     }
@@ -248,7 +277,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         if (isCrossPartition == true)
         {
-            Console.WriteLine($"*** WARNING ***: Cross-partition query");
+            Logger.LogWarning($"*** WARNING ***: Cross-partition query");
         }
 
         return isCrossPartition;
@@ -256,7 +285,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
     /// <summary>
     /// Get an item by its id. This method will return null if the item is not found.
-    /// NOTE: this almost certainly performs a cross-partition query and should be used with caution.
+    /// NOTE: this almost certainly performs a cross-partition query and should be used with caution because 
+    /// it does not use a partition key.
     /// </summary>
     /// <param name=CosmosDbConstants.PropertyName_Id>Id of the entity</param>
     /// <returns>The first matching entity</returns>
@@ -266,7 +296,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         try
         {
-            var item = container.GetItemLinqQueryable<T>(true).Where(x => x.Id == id && x.DiscriminatorValue == DiscriminatorValue).FirstOrDefault();
+            var queryable = await GetQueryable();
+
+            var query = queryable.Queryable.Where(x => x.Id == id && x.DiscriminatorValue == DiscriminatorValue);
+
+            var result = await GetResults(query, nameof(GetByIdAsync), queryable.PartitionKey);
+
+            var item = result.FirstOrDefault();
 
             return item;
         }
@@ -291,7 +327,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 _Database = createDb.Database;
 
                 // Create a new container with partition key
-                Console.WriteLine($"Creating container '{_ContainerName}' in database '{_DatabaseName}' with partition key '{_PartitionKey}'...");
+                Logger.LogInformation($"Creating container '{_ContainerName}' in database '{_DatabaseName}' with partition key '{_PartitionKey}'...");
 
                 var containerProperties = new ContainerProperties(
                     id: _ContainerName,
@@ -326,19 +362,41 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
 
         var partitionKey = GetPartitionKey(saveThis);
+        ItemResponse<T>? response;
+
         try
         {
-            var response = await container.UpsertItemAsync(saveThis, partitionKey);
+            response = await container.UpsertItemAsync(saveThis, partitionKey);
+            
+            if (response == null)
+            {
+                throw new InvalidOperationException($"Response was null");
+            }
+            else
+            {
+                // print diagnostics
+                var diagnostics = response.Diagnostics;
+                var diagnosticsString = diagnostics.ToString();
 
-            return response == null
-                ? throw new InvalidOperationException($"Response was null")
-                : response.StatusCode is System.Net.HttpStatusCode.OK or
-                                System.Net.HttpStatusCode.Created
-                    ? saveThis
-                    : throw new InvalidOperationException($"Response status code was {response.StatusCode}");
+                Logger.LogInformation($"Request Charge (SaveAsync): {response.RequestCharge}");
+
+                Logger.LogInformation($"Diagnostics (SaveAsync): {diagnosticsString}");
+
+                if (response.StatusCode is
+                    System.Net.HttpStatusCode.OK or System.Net.HttpStatusCode.Created)
+                {
+                    return saveThis;
+                }
+                else
+                {
+                    throw new InvalidOperationException($"Response status code was {response.StatusCode}");
+                }
+            }
         }
-        catch (CosmosException)
+        catch (CosmosException ex)
         {
+            Logger.LogError($"Error saving {saveThis.DiscriminatorValue} item {saveThis.Id} to container {_ContainerName} in database {_DatabaseName}.  {ex}");
+
             throw;
         }
     }
@@ -421,20 +479,71 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// off of this repository by child repository classes.
     /// </summary>
     /// <param name="firstLevelPartitionKeyValue">Value to use for the first-level partition key. NOTE: this is probably ownerId.</param>
-    /// <returns>Starting queryable object for LINQ queries</returns>
-    protected virtual async Task<IOrderedQueryable<T>> GetQueryable(
+    /// <returns>Queryable and it's configured partition key</returns>
+    protected virtual async Task<QueryableInfo<T>> GetQueryable(
         string firstLevelPartitionKeyValue)
     {
-        var pk = new PartitionKeyBuilder().Add(firstLevelPartitionKeyValue).Add(DiscriminatorValue).Build();
+        return await GetQueryable(firstLevelPartitionKeyValue, DiscriminatorValue);
+    }
+
+    /// <summary>
+    /// Creates a queryable for the repository with the specified partition key 
+    /// configuration. This is the starting point for all custom LINQ queries built 
+    /// off of this repository by child repository classes.
+    /// </summary>
+    /// <param name="firstLevelPartitionKeyValue">Value to use for the first-level partition key. NOTE: this is probably ownerId.</param>
+    /// <param name="discriminatorValue">Discriminator value</param>
+    /// <returns>Queryable and it's configured partition key</returns>
+    protected virtual async Task<QueryableInfo<T>> GetQueryable(
+        string firstLevelPartitionKeyValue, string discriminatorValue)
+    {
+        var pk = new PartitionKeyBuilder().Add(firstLevelPartitionKeyValue).Add(discriminatorValue).Build();
 
         var container = await GetContainer();
 
         var queryable =
             container.GetItemLinqQueryable<T>(true,
-            requestOptions: new QueryRequestOptions() { PartitionKey = pk });
+            requestOptions: new QueryRequestOptions() { PartitionKey = pk },
+            linqSerializerOptions: new CosmosLinqSerializerOptions
+            {
+                PropertyNamingPolicy = CosmosPropertyNamingPolicy.Default
+            });
 
-        return queryable ?? 
+
+        if (queryable == null)
+        {
             throw new InvalidOperationException("Queryable object is null.");
+        }
+
+        var info = new QueryableInfo<T>(pk, queryable);
+
+        return info;
+    }
+
+    /// <summary>
+    /// Get the queryable object for the repository. This method will create a queryable object WITHOUT a partition key configuration for the repository.
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    protected virtual async Task<QueryableInfo<T>> GetQueryable()
+    {
+        var container = await GetContainer();
+
+        var queryable =
+            container.GetItemLinqQueryable<T>(true,
+            linqSerializerOptions: new CosmosLinqSerializerOptions
+            {
+                PropertyNamingPolicy = CosmosPropertyNamingPolicy.Default
+            });
+
+        if (queryable == null)
+        {
+            throw new InvalidOperationException("Queryable object is null.");
+        }
+
+        var info = new QueryableInfo<T>(new PartitionKey(), queryable);
+
+        return info;
     }
 }
 

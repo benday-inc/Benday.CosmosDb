@@ -2,9 +2,12 @@ using Benday.CosmosDb.Repositories;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using System.Reflection;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Benday.CosmosDb.Utilities;
+
 
 public static class CosmosClientOptionsUtilities
 {
@@ -31,7 +34,8 @@ public static class CosmosClientOptionsUtilities
             Serializer = new SystemTextJsonCosmosSerializer(new JsonSerializerOptions
             {
                 PropertyNamingPolicy = jsonNamingPolicy,
-                WriteIndented = true
+                WriteIndented = true,
+                PropertyNameCaseInsensitive = true,
                 // Add additional JsonSerializerOptions settings as needed
             })
         };
@@ -45,9 +49,10 @@ public static class CosmosClientOptionsUtilities
         string databaseName,
         string containerName,
         string partitionKey,
-        bool createStructures)
+        bool createStructures,
+        JsonNamingPolicy? jsonNamingPolicy = null)
     {
-        var options = GetCosmosDbClientOptions();
+        var options = GetCosmosDbClientOptions(jsonNamingPolicy);
 
         services.AddSingleton(new CosmosClient(connectionString, options));
     }
@@ -58,7 +63,7 @@ public static class CosmosClientOptionsUtilities
         string databaseName,
         string containerName,
         string partitionKey,
-        bool createStructures) 
+        bool createStructures)
         where TImplementation : class, TInterface
         where TInterface : class
     {

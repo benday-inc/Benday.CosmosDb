@@ -24,15 +24,27 @@ public abstract class CosmosIdentityBase : IOwnedItem
     /// <summary>
     /// The owner id of the entity. By default, this value will be the same as the PartitionKey for the entity.
     /// </summary>
-    [JsonIgnore]
     public virtual string OwnerId { get; set; } = string.Empty;
 
     /// <summary>
-    /// Get the timestamp of the entity as a DateTime object.
+    /// Timestamp of the entity.
     /// </summary>
     [JsonPropertyName(CosmosDbConstants.PropertyName_Timestamp)]
-    [JsonConverter(typeof(UnixDateTimeConverter))]
-    public DateTime Timestamp { get; set; }
+    public long TimestampUnixStyle { get; set; }
+
+    /// <summary>
+    /// Timestamp of the entity in human-readable format.
+    /// </summary>
+    public DateTime Timestamp
+    {
+        get
+        {
+            return DateTimeOffset.FromUnixTimeSeconds(TimestampUnixStyle).UtcDateTime;
+        }
+        set
+        {
+        }
+    }
 
     /// <summary>
     /// Optimistic concurrency token for the entity.
