@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/code/benday-inc/Benday.CosmosDb/docfx_project",
+  "source_base_path": "/Users/benday/code/benday-inc/Benday.CosmosDb/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -114,10 +114,50 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Repositories.QueryableInfo-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Repositories.QueryableInfo-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Repositories.yml",
       "output": {
         ".html": {
           "relative_path": "api/Benday.CosmosDb.Repositories.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.html"
         }
       },
       "version": ""
@@ -134,10 +174,40 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Utilities.CosmosDbUtilities.yml",
       "output": {
         ".html": {
           "relative_path": "api/Benday.CosmosDb.Utilities.CosmosDbUtilities.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Utilities.DiagnosticsHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Utilities.DiagnosticsHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.html"
         }
       },
       "version": ""

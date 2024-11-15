@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class CosmosDbUtilities
+      <title>Class DiagnosticsHandler
  </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class CosmosDbUtilities
+      <meta name="title" content="Class DiagnosticsHandler
  ">
     
     
@@ -69,22 +69,25 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Benday.CosmosDb.Utilities.CosmosDbUtilities">
+            <article class="content wrap" id="_content" data-uid="Benday.CosmosDb.Utilities.DiagnosticsHandler">
 
 
 
-  <h1 id="Benday_CosmosDb_Utilities_CosmosDbUtilities" data-uid="Benday.CosmosDb.Utilities.CosmosDbUtilities" class="text-break">Class CosmosDbUtilities
+  <h1 id="Benday_CosmosDb_Utilities_DiagnosticsHandler" data-uid="Benday.CosmosDb.Utilities.DiagnosticsHandler" class="text-break">Class DiagnosticsHandler
 </h1>
-  <div class="markdown level0 summary"><p>Utility class for working with CosmosDb.</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">CosmosDbUtilities</span></div>
+    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.requesthandler">RequestHandler</a></div>
+    <div class="level2"><span class="xref">DiagnosticsHandler</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.requesthandler.innerhandler">RequestHandler.InnerHandler</a>
+    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -109,26 +112,27 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Benday.html">Benday</a>.<a class="xref" href="Benday.CosmosDb.html">CosmosDb</a>.<a class="xref" href="Benday.CosmosDb.Utilities.html">Utilities</a></h6>
   <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
-  <h5 id="Benday_CosmosDb_Utilities_CosmosDbUtilities_syntax">Syntax</h5>
+  <h5 id="Benday_CosmosDb_Utilities_DiagnosticsHandler_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class CosmosDbUtilities</code></pre>
+    <pre><code class="lang-csharp hljs">public class DiagnosticsHandler : RequestHandler</code></pre>
   </div>
   <h3 id="methods">Methods
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosDbUtilities_GetPartitionKey_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKey(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_DiagnosticsHandler_SendAsync_Microsoft_Azure_Cosmos_RequestMessage_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.DiagnosticsHandler.SendAsync(Microsoft.Azure.Cosmos.RequestMessage%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs/#L13">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/DiagnosticsHandler.cs/#L8">View Source</a>
   </span>
-  <a id="Benday_CosmosDb_Utilities_CosmosDbUtilities_GetPartitionKey_" data-uid="Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKey*"></a>
-  <h4 id="Benday_CosmosDb_Utilities_CosmosDbUtilities_GetPartitionKey_System_String_" data-uid="Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKey(System.String)">GetPartitionKey(string)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Benday_CosmosDb_Utilities_DiagnosticsHandler_SendAsync_" data-uid="Benday.CosmosDb.Utilities.DiagnosticsHandler.SendAsync*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_DiagnosticsHandler_SendAsync_Microsoft_Azure_Cosmos_RequestMessage_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Utilities.DiagnosticsHandler.SendAsync(Microsoft.Azure.Cosmos.RequestMessage,System.Threading.CancellationToken)">SendAsync(RequestMessage, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Processes the current <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.requestmessage">RequestMessage</a> in the current handler and sends the current <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.requestmessage">RequestMessage</a> to the next handler in the chain.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static PartitionKey GetPartitionKey(string keyString)</code></pre>
+    <pre><code class="lang-csharp hljs">public override Task&lt;ResponseMessage&gt; SendAsync(RequestMessage request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -141,9 +145,16 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">keyString</span></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.requestmessage">RequestMessage</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.requestmessage">RequestMessage</a> received by the handler.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a> received by the handler.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -157,58 +168,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey">PartitionKey</a></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage">ResponseMessage</a>&gt;</td>
+        <td><p>An instance of <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage">ResponseMessage</a>.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosDbUtilities_GetPartitionKeyStrings_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKeyStrings(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs/#L27">View Source</a>
-  </span>
-  <a id="Benday_CosmosDb_Utilities_CosmosDbUtilities_GetPartitionKeyStrings_" data-uid="Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKeyStrings*"></a>
-  <h4 id="Benday_CosmosDb_Utilities_CosmosDbUtilities_GetPartitionKeyStrings_System_String_" data-uid="Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKeyStrings(System.String)">GetPartitionKeyStrings(string)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;string&gt; GetPartitionKeyStrings(string keyString)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">keyString</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.requesthandler.sendasync">RequestHandler.SendAsync(RequestMessage, CancellationToken)</a></div>
 
 </article>
           </div>
@@ -218,10 +185,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosDbUtilities.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosDbUtilities%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_DiagnosticsHandler.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.DiagnosticsHandler%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/DiagnosticsHandler.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
