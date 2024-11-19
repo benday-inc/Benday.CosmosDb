@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // add appsettings.json and appsettings.Development.json
 builder.Configuration.AddJsonFile("appsettings.json");
 builder.Configuration.AddJsonFile("appsettings.Development.json", optional: true);
+builder.Configuration.AddJsonFile("appsettings.unversioned.json", optional: true);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,4 +1,5 @@
-﻿using Benday.CosmosDb.SampleApp.Api;
+﻿using Benday.CosmosDb.Repositories;
+using Benday.CosmosDb.SampleApp.Api;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.ServiceLayers;
 using Microsoft.AspNetCore.Http;
@@ -108,10 +109,18 @@ public class PersonController : Controller
                 }
             }
 
-            await _PersonService.SaveAsync(person);
+            try
+            {
+                await _PersonService.SaveAsync(person);
 
+                return RedirectToAction(nameof(Index));
+            }
+            catch (OptimisticConcurrencyException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
 
-            return RedirectToAction(nameof(Index));
+                return View(person);
+            }
         }
         catch
         {
@@ -172,5 +181,5 @@ public class PersonController : Controller
         {
             return View();
         }
-    }    
+    }
 }

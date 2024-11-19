@@ -24,4 +24,14 @@ public class PersonService : OwnedItemServiceBase<Person>, IPersonService
     {
         return await _Repository.GetPersonByEmailAddress(emailAddress);
     }
+
+    public override Task<Person?> SaveAsync(Person item)
+    {
+        if (string.IsNullOrEmpty(item.OwnerId) == true)
+        {
+            item.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+        }
+        
+        return base.SaveAsync(item);
+    }
 }

@@ -8,6 +8,14 @@
 
 <h4>Person</h4>
 <hr />
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <strong>@ViewData.ModelState.First().Value</strong>
+    </div>
+}
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">

@@ -366,7 +366,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         try
         {
-            response = await container.UpsertItemAsync(saveThis, partitionKey);
+            var requestOptions = new ItemRequestOptions
+            {
+                IfMatchEtag = saveThis.Etag
+            };
+
+            response = await container.UpsertItemAsync(
+                saveThis, partitionKey, requestOptions);
             
             if (response == null)
             {
@@ -392,6 +398,14 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                     throw new InvalidOperationException($"Response status code was {response.StatusCode}");
                 }
             }
+        }
+        catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.PreconditionFailed)
+        {
+            Logger.LogWarning($"Precondition failed for item {saveThis.Id} in container {_ContainerName} in database {_DatabaseName}.  {ex}");
+
+            throw new OptimisticConcurrencyException(
+                $"Precondition failed for item {saveThis.Id} in container {_ContainerName} in database {_DatabaseName}.",
+                ex);
         }
         catch (CosmosException ex)
         {
@@ -546,4 +560,3 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         return info;
     }
 }
-
