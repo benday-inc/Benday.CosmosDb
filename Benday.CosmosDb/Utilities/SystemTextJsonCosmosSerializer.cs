@@ -56,7 +56,7 @@ public class SystemTextJsonCosmosSerializer : CosmosLinqSerializer
         return streamPayload;
     }
 
-    public override string SerializeMemberName(MemberInfo memberInfo)
+    public override string? SerializeMemberName(MemberInfo memberInfo)
     {
         var jsonExtensionDataAttribute = memberInfo.GetCustomAttribute<JsonExtensionDataAttribute>(true);
         if (jsonExtensionDataAttribute != null)
