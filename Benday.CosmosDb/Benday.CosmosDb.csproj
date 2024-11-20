@@ -13,10 +13,11 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <Version>$(VersionPrefix)2.0.0</Version>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <Version>$(VersionPrefix)2.1.0</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
     <PackageReleaseNotes>
+      v2.1 - Added optimistic concurrency checks using _etag to the repository SaveAsync method.
       v2.0 - Changed implementation to use System.Text.Json for serialization instead of Newtonsoft.Json. Added configuration utilities to make it easier to configure CosmosDb in web projects. Added service layer base classes.
       v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository utilities</PackageReleaseNotes>
     <PackageTags>cosmosdb; repository pattern; domain model pattern; c#; csharp; cosmos;</PackageTags>
