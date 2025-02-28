@@ -38,8 +38,7 @@ var createStructures =
 builder.Services.ConfigureCosmosClient(
     connectionString, databaseName, containerName, partitionKey, createStructures);
 
-builder.Services.ConfigureRepository<
-    Note, IOwnedItemRepository<Note>, CosmosOwnedItemRepository<Note>>(
+builder.Services.ConfigureRepository<Note>(
     connectionString, databaseName, containerName, partitionKey, createStructures);
 
 builder.Services.ConfigureRepository<

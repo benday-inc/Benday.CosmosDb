@@ -1,3 +1,4 @@
+using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Repositories;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +44,16 @@ public static class CosmosClientOptionsUtilities
         return options;
     }
 
+    /// <summary>
+    /// Configures a CosmosClient instance in the service collection.
+    /// </summary>
+    /// <param name="services"></param>
+    /// <param name="connectionString"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="containerName"></param>
+    /// <param name="partitionKey"></param>
+    /// <param name="createStructures"></param>
+    /// <param name="jsonNamingPolicy"></param>
     public static void ConfigureCosmosClient(
         this IServiceCollection services,
         string connectionString,
@@ -57,6 +68,42 @@ public static class CosmosClientOptionsUtilities
         services.AddSingleton(new CosmosClient(connectionString, options));
     }
 
+    /// <summary>
+    /// Configures a repository for a specific domain model entity type using default implementation of CosmosOwnedItemRepository.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <param name="services">Services collection</param>
+    /// <param name="connectionString">Connection string for cosmos db</param>
+    /// <param name="databaseName">Database name</param>
+    /// <param name="containerName">Container name</param>
+    /// <param name="partitionKey">Partition key definition string</param>
+    /// <param name="createStructures">Create structures as part of the instantiation of this repository class (NOTE: this should probably be false in production)</param>
+    public static void ConfigureRepository<TEntity>(
+        this IServiceCollection services,
+        string connectionString,
+        string databaseName,
+        string containerName,
+        string partitionKey,
+        bool createStructures) where TEntity : OwnedItemBase, new()
+    {
+        services.RegisterOptionsForRepository<TEntity>(
+            connectionString, databaseName, containerName, partitionKey, createStructures);
+
+        services.AddTransient<IOwnedItemRepository<TEntity>, CosmosOwnedItemRepository<TEntity>>();
+    }
+
+    /// <summary>
+    /// Configures a repository for a specific domain model entity type using a custom implementation of the repository.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TInterface"></typeparam>
+    /// <typeparam name="TImplementation"></typeparam>
+    /// <param name="services"></param>
+    /// <param name="connectionString"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="containerName"></param>
+    /// <param name="partitionKey"></param>
+    /// <param name="createStructures"></param>
     public static void ConfigureRepository<TEntity, TInterface, TImplementation>(
         this IServiceCollection services,
         string connectionString,
@@ -73,6 +120,16 @@ public static class CosmosClientOptionsUtilities
         services.AddTransient<TInterface, TImplementation>();
     }
 
+    /// <summary>
+    /// Registers options for a repository.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="services"></param>
+    /// <param name="connectionString"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="containerName"></param>
+    /// <param name="partitionKey"></param>
+    /// <param name="createStructures"></param>
     public static void RegisterOptionsForRepository<T>(
         this IServiceCollection services,
         string connectionString,
