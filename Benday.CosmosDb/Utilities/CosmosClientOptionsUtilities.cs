@@ -60,15 +60,9 @@ public static class CosmosClientOptionsUtilities
         var createStructures =
             GetBoolean(configuration, "CosmosConfiguration:CreateStructures");
 
-        return new CosmosConfig()
-        {
-            DatabaseName = databaseName,
-            ContainerName = containerName,
-            PartitionKey = partitionKey,
-            CreateStructures = createStructures,
-            AccountKey = accountKey,
-            Endpoint = endpoint
-        };
+        var temp = new CosmosConfig(accountKey, endpoint, databaseName, containerName, partitionKey, createStructures);
+
+        return temp;
     }
 
     /// <summary>
