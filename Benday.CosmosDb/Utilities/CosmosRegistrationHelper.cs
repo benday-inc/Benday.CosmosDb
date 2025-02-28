@@ -1,12 +1,13 @@
 ﻿using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.ServiceLayers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Benday.CosmosDb.Utilities;
 
 
-public class CosmosConfigurationBuilder
+public class CosmosRegistrationHelper
 {
     public string ConnectionString { get; private set; }
 
@@ -20,14 +21,25 @@ public class CosmosConfigurationBuilder
 
     private IServiceCollection _Services;
 
-    public CosmosConfigurationBuilder(
+    public CosmosRegistrationHelper(IServiceCollection services, CosmosConfig config) : this(
+        services,
+        config.ConnectionString,
+        config.DatabaseName,
+        config.ContainerName,
+        config.CreateStructures,
+        config.PartitionKey)
+    {
+        
+    }
+
+    public CosmosRegistrationHelper(
         IServiceCollection services,
         string connectionString,
         string databaseName,
         string containerName,
         bool createStructures,
         string? partitionKey = null)
-    {
+    {        
         _Services = services;
         ConnectionString = connectionString;
         DatabaseName = databaseName;

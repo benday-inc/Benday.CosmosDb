@@ -15,28 +15,10 @@ builder.Configuration.AddJsonFile("appsettings.unversioned.json", optional: true
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Add CosmosDb support
+var cosmosConfig = builder.Configuration.GetCosmosConfig();
 
-var connectionString = 
-    builder.Configuration.GetConnectionString("CosmosDb") ?? 
-    throw new InvalidOperationException("Cannot find connection string 'CosmosDb'");
-
-if (string.IsNullOrWhiteSpace(connectionString) == true)
-{
-    throw new InvalidOperationException($"Connection string is empty");
-}
-
-var databaseName =
-    builder.Configuration["CosmosConfiguration:DatabaseName"] ?? throw new InvalidOperationException("Could not find database name");
-var containerName =
-    builder.Configuration["CosmosConfiguration:ContainerName"] ?? throw new InvalidOperationException("Could not find container name");
-var partitionKey =
-    builder.Configuration["CosmosConfiguration:PartitionKey"] ?? throw new InvalidOperationException("Could not find partition key");
-var createStructures =
-    builder.Configuration.GetValue<bool>("CosmosConfiguration:CreateStructures");
-
-var cosmosBuilder = new CosmosConfigurationBuilder(
-    builder.Services, connectionString, databaseName, containerName, createStructures, partitionKey);
+var cosmosBuilder = new CosmosRegistrationHelper(
+    builder.Services, cosmosConfig);
 
 cosmosBuilder.RegisterRepositoryAndService<Note>();
 cosmosBuilder.RegisterRepository<Person, IPersonRepository, CosmosDbPersonRepository>();

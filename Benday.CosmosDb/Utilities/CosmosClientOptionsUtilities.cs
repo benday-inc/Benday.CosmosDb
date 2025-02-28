@@ -1,9 +1,11 @@
 using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Repositories;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.ComponentModel;
+using System.Configuration;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -21,6 +23,52 @@ public static class CosmosClientOptionsUtilities
     public static CosmosClientOptions GetCosmosDbClientOptions()
     {
         return GetCosmosDbClientOptions(null);
+    }
+
+    private static bool GetBoolean(IConfiguration configuration, string configName)
+    {
+        // configuration.GetValue<bool>
+
+        var temp = configuration[configName].ThrowIfEmptyOrNull(configName);
+
+        if (bool.TryParse(temp, out bool result) == false)
+        {
+            return false;
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Gets a CosmosConfig object from the configuration.
+    /// </summary>
+    /// <param name="configuration"></param>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    public static CosmosConfig GetCosmosConfig(this IConfiguration configuration)
+    {
+        var databaseName =
+            configuration["CosmosConfiguration:DatabaseName"].ThrowIfEmptyOrNull("CosmosConfiguration:DatabaseName");
+        var containerName =
+            configuration["CosmosConfiguration:ContainerName"].ThrowIfEmptyOrNull("CosmosConfiguration:ContainerName");
+        var partitionKey =
+            configuration["CosmosConfiguration:PartitionKey"].ThrowIfEmptyOrNull("CosmosConfiguration:PartitionKey");
+        var accountKey = 
+            configuration["CosmosConfiguration:AccountKey"].ThrowIfEmptyOrNull("CosmosConfiguration:AccountKey");
+        var endpoint = 
+            configuration["CosmosConfiguration:Endpoint"].ThrowIfEmptyOrNull("CosmosConfiguration:Endpoint");
+        var createStructures =
+            GetBoolean(configuration, "CosmosConfiguration:CreateStructures");
+
+        return new CosmosConfig()
+        {
+            DatabaseName = databaseName,
+            ContainerName = containerName,
+            PartitionKey = partitionKey,
+            CreateStructures = createStructures,
+            AccountKey = accountKey,
+            Endpoint = endpoint
+        };
     }
 
     /// <summary>
@@ -149,5 +197,22 @@ public static class CosmosClientOptionsUtilities
         });
 
         services.AddTransient<CosmosRepositoryOptions<T>>();
+    }
+
+    public static string ThrowIfEmptyOrNull(this string? value, string? valueName = null)
+    {
+        if (string.IsNullOrWhiteSpace(value) == true)
+        {
+            var message = "Value cannot be empty or null.";
+
+            if (valueName != null)
+            {
+                message = $"Value for '{valueName}' cannot be empty or null.";
+            }
+
+            throw new InvalidOperationException(message);
+        }
+
+        return value;
     }
 }
