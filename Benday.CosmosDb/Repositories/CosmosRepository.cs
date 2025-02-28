@@ -240,8 +240,9 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     }
 
     /// <summary>
-    /// Gets a description for a query. By default, this will return the type name of the repository and the method name.
-    /// By default, detect and use the method name of the caller.
+    /// Gets a description for a query. By default, this will return the type 
+    /// name of the repository and the method name. By default, detect and use 
+    /// the method name of the caller.
     /// </summary>
     /// <param name="methodName">Method that's calling the query</param>
     /// <returns></returns>
