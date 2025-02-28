@@ -35,18 +35,12 @@ var partitionKey =
 var createStructures =
     builder.Configuration.GetValue<bool>("CosmosConfiguration:CreateStructures");
 
-builder.Services.ConfigureCosmosClient(
-    connectionString, databaseName, containerName, partitionKey, createStructures);
+var cosmosBuilder = new CosmosConfigurationBuilder(
+    builder.Services, connectionString, databaseName, containerName, createStructures, partitionKey);
 
-builder.Services.ConfigureRepository<Note>(
-    connectionString, databaseName, containerName, partitionKey, createStructures);
-
-builder.Services.ConfigureRepository<
-    Person, IPersonRepository, CosmosDbPersonRepository>(
-    connectionString, databaseName, containerName, partitionKey, createStructures);
-
+cosmosBuilder.RegisterRepositoryAndService<Note>();
+cosmosBuilder.RegisterRepository<Person, IPersonRepository, CosmosDbPersonRepository>();
 builder.Services.AddTransient<IPersonService, PersonService>();
-builder.Services.AddTransient<IOwnedItemServiceBase<Note>, OwnedItemServiceBase<Note>>();
 
 var app = builder.Build();
 
