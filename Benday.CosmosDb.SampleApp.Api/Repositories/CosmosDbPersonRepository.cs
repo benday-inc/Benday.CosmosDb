@@ -13,7 +13,9 @@ namespace Benday.CosmosDb.SampleApp.Api.Repositories;
 public class CosmosDbPersonRepository : CosmosOwnedItemRepository<Person>, IPersonRepository
 {
     public CosmosDbPersonRepository(
-        IOptions<CosmosRepositoryOptions<Person>> options, CosmosClient client, ILogger<CosmosDbPersonRepository> logger) :
+        IOptions<CosmosRepositoryOptions<Person>> options, 
+        CosmosClient client, 
+        ILogger<CosmosDbPersonRepository> logger) :
         base(options, client, logger)
     {
 

@@ -47,7 +47,7 @@ public class NoteControllerFixture
             new Dictionary<string, string>
             {
                 { "Id", "" },
-                { "Title", $"title_{now}" },
+                { "Subject", $"subject_{now}" },
                 { "Text", $"text_{now}" }
             });
 

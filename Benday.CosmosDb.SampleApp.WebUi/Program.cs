@@ -1,6 +1,8 @@
+using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.Repositories;
 using Benday.CosmosDb.SampleApp.Api.ServiceLayers;
+using Benday.CosmosDb.ServiceLayers;
 using Benday.CosmosDb.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,10 +39,15 @@ builder.Services.ConfigureCosmosClient(
     connectionString, databaseName, containerName, partitionKey, createStructures);
 
 builder.Services.ConfigureRepository<
+    Note, IOwnedItemRepository<Note>, CosmosOwnedItemRepository<Note>>(
+    connectionString, databaseName, containerName, partitionKey, createStructures);
+
+builder.Services.ConfigureRepository<
     Person, IPersonRepository, CosmosDbPersonRepository>(
     connectionString, databaseName, containerName, partitionKey, createStructures);
 
 builder.Services.AddTransient<IPersonService, PersonService>();
+builder.Services.AddTransient<IOwnedItemServiceBase<Note>, OwnedItemServiceBase<Note>>();
 
 var app = builder.Build();
 

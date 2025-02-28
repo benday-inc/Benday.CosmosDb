@@ -6,7 +6,7 @@ using System.Linq;
 namespace Benday.CosmosDb.ServiceLayers;
 
 public class OwnedItemServiceBase<T> : IOwnedItemServiceBase<T>
-where T : class, IOwnedItem, new()
+    where T : class, IOwnedItem, new()
 {
     private IOwnedItemRepository<T> _Repository;
 
