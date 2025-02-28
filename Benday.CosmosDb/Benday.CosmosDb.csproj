@@ -46,9 +46,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.*" />
     
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.*" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.*" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="8.*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.*" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.*" />
     
   </ItemGroup>
 
