@@ -20,9 +20,10 @@ Key features:
 * Support for configuring repositories for use in ASP.NET Core projects
 * Support for [hierarchical partition keys](https://learn.microsoft.com/en-us/azure/cosmos-db/hierarchical-partition-keys)
 * Logging of query performance and [request units](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units) 
-* Detect and warn when you have cross-partition queries* 
+* Detect and warn when you have cross-partition queries 
+* Helper classes and methods for registering types and handling connection configuration
 
-*Got ideas for Azure DevOps utilities you'd like to see? Found a bug? Let us know by submitting an issue https://github.com/benday-inc/Benday.CosmosDb/issues*. *Want to contribute? Submit a pull request.*
+* Got ideas for Azure DevOps utilities you'd like to see? Found a bug? Let us know by submitting an issue https://github.com/benday-inc/Benday.CosmosDb/issues*. *Want to contribute? Submit a pull request.*
 
 * [Source code](https://github.com/benday-inc/Benday.CosmosDb)  
 * [Repository API Documentation](api/Benday.CosmosDb.Repositories.html)  
