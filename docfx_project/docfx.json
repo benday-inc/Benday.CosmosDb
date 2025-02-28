@@ -15,7 +15,7 @@
       "disableDefaultFilter": false,
       "noRestore": false,
       "namespaceLayout": "flattened",
-      "metadata": "net8.0"
+      "metadata": "netstandard2.1"
     }
   ],
   "build": {
