@@ -1,12 +1,12 @@
-﻿using Benday.CosmosDb.DomainModels;
+﻿using System;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
+using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Utilities;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
 
 namespace Benday.CosmosDb.Repositories;
 
@@ -61,6 +61,11 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// </summary>
     public virtual string DiscriminatorValue => typeof(T).Name;
 
+    /// <summary>
+    /// Default throughput for the database. This is only used if the database is created.
+    /// </summary>
+    private readonly int _DatabaseThroughput;
+
     protected ILogger Logger { get; }
 
     /// <summary>
@@ -78,6 +83,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         _Client = client;
 
         _WithCreateStructures = opts.WithCreateStructures;
+        _DatabaseThroughput = opts.DatabaseThroughput;
 
         if (string.IsNullOrEmpty(opts.ConnectionString))
         {
@@ -323,27 +329,150 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         {
             if (_WithCreateStructures == true)
             {
-                var createDb = await _Client.CreateDatabaseIfNotExistsAsync(_DatabaseName);
+                try
+                {
+                    _Database = await CreateDatabaseIfNotExistsAsync();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError($"Error creating database '{_DatabaseName}'.  {ex}");
 
-                _Database = createDb.Database;
+                    throw;
+                }
 
-                // Create a new container with partition key
-                Logger.LogInformation($"Creating container '{_ContainerName}' in database '{_DatabaseName}' with partition key '{_PartitionKey}'...");
+                try
+                {
+                    _Container = await CreateContainerIfNotExistsAsync();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError($"Error creating container '{_ContainerName}' in database '{_DatabaseName}'.  {ex}");
 
-                var containerProperties = new ContainerProperties(
-                    id: _ContainerName,
-                    partitionKeyPaths: _PartitionKeyStrings
-                );
-
-                var container = await _Database.CreateContainerIfNotExistsAsync(containerProperties);
-
-                _Container = container.Container;
+                    throw;
+                }
             }
             else
             {
                 _Database = _Client.GetDatabase(_DatabaseName);
                 _Container = _Database.GetContainer(_ContainerName);
             }
+        }
+    }
+
+    private async Task<Container> CreateContainerIfNotExistsAsync()
+    {
+        if (_Database == null)
+        {
+            throw new InvalidOperationException($"Database instance is null.");
+        }
+
+        // get list of containers
+
+        var containers = _Database.GetContainerQueryIterator<ContainerProperties>();
+
+        Container? match = null;
+
+        while (containers.HasMoreResults == true && match == null)
+        {
+            var response = await containers.ReadNextAsync();
+
+            foreach (var item in response)
+            {
+                if (item.Id == _ContainerName)
+                {
+                    match = _Database.GetContainer(_ContainerName);
+                    break;
+                }
+            }
+        }
+
+        if (match != null)
+        {
+            Logger.LogInformation($"Container '{_ContainerName}' already exists.");
+
+            return match;
+        }
+        else
+        {
+            Logger.LogInformation($"Creating container '{_ContainerName}' in database '{_DatabaseName}' with partition key '{_PartitionKey}'...");
+
+            ContainerProperties properties;
+
+            if (_PartitionKeyStrings.Count == 0)
+            {
+                throw new InvalidOperationException($"Partition key strings is empty.");
+            }
+            else if (_PartitionKeyStrings.Count == 1)
+            {
+                Logger.LogInformation($"Creating container with partition key path '{_PartitionKeyStrings[0]}'.");
+
+                properties = new ContainerProperties(
+                    id: _ContainerName,
+                    partitionKeyPath: _PartitionKeyStrings[0]);
+            }
+            else
+            {
+                Logger.LogInformation($"Creating container with partition key paths '{string.Join(",", _PartitionKeyStrings)}'.");
+                
+                properties = new ContainerProperties(
+                    id: _ContainerName,
+                    partitionKeyPaths: _PartitionKeyStrings
+                );
+            }
+            
+            try
+            {
+                var container = await _Database.CreateContainerAsync(properties);
+
+                Logger.LogInformation($"Container '{_ContainerName}' created.");
+
+                return container;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Error creating container '{_ContainerName}' in database '{_DatabaseName}'.  {ex}");
+
+                throw;
+            }
+        }
+    }
+
+    private async Task<Database> CreateDatabaseIfNotExistsAsync()
+    {
+        // get the list of databases
+
+        var databases = _Client.GetDatabaseQueryIterator<DatabaseProperties>();
+
+        Database? match = null;
+
+        while (databases.HasMoreResults)
+        {
+            var response = await databases.ReadNextAsync();
+
+            foreach (var db in response)
+            {
+                if (db.Id == _DatabaseName)
+                {
+                    match = _Client.GetDatabase(_DatabaseName);
+                }
+            }
+        }
+
+        if (match != null)
+        {
+            Logger.LogInformation($"Database '{_DatabaseName}' already exists.");
+
+            return match;
+        }
+        else
+        {
+            Logger.LogInformation($"Creating database '{_DatabaseName}'...");
+
+            var response = await _Client.CreateDatabaseAsync(_DatabaseName, throughput: _DatabaseThroughput);
+
+            Logger.LogInformation($"Database '{_DatabaseName}' created.");
+
+            return response.Database;
         }
     }
 
@@ -374,7 +503,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
             response = await container.UpsertItemAsync(
                 saveThis, partitionKey, requestOptions);
-            
+
             if (response == null)
             {
                 throw new InvalidOperationException($"Response was null");

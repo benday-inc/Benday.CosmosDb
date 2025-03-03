@@ -38,4 +38,10 @@ public class CosmosRepositoryOptions<T>
     [Description("Partition Key")]
     public string PartitionKey { get; set; } = CosmosDbConstants.DefaultPartitionKey;
 
+    /// <summary>
+    /// Throughput for the database. This is only used if the database is created.
+    /// </summary>
+    [Description("Throughput for the database.")]
+    public int DatabaseThroughput { get; set; } = CosmosDbConstants.DefaultDatabaseThroughput;
+
 }

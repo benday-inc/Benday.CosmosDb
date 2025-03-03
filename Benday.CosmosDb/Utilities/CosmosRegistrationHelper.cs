@@ -1,6 +1,7 @@
 ﻿using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.ServiceLayers;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +13,7 @@ public class CosmosRegistrationHelper
     public string ConnectionString { get; private set; }
 
     public bool WithCreateStructures { get; private set; }
+    public bool UseGatewayMode { get; private set; }
 
     public string DatabaseName { get; private set; } = string.Empty;
 
@@ -27,7 +29,8 @@ public class CosmosRegistrationHelper
         config.DatabaseName,
         config.ContainerName,
         config.CreateStructures,
-        config.PartitionKey)
+        config.PartitionKey, 
+        config.UseGatewayMode)
     {
         
     }
@@ -38,13 +41,15 @@ public class CosmosRegistrationHelper
         string databaseName,
         string containerName,
         bool createStructures,
-        string? partitionKey = null)
+        string? partitionKey = null, 
+        bool useGatewayMode = false)
     {        
         _Services = services;
         ConnectionString = connectionString;
         DatabaseName = databaseName;
         ContainerName = containerName;
         WithCreateStructures = createStructures;
+        UseGatewayMode = useGatewayMode;
 
         if (partitionKey != null)
         {
@@ -92,9 +97,10 @@ public class CosmosRegistrationHelper
 
         _Services.AddTransient<IOwnedItemServiceBase<TEntity>, OwnedItemServiceBase<TEntity>>();
     }
+    
     private void ConfigureClient()
     {
         _Services.ConfigureCosmosClient(
-            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures);
+            ConnectionString, UseGatewayMode);
     }
 }

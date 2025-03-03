@@ -5,10 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit.Abstractions;
 
 namespace Benday.CosmosDb.SampleApp.Tests.IntegrationTests;
-public class NoteControllerFixture
+
+public class NoteControllerFixture : TestClassBase
 {
+    public NoteControllerFixture(ITestOutputHelper output) : base(output)
+    {
+    }
+
     [Fact]
     public async Task Index_Get_ReturnsSuccess()
     {
@@ -27,6 +33,7 @@ public class NoteControllerFixture
 
         if (response.IsSuccessStatusCode == false)
         {
+            WriteLine($"Content: {content}");
             TestUtilities.CheckForDependencyError(content);
         }
 
