@@ -135,7 +135,13 @@ public static class CosmosClientOptionsUtilities
                 PropertyNameCaseInsensitive = true,
                 // Add additional JsonSerializerOptions settings as needed
             }),
-            ConnectionMode = connectionMode
+            ConnectionMode = connectionMode,
+            HttpClientFactory = () =>
+            {
+                HttpClientHandler httpClientHandler = new HttpClientHandler();
+                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
+                return new HttpClient(httpClientHandler);
+            }
         };
 
         return options;

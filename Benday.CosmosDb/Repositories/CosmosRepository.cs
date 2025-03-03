@@ -367,7 +367,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             {
                 throw new InvalidOperationException($"Partition key strings is empty.");
             }
-            else if (_PartitionKeyStrings.Count == 1)
+            else if (_PartitionKeyStrings.Count == 1 || _Options.UseHierarchicalPartitionKey == false)
             {
                 Logger.LogInformation($"Creating container with partition key path '{_PartitionKeyStrings[0]}'.");
 
