@@ -39,6 +39,25 @@ public static class CosmosClientOptionsUtilities
         return result;
     }
 
+    private static bool GetBoolean(IConfiguration configuration, string configName, bool defaultValue)
+    {
+        // configuration.GetValue<bool>
+
+        var temp = configuration[configName];
+
+        if (string.IsNullOrWhiteSpace(temp) == true)
+        {
+            return defaultValue;
+        }
+
+        if (bool.TryParse(temp, out bool result) == false)
+        {
+            return defaultValue;
+        }
+
+        return result;
+    }
+
     /// <summary>
     /// Gets a CosmosConfig object from the configuration.
     /// </summary>
@@ -59,10 +78,43 @@ public static class CosmosClientOptionsUtilities
             configuration["CosmosConfiguration:Endpoint"].ThrowIfEmptyOrNull("CosmosConfiguration:Endpoint");
         var createStructures =
             GetBoolean(configuration, "CosmosConfiguration:CreateStructures");
+        var useGatewayMode =
+            GetBoolean(configuration, "CosmosConfiguration:GatewayMode");
+        var useHierarchicalPartitionKey =
+            GetBoolean(configuration, "CosmosConfiguration:HierarchicalPartitionKey", false);
+        var databaseThroughput =
+            GetInt32(configuration, "CosmosConfiguration:DatabaseThroughput", 
+            CosmosDbConstants.DefaultDatabaseThroughput);
 
-        var temp = new CosmosConfig(accountKey, endpoint, databaseName, containerName, partitionKey, createStructures);
+        var temp = new CosmosConfig(
+            accountKey, 
+            endpoint, 
+            databaseName, 
+            containerName, 
+            partitionKey, 
+            createStructures, 
+            databaseThroughput, 
+            useGatewayMode, 
+            useHierarchicalPartitionKey);
 
         return temp;
+    }
+
+    private static int GetInt32(IConfiguration configuration, string key, int defaultValue)
+    {
+        var temp = configuration[key];
+
+        if (string.IsNullOrWhiteSpace(temp) == true)
+        {
+            return defaultValue;
+        }
+
+        if (int.TryParse(temp, out int result) == false)
+        {
+            return defaultValue;
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -71,7 +123,8 @@ public static class CosmosClientOptionsUtilities
     /// </summary>
     /// <param name="jsonNamingPolicy">Naming policy or null to not use a policy</param>
     /// <returns></returns>
-    public static CosmosClientOptions GetCosmosDbClientOptions(JsonNamingPolicy? jsonNamingPolicy)
+    public static CosmosClientOptions GetCosmosDbClientOptions(
+        JsonNamingPolicy? jsonNamingPolicy, ConnectionMode connectionMode = ConnectionMode.Gateway)
     {
         var options = new CosmosClientOptions
         {
@@ -81,7 +134,14 @@ public static class CosmosClientOptionsUtilities
                 WriteIndented = true,
                 PropertyNameCaseInsensitive = true,
                 // Add additional JsonSerializerOptions settings as needed
-            })
+            }),
+            ConnectionMode = connectionMode,
+            HttpClientFactory = () =>
+            {
+                HttpClientHandler httpClientHandler = new HttpClientHandler();
+                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
+                return new HttpClient(httpClientHandler);
+            }
         };
 
         return options;
@@ -92,21 +152,22 @@ public static class CosmosClientOptionsUtilities
     /// </summary>
     /// <param name="services"></param>
     /// <param name="connectionString"></param>
-    /// <param name="databaseName"></param>
-    /// <param name="containerName"></param>
-    /// <param name="partitionKey"></param>
-    /// <param name="createStructures"></param>
     /// <param name="jsonNamingPolicy"></param>
+    /// <param name="useGatewayMode"></param>
     public static void ConfigureCosmosClient(
         this IServiceCollection services,
         string connectionString,
-        string databaseName,
-        string containerName,
-        string partitionKey,
-        bool createStructures,
+        bool useGatewayMode = false,
         JsonNamingPolicy? jsonNamingPolicy = null)
     {
-        var options = GetCosmosDbClientOptions(jsonNamingPolicy);
+        var connectionMode = ConnectionMode.Direct;
+
+        if (useGatewayMode == true)
+        {
+            connectionMode = ConnectionMode.Gateway;
+        }        
+
+        var options = GetCosmosDbClientOptions(jsonNamingPolicy, connectionMode);
 
         services.AddSingleton(new CosmosClient(connectionString, options));
     }

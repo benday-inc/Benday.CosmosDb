@@ -10,18 +10,32 @@ namespace Benday.CosmosDb.Utilities;
 /// </summary>
 public static class CosmosDbUtilities
 {
-    public static PartitionKey GetPartitionKey(string keyString)
+    public static PartitionKey GetPartitionKey(
+        string keyString, 
+        bool useHierarchicalPartitionKey)
     {
         var keys = keyString.Split(',');
 
-        var partionKeyBuilder = new PartitionKeyBuilder();
-
-        foreach (var key in keys)
+        if (keys.Length == 0)
         {
-            _ = partionKeyBuilder.Add(key);
+            throw new InvalidOperationException("No keys found in partition key string.");
         }
-        var temp = partionKeyBuilder.Build();
-        return temp;
+
+        if (useHierarchicalPartitionKey == false)
+        {
+            return new PartitionKey(keys[0]);
+        }
+        else
+        {
+            var partionKeyBuilder = new PartitionKeyBuilder();
+
+            foreach (var key in keys)
+            {
+                _ = partionKeyBuilder.Add(key);
+            }
+            var temp = partionKeyBuilder.Build();
+            return temp;
+        }
     }
 
     public static List<string> GetPartitionKeyStrings(string keyString)

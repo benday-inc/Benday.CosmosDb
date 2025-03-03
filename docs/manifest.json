@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/code/benday-inc/Benday.CosmosDb/docfx_project",
+  "source_base_path": "/Users/benday/code/benday-inc/Benday.CosmosDb/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -114,16 +114,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.Repositories.OptimisticConcurrencyException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.Repositories.OptimisticConcurrencyException.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Repositories.QueryableInfo-1.yml",
       "output": {
         ".html": {
@@ -194,30 +184,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.Utilities.CosmosConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.Utilities.CosmosConfig.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Utilities.CosmosDbUtilities.yml",
       "output": {
         ".html": {
           "relative_path": "api/Benday.CosmosDb.Utilities.CosmosDbUtilities.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html"
         }
       },
       "version": ""

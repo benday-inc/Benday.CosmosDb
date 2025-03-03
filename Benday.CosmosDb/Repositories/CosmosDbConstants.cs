@@ -18,4 +18,5 @@ public class CosmosDbConstants
     /// String representation of the default partition key for a Cosmos DB entity.
     /// </summary>
     public const string DefaultPartitionKey = "/pk,/discriminator";
+    public const int DefaultDatabaseThroughput = 400;
 }
