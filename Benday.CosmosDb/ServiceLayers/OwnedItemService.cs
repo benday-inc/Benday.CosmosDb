@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace Benday.CosmosDb.ServiceLayers;
 
-public class OwnedItemServiceBase<T> : IOwnedItemServiceBase<T>
+public class OwnedItemService<T> : IOwnedItemService<T>
     where T : class, IOwnedItem, new()
 {
     private IOwnedItemRepository<T> _Repository;
 
-    public OwnedItemServiceBase(IOwnedItemRepository<T> repository)
+    public OwnedItemService(IOwnedItemRepository<T> repository)
     {
         _Repository = repository;
     }

@@ -95,7 +95,7 @@ public class CosmosRegistrationHelper
         _Services.ConfigureRepository<TEntity>(
             ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures);
 
-        _Services.AddTransient<IOwnedItemServiceBase<TEntity>, OwnedItemServiceBase<TEntity>>();
+        _Services.AddTransient<IOwnedItemService<TEntity>, OwnedItemService<TEntity>>();
     }
     
     private void ConfigureClient()

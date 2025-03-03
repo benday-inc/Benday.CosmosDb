@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Benday.CosmosDb.SampleApp.Api.ServiceLayers;
 
-public class PersonService : OwnedItemServiceBase<Person>, IPersonService
+public class PersonService : OwnedItemService<Person>, IPersonService
 {
     private IPersonRepository _Repository;
 

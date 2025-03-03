@@ -9,8 +9,8 @@ namespace Benday.CosmosDb.SampleApp.WebUi.Controllers;
 
 public class NoteController : Controller
 {
-    private readonly IOwnedItemServiceBase<Note> _NoteService;
-    public NoteController(IOwnedItemServiceBase<Note> noteService)
+    private readonly IOwnedItemService<Note> _NoteService;
+    public NoteController(IOwnedItemService<Note> noteService)
     {
         _NoteService = noteService;
     }

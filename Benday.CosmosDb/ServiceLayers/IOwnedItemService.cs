@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Benday.CosmosDb.ServiceLayers;
 
-public interface IOwnedItemServiceBase<T> where T : class, IOwnedItem, new()
+public interface IOwnedItemService<T> where T : class, IOwnedItem, new()
 {
     Task DeleteAsync(T item);
     Task<IEnumerable<T>> GetAllAsync(string ownerId);
