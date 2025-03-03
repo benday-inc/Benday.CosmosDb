@@ -12,7 +12,8 @@ public class CosmosConfig
         string partitionKey, 
         bool createStructures,
         int databaseThroughput = CosmosDbConstants.DefaultDatabaseThroughput,
-        bool useGatewayMode = false)
+        bool useGatewayMode = false, 
+        bool useHierarchicalPartitionKey = false)
     {
         AccountKey = accountKey;
         Endpoint = endpoint;
@@ -22,6 +23,7 @@ public class CosmosConfig
         CreateStructures = createStructures;
         DatabaseThroughput = databaseThroughput;
         UseGatewayMode = useGatewayMode;
+        UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
     }
 
     /// <summary>
@@ -58,7 +60,12 @@ public class CosmosConfig
     /// Use Gateway mode for Cosmos DB. Default is false (direct mode).
     /// </summary>
     public bool UseGatewayMode { get; set; }
-    
+
+    /// <summary>
+    /// Use hierarchical partition key. This option is disabled by default.
+    /// </summary>
+    public bool UseHierarchicalPartitionKey { get; set; }
+
     /// <summary>
     /// Throughput for the database. This is only used if the database is created.
     /// </summary>

@@ -22,11 +22,6 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     private readonly CosmosClient _Client;
 
     /// <summary>
-    /// Configuration value to create Cosmos DB structures if they don't already exist.
-    /// </summary>
-    private readonly bool _WithCreateStructures;
-
-    /// <summary>
     /// Reference to the cosmos database instance.
     /// </summary>
     private Database? _Database;
@@ -35,16 +30,6 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// Reference to the container instance.
     /// </summary>
     private Microsoft.Azure.Cosmos.Container? _Container;
-
-    /// <summary>
-    /// Configuration value for the database name.
-    /// </summary>
-    private readonly string _DatabaseName;
-
-    /// <summary>
-    /// Configuration value for the container in the database.
-    /// </summary>
-    private readonly string _ContainerName;
 
     /// <summary>
     /// Instance of the partition key for the container.
@@ -61,12 +46,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// </summary>
     public virtual string DiscriminatorValue => typeof(T).Name;
 
-    /// <summary>
-    /// Default throughput for the database. This is only used if the database is created.
-    /// </summary>
-    private readonly int _DatabaseThroughput;
 
     protected ILogger Logger { get; }
+
+    protected readonly CosmosRepositoryOptions<T> _Options;
 
     /// <summary>
     /// Constructor for the repository.
@@ -78,33 +61,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         Logger = logger;
 
-        var opts = options.Value;
+        _Options = options.Value;
 
         _Client = client;
 
-        _WithCreateStructures = opts.WithCreateStructures;
-        _DatabaseThroughput = opts.DatabaseThroughput;
+        _PartitionKey = CosmosDbUtilities.GetPartitionKey(
+            _Options.PartitionKey, _Options.UseHierarchicalPartitionKey);
 
-        if (string.IsNullOrEmpty(opts.ConnectionString))
-        {
-            throw new ArgumentException($"{nameof(opts.ConnectionString)} is null or empty.", nameof(options));
-        }
-
-        if (string.IsNullOrEmpty(opts.ContainerName))
-        {
-            throw new ArgumentException($"{nameof(opts.ContainerName)} is null or empty.", nameof(options));
-        }
-
-        if (string.IsNullOrEmpty(opts.PartitionKey))
-        {
-            throw new ArgumentException($"{nameof(opts.PartitionKey)} is null or empty.", nameof(options));
-        }
-
-        _DatabaseName = opts.DatabaseName;
-        _ContainerName = opts.ContainerName;
-
-        _PartitionKey = CosmosDbUtilities.GetPartitionKey(opts.PartitionKey);
-        _PartitionKeyStrings = CosmosDbUtilities.GetPartitionKeyStrings(opts.PartitionKey);
+        _PartitionKeyStrings =
+            CosmosDbUtilities.GetPartitionKeyStrings(_Options.PartitionKey);
     }
 
     /// <summary>
@@ -327,7 +292,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         if (_Database == null || _Container == null)
         {
-            if (_WithCreateStructures == true)
+            if (_Options.WithCreateStructures == true)
             {
                 try
                 {
@@ -335,7 +300,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 }
                 catch (Exception ex)
                 {
-                    Logger.LogError($"Error creating database '{_DatabaseName}'.  {ex}");
+                    Logger.LogError($"Error creating database '{_Options.DatabaseName}'.  {ex}");
 
                     throw;
                 }
@@ -346,15 +311,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 }
                 catch (Exception ex)
                 {
-                    Logger.LogError($"Error creating container '{_ContainerName}' in database '{_DatabaseName}'.  {ex}");
+                    Logger.LogError($"Error creating container '{_Options.ContainerName}' in database '{_Options.DatabaseName}'.  {ex}");
 
                     throw;
                 }
             }
             else
             {
-                _Database = _Client.GetDatabase(_DatabaseName);
-                _Container = _Database.GetContainer(_ContainerName);
+                _Database = _Client.GetDatabase(_Options.DatabaseName);
+                _Container = _Database.GetContainer(_Options.ContainerName);
             }
         }
     }
@@ -378,9 +343,9 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
             foreach (var item in response)
             {
-                if (item.Id == _ContainerName)
+                if (item.Id == _Options.ContainerName)
                 {
-                    match = _Database.GetContainer(_ContainerName);
+                    match = _Database.GetContainer(_Options.ContainerName);
                     break;
                 }
             }
@@ -388,13 +353,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         if (match != null)
         {
-            Logger.LogInformation($"Container '{_ContainerName}' already exists.");
+            Logger.LogInformation($"Container '{_Options.ContainerName}' already exists.");
 
             return match;
         }
         else
         {
-            Logger.LogInformation($"Creating container '{_ContainerName}' in database '{_DatabaseName}' with partition key '{_PartitionKey}'...");
+            Logger.LogInformation($"Creating container '{_Options.ContainerName}' in database '{_Options.DatabaseName}' with partition key '{_PartitionKey}'...");
 
             ContainerProperties properties;
 
@@ -407,30 +372,30 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 Logger.LogInformation($"Creating container with partition key path '{_PartitionKeyStrings[0]}'.");
 
                 properties = new ContainerProperties(
-                    id: _ContainerName,
+                    id: _Options.ContainerName,
                     partitionKeyPath: _PartitionKeyStrings[0]);
             }
             else
             {
                 Logger.LogInformation($"Creating container with partition key paths '{string.Join(",", _PartitionKeyStrings)}'.");
-                
+
                 properties = new ContainerProperties(
-                    id: _ContainerName,
+                    id: _Options.ContainerName,
                     partitionKeyPaths: _PartitionKeyStrings
                 );
             }
-            
+
             try
             {
                 var container = await _Database.CreateContainerAsync(properties);
 
-                Logger.LogInformation($"Container '{_ContainerName}' created.");
+                Logger.LogInformation($"Container '{_Options.ContainerName}' created.");
 
                 return container;
             }
             catch (Exception ex)
             {
-                Logger.LogError($"Error creating container '{_ContainerName}' in database '{_DatabaseName}'.  {ex}");
+                Logger.LogError($"Error creating container '{_Options.ContainerName}' in database '{_Options.DatabaseName}'.  {ex}");
 
                 throw;
             }
@@ -451,26 +416,26 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
             foreach (var db in response)
             {
-                if (db.Id == _DatabaseName)
+                if (db.Id == _Options.DatabaseName)
                 {
-                    match = _Client.GetDatabase(_DatabaseName);
+                    match = _Client.GetDatabase(_Options.DatabaseName);
                 }
             }
         }
 
         if (match != null)
         {
-            Logger.LogInformation($"Database '{_DatabaseName}' already exists.");
+            Logger.LogInformation($"Database '{_Options.DatabaseName}' already exists.");
 
             return match;
         }
         else
         {
-            Logger.LogInformation($"Creating database '{_DatabaseName}'...");
+            Logger.LogInformation($"Creating database '{_Options.DatabaseName}'...");
 
-            var response = await _Client.CreateDatabaseAsync(_DatabaseName, throughput: _DatabaseThroughput);
+            var response = await _Client.CreateDatabaseAsync(_Options.DatabaseName, throughput: _Options.DatabaseThroughput);
 
-            Logger.LogInformation($"Database '{_DatabaseName}' created.");
+            Logger.LogInformation($"Database '{_Options.DatabaseName}' created.");
 
             return response.Database;
         }
@@ -531,15 +496,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
         catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.PreconditionFailed)
         {
-            Logger.LogWarning($"Precondition failed for item {saveThis.Id} in container {_ContainerName} in database {_DatabaseName}.  {ex}");
+            Logger.LogWarning($"Precondition failed for item {saveThis.Id} in container {_Options.ContainerName} in database {_Options.DatabaseName}.  {ex}");
 
             throw new OptimisticConcurrencyException(
-                $"Precondition failed for item {saveThis.Id} in container {_ContainerName} in database {_DatabaseName}.",
+                $"Precondition failed for item {saveThis.Id} in container {_Options.ContainerName} in database {_Options.DatabaseName}.",
                 ex);
         }
         catch (CosmosException ex)
         {
-            Logger.LogError($"Error saving {saveThis.DiscriminatorValue} item {saveThis.Id} to container {_ContainerName} in database {_DatabaseName}.  {ex}");
+            Logger.LogError($"Error saving {saveThis.DiscriminatorValue} item {saveThis.Id} to container {_Options.ContainerName} in database {_Options.DatabaseName}.  {ex}");
 
             throw;
         }
@@ -641,7 +606,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     protected virtual async Task<QueryableInfo<T>> GetQueryable(
         string firstLevelPartitionKeyValue, string discriminatorValue)
     {
-        var pk = new PartitionKeyBuilder().Add(firstLevelPartitionKeyValue).Add(discriminatorValue).Build();
+        var builder = new PartitionKeyBuilder();
+
+        builder.Add(firstLevelPartitionKeyValue);
+
+        if (_Options.UseHierarchicalPartitionKey == true)
+        {
+            builder.Add(discriminatorValue);
+        }
+        var pk = builder.Build();
 
         var container = await GetContainer();
 

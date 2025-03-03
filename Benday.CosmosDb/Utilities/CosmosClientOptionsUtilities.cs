@@ -39,6 +39,25 @@ public static class CosmosClientOptionsUtilities
         return result;
     }
 
+    private static bool GetBoolean(IConfiguration configuration, string configName, bool defaultValue)
+    {
+        // configuration.GetValue<bool>
+
+        var temp = configuration[configName];
+
+        if (string.IsNullOrWhiteSpace(temp) == true)
+        {
+            return defaultValue;
+        }
+
+        if (bool.TryParse(temp, out bool result) == false)
+        {
+            return defaultValue;
+        }
+
+        return result;
+    }
+
     /// <summary>
     /// Gets a CosmosConfig object from the configuration.
     /// </summary>
@@ -61,6 +80,8 @@ public static class CosmosClientOptionsUtilities
             GetBoolean(configuration, "CosmosConfiguration:CreateStructures");
         var useGatewayMode =
             GetBoolean(configuration, "CosmosConfiguration:GatewayMode");
+        var useHierarchicalPartitionKey =
+            GetBoolean(configuration, "CosmosConfiguration:HierarchicalPartitionKey", false);
         var databaseThroughput =
             GetInt32(configuration, "CosmosConfiguration:DatabaseThroughput", 
             CosmosDbConstants.DefaultDatabaseThroughput);
@@ -73,7 +94,8 @@ public static class CosmosClientOptionsUtilities
             partitionKey, 
             createStructures, 
             databaseThroughput, 
-            useGatewayMode);
+            useGatewayMode, 
+            useHierarchicalPartitionKey);
 
         return temp;
     }

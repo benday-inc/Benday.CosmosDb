@@ -44,4 +44,8 @@ public class CosmosRepositoryOptions<T>
     [Description("Throughput for the database.")]
     public int DatabaseThroughput { get; set; } = CosmosDbConstants.DefaultDatabaseThroughput;
 
+    /// <summary>
+    /// Use hierarchical partition key. This option is disabled by default.
+    /// </summary>
+    public bool UseHierarchicalPartitionKey { get; } = false;
 }
