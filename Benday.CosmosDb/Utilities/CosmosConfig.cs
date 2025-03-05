@@ -5,14 +5,14 @@ namespace Benday.CosmosDb.Utilities;
 public class CosmosConfig
 {
     public CosmosConfig(
-        string accountKey, 
-        string endpoint, 
-        string databaseName, 
-        string containerName, 
-        string partitionKey, 
+        string accountKey,
+        string endpoint,
+        string databaseName,
+        string containerName,
+        string partitionKey,
         bool createStructures,
         int databaseThroughput = CosmosDbConstants.DefaultDatabaseThroughput,
-        bool useGatewayMode = false, 
+        bool useGatewayMode = false,
         bool useHierarchicalPartitionKey = false)
     {
         AccountKey = accountKey;
@@ -30,7 +30,7 @@ public class CosmosConfig
     /// Account key for Cosmos DB
     /// </summary>
     public string AccountKey { get; set; }
-    
+
     /// <summary>
     /// Endpoint for Cosmos DB
     /// </summary>
@@ -78,7 +78,14 @@ public class CosmosConfig
     {
         get
         {
-            return $"AccountEndpoint={Endpoint};AccountKey={AccountKey};";
+            if (UseGatewayMode == true)
+            {
+                return $"AccountEndpoint={Endpoint};AccountKey={AccountKey};ConnectionMode=Gateway;";
+            }
+            else
+            {
+                return $"AccountEndpoint={Endpoint};AccountKey={AccountKey};";
+            }
         }
     }
 }
