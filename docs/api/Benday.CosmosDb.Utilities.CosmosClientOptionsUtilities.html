@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class CosmosClientOptionsUtilities
- </title>
+      <title>Class CosmosClientOptionsUtilities </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class CosmosClientOptionsUtilities
- ">
+      <meta name="title" content="Class CosmosClientOptionsUtilities ">
     
     
       <link rel="shortcut icon" href="../favicon.ico">
@@ -73,8 +71,7 @@
 
 
 
-  <h1 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities" class="text-break">Class CosmosClientOptionsUtilities
-</h1>
+  <h1 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities" class="text-break">Class CosmosClientOptionsUtilities</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -116,18 +113,19 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureCosmosClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_System_Text_Json_JsonNamingPolicy_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Text.Json.JsonNamingPolicy)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureCosmosClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_Boolean_System_Text_Json_JsonNamingPolicy_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.String%2CSystem.Boolean%2CSystem.Text.Json.JsonNamingPolicy)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L46">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L157">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureCosmosClient_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient*"></a>
-  <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureCosmosClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_System_Text_Json_JsonNamingPolicy_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Text.Json.JsonNamingPolicy)">ConfigureCosmosClient(IServiceCollection, string, string, string, string, bool, JsonNamingPolicy?)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureCosmosClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_Boolean_System_Text_Json_JsonNamingPolicy_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.Boolean,System.Text.Json.JsonNamingPolicy)">ConfigureCosmosClient(IServiceCollection, string, bool, JsonNamingPolicy?)</h4>
+  <div class="markdown level1 summary"><p>Configures a CosmosClient instance in the service collection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void ConfigureCosmosClient(this IServiceCollection services, string connectionString, string databaseName, string containerName, string partitionKey, bool createStructures, JsonNamingPolicy? jsonNamingPolicy = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void ConfigureCosmosClient(this IServiceCollection services, string connectionString, bool useGatewayMode = false, JsonNamingPolicy? jsonNamingPolicy = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -150,23 +148,8 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">databaseName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">containerName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">partitionKey</span></td>
-        <td></td>
-      </tr>
-      <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">createStructures</span></td>
+        <td><span class="parametername">useGatewayMode</span></td>
         <td></td>
       </tr>
       <tr>
@@ -178,14 +161,94 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository%60%601(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L185">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)">ConfigureRepository&lt;TEntity&gt;(IServiceCollection, string, string, string, string, bool)</h4>
+  <div class="markdown level1 summary"><p>Configures a repository for a specific domain model entity type using default implementation of CosmosOwnedItemRepository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ConfigureRepository&lt;TEntity&gt;(this IServiceCollection services, string connectionString, string databaseName, string containerName, string partitionKey, bool createStructures) where TEntity : OwnedItemBase, new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection">IServiceCollection</a></td>
+        <td><span class="parametername">services</span></td>
+        <td><p>Services collection</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">connectionString</span></td>
+        <td><p>Connection string for cosmos db</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">databaseName</span></td>
+        <td><p>Database name</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">containerName</span></td>
+        <td><p>Container name</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">partitionKey</span></td>
+        <td><p>Partition key definition string</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">createStructures</span></td>
+        <td><p>Create structures as part of the instantiation of this repository class (NOTE: this should probably be false in production)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEntity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository__3_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository%60%603(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L60">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L211">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository__3_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)">ConfigureRepository&lt;TEntity, TInterface, TImplementation&gt;(IServiceCollection, string, string, string, string, bool)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Configures a repository for a specific domain model entity type using a custom implementation of the repository.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -258,10 +321,73 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosConfig_Microsoft_Extensions_Configuration_IConfiguration_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosConfig(Microsoft.Extensions.Configuration.IConfiguration)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L67">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosConfig_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosConfig*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosConfig_Microsoft_Extensions_Configuration_IConfiguration_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosConfig(Microsoft.Extensions.Configuration.IConfiguration)">GetCosmosConfig(IConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Gets a CosmosConfig object from the configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CosmosConfig GetCosmosConfig(this IConfiguration configuration)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfiguration">IConfiguration</a></td>
+        <td><span class="parametername">configuration</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfig.html">CosmosConfig</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L19">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L23">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions">GetCosmosDbClientOptions()</h4>
@@ -291,20 +417,20 @@ This version of the method uses the default JsonNamingPolicy for the JsonSeriali
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_System_Text_Json_JsonNamingPolicy_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_System_Text_Json_JsonNamingPolicy_Microsoft_Azure_Cosmos_ConnectionMode_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy%2CMicrosoft.Azure.Cosmos.ConnectionMode)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L30">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L126">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions*"></a>
-  <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_System_Text_Json_JsonNamingPolicy_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy)">GetCosmosDbClientOptions(JsonNamingPolicy?)</h4>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_System_Text_Json_JsonNamingPolicy_Microsoft_Azure_Cosmos_ConnectionMode_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy,Microsoft.Azure.Cosmos.ConnectionMode)">GetCosmosDbClientOptions(JsonNamingPolicy?, ConnectionMode)</h4>
   <div class="markdown level1 summary"><p>Gets the default CosmosClientOptions for a Cosmos DB client that uses System.Text.Json
 and provides an option to customize the JsonNamingPolicy for the JsonSerializerOptions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static CosmosClientOptions GetCosmosDbClientOptions(JsonNamingPolicy? jsonNamingPolicy)</code></pre>
+    <pre><code class="lang-csharp hljs">public static CosmosClientOptions GetCosmosDbClientOptions(JsonNamingPolicy? jsonNamingPolicy, ConnectionMode connectionMode = ConnectionMode.Gateway)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -321,6 +447,11 @@ and provides an option to customize the JsonNamingPolicy for the JsonSerializerO
         <td><span class="parametername">jsonNamingPolicy</span></td>
         <td><p>Naming policy or null to not use a policy</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.connectionmode">ConnectionMode</a></td>
+        <td><span class="parametername">connectionMode</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -344,11 +475,12 @@ and provides an option to customize the JsonNamingPolicy for the JsonSerializerO
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_RegisterOptionsForRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository%60%601(Microsoft.Extensions.DependencyInjection.IServiceCollection%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L76">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L237">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_RegisterOptionsForRepository_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_RegisterOptionsForRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)">RegisterOptionsForRepository&lt;T&gt;(IServiceCollection, string, string, string, string, bool)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Registers options for a repository.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -411,6 +543,58 @@ and provides an option to customize the JsonNamingPolicy for the JsonSerializerO
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ThrowIfEmptyOrNull_System_String_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ThrowIfEmptyOrNull(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L257">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ThrowIfEmptyOrNull_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ThrowIfEmptyOrNull*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ThrowIfEmptyOrNull_System_String_System_String_" data-uid="Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ThrowIfEmptyOrNull(System.String,System.String)">ThrowIfEmptyOrNull(string?, string?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ThrowIfEmptyOrNull(this string? value, string? valueName = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">valueName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 </article>
           </div>
@@ -423,7 +607,7 @@ and provides an option to customize the JsonNamingPolicy for the JsonSerializerO
                     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
