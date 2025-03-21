@@ -14,10 +14,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <AssemblyVersion>4.2.0.0</AssemblyVersion>
-    <Version>$(VersionPrefix)4.2.0</Version>
+    <AssemblyVersion>4.2.1.0</AssemblyVersion>
+    <Version>$(VersionPrefix)4.2.1</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
-    <PackageReleaseNotes>v4.2 - Fixed partition key bug on SaveAsync when in flat-partition key mode;
+    <PackageReleaseNotes>
+v4.2.1 - Minor bug fix release;
+v4.2 - Fixed partition key bug on SaveAsync when in flat-partition key mode;
 v4.1 - Added option to CosmosConfig.ConnectionString to enable GatewayMode via connection string;
 v4.0 - Added support for non-hierarchical partition keys and made it the default; Added support for the beta version of the linux emulator container; Added configuration options for gateway mode and database throughput; Breaking change: renamed OwnedItemService interface and classes; 
 v3.0 - Changed framework target to be netstandard2.1; Added helper classes and methods to simplify type registrations;
