@@ -577,7 +577,11 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         var builder = new PartitionKeyBuilder();
 
         _ = builder.Add(partitionKey);
-        _ = builder.Add(discriminatorValue);
+
+        if (_Options.UseHierarchicalPartitionKey == true)
+        {
+            _ = builder.Add(discriminatorValue);
+        }
 
         return builder.Build();
     }
