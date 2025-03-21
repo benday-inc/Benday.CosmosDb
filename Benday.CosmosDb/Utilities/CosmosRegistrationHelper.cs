@@ -14,6 +14,7 @@ public class CosmosRegistrationHelper
 
     public bool WithCreateStructures { get; private set; }
     public bool UseGatewayMode { get; private set; }
+    public bool UseHierarchicalPartitionKey { get; private set; }
 
     public string DatabaseName { get; private set; } = string.Empty;
 
@@ -30,7 +31,8 @@ public class CosmosRegistrationHelper
         config.ContainerName,
         config.CreateStructures,
         config.PartitionKey, 
-        config.UseGatewayMode)
+        config.UseGatewayMode,
+        config.UseHierarchicalPartitionKey)
     {
         
     }
@@ -42,7 +44,8 @@ public class CosmosRegistrationHelper
         string containerName,
         bool createStructures,
         string? partitionKey = null, 
-        bool useGatewayMode = false)
+        bool useGatewayMode = false,
+        bool useHierarchicalPartitionKey = false)
     {        
         _Services = services;
         ConnectionString = connectionString;
@@ -50,6 +53,7 @@ public class CosmosRegistrationHelper
         ContainerName = containerName;
         WithCreateStructures = createStructures;
         UseGatewayMode = useGatewayMode;
+        UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
 
         if (partitionKey != null)
         {
@@ -67,7 +71,7 @@ public class CosmosRegistrationHelper
         where TEntity : OwnedItemBase, new()
     {
         _Services.ConfigureRepository<TEntity>(
-            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures);
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures, UseHierarchicalPartitionKey);
     }
 
     /// <summary>
@@ -82,7 +86,7 @@ public class CosmosRegistrationHelper
         where TInterface : class
     {
         _Services.ConfigureRepository<TEntity, TInterface, TImplementation>(
-            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures);
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures, UseHierarchicalPartitionKey);
     }
 
     /// <summary>
@@ -93,7 +97,7 @@ public class CosmosRegistrationHelper
         where TEntity : OwnedItemBase, new()
     {
         _Services.ConfigureRepository<TEntity>(
-            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures);
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures, UseHierarchicalPartitionKey);
 
         _Services.AddTransient<IOwnedItemService<TEntity>, OwnedItemService<TEntity>>();
     }

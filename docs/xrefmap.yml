@@ -1534,24 +1534,24 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository
   nameWithType: CosmosClientOptionsUtilities.ConfigureRepository
-- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)
-  name: ConfigureRepository<TEntity>(IServiceCollection, string, string, string, string, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)
-  name.vb: ConfigureRepository(Of TEntity)(IServiceCollection, String, String, String, String, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository<TEntity>(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, string, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository(Of TEntity)(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, String, Boolean)
-  nameWithType: CosmosClientOptionsUtilities.ConfigureRepository<TEntity>(IServiceCollection, string, string, string, string, bool)
-  nameWithType.vb: CosmosClientOptionsUtilities.ConfigureRepository(Of TEntity)(IServiceCollection, String, String, String, String, Boolean)
-- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)
-  name: ConfigureRepository<TEntity, TInterface, TImplementation>(IServiceCollection, string, string, string, string, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository__3_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)
-  name.vb: ConfigureRepository(Of TEntity, TInterface, TImplementation)(IServiceCollection, String, String, String, String, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository<TEntity, TInterface, TImplementation>(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, string, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository(Of TEntity, TInterface, TImplementation)(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, String, Boolean)
-  nameWithType: CosmosClientOptionsUtilities.ConfigureRepository<TEntity, TInterface, TImplementation>(IServiceCollection, string, string, string, string, bool)
-  nameWithType.vb: CosmosClientOptionsUtilities.ConfigureRepository(Of TEntity, TInterface, TImplementation)(IServiceCollection, String, String, String, String, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  name: ConfigureRepository<TEntity>(IServiceCollection, string, string, string, string, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  name.vb: ConfigureRepository(Of TEntity)(IServiceCollection, String, String, String, String, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository<TEntity>(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, string, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository(Of TEntity)(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, String, Boolean, Boolean)
+  nameWithType: CosmosClientOptionsUtilities.ConfigureRepository<TEntity>(IServiceCollection, string, string, string, string, bool, bool)
+  nameWithType.vb: CosmosClientOptionsUtilities.ConfigureRepository(Of TEntity)(IServiceCollection, String, String, String, String, Boolean, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  name: ConfigureRepository<TEntity, TInterface, TImplementation>(IServiceCollection, string, string, string, string, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository__3_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  name.vb: ConfigureRepository(Of TEntity, TInterface, TImplementation)(IServiceCollection, String, String, String, String, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository<TEntity, TInterface, TImplementation>(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, string, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository(Of TEntity, TInterface, TImplementation)(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, String, Boolean, Boolean)
+  nameWithType: CosmosClientOptionsUtilities.ConfigureRepository<TEntity, TInterface, TImplementation>(IServiceCollection, string, string, string, string, bool, bool)
+  nameWithType.vb: CosmosClientOptionsUtilities.ConfigureRepository(Of TEntity, TInterface, TImplementation)(IServiceCollection, String, String, String, String, Boolean, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosConfig(Microsoft.Extensions.Configuration.IConfiguration)
   name: GetCosmosConfig(IConfiguration)
   href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosConfig_Microsoft_Extensions_Configuration_IConfiguration_
@@ -1594,15 +1594,15 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository
   nameWithType: CosmosClientOptionsUtilities.RegisterOptionsForRepository
-- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)
-  name: RegisterOptionsForRepository<T>(IServiceCollection, string, string, string, string, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_RegisterOptionsForRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean)
-  name.vb: RegisterOptionsForRepository(Of T)(IServiceCollection, String, String, String, String, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository<T>(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, string, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository(Of T)(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, String, Boolean)
-  nameWithType: CosmosClientOptionsUtilities.RegisterOptionsForRepository<T>(IServiceCollection, string, string, string, string, bool)
-  nameWithType.vb: CosmosClientOptionsUtilities.RegisterOptionsForRepository(Of T)(IServiceCollection, String, String, String, String, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  name: RegisterOptionsForRepository<T>(IServiceCollection, string, string, string, string, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_RegisterOptionsForRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  name.vb: RegisterOptionsForRepository(Of T)(IServiceCollection, String, String, String, String, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository<T>(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, string, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.RegisterOptionsForRepository(Of T)(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, String, Boolean, Boolean)
+  nameWithType: CosmosClientOptionsUtilities.RegisterOptionsForRepository<T>(IServiceCollection, string, string, string, string, bool, bool)
+  nameWithType.vb: CosmosClientOptionsUtilities.RegisterOptionsForRepository(Of T)(IServiceCollection, String, String, String, String, Boolean, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ThrowIfEmptyOrNull(System.String,System.String)
   name: ThrowIfEmptyOrNull(string?, string?)
   href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ThrowIfEmptyOrNull_System_String_System_String_
@@ -1827,15 +1827,15 @@ references:
   fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, Benday.CosmosDb.Utilities.CosmosConfig)
   nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, CosmosConfig)
   nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, CosmosConfig)
-- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean)
-  name: CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean)
-  name.vb: New(IServiceCollection, String, String, String, Boolean, String, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.CosmosRegistrationHelper(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, bool, string?, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, Boolean, String, Boolean)
-  nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool)
-  nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, String, String, String, Boolean, String, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.Boolean)
+  name: CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.Boolean)
+  name.vb: New(IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.CosmosRegistrationHelper(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, bool, string?, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean)
+  nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool, bool)
+  nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor*
   name: CosmosRegistrationHelper
   href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_
@@ -1952,6 +1952,19 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode
   nameWithType: CosmosRegistrationHelper.UseGatewayMode
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  name: UseHierarchicalPartitionKey
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_UseHierarchicalPartitionKey
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  nameWithType: CosmosRegistrationHelper.UseHierarchicalPartitionKey
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey*
+  name: UseHierarchicalPartitionKey
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_UseHierarchicalPartitionKey_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  nameWithType: CosmosRegistrationHelper.UseHierarchicalPartitionKey
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures
   name: WithCreateStructures
   href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_WithCreateStructures

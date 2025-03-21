@@ -182,16 +182,18 @@ public static class CosmosClientOptionsUtilities
     /// <param name="containerName">Container name</param>
     /// <param name="partitionKey">Partition key definition string</param>
     /// <param name="createStructures">Create structures as part of the instantiation of this repository class (NOTE: this should probably be false in production)</param>
+    /// <param name="useHierarchicalPartitionKey">Use hierarchical partition key</param>
     public static void ConfigureRepository<TEntity>(
         this IServiceCollection services,
         string connectionString,
         string databaseName,
         string containerName,
         string partitionKey,
-        bool createStructures) where TEntity : OwnedItemBase, new()
+        bool createStructures, 
+        bool useHierarchicalPartitionKey) where TEntity : OwnedItemBase, new()
     {
         services.RegisterOptionsForRepository<TEntity>(
-            connectionString, databaseName, containerName, partitionKey, createStructures);
+            connectionString, databaseName, containerName, partitionKey, createStructures, useHierarchicalPartitionKey);
 
         services.AddTransient<IOwnedItemRepository<TEntity>, CosmosOwnedItemRepository<TEntity>>();
     }
@@ -214,12 +216,13 @@ public static class CosmosClientOptionsUtilities
         string databaseName,
         string containerName,
         string partitionKey,
-        bool createStructures)
+        bool createStructures, bool useHierarchicalPartitionKey)
         where TImplementation : class, TInterface
         where TInterface : class
     {
         services.RegisterOptionsForRepository<TEntity>(
-            connectionString, databaseName, containerName, partitionKey, createStructures);
+            connectionString, databaseName, containerName, partitionKey, createStructures, 
+            useHierarchicalPartitionKey);
 
         services.AddTransient<TInterface, TImplementation>();
     }
@@ -234,13 +237,15 @@ public static class CosmosClientOptionsUtilities
     /// <param name="containerName"></param>
     /// <param name="partitionKey"></param>
     /// <param name="createStructures"></param>
+    /// <param name="useHierarchicalPartitionKey"></param>
     public static void RegisterOptionsForRepository<T>(
         this IServiceCollection services,
         string connectionString,
         string databaseName,
         string containerName,
         string partitionKey,
-        bool createStructures)
+        bool createStructures,
+        bool useHierarchicalPartitionKey)
     {
         services.AddOptions<CosmosRepositoryOptions<T>>().Configure(options =>
         {
@@ -249,6 +254,7 @@ public static class CosmosClientOptionsUtilities
             options.ContainerName = containerName;
             options.PartitionKey = partitionKey;
             options.WithCreateStructures = createStructures;
+            options.UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
         });
 
         services.AddTransient<CosmosRepositoryOptions<T>>();
