@@ -47,5 +47,5 @@ public class CosmosRepositoryOptions<T>
     /// <summary>
     /// Use hierarchical partition key. This option is disabled by default.
     /// </summary>
-    public bool UseHierarchicalPartitionKey { get; } = false;
+    public bool UseHierarchicalPartitionKey { get; set; } = false;
 }
