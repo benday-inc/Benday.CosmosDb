@@ -14,8 +14,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <AssemblyVersion>4.3.0.0</AssemblyVersion>
-    <Version>$(VersionPrefix)4.3.0</Version>
+    <AssemblyVersion>4.4.0.0</AssemblyVersion>
+    <Version>$(VersionPrefix)4.4.0</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
     <PackageReleaseNotes>
 v4.3 - Fixed bug where UseHierarchicalPartitionKey was sometimes not being set;

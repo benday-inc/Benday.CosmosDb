@@ -77,9 +77,9 @@ public static class CosmosClientOptionsUtilities
         var endpoint = 
             configuration["CosmosConfiguration:Endpoint"].ThrowIfEmptyOrNull("CosmosConfiguration:Endpoint");
         var createStructures =
-            GetBoolean(configuration, "CosmosConfiguration:CreateStructures");
+            GetBoolean(configuration, "CosmosConfiguration:CreateStructures", false);
         var useGatewayMode =
-            GetBoolean(configuration, "CosmosConfiguration:GatewayMode");
+            GetBoolean(configuration, "CosmosConfiguration:GatewayMode", false);
         var useHierarchicalPartitionKey =
             GetBoolean(configuration, "CosmosConfiguration:HierarchicalPartitionKey", false);
         var databaseThroughput =
