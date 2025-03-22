@@ -18,6 +18,7 @@
     <Version>$(VersionPrefix)4.4.0</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
     <PackageReleaseNotes>
+v4.4 - Changed configuration reader to use default values rather than throwing exceptions when optional values are missing;
 v4.3 - Fixed bug where UseHierarchicalPartitionKey was sometimes not being set;
 v4.2.2 - Allowed cosmos db options UseHierarchicalPartitionKey to be set-able;
 v4.2.1 - Minor bug fix release;
