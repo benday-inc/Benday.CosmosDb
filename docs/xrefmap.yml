@@ -1511,15 +1511,15 @@ references:
   commentId: T:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities
   fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities
   nameWithType: CosmosClientOptionsUtilities
-- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.Boolean,System.Text.Json.JsonNamingPolicy)
-  name: ConfigureCosmosClient(IServiceCollection, string, bool, JsonNamingPolicy?)
-  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureCosmosClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_Boolean_System_Text_Json_JsonNamingPolicy_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.Boolean,System.Text.Json.JsonNamingPolicy)
-  name.vb: ConfigureCosmosClient(IServiceCollection, String, Boolean, JsonNamingPolicy)
-  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, bool, System.Text.Json.JsonNamingPolicy?)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, Boolean, System.Text.Json.JsonNamingPolicy)
-  nameWithType: CosmosClientOptionsUtilities.ConfigureCosmosClient(IServiceCollection, string, bool, JsonNamingPolicy?)
-  nameWithType.vb: CosmosClientOptionsUtilities.ConfigureCosmosClient(IServiceCollection, String, Boolean, JsonNamingPolicy)
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.Boolean,System.Boolean,System.Text.Json.JsonNamingPolicy)
+  name: ConfigureCosmosClient(IServiceCollection, string, bool, bool, JsonNamingPolicy?)
+  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureCosmosClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_Boolean_System_Boolean_System_Text_Json_JsonNamingPolicy_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.Boolean,System.Boolean,System.Text.Json.JsonNamingPolicy)
+  name.vb: ConfigureCosmosClient(IServiceCollection, String, Boolean, Boolean, JsonNamingPolicy)
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, bool, bool, System.Text.Json.JsonNamingPolicy?)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, Boolean, Boolean, System.Text.Json.JsonNamingPolicy)
+  nameWithType: CosmosClientOptionsUtilities.ConfigureCosmosClient(IServiceCollection, string, bool, bool, JsonNamingPolicy?)
+  nameWithType.vb: CosmosClientOptionsUtilities.ConfigureCosmosClient(IServiceCollection, String, Boolean, Boolean, JsonNamingPolicy)
 - uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient*
   name: ConfigureCosmosClient
   href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureCosmosClient_
@@ -1571,15 +1571,15 @@ references:
   commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions
   fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions()
   nameWithType: CosmosClientOptionsUtilities.GetCosmosDbClientOptions()
-- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy,Microsoft.Azure.Cosmos.ConnectionMode)
-  name: GetCosmosDbClientOptions(JsonNamingPolicy?, ConnectionMode)
-  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_System_Text_Json_JsonNamingPolicy_Microsoft_Azure_Cosmos_ConnectionMode_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy,Microsoft.Azure.Cosmos.ConnectionMode)
-  name.vb: GetCosmosDbClientOptions(JsonNamingPolicy, ConnectionMode)
-  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy?, Microsoft.Azure.Cosmos.ConnectionMode)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy, Microsoft.Azure.Cosmos.ConnectionMode)
-  nameWithType: CosmosClientOptionsUtilities.GetCosmosDbClientOptions(JsonNamingPolicy?, ConnectionMode)
-  nameWithType.vb: CosmosClientOptionsUtilities.GetCosmosDbClientOptions(JsonNamingPolicy, ConnectionMode)
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy,Microsoft.Azure.Cosmos.ConnectionMode,System.Boolean)
+  name: GetCosmosDbClientOptions(JsonNamingPolicy?, ConnectionMode, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_System_Text_Json_JsonNamingPolicy_Microsoft_Azure_Cosmos_ConnectionMode_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy,Microsoft.Azure.Cosmos.ConnectionMode,System.Boolean)
+  name.vb: GetCosmosDbClientOptions(JsonNamingPolicy, ConnectionMode, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy?, Microsoft.Azure.Cosmos.ConnectionMode, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions(System.Text.Json.JsonNamingPolicy, Microsoft.Azure.Cosmos.ConnectionMode, Boolean)
+  nameWithType: CosmosClientOptionsUtilities.GetCosmosDbClientOptions(JsonNamingPolicy?, ConnectionMode, bool)
+  nameWithType.vb: CosmosClientOptionsUtilities.GetCosmosDbClientOptions(JsonNamingPolicy, ConnectionMode, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions*
   name: GetCosmosDbClientOptions
   href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions_
@@ -1625,15 +1625,15 @@ references:
   commentId: T:Benday.CosmosDb.Utilities.CosmosConfig
   fullName: Benday.CosmosDb.Utilities.CosmosConfig
   nameWithType: CosmosConfig
-- uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean)
-  name: CosmosConfig(string, string, string, string, string, bool, int, bool, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Int32_System_Boolean_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean)
-  name.vb: New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean)
-  nameWithType: CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool)
-  nameWithType.vb: CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+  name: CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Int32_System_Boolean_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+  name.vb: New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean)
+  nameWithType: CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool)
+  nameWithType.vb: CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor*
   name: CosmosConfig
   href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor_
@@ -1657,6 +1657,19 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.Utilities.CosmosConfig.AccountKey
   nameWithType: CosmosConfig.AccountKey
+- uid: Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution
+  name: AllowBulkExecution
+  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig_AllowBulkExecution
+  commentId: P:Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution
+  nameWithType: CosmosConfig.AllowBulkExecution
+- uid: Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution*
+  name: AllowBulkExecution
+  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig_AllowBulkExecution_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution
+  nameWithType: CosmosConfig.AllowBulkExecution
 - uid: Benday.CosmosDb.Utilities.CosmosConfig.ConnectionString
   name: ConnectionString
   href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig_ConnectionString
@@ -1827,15 +1840,15 @@ references:
   fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, Benday.CosmosDb.Utilities.CosmosConfig)
   nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, CosmosConfig)
   nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, CosmosConfig)
-- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.Boolean)
-  name: CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.Boolean)
-  name.vb: New(IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.CosmosRegistrationHelper(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, bool, string?, bool, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean)
-  nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool, bool)
-  nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean)
+  name: CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean)
+  name.vb: New(IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.CosmosRegistrationHelper(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, bool, string?, bool, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean, Boolean)
+  nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool, bool, bool)
+  nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor*
   name: CosmosRegistrationHelper
   href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_
@@ -1846,6 +1859,19 @@ references:
   fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New
   nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper
   nameWithType.vb: CosmosRegistrationHelper.New
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  name: AllowBulkExecution
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_AllowBulkExecution
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  nameWithType: CosmosRegistrationHelper.AllowBulkExecution
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution*
+  name: AllowBulkExecution
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_AllowBulkExecution_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  nameWithType: CosmosRegistrationHelper.AllowBulkExecution
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString
   name: ConnectionString
   href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConnectionString

@@ -14,6 +14,7 @@ public class CosmosRegistrationHelper
 
     public bool WithCreateStructures { get; private set; }
     public bool UseGatewayMode { get; private set; }
+    public bool AllowBulkExecution { get; private set; } = true;
     public bool UseHierarchicalPartitionKey { get; private set; }
 
     public string DatabaseName { get; private set; } = string.Empty;
@@ -32,7 +33,8 @@ public class CosmosRegistrationHelper
         config.CreateStructures,
         config.PartitionKey, 
         config.UseGatewayMode,
-        config.UseHierarchicalPartitionKey)
+        config.UseHierarchicalPartitionKey,
+        config.AllowBulkExecution)
     {
         
     }
@@ -45,7 +47,8 @@ public class CosmosRegistrationHelper
         bool createStructures,
         string? partitionKey = null, 
         bool useGatewayMode = false,
-        bool useHierarchicalPartitionKey = false)
+        bool useHierarchicalPartitionKey = false,
+        bool allowBulkExecution = true)
     {        
         _Services = services;
         ConnectionString = connectionString;
@@ -54,6 +57,7 @@ public class CosmosRegistrationHelper
         WithCreateStructures = createStructures;
         UseGatewayMode = useGatewayMode;
         UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
+        AllowBulkExecution = allowBulkExecution;
 
         if (partitionKey != null)
         {
@@ -105,6 +109,6 @@ public class CosmosRegistrationHelper
     private void ConfigureClient()
     {
         _Services.ConfigureCosmosClient(
-            ConnectionString, UseGatewayMode);
+            ConnectionString, UseGatewayMode, AllowBulkExecution);
     }
 }

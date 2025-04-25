@@ -13,7 +13,8 @@ public class CosmosConfig
         bool createStructures,
         int databaseThroughput = CosmosDbConstants.DefaultDatabaseThroughput,
         bool useGatewayMode = false,
-        bool useHierarchicalPartitionKey = false)
+        bool useHierarchicalPartitionKey = false,
+        bool allowBulkExecution = true)
     {
         AccountKey = accountKey;
         Endpoint = endpoint;
@@ -24,6 +25,7 @@ public class CosmosConfig
         DatabaseThroughput = databaseThroughput;
         UseGatewayMode = useGatewayMode;
         UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
+        AllowBulkExecution = allowBulkExecution;
     }
 
     /// <summary>
@@ -70,6 +72,11 @@ public class CosmosConfig
     /// Throughput for the database. This is only used if the database is created.
     /// </summary>
     public int DatabaseThroughput { get; set; }
+
+    /// <summary>
+    /// Allow bulk execution for Cosmos DB operations on the client connection. This is enabled by default.
+    /// </summary>
+    public bool AllowBulkExecution { get; private set; } = true;
 
     /// <summary>
     /// Gets the connection string for the Cosmos DB account.

@@ -86,6 +86,9 @@ public static class CosmosClientOptionsUtilities
             GetInt32(configuration, "CosmosConfiguration:DatabaseThroughput", 
             CosmosDbConstants.DefaultDatabaseThroughput);
 
+        var allowBulkExecution =
+            GetBoolean(configuration, "CosmosConfiguration:AllowBulkExecution", true);
+
         var temp = new CosmosConfig(
             accountKey, 
             endpoint, 
@@ -95,7 +98,8 @@ public static class CosmosClientOptionsUtilities
             createStructures, 
             databaseThroughput, 
             useGatewayMode, 
-            useHierarchicalPartitionKey);
+            useHierarchicalPartitionKey,
+            allowBulkExecution);
 
         return temp;
     }
@@ -122,18 +126,25 @@ public static class CosmosClientOptionsUtilities
     /// and provides an option to customize the JsonNamingPolicy for the JsonSerializerOptions.
     /// </summary>
     /// <param name="jsonNamingPolicy">Naming policy or null to not use a policy</param>
+    /// <param name="connectionMode">Connection mode</param>
+    /// <param name="allowBulkExecution">Allow bulk execution. Default value is true.</param>
+    /// <remarks>
+    /// This method creates a new instance of CosmosClientOptions with the specified settings.
+    /// </remarks>
     /// <returns></returns>
     public static CosmosClientOptions GetCosmosDbClientOptions(
-        JsonNamingPolicy? jsonNamingPolicy, ConnectionMode connectionMode = ConnectionMode.Gateway)
+        JsonNamingPolicy? jsonNamingPolicy,
+        ConnectionMode connectionMode = ConnectionMode.Gateway,
+        bool allowBulkExecution = true)
     {
         var options = new CosmosClientOptions
         {
+            AllowBulkExecution = allowBulkExecution,
             Serializer = new SystemTextJsonCosmosSerializer(new JsonSerializerOptions
             {
                 PropertyNamingPolicy = jsonNamingPolicy,
                 WriteIndented = true,
-                PropertyNameCaseInsensitive = true,
-                // Add additional JsonSerializerOptions settings as needed
+                PropertyNameCaseInsensitive = true,                
             }),
             ConnectionMode = connectionMode,
             HttpClientFactory = () =>
@@ -158,6 +169,7 @@ public static class CosmosClientOptionsUtilities
         this IServiceCollection services,
         string connectionString,
         bool useGatewayMode = false,
+        bool allowBulkExecution = true,
         JsonNamingPolicy? jsonNamingPolicy = null)
     {
         var connectionMode = ConnectionMode.Direct;
@@ -167,7 +179,7 @@ public static class CosmosClientOptionsUtilities
             connectionMode = ConnectionMode.Gateway;
         }        
 
-        var options = GetCosmosDbClientOptions(jsonNamingPolicy, connectionMode);
+        var options = GetCosmosDbClientOptions(jsonNamingPolicy, connectionMode, allowBulkExecution);
 
         services.AddSingleton(new CosmosClient(connectionString, options));
     }

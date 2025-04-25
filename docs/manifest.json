@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/code/benday-inc/Benday.CosmosDb/docfx_project",
+  "source_base_path": "/Users/benday/code/benday-inc/Benday.CosmosDb/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -10,7 +10,11 @@
           "relative_path": "api/Benday.CosmosDb.DomainModels.CosmosIdentityBase.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.DomainModels.CosmosIdentityBase",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.CosmosIdentityBase.yml\" sourcestartlinenumber=\"1\">Provides the implementation of the basic properties of a Cosmos DB entity.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -20,7 +24,11 @@
           "relative_path": "api/Benday.CosmosDb.DomainModels.ICosmosIdentity.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.DomainModels.ICosmosIdentity",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.ICosmosIdentity.yml\" sourcestartlinenumber=\"1\">Represents the basic properties of a Cosmos DB entity.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -30,7 +38,11 @@
           "relative_path": "api/Benday.CosmosDb.DomainModels.IOwnedItem.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.DomainModels.IOwnedItem",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.IOwnedItem.yml\" sourcestartlinenumber=\"1\">Interface for an item that has an owner.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -40,7 +52,11 @@
           "relative_path": "api/Benday.CosmosDb.DomainModels.OwnedItemBase.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.DomainModels.OwnedItemBase",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.OwnedItemBase.yml\" sourcestartlinenumber=\"1\">Base class for an item that has an owner.  By default, the PartitionKey will be the same as the OwnerId.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -50,7 +66,11 @@
           "relative_path": "api/Benday.CosmosDb.DomainModels.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.DomainModels",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -60,7 +80,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.CosmosDbConstants.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.CosmosDbConstants",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.CosmosDbConstants.yml\" sourcestartlinenumber=\"1\">Constants for the Benday.CosmosDb library.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -70,7 +94,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.yml\" sourcestartlinenumber=\"1\">Provides repository implementation for items that are owned by a user.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -80,7 +108,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.CosmosRepository-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.CosmosRepository<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.CosmosRepository-1.yml\" sourcestartlinenumber=\"1\">Basic implementation of a Cosmos DB repository. Provides basic CRUD operations for a Cosmos DB entity, manages the container instance, and provides common functionality for custom queries as protected values and methods.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -90,7 +122,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.yml\" sourcestartlinenumber=\"1\">Configuration options for a repository.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -100,7 +136,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.IOwnedItemRepository<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.yml\" sourcestartlinenumber=\"1\">Defines the contract for a repository that manages items that have an owner.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -110,7 +150,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.IRepository-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.IRepository<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.IRepository-1.yml\" sourcestartlinenumber=\"1\">Interface for the basic operations of a Cosmos DB repository.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -120,7 +164,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.OptimisticConcurrencyException.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.OptimisticConcurrencyException",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -130,7 +178,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.QueryableInfo-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.QueryableInfo<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -140,7 +192,11 @@
           "relative_path": "api/Benday.CosmosDb.Repositories.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -150,7 +206,11 @@
           "relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.IOwnedItemService<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -160,7 +220,11 @@
           "relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -170,7 +234,11 @@
           "relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.OwnedItemService<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -180,7 +248,11 @@
           "relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -190,7 +262,11 @@
           "relative_path": "api/Benday.CosmosDb.ServiceLayers.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -200,7 +276,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.BatchUtility.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.BatchUtility",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Utilities.BatchUtility.yml\" sourcestartlinenumber=\"1\">Utility class for working with batches of items.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -210,7 +290,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -220,7 +304,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.CosmosConfig.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.CosmosConfig",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -230,7 +318,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.CosmosDbUtilities.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.CosmosDbUtilities",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Utilities.CosmosDbUtilities.yml\" sourcestartlinenumber=\"1\">Utility class for working with CosmosDb.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -240,7 +332,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.CosmosRegistrationHelper",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -250,7 +346,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.DiagnosticsHandler.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.DiagnosticsHandler",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -260,7 +360,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.yml\" sourcestartlinenumber=\"1\">Source: <a href=\"https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/SystemTextJson/CosmosSystemTextJsonSerializer.cs\" sourcefile=\"api/Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.yml\" sourcestartlinenumber=\"1\">https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/SystemTextJson/CosmosSystemTextJsonSerializer.cs</a></p>\n"
     },
     {
       "type": "ManagedReference",
@@ -270,7 +374,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.UnixDateTimeConverter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.UnixDateTimeConverter",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Utilities.UnixDateTimeConverter.yml\" sourcestartlinenumber=\"1\">Converts a Unix timestamp to a DateTime and vice versa.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -280,7 +388,11 @@
           "relative_path": "api/Benday.CosmosDb.Utilities.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities",
+      "Summary": null
     },
     {
       "type": "Conceptual",
