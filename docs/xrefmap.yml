@@ -1625,15 +1625,15 @@ references:
   commentId: T:Benday.CosmosDb.Utilities.CosmosConfig
   fullName: Benday.CosmosDb.Utilities.CosmosConfig
   nameWithType: CosmosConfig
-- uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean)
-  name: CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Int32_System_Boolean_System_Boolean_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean)
-  name.vb: New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean)
-  nameWithType: CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool)
-  nameWithType.vb: CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  name: CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  name.vb: New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean, Boolean)
+  nameWithType: CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool, bool)
+  nameWithType.vb: CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor*
   name: CosmosConfig
   href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor_
@@ -1761,6 +1761,19 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.Utilities.CosmosConfig.PartitionKey
   nameWithType: CosmosConfig.PartitionKey
+- uid: Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential
+  name: UseDefaultAzureCredential
+  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig_UseDefaultAzureCredential
+  commentId: P:Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential
+  nameWithType: CosmosConfig.UseDefaultAzureCredential
+- uid: Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential*
+  name: UseDefaultAzureCredential
+  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig_UseDefaultAzureCredential_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential
+  nameWithType: CosmosConfig.UseDefaultAzureCredential
 - uid: Benday.CosmosDb.Utilities.CosmosConfig.UseGatewayMode
   name: UseGatewayMode
   href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig_UseGatewayMode

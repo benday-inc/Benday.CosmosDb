@@ -16,6 +16,7 @@ public class CosmosRegistrationHelper
     public bool UseGatewayMode { get; private set; }
     public bool AllowBulkExecution { get; private set; } = true;
     public bool UseHierarchicalPartitionKey { get; private set; }
+    public bool UseDefaultAzureCredential { get; private set; }
 
     public string DatabaseName { get; private set; } = string.Empty;
 
@@ -24,19 +25,24 @@ public class CosmosRegistrationHelper
     public string PartitionKey { get; private set; } = CosmosDbConstants.DefaultPartitionKey;
 
     private IServiceCollection _Services;
+    
+    public CosmosConfig? Configuration { get; private set; }
 
-    public CosmosRegistrationHelper(IServiceCollection services, CosmosConfig config) : this(
-        services,
-        config.ConnectionString,
-        config.DatabaseName,
-        config.ContainerName,
-        config.CreateStructures,
-        config.PartitionKey, 
-        config.UseGatewayMode,
-        config.UseHierarchicalPartitionKey,
-        config.AllowBulkExecution)
+    public CosmosRegistrationHelper(IServiceCollection services, CosmosConfig config)
     {
-        
+        _Services = services;
+        Configuration = config;
+        ConnectionString = config.Endpoint;
+        DatabaseName = config.DatabaseName;
+        ContainerName = config.ContainerName;
+        PartitionKey = config.PartitionKey;
+        WithCreateStructures = config.CreateStructures;
+        UseGatewayMode = config.UseGatewayMode;
+        UseHierarchicalPartitionKey = config.UseHierarchicalPartitionKey;
+        AllowBulkExecution = config.AllowBulkExecution;
+        UseDefaultAzureCredential = config.UseDefaultAzureCredential;
+
+        ConfigureClient();
     }
 
     public CosmosRegistrationHelper(
@@ -48,7 +54,8 @@ public class CosmosRegistrationHelper
         string? partitionKey = null, 
         bool useGatewayMode = false,
         bool useHierarchicalPartitionKey = false,
-        bool allowBulkExecution = true)
+        bool allowBulkExecution = true, 
+        bool useDefaultAzureCredential = false)
     {        
         _Services = services;
         ConnectionString = connectionString;
@@ -58,6 +65,7 @@ public class CosmosRegistrationHelper
         UseGatewayMode = useGatewayMode;
         UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
         AllowBulkExecution = allowBulkExecution;
+        UseDefaultAzureCredential = useDefaultAzureCredential;
 
         if (partitionKey != null)
         {
@@ -75,7 +83,8 @@ public class CosmosRegistrationHelper
         where TEntity : OwnedItemBase, new()
     {
         _Services.ConfigureRepository<TEntity>(
-            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures, UseHierarchicalPartitionKey);
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures,
+            UseHierarchicalPartitionKey, UseDefaultAzureCredential);
     }
 
     /// <summary>
@@ -90,7 +99,8 @@ public class CosmosRegistrationHelper
         where TInterface : class
     {
         _Services.ConfigureRepository<TEntity, TInterface, TImplementation>(
-            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures, UseHierarchicalPartitionKey);
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures,
+            UseHierarchicalPartitionKey, UseDefaultAzureCredential);
     }
 
     /// <summary>
@@ -101,14 +111,22 @@ public class CosmosRegistrationHelper
         where TEntity : OwnedItemBase, new()
     {
         _Services.ConfigureRepository<TEntity>(
-            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures, UseHierarchicalPartitionKey);
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures, UseHierarchicalPartitionKey,
+            UseDefaultAzureCredential);
 
         _Services.AddTransient<IOwnedItemService<TEntity>, OwnedItemService<TEntity>>();
     }
     
     private void ConfigureClient()
     {
-        _Services.ConfigureCosmosClient(
-            ConnectionString, UseGatewayMode, AllowBulkExecution);
+        if (Configuration != null)
+        {
+            _Services.ConfigureCosmosClient(Configuration);
+        }
+        else
+        {
+            _Services.ConfigureCosmosClient(
+                ConnectionString, UseGatewayMode, AllowBulkExecution);
+        }
     }
 }

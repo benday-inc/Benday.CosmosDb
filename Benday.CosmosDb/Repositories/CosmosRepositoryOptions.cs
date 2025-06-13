@@ -48,4 +48,6 @@ public class CosmosRepositoryOptions<T>
     /// Use hierarchical partition key. This option is disabled by default.
     /// </summary>
     public bool UseHierarchicalPartitionKey { get; set; } = false;
+
+    public bool UseDefaultAzureCredential { get; set; } = false;
 }

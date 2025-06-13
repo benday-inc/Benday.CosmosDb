@@ -14,10 +14,11 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <AssemblyVersion>4.5.0.0</AssemblyVersion>
-    <Version>$(VersionPrefix)4.5.0</Version>
+    <AssemblyVersion>4.6.0.0</AssemblyVersion>
+    <Version>$(VersionPrefix)4.6.0</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
     <PackageReleaseNotes>
+v4.6 - Added configure option to use DefaultAzureCredential for authentication using managed service ids in azure; Fixed bug where cosmos client was improperly registered in DI when using managed ids;
 v4.5 - Added option to configure 'allow bulk execution' for the CosmosClient; Default value for 'allow bulk execution' is now true;
 v4.4 - Changed configuration reader to use default values rather than throwing exceptions when optional values are missing;
 v4.3 - Fixed bug where UseHierarchicalPartitionKey was sometimes not being set;
@@ -53,6 +54,7 @@ v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository util
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.*" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.*" />
     
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.*" />

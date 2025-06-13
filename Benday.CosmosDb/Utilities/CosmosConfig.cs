@@ -14,7 +14,8 @@ public class CosmosConfig
         int databaseThroughput = CosmosDbConstants.DefaultDatabaseThroughput,
         bool useGatewayMode = false,
         bool useHierarchicalPartitionKey = false,
-        bool allowBulkExecution = true)
+        bool allowBulkExecution = true,
+        bool useDefaultAzureCredential = false)
     {
         AccountKey = accountKey;
         Endpoint = endpoint;
@@ -26,6 +27,7 @@ public class CosmosConfig
         UseGatewayMode = useGatewayMode;
         UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
         AllowBulkExecution = allowBulkExecution;
+        UseDefaultAzureCredential = useDefaultAzureCredential;
     }
 
     /// <summary>
@@ -62,6 +64,11 @@ public class CosmosConfig
     /// Use Gateway mode for Cosmos DB. Default is false (direct mode).
     /// </summary>
     public bool UseGatewayMode { get; set; }
+
+    /// <summary>
+    /// Use DefaultAzureCredential for authentication. This is disabled by default.
+    /// </summary>
+    public bool UseDefaultAzureCredential { get; set; }
 
     /// <summary>
     /// Use hierarchical partition key. This option is disabled by default.

@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Azure.Identity;
 
 namespace Benday.CosmosDb.Utilities;
 
@@ -66,14 +67,28 @@ public static class CosmosClientOptionsUtilities
     /// <exception cref="InvalidOperationException"></exception>
     public static CosmosConfig GetCosmosConfig(this IConfiguration configuration)
     {
+        var useDefaultAzureCredential =
+            GetBoolean(configuration, "CosmosConfiguration:UseDefaultAzureCredential", false);
+
         var databaseName =
             configuration["CosmosConfiguration:DatabaseName"].ThrowIfEmptyOrNull("CosmosConfiguration:DatabaseName");
         var containerName =
             configuration["CosmosConfiguration:ContainerName"].ThrowIfEmptyOrNull("CosmosConfiguration:ContainerName");
         var partitionKey =
             configuration["CosmosConfiguration:PartitionKey"].ThrowIfEmptyOrNull("CosmosConfiguration:PartitionKey");
-        var accountKey = 
-            configuration["CosmosConfiguration:AccountKey"].ThrowIfEmptyOrNull("CosmosConfiguration:AccountKey");
+
+        string accountKey;
+
+        if (useDefaultAzureCredential == true)
+        {
+            accountKey = string.Empty;
+        }
+        else
+        {
+            accountKey =
+                configuration["CosmosConfiguration:AccountKey"].ThrowIfEmptyOrNull("CosmosConfiguration:AccountKey");
+        }
+
         var endpoint = 
             configuration["CosmosConfiguration:Endpoint"].ThrowIfEmptyOrNull("CosmosConfiguration:Endpoint");
         var createStructures =
@@ -99,7 +114,8 @@ public static class CosmosClientOptionsUtilities
             databaseThroughput, 
             useGatewayMode, 
             useHierarchicalPartitionKey,
-            allowBulkExecution);
+            allowBulkExecution, 
+            useDefaultAzureCredential);
 
         return temp;
     }
@@ -185,6 +201,42 @@ public static class CosmosClientOptionsUtilities
     }
 
     /// <summary>
+    /// Configures a CosmosClient instance in the service collection using a CosmosConfig object.
+    /// </summary>
+    /// <param name="services"></param>
+    /// <param name="cosmosConfig"></param>
+    public static void ConfigureCosmosClient(
+        this IServiceCollection services,
+        CosmosConfig cosmosConfig)
+    {
+        var connectionMode = ConnectionMode.Direct;
+
+        if (cosmosConfig.UseGatewayMode == true)
+        {
+            connectionMode = ConnectionMode.Gateway;
+        }
+
+        var options = GetCosmosDbClientOptions(null, connectionMode, cosmosConfig.AllowBulkExecution);
+
+        if (cosmosConfig.UseDefaultAzureCredential == true)
+        {
+            var client = new CosmosClient(
+                cosmosConfig.Endpoint,
+                new DefaultAzureCredential(),
+                options);
+
+            services.AddSingleton(client);
+        }
+        else
+        {
+            var client = new CosmosClient(cosmosConfig.ConnectionString, options);
+
+            services.AddSingleton(client);
+        }
+    }
+
+
+    /// <summary>
     /// Configures a repository for a specific domain model entity type using default implementation of CosmosOwnedItemRepository.
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
@@ -201,11 +253,13 @@ public static class CosmosClientOptionsUtilities
         string databaseName,
         string containerName,
         string partitionKey,
-        bool createStructures, 
-        bool useHierarchicalPartitionKey) where TEntity : OwnedItemBase, new()
+        bool createStructures,
+        bool useHierarchicalPartitionKey,
+        bool useDefaultAzureCredential = false) where TEntity : OwnedItemBase, new()
     {
         services.RegisterOptionsForRepository<TEntity>(
-            connectionString, databaseName, containerName, partitionKey, createStructures, useHierarchicalPartitionKey);
+            connectionString, databaseName, containerName, partitionKey, createStructures,
+            useHierarchicalPartitionKey, useDefaultAzureCredential);
 
         services.AddTransient<IOwnedItemRepository<TEntity>, CosmosOwnedItemRepository<TEntity>>();
     }
@@ -228,13 +282,13 @@ public static class CosmosClientOptionsUtilities
         string databaseName,
         string containerName,
         string partitionKey,
-        bool createStructures, bool useHierarchicalPartitionKey)
+        bool createStructures, bool useHierarchicalPartitionKey, bool useDefaultAzureCredential = false)
         where TImplementation : class, TInterface
         where TInterface : class
     {
         services.RegisterOptionsForRepository<TEntity>(
             connectionString, databaseName, containerName, partitionKey, createStructures, 
-            useHierarchicalPartitionKey);
+            useHierarchicalPartitionKey, useDefaultAzureCredential);
 
         services.AddTransient<TInterface, TImplementation>();
     }
@@ -257,7 +311,7 @@ public static class CosmosClientOptionsUtilities
         string containerName,
         string partitionKey,
         bool createStructures,
-        bool useHierarchicalPartitionKey)
+        bool useHierarchicalPartitionKey, bool useDefaultAzureCredential)
     {
         services.AddOptions<CosmosRepositoryOptions<T>>().Configure(options =>
         {
@@ -267,6 +321,7 @@ public static class CosmosClientOptionsUtilities
             options.PartitionKey = partitionKey;
             options.WithCreateStructures = createStructures;
             options.UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
+            options.UseDefaultAzureCredential = useDefaultAzureCredential;
         });
 
         services.AddTransient<CosmosRepositoryOptions<T>>();
