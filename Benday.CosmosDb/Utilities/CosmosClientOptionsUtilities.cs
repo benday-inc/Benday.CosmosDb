@@ -197,6 +197,8 @@ public static class CosmosClientOptionsUtilities
 
         var options = GetCosmosDbClientOptions(jsonNamingPolicy, connectionMode, allowBulkExecution);
 
+        Console.WriteLine($"Configuring CosmosClient with connection string...");
+        Console.WriteLine($"Connection String: {connectionString}");
         services.AddSingleton(new CosmosClient(connectionString, options));
     }
 
@@ -220,6 +222,7 @@ public static class CosmosClientOptionsUtilities
 
         if (cosmosConfig.UseDefaultAzureCredential == true)
         {
+            Console.WriteLine($"Configuring CosmosClient with DefaultAzureCredential...");
             var client = new CosmosClient(
                 cosmosConfig.Endpoint,
                 new DefaultAzureCredential(),
@@ -229,8 +232,10 @@ public static class CosmosClientOptionsUtilities
         }
         else
         {
+            Console.WriteLine($"Configuring CosmosClient with connection string...");
+            
             var client = new CosmosClient(cosmosConfig.ConnectionString, options);
-
+            
             services.AddSingleton(client);
         }
     }

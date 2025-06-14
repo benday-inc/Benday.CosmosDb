@@ -1,5 +1,7 @@
 using System.Reflection;
 using Benday.CosmosDb.Utilities;
+using Benday.Common;
+using Benday.Common.Testing;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,81 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
     public CosmosRegistrationHelperFixture(ITestOutputHelper outputHelper) : base(outputHelper)
     {
         
+    }
+
+    [Fact]
+    public void VerifyConnectionRegistration_FromConfig_UseDefaultAzureCredentials()
+    {
+        // Create an in-memory IConfiguration
+        var inMemorySettings = new Dictionary<string, string?>
+        {
+            { "CosmosConfiguration:AccountKey", "fakeAccountKey" },
+            { "CosmosConfiguration:Endpoint", "https://example.com" },
+            { "CosmosConfiguration:DatabaseName", "TestDatabase" },
+            { "CosmosConfiguration:ContainerName", "TestContainer" },
+            { "CosmosConfiguration:PartitionKey", "/TestPartitionKey" },
+            { "CosmosConfiguration:WithCreateStructures", "true" },
+            { "CosmosConfiguration:Throughput", "400" },
+            { "CosmosConfiguration:UseGatewayMode", "false" },
+            { "CosmosConfiguration:UseHierarchicalPartitionKey", "false" },
+            { "CosmosConfiguration:AllowBulkExecution", "true" },
+            { "CosmosConfiguration:UseDefaultAzureCredential", "true" }
+        };
+
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(inMemorySettings)
+            .Build();
+
+        var config = configuration.GetCosmosConfig();
+
+        
+        Assert.NotNull(config);
+        Assert.Equal(string.Empty, config.AccountKey);
+        Assert.Equal("https://example.com", config.Endpoint);
+        Assert.Equal("TestDatabase", config.DatabaseName);
+        Assert.Equal("TestContainer", config.ContainerName);
+        Assert.Equal("/TestPartitionKey", config.PartitionKey);        
+        Assert.False(config.UseGatewayMode);
+        Assert.False(config.UseHierarchicalPartitionKey);
+        Assert.True(config.AllowBulkExecution);
+        Assert.True(config.UseDefaultAzureCredential);
+    }
+
+    [Fact]
+    public void VerifyConnectionRegistration_FromConfig_ConnectionString()
+    {
+        // Create an in-memory IConfiguration
+        var inMemorySettings = new Dictionary<string, string?>
+        {
+            { "CosmosConfiguration:AccountKey", "fakeAccountKey" },
+            { "CosmosConfiguration:Endpoint", "https://example.com" },
+            { "CosmosConfiguration:DatabaseName", "TestDatabase" },
+            { "CosmosConfiguration:ContainerName", "TestContainer" },
+            { "CosmosConfiguration:PartitionKey", "/TestPartitionKey" },
+            { "CosmosConfiguration:WithCreateStructures", "true" },
+            { "CosmosConfiguration:Throughput", "400" },
+            { "CosmosConfiguration:UseGatewayMode", "false" },
+            { "CosmosConfiguration:UseHierarchicalPartitionKey", "false" },
+            { "CosmosConfiguration:AllowBulkExecution", "true" },
+            { "CosmosConfiguration:UseDefaultAzureCredential", "false" }
+        };
+
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(inMemorySettings)
+            .Build();
+
+        var config = configuration.GetCosmosConfig();
+
+         Assert.NotNull(config);
+        Assert.Equal("fakeAccountKey", config.AccountKey);
+        Assert.Equal("https://example.com", config.Endpoint);
+        Assert.Equal("TestDatabase", config.DatabaseName);
+        Assert.Equal("TestContainer", config.ContainerName);
+        Assert.Equal("/TestPartitionKey", config.PartitionKey);        
+        Assert.False(config.UseGatewayMode);
+        Assert.False(config.UseHierarchicalPartitionKey);
+        Assert.True(config.AllowBulkExecution);
+        Assert.False(config.UseDefaultAzureCredential);
     }
 
     [Fact]
