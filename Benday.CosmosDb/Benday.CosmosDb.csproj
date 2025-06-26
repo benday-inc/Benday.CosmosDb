@@ -60,6 +60,7 @@ v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository util
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.*" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.*" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="9.*" />
+    <PackageReference Include="System.Text.Json" Version="9.0.6" />
     
   </ItemGroup>
 
