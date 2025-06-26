@@ -6,11 +6,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Benday.CosmosDb.SampleApp.WebUi.Controllers;
+
 public class PersonController : Controller
 {
     private readonly IPersonService _PersonService;
-    public PersonController(IPersonService personService)
+    private readonly ILogger<PersonController> _Logger;
+    public PersonController(
+        ILogger<PersonController> logger,
+        IPersonService personService)
     {
+        _Logger = logger;
         _PersonService = personService;
     }
 
@@ -47,7 +52,19 @@ public class PersonController : Controller
     // GET: PersonController/Create
     public ActionResult Create()
     {
-        return View();
+        var person = new Person
+        {
+            Id = Guid.NewGuid().ToString(),
+            OwnerId = ApiConstants.DEFAULT_OWNER_ID
+        };
+
+        var ticks = DateTime.UtcNow.Ticks;
+        person.FirstName = $"FirstName-{ticks}";
+        person.LastName = $"LastName-{ticks}";
+        person.EmailAddress = $"EmailAddress-{ticks}@example.com";
+        person.Timestamp = DateTime.UtcNow;
+
+        return View(person);
     }
 
     // POST: PersonController/Create
@@ -57,14 +74,28 @@ public class PersonController : Controller
     {
         try
         {
+            person.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+            if (string.IsNullOrEmpty(person.Id) == true)
+            {
+                person.Id = Guid.NewGuid().ToString();
+            }
+
+            person.Timestamp = DateTime.UtcNow;
+
+            var json = System.Text.Json.JsonSerializer.Serialize(person);
+
+            _Logger.LogInformation(json);
+
             // Save person asynchronously
             await _PersonService.SaveAsync(person);
 
             return RedirectToAction(nameof(Index));
         }
-        catch
+        catch (Exception ex)
         {
-            return View();
+            ModelState.AddModelError(string.Empty, ex.Message);
+
+            return View(person);
         }
     }
 
@@ -122,8 +153,10 @@ public class PersonController : Controller
                 return View(person);
             }
         }
-        catch
+        catch (Exception ex)
         {
+            ModelState.AddModelError(string.Empty, ex.Message);
+
             return View();
         }
     }
