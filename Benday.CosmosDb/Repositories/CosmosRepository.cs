@@ -527,8 +527,14 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         {
             var batches = BatchUtility.GetBatches(items, 50);
 
+            var batchCount = batches.Count;
+
+            var currentBatch = 0;
+
             foreach (var batch in batches)
             {
+                currentBatch++;
+
                 var partitionKey = GetPartitionKey(batch.First());
 
                 var container = await GetContainer();
@@ -540,7 +546,11 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                     cosmosBatch.UpsertItem(item);
                 }
 
+                await BeforeSaveBatch(cosmosBatch, batch, currentBatch, batchCount);
+
                 using var response = await cosmosBatch.ExecuteAsync();
+
+                await AfterSaveBatch(response, batch, currentBatch, batchCount);
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -552,6 +562,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
             return;
         }
+    }
+
+    protected virtual async Task AfterSaveBatch(TransactionalBatchResponse response, T[] batch, int currentBatch, int batchCount)
+    {
+
+    }
+
+    protected virtual async Task BeforeSaveBatch(TransactionalBatch cosmosBatch, T[] batch, int currentBatch, int batchCount)
+    {
     }
 
     /// <summary>

@@ -14,10 +14,11 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <AssemblyVersion>4.6.1.0</AssemblyVersion>
-    <Version>$(VersionPrefix)4.6.1</Version>
+    <AssemblyVersion>4.7.1.0</AssemblyVersion>
+    <Version>$(VersionPrefix)4.7.1</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
     <PackageReleaseNotes>
+v4.7 - Adding BeforeSaveBatch and AfterSaveBatch template methods;
 v4.6 - Added configure option to use DefaultAzureCredential for authentication using managed service ids in azure; Fixed bug where cosmos client was improperly registered in DI when using managed ids;
 v4.5 - Added option to configure 'allow bulk execution' for the CosmosClient; Default value for 'allow bulk execution' is now true;
 v4.4 - Changed configuration reader to use default values rather than throwing exceptions when optional values are missing;
