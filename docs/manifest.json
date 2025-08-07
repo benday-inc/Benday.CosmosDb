@@ -1,5 +1,5 @@
 {
-  "source_base_path": "/Users/benday/code/benday-inc/Benday.CosmosDb/docfx_project",
+  "source_base_path": "C:/code/benday-inc/Benday.CosmosDb/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -214,20 +214,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemService-1.yml",
       "output": {
         ".html": {
@@ -238,20 +224,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Benday.CosmosDb.ServiceLayers.OwnedItemService<T>",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>",
       "Summary": null
     },
     {
