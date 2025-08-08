@@ -578,6 +578,23 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).AfterSaveBatch
   nameWithType: CosmosRepository<T>.AfterSaveBatch
   nameWithType.vb: CosmosRepository(Of T).AfterSaveBatch
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.BatchSize
+  name: BatchSize
+  href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_BatchSize
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepository`1.BatchSize
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.BatchSize
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).BatchSize
+  nameWithType: CosmosRepository<T>.BatchSize
+  nameWithType.vb: CosmosRepository(Of T).BatchSize
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.BatchSize*
+  name: BatchSize
+  href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_BatchSize_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepository`1.BatchSize
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.BatchSize
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).BatchSize
+  nameWithType: CosmosRepository<T>.BatchSize
+  nameWithType.vb: CosmosRepository(Of T).BatchSize
 - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch,`0[],System.Int32,System.Int32)
   name: BeforeSaveBatch(TransactionalBatch, T[], int, int)
   href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_BeforeSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatch__0___System_Int32_System_Int32_
@@ -875,6 +892,24 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).SaveAsync
   nameWithType: CosmosRepository<T>.SaveAsync
   nameWithType.vb: CosmosRepository(Of T).SaveAsync
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync(System.Int32,System.Int32,`0[])
+  name: SaveBatchAsync(int, int, T[])
+  href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_SaveBatchAsync_System_Int32_System_Int32__0___
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync(System.Int32,System.Int32,`0[])
+  name.vb: SaveBatchAsync(Integer, Integer, T())
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.SaveBatchAsync(int, int, T[])
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).SaveBatchAsync(Integer, Integer, T())
+  nameWithType: CosmosRepository<T>.SaveBatchAsync(int, int, T[])
+  nameWithType.vb: CosmosRepository(Of T).SaveBatchAsync(Integer, Integer, T())
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync*
+  name: SaveBatchAsync
+  href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_SaveBatchAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.SaveBatchAsync
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).SaveBatchAsync
+  nameWithType: CosmosRepository<T>.SaveBatchAsync
+  nameWithType.vb: CosmosRepository(Of T).SaveBatchAsync
 - uid: Benday.CosmosDb.Repositories.CosmosRepository`1._Options
   name: _Options
   href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1__Options

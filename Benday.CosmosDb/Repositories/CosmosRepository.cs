@@ -511,8 +511,19 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     }
 
     /// <summary>
+    /// Batch size for saving items to the Cosmos DB container. 
+    /// This is used to limit the number of items saved in a single batch.
+    /// Default is 50 items per batch.
+    /// </summary>
+    protected virtual int BatchSize
+    {
+        get;
+        set;
+    } = 50;
+
+    /// <summary>
     /// Save a list of items to the Cosmos DB container. This method will perform an insert if the item does not exist, otherwise it will perform an update.
-    /// Items are saved in batches of 50.
+    /// Items are saved in batches of 50 by default.
     /// </summary>
     /// <param name="items">Items to save</param>
     /// <returns></returns>
@@ -525,7 +536,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
         else
         {
-            var batches = BatchUtility.GetBatches(items, 50);
+            var batches = BatchUtility.GetBatches(items, BatchSize);
 
             var batchCount = batches.Count;
 
@@ -534,34 +545,40 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             foreach (var batch in batches)
             {
                 currentBatch++;
-
-                var partitionKey = GetPartitionKey(batch.First());
-
-                var container = await GetContainer();
-
-                var cosmosBatch = container.CreateTransactionalBatch(partitionKey);
-
-                foreach (var item in batch)
-                {
-                    cosmosBatch.UpsertItem(item);
-                }
-
-                await BeforeSaveBatch(cosmosBatch, batch, currentBatch, batchCount);
-
-                using var response = await cosmosBatch.ExecuteAsync();
-
-                await AfterSaveBatch(response, batch, currentBatch, batchCount);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    var responseAsJson = JsonSerializer.Serialize(response);
-
-                    throw new Exception($"Failed to save items.{Environment.NewLine}{responseAsJson}");
-                }
+                using var response = 
+                    await SaveBatchAsync(batchCount, currentBatch, batch);
             }
 
             return;
         }
+    }
+
+    protected virtual async Task<TransactionalBatchResponse> SaveBatchAsync(int batchCount, int currentBatch, T[] batch)
+    {
+        var partitionKey = GetPartitionKey(batch.First());
+
+        var container = await GetContainer();
+
+        var cosmosBatch = container.CreateTransactionalBatch(partitionKey);
+
+        foreach (var item in batch)
+        {
+            cosmosBatch.UpsertItem(item);
+        }
+
+        await BeforeSaveBatch(cosmosBatch, batch, currentBatch, batchCount);
+        var response = await cosmosBatch.ExecuteAsync();
+
+        await AfterSaveBatch(response, batch, currentBatch, batchCount);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var responseAsJson = JsonSerializer.Serialize(response);
+
+            throw new Exception($"Failed to save items.{Environment.NewLine}{responseAsJson}");
+        }
+
+        return response;
     }
 
     protected virtual async Task AfterSaveBatch(TransactionalBatchResponse response, T[] batch, int currentBatch, int batchCount)
