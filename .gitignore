@@ -364,3 +364,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Development/Analysis files (not for public repo)
+CODE-REVIEW-5.0.md
+CONFIG-DEFAULTS-ANALYSIS.md
+RELEASE-NOTES-*.md

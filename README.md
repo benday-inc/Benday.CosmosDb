@@ -13,7 +13,6 @@ YouTube: https://www.youtube.com/@_benday
 
 ## Key features
 
-Key features:
 * Interfaces and base classes for implementing the [repository pattern](https://martinfowler.com/eaaCatalog/repository.html) with CosmosDb
 * Interfaces and base classes for implementing the [domain model pattern](https://en.wikipedia.org/wiki/Domain_model) with CosmosDb
 * Help you to write LINQ queries against CosmosDb without having to worry whether you're using the right partition keys
@@ -22,8 +21,31 @@ Key features:
 * Logging of query performance and [request units](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units) 
 * Detect and warn when you have cross-partition queries 
 * Helper classes and methods for registering types and handling connection configuration
+* Ultra-simple configuration for Azure Cosmos DB Linux emulator
 
-* Got ideas for Azure DevOps utilities you'd like to see? Found a bug? Let us know by submitting an issue https://github.com/benday-inc/Benday.CosmosDb/issues*. *Want to contribute? Submit a pull request.*
+## Quick Start
+
+### For Azure Cosmos DB Emulator (Development)
+```json
+{
+  "CosmosConfiguration": {
+    "UseEmulator": true
+  }
+}
+```
+That's it! See [EMULATOR-SETUP.md](EMULATOR-SETUP.md) for complete emulator configuration guide.
+
+### For Production
+```csharp
+var config = new CosmosConfigBuilder()
+    .WithEndpoint("https://your-cosmos.documents.azure.com:443/")
+    .UseDefaultAzureCredential()
+    .WithDatabase("ProductionDb")
+    .WithContainer("ProductionContainer")
+    .Build();
+```
+
+* Got ideas for CosmosDb functionality that you'd like to see? Found a bug? Let us know by submitting an issue https://github.com/benday-inc/Benday.CosmosDb/issues*. *Want to contribute? Submit a pull request.*
 
 * [Source code](https://github.com/benday-inc/Benday.CosmosDb)  
 * [Repository API Documentation](api/Benday.CosmosDb.Repositories.html)  
