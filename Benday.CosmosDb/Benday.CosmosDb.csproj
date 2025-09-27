@@ -14,11 +14,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>4.8.0</TheVersion>
+    <TheVersion>4.9.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
     <PackageReleaseNotes>
+v4.9 - Added simplified config options for local emulator; Added configuration builder extension method to simplify configuration of cosmos db in web projects; Added better paging support to repository;
 v4.8 - Refactored batch save to make the saving of each batch be a protected virtual method; Added batch size property;
 v4.7 - Adding BeforeSaveBatch and AfterSaveBatch template methods;
 v4.6 - Added configure option to use DefaultAzureCredential for authentication using managed service ids in azure; Fixed bug where cosmos client was improperly registered in DI when using managed ids;
