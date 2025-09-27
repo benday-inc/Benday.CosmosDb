@@ -116,15 +116,18 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L7">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L12">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig__ctor_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.#ctor*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool, bool)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a new instance of CosmosConfig with all configuration options.
+Consider using CosmosConfigBuilder for a cleaner API with better defaults.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CosmosConfig(string accountKey, string endpoint, string databaseName, string containerName, string partitionKey, bool createStructures, int databaseThroughput = 400, bool useGatewayMode = false, bool useHierarchicalPartitionKey = false, bool allowBulkExecution = true, bool useDefaultAzureCredential = false)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use CosmosConfigBuilder for a cleaner configuration API. This constructor will be removed in version 5.0.&quot;)]
+public CosmosConfig(string accountKey, string endpoint, string databaseName, string containerName, string partitionKey, bool createStructures, int databaseThroughput = 400, bool useGatewayMode = false, bool useHierarchicalPartitionKey = false, bool allowBulkExecution = true, bool useDefaultAzureCredential = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -200,7 +203,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_AccountKey.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.AccountKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L36">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L42">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_AccountKey_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.AccountKey*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_AccountKey" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.AccountKey">AccountKey</h4>
@@ -231,7 +234,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_AllowBulkExecution.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L86">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L92">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_AllowBulkExecution_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_AllowBulkExecution" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.AllowBulkExecution">AllowBulkExecution</h4>
@@ -240,7 +243,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool AllowBulkExecution { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool AllowBulkExecution { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -262,7 +265,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_ConnectionString.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.ConnectionString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L91">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L97">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_ConnectionString_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.ConnectionString*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_ConnectionString" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.ConnectionString">ConnectionString</h4>
@@ -293,7 +296,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_ContainerName.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.ContainerName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L51">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L57">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_ContainerName_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.ContainerName*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_ContainerName" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.ContainerName">ContainerName</h4>
@@ -324,7 +327,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_CreateStructures.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.CreateStructures%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L61">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L67">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_CreateStructures_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.CreateStructures*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_CreateStructures" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.CreateStructures">CreateStructures</h4>
@@ -355,7 +358,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_DatabaseName.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.DatabaseName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L46">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L52">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_DatabaseName_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.DatabaseName*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_DatabaseName" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.DatabaseName">DatabaseName</h4>
@@ -386,7 +389,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_DatabaseThroughput.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.DatabaseThroughput%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L81">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L87">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_DatabaseThroughput_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.DatabaseThroughput*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_DatabaseThroughput" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.DatabaseThroughput">DatabaseThroughput</h4>
@@ -417,7 +420,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_Endpoint.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.Endpoint%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L41">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L47">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_Endpoint_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.Endpoint*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_Endpoint" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.Endpoint">Endpoint</h4>
@@ -448,7 +451,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_PartitionKey.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.PartitionKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L56">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L62">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_PartitionKey_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.PartitionKey*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_PartitionKey" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.PartitionKey">PartitionKey</h4>
@@ -479,7 +482,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_UseDefaultAzureCredential.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L71">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L77">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_UseDefaultAzureCredential_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_UseDefaultAzureCredential" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.UseDefaultAzureCredential">UseDefaultAzureCredential</h4>
@@ -510,7 +513,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_UseGatewayMode.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.UseGatewayMode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L66">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L72">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_UseGatewayMode_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.UseGatewayMode*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_UseGatewayMode" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.UseGatewayMode">UseGatewayMode</h4>
@@ -541,7 +544,7 @@
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig_UseHierarchicalPartitionKey.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig.UseHierarchicalPartitionKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L76">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L82">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Utilities_CosmosConfig_UseHierarchicalPartitionKey_" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.UseHierarchicalPartitionKey*"></a>
   <h4 id="Benday_CosmosDb_Utilities_CosmosConfig_UseHierarchicalPartitionKey" data-uid="Benday.CosmosDb.Utilities.CosmosConfig.UseHierarchicalPartitionKey">UseHierarchicalPartitionKey</h4>
@@ -579,7 +582,7 @@
                     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfig.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfig%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L5" class="contribution-link">View Source</a>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfig.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

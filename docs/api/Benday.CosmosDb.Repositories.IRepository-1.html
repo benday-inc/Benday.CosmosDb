@@ -231,6 +231,62 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.IRepository%601.GetPagedAsync(System.Int32%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/IRepository.cs/#L49">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_" data-uid="Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_" data-uid="Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync(System.Int32,System.String)">GetPagedAsync(int, string?)</h4>
+  <div class="markdown level1 summary"><p>Gets a page of results with continuation support.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;PagedResults&lt;T&gt;&gt; GetPagedAsync(int pageSize = 100, string? continuationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">pageSize</span></td>
+        <td><p>Maximum number of items to return</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">continuationToken</span></td>
+        <td><p>Continuation token from previous query (null for first page)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Benday.CosmosDb.Repositories.PagedResults-1.html">PagedResults</a>&lt;T&gt;&gt;</td>
+        <td><p>A page of results with continuation information</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_IRepository_1_SaveAsync_System_Collections_Generic_IList__0__.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.IRepository%601.SaveAsync(System.Collections.Generic.IList%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">

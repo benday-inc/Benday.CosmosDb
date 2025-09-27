@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class CosmosConfigBuilder </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class CosmosConfigBuilder ">
+    
+    <meta name="description" content="Builder pattern for creating CosmosConfig instances with a fluent API. This provides a cleaner way to configure Cosmos DB settings without dealing with multiple constructor parameters.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-brand">
+                <a href="../">
+                  <img id="logo" src="../logo.png" alt="" alt="asdf" width="50" height="50">
+                </a>
+
+              </div>            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder">
+
+
+
+  <h1 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder" class="text-break">Class CosmosConfigBuilder</h1>
+  <div class="markdown level0 summary"><p>Builder pattern for creating CosmosConfig instances with a fluent API.
+This provides a cleaner way to configure Cosmos DB settings without
+dealing with multiple constructor parameters.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">CosmosConfigBuilder</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Benday.html">Benday</a>.<a class="xref" href="Benday.CosmosDb.html">CosmosDb</a>.<a class="xref" href="Benday.CosmosDb.Utilities.html">Utilities</a></h6>
+  <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
+  <h5 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CosmosConfigBuilder</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder__ctor.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L17">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder__ctor_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder__ctor" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor">CosmosConfigBuilder()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the CosmosConfigBuilder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder()</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_Build.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L190">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_Build_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_Build" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build">Build()</h4>
+  <div class="markdown level1 summary"><p>Builds the CosmosConfig instance with the configured settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfig Build()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfig.html">CosmosConfig</a></td>
+        <td><p>The configured CosmosConfig instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></td>
+        <td><p>Thrown when required settings are missing</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_ForEmulator.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L176">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_ForEmulator_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_ForEmulator" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator">ForEmulator()</h4>
+  <div class="markdown level1 summary"><p>Configures the builder with optimal settings for the Azure Cosmos DB Linux emulator.
+This sets Gateway mode (required), disables bulk execution (not supported),
+enables structure creation (convenient for dev), and uses the standard emulator endpoint and key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder ForEmulator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_FromConfig_Benday_CosmosDb_Utilities_CosmosConfig_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L153">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_FromConfig_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_FromConfig_Benday_CosmosDb_Utilities_CosmosConfig_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)">FromConfig(CosmosConfig)</h4>
+  <div class="markdown level1 summary"><p>Creates a CosmosConfigBuilder from an existing CosmosConfig instance.
+Useful for modifying existing configurations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CosmosConfigBuilder FromConfig(CosmosConfig config)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfig.html">CosmosConfig</a></td>
+        <td><span class="parametername">config</span></td>
+        <td><p>The existing configuration</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>A new builder with the existing configuration values</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseDefaultAzureCredential.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L57">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseDefaultAzureCredential_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseDefaultAzureCredential" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential">UseDefaultAzureCredential()</h4>
+  <div class="markdown level1 summary"><p>Configures the builder to use DefaultAzureCredential for authentication
+instead of an account key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder UseDefaultAzureCredential()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseGatewayMode.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L130">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseGatewayMode_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseGatewayMode" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode">UseGatewayMode()</h4>
+  <div class="markdown level1 summary"><p>Enables Gateway connection mode instead of Direct mode.
+Gateway mode can be useful for development or firewall-restricted environments.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder UseGatewayMode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseHierarchicalPartitionKeys.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L108">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseHierarchicalPartitionKeys_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseHierarchicalPartitionKeys" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys">UseHierarchicalPartitionKeys()</h4>
+  <div class="markdown level1 summary"><p>Enables hierarchical partition keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder UseHierarchicalPartitionKeys()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithAccountKey_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L46">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithAccountKey_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithAccountKey_System_String_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(System.String)">WithAccountKey(string)</h4>
+  <div class="markdown level1 summary"><p>Sets the Cosmos DB account key for authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder WithAccountKey(string accountKey)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">accountKey</span></td>
+        <td><p>The account key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithBulkExecution_System_Boolean_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L141">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithBulkExecution_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithBulkExecution_System_Boolean_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(System.Boolean)">WithBulkExecution(bool)</h4>
+  <div class="markdown level1 summary"><p>Configures bulk execution settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder WithBulkExecution(bool allowBulkExecution = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">allowBulkExecution</span></td>
+        <td><p>Whether to allow bulk execution (default: true)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithContainer_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L85">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithContainer_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithContainer_System_String_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(System.String)">WithContainer(string)</h4>
+  <div class="markdown level1 summary"><p>Sets the container configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder WithContainer(string containerName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">containerName</span></td>
+        <td><p>The name of the container</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithCreateStructures.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L119">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithCreateStructures_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithCreateStructures" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures">WithCreateStructures()</h4>
+  <div class="markdown level1 summary"><p>Enables automatic creation of database and container structures if they don't exist.
+Note: This should typically be disabled in production environments.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder WithCreateStructures()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithDatabase_System_String_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(System.String%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L70">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithDatabase_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithDatabase_System_String_System_Nullable_System_Int32__" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(System.String,System.Nullable{System.Int32})">WithDatabase(string, int?)</h4>
+  <div class="markdown level1 summary"><p>Sets the database configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder WithDatabase(string databaseName, int? throughput = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">databaseName</span></td>
+        <td><p>The name of the database</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
+        <td><span class="parametername">throughput</span></td>
+        <td><p>Optional throughput for the database (default: 400 RU/s)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithEndpoint_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L35">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithEndpoint_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithEndpoint_System_String_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(System.String)">WithEndpoint(string)</h4>
+  <div class="markdown level1 summary"><p>Sets the Cosmos DB endpoint URL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder WithEndpoint(string endpoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">endpoint</span></td>
+        <td><p>The endpoint URL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithPartitionKey_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(System.String%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L97">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithPartitionKey_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithPartitionKey_System_String_System_Boolean_" data-uid="Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(System.String,System.Boolean)">WithPartitionKey(string, bool)</h4>
+  <div class="markdown level1 summary"><p>Sets the partition key configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosConfigBuilder WithPartitionKey(string partitionKey, bool useHierarchical = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">partitionKey</span></td>
+        <td><p>The partition key path(s), comma-separated for hierarchical keys</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">useHierarchical</span></td>
+        <td><p>Whether to use hierarchical partition keys</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosConfigBuilder.html">CosmosConfigBuilder</a></td>
+        <td><p>The builder instance for chaining</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosConfigBuilder.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosConfigBuilder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      Copyright © <a href="https://www.benday.com/">www.benday.com</a> | <a href="mailto:info@benday.com">info@benday.com</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

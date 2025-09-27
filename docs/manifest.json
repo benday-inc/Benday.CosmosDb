@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/code/benday-inc/Benday.CosmosDb/docfx_project",
+  "source_base_path": "/Users/benday/code/benday-inc/Benday.CosmosDb/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -70,6 +70,76 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Benday.CosmosDb.DomainModels",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.yml\" sourcestartlinenumber=\"1\">Exception thrown when a batch operation fails in Cosmos DB.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Exceptions.CosmosDbConfigurationException",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.yml\" sourcestartlinenumber=\"1\">Exception thrown when a configuration error occurs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Exceptions.CosmosDbException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Exceptions.CosmosDbException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Exceptions.CosmosDbException",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Exceptions.CosmosDbException.yml\" sourcestartlinenumber=\"1\">Base exception class for all Cosmos DB related exceptions in the library.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.yml\" sourcestartlinenumber=\"1\">Exception thrown when an item is not found in the Cosmos DB container.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Exceptions",
       "Summary": null
     },
     {
@@ -172,6 +242,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Repositories.PagedResults-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Repositories.PagedResults-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.PagedResults<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.PagedResults-1.yml\" sourcestartlinenumber=\"1\">Represents a page of results from a query with continuation support.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Repositories.QueryableInfo-1.yml",
       "output": {
         ".html": {
@@ -214,6 +298,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemService-1.yml",
       "output": {
         ".html": {
@@ -224,6 +322,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Benday.CosmosDb.ServiceLayers.OwnedItemService<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>",
       "Summary": null
     },
     {
@@ -281,6 +393,20 @@
       "IsMRef": true,
       "Title": "Benday.CosmosDb.Utilities.CosmosConfig",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Utilities.CosmosConfigBuilder",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.yml\" sourcestartlinenumber=\"1\">Builder pattern for creating CosmosConfig instances with a fluent API.\nThis provides a cleaner way to configure Cosmos DB settings without\ndealing with multiple constructor parameters.</p>\n"
     },
     {
       "type": "ManagedReference",

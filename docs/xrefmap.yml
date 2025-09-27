@@ -252,6 +252,328 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.DomainModels.OwnedItemBase.PartitionKey
   nameWithType: OwnedItemBase.PartitionKey
+- uid: Benday.CosmosDb.Exceptions
+  name: Benday.CosmosDb.Exceptions
+  href: api/Benday.CosmosDb.Exceptions.html
+  commentId: N:Benday.CosmosDb.Exceptions
+  fullName: Benday.CosmosDb.Exceptions
+  nameWithType: Benday.CosmosDb.Exceptions
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  name: CosmosDbBatchOperationException
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  nameWithType: CosmosDbBatchOperationException
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String)
+  name: CosmosDbBatchOperationException(int, int, int, string)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException__ctor_System_Int32_System_Int32_System_Int32_System_String_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String)
+  name.vb: New(Integer, Integer, Integer, String)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.CosmosDbBatchOperationException(int, int, int, string)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.New(Integer, Integer, Integer, String)
+  nameWithType: CosmosDbBatchOperationException.CosmosDbBatchOperationException(int, int, int, string)
+  nameWithType.vb: CosmosDbBatchOperationException.New(Integer, Integer, Integer, String)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Exception)
+  name: CosmosDbBatchOperationException(int, int, int, string, Exception)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException__ctor_System_Int32_System_Int32_System_Int32_System_String_System_Exception_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Exception)
+  name.vb: New(Integer, Integer, Integer, String, Exception)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.CosmosDbBatchOperationException(int, int, int, string, System.Exception)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.New(Integer, Integer, Integer, String, System.Exception)
+  nameWithType: CosmosDbBatchOperationException.CosmosDbBatchOperationException(int, int, int, string, Exception)
+  nameWithType.vb: CosmosDbBatchOperationException.New(Integer, Integer, Integer, String, Exception)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: CosmosDbBatchOperationException(SerializationInfo, StreamingContext)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name.vb: New(SerializationInfo, StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.CosmosDbBatchOperationException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.New(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: CosmosDbBatchOperationException.CosmosDbBatchOperationException(SerializationInfo, StreamingContext)
+  nameWithType.vb: CosmosDbBatchOperationException.New(SerializationInfo, StreamingContext)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor*
+  name: CosmosDbBatchOperationException
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException__ctor_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.CosmosDbBatchOperationException
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.New
+  nameWithType: CosmosDbBatchOperationException.CosmosDbBatchOperationException
+  nameWithType.vb: CosmosDbBatchOperationException.New
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  name: BatchNumber
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_BatchNumber
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  nameWithType: CosmosDbBatchOperationException.BatchNumber
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber*
+  name: BatchNumber
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_BatchNumber_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  nameWithType: CosmosDbBatchOperationException.BatchNumber
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  name: BatchSize
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_BatchSize
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  nameWithType: CosmosDbBatchOperationException.BatchSize
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize*
+  name: BatchSize
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_BatchSize_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  nameWithType: CosmosDbBatchOperationException.BatchSize
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: CosmosDbBatchOperationException.GetObjectData(SerializationInfo, StreamingContext)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData*
+  name: GetObjectData
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_GetObjectData_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData
+  nameWithType: CosmosDbBatchOperationException.GetObjectData
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  name: TotalBatches
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_TotalBatches
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  nameWithType: CosmosDbBatchOperationException.TotalBatches
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches*
+  name: TotalBatches
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_TotalBatches_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  nameWithType: CosmosDbBatchOperationException.TotalBatches
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException
+  name: CosmosDbConfigurationException
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException
+  nameWithType: CosmosDbConfigurationException
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: CosmosDbConfigurationException(SerializationInfo, StreamingContext)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name.vb: New(SerializationInfo, StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.CosmosDbConfigurationException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.New(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: CosmosDbConfigurationException.CosmosDbConfigurationException(SerializationInfo, StreamingContext)
+  nameWithType.vb: CosmosDbConfigurationException.New(SerializationInfo, StreamingContext)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor(System.String)
+  name: CosmosDbConfigurationException(string)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException__ctor_System_String_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.CosmosDbConfigurationException(string)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.New(String)
+  nameWithType: CosmosDbConfigurationException.CosmosDbConfigurationException(string)
+  nameWithType.vb: CosmosDbConfigurationException.New(String)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor(System.String,System.Exception)
+  name: CosmosDbConfigurationException(string, Exception)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException__ctor_System_String_System_Exception_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor(System.String,System.Exception)
+  name.vb: New(String, Exception)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.CosmosDbConfigurationException(string, System.Exception)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.New(String, System.Exception)
+  nameWithType: CosmosDbConfigurationException.CosmosDbConfigurationException(string, Exception)
+  nameWithType.vb: CosmosDbConfigurationException.New(String, Exception)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor(System.String,System.String)
+  name: CosmosDbConfigurationException(string, string)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException__ctor_System_String_System_String_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor(System.String,System.String)
+  name.vb: New(String, String)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.CosmosDbConfigurationException(string, string)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.New(String, String)
+  nameWithType: CosmosDbConfigurationException.CosmosDbConfigurationException(string, string)
+  nameWithType.vb: CosmosDbConfigurationException.New(String, String)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor*
+  name: CosmosDbConfigurationException
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException__ctor_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.CosmosDbConfigurationException
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.New
+  nameWithType: CosmosDbConfigurationException.CosmosDbConfigurationException
+  nameWithType.vb: CosmosDbConfigurationException.New
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.ConfigurationKey
+  name: ConfigurationKey
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException_ConfigurationKey
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.ConfigurationKey
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.ConfigurationKey
+  nameWithType: CosmosDbConfigurationException.ConfigurationKey
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.ConfigurationKey*
+  name: ConfigurationKey
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException_ConfigurationKey_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.ConfigurationKey
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.ConfigurationKey
+  nameWithType: CosmosDbConfigurationException.ConfigurationKey
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: CosmosDbConfigurationException.GetObjectData(SerializationInfo, StreamingContext)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.GetObjectData*
+  name: GetObjectData
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html#Benday_CosmosDb_Exceptions_CosmosDbConfigurationException_GetObjectData_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.GetObjectData
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.GetObjectData
+  nameWithType: CosmosDbConfigurationException.GetObjectData
+- uid: Benday.CosmosDb.Exceptions.CosmosDbException
+  name: CosmosDbException
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbException.html
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbException
+  nameWithType: CosmosDbException
+- uid: Benday.CosmosDb.Exceptions.CosmosDbException.#ctor
+  name: CosmosDbException()
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbException.html#Benday_CosmosDb_Exceptions_CosmosDbException__ctor
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbException.#ctor
+  name.vb: New()
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbException.CosmosDbException()
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbException.New()
+  nameWithType: CosmosDbException.CosmosDbException()
+  nameWithType.vb: CosmosDbException.New()
+- uid: Benday.CosmosDb.Exceptions.CosmosDbException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: CosmosDbException(SerializationInfo, StreamingContext)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbException.html#Benday_CosmosDb_Exceptions_CosmosDbException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name.vb: New(SerializationInfo, StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbException.CosmosDbException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbException.New(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: CosmosDbException.CosmosDbException(SerializationInfo, StreamingContext)
+  nameWithType.vb: CosmosDbException.New(SerializationInfo, StreamingContext)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbException.#ctor(System.String)
+  name: CosmosDbException(string)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbException.html#Benday_CosmosDb_Exceptions_CosmosDbException__ctor_System_String_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbException.CosmosDbException(string)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbException.New(String)
+  nameWithType: CosmosDbException.CosmosDbException(string)
+  nameWithType.vb: CosmosDbException.New(String)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbException.#ctor(System.String,System.Exception)
+  name: CosmosDbException(string, Exception)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbException.html#Benday_CosmosDb_Exceptions_CosmosDbException__ctor_System_String_System_Exception_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbException.#ctor(System.String,System.Exception)
+  name.vb: New(String, Exception)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbException.CosmosDbException(string, System.Exception)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbException.New(String, System.Exception)
+  nameWithType: CosmosDbException.CosmosDbException(string, Exception)
+  nameWithType.vb: CosmosDbException.New(String, Exception)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbException.#ctor*
+  name: CosmosDbException
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbException.html#Benday_CosmosDb_Exceptions_CosmosDbException__ctor_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbException.CosmosDbException
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbException.New
+  nameWithType: CosmosDbException.CosmosDbException
+  nameWithType.vb: CosmosDbException.New
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException
+  name: CosmosDbItemNotFoundException
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException
+  nameWithType: CosmosDbItemNotFoundException
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: CosmosDbItemNotFoundException(SerializationInfo, StreamingContext)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name.vb: New(SerializationInfo, StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.CosmosDbItemNotFoundException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.New(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: CosmosDbItemNotFoundException.CosmosDbItemNotFoundException(SerializationInfo, StreamingContext)
+  nameWithType.vb: CosmosDbItemNotFoundException.New(SerializationInfo, StreamingContext)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor(System.String)
+  name: CosmosDbItemNotFoundException(string)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException__ctor_System_String_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.CosmosDbItemNotFoundException(string)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.New(String)
+  nameWithType: CosmosDbItemNotFoundException.CosmosDbItemNotFoundException(string)
+  nameWithType.vb: CosmosDbItemNotFoundException.New(String)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor(System.String,System.String)
+  name: CosmosDbItemNotFoundException(string, string)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException__ctor_System_String_System_String_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor(System.String,System.String)
+  name.vb: New(String, String)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.CosmosDbItemNotFoundException(string, string)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.New(String, String)
+  nameWithType: CosmosDbItemNotFoundException.CosmosDbItemNotFoundException(string, string)
+  nameWithType.vb: CosmosDbItemNotFoundException.New(String, String)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor(System.String,System.String,System.Exception)
+  name: CosmosDbItemNotFoundException(string, string, Exception)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException__ctor_System_String_System_String_System_Exception_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor(System.String,System.String,System.Exception)
+  name.vb: New(String, String, Exception)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.CosmosDbItemNotFoundException(string, string, System.Exception)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.New(String, String, System.Exception)
+  nameWithType: CosmosDbItemNotFoundException.CosmosDbItemNotFoundException(string, string, Exception)
+  nameWithType.vb: CosmosDbItemNotFoundException.New(String, String, Exception)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor*
+  name: CosmosDbItemNotFoundException
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException__ctor_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.CosmosDbItemNotFoundException
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.New
+  nameWithType: CosmosDbItemNotFoundException.CosmosDbItemNotFoundException
+  nameWithType.vb: CosmosDbItemNotFoundException.New
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ContainerName
+  name: ContainerName
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException_ContainerName
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ContainerName
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ContainerName
+  nameWithType: CosmosDbItemNotFoundException.ContainerName
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ContainerName*
+  name: ContainerName
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException_ContainerName_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ContainerName
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ContainerName
+  nameWithType: CosmosDbItemNotFoundException.ContainerName
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: CosmosDbItemNotFoundException.GetObjectData(SerializationInfo, StreamingContext)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.GetObjectData*
+  name: GetObjectData
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException_GetObjectData_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.GetObjectData
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.GetObjectData
+  nameWithType: CosmosDbItemNotFoundException.GetObjectData
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ItemId
+  name: ItemId
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException_ItemId
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ItemId
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ItemId
+  nameWithType: CosmosDbItemNotFoundException.ItemId
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ItemId*
+  name: ItemId
+  href: api/Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html#Benday_CosmosDb_Exceptions_CosmosDbItemNotFoundException_ItemId_
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ItemId
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.ItemId
+  nameWithType: CosmosDbItemNotFoundException.ItemId
 - uid: Benday.CosmosDb.Repositories
   name: Benday.CosmosDb.Repositories
   href: api/Benday.CosmosDb.Repositories.html
@@ -700,6 +1022,33 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).GetContainer
   nameWithType: CosmosRepository<T>.GetContainer
   nameWithType.vb: CosmosRepository(Of T).GetContainer
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync(System.Int32,System.String)
+  name: GetPagedAsync(int, string?)
+  href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_System_Int32_System_String_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync(System.Int32,System.String)
+  name.vb: GetPagedAsync(Integer, String)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.GetPagedAsync(int, string?)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).GetPagedAsync(Integer, String)
+  nameWithType: CosmosRepository<T>.GetPagedAsync(int, string?)
+  nameWithType.vb: CosmosRepository(Of T).GetPagedAsync(Integer, String)
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync(System.String,System.Int32,System.String)
+  name: GetPagedAsync(string, int, string?)
+  href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_System_String_System_Int32_System_String_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync(System.String,System.Int32,System.String)
+  name.vb: GetPagedAsync(String, Integer, String)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.GetPagedAsync(string, int, string?)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).GetPagedAsync(String, Integer, String)
+  nameWithType: CosmosRepository<T>.GetPagedAsync(string, int, string?)
+  nameWithType.vb: CosmosRepository(Of T).GetPagedAsync(String, Integer, String)
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync*
+  name: GetPagedAsync
+  href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.GetPagedAsync
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).GetPagedAsync
+  nameWithType: CosmosRepository<T>.GetPagedAsync
+  nameWithType.vb: CosmosRepository(Of T).GetPagedAsync
 - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.GetPartitionKey(System.String,System.String)
   name: GetPartitionKey(string, string)
   href: api/Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey_System_String_System_String_
@@ -1042,6 +1391,24 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetByIdAsync
   nameWithType: IRepository<T>.GetByIdAsync
   nameWithType.vb: IRepository(Of T).GetByIdAsync
+- uid: Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync(System.Int32,System.String)
+  name: GetPagedAsync(int, string?)
+  href: api/Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_
+  commentId: M:Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync(System.Int32,System.String)
+  name.vb: GetPagedAsync(Integer, String)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.GetPagedAsync(int, string?)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetPagedAsync(Integer, String)
+  nameWithType: IRepository<T>.GetPagedAsync(int, string?)
+  nameWithType.vb: IRepository(Of T).GetPagedAsync(Integer, String)
+- uid: Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync*
+  name: GetPagedAsync
+  href: api/Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.GetPagedAsync
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetPagedAsync
+  nameWithType: IRepository<T>.GetPagedAsync
+  nameWithType.vb: IRepository(Of T).GetPagedAsync
 - uid: Benday.CosmosDb.Repositories.IRepository`1.SaveAsync(System.Collections.Generic.IList{`0})
   name: SaveAsync(IList<T>)
   href: api/Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_SaveAsync_System_Collections_Generic_IList__0__
@@ -1111,6 +1478,102 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.OptimisticConcurrencyException.New
   nameWithType: OptimisticConcurrencyException.OptimisticConcurrencyException
   nameWithType.vb: OptimisticConcurrencyException.New
+- uid: Benday.CosmosDb.Repositories.PagedResults`1
+  name: PagedResults<T>
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html
+  commentId: T:Benday.CosmosDb.Repositories.PagedResults`1
+  name.vb: PagedResults(Of T)
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T)
+  nameWithType: PagedResults<T>
+  nameWithType.vb: PagedResults(Of T)
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.String,System.Boolean,System.Double)
+  name: PagedResults(IEnumerable<T>, string?, bool, double)
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1__ctor_System_Collections_Generic_IEnumerable__0__System_String_System_Boolean_System_Double_
+  commentId: M:Benday.CosmosDb.Repositories.PagedResults`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.String,System.Boolean,System.Double)
+  name.vb: New(IEnumerable(Of T), String, Boolean, Double)
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.PagedResults(System.Collections.Generic.IEnumerable<T>, string?, bool, double)
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).New(System.Collections.Generic.IEnumerable(Of T), String, Boolean, Double)
+  nameWithType: PagedResults<T>.PagedResults(IEnumerable<T>, string?, bool, double)
+  nameWithType.vb: PagedResults(Of T).New(IEnumerable(Of T), String, Boolean, Double)
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.#ctor*
+  name: PagedResults
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1__ctor_
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.PagedResults
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).New
+  nameWithType: PagedResults<T>.PagedResults
+  nameWithType.vb: PagedResults(Of T).New
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken
+  name: ContinuationToken
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_ContinuationToken
+  commentId: P:Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.ContinuationToken
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).ContinuationToken
+  nameWithType: PagedResults<T>.ContinuationToken
+  nameWithType.vb: PagedResults(Of T).ContinuationToken
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken*
+  name: ContinuationToken
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_ContinuationToken_
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.ContinuationToken
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).ContinuationToken
+  nameWithType: PagedResults<T>.ContinuationToken
+  nameWithType.vb: PagedResults(Of T).ContinuationToken
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults
+  name: HasMoreResults
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_HasMoreResults
+  commentId: P:Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.HasMoreResults
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).HasMoreResults
+  nameWithType: PagedResults<T>.HasMoreResults
+  nameWithType.vb: PagedResults(Of T).HasMoreResults
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults*
+  name: HasMoreResults
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_HasMoreResults_
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.HasMoreResults
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).HasMoreResults
+  nameWithType: PagedResults<T>.HasMoreResults
+  nameWithType.vb: PagedResults(Of T).HasMoreResults
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.Items
+  name: Items
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_Items
+  commentId: P:Benday.CosmosDb.Repositories.PagedResults`1.Items
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.Items
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).Items
+  nameWithType: PagedResults<T>.Items
+  nameWithType.vb: PagedResults(Of T).Items
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.Items*
+  name: Items
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_Items_
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.Items
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.Items
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).Items
+  nameWithType: PagedResults<T>.Items
+  nameWithType.vb: PagedResults(Of T).Items
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge
+  name: TotalRequestCharge
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_TotalRequestCharge
+  commentId: P:Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.TotalRequestCharge
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).TotalRequestCharge
+  nameWithType: PagedResults<T>.TotalRequestCharge
+  nameWithType.vb: PagedResults(Of T).TotalRequestCharge
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge*
+  name: TotalRequestCharge
+  href: api/Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_TotalRequestCharge_
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.TotalRequestCharge
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).TotalRequestCharge
+  nameWithType: PagedResults<T>.TotalRequestCharge
+  nameWithType.vb: PagedResults(Of T).TotalRequestCharge
 - uid: Benday.CosmosDb.Repositories.QueryableInfo`1
   name: QueryableInfo<T>
   href: api/Benday.CosmosDb.Repositories.QueryableInfo-1.html
@@ -1179,6 +1642,85 @@ references:
   commentId: N:Benday.CosmosDb.ServiceLayers
   fullName: Benday.CosmosDb.ServiceLayers
   nameWithType: Benday.CosmosDb.ServiceLayers
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1
+  name: IOwnedItemServiceBase<T>
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html
+  commentId: T:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1
+  name.vb: IOwnedItemServiceBase(Of T)
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T)
+  nameWithType: IOwnedItemServiceBase<T>
+  nameWithType.vb: IOwnedItemServiceBase(Of T)
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.DeleteAsync(`0)
+  name: DeleteAsync(T)
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemServiceBase_1_DeleteAsync__0_
+  commentId: M:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.DeleteAsync(`0)
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>.DeleteAsync(T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T).DeleteAsync(T)
+  nameWithType: IOwnedItemServiceBase<T>.DeleteAsync(T)
+  nameWithType.vb: IOwnedItemServiceBase(Of T).DeleteAsync(T)
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.DeleteAsync*
+  name: DeleteAsync
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemServiceBase_1_DeleteAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.DeleteAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>.DeleteAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T).DeleteAsync
+  nameWithType: IOwnedItemServiceBase<T>.DeleteAsync
+  nameWithType.vb: IOwnedItemServiceBase(Of T).DeleteAsync
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.GetAllAsync(System.String)
+  name: GetAllAsync(string)
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemServiceBase_1_GetAllAsync_System_String_
+  commentId: M:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.GetAllAsync(System.String)
+  name.vb: GetAllAsync(String)
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>.GetAllAsync(string)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T).GetAllAsync(String)
+  nameWithType: IOwnedItemServiceBase<T>.GetAllAsync(string)
+  nameWithType.vb: IOwnedItemServiceBase(Of T).GetAllAsync(String)
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.GetAllAsync*
+  name: GetAllAsync
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemServiceBase_1_GetAllAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.GetAllAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>.GetAllAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T).GetAllAsync
+  nameWithType: IOwnedItemServiceBase<T>.GetAllAsync
+  nameWithType.vb: IOwnedItemServiceBase(Of T).GetAllAsync
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.GetByIdAsync(System.String,System.String)
+  name: GetByIdAsync(string, string)
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemServiceBase_1_GetByIdAsync_System_String_System_String_
+  commentId: M:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.GetByIdAsync(System.String,System.String)
+  name.vb: GetByIdAsync(String, String)
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>.GetByIdAsync(string, string)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T).GetByIdAsync(String, String)
+  nameWithType: IOwnedItemServiceBase<T>.GetByIdAsync(string, string)
+  nameWithType.vb: IOwnedItemServiceBase(Of T).GetByIdAsync(String, String)
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.GetByIdAsync*
+  name: GetByIdAsync
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemServiceBase_1_GetByIdAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.GetByIdAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>.GetByIdAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T).GetByIdAsync
+  nameWithType: IOwnedItemServiceBase<T>.GetByIdAsync
+  nameWithType.vb: IOwnedItemServiceBase(Of T).GetByIdAsync
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.SaveAsync(`0)
+  name: SaveAsync(T)
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemServiceBase_1_SaveAsync__0_
+  commentId: M:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.SaveAsync(`0)
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>.SaveAsync(T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T).SaveAsync(T)
+  nameWithType: IOwnedItemServiceBase<T>.SaveAsync(T)
+  nameWithType.vb: IOwnedItemServiceBase(Of T).SaveAsync(T)
+- uid: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.SaveAsync*
+  name: SaveAsync
+  href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemServiceBase_1_SaveAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase`1.SaveAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase<T>.SaveAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemServiceBase(Of T).SaveAsync
+  nameWithType: IOwnedItemServiceBase<T>.SaveAsync
+  nameWithType.vb: IOwnedItemServiceBase(Of T).SaveAsync
 - uid: Benday.CosmosDb.ServiceLayers.IOwnedItemService`1
   name: IOwnedItemService<T>
   href: api/Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html
@@ -1258,6 +1800,104 @@ references:
   fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemService(Of T).SaveAsync
   nameWithType: IOwnedItemService<T>.SaveAsync
   nameWithType.vb: IOwnedItemService(Of T).SaveAsync
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1
+  name: OwnedItemServiceBase<T>
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html
+  commentId: T:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1
+  name.vb: OwnedItemServiceBase(Of T)
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T)
+  nameWithType: OwnedItemServiceBase<T>
+  nameWithType.vb: OwnedItemServiceBase(Of T)
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.#ctor(Benday.CosmosDb.Repositories.IOwnedItemRepository{`0})
+  name: OwnedItemServiceBase(IOwnedItemRepository<T>)
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1__ctor_Benday_CosmosDb_Repositories_IOwnedItemRepository__0__
+  commentId: M:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.#ctor(Benday.CosmosDb.Repositories.IOwnedItemRepository{`0})
+  name.vb: New(IOwnedItemRepository(Of T))
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.OwnedItemServiceBase(Benday.CosmosDb.Repositories.IOwnedItemRepository<T>)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).New(Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T))
+  nameWithType: OwnedItemServiceBase<T>.OwnedItemServiceBase(IOwnedItemRepository<T>)
+  nameWithType.vb: OwnedItemServiceBase(Of T).New(IOwnedItemRepository(Of T))
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.#ctor*
+  name: OwnedItemServiceBase
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1__ctor_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.OwnedItemServiceBase
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).New
+  nameWithType: OwnedItemServiceBase<T>.OwnedItemServiceBase
+  nameWithType.vb: OwnedItemServiceBase(Of T).New
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.DeleteAsync(`0)
+  name: DeleteAsync(T)
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1_DeleteAsync__0_
+  commentId: M:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.DeleteAsync(`0)
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.DeleteAsync(T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).DeleteAsync(T)
+  nameWithType: OwnedItemServiceBase<T>.DeleteAsync(T)
+  nameWithType.vb: OwnedItemServiceBase(Of T).DeleteAsync(T)
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.DeleteAsync*
+  name: DeleteAsync
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1_DeleteAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.DeleteAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.DeleteAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).DeleteAsync
+  nameWithType: OwnedItemServiceBase<T>.DeleteAsync
+  nameWithType.vb: OwnedItemServiceBase(Of T).DeleteAsync
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.GetAllAsync(System.String)
+  name: GetAllAsync(string)
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1_GetAllAsync_System_String_
+  commentId: M:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.GetAllAsync(System.String)
+  name.vb: GetAllAsync(String)
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.GetAllAsync(string)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).GetAllAsync(String)
+  nameWithType: OwnedItemServiceBase<T>.GetAllAsync(string)
+  nameWithType.vb: OwnedItemServiceBase(Of T).GetAllAsync(String)
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.GetAllAsync*
+  name: GetAllAsync
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1_GetAllAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.GetAllAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.GetAllAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).GetAllAsync
+  nameWithType: OwnedItemServiceBase<T>.GetAllAsync
+  nameWithType.vb: OwnedItemServiceBase(Of T).GetAllAsync
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.GetByIdAsync(System.String,System.String)
+  name: GetByIdAsync(string, string)
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1_GetByIdAsync_System_String_System_String_
+  commentId: M:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.GetByIdAsync(System.String,System.String)
+  name.vb: GetByIdAsync(String, String)
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.GetByIdAsync(string, string)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).GetByIdAsync(String, String)
+  nameWithType: OwnedItemServiceBase<T>.GetByIdAsync(string, string)
+  nameWithType.vb: OwnedItemServiceBase(Of T).GetByIdAsync(String, String)
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.GetByIdAsync*
+  name: GetByIdAsync
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1_GetByIdAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.GetByIdAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.GetByIdAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).GetByIdAsync
+  nameWithType: OwnedItemServiceBase<T>.GetByIdAsync
+  nameWithType.vb: OwnedItemServiceBase(Of T).GetByIdAsync
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.SaveAsync(`0)
+  name: SaveAsync(T)
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1_SaveAsync__0_
+  commentId: M:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.SaveAsync(`0)
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.SaveAsync(T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).SaveAsync(T)
+  nameWithType: OwnedItemServiceBase<T>.SaveAsync(T)
+  nameWithType.vb: OwnedItemServiceBase(Of T).SaveAsync(T)
+- uid: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.SaveAsync*
+  name: SaveAsync
+  href: api/Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemServiceBase_1_SaveAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase`1.SaveAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase<T>.SaveAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemServiceBase(Of T).SaveAsync
+  nameWithType: OwnedItemServiceBase<T>.SaveAsync
+  nameWithType.vb: OwnedItemServiceBase(Of T).SaveAsync
 - uid: Benday.CosmosDb.ServiceLayers.OwnedItemService`1
   name: OwnedItemService<T>
   href: api/Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html
@@ -1717,6 +2357,218 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.Utilities.CosmosConfig.UseHierarchicalPartitionKey
   nameWithType: CosmosConfig.UseHierarchicalPartitionKey
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  name: CosmosConfigBuilder
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html
+  commentId: T:Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  nameWithType: CosmosConfigBuilder
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor
+  name: CosmosConfigBuilder()
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder__ctor
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor
+  name.vb: New()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.CosmosConfigBuilder()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.New()
+  nameWithType: CosmosConfigBuilder.CosmosConfigBuilder()
+  nameWithType.vb: CosmosConfigBuilder.New()
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor*
+  name: CosmosConfigBuilder
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder__ctor_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.CosmosConfigBuilder
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.New
+  nameWithType: CosmosConfigBuilder.CosmosConfigBuilder
+  nameWithType.vb: CosmosConfigBuilder.New
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build
+  name: Build()
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_Build
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build()
+  nameWithType: CosmosConfigBuilder.Build()
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build*
+  name: Build
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_Build_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build
+  nameWithType: CosmosConfigBuilder.Build
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+  name: ForEmulator()
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_ForEmulator
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator()
+  nameWithType: CosmosConfigBuilder.ForEmulator()
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator*
+  name: ForEmulator
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_ForEmulator_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+  nameWithType: CosmosConfigBuilder.ForEmulator
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)
+  name: FromConfig(CosmosConfig)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_FromConfig_Benday_CosmosDb_Utilities_CosmosConfig_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)
+  nameWithType: CosmosConfigBuilder.FromConfig(CosmosConfig)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig*
+  name: FromConfig
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_FromConfig_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig
+  nameWithType: CosmosConfigBuilder.FromConfig
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+  name: UseDefaultAzureCredential()
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseDefaultAzureCredential
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential()
+  nameWithType: CosmosConfigBuilder.UseDefaultAzureCredential()
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential*
+  name: UseDefaultAzureCredential
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseDefaultAzureCredential_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+  nameWithType: CosmosConfigBuilder.UseDefaultAzureCredential
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+  name: UseGatewayMode()
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseGatewayMode
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode()
+  nameWithType: CosmosConfigBuilder.UseGatewayMode()
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode*
+  name: UseGatewayMode
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseGatewayMode_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+  nameWithType: CosmosConfigBuilder.UseGatewayMode
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  name: UseHierarchicalPartitionKeys()
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseHierarchicalPartitionKeys
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys()
+  nameWithType: CosmosConfigBuilder.UseHierarchicalPartitionKeys()
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys*
+  name: UseHierarchicalPartitionKeys
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseHierarchicalPartitionKeys_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  nameWithType: CosmosConfigBuilder.UseHierarchicalPartitionKeys
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(System.String)
+  name: WithAccountKey(string)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithAccountKey_System_String_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(System.String)
+  name.vb: WithAccountKey(String)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(string)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(String)
+  nameWithType: CosmosConfigBuilder.WithAccountKey(string)
+  nameWithType.vb: CosmosConfigBuilder.WithAccountKey(String)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey*
+  name: WithAccountKey
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithAccountKey_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey
+  nameWithType: CosmosConfigBuilder.WithAccountKey
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(System.Boolean)
+  name: WithBulkExecution(bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithBulkExecution_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(System.Boolean)
+  name.vb: WithBulkExecution(Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(Boolean)
+  nameWithType: CosmosConfigBuilder.WithBulkExecution(bool)
+  nameWithType.vb: CosmosConfigBuilder.WithBulkExecution(Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution*
+  name: WithBulkExecution
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithBulkExecution_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution
+  nameWithType: CosmosConfigBuilder.WithBulkExecution
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(System.String)
+  name: WithContainer(string)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithContainer_System_String_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(System.String)
+  name.vb: WithContainer(String)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(string)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(String)
+  nameWithType: CosmosConfigBuilder.WithContainer(string)
+  nameWithType.vb: CosmosConfigBuilder.WithContainer(String)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer*
+  name: WithContainer
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithContainer_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer
+  nameWithType: CosmosConfigBuilder.WithContainer
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+  name: WithCreateStructures()
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithCreateStructures
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures()
+  nameWithType: CosmosConfigBuilder.WithCreateStructures()
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures*
+  name: WithCreateStructures
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithCreateStructures_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+  nameWithType: CosmosConfigBuilder.WithCreateStructures
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(System.String,System.Nullable{System.Int32})
+  name: WithDatabase(string, int?)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithDatabase_System_String_System_Nullable_System_Int32__
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(System.String,System.Nullable{System.Int32})
+  name.vb: WithDatabase(String, Integer?)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(string, int?)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(String, Integer?)
+  nameWithType: CosmosConfigBuilder.WithDatabase(string, int?)
+  nameWithType.vb: CosmosConfigBuilder.WithDatabase(String, Integer?)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase*
+  name: WithDatabase
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithDatabase_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase
+  nameWithType: CosmosConfigBuilder.WithDatabase
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(System.String)
+  name: WithEndpoint(string)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithEndpoint_System_String_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(System.String)
+  name.vb: WithEndpoint(String)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(string)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(String)
+  nameWithType: CosmosConfigBuilder.WithEndpoint(string)
+  nameWithType.vb: CosmosConfigBuilder.WithEndpoint(String)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint*
+  name: WithEndpoint
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithEndpoint_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint
+  nameWithType: CosmosConfigBuilder.WithEndpoint
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(System.String,System.Boolean)
+  name: WithPartitionKey(string, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithPartitionKey_System_String_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(System.String,System.Boolean)
+  name.vb: WithPartitionKey(String, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(string, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(String, Boolean)
+  nameWithType: CosmosConfigBuilder.WithPartitionKey(string, bool)
+  nameWithType.vb: CosmosConfigBuilder.WithPartitionKey(String, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey*
+  name: WithPartitionKey
+  href: api/Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithPartitionKey_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey
+  nameWithType: CosmosConfigBuilder.WithPartitionKey
 - uid: Benday.CosmosDb.Utilities.CosmosDbUtilities
   name: CosmosDbUtilities
   href: api/Benday.CosmosDb.Utilities.CosmosDbUtilities.html
