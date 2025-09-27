@@ -168,6 +168,21 @@ public class CosmosConfigBuilder
     }
 
     /// <summary>
+    /// Configures the builder with optimal settings for the Azure Cosmos DB Linux emulator.
+    /// This sets Gateway mode (required), disables bulk execution (not supported), 
+    /// enables structure creation (convenient for dev), and uses the standard emulator endpoint and key.
+    /// </summary>
+    /// <returns>The builder instance for chaining</returns>
+    public CosmosConfigBuilder ForEmulator()
+    {
+        return WithEndpoint("https://localhost:8081/")
+            .WithAccountKey("C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==")
+            .UseGatewayMode()
+            .WithBulkExecution(false)
+            .WithCreateStructures();
+    }
+
+    /// <summary>
     /// Builds the CosmosConfig instance with the configured settings.
     /// </summary>
     /// <returns>The configured CosmosConfig instance</returns>

@@ -52,7 +52,34 @@ var nextPage = await repository.GetPagedAsync(
 // - TotalRequestCharge: RU cost tracking
 ```
 
-### 3. Domain-Specific Exceptions
+### 3. Emulator Configuration Support
+Simplified configuration for the Azure Cosmos DB Linux emulator with automatic optimization:
+
+```csharp
+// Super simple appsettings.json
+{
+  "CosmosConfiguration": {
+    "UseEmulator": true,
+    "DatabaseName": "MyTestDb",
+    "ContainerName": "MyContainer"
+  }
+}
+
+// Or in code
+var config = new CosmosConfigBuilder()
+    .ForEmulator()
+    .WithDatabase("MyTestDb")
+    .WithContainer("MyContainer")
+    .Build();
+```
+
+When `UseEmulator: true` is set, automatically configures:
+- ✅ Gateway mode (required for Linux emulator)
+- ✅ Bulk execution disabled (not supported in emulator)
+- ✅ Standard emulator endpoint and key
+- ✅ Structure creation enabled (convenient for dev)
+
+### 4. Domain-Specific Exceptions
 Replaced generic `InvalidOperationException` with meaningful exception types:
 
 - `CosmosDbException` - Base exception for all Cosmos DB errors
@@ -128,9 +155,11 @@ No code changes required. However, we recommend:
 ## Files Changed
 
 ### New Files
-- `Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs`
-- `Benday.CosmosDb/Exceptions/CosmosDbException.cs`
-- `Benday.CosmosDb/Repositories/PagedResults.cs`
+- `Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs` - Fluent configuration API
+- `Benday.CosmosDb/Exceptions/CosmosDbException.cs` - Domain-specific exceptions  
+- `Benday.CosmosDb/Repositories/PagedResults.cs` - Pagination support
+- `EMULATOR-SETUP.md` - Linux emulator configuration guide
+- `appsettings.Production.json` - Production configuration example
 
 ### Modified Files
 - `Benday.CosmosDb/Utilities/CosmosConfig.cs` - Added obsolete attribute

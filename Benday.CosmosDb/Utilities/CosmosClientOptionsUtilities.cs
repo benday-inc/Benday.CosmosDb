@@ -67,6 +67,26 @@ public static class CosmosClientOptionsUtilities
     /// <exception cref="InvalidOperationException"></exception>
     public static CosmosConfig GetCosmosConfig(this IConfiguration configuration)
     {
+        var useEmulator = 
+            GetBoolean(configuration, "CosmosConfiguration:UseEmulator", false);
+            
+        // If UseEmulator is true, return emulator configuration with smart defaults
+        if (useEmulator)
+        {
+            var emulatorDatabaseName = configuration["CosmosConfiguration:DatabaseName"] ?? "DevDb";
+            var emulatorContainerName = configuration["CosmosConfiguration:ContainerName"] ?? "DevContainer";
+            var emulatorPartitionKey = configuration["CosmosConfiguration:PartitionKey"] ?? CosmosDbConstants.DefaultPartitionKey;
+            var emulatorUseHierarchical = GetBoolean(configuration, "CosmosConfiguration:HierarchicalPartitionKey", true); // Default true for emulator
+            var emulatorDatabaseThroughput = GetInt32(configuration, "CosmosConfiguration:DatabaseThroughput", CosmosDbConstants.DefaultDatabaseThroughput);
+            
+            return new CosmosConfigBuilder()
+                .ForEmulator()
+                .WithDatabase(emulatorDatabaseName, emulatorDatabaseThroughput)
+                .WithContainer(emulatorContainerName)
+                .WithPartitionKey(emulatorPartitionKey, emulatorUseHierarchical)
+                .Build();
+        }
+
         var useDefaultAzureCredential =
             GetBoolean(configuration, "CosmosConfiguration:UseDefaultAzureCredential", false);
 
