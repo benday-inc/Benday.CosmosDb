@@ -1,9 +1,15 @@
-﻿using Benday.CosmosDb.Repositories;
+﻿using System;
+using Benday.CosmosDb.Repositories;
 
 namespace Benday.CosmosDb.Utilities;
 
 public class CosmosConfig
 {
+    /// <summary>
+    /// Creates a new instance of CosmosConfig with all configuration options.
+    /// Consider using CosmosConfigBuilder for a cleaner API with better defaults.
+    /// </summary>
+    [Obsolete("Use CosmosConfigBuilder for a cleaner configuration API. This constructor will be removed in version 5.0.")]
     public CosmosConfig(
         string accountKey,
         string endpoint,
@@ -83,7 +89,7 @@ public class CosmosConfig
     /// <summary>
     /// Allow bulk execution for Cosmos DB operations on the client connection. This is enabled by default.
     /// </summary>
-    public bool AllowBulkExecution { get; private set; } = true;
+    public bool AllowBulkExecution { get; set; } = true;
 
     /// <summary>
     /// Gets the connection string for the Cosmos DB account.

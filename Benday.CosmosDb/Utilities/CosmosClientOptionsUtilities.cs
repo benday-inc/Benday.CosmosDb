@@ -104,6 +104,7 @@ public static class CosmosClientOptionsUtilities
         var allowBulkExecution =
             GetBoolean(configuration, "CosmosConfiguration:AllowBulkExecution", true);
 
+        #pragma warning disable CS0618 // Type or member is obsolete
         var temp = new CosmosConfig(
             accountKey, 
             endpoint, 
@@ -116,6 +117,7 @@ public static class CosmosClientOptionsUtilities
             useHierarchicalPartitionKey,
             allowBulkExecution, 
             useDefaultAzureCredential);
+        #pragma warning restore CS0618 // Type or member is obsolete
 
         return temp;
     }
@@ -197,8 +199,6 @@ public static class CosmosClientOptionsUtilities
 
         var options = GetCosmosDbClientOptions(jsonNamingPolicy, connectionMode, allowBulkExecution);
 
-        Console.WriteLine($"Configuring CosmosClient with connection string...");
-        Console.WriteLine($"Connection String: {connectionString}");
         services.AddSingleton(new CosmosClient(connectionString, options));
     }
 
@@ -222,7 +222,6 @@ public static class CosmosClientOptionsUtilities
 
         if (cosmosConfig.UseDefaultAzureCredential == true)
         {
-            Console.WriteLine($"Configuring CosmosClient with DefaultAzureCredential...");
             var client = new CosmosClient(
                 cosmosConfig.Endpoint,
                 new DefaultAzureCredential(),
@@ -231,9 +230,7 @@ public static class CosmosClientOptionsUtilities
             services.AddSingleton(client);
         }
         else
-        {
-            Console.WriteLine($"Configuring CosmosClient with connection string...");
-            
+        {            
             var client = new CosmosClient(cosmosConfig.ConnectionString, options);
             
             services.AddSingleton(client);

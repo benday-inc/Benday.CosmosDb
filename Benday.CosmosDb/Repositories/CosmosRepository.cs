@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using Benday.CosmosDb.DomainModels;
+using Benday.CosmosDb.Exceptions;
 using Benday.CosmosDb.Utilities;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
@@ -81,7 +82,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         await Initialize();
 
-        return _Container is null ? throw new InvalidOperationException($"Container instance is null.") : _Container;
+        return _Container is null ? throw new CosmosDbConfigurationException("Container instance is null. Initialization may have failed.") : _Container;
     }
 
 
@@ -95,7 +96,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         var container = await GetContainer();
 
-        var itemToDelete = await GetByIdAsync(id) ?? throw new InvalidOperationException($"Item with id {id} not found.");
+        var itemToDelete = await GetByIdAsync(id) ?? throw new CosmosDbItemNotFoundException(id, _Options.ContainerName);
         var builder = new PartitionKeyBuilder();
 
         _ = builder.Add(itemToDelete.PartitionKey);
@@ -111,7 +112,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
             if (response == null)
             {
-                throw new InvalidOperationException($"Response was null");
+                throw new CosmosDbException($"Delete operation for item with id {id} returned null response");
             }
             else
             {
@@ -126,7 +127,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 }
                 else
                 {
-                    throw new InvalidOperationException($"Response status code was {response.StatusCode}");
+                    throw new CosmosDbException($"Response status code was {response.StatusCode}");
                 }
             }
         }
@@ -471,7 +472,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
             if (response == null)
             {
-                throw new InvalidOperationException($"Response was null");
+                throw new CosmosDbException($"Save operation for item with id {saveThis.Id} returned null response");
             }
             else
             {
@@ -490,7 +491,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 }
                 else
                 {
-                    throw new InvalidOperationException($"Response status code was {response.StatusCode}");
+                    throw new CosmosDbException($"Response status code was {response.StatusCode}");
                 }
             }
         }
@@ -575,19 +576,20 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         {
             var responseAsJson = JsonSerializer.Serialize(response);
 
-            throw new Exception($"Failed to save items.{Environment.NewLine}{responseAsJson}");
+            throw new CosmosDbBatchOperationException(currentBatch, batchCount, batch.Length, $"Failed to save items. Response: {responseAsJson}");
         }
 
         return response;
     }
 
-    protected virtual async Task AfterSaveBatch(TransactionalBatchResponse response, T[] batch, int currentBatch, int batchCount)
+    protected virtual Task AfterSaveBatch(TransactionalBatchResponse response, T[] batch, int currentBatch, int batchCount)
     {
-
+        return Task.CompletedTask;
     }
 
-    protected virtual async Task BeforeSaveBatch(TransactionalBatch cosmosBatch, T[] batch, int currentBatch, int batchCount)
+    protected virtual Task BeforeSaveBatch(TransactionalBatch cosmosBatch, T[] batch, int currentBatch, int batchCount)
     {
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -701,5 +703,126 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         var info = new QueryableInfo<T>(new PartitionKey(), queryable);
 
         return info;
+    }
+
+    /// <summary>
+    /// Gets a page of results with continuation support for efficient large result set retrieval.
+    /// </summary>
+    /// <param name="pageSize">Maximum number of items to return in this page</param>
+    /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
+    /// <returns>A page of results with continuation information</returns>
+    public virtual async Task<PagedResults<T>> GetPagedAsync(int pageSize = 100, string? continuationToken = null)
+    {
+        if (pageSize <= 0)
+        {
+            throw new ArgumentException("Page size must be greater than zero.", nameof(pageSize));
+        }
+
+        var container = await GetContainer();
+        var queryable = await GetQueryable();
+
+        var query = queryable.Queryable
+            .Where(x => x.DiscriminatorValue == DiscriminatorValue)
+            .Take(pageSize);
+
+        var feedIterator = query.ToFeedIterator();
+
+        if (!string.IsNullOrEmpty(continuationToken))
+        {
+            // Create a new query with the continuation token
+            var queryRequestOptions = new QueryRequestOptions
+            {
+                MaxItemCount = pageSize,
+                PartitionKey = queryable.PartitionKey
+            };
+
+            var queryDefinition = new QueryDefinition(query.ToQueryDefinition().QueryText);
+            feedIterator = container.GetItemQueryIterator<T>(
+                queryDefinition, 
+                continuationToken, 
+                queryRequestOptions);
+        }
+
+        var items = new List<T>();
+        var totalRequestCharge = 0.0;
+        string? newContinuationToken = null;
+        bool hasMoreResults = false;
+
+        if (feedIterator.HasMoreResults)
+        {
+            var response = await feedIterator.ReadNextAsync();
+
+            items.AddRange(response);
+            totalRequestCharge += response.RequestCharge;
+            newContinuationToken = response.ContinuationToken;
+            hasMoreResults = !string.IsNullOrEmpty(newContinuationToken);
+
+            var diagnostics = response.Diagnostics;
+            Logger.LogInformation($"Request Charge (GetPagedAsync): {response.RequestCharge}");
+
+            var isCrossPartition = IsCrossPartitionQuery(diagnostics);
+            if (isCrossPartition)
+            {
+                Logger.LogWarning($"GetPagedAsync is performing a cross-partition query. This may impact performance.");
+            }
+        }
+
+        return new PagedResults<T>(items, newContinuationToken, hasMoreResults, totalRequestCharge);
+    }
+
+    /// <summary>
+    /// Gets a page of results for a specific partition with continuation support.
+    /// </summary>
+    /// <param name="firstLevelPartitionKeyValue">Value to use for the first-level partition key</param>
+    /// <param name="pageSize">Maximum number of items to return in this page</param>
+    /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
+    /// <returns>A page of results with continuation information</returns>
+    protected virtual async Task<PagedResults<T>> GetPagedAsync(
+        string firstLevelPartitionKeyValue, 
+        int pageSize = 100, 
+        string? continuationToken = null)
+    {
+        if (pageSize <= 0)
+        {
+            throw new ArgumentException("Page size must be greater than zero.", nameof(pageSize));
+        }
+
+        var container = await GetContainer();
+        var queryable = await GetQueryable(firstLevelPartitionKeyValue);
+
+        var query = queryable.Queryable
+            .Where(x => x.DiscriminatorValue == DiscriminatorValue)
+            .Take(pageSize);
+
+        var queryRequestOptions = new QueryRequestOptions
+        {
+            MaxItemCount = pageSize,
+            PartitionKey = queryable.PartitionKey
+        };
+
+        var queryDefinition = new QueryDefinition(query.ToQueryDefinition().QueryText);
+        var feedIterator = container.GetItemQueryIterator<T>(
+            queryDefinition, 
+            continuationToken, 
+            queryRequestOptions);
+
+        var items = new List<T>();
+        var totalRequestCharge = 0.0;
+        string? newContinuationToken = null;
+        bool hasMoreResults = false;
+
+        if (feedIterator.HasMoreResults)
+        {
+            var response = await feedIterator.ReadNextAsync();
+
+            items.AddRange(response);
+            totalRequestCharge += response.RequestCharge;
+            newContinuationToken = response.ContinuationToken;
+            hasMoreResults = !string.IsNullOrEmpty(newContinuationToken);
+
+            Logger.LogInformation($"Request Charge (GetPagedAsync with partition): {response.RequestCharge}");
+        }
+
+        return new PagedResults<T>(items, newContinuationToken, hasMoreResults, totalRequestCharge);
     }
 }

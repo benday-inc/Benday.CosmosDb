@@ -39,4 +39,12 @@ public interface IRepository<T> where T : class
     /// </summary>
     /// <returns></returns>
     Task<IEnumerable<T>> GetAllAsync();
+
+    /// <summary>
+    /// Gets a page of results with continuation support.
+    /// </summary>
+    /// <param name="pageSize">Maximum number of items to return</param>
+    /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
+    /// <returns>A page of results with continuation information</returns>
+    Task<PagedResults<T>> GetPagedAsync(int pageSize = 100, string? continuationToken = null);
 }
