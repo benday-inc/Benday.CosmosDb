@@ -43,7 +43,12 @@ public class PersonRepositoryFixture
         AssertThat.AreNotEqual(DateTime.MinValue, person.Timestamp, "Timestamp");
     }
 
-    [Fact]
+
+    /// <summary>
+    /// This test doesn't work with the linux docker next gen emulator or ARM64
+    /// </summary>
+    /// <returns></returns>
+    [Fact(Skip = "only works with real cosmosdb or the old Windows emulator on Intel")]    
     public async Task CreatePerson_Multiple_PopulatesBaseClassProperties()
     {
         // arrange
