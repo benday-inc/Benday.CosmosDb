@@ -62,4 +62,34 @@ public class PersonControllerFixture
 
         response.EnsureSuccessStatusCode();
     }
+
+    [Fact]
+    public async Task LoadExisting_ViaRepository_BaseClassPropertiesArePopulated()
+    {
+        // arrange
+        var factory = new WebApplicationFactory<MarkerClassForTesting>();
+
+        var client = factory.CreateClient();
+
+        var now = DateTime.Now.Ticks.ToString();
+
+        var contentToPost = new FormUrlEncodedContent(
+            new Dictionary<string, string>
+            {
+                { "Id", "" },
+                { "FirstName", $"fn_{now}" },
+                { "LastName", $"ln_{now}" },
+                { "EmailAddress", $"email_{now}" }
+            });
+
+        // act
+        var response = await client.PostAsync("person/edit/", contentToPost);
+
+        // assert
+        Assert.NotNull(response);
+
+        var content = await response.Content.ReadAsStringAsync();
+
+        response.EnsureSuccessStatusCode();
+    }
 }
