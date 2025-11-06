@@ -43,6 +43,39 @@ public class PersonRepositoryFixture
         AssertThat.AreNotEqual(DateTime.MinValue, person.Timestamp, "Timestamp");
     }
 
+    [Fact]
+    public async Task LoadPerson_PopulatesBaseClassProperties()
+    {
+        // arrange
+        var factory = new CustomWebApplicationFactory<MarkerClassForTesting>();
+
+        var client = factory.CreateClient();
+
+        var repository = factory.CreateInstance<IPersonRepository>();
+
+        AssertThat.IsNotNull(repository);
+
+        Person person = new Person()
+        {
+            OwnerId = "TestOwner",
+            FirstName = "TestFirstName",
+            LastName = "TestLastName"
+        };
+
+        await repository.SaveAsync(person);
+
+        // act
+        var reloaded = await repository.GetByIdAsync(person.OwnerId, person.Id);
+
+        // assert
+
+        AssertThat.IsNotNull(reloaded, "reloaded");
+        AssertThatString.IsNotNullOrWhiteSpace(reloaded.Id, "Id");
+        AssertThatString.IsNotNullOrWhiteSpace(reloaded.Etag, "Etag");
+        AssertThat.IsTrue(reloaded.TimestampUnixStyle > 0, "TimestampUnixStyle");
+        AssertThat.AreNotEqual(DateTime.MinValue, reloaded.Timestamp, "Timestamp");
+    }
+
 
     /// <summary>
     /// This test doesn't work with the linux docker next gen emulator or ARM64
