@@ -578,6 +578,24 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         await BeforeSaveBatch(cosmosBatch, batch, currentBatch, batchCount);
         var response = await cosmosBatch.ExecuteAsync();
 
+        if (response.IsSuccessStatusCode)
+        {
+            for (int i = 0; i < batch.Length; i++)
+            {
+                // Get the individual response for each item in the batch
+                var itemResponse = response.GetOperationResultAtIndex<T>(i);
+
+                if (itemResponse != null && itemResponse.Resource != null)
+                {
+                    // Update the original item with the new ETag and timestamp values
+                    batch[i].Etag = itemResponse.Resource.Etag;
+                    batch[i].TimestampUnixStyle = itemResponse.Resource.TimestampUnixStyle;
+
+                    Logger.LogInformation($"Updated item {batch[i].Id} with ETag: {itemResponse.Resource.Etag}");
+                }
+            }
+        }
+
         await AfterSaveBatch(response, batch, currentBatch, batchCount);
 
         if (!response.IsSuccessStatusCode)
