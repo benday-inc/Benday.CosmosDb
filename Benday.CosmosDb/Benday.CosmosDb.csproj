@@ -1,5 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <!--<TargetFrameworks>net8.0;net9.0</TargetFrameworks>-->
@@ -37,15 +36,12 @@ v2.0 - Changed implementation to use System.Text.Json for serialization instead 
 v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository utilities</PackageReleaseNotes>
     <PackageTags>cosmosdb; repository pattern; domain model pattern; c#; csharp; cosmos;</PackageTags>
   </PropertyGroup>
-
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Utilities\CosmosConfigurationUtilities.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="..\bdc_mark_128_128.png">
       <Pack>True</Pack>
@@ -56,15 +52,11 @@ v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository util
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.*" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.*" />
-    
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.*" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.*" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="9.*" />
-    
   </ItemGroup>
-
 </Project>

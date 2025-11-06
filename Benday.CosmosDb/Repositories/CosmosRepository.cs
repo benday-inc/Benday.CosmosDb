@@ -476,6 +476,14 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             }
             else
             {
+                if (response.Resource != null)
+                {
+                    // update the etag and timestamp values from the response
+                    saveThis.Etag = response.Resource.Etag;
+                    saveThis.Timestamp = response.Resource.Timestamp;
+                    saveThis.TimestampUnixStyle = response.Resource.TimestampUnixStyle;
+                }
+
                 // print diagnostics
                 var diagnostics = response.Diagnostics;
                 var diagnosticsString = diagnostics.ToString();
