@@ -21,6 +21,7 @@ var cosmosBuilder = new CosmosRegistrationHelper(
     builder.Services, cosmosConfig);
 
 cosmosBuilder.RegisterRepositoryAndService<Note>();
+cosmosBuilder.RegisterParentedRepositoryAndService<Comment>();
 cosmosBuilder.RegisterRepository<Person, IPersonRepository, CosmosDbPersonRepository>();
 builder.Services.AddTransient<IPersonService, PersonService>();
 

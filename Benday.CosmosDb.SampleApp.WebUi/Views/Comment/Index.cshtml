@@ -1,0 +1,68 @@
+@model IEnumerable<Benday.CosmosDb.SampleApp.Api.DomainModels.Comment>
+
+@{
+    ViewData["Title"] = "Comments";
+    var noteId = ViewData["NoteId"] as string;
+}
+
+<h1>Comments for Note</h1>
+
+<p>
+    <a asp-action="Create" asp-route-noteId="@noteId">Add New Comment</a> |
+    <a asp-controller="Note" asp-action="Details" asp-route-id="@noteId">Back to Note</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentDiscriminator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentDiscriminator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id, noteId=noteId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id, noteId=noteId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id, noteId=noteId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
