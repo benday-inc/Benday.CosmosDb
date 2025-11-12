@@ -45,36 +45,6 @@ public class CosmosRegistrationHelper
         ConfigureClient();
     }
 
-    public CosmosRegistrationHelper(
-        IServiceCollection services,
-        string connectionString,
-        string databaseName,
-        string containerName,
-        bool createStructures,
-        string? partitionKey = null, 
-        bool useGatewayMode = false,
-        bool useHierarchicalPartitionKey = false,
-        bool allowBulkExecution = true, 
-        bool useDefaultAzureCredential = false)
-    {        
-        _Services = services;
-        ConnectionString = connectionString;
-        DatabaseName = databaseName;
-        ContainerName = containerName;
-        WithCreateStructures = createStructures;
-        UseGatewayMode = useGatewayMode;
-        UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
-        AllowBulkExecution = allowBulkExecution;
-        UseDefaultAzureCredential = useDefaultAzureCredential;
-
-        if (partitionKey != null)
-        {
-            PartitionKey = partitionKey;
-        }
-
-        ConfigureClient();
-    }
-
     /// <summary>
     /// Registers a repository for a specific domain model entity type.
     /// </summary>
