@@ -17,7 +17,7 @@ public class CosmosDbParentedItemRepository<T> :
     {
     }
 
-    public async Task<List<T>> GetAllByParentIdAsync(string ownerId, string parentId)
+    public async Task<List<T>> GetAllByParentIdAsync(string ownerId, string parentId, string? parentDiscriminator = null)
     {
         var container = await GetContainer();
 
@@ -25,6 +25,11 @@ public class CosmosDbParentedItemRepository<T> :
 
         var query = queryable.Queryable
                     .Where(x => x.ParentId == parentId);
+
+        if (!string.IsNullOrEmpty(parentDiscriminator))
+        {
+            query = query.Where(x => x.ParentDiscriminator == parentDiscriminator);
+        }
 
         var results = await GetResults(query, GetQueryDescription(), queryable.PartitionKey);
 

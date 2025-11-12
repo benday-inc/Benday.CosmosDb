@@ -6,4 +6,9 @@ public interface IParentedItem : IOwnedItem
     /// Parent ID in our system
     /// </summary>
     string ParentId { get; set; }
+
+    /// <summary>
+    /// Discriminator/type of the parent entity
+    /// </summary>
+    string ParentDiscriminator { get; set; }
 }

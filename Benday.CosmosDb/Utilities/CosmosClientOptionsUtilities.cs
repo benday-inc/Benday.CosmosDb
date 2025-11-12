@@ -316,6 +316,66 @@ public static class CosmosClientOptionsUtilities
     }
 
     /// <summary>
+    /// Configures a repository for a specific parented item entity type using default implementation of CosmosDbParentedItemRepository.
+    /// </summary>
+    /// <typeparam name="TEntity">Entity type that inherits from ParentedItemBase</typeparam>
+    /// <param name="services">Service collection</param>
+    /// <param name="connectionString">Connection string or endpoint for Cosmos DB</param>
+    /// <param name="databaseName">Database name</param>
+    /// <param name="containerName">Container name</param>
+    /// <param name="partitionKey">Partition key</param>
+    /// <param name="createStructures">Create structures as part of the instantiation of this repository class (NOTE: this should probably be false in production)</param>
+    /// <param name="useHierarchicalPartitionKey">Use hierarchical partition key</param>
+    /// <param name="useDefaultAzureCredential">Use DefaultAzureCredential for authentication</param>
+    public static void ConfigureParentedRepository<TEntity>(
+        this IServiceCollection services,
+        string connectionString,
+        string databaseName,
+        string containerName,
+        string partitionKey,
+        bool createStructures,
+        bool useHierarchicalPartitionKey,
+        bool useDefaultAzureCredential = false) where TEntity : ParentedItemBase, new()
+    {
+        services.RegisterOptionsForRepository<TEntity>(
+            connectionString, databaseName, containerName, partitionKey, createStructures,
+            useHierarchicalPartitionKey, useDefaultAzureCredential);
+
+        services.AddTransient<IParentedItemRepository<TEntity>, CosmosDbParentedItemRepository<TEntity>>();
+    }
+
+    /// <summary>
+    /// Configures a repository for a specific parented item entity type using a custom implementation of the repository.
+    /// </summary>
+    /// <typeparam name="TEntity">Entity type that inherits from ParentedItemBase</typeparam>
+    /// <typeparam name="TInterface">Repository interface</typeparam>
+    /// <typeparam name="TImplementation">Repository implementation</typeparam>
+    /// <param name="services">Service collection</param>
+    /// <param name="connectionString">Connection string or endpoint for Cosmos DB</param>
+    /// <param name="databaseName">Database name</param>
+    /// <param name="containerName">Container name</param>
+    /// <param name="partitionKey">Partition key</param>
+    /// <param name="createStructures">Create structures as part of the instantiation of this repository class (NOTE: this should probably be false in production)</param>
+    /// <param name="useHierarchicalPartitionKey">Use hierarchical partition key</param>
+    /// <param name="useDefaultAzureCredential">Use DefaultAzureCredential for authentication</param>
+    public static void ConfigureParentedRepository<TEntity, TInterface, TImplementation>(
+        this IServiceCollection services,
+        string connectionString,
+        string databaseName,
+        string containerName,
+        string partitionKey,
+        bool createStructures, bool useHierarchicalPartitionKey, bool useDefaultAzureCredential = false)
+        where TImplementation : class, TInterface
+        where TInterface : class
+    {
+        services.RegisterOptionsForRepository<TEntity>(
+            connectionString, databaseName, containerName, partitionKey, createStructures,
+            useHierarchicalPartitionKey, useDefaultAzureCredential);
+
+        services.AddTransient<TInterface, TImplementation>();
+    }
+
+    /// <summary>
     /// Registers options for a repository.
     /// </summary>
     /// <typeparam name="T"></typeparam>
