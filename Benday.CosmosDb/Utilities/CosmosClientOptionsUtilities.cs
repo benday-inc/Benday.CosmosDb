@@ -124,20 +124,20 @@ public static class CosmosClientOptionsUtilities
         var allowBulkExecution =
             GetBoolean(configuration, "CosmosConfiguration:AllowBulkExecution", true);
 
-        #pragma warning disable CS0618 // Type or member is obsolete
-        var temp = new CosmosConfig(
-            accountKey, 
-            endpoint, 
-            databaseName, 
-            containerName, 
-            partitionKey, 
-            createStructures, 
-            databaseThroughput, 
-            useGatewayMode, 
-            useHierarchicalPartitionKey,
-            allowBulkExecution, 
-            useDefaultAzureCredential);
-        #pragma warning restore CS0618 // Type or member is obsolete
+        var temp = new CosmosConfig
+        {
+            AccountKey = accountKey,
+            Endpoint = endpoint,
+            DatabaseName = databaseName,
+            ContainerName = containerName,
+            PartitionKey = partitionKey,
+            CreateStructures = createStructures,
+            DatabaseThroughput = databaseThroughput,
+            UseGatewayMode = useGatewayMode,
+            UseHierarchicalPartitionKey = useHierarchicalPartitionKey,
+            AllowBulkExecution = allowBulkExecution,
+            UseDefaultAzureCredential = useDefaultAzureCredential
+        };
 
         return temp;
     }

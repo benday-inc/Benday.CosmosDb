@@ -108,18 +108,20 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
             });
 
 
-        var config = new CosmosConfig(
-            "accountKey",
-            "https://example.com",
-            "TestDatabase",
-            "TestContainer",
-            "/TestPartitionKey",
-            true,
-            400,
-            false,
-            false,
-            true,
-            true);
+        var config = new CosmosConfig
+        {
+            AccountKey = "accountKey",
+            Endpoint = "https://example.com",
+            DatabaseName = "TestDatabase",
+            ContainerName = "TestContainer",
+            PartitionKey = "/TestPartitionKey",
+            CreateStructures = true,
+            DatabaseThroughput = 400,
+            UseGatewayMode = false,
+            UseHierarchicalPartitionKey = false,
+            AllowBulkExecution = true,
+            UseDefaultAzureCredential = true
+        };
 
         var systemUnderTest =
              new CosmosRegistrationHelper(servicesMock.Object,
@@ -168,18 +170,20 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
         // create a fake base64 encoded account key
         var accountKey = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("fakeAccountKey"));
 
-        var config = new CosmosConfig(
-            accountKey,
-            "https://example.com",
-            "TestDatabase",
-            "TestContainer",
-            "/TestPartitionKey",
-            true,
-            400,
-            false,
-            false,
-            true,
-            false);
+        var config = new CosmosConfig
+        {
+            AccountKey = accountKey,
+            Endpoint = "https://example.com",
+            DatabaseName = "TestDatabase",
+            ContainerName = "TestContainer",
+            PartitionKey = "/TestPartitionKey",
+            CreateStructures = true,
+            DatabaseThroughput = 400,
+            UseGatewayMode = false,
+            UseHierarchicalPartitionKey = false,
+            AllowBulkExecution = true,
+            UseDefaultAzureCredential = false
+        };
 
         var systemUnderTest =
              new CosmosRegistrationHelper(servicesMock.Object,

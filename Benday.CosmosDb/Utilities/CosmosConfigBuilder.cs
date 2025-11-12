@@ -16,15 +16,10 @@ public class CosmosConfigBuilder
     /// </summary>
     public CosmosConfigBuilder()
     {
-        #pragma warning disable CS0618 // Type or member is obsolete
-        _config = new CosmosConfig(
-            string.Empty, 
-            string.Empty, 
-            string.Empty, 
-            string.Empty, 
-            CosmosDbConstants.DefaultPartitionKey, 
-            false);
-        #pragma warning restore CS0618 // Type or member is obsolete
+        _config = new CosmosConfig
+        {
+            PartitionKey = CosmosDbConstants.DefaultPartitionKey
+        };
     }
 
     /// <summary>
