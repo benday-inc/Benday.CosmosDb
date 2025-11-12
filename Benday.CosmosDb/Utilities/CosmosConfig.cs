@@ -5,35 +5,19 @@ namespace Benday.CosmosDb.Utilities;
 
 public class CosmosConfig
 {
-    /// <summary>
-    /// Creates a new instance of CosmosConfig with all configuration options.
-    /// Consider using CosmosConfigBuilder for a cleaner API with better defaults.
-    /// </summary>
-    [Obsolete("Use CosmosConfigBuilder for a cleaner configuration API. This constructor will be removed in version 5.0.")]
-    public CosmosConfig(
-        string accountKey,
-        string endpoint,
-        string databaseName,
-        string containerName,
-        string partitionKey,
-        bool createStructures,
-        int databaseThroughput = CosmosDbConstants.DefaultDatabaseThroughput,
-        bool useGatewayMode = false,
-        bool useHierarchicalPartitionKey = false,
-        bool allowBulkExecution = true,
-        bool useDefaultAzureCredential = false)
+    public CosmosConfig()
     {
-        AccountKey = accountKey;
-        Endpoint = endpoint;
-        DatabaseName = databaseName;
-        ContainerName = containerName;
-        PartitionKey = partitionKey;
-        CreateStructures = createStructures;
-        DatabaseThroughput = databaseThroughput;
-        UseGatewayMode = useGatewayMode;
-        UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
-        AllowBulkExecution = allowBulkExecution;
-        UseDefaultAzureCredential = useDefaultAzureCredential;
+        AccountKey = string.Empty;
+        Endpoint = string.Empty;
+        DatabaseName = string.Empty;
+        ContainerName = string.Empty;
+        PartitionKey = string.Empty;
+        CreateStructures = false;
+        DatabaseThroughput = CosmosDbConstants.DefaultDatabaseThroughput;
+        UseGatewayMode = false;
+        UseHierarchicalPartitionKey = false;
+        AllowBulkExecution = true;
+        UseDefaultAzureCredential = false;
     }
 
     /// <summary>

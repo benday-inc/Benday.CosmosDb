@@ -45,36 +45,6 @@ public class CosmosRegistrationHelper
         ConfigureClient();
     }
 
-    public CosmosRegistrationHelper(
-        IServiceCollection services,
-        string connectionString,
-        string databaseName,
-        string containerName,
-        bool createStructures,
-        string? partitionKey = null, 
-        bool useGatewayMode = false,
-        bool useHierarchicalPartitionKey = false,
-        bool allowBulkExecution = true, 
-        bool useDefaultAzureCredential = false)
-    {        
-        _Services = services;
-        ConnectionString = connectionString;
-        DatabaseName = databaseName;
-        ContainerName = containerName;
-        WithCreateStructures = createStructures;
-        UseGatewayMode = useGatewayMode;
-        UseHierarchicalPartitionKey = useHierarchicalPartitionKey;
-        AllowBulkExecution = allowBulkExecution;
-        UseDefaultAzureCredential = useDefaultAzureCredential;
-
-        if (partitionKey != null)
-        {
-            PartitionKey = partitionKey;
-        }
-
-        ConfigureClient();
-    }
-
     /// <summary>
     /// Registers a repository for a specific domain model entity type.
     /// </summary>
@@ -116,7 +86,49 @@ public class CosmosRegistrationHelper
 
         _Services.AddTransient<IOwnedItemService<TEntity>, OwnedItemService<TEntity>>();
     }
-    
+
+    /// <summary>
+    /// Registers a repository for a specific parented item entity type using default implementation of CosmosDbParentedItemRepository.
+    /// </summary>
+    /// <typeparam name="TEntity">Entity type that inherits from ParentedItemBase</typeparam>
+    public void RegisterParentedRepository<TEntity>()
+        where TEntity : ParentedItemBase, new()
+    {
+        _Services.ConfigureParentedRepository<TEntity>(
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures,
+            UseHierarchicalPartitionKey, UseDefaultAzureCredential);
+    }
+
+    /// <summary>
+    /// Registers a repository for a specific parented item entity type using a custom implementation of the repository.
+    /// </summary>
+    /// <typeparam name="TEntity">Entity type that inherits from ParentedItemBase</typeparam>
+    /// <typeparam name="TInterface">Repository interface</typeparam>
+    /// <typeparam name="TImplementation">Repository implementation</typeparam>
+    public void RegisterParentedRepository<TEntity, TInterface, TImplementation>()
+        where TEntity : ParentedItemBase, new()
+        where TImplementation : class, TInterface
+        where TInterface : class
+    {
+        _Services.ConfigureParentedRepository<TEntity, TInterface, TImplementation>(
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures,
+            UseHierarchicalPartitionKey, UseDefaultAzureCredential);
+    }
+
+    /// <summary>
+    /// Registers a repository and service for a parented item entity type using default implementation of CosmosDbParentedItemRepository and ParentedItemService.
+    /// </summary>
+    /// <typeparam name="TEntity">Entity type that inherits from ParentedItemBase</typeparam>
+    public void RegisterParentedRepositoryAndService<TEntity>()
+        where TEntity : ParentedItemBase, new()
+    {
+        _Services.ConfigureParentedRepository<TEntity>(
+            ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures, UseHierarchicalPartitionKey,
+            UseDefaultAzureCredential);
+
+        _Services.AddTransient<IParentedItemService<TEntity>, ParentedItemService<TEntity>>();
+    }
+
     private void ConfigureClient()
     {
         if (Configuration != null)

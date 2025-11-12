@@ -21,6 +21,7 @@ var cosmosBuilder = new CosmosRegistrationHelper(
     builder.Services, cosmosConfig);
 
 cosmosBuilder.RegisterRepositoryAndService<Note>();
+cosmosBuilder.RegisterParentedRepositoryAndService<Comment>();
 cosmosBuilder.RegisterRepository<Person, IPersonRepository, CosmosDbPersonRepository>();
 builder.Services.AddTransient<IPersonService, PersonService>();
 
@@ -43,6 +44,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Person}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

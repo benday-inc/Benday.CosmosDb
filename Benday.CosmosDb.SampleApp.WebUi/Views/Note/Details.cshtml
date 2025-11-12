@@ -70,3 +70,12 @@
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<hr />
+<div>
+    <h4>Comments</h4>
+    <p>
+        <a asp-controller="Comment" asp-action="Index" asp-route-noteId="@Model.Id" class="btn btn-primary">View All Comments</a>
+        <a asp-controller="Comment" asp-action="Create" asp-route-noteId="@Model.Id" class="btn btn-success">Add New Comment</a>
+    </p>
+</div>

@@ -1,8 +1,180 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Benday.CosmosDb Sample Application";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-4">
+    <div class="jumbotron bg-light p-5 rounded">
+        <div class="text-center mb-4">
+            <img src="~/images/bdc_logo_1281x200.png" alt="Benday.CosmosDb Logo" class="img-fluid" style="max-width: 400px;">
+        </div>
+        <h1 class="display-4 text-center">Benday.CosmosDb</h1>
+        <p class="lead text-center">Domain Model & Repository Patterns for Azure Cosmos DB</p>
+        <hr class="my-4">
+        <p>A collection of classes for implementing the domain model and repository patterns with Azure Cosmos DB.
+           These classes simplify using hierarchical partition keys and ensure query operations use those partition keys correctly.</p>
+        <div class="mt-3 text-center">
+            <a class="btn btn-primary btn-lg" href="https://github.com/benday-inc/Benday.CosmosDb" target="_blank" role="button">
+                <i class="bi bi-github"></i> View on GitHub
+            </a>
+            <a class="btn btn-outline-primary btn-lg" href="https://www.nuget.org/packages/Benday.CosmosDb/" target="_blank" role="button">
+                <i class="bi bi-box"></i> NuGet Package
+            </a>
+            <a class="btn btn-info btn-lg" href="https://benday-inc.github.io/Benday.CosmosDb/" target="_blank" role="button">
+                <i class="bi bi-book"></i> Documentation
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Key Features</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Repository and Domain Model patterns</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Hierarchical partition key support</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> LINQ query support with automatic partition keys</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Request unit tracking and logging</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Cross-partition query detection</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> ASP.NET Core configuration helpers</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Ultra-simple emulator configuration</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Optimistic concurrency with ETags</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Sample Application Features</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">This sample application demonstrates the key capabilities of Benday.CosmosDb:</p>
+
+                    <div class="mb-3">
+                        <h6><span class="badge bg-info">OwnedItem Pattern</span></h6>
+                        <p class="small mb-2">See how entities with a single owner work:</p>
+                        <a asp-controller="Person" asp-action="Index" class="btn btn-sm btn-outline-primary">Person</a>
+                        <a asp-controller="Note" asp-action="Index" class="btn btn-sm btn-outline-primary">Note</a>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6><span class="badge bg-warning text-dark">ParentedItem Pattern</span></h6>
+                        <p class="small mb-2">See parent-child relationships in action:</p>
+                        <a asp-controller="Note" asp-action="Index" class="btn btn-sm btn-outline-success">Notes with Comments</a>
+                        <p class="small text-muted mt-1">View a Note, then add Comments to see the parented item pattern</p>
+                    </div>
+
+                    <div>
+                        <h6><span class="badge bg-secondary">Custom Repository</span></h6>
+                        <p class="small mb-0">Person entity shows custom repository implementation with specialized queries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Quick Start - Configuration Examples</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary">Development (Emulator)</h6>
+                            <pre class="bg-light p-3 rounded"><code>{
+  "CosmosConfiguration": {
+    "UseEmulator": true
+  }
+}</code></pre>
+                            <p class="small text-muted">That's it! Ultra-simple emulator configuration.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-success">Production (Azure)</h6>
+                            <p class="small text-muted">Add the following to appsettings.json:</p>
+                            <pre class="bg-light p-3 rounded"><code>{
+  "CosmosConfiguration": {
+    "DatabaseName": "ProductionDb",
+    "ContainerName": "ProductionContainer",
+    "CreateStructures": false,
+    "PartitionKey": "/pk,/discriminator",
+    "HierarchicalPartitionKey": true,
+    "Endpoint": "https://your-cosmos.documents.azure.com:443/",
+    "UseDefaultAzureCredential": true
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">What You'll See in This Sample</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>
+                                <a asp-controller="Person" asp-action="Index" class="text-decoration-none">
+                                    <i class="bi bi-person-circle"></i> Person Entity
+                                </a>
+                            </h6>
+                            <p class="small">Demonstrates <code>OwnedItemBase</code> with custom repository and service layer.
+                               Shows complex domain models with nested Address objects.</p>
+                            <a asp-controller="Person" asp-action="Index" class="btn btn-sm btn-outline-primary">View Person Sample</a>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>
+                                <a asp-controller="Note" asp-action="Index" class="text-decoration-none">
+                                    <i class="bi bi-sticky"></i> Note Entity
+                                </a>
+                            </h6>
+                            <p class="small">Simple <code>OwnedItemBase</code> implementation using default repository and service.
+                               Parent entity for Comments.</p>
+                            <a asp-controller="Note" asp-action="Index" class="btn btn-sm btn-outline-primary">View Note Sample</a>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>
+                                <a asp-controller="Note" asp-action="Index" class="text-decoration-none">
+                                    <i class="bi bi-chat-square-text"></i> Comment Entity
+                                </a>
+                            </h6>
+                            <p class="small">Demonstrates <code>ParentedItemBase</code> pattern. Shows parent-child relationships
+                               with <code>ParentId</code> and <code>ParentDiscriminator</code> for type-safe queries.</p>
+                            <a asp-controller="Note" asp-action="Index" class="btn btn-sm btn-outline-success">View Comments Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-4">
+        <div class="col-md-12">
+            <div class="card border-primary shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">About the Author</h5>
+                    <p class="card-text">
+                        <strong>Benjamin Day</strong><br>
+                        Pluralsight Author | Microsoft MVP | Scrum.org Professional Scrum Trainer
+                    </p>
+                    <div class="mt-3">
+                        <a href="https://www.benday.com" target="_blank" class="btn btn-sm btn-outline-primary">benday.com</a>
+                        <a href="https://www.slidespeaker.ai" target="_blank" class="btn btn-sm btn-outline-primary">slidespeaker.ai</a>
+                        <a href="https://www.youtube.com/@@_benday" target="_blank" class="btn btn-sm btn-outline-danger">YouTube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -13,11 +13,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>4.10.0</TheVersion>
+    <TheVersion>5.0.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
     <PackageReleaseNotes>
+v5.0 - Adding IParentedItem interface and IParentedItemRepository interface plus CosmosDbParentedItemRepository to support items that have a parent-child relationship in CosmosDb;
 v4.10 - Fixing bugs where etag and timestamp not getting updated on Save;
 v4.9 - Added simplified config options for local emulator; Added configuration builder extension method to simplify configuration of cosmos db in web projects; Added better paging support to repository;
 v4.8 - Refactored batch save to make the saving of each batch be a protected virtual method; Added batch size property;
@@ -56,8 +57,8 @@ v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository util
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.*" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.*" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.*" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.*" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="9.*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.*" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="10.*" />
   </ItemGroup>
 </Project>

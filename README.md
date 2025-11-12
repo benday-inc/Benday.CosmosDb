@@ -15,13 +15,16 @@ YouTube: https://www.youtube.com/@_benday
 
 * Interfaces and base classes for implementing the [repository pattern](https://martinfowler.com/eaaCatalog/repository.html) with CosmosDb
 * Interfaces and base classes for implementing the [domain model pattern](https://en.wikipedia.org/wiki/Domain_model) with CosmosDb
+* Service layer abstractions (`IOwnedItemService`, `IParentedItemService`)
+* Support for parent-child entity relationships with `ParentedItemBase` and `IParentedItem`
 * Help you to write LINQ queries against CosmosDb without having to worry whether you're using the right partition keys
 * Support for configuring repositories for use in ASP.NET Core projects
 * Support for [hierarchical partition keys](https://learn.microsoft.com/en-us/azure/cosmos-db/hierarchical-partition-keys)
-* Logging of query performance and [request units](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units) 
-* Detect and warn when you have cross-partition queries 
+* Logging of query performance and [request units](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units)
+* Detect and warn when you have cross-partition queries
 * Helper classes and methods for registering types and handling connection configuration
 * Ultra-simple configuration for Azure Cosmos DB Linux emulator
+* Optimistic concurrency control using ETags
 
 ## Quick Start
 
@@ -36,6 +39,23 @@ YouTube: https://www.youtube.com/@_benday
 That's it! See [EMULATOR-SETUP.md](EMULATOR-SETUP.md) for complete emulator configuration guide.
 
 ### For Production
+
+**Option 1: Using appsettings.json**
+```json
+{
+  "CosmosConfiguration": {
+    "DatabaseName": "ProductionDb",
+    "ContainerName": "ProductionContainer",
+    "CreateStructures": false,
+    "PartitionKey": "/pk,/discriminator",
+    "HierarchicalPartitionKey": true,
+    "Endpoint": "https://your-cosmos.documents.azure.com:443/",
+    "UseDefaultAzureCredential": true
+  }
+}
+```
+
+**Option 2: Using CosmosConfigBuilder**
 ```csharp
 var config = new CosmosConfigBuilder()
     .WithEndpoint("https://your-cosmos.documents.azure.com:443/")
@@ -45,9 +65,59 @@ var config = new CosmosConfigBuilder()
     .Build();
 ```
 
-* Got ideas for CosmosDb functionality that you'd like to see? Found a bug? Let us know by submitting an issue https://github.com/benday-inc/Benday.CosmosDb/issues*. *Want to contribute? Submit a pull request.*
+## Quick Example
 
-* [Source code](https://github.com/benday-inc/Benday.CosmosDb)  
-* [Repository API Documentation](api/Benday.CosmosDb.Repositories.html)  
-* [Domain Model API Documentation](api/Benday.CosmosDb.DomainModels.html)  
-* [NuGet Package](https://www.nuget.org/packages/Benday.CosmosDb/)
+```csharp
+// Configure in Program.cs / Startup.cs
+var cosmosConfig = builder.Configuration.GetCosmosConfig();
+var cosmosBuilder = new CosmosRegistrationHelper(builder.Services, cosmosConfig);
+
+// Register simple owned item
+cosmosBuilder.RegisterRepositoryAndService<Note>();
+
+// Register parented item with parent-child relationships
+cosmosBuilder.RegisterParentedRepositoryAndService<Comment>();
+
+// Use in your services
+public class CommentService
+{
+    private readonly IParentedItemService<Comment> _commentService;
+
+    public CommentService(IParentedItemService<Comment> commentService)
+    {
+        _commentService = commentService;
+    }
+
+    public async Task<IEnumerable<Comment>> GetCommentsForNote(string ownerId, string noteId)
+    {
+        // Query comments by parent ID with type discrimination
+        return await _commentService.GetAllByParentIdAsync(ownerId, noteId, "Note");
+    }
+}
+```
+
+## Sample Application
+
+A complete working sample application is included in this repository demonstrating all major features:
+
+- **Person Entity** - Demonstrates `OwnedItemBase` with custom repository and service layer implementations. Shows complex domain models with nested Address objects.
+- **Note Entity** - Simple `OwnedItemBase` implementation using default repository and service registrations. Serves as parent entity for Comments.
+- **Comment Entity** - Demonstrates `ParentedItemBase` pattern showing parent-child relationships with `ParentId` and `ParentDiscriminator` for type-safe queries.
+
+To run the sample application:
+1. Start the Azure Cosmos DB Emulator (see [EMULATOR-SETUP.md](EMULATOR-SETUP.md))
+2. Run `Benday.CosmosDb.SampleApp.WebUi`
+3. Explore the different entity patterns and their implementations
+
+## Resources
+
+📚 [Full Documentation](https://benday-inc.github.io/Benday.CosmosDb/)
+💻 [Sample Application](Benday.CosmosDb.SampleApp.WebUi) - Working examples of all patterns
+📦 [NuGet Package](https://www.nuget.org/packages/Benday.CosmosDb/)
+🐙 [Source Code](https://github.com/benday-inc/Benday.CosmosDb)
+📖 [Repository API Documentation](api/Benday.CosmosDb.Repositories.html)
+📖 [Domain Model API Documentation](api/Benday.CosmosDb.DomainModels.html)
+
+## Feedback & Contributions
+
+Got ideas for CosmosDb functionality that you'd like to see? Found a bug? Let us know by [submitting an issue](https://github.com/benday-inc/Benday.CosmosDb/issues). Want to contribute? Submit a pull request.
