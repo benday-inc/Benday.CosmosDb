@@ -1,7 +1,8 @@
 using System.Reflection;
-using Benday.CosmosDb.Utilities;
 using Benday.Common;
 using Benday.Common.Testing;
+using Benday.CosmosDb.DomainModels;
+using Benday.CosmosDb.Utilities;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +17,7 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
 {
     public CosmosRegistrationHelperFixture(ITestOutputHelper outputHelper) : base(outputHelper)
     {
-        
+
     }
 
     [Fact]
@@ -44,13 +45,13 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
 
         var config = configuration.GetCosmosConfig();
 
-        
+
         Assert.NotNull(config);
         Assert.Equal(string.Empty, config.AccountKey);
         Assert.Equal("https://example.com", config.Endpoint);
         Assert.Equal("TestDatabase", config.DatabaseName);
         Assert.Equal("TestContainer", config.ContainerName);
-        Assert.Equal("/TestPartitionKey", config.PartitionKey);        
+        Assert.Equal("/TestPartitionKey", config.PartitionKey);
         Assert.False(config.UseGatewayMode);
         Assert.False(config.UseHierarchicalPartitionKey);
         Assert.True(config.AllowBulkExecution);
@@ -82,12 +83,12 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
 
         var config = configuration.GetCosmosConfig();
 
-         Assert.NotNull(config);
+        Assert.NotNull(config);
         Assert.Equal("fakeAccountKey", config.AccountKey);
         Assert.Equal("https://example.com", config.Endpoint);
         Assert.Equal("TestDatabase", config.DatabaseName);
         Assert.Equal("TestContainer", config.ContainerName);
-        Assert.Equal("/TestPartitionKey", config.PartitionKey);        
+        Assert.Equal("/TestPartitionKey", config.PartitionKey);
         Assert.False(config.UseGatewayMode);
         Assert.False(config.UseHierarchicalPartitionKey);
         Assert.True(config.AllowBulkExecution);
@@ -147,13 +148,13 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
         Assert.True(systemUnderTest.AllowBulkExecution);
         Assert.True(systemUnderTest.UseDefaultAzureCredential);
 
-        
+
         CheckInstance(instance, "AuthorizationTokenProviderTokenCredential");
-        
+
         WriteLine($"message");
     }
 
-[Fact]
+    [Fact]
     public void VerifyConnectionRegistration_UseConnectionString()
     {
         var servicesMock = new Moq.Mock<IServiceCollection>();
@@ -210,10 +211,137 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
         Assert.False(systemUnderTest.UseDefaultAzureCredential);
 
         CheckInstance(instance, "AuthorizationTokenProviderMasterKey");
-        
+
         WriteLine($"message");
     }
 
+    [Fact]
+    public void RegisterRepository_WithDefaults_CallsConfigureRepository()
+    {
+        var servicesMock = new Mock<IServiceCollection>();
+        var descriptors = new List<ServiceDescriptor>();
+        servicesMock.Setup(x => x.Add(It.IsAny<ServiceDescriptor>()))
+            .Callback<ServiceDescriptor>(sd => descriptors.Add(sd));
+
+        var fakeAccountKey = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("fakeAccountKey"));
+
+        var config = new CosmosConfig
+        {
+            Endpoint = "https://example.com",
+            DatabaseName = "TestDatabase",
+            ContainerName = "TestContainer",
+            PartitionKey = "/TestPartitionKey",
+            AccountKey = fakeAccountKey,
+            CreateStructures = true,
+            UseGatewayMode = false,
+            UseHierarchicalPartitionKey = false,
+            AllowBulkExecution = true,
+            UseDefaultAzureCredential = false
+        };
+
+        var systemUnderTest = new CosmosRegistrationHelper(servicesMock.Object, config);
+
+        var configureRepositoryMock = new Mock<IServiceCollection>();
+        configureRepositoryMock.Setup(x => x.Add(It.IsAny<ServiceDescriptor>()))
+            .Callback<ServiceDescriptor>(sd => { });
+
+        systemUnderTest.RegisterRepository<TestEntity>();
+
+        servicesMock.Verify(
+            x => x.ConfigureRepository<TestEntity>(
+                "https://example.com",
+                "TestDatabase",
+                "TestContainer",
+                "/TestPartitionKey",
+                true,
+                false,
+                false),
+            Times.Once);
+    }
+
+    [Fact]
+    public void RegisterRepository_WithInterface_CallsConfigureRepository()
+    {
+        var servicesMock = new Mock<IServiceCollection>();
+        var descriptors = new List<ServiceDescriptor>();
+        servicesMock.Setup(x => x.Add(It.IsAny<ServiceDescriptor>()))
+            .Callback<ServiceDescriptor>(sd => descriptors.Add(sd));
+
+        var config = new CosmosConfig
+        {
+            Endpoint = "https://example.com",
+            DatabaseName = "TestDatabase",
+            ContainerName = "TestContainer",
+            PartitionKey = "/TestPartitionKey",
+            CreateStructures = true,
+            UseGatewayMode = false,
+            UseHierarchicalPartitionKey = true,
+            AllowBulkExecution = true,
+            UseDefaultAzureCredential = true
+        };
+
+        var systemUnderTest = new CosmosRegistrationHelper(servicesMock.Object, config);
+
+        systemUnderTest.RegisterRepository<TestEntity, ITestEntityRepository, CosmosDbTestEntityRepository>();
+
+        servicesMock.Verify(
+            x => x.ConfigureRepository<TestEntity, ITestEntityRepository, CosmosDbTestEntityRepository>(
+                "https://example.com",
+                "TestDatabase",
+                "TestContainer",
+                "/TestPartitionKey",
+                true,
+                true,
+                true),
+            Times.Once);
+    }
+
+    [Fact]
+    public void RegisterRepository_WithCustomValues_CallsConfigureRepository()
+    {
+        var servicesMock = new Mock<IServiceCollection>();
+        var descriptors = new List<ServiceDescriptor>();
+        servicesMock.Setup(x => x.Add(It.IsAny<ServiceDescriptor>()))
+            .Callback<ServiceDescriptor>(sd => descriptors.Add(sd));
+
+        var fakeAccountKey = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("fakeAccountKey"));
+
+        var config = new CosmosConfig
+        {
+            Endpoint = "https://example.com",
+            DatabaseName = "TestDatabase",
+            ContainerName = "TestContainer",
+            PartitionKey = "/TestPartitionKey",
+            AccountKey = fakeAccountKey,
+            CreateStructures = true,
+            UseGatewayMode = false,
+            UseHierarchicalPartitionKey = false,
+            AllowBulkExecution = true,
+            UseDefaultAzureCredential = false
+        };
+
+        var systemUnderTest = new CosmosRegistrationHelper(servicesMock.Object, config);
+
+        systemUnderTest.RegisterRepository<TestEntity, ITestEntityRepository, CosmosDbTestEntityRepository>(
+            connectionString: "https://custom.com",
+            databaseName: "CustomDatabase",
+            containerName: "CustomContainer",
+            partitionKey: "/CustomPartitionKey",
+            useHierarchicalPartitionKey: true,
+            useDefaultAzureCredential: true,
+            withCreateStructures: false);
+
+        servicesMock.Verify(
+            x => x.ConfigureRepository<TestEntity, ITestEntityRepository, CosmosDbTestEntityRepository>(
+                "https://custom.com",
+                "CustomDatabase",
+                "CustomContainer",
+                "/CustomPartitionKey",
+                false,
+                true,
+                true),
+            Times.Once);
+    }
 
     private void CheckInstance(CosmosClient instance, string expectedTokenProviderTypeName)
     {

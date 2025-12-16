@@ -1,7 +1,9 @@
 ﻿using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.ServiceLayers;
+using Benday.Common;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -71,6 +73,78 @@ public class CosmosRegistrationHelper
         _Services.ConfigureRepository<TEntity, TInterface, TImplementation>(
             ConnectionString, DatabaseName, ContainerName, PartitionKey, WithCreateStructures,
             UseHierarchicalPartitionKey, UseDefaultAzureCredential);
+    }
+
+    /// <summary>
+    /// Registers a repository for a specific domain model entity type using a custom configuration values.
+    /// Null or empty values will use the defaults from the helper instance.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TInterface"></typeparam>
+    /// <typeparam name="TImplementation"></typeparam>
+    /// <param name="connectionString"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="containerName"></param>
+    /// <param name="partitionKey"></param>
+    /// <param name="useHierarchicalPartitionKey"></param>
+    /// <param name="useDefaultAzureCredential"></param>
+    /// <param name="withCreateStructures"></param>
+    public void RegisterRepository<TEntity, TInterface, TImplementation>(
+        string? connectionString = null,
+        string? databaseName = null,
+        string? containerName = null, 
+        string? partitionKey = null,
+        bool? useHierarchicalPartitionKey = null,
+        bool? useDefaultAzureCredential = null,
+        bool? withCreateStructures = null
+    )
+        where TEntity : OwnedItemBase, new()
+        where TImplementation : class, TInterface
+        where TInterface : class
+    {
+        if (connectionString.IsNullOrWhitespace() == true)
+        {
+            connectionString = ConnectionString;
+        }
+
+        if (databaseName.IsNullOrWhitespace() == true)
+        {
+            databaseName = DatabaseName;
+        }
+
+        if (containerName.IsNullOrWhitespace() == true)
+        {
+            containerName = ContainerName;
+        }
+
+        if (partitionKey.IsNullOrWhitespace() == true)
+        {
+            partitionKey = PartitionKey;
+        }
+
+        if (useHierarchicalPartitionKey.HasValue == false)
+        {
+            useHierarchicalPartitionKey = UseHierarchicalPartitionKey;
+        }
+
+        if (useDefaultAzureCredential.HasValue == false)
+        {
+            useDefaultAzureCredential = UseDefaultAzureCredential;
+        }
+
+        if (withCreateStructures.HasValue == false)
+        {
+            withCreateStructures = WithCreateStructures;
+        }
+
+        _Services.ConfigureRepository<TEntity, TInterface, TImplementation>(
+            connectionString: connectionString, 
+            databaseName: databaseName, 
+            containerName: containerName, 
+            partitionKey: partitionKey, 
+            createStructures: withCreateStructures.Value,
+            useHierarchicalPartitionKey: useHierarchicalPartitionKey.Value, 
+            useDefaultAzureCredential: useDefaultAzureCredential.Value);
     }
 
     /// <summary>
