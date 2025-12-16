@@ -17,13 +17,19 @@ builder.Services.AddControllersWithViews();
 
 var cosmosConfig = builder.Configuration.GetCosmosConfig();
 
-var cosmosBuilder = new CosmosRegistrationHelper(
+var helper = new CosmosRegistrationHelper(
     builder.Services, cosmosConfig);
 
-cosmosBuilder.RegisterRepositoryAndService<Note>();
-cosmosBuilder.RegisterParentedRepositoryAndService<Comment>();
-cosmosBuilder.RegisterRepository<Person, IPersonRepository, CosmosDbPersonRepository>();
+helper.RegisterRepositoryAndService<Note>();
+helper.RegisterParentedRepositoryAndService<Comment>();
+helper.RegisterRepository<Person, IPersonRepository, CosmosDbPersonRepository>();
 builder.Services.AddTransient<IPersonService, PersonService>();
+
+helper.RegisterRepository<LookupValue, ILookupValueRepository, CosmosDbLookupValueRepository>(
+    containerName: "LookupValues", withCreateStructures: true
+);
+
+builder.Services.AddTransient<ILookupValueService, LookupValueService>();
 
 var app = builder.Build();
 
