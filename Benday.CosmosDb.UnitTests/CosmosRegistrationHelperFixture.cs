@@ -2,6 +2,7 @@ using System.Reflection;
 using Benday.Common;
 using Benday.Common.Testing;
 using Benday.CosmosDb.DomainModels;
+using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.Utilities;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
@@ -216,12 +217,11 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
     }
 
     [Fact]
-    public void RegisterRepository_WithDefaults_CallsConfigureRepository()
+    public void RegisterRepository_WithDefaults_RegistersExpectedServices()
     {
-        var servicesMock = new Mock<IServiceCollection>();
-        var descriptors = new List<ServiceDescriptor>();
-        servicesMock.Setup(x => x.Add(It.IsAny<ServiceDescriptor>()))
-            .Callback<ServiceDescriptor>(sd => descriptors.Add(sd));
+        // Use a real ServiceCollection instead of a mock
+        // because ConfigureRepository is an extension method that can't be mocked
+        var services = new ServiceCollection();
 
         var fakeAccountKey = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("fakeAccountKey"));
 
@@ -239,33 +239,31 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
             UseDefaultAzureCredential = false
         };
 
-        var systemUnderTest = new CosmosRegistrationHelper(servicesMock.Object, config);
-
-        var configureRepositoryMock = new Mock<IServiceCollection>();
-        configureRepositoryMock.Setup(x => x.Add(It.IsAny<ServiceDescriptor>()))
-            .Callback<ServiceDescriptor>(sd => { });
+        var systemUnderTest = new CosmosRegistrationHelper(services, config);
 
         systemUnderTest.RegisterRepository<TestEntity>();
 
-        servicesMock.Verify(
-            x => x.ConfigureRepository<TestEntity>(
-                "https://example.com",
-                "TestDatabase",
-                "TestContainer",
-                "/TestPartitionKey",
-                true,
-                false,
-                false),
-            Times.Once);
+        // Verify the repository interface was registered
+        var repositoryDescriptor = services.FirstOrDefault(
+            sd => sd.ServiceType == typeof(IOwnedItemRepository<TestEntity>));
+        Assert.NotNull(repositoryDescriptor);
+        Assert.Equal(ServiceLifetime.Transient, repositoryDescriptor.Lifetime);
+        Assert.Equal(typeof(CosmosOwnedItemRepository<TestEntity>), repositoryDescriptor.ImplementationType);
+
+        // Verify options were registered
+        var optionsDescriptor = services.FirstOrDefault(
+            sd => sd.ServiceType == typeof(CosmosRepositoryOptions<TestEntity>));
+        Assert.NotNull(optionsDescriptor);
     }
 
     [Fact]
-    public void RegisterRepository_WithInterface_CallsConfigureRepository()
+    public void RegisterRepository_WithInterface_RegistersExpectedServices()
     {
-        var servicesMock = new Mock<IServiceCollection>();
-        var descriptors = new List<ServiceDescriptor>();
-        servicesMock.Setup(x => x.Add(It.IsAny<ServiceDescriptor>()))
-            .Callback<ServiceDescriptor>(sd => descriptors.Add(sd));
+        // Use a real ServiceCollection instead of a mock
+        // because ConfigureRepository is an extension method that can't be mocked
+        var services = new ServiceCollection();
+
+        var fakeAccountKey = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("fakeAccountKey"));
 
         var config = new CosmosConfig
         {
@@ -273,6 +271,7 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
             DatabaseName = "TestDatabase",
             ContainerName = "TestContainer",
             PartitionKey = "/TestPartitionKey",
+            AccountKey = fakeAccountKey,
             CreateStructures = true,
             UseGatewayMode = false,
             UseHierarchicalPartitionKey = true,
@@ -280,29 +279,29 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
             UseDefaultAzureCredential = true
         };
 
-        var systemUnderTest = new CosmosRegistrationHelper(servicesMock.Object, config);
+        var systemUnderTest = new CosmosRegistrationHelper(services, config);
 
         systemUnderTest.RegisterRepository<TestEntity, ITestEntityRepository, CosmosDbTestEntityRepository>();
 
-        servicesMock.Verify(
-            x => x.ConfigureRepository<TestEntity, ITestEntityRepository, CosmosDbTestEntityRepository>(
-                "https://example.com",
-                "TestDatabase",
-                "TestContainer",
-                "/TestPartitionKey",
-                true,
-                true,
-                true),
-            Times.Once);
+        // Verify the custom repository interface was registered
+        var repositoryDescriptor = services.FirstOrDefault(
+            sd => sd.ServiceType == typeof(ITestEntityRepository));
+        Assert.NotNull(repositoryDescriptor);
+        Assert.Equal(ServiceLifetime.Transient, repositoryDescriptor.Lifetime);
+        Assert.Equal(typeof(CosmosDbTestEntityRepository), repositoryDescriptor.ImplementationType);
+
+        // Verify options were registered
+        var optionsDescriptor = services.FirstOrDefault(
+            sd => sd.ServiceType == typeof(CosmosRepositoryOptions<TestEntity>));
+        Assert.NotNull(optionsDescriptor);
     }
 
     [Fact]
-    public void RegisterRepository_WithCustomValues_CallsConfigureRepository()
+    public void RegisterRepository_WithCustomValues_RegistersExpectedServices()
     {
-        var servicesMock = new Mock<IServiceCollection>();
-        var descriptors = new List<ServiceDescriptor>();
-        servicesMock.Setup(x => x.Add(It.IsAny<ServiceDescriptor>()))
-            .Callback<ServiceDescriptor>(sd => descriptors.Add(sd));
+        // Use a real ServiceCollection instead of a mock
+        // because ConfigureRepository is an extension method that can't be mocked
+        var services = new ServiceCollection();
 
         var fakeAccountKey = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("fakeAccountKey"));
 
@@ -320,7 +319,7 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
             UseDefaultAzureCredential = false
         };
 
-        var systemUnderTest = new CosmosRegistrationHelper(servicesMock.Object, config);
+        var systemUnderTest = new CosmosRegistrationHelper(services, config);
 
         systemUnderTest.RegisterRepository<TestEntity, ITestEntityRepository, CosmosDbTestEntityRepository>(
             connectionString: "https://custom.com",
@@ -331,16 +330,17 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
             useDefaultAzureCredential: true,
             withCreateStructures: false);
 
-        servicesMock.Verify(
-            x => x.ConfigureRepository<TestEntity, ITestEntityRepository, CosmosDbTestEntityRepository>(
-                "https://custom.com",
-                "CustomDatabase",
-                "CustomContainer",
-                "/CustomPartitionKey",
-                false,
-                true,
-                true),
-            Times.Once);
+        // Verify the custom repository interface was registered
+        var repositoryDescriptor = services.FirstOrDefault(
+            sd => sd.ServiceType == typeof(ITestEntityRepository));
+        Assert.NotNull(repositoryDescriptor);
+        Assert.Equal(ServiceLifetime.Transient, repositoryDescriptor.Lifetime);
+        Assert.Equal(typeof(CosmosDbTestEntityRepository), repositoryDescriptor.ImplementationType);
+
+        // Verify options were registered
+        var optionsDescriptor = services.FirstOrDefault(
+            sd => sd.ServiceType == typeof(CosmosRepositoryOptions<TestEntity>));
+        Assert.NotNull(optionsDescriptor);
     }
 
     private void CheckInstance(CosmosClient instance, string expectedTokenProviderTypeName)
