@@ -220,6 +220,38 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.DomainModels.IOwnedItem.OwnerId
   nameWithType: IOwnedItem.OwnerId
+- uid: Benday.CosmosDb.DomainModels.IParentedItem
+  name: IParentedItem
+  href: api/Benday.CosmosDb.DomainModels.IParentedItem.html
+  commentId: T:Benday.CosmosDb.DomainModels.IParentedItem
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem
+  nameWithType: IParentedItem
+- uid: Benday.CosmosDb.DomainModels.IParentedItem.ParentDiscriminator
+  name: ParentDiscriminator
+  href: api/Benday.CosmosDb.DomainModels.IParentedItem.html#Benday_CosmosDb_DomainModels_IParentedItem_ParentDiscriminator
+  commentId: P:Benday.CosmosDb.DomainModels.IParentedItem.ParentDiscriminator
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem.ParentDiscriminator
+  nameWithType: IParentedItem.ParentDiscriminator
+- uid: Benday.CosmosDb.DomainModels.IParentedItem.ParentDiscriminator*
+  name: ParentDiscriminator
+  href: api/Benday.CosmosDb.DomainModels.IParentedItem.html#Benday_CosmosDb_DomainModels_IParentedItem_ParentDiscriminator_
+  commentId: Overload:Benday.CosmosDb.DomainModels.IParentedItem.ParentDiscriminator
+  isSpec: "True"
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem.ParentDiscriminator
+  nameWithType: IParentedItem.ParentDiscriminator
+- uid: Benday.CosmosDb.DomainModels.IParentedItem.ParentId
+  name: ParentId
+  href: api/Benday.CosmosDb.DomainModels.IParentedItem.html#Benday_CosmosDb_DomainModels_IParentedItem_ParentId
+  commentId: P:Benday.CosmosDb.DomainModels.IParentedItem.ParentId
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem.ParentId
+  nameWithType: IParentedItem.ParentId
+- uid: Benday.CosmosDb.DomainModels.IParentedItem.ParentId*
+  name: ParentId
+  href: api/Benday.CosmosDb.DomainModels.IParentedItem.html#Benday_CosmosDb_DomainModels_IParentedItem_ParentId_
+  commentId: Overload:Benday.CosmosDb.DomainModels.IParentedItem.ParentId
+  isSpec: "True"
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem.ParentId
+  nameWithType: IParentedItem.ParentId
 - uid: Benday.CosmosDb.DomainModels.OwnedItemBase
   name: OwnedItemBase
   href: api/Benday.CosmosDb.DomainModels.OwnedItemBase.html
@@ -252,6 +284,38 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.DomainModels.OwnedItemBase.PartitionKey
   nameWithType: OwnedItemBase.PartitionKey
+- uid: Benday.CosmosDb.DomainModels.ParentedItemBase
+  name: ParentedItemBase
+  href: api/Benday.CosmosDb.DomainModels.ParentedItemBase.html
+  commentId: T:Benday.CosmosDb.DomainModels.ParentedItemBase
+  fullName: Benday.CosmosDb.DomainModels.ParentedItemBase
+  nameWithType: ParentedItemBase
+- uid: Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator
+  name: ParentDiscriminator
+  href: api/Benday.CosmosDb.DomainModels.ParentedItemBase.html#Benday_CosmosDb_DomainModels_ParentedItemBase_ParentDiscriminator
+  commentId: P:Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator
+  fullName: Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator
+  nameWithType: ParentedItemBase.ParentDiscriminator
+- uid: Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator*
+  name: ParentDiscriminator
+  href: api/Benday.CosmosDb.DomainModels.ParentedItemBase.html#Benday_CosmosDb_DomainModels_ParentedItemBase_ParentDiscriminator_
+  commentId: Overload:Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator
+  isSpec: "True"
+  fullName: Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator
+  nameWithType: ParentedItemBase.ParentDiscriminator
+- uid: Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId
+  name: ParentId
+  href: api/Benday.CosmosDb.DomainModels.ParentedItemBase.html#Benday_CosmosDb_DomainModels_ParentedItemBase_ParentId
+  commentId: P:Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId
+  fullName: Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId
+  nameWithType: ParentedItemBase.ParentId
+- uid: Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId*
+  name: ParentId
+  href: api/Benday.CosmosDb.DomainModels.ParentedItemBase.html#Benday_CosmosDb_DomainModels_ParentedItemBase_ParentId_
+  commentId: Overload:Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId
+  isSpec: "True"
+  fullName: Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId
+  nameWithType: ParentedItemBase.ParentId
 - uid: Benday.CosmosDb.Exceptions
   name: Benday.CosmosDb.Exceptions
   href: api/Benday.CosmosDb.Exceptions.html
@@ -628,6 +692,52 @@ references:
   commentId: F:Benday.CosmosDb.Repositories.CosmosDbConstants.PropertyName_Timestamp
   fullName: Benday.CosmosDb.Repositories.CosmosDbConstants.PropertyName_Timestamp
   nameWithType: CosmosDbConstants.PropertyName_Timestamp
+- uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+  name: CosmosDbParentedItemRepository<T>
+  href: api/Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html
+  commentId: T:Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+  name.vb: CosmosDbParentedItemRepository(Of T)
+  fullName: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository<T>
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository(Of T)
+  nameWithType: CosmosDbParentedItemRepository<T>
+  nameWithType.vb: CosmosDbParentedItemRepository(Of T)
+- uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosOwnedItemRepository{`0}})
+  name: CosmosDbParentedItemRepository(IOptions<CosmosRepositoryOptions<T>>, CosmosClient, ILogger<CosmosOwnedItemRepository<T>>)
+  href: api/Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosDbParentedItemRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Repositories_CosmosOwnedItemRepository__0___
+  commentId: M:Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosOwnedItemRepository{`0}})
+  name.vb: New(IOptions(Of CosmosRepositoryOptions(Of T)), CosmosClient, ILogger(Of CosmosOwnedItemRepository(Of T)))
+  fullName: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository<T>.CosmosDbParentedItemRepository(Microsoft.Extensions.Options.IOptions<Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>>, Microsoft.Azure.Cosmos.CosmosClient, Microsoft.Extensions.Logging.ILogger<Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>>)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository(Of T).New(Microsoft.Extensions.Options.IOptions(Of Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T)), Microsoft.Azure.Cosmos.CosmosClient, Microsoft.Extensions.Logging.ILogger(Of Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T)))
+  nameWithType: CosmosDbParentedItemRepository<T>.CosmosDbParentedItemRepository(IOptions<CosmosRepositoryOptions<T>>, CosmosClient, ILogger<CosmosOwnedItemRepository<T>>)
+  nameWithType.vb: CosmosDbParentedItemRepository(Of T).New(IOptions(Of CosmosRepositoryOptions(Of T)), CosmosClient, ILogger(Of CosmosOwnedItemRepository(Of T)))
+- uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1.#ctor*
+  name: CosmosDbParentedItemRepository
+  href: api/Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosDbParentedItemRepository_1__ctor_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository<T>.CosmosDbParentedItemRepository
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository(Of T).New
+  nameWithType: CosmosDbParentedItemRepository<T>.CosmosDbParentedItemRepository
+  nameWithType.vb: CosmosDbParentedItemRepository(Of T).New
+- uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1.GetAllByParentIdAsync(System.String,System.String,System.String)
+  name: GetAllByParentIdAsync(string, string, string?)
+  href: api/Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosDbParentedItemRepository_1_GetAllByParentIdAsync_System_String_System_String_System_String_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1.GetAllByParentIdAsync(System.String,System.String,System.String)
+  name.vb: GetAllByParentIdAsync(String, String, String)
+  fullName: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository<T>.GetAllByParentIdAsync(string, string, string?)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository(Of T).GetAllByParentIdAsync(String, String, String)
+  nameWithType: CosmosDbParentedItemRepository<T>.GetAllByParentIdAsync(string, string, string?)
+  nameWithType.vb: CosmosDbParentedItemRepository(Of T).GetAllByParentIdAsync(String, String, String)
+- uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1.GetAllByParentIdAsync*
+  name: GetAllByParentIdAsync
+  href: api/Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosDbParentedItemRepository_1_GetAllByParentIdAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1.GetAllByParentIdAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository<T>.GetAllByParentIdAsync
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository(Of T).GetAllByParentIdAsync
+  nameWithType: CosmosDbParentedItemRepository<T>.GetAllByParentIdAsync
+  nameWithType.vb: CosmosDbParentedItemRepository(Of T).GetAllByParentIdAsync
 - uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1
   name: CosmosOwnedItemRepository<T>
   href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html
@@ -1329,6 +1439,33 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T).GetByIdAsync
   nameWithType: IOwnedItemRepository<T>.GetByIdAsync
   nameWithType.vb: IOwnedItemRepository(Of T).GetByIdAsync
+- uid: Benday.CosmosDb.Repositories.IParentedItemRepository`1
+  name: IParentedItemRepository<T>
+  href: api/Benday.CosmosDb.Repositories.IParentedItemRepository-1.html
+  commentId: T:Benday.CosmosDb.Repositories.IParentedItemRepository`1
+  name.vb: IParentedItemRepository(Of T)
+  fullName: Benday.CosmosDb.Repositories.IParentedItemRepository<T>
+  fullName.vb: Benday.CosmosDb.Repositories.IParentedItemRepository(Of T)
+  nameWithType: IParentedItemRepository<T>
+  nameWithType.vb: IParentedItemRepository(Of T)
+- uid: Benday.CosmosDb.Repositories.IParentedItemRepository`1.GetAllByParentIdAsync(System.String,System.String,System.String)
+  name: GetAllByParentIdAsync(string, string, string?)
+  href: api/Benday.CosmosDb.Repositories.IParentedItemRepository-1.html#Benday_CosmosDb_Repositories_IParentedItemRepository_1_GetAllByParentIdAsync_System_String_System_String_System_String_
+  commentId: M:Benday.CosmosDb.Repositories.IParentedItemRepository`1.GetAllByParentIdAsync(System.String,System.String,System.String)
+  name.vb: GetAllByParentIdAsync(String, String, String)
+  fullName: Benday.CosmosDb.Repositories.IParentedItemRepository<T>.GetAllByParentIdAsync(string, string, string?)
+  fullName.vb: Benday.CosmosDb.Repositories.IParentedItemRepository(Of T).GetAllByParentIdAsync(String, String, String)
+  nameWithType: IParentedItemRepository<T>.GetAllByParentIdAsync(string, string, string?)
+  nameWithType.vb: IParentedItemRepository(Of T).GetAllByParentIdAsync(String, String, String)
+- uid: Benday.CosmosDb.Repositories.IParentedItemRepository`1.GetAllByParentIdAsync*
+  name: GetAllByParentIdAsync
+  href: api/Benday.CosmosDb.Repositories.IParentedItemRepository-1.html#Benday_CosmosDb_Repositories_IParentedItemRepository_1_GetAllByParentIdAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.IParentedItemRepository`1.GetAllByParentIdAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.IParentedItemRepository<T>.GetAllByParentIdAsync
+  fullName.vb: Benday.CosmosDb.Repositories.IParentedItemRepository(Of T).GetAllByParentIdAsync
+  nameWithType: IParentedItemRepository<T>.GetAllByParentIdAsync
+  nameWithType.vb: IParentedItemRepository(Of T).GetAllByParentIdAsync
 - uid: Benday.CosmosDb.Repositories.IRepository`1
   name: IRepository<T>
   href: api/Benday.CosmosDb.Repositories.IRepository-1.html
@@ -1721,6 +1858,33 @@ references:
   fullName.vb: Benday.CosmosDb.ServiceLayers.IOwnedItemService(Of T).SaveAsync
   nameWithType: IOwnedItemService<T>.SaveAsync
   nameWithType.vb: IOwnedItemService(Of T).SaveAsync
+- uid: Benday.CosmosDb.ServiceLayers.IParentedItemService`1
+  name: IParentedItemService<T>
+  href: api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html
+  commentId: T:Benday.CosmosDb.ServiceLayers.IParentedItemService`1
+  name.vb: IParentedItemService(Of T)
+  fullName: Benday.CosmosDb.ServiceLayers.IParentedItemService<T>
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IParentedItemService(Of T)
+  nameWithType: IParentedItemService<T>
+  nameWithType.vb: IParentedItemService(Of T)
+- uid: Benday.CosmosDb.ServiceLayers.IParentedItemService`1.GetAllByParentIdAsync(System.String,System.String,System.String)
+  name: GetAllByParentIdAsync(string, string, string?)
+  href: api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html#Benday_CosmosDb_ServiceLayers_IParentedItemService_1_GetAllByParentIdAsync_System_String_System_String_System_String_
+  commentId: M:Benday.CosmosDb.ServiceLayers.IParentedItemService`1.GetAllByParentIdAsync(System.String,System.String,System.String)
+  name.vb: GetAllByParentIdAsync(String, String, String)
+  fullName: Benday.CosmosDb.ServiceLayers.IParentedItemService<T>.GetAllByParentIdAsync(string, string, string?)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IParentedItemService(Of T).GetAllByParentIdAsync(String, String, String)
+  nameWithType: IParentedItemService<T>.GetAllByParentIdAsync(string, string, string?)
+  nameWithType.vb: IParentedItemService(Of T).GetAllByParentIdAsync(String, String, String)
+- uid: Benday.CosmosDb.ServiceLayers.IParentedItemService`1.GetAllByParentIdAsync*
+  name: GetAllByParentIdAsync
+  href: api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html#Benday_CosmosDb_ServiceLayers_IParentedItemService_1_GetAllByParentIdAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.IParentedItemService`1.GetAllByParentIdAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.IParentedItemService<T>.GetAllByParentIdAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IParentedItemService(Of T).GetAllByParentIdAsync
+  nameWithType: IParentedItemService<T>.GetAllByParentIdAsync
+  nameWithType.vb: IParentedItemService(Of T).GetAllByParentIdAsync
 - uid: Benday.CosmosDb.ServiceLayers.OwnedItemService`1
   name: OwnedItemService<T>
   href: api/Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html
@@ -1819,6 +1983,52 @@ references:
   fullName.vb: Benday.CosmosDb.ServiceLayers.OwnedItemService(Of T).SaveAsync
   nameWithType: OwnedItemService<T>.SaveAsync
   nameWithType.vb: OwnedItemService(Of T).SaveAsync
+- uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+  name: ParentedItemService<T>
+  href: api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html
+  commentId: T:Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+  name.vb: ParentedItemService(Of T)
+  fullName: Benday.CosmosDb.ServiceLayers.ParentedItemService<T>
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ParentedItemService(Of T)
+  nameWithType: ParentedItemService<T>
+  nameWithType.vb: ParentedItemService(Of T)
+- uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1.#ctor(Benday.CosmosDb.Repositories.IParentedItemRepository{`0})
+  name: ParentedItemService(IParentedItemRepository<T>)
+  href: api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html#Benday_CosmosDb_ServiceLayers_ParentedItemService_1__ctor_Benday_CosmosDb_Repositories_IParentedItemRepository__0__
+  commentId: M:Benday.CosmosDb.ServiceLayers.ParentedItemService`1.#ctor(Benday.CosmosDb.Repositories.IParentedItemRepository{`0})
+  name.vb: New(IParentedItemRepository(Of T))
+  fullName: Benday.CosmosDb.ServiceLayers.ParentedItemService<T>.ParentedItemService(Benday.CosmosDb.Repositories.IParentedItemRepository<T>)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ParentedItemService(Of T).New(Benday.CosmosDb.Repositories.IParentedItemRepository(Of T))
+  nameWithType: ParentedItemService<T>.ParentedItemService(IParentedItemRepository<T>)
+  nameWithType.vb: ParentedItemService(Of T).New(IParentedItemRepository(Of T))
+- uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1.#ctor*
+  name: ParentedItemService
+  href: api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html#Benday_CosmosDb_ServiceLayers_ParentedItemService_1__ctor_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.ParentedItemService`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Benday.CosmosDb.ServiceLayers.ParentedItemService<T>.ParentedItemService
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ParentedItemService(Of T).New
+  nameWithType: ParentedItemService<T>.ParentedItemService
+  nameWithType.vb: ParentedItemService(Of T).New
+- uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1.GetAllByParentIdAsync(System.String,System.String,System.String)
+  name: GetAllByParentIdAsync(string, string, string?)
+  href: api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html#Benday_CosmosDb_ServiceLayers_ParentedItemService_1_GetAllByParentIdAsync_System_String_System_String_System_String_
+  commentId: M:Benday.CosmosDb.ServiceLayers.ParentedItemService`1.GetAllByParentIdAsync(System.String,System.String,System.String)
+  name.vb: GetAllByParentIdAsync(String, String, String)
+  fullName: Benday.CosmosDb.ServiceLayers.ParentedItemService<T>.GetAllByParentIdAsync(string, string, string?)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ParentedItemService(Of T).GetAllByParentIdAsync(String, String, String)
+  nameWithType: ParentedItemService<T>.GetAllByParentIdAsync(string, string, string?)
+  nameWithType.vb: ParentedItemService(Of T).GetAllByParentIdAsync(String, String, String)
+- uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1.GetAllByParentIdAsync*
+  name: GetAllByParentIdAsync
+  href: api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html#Benday_CosmosDb_ServiceLayers_ParentedItemService_1_GetAllByParentIdAsync_
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.ParentedItemService`1.GetAllByParentIdAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.ServiceLayers.ParentedItemService<T>.GetAllByParentIdAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ParentedItemService(Of T).GetAllByParentIdAsync
+  nameWithType: ParentedItemService<T>.GetAllByParentIdAsync
+  nameWithType.vb: ParentedItemService(Of T).GetAllByParentIdAsync
 - uid: Benday.CosmosDb.Utilities
   name: Benday.CosmosDb.Utilities
   href: api/Benday.CosmosDb.Utilities.html
@@ -1907,6 +2117,31 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureCosmosClient
   nameWithType: CosmosClientOptionsUtilities.ConfigureCosmosClient
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository*
+  name: ConfigureParentedRepository
+  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureParentedRepository_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository
+  nameWithType: CosmosClientOptionsUtilities.ConfigureParentedRepository
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  name: ConfigureParentedRepository<TEntity>(IServiceCollection, string, string, string, string, bool, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureParentedRepository__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  name.vb: ConfigureParentedRepository(Of TEntity)(IServiceCollection, String, String, String, String, Boolean, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository<TEntity>(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, string, bool, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository(Of TEntity)(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, String, Boolean, Boolean, Boolean)
+  nameWithType: CosmosClientOptionsUtilities.ConfigureParentedRepository<TEntity>(IServiceCollection, string, string, string, string, bool, bool, bool)
+  nameWithType.vb: CosmosClientOptionsUtilities.ConfigureParentedRepository(Of TEntity)(IServiceCollection, String, String, String, String, Boolean, Boolean, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  name: ConfigureParentedRepository<TEntity, TInterface, TImplementation>(IServiceCollection, string, string, string, string, bool, bool, bool)
+  href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureParentedRepository__3_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_System_Boolean_
+  commentId: M:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  name.vb: ConfigureParentedRepository(Of TEntity, TInterface, TImplementation)(IServiceCollection, String, String, String, String, Boolean, Boolean, Boolean)
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository<TEntity, TInterface, TImplementation>(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, string, bool, bool, bool)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureParentedRepository(Of TEntity, TInterface, TImplementation)(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, String, Boolean, Boolean, Boolean)
+  nameWithType: CosmosClientOptionsUtilities.ConfigureParentedRepository<TEntity, TInterface, TImplementation>(IServiceCollection, string, string, string, string, bool, bool, bool)
+  nameWithType.vb: CosmosClientOptionsUtilities.ConfigureParentedRepository(Of TEntity, TInterface, TImplementation)(IServiceCollection, String, String, String, String, Boolean, Boolean, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ConfigureRepository*
   name: ConfigureRepository
   href: api/Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_ConfigureRepository_
@@ -2005,15 +2240,15 @@ references:
   commentId: T:Benday.CosmosDb.Utilities.CosmosConfig
   fullName: Benday.CosmosDb.Utilities.CosmosConfig
   nameWithType: CosmosConfig
-- uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
-  name: CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
-  name.vb: New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean, Boolean)
-  nameWithType: CosmosConfig.CosmosConfig(string, string, string, string, string, bool, int, bool, bool, bool, bool)
-  nameWithType.vb: CosmosConfig.New(String, String, String, String, String, Boolean, Integer, Boolean, Boolean, Boolean, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor
+  name: CosmosConfig()
+  href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfig.#ctor
+  name.vb: New()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig.CosmosConfig()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfig.New()
+  nameWithType: CosmosConfig.CosmosConfig()
+  nameWithType.vb: CosmosConfig.New()
 - uid: Benday.CosmosDb.Utilities.CosmosConfig.#ctor*
   name: CosmosConfig
   href: api/Benday.CosmosDb.Utilities.CosmosConfig.html#Benday_CosmosDb_Utilities_CosmosConfig__ctor_
@@ -2445,15 +2680,6 @@ references:
   fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, Benday.CosmosDb.Utilities.CosmosConfig)
   nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, CosmosConfig)
   nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, CosmosConfig)
-- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
-  name: CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool, bool, bool, bool)
-  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_String_System_Boolean_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
-  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
-  name.vb: New(IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean, Boolean, Boolean)
-  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.CosmosRegistrationHelper(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string, string, bool, string?, bool, bool, bool, bool)
-  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean, Boolean, Boolean)
-  nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, string, string, string, bool, string?, bool, bool, bool, bool)
-  nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, String, String, String, Boolean, String, Boolean, Boolean, Boolean, Boolean)
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor*
   name: CosmosRegistrationHelper
   href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_
@@ -2542,6 +2768,47 @@ references:
   isSpec: "True"
   fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey
   nameWithType: CosmosRegistrationHelper.PartitionKey
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository*
+  name: RegisterParentedRepository
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterParentedRepository_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepository
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService*
+  name: RegisterParentedRepositoryAndService
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterParentedRepositoryAndService_
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepositoryAndService
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService``1
+  name: RegisterParentedRepositoryAndService<TEntity>()
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterParentedRepositoryAndService__1
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService``1
+  name.vb: RegisterParentedRepositoryAndService(Of TEntity)()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService<TEntity>()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService(Of TEntity)()
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepositoryAndService<TEntity>()
+  nameWithType.vb: CosmosRegistrationHelper.RegisterParentedRepositoryAndService(Of TEntity)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``1
+  name: RegisterParentedRepository<TEntity>()
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterParentedRepository__1
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``1
+  name.vb: RegisterParentedRepository(Of TEntity)()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository<TEntity>()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository(Of TEntity)()
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepository<TEntity>()
+  nameWithType.vb: CosmosRegistrationHelper.RegisterParentedRepository(Of TEntity)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``3
+  name: RegisterParentedRepository<TEntity, TInterface, TImplementation>()
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterParentedRepository__3
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``3
+  name.vb: RegisterParentedRepository(Of TEntity, TInterface, TImplementation)()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository<TEntity, TInterface, TImplementation>()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository(Of TEntity, TInterface, TImplementation)()
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepository<TEntity, TInterface, TImplementation>()
+  nameWithType.vb: CosmosRegistrationHelper.RegisterParentedRepository(Of TEntity, TInterface, TImplementation)()
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
   name: RegisterRepository
   href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterRepository_
@@ -2583,6 +2850,15 @@ references:
   fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)()
   nameWithType: CosmosRegistrationHelper.RegisterRepository<TEntity, TInterface, TImplementation>()
   nameWithType.vb: CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``3(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  name: RegisterRepository<TEntity, TInterface, TImplementation>(string?, string?, string?, string?, bool?, bool?, bool?)
+  href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterRepository__3_System_String_System_String_System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Boolean__
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``3(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  name.vb: RegisterRepository(Of TEntity, TInterface, TImplementation)(String, String, String, String, Boolean?, Boolean?, Boolean?)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository<TEntity, TInterface, TImplementation>(string?, string?, string?, string?, bool?, bool?, bool?)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)(String, String, String, String, Boolean?, Boolean?, Boolean?)
+  nameWithType: CosmosRegistrationHelper.RegisterRepository<TEntity, TInterface, TImplementation>(string?, string?, string?, string?, bool?, bool?, bool?)
+  nameWithType.vb: CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)(String, String, String, String, Boolean?, Boolean?, Boolean?)
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential
   name: UseDefaultAzureCredential
   href: api/Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_UseDefaultAzureCredential

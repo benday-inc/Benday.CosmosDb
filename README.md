@@ -96,6 +96,29 @@ public class CommentService
 }
 ```
 
+### Custom Configuration Per Repository
+
+You can register repositories with custom configuration values that override the defaults. This is useful when you need to store certain entity types in separate containers:
+
+```csharp
+// Register LookupValue entities in a separate "LookupValues" container
+cosmosBuilder.RegisterRepository<LookupValue, ILookupValueRepository, CosmosDbLookupValueRepository>(
+    containerName: "LookupValues",
+    withCreateStructures: true
+);
+```
+
+Available configuration overrides:
+- `connectionString` - Use a different Cosmos DB endpoint
+- `databaseName` - Store in a different database
+- `containerName` - Store in a different container
+- `partitionKey` - Use a different partition key path
+- `useHierarchicalPartitionKey` - Override hierarchical partition key setting
+- `useDefaultAzureCredential` - Override authentication method
+- `withCreateStructures` - Override auto-creation of database/container
+
+Any parameter left as `null` will use the default value from the `CosmosRegistrationHelper` instance.
+
 ## Sample Application
 
 A complete working sample application is included in this repository demonstrating all major features:
@@ -103,6 +126,7 @@ A complete working sample application is included in this repository demonstrati
 - **Person Entity** - Demonstrates `OwnedItemBase` with custom repository and service layer implementations. Shows complex domain models with nested Address objects.
 - **Note Entity** - Simple `OwnedItemBase` implementation using default repository and service registrations. Serves as parent entity for Comments.
 - **Comment Entity** - Demonstrates `ParentedItemBase` pattern showing parent-child relationships with `ParentId` and `ParentDiscriminator` for type-safe queries.
+- **LookupValue Entity** - Demonstrates custom repository configuration to store entities in a separate Cosmos DB container using the `RegisterRepository` overload with configuration options.
 
 To run the sample application:
 1. Start the Azure Cosmos DB Emulator (see [EMULATOR-SETUP.md](EMULATOR-SETUP.md))

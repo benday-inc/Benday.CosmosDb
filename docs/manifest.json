@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/code/benday-inc/Benday.CosmosDb/docfx_project",
+  "source_base_path": "/Users/benday/code/benday-inc/Benday.CosmosDb/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -46,6 +46,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.DomainModels.IParentedItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.DomainModels.IParentedItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.DomainModels.IParentedItem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.DomainModels.OwnedItemBase.yml",
       "output": {
         ".html": {
@@ -57,6 +71,20 @@
       "IsMRef": true,
       "Title": "Benday.CosmosDb.DomainModels.OwnedItemBase",
       "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.OwnedItemBase.yml\" sourcestartlinenumber=\"1\">Base class for an item that has an owner.  By default, the PartitionKey will be the same as the OwnerId.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.DomainModels.ParentedItemBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.DomainModels.ParentedItemBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.DomainModels.ParentedItemBase",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.ParentedItemBase.yml\" sourcestartlinenumber=\"1\">Base class for an item that has both an owner and a parent entity.\nInherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -158,6 +186,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.yml",
       "output": {
         ".html": {
@@ -211,6 +253,20 @@
       "IsMRef": true,
       "Title": "Benday.CosmosDb.Repositories.IOwnedItemRepository<T>",
       "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.yml\" sourcestartlinenumber=\"1\">Defines the contract for a repository that manages items that have an owner.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Repositories.IParentedItemRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Repositories.IParentedItemRepository-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.IParentedItemRepository<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -298,6 +354,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.IParentedItemService<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.yml\" sourcestartlinenumber=\"1\">Service layer interface for parented items. Extends IOwnedItemService with parent-specific operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemService-1.yml",
       "output": {
         ".html": {
@@ -309,6 +379,20 @@
       "IsMRef": true,
       "Title": "Benday.CosmosDb.ServiceLayers.OwnedItemService<T>",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.ParentedItemService<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.yml\" sourcestartlinenumber=\"1\">Service layer implementation for parented items. Extends OwnedItemService with parent-specific operations.</p>\n"
     },
     {
       "type": "ManagedReference",

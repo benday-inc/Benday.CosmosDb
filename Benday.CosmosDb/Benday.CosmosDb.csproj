@@ -10,14 +10,16 @@
     <PackageProjectUrl>https://github.com/benday-inc/Benday.CosmosDb</PackageProjectUrl>
     <Copyright>2025</Copyright>
     <RepositoryUrl>https://github.com/benday-inc/Benday.CosmosDb.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>5.0.0</TheVersion>
+    <TheVersion>5.1.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
-    <Description>A collection of classes for implementing the domain model and repository patterns with Azure CosmosDb.</Description>
+    <Description>A collection of classes for implementing the domain model and repository patterns with Azure Cosmos DB. Features hierarchical partition key support, LINQ queries with automatic partition keys, optimistic concurrency with ETags, ASP.NET Core dependency injection helpers, and per-repository custom container configuration.</Description>
     <PackageReleaseNotes>
+v5.1 - Added per-repository custom container configuration support; 
 v5.0 - Adding IParentedItem interface and IParentedItemRepository interface plus CosmosDbParentedItemRepository to support items that have a parent-child relationship in CosmosDb;
 v4.10 - Fixing bugs where etag and timestamp not getting updated on Save;
 v4.9 - Added simplified config options for local emulator; Added configuration builder extension method to simplify configuration of cosmos db in web projects; Added better paging support to repository;
@@ -36,7 +38,7 @@ v3.0 - Changed framework target to be netstandard2.1; Added helper classes and m
 v2.1 - Added optimistic concurrency checks using _etag to the repository SaveAsync method.
 v2.0 - Changed implementation to use System.Text.Json for serialization instead of Newtonsoft.Json. Added configuration utilities to make it easier to configure CosmosDb in web projects. Added service layer base classes.
 v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository utilities</PackageReleaseNotes>
-    <PackageTags>cosmosdb; repository pattern; domain model pattern; c#; csharp; cosmos;</PackageTags>
+    <PackageTags>azure; cosmosdb; azure-cosmosdb; repository-pattern; domain-model; nosql; document-database; partition-key; hierarchical-partition-key; dependency-injection; aspnetcore; linq; crud; etag; concurrency</PackageTags>
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
@@ -56,7 +58,7 @@ v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository util
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.*" />
-    <PackageReference Include="Benday.Common" Version="9.7.0" />
+    <PackageReference Include="Benday.Common" Version="9.*" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.*" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.*" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.*" />

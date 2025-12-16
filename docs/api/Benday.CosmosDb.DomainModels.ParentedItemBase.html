@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class OwnedItemBase </title>
+      <title>Class ParentedItemBase </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class OwnedItemBase ">
+      <meta name="title" content="Class ParentedItemBase ">
     
-    <meta name="description" content="Base class for an item that has an owner.  By default, the PartitionKey will be the same as the OwnerId.">
+    <meta name="description" content="Base class for an item that has both an owner and a parent entity. Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -67,28 +67,36 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Benday.CosmosDb.DomainModels.OwnedItemBase">
+            <article class="content wrap" id="_content" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase">
 
 
 
-  <h1 id="Benday_CosmosDb_DomainModels_OwnedItemBase" data-uid="Benday.CosmosDb.DomainModels.OwnedItemBase" class="text-break">Class OwnedItemBase</h1>
-  <div class="markdown level0 summary"><p>Base class for an item that has an owner.  By default, the PartitionKey will be the same as the OwnerId.</p>
+  <h1 id="Benday_CosmosDb_DomainModels_ParentedItemBase" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase" class="text-break">Class ParentedItemBase</h1>
+  <div class="markdown level0 summary"><p>Base class for an item that has both an owner and a parent entity.
+Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html">CosmosIdentityBase</a></div>
-    <div class="level2"><span class="xref">OwnedItemBase</span></div>
-      <div class="level3"><a class="xref" href="Benday.CosmosDb.DomainModels.ParentedItemBase.html">ParentedItemBase</a></div>
+    <div class="level2"><a class="xref" href="Benday.CosmosDb.DomainModels.OwnedItemBase.html">OwnedItemBase</a></div>
+    <div class="level3"><span class="xref">ParentedItemBase</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="Benday.CosmosDb.DomainModels.IParentedItem.html">IParentedItem</a></div>
     <div><a class="xref" href="Benday.CosmosDb.DomainModels.IOwnedItem.html">IOwnedItem</a></div>
     <div><a class="xref" href="Benday.CosmosDb.DomainModels.ICosmosIdentity.html">ICosmosIdentity</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.OwnedItemBase.html#Benday_CosmosDb_DomainModels_OwnedItemBase_PartitionKey">OwnedItemBase.PartitionKey</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.OwnedItemBase.html#Benday_CosmosDb_DomainModels_OwnedItemBase_GetDiscriminatorName">OwnedItemBase.GetDiscriminatorName()</a>
+    </div>
     <div>
       <a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_Id">CosmosIdentityBase.Id</a>
     </div>
@@ -131,28 +139,27 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Benday.html">Benday</a>.<a class="xref" href="Benday.CosmosDb.html">CosmosDb</a>.<a class="xref" href="Benday.CosmosDb.DomainModels.html">DomainModels</a></h6>
   <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
-  <h5 id="Benday_CosmosDb_DomainModels_OwnedItemBase_syntax">Syntax</h5>
+  <h5 id="Benday_CosmosDb_DomainModels_ParentedItemBase_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class OwnedItemBase : CosmosIdentityBase, IOwnedItem, ICosmosIdentity</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class ParentedItemBase : OwnedItemBase, IParentedItem, IOwnedItem, ICosmosIdentity</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_OwnedItemBase_PartitionKey.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.OwnedItemBase.PartitionKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_ParentedItemBase_ParentDiscriminator.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/OwnedItemBase.cs/#L14">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/ParentedItemBase.cs/#L17">View Source</a>
   </span>
-  <a id="Benday_CosmosDb_DomainModels_OwnedItemBase_PartitionKey_" data-uid="Benday.CosmosDb.DomainModels.OwnedItemBase.PartitionKey*"></a>
-  <h4 id="Benday_CosmosDb_DomainModels_OwnedItemBase_PartitionKey" data-uid="Benday.CosmosDb.DomainModels.OwnedItemBase.PartitionKey">PartitionKey</h4>
-  <div class="markdown level1 summary"><p>Returns the partition key for the entity. This value will be the same as the OwnerId.</p>
+  <a id="Benday_CosmosDb_DomainModels_ParentedItemBase_ParentDiscriminator_" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator*"></a>
+  <h4 id="Benday_CosmosDb_DomainModels_ParentedItemBase_ParentDiscriminator" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator">ParentDiscriminator</h4>
+  <div class="markdown level1 summary"><p>Discriminator/type of the parent entity</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;pk&quot;)]
-public override string PartitionKey { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract string ParentDiscriminator { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -169,27 +176,23 @@ public override string PartitionKey { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_PartitionKey">CosmosIdentityBase.PartitionKey</a></div>
-  <h3 id="methods">Methods
-</h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_OwnedItemBase_GetDiscriminatorName.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.OwnedItemBase.GetDiscriminatorName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_ParentedItemBase_ParentId.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/OwnedItemBase.cs/#L21">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/ParentedItemBase.cs/#L12">View Source</a>
   </span>
-  <a id="Benday_CosmosDb_DomainModels_OwnedItemBase_GetDiscriminatorName_" data-uid="Benday.CosmosDb.DomainModels.OwnedItemBase.GetDiscriminatorName*"></a>
-  <h4 id="Benday_CosmosDb_DomainModels_OwnedItemBase_GetDiscriminatorName" data-uid="Benday.CosmosDb.DomainModels.OwnedItemBase.GetDiscriminatorName">GetDiscriminatorName()</h4>
-  <div class="markdown level1 summary"><p>Get the discriminator value for the entity. This value will be the name of the class.</p>
+  <a id="Benday_CosmosDb_DomainModels_ParentedItemBase_ParentId_" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId*"></a>
+  <h4 id="Benday_CosmosDb_DomainModels_ParentedItemBase_ParentId" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase.ParentId">ParentId</h4>
+  <div class="markdown level1 summary"><p>Parent ID in our system</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override string GetDiscriminatorName()</code></pre>
+    <pre><code class="lang-csharp hljs">public string ParentId { get; set; }</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
@@ -204,9 +207,10 @@ public override string PartitionKey { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetDiscriminatorName">CosmosIdentityBase.GetDiscriminatorName()</a></div>
   <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.IParentedItem.html">IParentedItem</a>
+  </div>
   <div>
       <a class="xref" href="Benday.CosmosDb.DomainModels.IOwnedItem.html">IOwnedItem</a>
   </div>
@@ -222,10 +226,10 @@ public override string PartitionKey { get; set; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_OwnedItemBase.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.OwnedItemBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_ParentedItemBase.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.ParentedItemBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/OwnedItemBase.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/ParentedItemBase.cs/#L7" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

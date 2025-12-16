@@ -41,6 +41,7 @@
                         <li><i class="bi bi-check-circle-fill text-success"></i> ASP.NET Core configuration helpers</li>
                         <li><i class="bi bi-check-circle-fill text-success"></i> Ultra-simple emulator configuration</li>
                         <li><i class="bi bi-check-circle-fill text-success"></i> Optimistic concurrency with ETags</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Per-repository custom container configuration</li>
                     </ul>
                 </div>
             </div>
@@ -68,9 +69,16 @@
                         <p class="small text-muted mt-1">View a Note, then add Comments to see the parented item pattern</p>
                     </div>
 
-                    <div>
+                    <div class="mb-3">
                         <h6><span class="badge bg-secondary">Custom Repository</span></h6>
                         <p class="small mb-0">Person entity shows custom repository implementation with specialized queries</p>
+                    </div>
+
+                    <div>
+                        <h6><span class="badge bg-danger">Custom Container Configuration</span></h6>
+                        <p class="small mb-2">Store entities in separate containers:</p>
+                        <a asp-controller="Lookup" asp-action="Index" class="btn btn-sm btn-outline-danger">Lookup Values</a>
+                        <p class="small text-muted mt-1">LookupValue entities stored in a separate "LookupValues" container</p>
                     </div>
                 </div>
             </div>
@@ -152,6 +160,18 @@
                             <p class="small">Demonstrates <code>ParentedItemBase</code> pattern. Shows parent-child relationships
                                with <code>ParentId</code> and <code>ParentDiscriminator</code> for type-safe queries.</p>
                             <a asp-controller="Note" asp-action="Index" class="btn btn-sm btn-outline-success">View Comments Demo</a>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <h6>
+                                <a asp-controller="Lookup" asp-action="Index" class="text-decoration-none">
+                                    <i class="bi bi-list-check"></i> LookupValue Entity
+                                </a>
+                            </h6>
+                            <p class="small">Demonstrates custom container configuration using the <code>RegisterRepository</code>
+                               overload. Stores entities in a separate "LookupValues" container.</p>
+                            <a asp-controller="Lookup" asp-action="Index" class="btn btn-sm btn-outline-danger">View LookupValue Sample</a>
                         </div>
                     </div>
                 </div>
