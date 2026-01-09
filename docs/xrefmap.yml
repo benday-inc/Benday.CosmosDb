@@ -766,6 +766,67 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).New
   nameWithType: CosmosOwnedItemRepository<T>.CosmosOwnedItemRepository
   nameWithType.vb: CosmosOwnedItemRepository(Of T).New
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.BulkMaxConcurrency
+  name: BulkMaxConcurrency
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_BulkMaxConcurrency
+  commentId: P:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.BulkMaxConcurrency
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.BulkMaxConcurrency
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).BulkMaxConcurrency
+  nameWithType: CosmosOwnedItemRepository<T>.BulkMaxConcurrency
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).BulkMaxConcurrency
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.BulkMaxConcurrency*
+  name: BulkMaxConcurrency
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_BulkMaxConcurrency_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.BulkMaxConcurrency
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.BulkMaxConcurrency
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).BulkMaxConcurrency
+  nameWithType: CosmosOwnedItemRepository<T>.BulkMaxConcurrency
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).BulkMaxConcurrency
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.BulkMaxRetries
+  name: BulkMaxRetries
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_BulkMaxRetries
+  commentId: P:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.BulkMaxRetries
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.BulkMaxRetries
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).BulkMaxRetries
+  nameWithType: CosmosOwnedItemRepository<T>.BulkMaxRetries
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).BulkMaxRetries
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.BulkMaxRetries*
+  name: BulkMaxRetries
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_BulkMaxRetries_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.BulkMaxRetries
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.BulkMaxRetries
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).BulkMaxRetries
+  nameWithType: CosmosOwnedItemRepository<T>.BulkMaxRetries
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).BulkMaxRetries
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
+  name: DeleteAllByOwnerIdAsync(string, int, int, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_DeleteAllByOwnerIdAsync_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
+  name.vb: DeleteAllByOwnerIdAsync(String, Integer, Integer, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.DeleteAllByOwnerIdAsync(string, int, int, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync(String, Integer, Integer, System.Threading.CancellationToken)
+  nameWithType: CosmosOwnedItemRepository<T>.DeleteAllByOwnerIdAsync(string, int, int, CancellationToken)
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync(String, Integer, Integer, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAllByOwnerIdAsync(string, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_DeleteAllByOwnerIdAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Threading.CancellationToken)
+  name.vb: DeleteAllByOwnerIdAsync(String, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.DeleteAllByOwnerIdAsync(string, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync(String, System.Threading.CancellationToken)
+  nameWithType: CosmosOwnedItemRepository<T>.DeleteAllByOwnerIdAsync(string, CancellationToken)
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync(String, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteAllByOwnerIdAsync*
+  name: DeleteAllByOwnerIdAsync
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_DeleteAllByOwnerIdAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteAllByOwnerIdAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.DeleteAllByOwnerIdAsync
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync
+  nameWithType: CosmosOwnedItemRepository<T>.DeleteAllByOwnerIdAsync
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync
 - uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteAsync(`0)
   name: DeleteAsync(T)
   href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_DeleteAsync__0_
@@ -783,6 +844,24 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).DeleteAsync
   nameWithType: CosmosOwnedItemRepository<T>.DeleteAsync
   nameWithType.vb: CosmosOwnedItemRepository(Of T).DeleteAsync
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteWithRetryAsync(`0,System.Int32,System.Threading.CancellationToken)
+  name: DeleteWithRetryAsync(T, int, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_DeleteWithRetryAsync__0_System_Int32_System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteWithRetryAsync(`0,System.Int32,System.Threading.CancellationToken)
+  name.vb: DeleteWithRetryAsync(T, Integer, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.DeleteWithRetryAsync(T, int, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).DeleteWithRetryAsync(T, Integer, System.Threading.CancellationToken)
+  nameWithType: CosmosOwnedItemRepository<T>.DeleteWithRetryAsync(T, int, CancellationToken)
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).DeleteWithRetryAsync(T, Integer, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteWithRetryAsync*
+  name: DeleteWithRetryAsync
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_DeleteWithRetryAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.DeleteWithRetryAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.DeleteWithRetryAsync
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).DeleteWithRetryAsync
+  nameWithType: CosmosOwnedItemRepository<T>.DeleteWithRetryAsync
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).DeleteWithRetryAsync
 - uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.GetAllAsync(System.String)
   name: GetAllAsync(string)
   href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_GetAllAsync_System_String_
@@ -819,6 +898,51 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).GetByIdAsync
   nameWithType: CosmosOwnedItemRepository<T>.GetByIdAsync
   nameWithType.vb: CosmosOwnedItemRepository(Of T).GetByIdAsync
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)
+  name: SaveAllAsync(IEnumerable<T>, int, int, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Int32_System_Int32_System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)
+  name.vb: SaveAllAsync(IEnumerable(Of T), Integer, Integer, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.SaveAllAsync(System.Collections.Generic.IEnumerable<T>, int, int, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).SaveAllAsync(System.Collections.Generic.IEnumerable(Of T), Integer, Integer, System.Threading.CancellationToken)
+  nameWithType: CosmosOwnedItemRepository<T>.SaveAllAsync(IEnumerable<T>, int, int, CancellationToken)
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).SaveAllAsync(IEnumerable(Of T), Integer, Integer, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  name: SaveAllAsync(IEnumerable<T>, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  name.vb: SaveAllAsync(IEnumerable(Of T), CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.SaveAllAsync(System.Collections.Generic.IEnumerable<T>, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).SaveAllAsync(System.Collections.Generic.IEnumerable(Of T), System.Threading.CancellationToken)
+  nameWithType: CosmosOwnedItemRepository<T>.SaveAllAsync(IEnumerable<T>, CancellationToken)
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).SaveAllAsync(IEnumerable(Of T), CancellationToken)
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveAllAsync*
+  name: SaveAllAsync
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_SaveAllAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveAllAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.SaveAllAsync
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).SaveAllAsync
+  nameWithType: CosmosOwnedItemRepository<T>.SaveAllAsync
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).SaveAllAsync
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveWithRetryAsync(`0,System.Int32,System.Threading.CancellationToken)
+  name: SaveWithRetryAsync(T, int, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_SaveWithRetryAsync__0_System_Int32_System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveWithRetryAsync(`0,System.Int32,System.Threading.CancellationToken)
+  name.vb: SaveWithRetryAsync(T, Integer, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.SaveWithRetryAsync(T, int, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).SaveWithRetryAsync(T, Integer, System.Threading.CancellationToken)
+  nameWithType: CosmosOwnedItemRepository<T>.SaveWithRetryAsync(T, int, CancellationToken)
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).SaveWithRetryAsync(T, Integer, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveWithRetryAsync*
+  name: SaveWithRetryAsync
+  href: api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosOwnedItemRepository_1_SaveWithRetryAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosOwnedItemRepository`1.SaveWithRetryAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>.SaveWithRetryAsync
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosOwnedItemRepository(Of T).SaveWithRetryAsync
+  nameWithType: CosmosOwnedItemRepository<T>.SaveWithRetryAsync
+  nameWithType.vb: CosmosOwnedItemRepository(Of T).SaveWithRetryAsync
 - uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
   name: CosmosRepositoryOptions<T>
   href: api/Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html
@@ -1386,6 +1510,33 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T)
   nameWithType: IOwnedItemRepository<T>
   nameWithType.vb: IOwnedItemRepository(Of T)
+- uid: Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
+  name: DeleteAllByOwnerIdAsync(string, int, int, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
+  name.vb: DeleteAllByOwnerIdAsync(String, Integer, Integer, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.IOwnedItemRepository<T>.DeleteAllByOwnerIdAsync(string, int, int, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync(String, Integer, Integer, System.Threading.CancellationToken)
+  nameWithType: IOwnedItemRepository<T>.DeleteAllByOwnerIdAsync(string, int, int, CancellationToken)
+  nameWithType.vb: IOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync(String, Integer, Integer, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAllByOwnerIdAsync(string, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Threading.CancellationToken)
+  name.vb: DeleteAllByOwnerIdAsync(String, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.IOwnedItemRepository<T>.DeleteAllByOwnerIdAsync(string, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync(String, System.Threading.CancellationToken)
+  nameWithType: IOwnedItemRepository<T>.DeleteAllByOwnerIdAsync(string, CancellationToken)
+  nameWithType.vb: IOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync(String, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync*
+  name: DeleteAllByOwnerIdAsync
+  href: api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.IOwnedItemRepository<T>.DeleteAllByOwnerIdAsync
+  fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync
+  nameWithType: IOwnedItemRepository<T>.DeleteAllByOwnerIdAsync
+  nameWithType.vb: IOwnedItemRepository(Of T).DeleteAllByOwnerIdAsync
 - uid: Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAsync(`0)
   name: DeleteAsync(T)
   href: api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAsync__0_
@@ -1439,6 +1590,33 @@ references:
   fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T).GetByIdAsync
   nameWithType: IOwnedItemRepository<T>.GetByIdAsync
   nameWithType.vb: IOwnedItemRepository(Of T).GetByIdAsync
+- uid: Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)
+  name: SaveAllAsync(IEnumerable<T>, int, int, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Int32_System_Int32_System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)
+  name.vb: SaveAllAsync(IEnumerable(Of T), Integer, Integer, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.IOwnedItemRepository<T>.SaveAllAsync(System.Collections.Generic.IEnumerable<T>, int, int, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T).SaveAllAsync(System.Collections.Generic.IEnumerable(Of T), Integer, Integer, System.Threading.CancellationToken)
+  nameWithType: IOwnedItemRepository<T>.SaveAllAsync(IEnumerable<T>, int, int, CancellationToken)
+  nameWithType.vb: IOwnedItemRepository(Of T).SaveAllAsync(IEnumerable(Of T), Integer, Integer, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  name: SaveAllAsync(IEnumerable<T>, CancellationToken)
+  href: api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  commentId: M:Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  name.vb: SaveAllAsync(IEnumerable(Of T), CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.IOwnedItemRepository<T>.SaveAllAsync(System.Collections.Generic.IEnumerable<T>, System.Threading.CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T).SaveAllAsync(System.Collections.Generic.IEnumerable(Of T), System.Threading.CancellationToken)
+  nameWithType: IOwnedItemRepository<T>.SaveAllAsync(IEnumerable<T>, CancellationToken)
+  nameWithType.vb: IOwnedItemRepository(Of T).SaveAllAsync(IEnumerable(Of T), CancellationToken)
+- uid: Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync*
+  name: SaveAllAsync
+  href: api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html#Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_
+  commentId: Overload:Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync
+  isSpec: "True"
+  fullName: Benday.CosmosDb.Repositories.IOwnedItemRepository<T>.SaveAllAsync
+  fullName.vb: Benday.CosmosDb.Repositories.IOwnedItemRepository(Of T).SaveAllAsync
+  nameWithType: IOwnedItemRepository<T>.SaveAllAsync
+  nameWithType.vb: IOwnedItemRepository(Of T).SaveAllAsync
 - uid: Benday.CosmosDb.Repositories.IParentedItemRepository`1
   name: IParentedItemRepository<T>
   href: api/Benday.CosmosDb.Repositories.IParentedItemRepository-1.html

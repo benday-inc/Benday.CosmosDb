@@ -14,11 +14,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>5.1.0</TheVersion>
+    <TheVersion>5.2.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure Cosmos DB. Features hierarchical partition key support, LINQ queries with automatic partition keys, optimistic concurrency with ETags, ASP.NET Core dependency injection helpers, and per-repository custom container configuration.</Description>
     <PackageReleaseNotes>
+v5.2 - Added bulk delete support to repository;
 v5.1 - Added per-repository custom container configuration support; 
 v5.0 - Adding IParentedItem interface and IParentedItemRepository interface plus CosmosDbParentedItemRepository to support items that have a parent-child relationship in CosmosDb;
 v4.10 - Fixing bugs where etag and timestamp not getting updated on Save;

@@ -122,6 +122,128 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.IOwnedItemRepository%601.DeleteAllByOwnerIdAsync(System.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/IOwnedItemRepository.cs/#L48">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_" data-uid="Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">DeleteAllByOwnerIdAsync(string, int, int, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes all items for the specified owner with configurable throttling and retry logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteAllByOwnerIdAsync(string ownerId, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">ownerId</span></td>
+        <td><p>Owner id for the items to delete</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxConcurrency</span></td>
+        <td><p>Maximum number of concurrent delete operations</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxRetries</span></td>
+        <td><p>Maximum number of retry attempts for throttled requests</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.IOwnedItemRepository%601.DeleteAllByOwnerIdAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/IOwnedItemRepository.cs/#L39">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_" data-uid="Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAllByOwnerIdAsync_System_String_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.IOwnedItemRepository`1.DeleteAllByOwnerIdAsync(System.String,System.Threading.CancellationToken)">DeleteAllByOwnerIdAsync(string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes all items for the specified owner with throttling and retry logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteAllByOwnerIdAsync(string ownerId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">ownerId</span></td>
+        <td><p>Owner id for the items to delete</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_IOwnedItemRepository_1_DeleteAsync__0_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.IOwnedItemRepository%601.DeleteAsync(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -272,6 +394,128 @@
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
         <td><p>The matching item or null</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Int32_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.IOwnedItemRepository%601.SaveAllAsync(System.Collections.Generic.IEnumerable%7B%600%7D%2CSystem.Int32%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/IOwnedItemRepository.cs/#L64">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_" data-uid="Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)">SaveAllAsync(IEnumerable&lt;T&gt;, int, int, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Saves multiple items with configurable throttling and retry logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SaveAllAsync(IEnumerable&lt;T&gt; items, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">items</span></td>
+        <td><p>Items to save</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxConcurrency</span></td>
+        <td><p>Maximum number of concurrent save operations</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxRetries</span></td>
+        <td><p>Maximum number of retry attempts for throttled requests</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.IOwnedItemRepository%601.SaveAllAsync(System.Collections.Generic.IEnumerable%7B%600%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/IOwnedItemRepository.cs/#L55">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_" data-uid="Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_IOwnedItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.IOwnedItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">SaveAllAsync(IEnumerable&lt;T&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Saves multiple items with throttling and retry logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SaveAllAsync(IEnumerable&lt;T&gt; items, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">items</span></td>
+        <td><p>Items to save</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
