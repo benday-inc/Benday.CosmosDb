@@ -13,7 +13,7 @@ public interface IOwnedItemRepository<T> : IRepository<T>
     /// Get all items in the repository that have the specified owner id.
     /// </summary>
     /// <param name="ownerId">Owner id</param>
-    /// <returns>Matching items</returns>    
+    /// <returns>Matching items</returns>
     Task<IEnumerable<T>> GetAllAsync(string ownerId);
 
     /// <summary>
@@ -30,4 +30,36 @@ public interface IOwnedItemRepository<T> : IRepository<T>
     /// <param name="itemToDelete">Item to delete</param>
     /// <returns></returns>
     Task DeleteAsync(T itemToDelete);
+
+    /// <summary>
+    /// Deletes all items for the specified owner with throttling and retry logic.
+    /// </summary>
+    /// <param name="ownerId">Owner id for the items to delete</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    Task DeleteAllByOwnerIdAsync(string ownerId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Deletes all items for the specified owner with configurable throttling and retry logic.
+    /// </summary>
+    /// <param name="ownerId">Owner id for the items to delete</param>
+    /// <param name="maxConcurrency">Maximum number of concurrent delete operations</param>
+    /// <param name="maxRetries">Maximum number of retry attempts for throttled requests</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    Task DeleteAllByOwnerIdAsync(string ownerId, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Saves multiple items with throttling and retry logic.
+    /// </summary>
+    /// <param name="items">Items to save</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    Task SaveAllAsync(IEnumerable<T> items, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Saves multiple items with configurable throttling and retry logic.
+    /// </summary>
+    /// <param name="items">Items to save</param>
+    /// <param name="maxConcurrency">Maximum number of concurrent save operations</param>
+    /// <param name="maxRetries">Maximum number of retry attempts for throttled requests</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    Task SaveAllAsync(IEnumerable<T> items, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default);
 }
