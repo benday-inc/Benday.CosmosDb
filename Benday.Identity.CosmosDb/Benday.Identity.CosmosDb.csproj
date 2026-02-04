@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
+
+    <!-- NuGet Package Properties -->
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>benday</Authors>
+    <PackageProjectUrl>https://github.com/benday-inc/Benday.CosmosDb</PackageProjectUrl>
+    <Copyright>2026</Copyright>
+    <RepositoryUrl>https://github.com/benday-inc/Benday.CosmosDb.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>bdc_mark_128_128.png</PackageIcon>
+    <TheVersion>1.1.0</TheVersion>
+    <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
+    <Version>$(VersionPrefix)$(TheVersion)</Version>
+    <Description>ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Provides user store, role store, claims, lockout, two-factor authentication, and external login support. Built on top of the Benday.CosmosDb repository pattern library.</Description>
+    <PackageReleaseNotes>
+v1.1.0 - Update dependencies and package metadata; Changing target framework to netstandard2.1; Removing alpha tag
+v1.0.0 - Initial release with full ASP.NET Core Identity store implementations for Cosmos DB
+    </PackageReleaseNotes>
+    <PackageTags>azure; cosmosdb; azure-cosmosdb; aspnetcore; identity; authentication; authorization; user-store; role-store; claims; two-factor; external-login</PackageTags>
+
+    <!-- Package Settings -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\bdc_mark_128_128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.*" />
+  </ItemGroup>
+</Project>
