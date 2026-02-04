@@ -1,0 +1,72 @@
+name: Benday.Identity.CosmosDb CI
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - 'Benday.Identity.CosmosDb/**'
+      - '.github/workflows/benday-identity-cosmosdb.yml'
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - 'Benday.Identity.CosmosDb/**'
+      - '.github/workflows/benday-identity-cosmosdb.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore Benday.Identity.CosmosDb
+        run: dotnet restore Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj
+
+      - name: Build Benday.Identity.CosmosDb (Release)
+        run: dotnet build Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --configuration Release --no-restore
+
+      - name: Pack Benday.Identity.CosmosDb
+        run: dotnet pack Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --no-build --configuration Release --output ./artifacts
+
+      - name: Upload NuGet packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages-identity-cosmosdb
+          path: ./artifacts/*.nupkg
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: nuget-deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages-identity-cosmosdb
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Push to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [ -z "$NUGET_API_KEY" ]; then
+            echo "Error: NUGET_API_KEY secret is not set"
+            exit 1
+          fi
+          dotnet nuget push *.nupkg -k "$NUGET_API_KEY" -s https://api.nuget.org/v3/index.json --skip-duplicate

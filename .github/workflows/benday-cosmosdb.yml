@@ -1,0 +1,83 @@
+name: Benday.CosmosDb CI
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - 'Benday.CosmosDb/**'
+      - 'Benday.CosmosDb.UnitTests/**'
+      - '.github/workflows/benday-cosmosdb.yml'
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - 'Benday.CosmosDb/**'
+      - 'Benday.CosmosDb.UnitTests/**'
+      - '.github/workflows/benday-cosmosdb.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore Benday.CosmosDb
+        run: dotnet restore Benday.CosmosDb/Benday.CosmosDb.csproj
+
+      - name: Restore UnitTests
+        run: dotnet restore Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj
+
+      - name: Build Benday.CosmosDb (Release)
+        run: dotnet build Benday.CosmosDb/Benday.CosmosDb.csproj --configuration Release --no-restore
+
+      - name: Build UnitTests (Release)
+        run: dotnet build Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --no-restore
+
+      - name: Test (Release)
+        run: dotnet test Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --verbosity normal
+
+      - name: Pack Benday.CosmosDb
+        run: dotnet pack Benday.CosmosDb/Benday.CosmosDb.csproj --no-build --configuration Release --output ./artifacts
+
+      - name: Upload NuGet packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages-cosmosdb
+          path: ./artifacts/*.nupkg
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: nuget-deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages-cosmosdb
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Push to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [ -z "$NUGET_API_KEY" ]; then
+            echo "Error: NUGET_API_KEY secret is not set"
+            exit 1
+          fi
+          dotnet nuget push *.nupkg -k "$NUGET_API_KEY" -s https://api.nuget.org/v3/index.json --skip-duplicate
