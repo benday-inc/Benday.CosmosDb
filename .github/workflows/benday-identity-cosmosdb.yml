@@ -6,12 +6,14 @@ on:
     paths:
       - 'Benday.Identity.CosmosDb/**'
       - 'Benday.Identity.CosmosDb.UI/**'
+      - 'Benday.Identity.CosmosDb.UnitTests/**'
       - '.github/workflows/benday-identity-cosmosdb.yml'
   pull_request:
     branches: [ "master" ]
     paths:
       - 'Benday.Identity.CosmosDb/**'
       - 'Benday.Identity.CosmosDb.UI/**'
+      - 'Benday.Identity.CosmosDb.UnitTests/**'
       - '.github/workflows/benday-identity-cosmosdb.yml'
   workflow_dispatch:
 
@@ -42,6 +44,15 @@ jobs:
 
       - name: Build Benday.Identity.CosmosDb.UI (Release)
         run: dotnet build Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --configuration Release --no-restore
+
+      - name: Restore Benday.Identity.CosmosDb.UnitTests
+        run: dotnet restore Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj
+
+      - name: Build Benday.Identity.CosmosDb.UnitTests (Release)
+        run: dotnet build Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-restore
+
+      - name: Run Unit Tests
+        run: dotnet test Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-build --verbosity normal
 
       - name: Pack Benday.Identity.CosmosDb
         run: dotnet pack Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --no-build --configuration Release --output ./artifacts
