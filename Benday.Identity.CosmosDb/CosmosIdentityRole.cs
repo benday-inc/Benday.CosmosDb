@@ -1,6 +1,6 @@
 namespace Benday.Identity.CosmosDb
 {
-    public class IdentityRole : SystemOwnedItem
+    public class CosmosIdentityRole : SystemOwnedItem
     {
         public string Name { get; set; } = string.Empty;
 
@@ -18,6 +18,6 @@ namespace Benday.Identity.CosmosDb
 
         public string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
 
-        public List<IdentityClaim> Claims { get; set; } = new List<IdentityClaim>();
+        public List<CosmosIdentityClaim> Claims { get; set; } = new List<CosmosIdentityClaim>();
     }
 }

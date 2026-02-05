@@ -1,6 +1,6 @@
 namespace Benday.Identity.CosmosDb
 {
-    public class IdentityUser : SystemOwnedItem
+    public class CosmosIdentityUser : SystemOwnedItem
     {
         public string UserName { get; set; } = string.Empty;
         public string NormalizedUserName
@@ -46,9 +46,9 @@ namespace Benday.Identity.CosmosDb
         public int AccessFailedCount { get; set; }
 
         // Claims and roles
-        public List<IdentityUserClaim> Claims { get; set; } = new List<IdentityUserClaim>();
+        public List<CosmosIdentityUserClaim> Claims { get; set; } = new List<CosmosIdentityUserClaim>();
 
         // External logins
-        public List<IdentityUserLogin> Logins { get; set; } = new List<IdentityUserLogin>();
+        public List<CosmosIdentityUserLogin> Logins { get; set; } = new List<CosmosIdentityUserLogin>();
     }
 }

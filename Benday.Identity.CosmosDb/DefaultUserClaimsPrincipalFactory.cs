@@ -9,15 +9,15 @@ namespace Benday.Identity.CosmosDb
     /// adds role claims to the claims identity. Override this class to customize the claims
     /// generation for your application.
     /// </summary>
-    public class DefaultUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<IdentityUser, IdentityRole>
+    public class DefaultUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<CosmosIdentityUser, CosmosIdentityRole>
     {
         public DefaultUserClaimsPrincipalFactory(
-            UserManager<IdentityUser> userManager,
-            RoleManager<IdentityRole> roleManager,
+            UserManager<CosmosIdentityUser> userManager,
+            RoleManager<CosmosIdentityRole> roleManager,
             IOptions<IdentityOptions> optionsAccessor)
             : base(userManager, roleManager, optionsAccessor) { }
 
-        protected override async Task<ClaimsIdentity> GenerateClaimsAsync(IdentityUser user)
+        protected override async Task<ClaimsIdentity> GenerateClaimsAsync(CosmosIdentityUser user)
         {
             var identity = await base.GenerateClaimsAsync(user);
             var roles = await UserManager.GetRolesAsync(user);

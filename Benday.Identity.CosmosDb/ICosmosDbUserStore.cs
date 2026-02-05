@@ -3,19 +3,19 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Benday.Identity.CosmosDb;
 
-public interface ICosmosDbUserStore : IOwnedItemRepository<IdentityUser>,
-    IUserStore<IdentityUser>,
-    IUserPasswordStore<IdentityUser>,
-    IUserEmailStore<IdentityUser>,
-    IUserRoleStore<IdentityUser>,
-    IUserSecurityStampStore<IdentityUser>,
-    IUserLockoutStore<IdentityUser>,
-    IUserClaimStore<IdentityUser>,
-    IUserTwoFactorStore<IdentityUser>,
-    IUserPhoneNumberStore<IdentityUser>,
-    IUserAuthenticatorKeyStore<IdentityUser>,
-    IUserTwoFactorRecoveryCodeStore<IdentityUser>,
-    IUserLoginStore<IdentityUser>,
-    IQueryableUserStore<IdentityUser>
+public interface ICosmosDbUserStore : IOwnedItemRepository<CosmosIdentityUser>,
+    IUserStore<CosmosIdentityUser>,
+    IUserPasswordStore<CosmosIdentityUser>,
+    IUserEmailStore<CosmosIdentityUser>,
+    IUserRoleStore<CosmosIdentityUser>,
+    IUserSecurityStampStore<CosmosIdentityUser>,
+    IUserLockoutStore<CosmosIdentityUser>,
+    IUserClaimStore<CosmosIdentityUser>,
+    IUserTwoFactorStore<CosmosIdentityUser>,
+    IUserPhoneNumberStore<CosmosIdentityUser>,
+    IUserAuthenticatorKeyStore<CosmosIdentityUser>,
+    IUserTwoFactorRecoveryCodeStore<CosmosIdentityUser>,
+    IUserLoginStore<CosmosIdentityUser>,
+    IQueryableUserStore<CosmosIdentityUser>
 {
 }

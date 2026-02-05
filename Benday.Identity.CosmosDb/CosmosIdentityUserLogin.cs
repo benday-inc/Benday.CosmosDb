@@ -3,7 +3,7 @@ namespace Benday.Identity.CosmosDb
     /// <summary>
     /// Represents a login and its associated provider for a user.
     /// </summary>
-    public class IdentityUserLogin
+    public class CosmosIdentityUserLogin
     {
         /// <summary>
         /// Gets or sets the login provider (e.g., Google, Facebook, Microsoft).
