@@ -2,11 +2,11 @@ using System.Security.Claims;
 
 namespace Benday.Identity.CosmosDb
 {
-    public static class IdentityRoleExtensions
+    public static class CosmosIdentityRoleExtensions
     {
-        public static void AddClaim(this IdentityRole role, Claim claim)
+        public static void AddClaim(this CosmosIdentityRole role, Claim claim)
         {
-            var roleClaim = new IdentityClaim
+            var roleClaim = new CosmosIdentityClaim
             {
                 Type = claim.Type,
                 Value = claim.Value
@@ -25,7 +25,7 @@ namespace Benday.Identity.CosmosDb
             role.Claims.Add(roleClaim);
         }
 
-        public static List<Claim> ToClaimList(this List<IdentityClaim> fromClaims)
+        public static List<Claim> ToClaimList(this List<CosmosIdentityClaim> fromClaims)
         {
             var claims = new List<Claim>();
 

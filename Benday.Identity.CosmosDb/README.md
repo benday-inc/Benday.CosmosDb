@@ -2,6 +2,13 @@
 
 ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Built on top of the [Benday.CosmosDb](https://www.nuget.org/packages/Benday.CosmosDb) repository pattern library.
 
+## Packages
+
+| Package | Description |
+|---|---|
+| **Benday.Identity.CosmosDb** | Core identity models and stores |
+| **Benday.Identity.CosmosDb.UI** | Registration extension method, pre-built Razor Pages (Login/Logout/AccessDenied), RedirectToLogin Blazor component, and admin seeding utility |
+
 ## Features
 
 - Full ASP.NET Core Identity support with Cosmos DB storage
@@ -14,12 +21,92 @@ ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store.
 - Phone number verification
 - Security stamp management for token invalidation
 - LINQ query support
+- **One-line registration** via `AddCosmosIdentity()` (in UI package)
+- **Pre-built Login/Logout/AccessDenied pages** (in UI package)
+- **RedirectToLogin Blazor component** (in UI package)
+- **Admin user seeding utility** (in UI package)
 
-## Installation
+## Quick Start (Recommended)
+
+Install both packages:
+
+```bash
+dotnet add package Benday.Identity.CosmosDb.UI
+```
+
+Register everything in `Program.cs`:
+
+```csharp
+using Benday.Identity.CosmosDb.UI;
+using Benday.CosmosDb.Utilities;
+
+var cosmosConfig = builder.Configuration.GetCosmosConfig();
+
+builder.Services.AddCosmosIdentity(cosmosConfig);
+builder.Services.AddRazorPages();
+
+// ...
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapRazorPages();
+```
+
+That's it. No partition key knowledge, no store registration, no cookie configuration. Login/logout pages work out of the box.
+
+### Customization
+
+```csharp
+builder.Services.AddCosmosIdentity(cosmosConfig,
+    options =>
+    {
+        options.CookieName = "MyApp.Auth";
+        options.UsersContainerName = "AppUsers";
+        options.CookieExpiration = TimeSpan.FromDays(30);
+    },
+    identity =>
+    {
+        identity.Password.RequiredLength = 12;
+        identity.Lockout.MaxFailedAccessAttempts = 3;
+    })
+    .AddDefaultTokenProviders();
+```
+
+### Blazor Server: RedirectToLogin
+
+In your `App.razor` or route component:
+
+```razor
+<AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)">
+    <NotAuthorized>
+        <RedirectToLogin />
+    </NotAuthorized>
+</AuthorizeRouteView>
+```
+
+### Seed Admin User
+
+In `Program.cs`:
+
+```csharp
+if (args.Contains("--seed-admin"))
+{
+    await CosmosIdentitySeeder.SeedAdminUserInteractive(app.Services);
+    return;
+}
+```
+
+Then run: `dotnet run -- --seed-admin`
+
+## Core Package Only
+
+If you want just the models and stores without the UI package:
 
 ```bash
 dotnet add package Benday.Identity.CosmosDb
 ```
+
+You'll need to register the stores, identity, and cookie configuration manually.
 
 ## Dependencies
 
@@ -29,78 +116,31 @@ dotnet add package Benday.Identity.CosmosDb
 ## Implemented Interfaces
 
 ### User Store (`CosmosDbUserStore`)
-- `IUserStore<IdentityUser>`
-- `IUserPasswordStore<IdentityUser>`
-- `IUserEmailStore<IdentityUser>`
-- `IUserRoleStore<IdentityUser>`
-- `IUserSecurityStampStore<IdentityUser>`
-- `IUserLockoutStore<IdentityUser>`
-- `IUserClaimStore<IdentityUser>`
-- `IUserTwoFactorStore<IdentityUser>`
-- `IUserPhoneNumberStore<IdentityUser>`
-- `IUserAuthenticatorKeyStore<IdentityUser>`
-- `IUserTwoFactorRecoveryCodeStore<IdentityUser>`
-- `IUserLoginStore<IdentityUser>`
-- `IQueryableUserStore<IdentityUser>`
+- `IUserStore<CosmosIdentityUser>`
+- `IUserPasswordStore<CosmosIdentityUser>`
+- `IUserEmailStore<CosmosIdentityUser>`
+- `IUserRoleStore<CosmosIdentityUser>`
+- `IUserSecurityStampStore<CosmosIdentityUser>`
+- `IUserLockoutStore<CosmosIdentityUser>`
+- `IUserClaimStore<CosmosIdentityUser>`
+- `IUserTwoFactorStore<CosmosIdentityUser>`
+- `IUserPhoneNumberStore<CosmosIdentityUser>`
+- `IUserAuthenticatorKeyStore<CosmosIdentityUser>`
+- `IUserTwoFactorRecoveryCodeStore<CosmosIdentityUser>`
+- `IUserLoginStore<CosmosIdentityUser>`
+- `IQueryableUserStore<CosmosIdentityUser>`
 
 ### Role Store (`CosmosDbRoleStore`)
-- `IRoleStore<IdentityRole>`
-- `IRoleClaimStore<IdentityRole>`
-- `IQueryableRoleStore<IdentityRole>`
+- `IRoleStore<CosmosIdentityRole>`
+- `IRoleClaimStore<CosmosIdentityRole>`
+- `IQueryableRoleStore<CosmosIdentityRole>`
 
 ### Claims Principal Factory
-- `DefaultUserClaimsPrincipalFactory` - A default implementation that adds role claims to the identity. Override this class to customize claims generation for your application.
-
-## Usage
-
-Register the identity stores in your `Program.cs` or startup configuration:
-
-```csharp
-using Benday.Identity.CosmosDb;
-using Benday.CosmosDb.Utilities;
-
-// Configure Cosmos DB
-var cosmosConfig = new CosmosConfigBuilder()
-    .UseLocalEmulator()
-    .WithDatabase("YourDatabase")
-    .Build();
-
-// Register Cosmos client
-services.AddSingleton(sp =>
-{
-    var options = CosmosClientOptionsUtilities.GetCosmosClientOptions(cosmosConfig);
-    return new CosmosClient(cosmosConfig.ConnectionString, options);
-});
-
-// Register User Store
-services.Configure<CosmosRepositoryOptions<IdentityUser>>(options =>
-{
-    options.DatabaseName = cosmosConfig.DatabaseName;
-    options.ContainerName = "Users";
-    options.PartitionKeyPath = "/ownerId";
-});
-services.AddScoped<IUserStore<IdentityUser>, CosmosDbUserStore>();
-services.AddScoped<ICosmosDbUserStore, CosmosDbUserStore>();
-
-// Register Role Store
-services.Configure<CosmosRepositoryOptions<IdentityRole>>(options =>
-{
-    options.DatabaseName = cosmosConfig.DatabaseName;
-    options.ContainerName = "Roles";
-    options.PartitionKeyPath = "/ownerId";
-});
-services.AddScoped<IRoleStore<IdentityRole>, CosmosDbRoleStore>();
-
-// Register Identity with default claims principal factory
-services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddDefaultTokenProviders();
-
-services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, DefaultUserClaimsPrincipalFactory>();
-```
+- `DefaultUserClaimsPrincipalFactory` - A default implementation that adds role claims to the identity.
 
 ## Domain Models
 
-### IdentityUser
+### CosmosIdentityUser
 The user entity with support for:
 - Username and email (with automatic normalization)
 - Password hash
@@ -111,7 +151,7 @@ The user entity with support for:
 - Claims collection
 - External login providers
 
-### IdentityRole
+### CosmosIdentityRole
 The role entity with support for:
 - Role name (with automatic normalization)
 - Concurrency stamp
@@ -120,6 +160,21 @@ The role entity with support for:
 ## Partition Key Strategy
 
 All identity entities use a "SYSTEM" partition key by default, meaning all users and roles are stored in the same logical partition. This simplifies queries and works well for most applications. If you need a different partitioning strategy, you can override the `SystemOwnedItem` base class.
+
+## Migration from v1.x
+
+v2.0 is a breaking change. All identity classes have been renamed to avoid namespace collisions with `Microsoft.AspNetCore.Identity`:
+
+| v1.x | v2.0 |
+|---|---|
+| `IdentityUser` | `CosmosIdentityUser` |
+| `IdentityRole` | `CosmosIdentityRole` |
+| `IdentityConstants` | `CosmosIdentityConstants` |
+| `IdentityClaim` | `CosmosIdentityClaim` |
+| `IdentityUserClaim` | `CosmosIdentityUserClaim` |
+| `IdentityUserLogin` | `CosmosIdentityUserLogin` |
+
+**Using aliases are no longer needed.** You can remove any `using IdentityUser = Benday.Identity.CosmosDb.IdentityUser;` directives.
 
 ## License
 

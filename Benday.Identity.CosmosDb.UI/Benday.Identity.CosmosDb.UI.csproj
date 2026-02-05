@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 
     <!-- NuGet Package Properties -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -14,18 +15,15 @@
     <RepositoryUrl>https://github.com/benday-inc/Benday.CosmosDb.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
     <TheVersion>2.0.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
-    <Description>ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Provides user store, role store, claims, lockout, two-factor authentication, and external login support. Built on top of the Benday.CosmosDb repository pattern library.</Description>
+    <Description>ASP.NET Core Identity UI and registration extensions for Azure Cosmos DB. Provides a single AddCosmosIdentity() extension method, pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and an admin user seeding utility. Built on top of Benday.Identity.CosmosDb.</Description>
     <PackageReleaseNotes>
-v2.0.0 - BREAKING: Renamed all identity classes with Cosmos prefix to avoid namespace collisions (IdentityUser -> CosmosIdentityUser, IdentityRole -> CosmosIdentityRole, etc.)
-v1.1.0 - Update dependencies and package metadata; Changing target framework to netstandard2.1; Removing alpha tag
-v1.0.0 - Initial release with full ASP.NET Core Identity store implementations for Cosmos DB
+v2.0.0 - Initial release with AddCosmosIdentity extension method, Razor Pages UI, RedirectToLogin component, and CosmosIdentitySeeder
     </PackageReleaseNotes>
-    <PackageTags>azure; cosmosdb; azure-cosmosdb; aspnetcore; identity; authentication; authorization; user-store; role-store; claims; two-factor; external-login</PackageTags>
+    <PackageTags>azure; cosmosdb; azure-cosmosdb; aspnetcore; identity; authentication; authorization; blazor; razor-pages; login; ui</PackageTags>
 
     <!-- Package Settings -->
     <IncludeSymbols>true</IncludeSymbols>
@@ -37,14 +35,17 @@ v1.0.0 - Initial release with full ASP.NET Core Identity store implementations f
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.*" />
   </ItemGroup>
 </Project>
