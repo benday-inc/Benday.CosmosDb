@@ -78,10 +78,10 @@ public class PersonRepositoryFixture
 
 
     /// <summary>
-    /// This test doesn't work with the linux docker next gen emulator or ARM64
+    /// FYI, This test might not work with the linux docker next gen emulator or ARM64
     /// </summary>
     /// <returns></returns>
-    [Fact(Skip = "only works with real cosmosdb or the old Windows emulator on Intel")]    
+    [Fact()]    
     public async Task CreatePerson_Multiple_PopulatesBaseClassProperties()
     {
         // arrange

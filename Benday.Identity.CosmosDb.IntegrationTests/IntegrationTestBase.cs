@@ -1,7 +1,6 @@
 using Benday.Common.Testing;
 using Benday.CosmosDb.Repositories;
 using Benday.Identity.CosmosDb;
-using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -11,6 +10,7 @@ namespace Benday.Identity.CosmosDb.IntegrationTests;
 
 public abstract class IntegrationTestBase : TestClassBase
 {
+    private const bool DEFAULT_CREATE_STRUCTURES = true;
     protected CosmosEmulatorFixture Emulator { get; }
 
     protected IntegrationTestBase(
@@ -24,34 +24,34 @@ public abstract class IntegrationTestBase : TestClassBase
     {
         var options = Options.Create(new CosmosRepositoryOptions<CosmosIdentityUser>
         {
-            ConnectionString = Emulator.ConnectionString,
+            ConnectionString = Emulator.Config.ConnectionString,
             DatabaseName = CosmosEmulatorFixture.DatabaseName,
             ContainerName = CosmosEmulatorFixture.UsersContainerName,
             PartitionKey = "/pk,/discriminator",
             UseHierarchicalPartitionKey = true,
-            WithCreateStructures = false
+            WithCreateStructures = DEFAULT_CREATE_STRUCTURES
         });
 
         var logger = new Mock<ILogger<CosmosDbUserStore>>();
 
-        return new CosmosDbUserStore(options, Emulator.Client!, logger.Object);
+        return new CosmosDbUserStore(options, Emulator.Client, logger.Object);
     }
 
     protected CosmosDbRoleStore CreateRoleStore()
     {
         var options = Options.Create(new CosmosRepositoryOptions<CosmosIdentityRole>
         {
-            ConnectionString = Emulator.ConnectionString,
+            ConnectionString = Emulator.Config.ConnectionString,
             DatabaseName = CosmosEmulatorFixture.DatabaseName,
             ContainerName = CosmosEmulatorFixture.RolesContainerName,
             PartitionKey = "/pk,/discriminator",
             UseHierarchicalPartitionKey = true,
-            WithCreateStructures = false
+            WithCreateStructures = DEFAULT_CREATE_STRUCTURES
         });
 
         var logger = new Mock<ILogger<CosmosDbRoleStore>>();
 
-        return new CosmosDbRoleStore(options, Emulator.Client!, logger.Object);
+        return new CosmosDbRoleStore(options, Emulator.Client, logger.Object);
     }
 
     protected CosmosIdentityUser CreateTestUser(string? email = null)

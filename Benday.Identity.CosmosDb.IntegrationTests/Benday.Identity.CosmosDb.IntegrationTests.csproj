@@ -14,7 +14,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="3.*" />
     <PackageReference Include="Benday.Common" Version="9.*" />
     <PackageReference Include="Benday.Common.Testing" Version="2.*" />
-    <PackageReference Include="Testcontainers.CosmosDb" Version="4.*" />
+    <PackageReference Include="Moq" Version="4.*" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
