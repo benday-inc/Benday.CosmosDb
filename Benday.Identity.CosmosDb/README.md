@@ -6,8 +6,8 @@ ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store.
 
 | Package | Description |
 |---|---|
-| **Benday.Identity.CosmosDb** | Core identity models, stores, DI registration (`AddCosmosIdentity`), configuration, and admin seeding utility |
-| **Benday.Identity.CosmosDb.UI** | Pre-built Razor Pages (Login/Logout/AccessDenied), RedirectToLogin Blazor component, and `AddCosmosIdentityWithUI` convenience method |
+| **Benday.Identity.CosmosDb** | Core identity models, stores, DI registration (`AddCosmosIdentity`), email sender interface, configuration, and admin seeding utility |
+| **Benday.Identity.CosmosDb.UI** | Pre-built Razor Pages (Login, Logout, Register, ChangePassword, ForgotPassword, ResetPassword, ConfirmEmail, Admin User List/Edit), RedirectToLogin Blazor component, and `AddCosmosIdentityWithUI` convenience method |
 
 ## Features
 
@@ -23,7 +23,11 @@ ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store.
 - LINQ query support
 - **One-line registration** via `AddCosmosIdentity()` (core package)
 - **Admin user seeding utility** via `CosmosIdentitySeeder` (core package)
-- **Pre-built Login/Logout/AccessDenied pages** (UI package)
+- **Pre-built account pages**: Login, Logout, AccessDenied, Register, ChangePassword, ForgotPassword, ResetPassword, ConfirmEmail (UI package)
+- **Admin pages**: User List (search/paginate) and Edit User (email, lockout, roles, claims) (UI package)
+- **Pluggable email sender** via `ICosmosIdentityEmailSender` with no-op default (core + UI packages)
+- **Private site support** via `AllowRegistration` option (disables registration page)
+- **Admin authorization** via configurable `AdminRoleName` option and `CosmosIdentityAdmin` policy
 - **RedirectToLogin Blazor component** (UI package)
 - **Cookie configuration** via `AddCosmosIdentityWithUI()` (UI package)
 
@@ -105,8 +109,7 @@ builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
     {
         identity.Password.RequiredLength = 12;
         identity.Lockout.MaxFailedAccessAttempts = 3;
-    })
-    .AddDefaultTokenProviders();
+    });
 ```
 
 All available `CosmosIdentityOptions`:
@@ -121,6 +124,9 @@ All available `CosmosIdentityOptions`:
 | `AccessDeniedPath` | `"/Account/AccessDenied"` | Access denied page path |
 | `CookieExpiration` | 14 days | Cookie expiration time |
 | `SlidingExpiration` | `true` | Whether to use sliding expiration |
+| `AllowRegistration` | `true` | Whether self-registration is allowed (set `false` for private sites) |
+| `AdminRoleName` | `"UserAdmin"` | Role name required for admin pages |
+| `RequireConfirmedEmail` | `false` | Whether email confirmation is required before sign-in |
 
 ### Blazor Server: RedirectToLogin
 
@@ -149,6 +155,85 @@ if (args.Contains("--seed-admin"))
 ```
 
 Then run: `dotnet run -- --seed-admin`
+
+### Email Sender
+
+Password reset and email confirmation require an email sender. The library ships with a no-op default (`NoOpCosmosIdentityEmailSender`) so everything compiles and runs out of the box, but no emails are actually sent.
+
+To enable real email delivery, implement `ICosmosIdentityEmailSender` and register it **before** calling `AddCosmosIdentityWithUI()`:
+
+```csharp
+using Benday.Identity.CosmosDb;
+
+public class SmtpEmailSender : ICosmosIdentityEmailSender
+{
+    private readonly SmtpClient _client;
+
+    public SmtpEmailSender(SmtpClient client)
+    {
+        _client = client;
+    }
+
+    public async Task SendEmailAsync(string email, string subject, string htmlMessage)
+    {
+        var message = new MailMessage("noreply@yourapp.com", email, subject, htmlMessage)
+        {
+            IsBodyHtml = true
+        };
+
+        await _client.SendMailAsync(message);
+    }
+}
+```
+
+Register it in `Program.cs`:
+
+```csharp
+// Register your email sender BEFORE AddCosmosIdentityWithUI
+builder.Services.AddSingleton<ICosmosIdentityEmailSender, SmtpEmailSender>();
+
+// AddCosmosIdentityWithUI uses TryAddSingleton, so it won't overwrite yours
+builder.Services.AddCosmosIdentityWithUI(cosmosConfig);
+```
+
+You can use any email provider (SMTP, SendGrid, Amazon SES, etc.) — just implement the `SendEmailAsync` method. If no custom sender is registered, the no-op default is used and password reset / email confirmation flows will silently skip sending.
+
+### Admin Pages
+
+The UI package includes admin pages for user management at `/Admin/Users`. These pages are protected by the `CosmosIdentityAdmin` authorization policy, which requires the role specified by `AdminRoleName` (default: `"UserAdmin"`).
+
+**Admin features:**
+- Search and paginate users
+- Edit user email
+- Lock/unlock user accounts
+- Add/remove roles
+- Add/remove claims
+
+To grant admin access, assign the admin role to a user. The `CosmosIdentitySeeder` automatically assigns both the `"Admin"` role and your configured `AdminRoleName` role when seeding.
+
+To customize the admin role name:
+
+```csharp
+builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
+    options =>
+    {
+        options.AdminRoleName = "SuperAdmin";
+    });
+```
+
+### Private Sites
+
+To disable self-registration (e.g., for internal or invite-only applications):
+
+```csharp
+builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
+    options =>
+    {
+        options.AllowRegistration = false;
+    });
+```
+
+When `AllowRegistration` is `false`, the Register page returns a 404 and the "Create an account" link is hidden from the login page.
 
 ## Dependencies
 
