@@ -9,7 +9,10 @@
       "Bash(dotnet sln:*)",
       "Bash(grep:*)",
       "Bash(xargs:*)",
-      "Bash(dotnet restore:*)"
+      "Bash(dotnet restore:*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

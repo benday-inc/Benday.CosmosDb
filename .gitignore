@@ -369,3 +369,4 @@ FodyWeavers.xsd
 CODE-REVIEW-5.0.md
 CONFIG-DEFAULTS-ANALYSIS.md
 RELEASE-NOTES-*.md
+.claude/settings.local.json
