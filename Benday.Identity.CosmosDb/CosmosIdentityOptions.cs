@@ -1,4 +1,4 @@
-namespace Benday.Identity.CosmosDb.UI;
+namespace Benday.Identity.CosmosDb;
 
 /// <summary>
 /// Configuration options for the Cosmos Identity registration.
@@ -6,12 +6,16 @@ namespace Benday.Identity.CosmosDb.UI;
 public class CosmosIdentityOptions
 {
     /// <summary>
-    /// The Cosmos DB container name for storing users. Default: "Users".
+    /// The Cosmos DB container name for storing users.
+    /// Defaults to the ContainerName from the CosmosConfig passed to AddCosmosIdentity.
+    /// Can be overridden via the configureOptions callback.
     /// </summary>
     public string UsersContainerName { get; set; } = "Users";
 
     /// <summary>
-    /// The Cosmos DB container name for storing roles. Default: "Roles".
+    /// The Cosmos DB container name for storing roles.
+    /// Defaults to the ContainerName from the CosmosConfig passed to AddCosmosIdentity.
+    /// Can be overridden via the configureOptions callback.
     /// </summary>
     public string RolesContainerName { get; set; } = "Roles";
 

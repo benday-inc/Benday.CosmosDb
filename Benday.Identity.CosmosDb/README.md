@@ -6,8 +6,8 @@ ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store.
 
 | Package | Description |
 |---|---|
-| **Benday.Identity.CosmosDb** | Core identity models and stores |
-| **Benday.Identity.CosmosDb.UI** | Registration extension method, pre-built Razor Pages (Login/Logout/AccessDenied), RedirectToLogin Blazor component, and admin seeding utility |
+| **Benday.Identity.CosmosDb** | Core identity models, stores, DI registration (`AddCosmosIdentity`), configuration, and admin seeding utility |
+| **Benday.Identity.CosmosDb.UI** | Pre-built Razor Pages (Login/Logout/AccessDenied), RedirectToLogin Blazor component, and `AddCosmosIdentityWithUI` convenience method |
 
 ## Features
 
@@ -21,14 +21,15 @@ ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store.
 - Phone number verification
 - Security stamp management for token invalidation
 - LINQ query support
-- **One-line registration** via `AddCosmosIdentity()` (in UI package)
-- **Pre-built Login/Logout/AccessDenied pages** (in UI package)
-- **RedirectToLogin Blazor component** (in UI package)
-- **Admin user seeding utility** (in UI package)
+- **One-line registration** via `AddCosmosIdentity()` (core package)
+- **Admin user seeding utility** via `CosmosIdentitySeeder` (core package)
+- **Pre-built Login/Logout/AccessDenied pages** (UI package)
+- **RedirectToLogin Blazor component** (UI package)
+- **Cookie configuration** via `AddCosmosIdentityWithUI()` (UI package)
 
-## Quick Start (Recommended)
+## Quick Start with UI (Recommended)
 
-Install both packages:
+Install the UI package (includes the core package):
 
 ```bash
 dotnet add package Benday.Identity.CosmosDb.UI
@@ -42,7 +43,7 @@ using Benday.CosmosDb.Utilities;
 
 var cosmosConfig = builder.Configuration.GetCosmosConfig();
 
-builder.Services.AddCosmosIdentity(cosmosConfig);
+builder.Services.AddCosmosIdentityWithUI(cosmosConfig);
 builder.Services.AddRazorPages();
 
 // ...
@@ -54,14 +55,50 @@ app.MapRazorPages();
 
 That's it. No partition key knowledge, no store registration, no cookie configuration. Login/logout pages work out of the box.
 
+## Quick Start without UI (Web API, Console, etc.)
+
+Install the core package only:
+
+```bash
+dotnet add package Benday.Identity.CosmosDb
+```
+
+Register stores and Identity in `Program.cs`:
+
+```csharp
+using Benday.Identity.CosmosDb;
+using Benday.CosmosDb.Utilities;
+
+var cosmosConfig = builder.Configuration.GetCosmosConfig();
+
+builder.Services.AddCosmosIdentity(cosmosConfig)
+    .AddDefaultTokenProviders();
+```
+
+This registers the Cosmos DB user/role stores and ASP.NET Core Identity, but does not configure cookies or provide login pages. Configure authentication separately as needed (e.g., JWT bearer tokens for APIs).
+
+### Container Names
+
+By default, both `AddCosmosIdentity` and `AddCosmosIdentityWithUI` store users and roles in the container specified by your `CosmosConfig` (i.e., `CosmosConfiguration:ContainerName` from appsettings). Users and roles coexist in the same container, separated by the hierarchical partition key's discriminator value.
+
+You can override the container names if you want separate containers:
+
+```csharp
+builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
+    options =>
+    {
+        options.UsersContainerName = "MyUsers";
+        options.RolesContainerName = "MyRoles";
+    });
+```
+
 ### Customization
 
 ```csharp
-builder.Services.AddCosmosIdentity(cosmosConfig,
+builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
     options =>
     {
         options.CookieName = "MyApp.Auth";
-        options.UsersContainerName = "AppUsers";
         options.CookieExpiration = TimeSpan.FromDays(30);
     },
     identity =>
@@ -71,6 +108,19 @@ builder.Services.AddCosmosIdentity(cosmosConfig,
     })
     .AddDefaultTokenProviders();
 ```
+
+All available `CosmosIdentityOptions`:
+
+| Option | Default | Description |
+|---|---|---|
+| `UsersContainerName` | `CosmosConfig.ContainerName` | Container for user documents |
+| `RolesContainerName` | `CosmosConfig.ContainerName` | Container for role documents |
+| `CookieName` | `"Identity.Auth"` | Authentication cookie name |
+| `LoginPath` | `"/Account/Login"` | Login page path |
+| `LogoutPath` | `"/Account/Logout"` | Logout page path |
+| `AccessDeniedPath` | `"/Account/AccessDenied"` | Access denied page path |
+| `CookieExpiration` | 14 days | Cookie expiration time |
+| `SlidingExpiration` | `true` | Whether to use sliding expiration |
 
 ### Blazor Server: RedirectToLogin
 
@@ -86,9 +136,11 @@ In your `App.razor` or route component:
 
 ### Seed Admin User
 
-In `Program.cs`:
+In `Program.cs` (works with both core and UI packages):
 
 ```csharp
+using Benday.Identity.CosmosDb;
+
 if (args.Contains("--seed-admin"))
 {
     await CosmosIdentitySeeder.SeedAdminUserInteractive(app.Services);
@@ -97,16 +149,6 @@ if (args.Contains("--seed-admin"))
 ```
 
 Then run: `dotnet run -- --seed-admin`
-
-## Core Package Only
-
-If you want just the models and stores without the UI package:
-
-```bash
-dotnet add package Benday.Identity.CosmosDb
-```
-
-You'll need to register the stores, identity, and cookie configuration manually.
 
 ## Dependencies
 

@@ -19,9 +19,9 @@
     <TheVersion>2.0.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
-    <Description>ASP.NET Core Identity UI and registration extensions for Azure Cosmos DB. Provides a single AddCosmosIdentity() extension method, pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and an admin user seeding utility. Built on top of Benday.Identity.CosmosDb.</Description>
+    <Description>ASP.NET Core Identity UI for Azure Cosmos DB. Provides pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and AddCosmosIdentityWithUI() convenience method that combines core identity registration with cookie authentication. Built on top of Benday.Identity.CosmosDb.</Description>
     <PackageReleaseNotes>
-v2.0.0 - Initial release with AddCosmosIdentity extension method, Razor Pages UI, RedirectToLogin component, and CosmosIdentitySeeder
+v2.0.0 - BREAKING: AddCosmosIdentity() moved to core Benday.Identity.CosmosDb package. Use AddCosmosIdentityWithUI() for the full UI experience. CosmosIdentityOptions and CosmosIdentitySeeder also moved to core package.
     </PackageReleaseNotes>
     <PackageTags>azure; cosmosdb; azure-cosmosdb; aspnetcore; identity; authentication; authorization; blazor; razor-pages; login; ui</PackageTags>
 

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Benday.Identity.CosmosDb.UI;
+namespace Benday.Identity.CosmosDb;
 
 /// <summary>
 /// Utility for seeding an initial admin user via the console.

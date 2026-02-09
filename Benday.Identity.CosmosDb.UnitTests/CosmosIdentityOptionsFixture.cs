@@ -1,5 +1,5 @@
 using Benday.Common.Testing;
-using Benday.Identity.CosmosDb.UI;
+using Benday.Identity.CosmosDb;
 using Xunit;
 using Xunit.Abstractions;
 

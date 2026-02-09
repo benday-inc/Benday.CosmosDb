@@ -2,7 +2,6 @@ using Benday.Common.Testing;
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.Utilities;
 using Benday.Identity.CosmosDb;
-using Benday.Identity.CosmosDb.UI;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.DependencyInjection;
