@@ -65,4 +65,10 @@ public class CosmosIdentityOptions
     /// When true, newly registered users must confirm their email before they can log in.
     /// </summary>
     public bool RequireConfirmedEmail { get; set; } = false;
+
+    /// <summary>
+    /// The "From" email address used by SmtpCosmosIdentityEmailSender.
+    /// Default: "" (empty — must be configured before using the SMTP sender).
+    /// </summary>
+    public string FromEmailAddress { get; set; } = string.Empty;
 }

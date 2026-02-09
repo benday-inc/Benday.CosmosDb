@@ -127,6 +127,7 @@ All available `CosmosIdentityOptions`:
 | `AllowRegistration` | `true` | Whether self-registration is allowed (set `false` for private sites) |
 | `AdminRoleName` | `"UserAdmin"` | Role name required for admin pages |
 | `RequireConfirmedEmail` | `false` | Whether email confirmation is required before sign-in |
+| `FromEmailAddress` | `""` | "From" address used by `SmtpCosmosIdentityEmailSender` |
 
 ### Blazor Server: RedirectToLogin
 
@@ -160,43 +161,52 @@ Then run: `dotnet run -- --seed-admin`
 
 Password reset and email confirmation require an email sender. The library ships with a no-op default (`NoOpCosmosIdentityEmailSender`) so everything compiles and runs out of the box, but no emails are actually sent.
 
-To enable real email delivery, implement `ICosmosIdentityEmailSender` and register it **before** calling `AddCosmosIdentityWithUI()`:
+**Option 1: Built-in SMTP sender**
+
+The core package includes `SmtpCosmosIdentityEmailSender`. Register it with a configured `SmtpClient` and set `FromEmailAddress`:
+
+```csharp
+// Configure SmtpClient
+builder.Services.AddSingleton(new SmtpClient("smtp.yourserver.com")
+{
+    Port = 587,
+    Credentials = new NetworkCredential("user", "password"),
+    EnableSsl = true
+});
+
+// Register the SMTP sender BEFORE AddCosmosIdentityWithUI
+builder.Services.AddSingleton<ICosmosIdentityEmailSender, SmtpCosmosIdentityEmailSender>();
+
+// AddCosmosIdentityWithUI uses TryAddSingleton, so it won't overwrite yours
+builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
+    options =>
+    {
+        options.FromEmailAddress = "noreply@yourapp.com";
+    });
+```
+
+**Option 2: Custom implementation**
+
+For other providers (SendGrid, Amazon SES, etc.), implement `ICosmosIdentityEmailSender` and register it **before** calling `AddCosmosIdentityWithUI()`:
 
 ```csharp
 using Benday.Identity.CosmosDb;
 
-public class SmtpEmailSender : ICosmosIdentityEmailSender
+public class SendGridEmailSender : ICosmosIdentityEmailSender
 {
-    private readonly SmtpClient _client;
-
-    public SmtpEmailSender(SmtpClient client)
-    {
-        _client = client;
-    }
-
     public async Task SendEmailAsync(string email, string subject, string htmlMessage)
     {
-        var message = new MailMessage("noreply@yourapp.com", email, subject, htmlMessage)
-        {
-            IsBodyHtml = true
-        };
-
-        await _client.SendMailAsync(message);
+        // Your SendGrid / SES / etc. implementation here
     }
 }
 ```
 
-Register it in `Program.cs`:
-
 ```csharp
-// Register your email sender BEFORE AddCosmosIdentityWithUI
-builder.Services.AddSingleton<ICosmosIdentityEmailSender, SmtpEmailSender>();
-
-// AddCosmosIdentityWithUI uses TryAddSingleton, so it won't overwrite yours
+builder.Services.AddSingleton<ICosmosIdentityEmailSender, SendGridEmailSender>();
 builder.Services.AddCosmosIdentityWithUI(cosmosConfig);
 ```
 
-You can use any email provider (SMTP, SendGrid, Amazon SES, etc.) — just implement the `SendEmailAsync` method. If no custom sender is registered, the no-op default is used and password reset / email confirmation flows will silently skip sending.
+If no custom sender is registered, the no-op default is used and password reset / email confirmation flows will silently skip sending.
 
 ### Admin Pages
 
