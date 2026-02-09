@@ -1,0 +1,194 @@
+@page
+@model EditModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit User</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 2rem; }
+        .admin-container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 700px; margin: 0 auto; }
+        h1 { margin: 0 0 1.5rem; font-size: 1.5rem; }
+        h2 { margin: 1.5rem 0 0.75rem; font-size: 1.125rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.25rem; font-weight: 600; font-size: 0.875rem; }
+        input[type="email"], input[type="text"] { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+        input[type="email"]:focus, input[type="text"]:focus { outline: none; border-color: #0078d4; box-shadow: 0 0 0 2px rgba(0,120,212,0.2); }
+        select { padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; min-width: 200px; }
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; font-size: 0.875rem; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-primary { background: #0078d4; color: #fff; }
+        .btn-primary:hover { background: #106ebe; }
+        .btn-danger { background: #d32f2f; color: #fff; }
+        .btn-danger:hover { background: #b71c1c; }
+        .btn-warning { background: #f57c00; color: #fff; }
+        .btn-warning:hover { background: #e65100; }
+        .btn-success { background: #2e7d32; color: #fff; }
+        .btn-success:hover { background: #1b5e20; }
+        .btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+        .status-message { padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem; background: #e3f2fd; color: #1565c0; font-size: 0.875rem; }
+        .inline-form { display: flex; gap: 0.5rem; align-items: flex-end; }
+        .inline-form .form-group { margin-bottom: 0; flex: 1; }
+        table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+        th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 0.875rem; }
+        th { font-weight: 600; background: #fafafa; }
+        .badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.75rem; font-weight: 600; }
+        .badge-active { background: #e8f5e9; color: #2e7d32; }
+        .badge-locked { background: #fff3e0; color: #e65100; }
+        .links { margin-top: 1.5rem; font-size: 0.875rem; }
+        .links a { color: #0078d4; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }
+        .tag { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.5rem; background: #e3f2fd; border-radius: 3px; font-size: 0.8rem; margin: 0.25rem; }
+        .empty-text { color: #999; font-size: 0.875rem; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        @if (Model.EditUser == null)
+        {
+            <h1>User Not Found</h1>
+        }
+        else
+        {
+            <h1>Edit User</h1>
+
+            @if (!string.IsNullOrEmpty(Model.StatusMessage))
+            {
+                <div class="status-message">@Model.StatusMessage</div>
+            }
+
+            @* --- Email Section --- *@
+            <h2>Email</h2>
+            <form method="post" asp-page-handler="UpdateEmail">
+                <input type="hidden" asp-for="Id" />
+                <div class="inline-form">
+                    <div class="form-group">
+                        <input asp-for="EmailInput.Email" type="email" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Email</button>
+                </div>
+            </form>
+
+            @* --- Account Status Section --- *@
+            <h2>Account Status</h2>
+            <p>
+                Status:
+                @if (Model.IsLockedOut)
+                {
+                    <span class="badge badge-locked">Locked</span>
+                }
+                else
+                {
+                    <span class="badge badge-active">Active</span>
+                }
+            </p>
+            <form method="post" asp-page-handler="ToggleLockout">
+                <input type="hidden" asp-for="Id" />
+                @if (Model.IsLockedOut)
+                {
+                    <button type="submit" class="btn btn-success">Unlock Account</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-warning">Lock Account</button>
+                }
+            </form>
+
+            @* --- Roles Section --- *@
+            <h2>Roles</h2>
+            @if (Model.UserRoles.Count == 0)
+            {
+                <p class="empty-text">No roles assigned.</p>
+            }
+            else
+            {
+                <div>
+                    @foreach (var role in Model.UserRoles)
+                    {
+                        <span class="tag">
+                            @role
+                            <form method="post" asp-page-handler="RemoveRole" style="display:inline;margin:0;">
+                                <input type="hidden" asp-for="Id" />
+                                <input type="hidden" name="roleName" value="@role" />
+                                <button type="submit" class="btn btn-danger btn-sm" title="Remove role">&times;</button>
+                            </form>
+                        </span>
+                    }
+                </div>
+            }
+            @if (Model.AvailableRoles.Count > 0)
+            {
+                <form method="post" asp-page-handler="AddRole" style="margin-top: 0.5rem;">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="inline-form">
+                        <div class="form-group">
+                            <select asp-for="RoleInput.RoleName">
+                                <option value="">Select a role...</option>
+                                @foreach (var role in Model.AvailableRoles)
+                                {
+                                    <option value="@role">@role</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Role</button>
+                    </div>
+                </form>
+            }
+
+            @* --- Claims Section --- *@
+            <h2>Claims</h2>
+            @if (Model.UserClaims.Count == 0)
+            {
+                <p class="empty-text">No custom claims.</p>
+            }
+            else
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Value</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var claim in Model.UserClaims)
+                        {
+                            <tr>
+                                <td>@claim.Type</td>
+                                <td>@claim.Value</td>
+                                <td>
+                                    <form method="post" asp-page-handler="RemoveClaim" style="margin:0;">
+                                        <input type="hidden" asp-for="Id" />
+                                        <input type="hidden" name="claimType" value="@claim.Type" />
+                                        <input type="hidden" name="claimValue" value="@claim.Value" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            <form method="post" asp-page-handler="AddClaim" style="margin-top: 0.75rem;">
+                <input type="hidden" asp-for="Id" />
+                <div class="inline-form">
+                    <div class="form-group">
+                        <input asp-for="ClaimInput.ClaimType" type="text" placeholder="Claim type" />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="ClaimInput.ClaimValue" type="text" placeholder="Claim value" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Claim</button>
+                </div>
+            </form>
+
+            <div class="links">
+                <a href="/Admin/Users">Back to user list</a>
+            </div>
+        }
+    </div>
+</body>
+</html>

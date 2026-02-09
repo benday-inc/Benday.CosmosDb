@@ -24,5 +24,8 @@ public class CosmosIdentityOptionsFixture : TestClassBase
         Assert.Equal("/Account/AccessDenied", options.AccessDeniedPath);
         Assert.Equal(TimeSpan.FromDays(14), options.CookieExpiration);
         Assert.True(options.SlidingExpiration);
+        Assert.True(options.AllowRegistration);
+        Assert.Equal("UserAdmin", options.AdminRoleName);
+        Assert.False(options.RequireConfirmedEmail);
     }
 }

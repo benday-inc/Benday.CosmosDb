@@ -3,6 +3,7 @@ using Benday.CosmosDb.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Benday.Identity.CosmosDb;
 
@@ -31,6 +32,9 @@ public static class CosmosIdentityServiceCollectionExtensions
         options.RolesContainerName = cosmosConfig.ContainerName;
 
         configureOptions?.Invoke(options);
+
+        // Register options as singleton so pages can inject CosmosIdentityOptions
+        services.TryAddSingleton(options);
 
         // Register CosmosClient singleton if not already registered
         if (!services.Any(s => s.ServiceType == typeof(CosmosClient)))

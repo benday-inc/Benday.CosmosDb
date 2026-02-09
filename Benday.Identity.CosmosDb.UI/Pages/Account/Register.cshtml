@@ -1,0 +1,71 @@
+@page
+@model RegisterModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .register-container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h1 { margin: 0 0 1.5rem; font-size: 1.5rem; text-align: center; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.25rem; font-weight: 600; font-size: 0.875rem; }
+        input[type="email"], input[type="password"] { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+        input[type="email"]:focus, input[type="password"]:focus { outline: none; border-color: #0078d4; box-shadow: 0 0 0 2px rgba(0,120,212,0.2); }
+        .btn-primary { width: 100%; padding: 0.625rem; background: #0078d4; color: #fff; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; }
+        .btn-primary:hover { background: #106ebe; }
+        .validation-summary-errors { color: #d32f2f; margin-bottom: 1rem; font-size: 0.875rem; }
+        .validation-summary-errors ul { margin: 0; padding-left: 1.25rem; }
+        .links { margin-top: 1rem; text-align: center; font-size: 0.875rem; }
+        .links a { color: #0078d4; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }
+        .info-message { text-align: center; color: #333; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        @if (Model.ConfirmationSent)
+        {
+            <h1>Check your email</h1>
+            <p class="info-message">
+                A confirmation link has been sent to your email address.
+                Please check your email and click the link to activate your account.
+            </p>
+            <div class="links">
+                <a href="/Account/Login">Back to login</a>
+            </div>
+        }
+        else
+        {
+            <h1>Create an account</h1>
+            <div asp-validation-summary="ModelOnly"></div>
+            <form method="post">
+                <input type="hidden" asp-for="ReturnUrl" />
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" type="email" autocomplete="email" autofocus />
+                    <span asp-validation-for="Input.Email" style="color:#d32f2f;font-size:0.8rem;"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" type="password" autocomplete="new-password" />
+                    <span asp-validation-for="Input.Password" style="color:#d32f2f;font-size:0.8rem;"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" type="password" autocomplete="new-password" />
+                    <span asp-validation-for="Input.ConfirmPassword" style="color:#d32f2f;font-size:0.8rem;"></span>
+                </div>
+                <button type="submit" class="btn-primary">Register</button>
+            </form>
+            <div class="links">
+                <a href="/Account/Login">Already have an account? Log in</a>
+            </div>
+        }
+    </div>
+</body>
+</html>

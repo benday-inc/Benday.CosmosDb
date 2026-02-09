@@ -20,6 +20,10 @@
         .btn-primary:hover { background: #106ebe; }
         .validation-summary-errors { color: #d32f2f; margin-bottom: 1rem; font-size: 0.875rem; }
         .validation-summary-errors ul { margin: 0; padding-left: 1.25rem; }
+        .links { margin-top: 1rem; text-align: center; font-size: 0.875rem; }
+        .links a { color: #0078d4; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }
+        .links .separator { margin: 0 0.5rem; color: #999; }
     </style>
 </head>
 <body>
@@ -40,6 +44,14 @@
             </div>
             <button type="submit" class="btn-primary">Log in</button>
         </form>
+        <div class="links">
+            @if (Model.AllowRegistration)
+            {
+                <a href="/Account/Register">Create an account</a>
+                <span class="separator">|</span>
+            }
+            <a href="/Account/ForgotPassword">Forgot your password?</a>
+        </div>
     </div>
 </body>
 </html>

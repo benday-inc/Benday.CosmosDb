@@ -171,4 +171,61 @@ public class AddCosmosIdentityFixture : TestClassBase
 
         WriteLine("Custom options applied successfully");
     }
+
+    [Fact]
+    public void AddCosmosIdentity_RegistersCosmosIdentityOptionsAsSingleton()
+    {
+        var services = new ServiceCollection();
+        var config = CreateTestConfig();
+
+        services.AddCosmosIdentity(config);
+
+        var descriptor = services.FirstOrDefault(
+            sd => sd.ServiceType == typeof(CosmosIdentityOptions));
+        Assert.NotNull(descriptor);
+        Assert.Equal(ServiceLifetime.Singleton, descriptor.Lifetime);
+
+        WriteLine("CosmosIdentityOptions registered as Singleton");
+    }
+
+    [Fact]
+    public void AddCosmosIdentity_OptionsHaveDefaultValues()
+    {
+        var services = new ServiceCollection();
+        var config = CreateTestConfig();
+
+        services.AddCosmosIdentity(config);
+
+        var provider = services.BuildServiceProvider();
+        var options = provider.GetRequiredService<CosmosIdentityOptions>();
+
+        Assert.True(options.AllowRegistration);
+        Assert.Equal("UserAdmin", options.AdminRoleName);
+        Assert.False(options.RequireConfirmedEmail);
+
+        WriteLine("CosmosIdentityOptions default values verified");
+    }
+
+    [Fact]
+    public void AddCosmosIdentity_OptionsCanBeCustomized()
+    {
+        var services = new ServiceCollection();
+        var config = CreateTestConfig();
+
+        services.AddCosmosIdentity(config, options =>
+        {
+            options.AllowRegistration = false;
+            options.AdminRoleName = "SuperAdmin";
+            options.RequireConfirmedEmail = true;
+        });
+
+        var provider = services.BuildServiceProvider();
+        var options = provider.GetRequiredService<CosmosIdentityOptions>();
+
+        Assert.False(options.AllowRegistration);
+        Assert.Equal("SuperAdmin", options.AdminRoleName);
+        Assert.True(options.RequireConfirmedEmail);
+
+        WriteLine("CosmosIdentityOptions custom values verified");
+    }
 }

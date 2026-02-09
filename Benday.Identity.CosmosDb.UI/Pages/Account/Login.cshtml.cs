@@ -9,10 +9,14 @@ namespace Benday.Identity.CosmosDb.UI.Pages.Account;
 public class LoginModel : PageModel
 {
     private readonly SignInManager<CosmosIdentityUser> _signInManager;
+    private readonly CosmosIdentityOptions _options;
 
-    public LoginModel(SignInManager<CosmosIdentityUser> signInManager)
+    public LoginModel(
+        SignInManager<CosmosIdentityUser> signInManager,
+        CosmosIdentityOptions options)
     {
         _signInManager = signInManager;
+        _options = options;
     }
 
     [BindProperty]
@@ -20,6 +24,8 @@ public class LoginModel : PageModel
 
     [BindProperty(SupportsGet = true)]
     public string? ReturnUrl { get; set; }
+
+    public bool AllowRegistration => _options.AllowRegistration;
 
     public class InputModel
     {

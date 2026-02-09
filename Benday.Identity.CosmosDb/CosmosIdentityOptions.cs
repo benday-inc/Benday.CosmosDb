@@ -48,4 +48,21 @@ public class CosmosIdentityOptions
     /// Whether to use sliding expiration for the cookie. Default: true.
     /// </summary>
     public bool SlidingExpiration { get; set; } = true;
+
+    /// <summary>
+    /// Whether self-registration is allowed. Default: true.
+    /// When false, the Register page returns a 404 NotFound (for private sites).
+    /// </summary>
+    public bool AllowRegistration { get; set; } = true;
+
+    /// <summary>
+    /// The role name required for admin pages. Default: "UserAdmin".
+    /// </summary>
+    public string AdminRoleName { get; set; } = "UserAdmin";
+
+    /// <summary>
+    /// Whether to require confirmed email before sign-in. Default: false.
+    /// When true, newly registered users must confirm their email before they can log in.
+    /// </summary>
+    public bool RequireConfirmedEmail { get; set; } = false;
 }
