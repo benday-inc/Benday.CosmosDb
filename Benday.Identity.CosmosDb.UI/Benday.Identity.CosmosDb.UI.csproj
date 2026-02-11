@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -16,11 +16,13 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>2.1.0</TheVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <TheVersion>2.2.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
     <Description>ASP.NET Core Identity UI for Azure Cosmos DB. Provides pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and AddCosmosIdentityWithUI() convenience method that combines core identity registration with cookie authentication. Built on top of Benday.Identity.CosmosDb.</Description>
     <PackageReleaseNotes>
+v2.2.0 - Added net10.0 target framework (multi-targets net9.0 and net10.0). Added NuGet package README.
 v2.1.0 - Added Register, ChangePassword, ForgotPassword, ResetPassword, ConfirmEmail pages. Added admin User List and Edit User pages with role/claim management and account lockout. Added NoOpCosmosIdentityEmailSender, token providers, and CosmosIdentityAdmin authorization policy.
 v2.0.0 - BREAKING: AddCosmosIdentity() moved to core Benday.Identity.CosmosDb package. Use AddCosmosIdentityWithUI() for the full UI experience. CosmosIdentityOptions and CosmosIdentitySeeder also moved to core package.
     </PackageReleaseNotes>
@@ -33,6 +35,10 @@ v2.0.0 - BREAKING: AddCosmosIdentity() moved to core Benday.Identity.CosmosDb pa
 
   <ItemGroup>
     <None Include="..\bdc_mark_128_128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
