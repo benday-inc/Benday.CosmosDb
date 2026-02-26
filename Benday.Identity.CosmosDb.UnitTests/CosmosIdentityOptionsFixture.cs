@@ -28,5 +28,7 @@ public class CosmosIdentityOptionsFixture : TestClassBase
         Assert.Equal("UserAdmin", options.AdminRoleName);
         Assert.False(options.RequireConfirmedEmail);
         Assert.Equal(string.Empty, options.FromEmailAddress);
+        Assert.True(options.ShowRememberMe);
+        Assert.True(options.RememberMeDefaultValue);
     }
 }

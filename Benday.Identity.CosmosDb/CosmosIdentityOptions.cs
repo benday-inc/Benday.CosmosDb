@@ -67,6 +67,18 @@ public class CosmosIdentityOptions
     public bool RequireConfirmedEmail { get; set; } = false;
 
     /// <summary>
+    /// Whether to show the "Remember me" checkbox on the login page. Default: true.
+    /// When false, the checkbox is hidden and the login uses <see cref="RememberMeDefaultValue"/> for persistence.
+    /// </summary>
+    public bool ShowRememberMe { get; set; } = true;
+
+    /// <summary>
+    /// The default checked state of the "Remember me" checkbox. Default: true.
+    /// Also used as the isPersistent value when <see cref="ShowRememberMe"/> is false.
+    /// </summary>
+    public bool RememberMeDefaultValue { get; set; } = true;
+
+    /// <summary>
     /// The "From" email address used by SmtpCosmosIdentityEmailSender.
     /// Default: "" (empty — must be configured before using the SMTP sender).
     /// </summary>

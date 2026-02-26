@@ -24,6 +24,9 @@
         .links a { color: #0078d4; text-decoration: none; }
         .links a:hover { text-decoration: underline; }
         .links .separator { margin: 0 0.5rem; color: #999; }
+        .checkbox-group { display: flex; align-items: center; margin-bottom: 1rem; }
+        .checkbox-group input[type="checkbox"] { margin-right: 0.5rem; width: 1rem; height: 1rem; }
+        .checkbox-group label { margin-bottom: 0; font-weight: 400; font-size: 0.875rem; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -42,6 +45,13 @@
                 <input asp-for="Input.Password" type="password" autocomplete="current-password" />
                 <span asp-validation-for="Input.Password" style="color:#d32f2f;font-size:0.8rem;"></span>
             </div>
+            @if (Model.ShowRememberMe)
+            {
+                <div class="checkbox-group">
+                    <input asp-for="Input.RememberMe" type="checkbox" />
+                    <label asp-for="Input.RememberMe">Remember me</label>
+                </div>
+            }
             <button type="submit" class="btn-primary">Log in</button>
         </form>
         <div class="links">

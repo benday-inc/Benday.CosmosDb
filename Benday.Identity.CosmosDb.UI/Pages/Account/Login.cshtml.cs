@@ -27,6 +27,8 @@ public class LoginModel : PageModel
 
     public bool AllowRegistration => _options.AllowRegistration;
 
+    public bool ShowRememberMe => _options.ShowRememberMe;
+
     public class InputModel
     {
         [Required]
@@ -36,12 +38,17 @@ public class LoginModel : PageModel
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
+
+        [Display(Name = "Remember me")]
+        public bool RememberMe { get; set; }
     }
 
     public async Task OnGetAsync()
     {
         // Clear any existing external cookie
         await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+
+        Input.RememberMe = _options.RememberMeDefaultValue;
     }
 
     public async Task<IActionResult> OnPostAsync()
@@ -51,9 +58,13 @@ public class LoginModel : PageModel
             return Page();
         }
 
+        var isPersistent = _options.ShowRememberMe
+            ? Input.RememberMe
+            : _options.RememberMeDefaultValue;
+
         var result = await _signInManager.PasswordSignInAsync(
             Input.Email, Input.Password,
-            isPersistent: true, lockoutOnFailure: true);
+            isPersistent: isPersistent, lockoutOnFailure: true);
 
         if (result.Succeeded)
         {
