@@ -21,6 +21,8 @@ public class CosmosIdentityUserFixture : TestClassBase
         Assert.Empty(user.Claims);
         Assert.NotNull(user.Logins);
         Assert.Empty(user.Logins);
+        Assert.NotNull(user.Passkeys);
+        Assert.Empty(user.Passkeys);
         Assert.NotNull(user.RecoveryCodes);
         Assert.Empty(user.RecoveryCodes);
         Assert.True(user.LockoutEnabled);

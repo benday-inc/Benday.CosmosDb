@@ -16,6 +16,7 @@ public interface ICosmosDbUserStore : IOwnedItemRepository<CosmosIdentityUser>,
     IUserAuthenticatorKeyStore<CosmosIdentityUser>,
     IUserTwoFactorRecoveryCodeStore<CosmosIdentityUser>,
     IUserLoginStore<CosmosIdentityUser>,
+    IUserPasskeyStore<CosmosIdentityUser>,
     IQueryableUserStore<CosmosIdentityUser>
 {
 }

@@ -18,6 +18,12 @@
         input[type="email"]:focus, input[type="password"]:focus { outline: none; border-color: #0078d4; box-shadow: 0 0 0 2px rgba(0,120,212,0.2); }
         .btn-primary { width: 100%; padding: 0.625rem; background: #0078d4; color: #fff; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; }
         .btn-primary:hover { background: #106ebe; }
+        .btn-passkey { width: 100%; padding: 0.625rem; background: #fff; color: #0078d4; border: 2px solid #0078d4; border-radius: 4px; font-size: 1rem; cursor: pointer; }
+        .btn-passkey:hover { background: #f0f7ff; }
+        .btn-passkey:disabled { opacity: 0.5; cursor: not-allowed; }
+        .divider { display: flex; align-items: center; margin: 1rem 0; font-size: 0.875rem; color: #999; }
+        .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #ddd; }
+        .divider span { padding: 0 0.75rem; }
         .validation-summary-errors { color: #d32f2f; margin-bottom: 1rem; font-size: 0.875rem; }
         .validation-summary-errors ul { margin: 0; padding-left: 1.25rem; }
         .links { margin-top: 1rem; text-align: center; font-size: 0.875rem; }
@@ -27,6 +33,7 @@
         .checkbox-group { display: flex; align-items: center; margin-bottom: 1rem; }
         .checkbox-group input[type="checkbox"] { margin-right: 0.5rem; width: 1rem; height: 1rem; }
         .checkbox-group label { margin-bottom: 0; font-weight: 400; font-size: 0.875rem; cursor: pointer; }
+        .passkey-error { color: #d32f2f; font-size: 0.8rem; margin-top: 0.5rem; display: none; }
     </style>
 </head>
 <body>
@@ -54,6 +61,16 @@
             }
             <button type="submit" class="btn-primary">Log in</button>
         </form>
+        @if (Model.EnablePasskeys)
+        {
+            <div class="divider"><span>or</span></div>
+            <button type="button" id="passkey-login-btn" class="btn-passkey" style="display:none;">Sign in with passkey</button>
+            <div id="passkey-error" class="passkey-error"></div>
+            <form id="passkey-form" method="post" asp-page-handler="PasskeySignIn" style="display:none;">
+                <input type="hidden" asp-for="ReturnUrl" />
+                <input type="hidden" name="PasskeyCredentialJson" id="passkey-credential-json" />
+            </form>
+        }
         <div class="links">
             @if (Model.AllowRegistration)
             {
@@ -63,5 +80,39 @@
             <a href="/Account/ForgotPassword">Forgot your password?</a>
         </div>
     </div>
+    @if (Model.EnablePasskeys)
+    {
+        <script src="/_content/Benday.Identity.CosmosDb.UI/js/passkey.js"></script>
+        <script>
+            (function () {
+                if (!isPasskeySupported()) return;
+
+                var btn = document.getElementById('passkey-login-btn');
+                btn.style.display = 'block';
+
+                btn.addEventListener('click', async function () {
+                    btn.disabled = true;
+                    var errorEl = document.getElementById('passkey-error');
+                    errorEl.style.display = 'none';
+
+                    try {
+                        var credentialJson = await startPasskeyLogin(
+                            '/Account/Login?handler=PasskeyOptions',
+                            '@(Model.ReturnUrl ?? "/")'
+                        );
+
+                        document.getElementById('passkey-credential-json').value = credentialJson;
+                        document.getElementById('passkey-form').submit();
+                    } catch (err) {
+                        if (err.name !== 'AbortError' && err.name !== 'NotAllowedError') {
+                            errorEl.textContent = 'Passkey authentication failed. Please try again.';
+                            errorEl.style.display = 'block';
+                        }
+                        btn.disabled = false;
+                    }
+                });
+            })();
+        </script>
+    }
 </body>
 </html>

@@ -1,0 +1,158 @@
+@page
+@model ManagePasskeysModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Passkeys</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
+        h1 { margin: 0 0 1.5rem; font-size: 1.5rem; text-align: center; }
+        .status-message { text-align: center; color: #2e7d32; font-weight: 600; margin-bottom: 1rem; }
+        .passkey-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+        .passkey-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 4px; margin-bottom: 0.5rem; }
+        .passkey-info { flex: 1; }
+        .passkey-name { font-weight: 600; font-size: 0.95rem; }
+        .passkey-date { font-size: 0.8rem; color: #666; }
+        .btn-delete { background: #d32f2f; color: #fff; border: none; border-radius: 4px; padding: 0.375rem 0.75rem; font-size: 0.8rem; cursor: pointer; }
+        .btn-delete:hover { background: #b71c1c; }
+        .btn-primary { width: 100%; padding: 0.625rem; background: #0078d4; color: #fff; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; }
+        .btn-primary:hover { background: #106ebe; }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .register-group { margin-bottom: 1rem; }
+        .register-group input[type="text"] { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; margin-bottom: 0.5rem; }
+        .register-group input[type="text"]:focus { outline: none; border-color: #0078d4; box-shadow: 0 0 0 2px rgba(0,120,212,0.2); }
+        .register-group label { display: block; margin-bottom: 0.25rem; font-weight: 600; font-size: 0.875rem; }
+        .empty-message { text-align: center; color: #999; font-size: 0.875rem; margin-bottom: 1rem; }
+        .links { margin-top: 1rem; text-align: center; font-size: 0.875rem; }
+        .links a { color: #0078d4; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }
+        .register-error { color: #d32f2f; font-size: 0.8rem; margin-top: 0.5rem; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Passkeys</h1>
+
+        @if (!string.IsNullOrEmpty(Model.StatusMessage))
+        {
+            <p class="status-message">@Model.StatusMessage</p>
+        }
+
+        @if (Model.Passkeys.Count == 0)
+        {
+            <p class="empty-message">No passkeys registered yet.</p>
+        }
+        else
+        {
+            <ul class="passkey-list">
+                @foreach (var passkey in Model.Passkeys)
+                {
+                    var credentialIdBase64Url = Convert.ToBase64String(passkey.CredentialId)
+                        .TrimEnd('=').Replace('+', '-').Replace('/', '_');
+                    <li class="passkey-item">
+                        <div class="passkey-info">
+                            <div class="passkey-name">@(string.IsNullOrEmpty(passkey.Name) ? "Unnamed passkey" : passkey.Name)</div>
+                            <div class="passkey-date">Created @passkey.CreatedAt.ToString("MMM d, yyyy")</div>
+                        </div>
+                        <form method="post" asp-page-handler="Delete">
+                            <input type="hidden" name="credentialId" value="@credentialIdBase64Url" />
+                            <button type="submit" class="btn-delete" onclick="return confirm('Delete this passkey?');">Delete</button>
+                        </form>
+                    </li>
+                }
+            </ul>
+        }
+
+        <div class="register-group">
+            <label for="passkey-name">Passkey name (optional)</label>
+            <input type="text" id="passkey-name" placeholder="e.g., My laptop" maxlength="100" />
+        </div>
+        <button type="button" id="register-passkey-btn" class="btn-primary">Register new passkey</button>
+        <div id="register-error" class="register-error"></div>
+
+        <form id="register-form" method="post" asp-page-handler="Register" style="display:none;">
+            <input type="hidden" name="credentialJson" id="register-credential-json" />
+            <input type="hidden" name="passkeyName" id="register-passkey-name" />
+        </form>
+
+        <div class="links">
+            <a href="/Account/ChangePassword">Change password</a>
+            <span style="margin: 0 0.5rem; color: #999;">|</span>
+            <a href="/">Back to home</a>
+        </div>
+    </div>
+
+    <script src="/_content/Benday.Identity.CosmosDb.UI/js/passkey.js"></script>
+    <script>
+        (function () {
+            var btn = document.getElementById('register-passkey-btn');
+
+            if (!isPasskeySupported()) {
+                btn.disabled = true;
+                btn.textContent = 'Passkeys not supported in this browser';
+                return;
+            }
+
+            btn.addEventListener('click', async function () {
+                btn.disabled = true;
+                var errorEl = document.getElementById('register-error');
+                errorEl.style.display = 'none';
+
+                try {
+                    var optionsEndpoint = '/Account/ManagePasskeys?handler=RegisterOptions';
+
+                    // Get creation options from server
+                    var optionsResponse = await fetch(optionsEndpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+
+                    if (!optionsResponse.ok) {
+                        throw new Error('Failed to get registration options');
+                    }
+
+                    var optionsJson = await optionsResponse.json();
+                    var options = PublicKeyCredential.parseCreationOptionsFromJSON(optionsJson);
+                    var credential = await navigator.credentials.create({ publicKey: options });
+
+                    // Serialize credential
+                    var credentialJson;
+                    if (credential.toJSON) {
+                        credentialJson = JSON.stringify(credential.toJSON());
+                    } else {
+                        credentialJson = JSON.stringify({
+                            authenticatorAttachment: credential.authenticatorAttachment,
+                            clientExtensionResults: credential.getClientExtensionResults(),
+                            id: credential.id,
+                            rawId: bytesToBase64Url(credential.rawId),
+                            response: {
+                                attestationObject: bytesToBase64Url(credential.response.attestationObject),
+                                clientDataJSON: bytesToBase64Url(credential.response.clientDataJSON),
+                                transports: credential.response.getTransports ? credential.response.getTransports() : []
+                            },
+                            type: credential.type
+                        });
+                    }
+
+                    // Submit via hidden form
+                    document.getElementById('register-credential-json').value = credentialJson;
+                    document.getElementById('register-passkey-name').value =
+                        document.getElementById('passkey-name').value;
+                    document.getElementById('register-form').submit();
+                } catch (err) {
+                    if (err.name !== 'AbortError' && err.name !== 'NotAllowedError') {
+                        errorEl.textContent = 'Failed to register passkey. Please try again.';
+                        errorEl.style.display = 'block';
+                    }
+                    btn.disabled = false;
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

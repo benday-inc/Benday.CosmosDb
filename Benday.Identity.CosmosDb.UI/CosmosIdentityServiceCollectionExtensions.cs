@@ -69,6 +69,23 @@ public static class CosmosIdentityUIServiceCollectionExtensions
                 policy.RequireRole(options.AdminRoleName));
         });
 
+        // Configure passkey support
+        if (options.EnablePasskeys)
+        {
+            services.Configure<IdentityOptions>(identityOptions =>
+            {
+                identityOptions.Stores.SchemaVersion = IdentitySchemaVersions.Version3;
+            });
+
+            services.Configure<IdentityPasskeyOptions>(passkeyOptions =>
+            {
+                if (!string.IsNullOrEmpty(options.PasskeyServerDomain))
+                {
+                    passkeyOptions.ServerDomain = options.PasskeyServerDomain;
+                }
+            });
+        }
+
         return builder;
     }
 }

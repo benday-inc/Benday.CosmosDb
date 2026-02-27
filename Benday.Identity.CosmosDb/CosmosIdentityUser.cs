@@ -50,5 +50,8 @@ namespace Benday.Identity.CosmosDb
 
         // External logins
         public List<CosmosIdentityUserLogin> Logins { get; set; } = new List<CosmosIdentityUserLogin>();
+
+        // Passkeys (WebAuthn/FIDO2)
+        public List<CosmosIdentityUserPasskey> Passkeys { get; set; } = new List<CosmosIdentityUserPasskey>();
     }
 }

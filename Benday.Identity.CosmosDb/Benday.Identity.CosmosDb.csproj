@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -16,17 +16,18 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>2.1.0</TheVersion>
+    <TheVersion>3.0.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
     <Description>ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Provides user store, role store, claims, lockout, two-factor authentication, and external login support. Built on top of the Benday.CosmosDb repository pattern library.</Description>
     <PackageReleaseNotes>
+v3.0.0 - BREAKING: Target net10.0 only (drop netstandard2.1). Added passkey (WebAuthn/FIDO2) support via IUserPasskeyStore. Passkeys enabled by default with integrated login UX.
 v2.1.0 - Added ICosmosIdentityEmailSender interface, CosmosIdentityOptions (AllowRegistration, AdminRoleName, RequireConfirmedEmail), CosmosIdentitySeeder AdminRoleName support, and DI singleton registration for options
 v2.0.0 - BREAKING: Renamed all identity classes with Cosmos prefix to avoid namespace collisions (IdentityUser -> CosmosIdentityUser, IdentityRole -> CosmosIdentityRole, etc.)
 v1.1.0 - Update dependencies and package metadata; Changing target framework to netstandard2.1; Removing alpha tag
 v1.0.0 - Initial release with full ASP.NET Core Identity store implementations for Cosmos DB
     </PackageReleaseNotes>
-    <PackageTags>azure; cosmosdb; azure-cosmosdb; aspnetcore; identity; authentication; authorization; user-store; role-store; claims; two-factor; external-login</PackageTags>
+    <PackageTags>azure; cosmosdb; azure-cosmosdb; aspnetcore; identity; authentication; authorization; user-store; role-store; claims; two-factor; external-login; passkeys; webauthn; fido2; passwordless</PackageTags>
 
     <!-- Package Settings -->
     <IncludeSymbols>true</IncludeSymbols>
@@ -45,7 +46,11 @@ v1.0.0 - Initial release with full ASP.NET Core Identity store implementations f
   </ItemGroup>
 
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.*" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="10.*" />
   </ItemGroup>
 </Project>

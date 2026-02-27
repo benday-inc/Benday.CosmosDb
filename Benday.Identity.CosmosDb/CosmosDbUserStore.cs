@@ -20,6 +20,7 @@ public class CosmosDbUserStore : CosmosOwnedItemRepository<CosmosIdentityUser>,
     IUserAuthenticatorKeyStore<CosmosIdentityUser>,
     IUserTwoFactorRecoveryCodeStore<CosmosIdentityUser>,
     IUserLoginStore<CosmosIdentityUser>,
+    IUserPasskeyStore<CosmosIdentityUser>,
     IQueryableUserStore<CosmosIdentityUser>,
     ICosmosDbUserStore
 {
@@ -494,6 +495,126 @@ public class CosmosDbUserStore : CosmosOwnedItemRepository<CosmosIdentityUser>,
             var query = GetQueryable().GetAwaiter().GetResult();
             return query.Queryable;
         }
+    }
+
+    #endregion
+
+    #region IUserPasskeyStore
+
+    public Task AddOrUpdatePasskeyAsync(CosmosIdentityUser user, UserPasskeyInfo passkey, CancellationToken cancellationToken)
+    {
+        var encodedCredentialId = Base64UrlEncode(passkey.CredentialId);
+
+        var existing = user.Passkeys.Find(p => p.CredentialId == encodedCredentialId);
+
+        if (existing != null)
+        {
+            existing.PublicKey = Base64UrlEncode(passkey.PublicKey);
+            existing.SignCount = passkey.SignCount;
+            existing.Transports = passkey.Transports ?? Array.Empty<string>();
+            existing.AttestationObject = Base64UrlEncode(passkey.AttestationObject);
+            existing.ClientDataJson = Base64UrlEncode(passkey.ClientDataJson);
+            existing.IsUserVerified = passkey.IsUserVerified;
+            existing.IsBackupEligible = passkey.IsBackupEligible;
+            existing.IsBackedUp = passkey.IsBackedUp;
+            existing.Name = passkey.Name ?? string.Empty;
+        }
+        else
+        {
+            user.Passkeys.Add(new CosmosIdentityUserPasskey
+            {
+                CredentialId = encodedCredentialId,
+                PublicKey = Base64UrlEncode(passkey.PublicKey),
+                SignCount = passkey.SignCount,
+                Transports = passkey.Transports ?? Array.Empty<string>(),
+                AttestationObject = Base64UrlEncode(passkey.AttestationObject),
+                ClientDataJson = Base64UrlEncode(passkey.ClientDataJson),
+                IsUserVerified = passkey.IsUserVerified,
+                IsBackupEligible = passkey.IsBackupEligible,
+                IsBackedUp = passkey.IsBackedUp,
+                Name = passkey.Name ?? string.Empty,
+                CreatedAt = passkey.CreatedAt
+            });
+        }
+
+        return Task.CompletedTask;
+    }
+
+    public Task<IList<UserPasskeyInfo>> GetPasskeysAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        var passkeys = user.Passkeys
+            .Select(ToUserPasskeyInfo)
+            .ToList();
+        return Task.FromResult<IList<UserPasskeyInfo>>(passkeys);
+    }
+
+    public async Task<CosmosIdentityUser?> FindByPasskeyIdAsync(byte[] credentialId, CancellationToken cancellationToken)
+    {
+        var encodedId = Base64UrlEncode(credentialId);
+        var query = await GetQueryable();
+        var queryable = query.Queryable.Where(x =>
+            x.Passkeys.Any(p => p.CredentialId == encodedId));
+        var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+        return results.FirstOrDefault();
+    }
+
+    public Task<UserPasskeyInfo?> FindPasskeyAsync(CosmosIdentityUser user, byte[] credentialId, CancellationToken cancellationToken)
+    {
+        var encodedId = Base64UrlEncode(credentialId);
+        var match = user.Passkeys.Find(p => p.CredentialId == encodedId);
+        return Task.FromResult(match != null ? ToUserPasskeyInfo(match) : null);
+    }
+
+    public Task RemovePasskeyAsync(CosmosIdentityUser user, byte[] credentialId, CancellationToken cancellationToken)
+    {
+        var encodedId = Base64UrlEncode(credentialId);
+        var match = user.Passkeys.Find(p => p.CredentialId == encodedId);
+        if (match != null)
+        {
+            user.Passkeys.Remove(match);
+        }
+        return Task.CompletedTask;
+    }
+
+    private static UserPasskeyInfo ToUserPasskeyInfo(CosmosIdentityUserPasskey passkey)
+    {
+        return new UserPasskeyInfo(
+            Base64UrlDecode(passkey.CredentialId),
+            Base64UrlDecode(passkey.PublicKey),
+            passkey.CreatedAt,
+            passkey.SignCount,
+            passkey.Transports,
+            passkey.IsUserVerified,
+            passkey.IsBackupEligible,
+            passkey.IsBackedUp,
+            Base64UrlDecode(passkey.AttestationObject),
+            Base64UrlDecode(passkey.ClientDataJson))
+        {
+            Name = passkey.Name
+        };
+    }
+
+    private static string Base64UrlEncode(byte[] data)
+    {
+        return Convert.ToBase64String(data)
+            .TrimEnd('=')
+            .Replace('+', '-')
+            .Replace('/', '_');
+    }
+
+    private static byte[] Base64UrlDecode(string base64Url)
+    {
+        var base64 = base64Url
+            .Replace('-', '+')
+            .Replace('_', '/');
+
+        switch (base64.Length % 4)
+        {
+            case 2: base64 += "=="; break;
+            case 3: base64 += "="; break;
+        }
+
+        return Convert.FromBase64String(base64);
     }
 
     #endregion

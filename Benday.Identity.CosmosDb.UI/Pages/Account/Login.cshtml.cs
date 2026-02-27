@@ -25,9 +25,14 @@ public class LoginModel : PageModel
     [BindProperty(SupportsGet = true)]
     public string? ReturnUrl { get; set; }
 
+    [BindProperty]
+    public string? PasskeyCredentialJson { get; set; }
+
     public bool AllowRegistration => _options.AllowRegistration;
 
     public bool ShowRememberMe => _options.ShowRememberMe;
+
+    public bool EnablePasskeys => _options.EnablePasskeys;
 
     public class InputModel
     {
@@ -78,6 +83,31 @@ public class LoginModel : PageModel
         }
 
         ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPostPasskeyOptionsAsync()
+    {
+        var optionsJson = await _signInManager.MakePasskeyRequestOptionsAsync(null);
+        return Content(optionsJson, "application/json");
+    }
+
+    public async Task<IActionResult> OnPostPasskeySignInAsync()
+    {
+        if (string.IsNullOrEmpty(PasskeyCredentialJson))
+        {
+            ModelState.AddModelError(string.Empty, "Passkey authentication failed.");
+            return Page();
+        }
+
+        var result = await _signInManager.PasskeySignInAsync(PasskeyCredentialJson);
+
+        if (result.Succeeded)
+        {
+            return LocalRedirect(ReturnUrl ?? "/");
+        }
+
+        ModelState.AddModelError(string.Empty, "Passkey authentication failed.");
         return Page();
     }
 }

@@ -83,4 +83,17 @@ public class CosmosIdentityOptions
     /// Default: "" (empty — must be configured before using the SMTP sender).
     /// </summary>
     public string FromEmailAddress { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Whether passkey (WebAuthn) authentication is enabled. Default: true.
+    /// When true, the login page shows a "Sign in with passkey" button and
+    /// passkey management pages are accessible.
+    /// </summary>
+    public bool EnablePasskeys { get; set; } = true;
+
+    /// <summary>
+    /// The WebAuthn Relying Party ID (domain). Default: null (uses host header).
+    /// Set this explicitly in production (e.g., "contoso.com").
+    /// </summary>
+    public string? PasskeyServerDomain { get; set; }
 }
