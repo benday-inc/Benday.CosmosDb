@@ -1,23 +1,42 @@
 # Benday.Identity.CosmosDb.UI
 
-Pre-built ASP.NET Core Identity UI pages for Azure Cosmos DB. One-line setup with `AddCosmosIdentityWithUI()` gives you login, registration, password reset, email confirmation, and admin user management — all backed by Cosmos DB.
+Pre-built ASP.NET Core Identity UI pages for Azure Cosmos DB. One-line setup with `AddCosmosIdentityWithUI()` gives you login, registration, password reset, email confirmation, passkey management, account management, and a full admin dashboard — all backed by Cosmos DB.
 
 Built on top of [Benday.Identity.CosmosDb](https://www.nuget.org/packages/Benday.Identity.CosmosDb) and [Benday.CosmosDb](https://www.nuget.org/packages/Benday.CosmosDb).
 
 ## Included Pages
 
+### Authentication
 | Page | Path | Description |
 |---|---|---|
-| Login | `/Account/Login` | Username/password sign-in |
+| Login | `/Account/Login` | Username/password + passkey sign-in |
 | Logout | `/Account/Logout` | Sign-out |
 | Access Denied | `/Account/AccessDenied` | Unauthorized access page |
 | Register | `/Account/Register` | Self-registration (can be disabled) |
-| Change Password | `/Account/ChangePassword` | Authenticated password change |
 | Forgot Password | `/Account/ForgotPassword` | Request a password reset email |
 | Reset Password | `/Account/ResetPassword` | Reset password via emailed token |
 | Confirm Email | `/Account/ConfirmEmail` | Email confirmation via emailed link |
-| User List (Admin) | `/Admin/Users` | Search and paginate users |
-| Edit User (Admin) | `/Admin/Users/Edit/{id}` | Edit email, lockout, roles, and claims |
+
+### Account Management
+| Page | Path | Description |
+|---|---|---|
+| My Account | `/Account/MyAccount` | Hub page linking to all account features |
+| Edit Profile | `/Account/EditProfile` | Update first name, last name, phone number |
+| Change Password | `/Account/ChangePassword` | Authenticated password change |
+| Manage Passkeys | `/Account/ManagePasskeys` | Add/remove passkeys for passwordless sign-in |
+
+### Admin Dashboard (requires `CosmosIdentityAdmin` policy)
+| Page | Path | Description |
+|---|---|---|
+| Admin Dashboard | `/Account/Admin` | Hub page for all admin features |
+| Users | `/Account/AdminUsers` | Search and list users |
+| Create User | `/Account/AdminUserCreate` | Create a new user account |
+| Edit User | `/Account/AdminUserEdit?id=` | Edit profile, lock/unlock, reset password, delete |
+| User Roles | `/Account/AdminUserRoles?id=` | Assign/remove roles for a user |
+| User Claims | `/Account/AdminUserClaims?id=` | Assign/remove claims using claim definitions |
+| Roles | `/Account/AdminRoles` | Create and delete security roles |
+| Claim Definitions | `/Account/AdminClaimDefinitions` | Define claim types and allowed values |
+| Edit Claim Def | `/Account/AdminClaimDefinitionEdit?id=` | Create/edit a claim definition |
 
 ## Quick Start
 
@@ -75,7 +94,12 @@ builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
 | `AllowRegistration` | `true` | Whether self-registration is allowed |
 | `AdminRoleName` | `"UserAdmin"` | Role name required for admin pages |
 | `RequireConfirmedEmail` | `false` | Whether email confirmation is required before sign-in |
+| `ShowRememberMe` | `true` | Whether to show "Remember me" checkbox on login |
+| `RememberMeDefaultValue` | `true` | Default checked state of "Remember me" |
 | `FromEmailAddress` | `""` | "From" address used by `SmtpCosmosIdentityEmailSender` |
+| `EnablePasskeys` | `true` | Whether passkey (WebAuthn) authentication is enabled |
+| `PasskeyServerDomain` | `null` | WebAuthn Relying Party ID (domain) |
+| `ClaimDefinitionsContainerName` | `CosmosConfig.ContainerName` | Container for claim definition documents |
 
 ## Password Reset & Email Confirmation
 
@@ -139,7 +163,11 @@ Then run: `dotnet run -- --seed-admin`
 
 ## Admin Pages
 
-The admin pages at `/Admin/Users` are protected by the `CosmosIdentityAdmin` authorization policy (requires the role specified by `AdminRoleName`, default `"UserAdmin"`). The `CosmosIdentitySeeder` automatically assigns this role when seeding.
+The admin dashboard at `/Account/Admin` is protected by the `CosmosIdentityAdmin` authorization policy (requires the role specified by `AdminRoleName`, default `"UserAdmin"`). The `CosmosIdentitySeeder` automatically assigns this role when seeding.
+
+The admin section includes full user management (create, edit, lock/unlock, reset password, delete), role management, claim definition management (with optional allowed values), and user role/claim assignment.
+
+**Navigation flow:** Navbar -> My Account (`/Account/MyAccount`) -> Admin Dashboard (shown only for admins) -> Users / Roles / Claim Definitions
 
 ## License
 

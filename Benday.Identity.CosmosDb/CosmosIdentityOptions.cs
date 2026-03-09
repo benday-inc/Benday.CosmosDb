@@ -20,6 +20,13 @@ public class CosmosIdentityOptions
     public string RolesContainerName { get; set; } = "Roles";
 
     /// <summary>
+    /// The Cosmos DB container name for storing claim definitions.
+    /// Defaults to the ContainerName from the CosmosConfig passed to AddCosmosIdentity.
+    /// Can be overridden via the configureOptions callback.
+    /// </summary>
+    public string ClaimDefinitionsContainerName { get; set; } = "ClaimDefinitions";
+
+    /// <summary>
     /// The name of the authentication cookie. Default: "Identity.Auth".
     /// </summary>
     public string CookieName { get; set; } = "Identity.Auth";

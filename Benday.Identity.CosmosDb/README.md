@@ -6,8 +6,8 @@ ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store.
 
 | Package | Description |
 |---|---|
-| **Benday.Identity.CosmosDb** | Core identity models, stores, DI registration (`AddCosmosIdentity`), email sender interface, configuration, and admin seeding utility |
-| **Benday.Identity.CosmosDb.UI** | Pre-built Razor Pages (Login, Logout, Register, ChangePassword, ForgotPassword, ResetPassword, ConfirmEmail, Admin User List/Edit), RedirectToLogin Blazor component, and `AddCosmosIdentityWithUI` convenience method |
+| **Benday.Identity.CosmosDb** | Core identity models, stores, DI registration (`AddCosmosIdentity`), email sender interface, configuration, claim definitions, and admin seeding utility |
+| **Benday.Identity.CosmosDb.UI** | Pre-built Razor Pages for account management (My Account, Edit Profile, Change Password, Manage Passkeys) and admin dashboard (Users, Roles, Claim Definitions), RedirectToLogin Blazor component, and `AddCosmosIdentityWithUI` convenience method |
 
 ## Features
 
@@ -23,8 +23,12 @@ ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store.
 - LINQ query support
 - **One-line registration** via `AddCosmosIdentity()` (core package)
 - **Admin user seeding utility** via `CosmosIdentitySeeder` (core package)
-- **Pre-built account pages**: Login, Logout, AccessDenied, Register, ChangePassword, ForgotPassword, ResetPassword, ConfirmEmail (UI package)
-- **Admin pages**: User List (search/paginate) and Edit User (email, lockout, roles, claims) (UI package)
+- **User profile fields**: FirstName and LastName on `CosmosIdentityUser`
+- **Pre-built account pages**: Login, Logout, AccessDenied, Register, ChangePassword, ForgotPassword, ResetPassword, ConfirmEmail, ManagePasskeys (UI package)
+- **My Account hub page** with links to profile, security, and admin sections (UI package)
+- **Edit Profile page** for updating name and phone number (UI package)
+- **Admin dashboard** with full user management (create, edit, lock/unlock, reset password, delete), role management (CRUD), claim definition management (CRUD with allowed values), user role assignment, and user claim assignment (UI package)
+- **Claim definitions** (`CosmosIdentityClaimDefinition`) for defining available claim types with optional allowed values (core package)
 - **Pluggable email sender** via `ICosmosIdentityEmailSender` with no-op default (core + UI packages)
 - **Private site support** via `AllowRegistration` option (disables registration page)
 - **Admin authorization** via configurable `AdminRoleName` option and `CosmosIdentityAdmin` policy
@@ -118,6 +122,7 @@ All available `CosmosIdentityOptions`:
 |---|---|---|
 | `UsersContainerName` | `CosmosConfig.ContainerName` | Container for user documents |
 | `RolesContainerName` | `CosmosConfig.ContainerName` | Container for role documents |
+| `ClaimDefinitionsContainerName` | `CosmosConfig.ContainerName` | Container for claim definition documents |
 | `CookieName` | `"Identity.Auth"` | Authentication cookie name |
 | `LoginPath` | `"/Account/Login"` | Login page path |
 | `LogoutPath` | `"/Account/Logout"` | Logout page path |
@@ -127,7 +132,11 @@ All available `CosmosIdentityOptions`:
 | `AllowRegistration` | `true` | Whether self-registration is allowed (set `false` for private sites) |
 | `AdminRoleName` | `"UserAdmin"` | Role name required for admin pages |
 | `RequireConfirmedEmail` | `false` | Whether email confirmation is required before sign-in |
+| `ShowRememberMe` | `true` | Whether to show "Remember me" checkbox on login |
+| `RememberMeDefaultValue` | `true` | Default checked state of "Remember me" |
 | `FromEmailAddress` | `""` | "From" address used by `SmtpCosmosIdentityEmailSender` |
+| `EnablePasskeys` | `true` | Whether passkey (WebAuthn) authentication is enabled |
+| `PasskeyServerDomain` | `null` | WebAuthn Relying Party ID (domain) |
 
 ### Blazor Server: RedirectToLogin
 
@@ -208,16 +217,38 @@ builder.Services.AddCosmosIdentityWithUI(cosmosConfig);
 
 If no custom sender is registered, the no-op default is used and password reset / email confirmation flows will silently skip sending.
 
+### Account Pages
+
+The UI package provides a **My Account** hub page at `/Account/MyAccount` that links to all account management features. This is the page you'd link to from your app's navbar.
+
+**Account pages:**
+
+| Page | Path | Description |
+|---|---|---|
+| My Account | `/Account/MyAccount` | Hub page with links to profile, security, and admin |
+| Edit Profile | `/Account/EditProfile` | Update first name, last name, phone number |
+| Change Password | `/Account/ChangePassword` | Change your password |
+| Manage Passkeys | `/Account/ManagePasskeys` | Add/remove passkeys (when enabled) |
+
 ### Admin Pages
 
-The UI package includes admin pages for user management at `/Admin/Users`. These pages are protected by the `CosmosIdentityAdmin` authorization policy, which requires the role specified by `AdminRoleName` (default: `"UserAdmin"`).
+The UI package includes a full admin dashboard at `/Account/Admin`. All admin pages are protected by the `CosmosIdentityAdmin` authorization policy, which requires the role specified by `AdminRoleName` (default: `"UserAdmin"`). The admin link appears on the My Account page only for users in the admin role.
 
-**Admin features:**
-- Search and paginate users
-- Edit user email
-- Lock/unlock user accounts
-- Add/remove roles
-- Add/remove claims
+**Admin pages:**
+
+| Page | Path | Description |
+|---|---|---|
+| Admin Dashboard | `/Account/Admin` | Hub page for all admin features |
+| Users | `/Account/AdminUsers` | Search and list users |
+| Create User | `/Account/AdminUserCreate` | Create a new user account |
+| Edit User | `/Account/AdminUserEdit?id=` | Edit profile, lock/unlock, reset password, delete |
+| User Roles | `/Account/AdminUserRoles?id=` | Assign/remove roles for a user |
+| User Claims | `/Account/AdminUserClaims?id=` | Assign/remove claims (uses claim definitions) |
+| Roles | `/Account/AdminRoles` | Create and delete security roles |
+| Claim Definitions | `/Account/AdminClaimDefinitions` | Define claim types and allowed values |
+| Edit Claim Def | `/Account/AdminClaimDefinitionEdit?id=` | Create/edit a claim definition |
+
+**Claim Definitions** allow you to define the available claim types and optional allowed values. When assigning claims to users, the admin UI presents dropdowns from these definitions instead of requiring free-text entry.
 
 To grant admin access, assign the admin role to a user. The `CosmosIdentitySeeder` automatically assigns both the `"Admin"` role and your configured `AdminRoleName` role when seeding.
 
@@ -265,12 +296,16 @@ When `AllowRegistration` is `false`, the Register page returns a 404 and the "Cr
 - `IUserAuthenticatorKeyStore<CosmosIdentityUser>`
 - `IUserTwoFactorRecoveryCodeStore<CosmosIdentityUser>`
 - `IUserLoginStore<CosmosIdentityUser>`
+- `IUserPasskeyStore<CosmosIdentityUser>`
 - `IQueryableUserStore<CosmosIdentityUser>`
 
 ### Role Store (`CosmosDbRoleStore`)
 - `IRoleStore<CosmosIdentityRole>`
 - `IRoleClaimStore<CosmosIdentityRole>`
 - `IQueryableRoleStore<CosmosIdentityRole>`
+
+### Claim Definition Store (`CosmosDbClaimDefinitionStore`)
+- `ICosmosDbClaimDefinitionStore` - CRUD operations for claim type definitions with allowed values
 
 ### Claims Principal Factory
 - `DefaultUserClaimsPrincipalFactory` - A default implementation that adds role claims to the identity.
@@ -279,6 +314,7 @@ When `AllowRegistration` is `false`, the Register page returns a 404 and the "Cr
 
 ### CosmosIdentityUser
 The user entity with support for:
+- First name and last name
 - Username and email (with automatic normalization)
 - Password hash
 - Security stamp and concurrency stamp
@@ -287,6 +323,7 @@ The user entity with support for:
 - Account lockout
 - Claims collection
 - External login providers
+- Passkeys (WebAuthn/FIDO2)
 
 ### CosmosIdentityRole
 The role entity with support for:

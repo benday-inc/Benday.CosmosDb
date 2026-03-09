@@ -30,6 +30,7 @@ public static class CosmosIdentityServiceCollectionExtensions
         // Default container names from the Cosmos config; callers can still override via configureOptions
         options.UsersContainerName = cosmosConfig.ContainerName;
         options.RolesContainerName = cosmosConfig.ContainerName;
+        options.ClaimDefinitionsContainerName = cosmosConfig.ContainerName;
 
         configureOptions?.Invoke(options);
 
@@ -62,9 +63,20 @@ public static class CosmosIdentityServiceCollectionExtensions
             true,
             cosmosConfig.UseDefaultAzureCredential);
 
+        // Register repository options for claim definitions container
+        services.RegisterOptionsForRepository<CosmosIdentityClaimDefinition>(
+            cosmosConfig.ConnectionString,
+            cosmosConfig.DatabaseName,
+            options.ClaimDefinitionsContainerName,
+            CosmosDbConstants.DefaultPartitionKey,
+            cosmosConfig.CreateStructures,
+            true,
+            cosmosConfig.UseDefaultAzureCredential);
+
         // Register stores
         services.AddTransient<IUserStore<CosmosIdentityUser>, CosmosDbUserStore>();
         services.AddTransient<IRoleStore<CosmosIdentityRole>, CosmosDbRoleStore>();
+        services.AddTransient<ICosmosDbClaimDefinitionStore, CosmosDbClaimDefinitionStore>();
 
         return options;
     }

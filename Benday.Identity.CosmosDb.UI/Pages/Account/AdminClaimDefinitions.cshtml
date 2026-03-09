@@ -1,0 +1,86 @@
+@page
+@model AdminClaimDefinitionsModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Claim Definitions</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 700px; }
+        h1 { margin: 0 0 1.5rem; font-size: 1.5rem; text-align: center; }
+        .btn-primary { display: inline-block; padding: 0.5rem 1rem; background: #0078d4; color: #fff; border: none; border-radius: 4px; font-size: 0.875rem; cursor: pointer; text-decoration: none; }
+        .btn-primary:hover { background: #106ebe; }
+        .btn-delete { padding: 0.375rem 0.75rem; background: #d32f2f; color: #fff; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer; }
+        .btn-delete:hover { background: #b71c1c; }
+        .actions-bar { margin-bottom: 1rem; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { text-align: left; padding: 0.625rem 0.5rem; border-bottom: 1px solid #eee; font-size: 0.875rem; }
+        th { font-weight: 600; color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        td a { color: #0078d4; text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+        .success-message { text-align: center; color: #2e7d32; font-weight: 600; margin-bottom: 1rem; font-size: 0.875rem; }
+        .empty-message { text-align: center; color: #888; padding: 2rem 0; font-size: 0.875rem; }
+        .links { margin-top: 1.5rem; text-align: center; font-size: 0.875rem; }
+        .links a { color: #0078d4; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Claim Definitions</h1>
+
+        @if (!string.IsNullOrEmpty(Model.StatusMessage))
+        {
+            <p class="success-message">@Model.StatusMessage</p>
+        }
+
+        <div class="actions-bar">
+            <a href="/Account/AdminClaimDefinitionEdit" class="btn-primary">Create New</a>
+        </div>
+
+        @if (Model.ClaimDefinitions.Count == 0)
+        {
+            <p class="empty-message">No claim definitions found.</p>
+        }
+        else
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>Claim Type</th>
+                        <th>Description</th>
+                        <th>Allowed Values</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ClaimDefinitions)
+                    {
+                        <tr>
+                            <td>@item.ClaimType</td>
+                            <td>@item.Description</td>
+                            <td>@item.AllowedValues.Count</td>
+                            <td><a href="/Account/AdminClaimDefinitionEdit?id=@item.Id">Edit</a></td>
+                            <td>
+                                <form method="post" asp-page-handler="Delete" style="display:inline;">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this claim definition?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        <div class="links">
+            <a href="/Account/Admin">Back to Admin</a>
+        </div>
+    </div>
+</body>
+</html>

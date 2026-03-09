@@ -1,0 +1,132 @@
+@page
+@model AdminUserEditModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit User</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
+        h1 { margin: 0 0 1.5rem; font-size: 1.5rem; text-align: center; }
+        .section-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #999; margin: 1.5rem 0 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid #eee; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.25rem; font-weight: 600; font-size: 0.875rem; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"] { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="password"]:focus { outline: none; border-color: #0078d4; box-shadow: 0 0 0 2px rgba(0,120,212,0.2); }
+        .btn-primary { padding: 0.5rem 1rem; background: #0078d4; color: #fff; border: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer; }
+        .btn-primary:hover { background: #106ebe; }
+        .btn-delete { padding: 0.5rem 1rem; background: #d32f2f; color: #fff; border: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer; }
+        .btn-delete:hover { background: #b71c1c; }
+        .btn-secondary { padding: 0.5rem 1rem; background: #666; color: #fff; border: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer; }
+        .btn-secondary:hover { background: #555; }
+        .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+        .status-active { background: #e8f5e9; color: #2e7d32; }
+        .status-locked { background: #ffebee; color: #d32f2f; }
+        .status-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+        .password-form { display: flex; gap: 0.5rem; }
+        .password-form input[type="password"] { flex: 1; }
+        .validation-summary-errors { color: #d32f2f; margin-bottom: 1rem; font-size: 0.875rem; }
+        .validation-summary-errors ul { margin: 0; padding-left: 1.25rem; }
+        .field-validation-error { color: #d32f2f; font-size: 0.8rem; }
+        .status-message { text-align: center; color: #2e7d32; font-weight: 600; margin-bottom: 1rem; }
+        .danger-zone { background: #fff5f5; border: 1px solid #ffcdd2; border-radius: 4px; padding: 1rem; margin-top: 1rem; }
+        .link-list { list-style: none; padding: 0; margin: 0; }
+        .link-list li { margin-bottom: 0.5rem; }
+        .link-list a { color: #0078d4; text-decoration: none; font-size: 0.9rem; }
+        .link-list a:hover { text-decoration: underline; }
+        .links { margin-top: 1.5rem; text-align: center; font-size: 0.875rem; }
+        .links a { color: #0078d4; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit User</h1>
+
+        @if (!string.IsNullOrEmpty(Model.StatusMessage))
+        {
+            <p class="status-message">@Model.StatusMessage</p>
+        }
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <div class="section-title">Profile</div>
+        <form method="post" asp-page-handler="Save">
+            <input type="hidden" asp-for="Input.Id" />
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" type="email" />
+                <span asp-validation-for="Input.Email" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" type="text" />
+                <span asp-validation-for="Input.FirstName" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" type="text" />
+                <span asp-validation-for="Input.LastName" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" type="tel" />
+                <span asp-validation-for="Input.PhoneNumber" class="field-validation-error"></span>
+            </div>
+            <button type="submit" class="btn-primary">Save Changes</button>
+        </form>
+
+        <div class="section-title">Account Status</div>
+        <div class="status-row">
+            @if (Model.IsLocked)
+            {
+                <span class="status-badge status-locked">Locked</span>
+            }
+            else
+            {
+                <span class="status-badge status-active">Active</span>
+            }
+            <form method="post" asp-page-handler="ToggleLockout">
+                <input type="hidden" name="id" value="@Model.UserId" />
+                @if (Model.IsLocked)
+                {
+                    <button type="submit" class="btn-primary">Unlock User</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn-secondary">Lock User</button>
+                }
+            </form>
+        </div>
+
+        <div class="section-title">Reset Password</div>
+        <form method="post" asp-page-handler="ResetPassword" class="password-form">
+            <input type="hidden" name="id" value="@Model.UserId" />
+            <input type="password" name="newPassword" placeholder="New password" required />
+            <button type="submit" class="btn-primary">Reset Password</button>
+        </form>
+
+        <div class="section-title">Roles &amp; Claims</div>
+        <ul class="link-list">
+            <li><a href="/Account/AdminUserRoles?id=@Model.UserId">Manage Roles</a></li>
+            <li><a href="/Account/AdminUserClaims?id=@Model.UserId">Manage Claims</a></li>
+        </ul>
+
+        <div class="section-title">Danger Zone</div>
+        <div class="danger-zone">
+            <form method="post" asp-page-handler="Delete">
+                <input type="hidden" name="id" value="@Model.UserId" />
+                <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this user? This action cannot be undone.');">Delete User</button>
+            </form>
+        </div>
+
+        <div class="links">
+            <a href="/Account/AdminUsers">Back to Users</a>
+        </div>
+    </div>
+</body>
+</html>
