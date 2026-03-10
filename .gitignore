@@ -3,6 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 .idea/
+.claude/
 
 *.unversioned.json
 *.unversioned
@@ -370,4 +371,6 @@ FodyWeavers.xsd
 CODE-REVIEW-5.0.md
 CONFIG-DEFAULTS-ANALYSIS.md
 RELEASE-NOTES-*.md
+.claude/settings.local.json
+.claude/settings.local.json
 .claude/settings.local.json
