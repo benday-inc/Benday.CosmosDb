@@ -65,7 +65,7 @@ public static class CosmosIdentityUIServiceCollectionExtensions
         // Register admin authorization policy
         services.AddAuthorization(authOptions =>
         {
-            authOptions.AddPolicy("CosmosIdentityAdmin", policy =>
+            authOptions.AddPolicy(CosmosIdentityConstants.AdminPolicyName, policy =>
                 policy.RequireRole(options.AdminRoleName));
         });
 

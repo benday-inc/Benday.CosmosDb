@@ -68,13 +68,14 @@ public static class CosmosIdentitySeeder
             return;
         }
 
-        // Ensure Admin role exists
-        if (await roleManager.FindByNameAsync("Admin") == null)
+        // Ensure admin role exists
+        if (await roleManager.FindByNameAsync(options.AdminRoleName) == null)
         {
-            var roleResult = await roleManager.CreateAsync(new CosmosIdentityRole { Name = "Admin" });
+            var roleResult = await roleManager.CreateAsync(
+                new CosmosIdentityRole { Name = options.AdminRoleName });
             if (!roleResult.Succeeded)
             {
-                Console.WriteLine("Warning: Failed to create Admin role:");
+                Console.WriteLine($"Warning: Failed to create {options.AdminRoleName} role:");
                 foreach (var error in roleResult.Errors)
                 {
                     Console.WriteLine($"  - {error.Description}");
@@ -82,27 +83,8 @@ public static class CosmosIdentitySeeder
             }
         }
 
-        // Add user to Admin role
-        await userManager.AddToRoleAsync(user, "Admin");
-
-        // Also ensure the AdminRoleName role exists and assign it (for admin UI access)
-        if (options.AdminRoleName != "Admin")
-        {
-            if (await roleManager.FindByNameAsync(options.AdminRoleName) == null)
-            {
-                var adminRoleResult = await roleManager.CreateAsync(
-                    new CosmosIdentityRole { Name = options.AdminRoleName });
-                if (!adminRoleResult.Succeeded)
-                {
-                    Console.WriteLine($"Warning: Failed to create {options.AdminRoleName} role:");
-                    foreach (var error in adminRoleResult.Errors)
-                    {
-                        Console.WriteLine($"  - {error.Description}");
-                    }
-                }
-            }
-            await userManager.AddToRoleAsync(user, options.AdminRoleName);
-        }
+        // Add user to admin role
+        await userManager.AddToRoleAsync(user, options.AdminRoleName);
 
         Console.WriteLine($"Admin user '{email}' created successfully.");
     }

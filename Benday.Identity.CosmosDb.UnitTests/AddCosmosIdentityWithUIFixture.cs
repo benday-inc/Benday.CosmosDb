@@ -101,7 +101,7 @@ public class AddCosmosIdentityWithUIFixture : TestClassBase
         var provider = services.BuildServiceProvider();
         var authOptions = provider.GetRequiredService<IOptions<AuthorizationOptions>>();
 
-        var policy = authOptions.Value.GetPolicy("CosmosIdentityAdmin");
+        var policy = authOptions.Value.GetPolicy(CosmosIdentityConstants.AdminPolicyName);
         Assert.NotNull(policy);
 
         WriteLine("CosmosIdentityAdmin authorization policy registered");
@@ -121,7 +121,7 @@ public class AddCosmosIdentityWithUIFixture : TestClassBase
         var provider = services.BuildServiceProvider();
         var authOptions = provider.GetRequiredService<IOptions<AuthorizationOptions>>();
 
-        var policy = authOptions.Value.GetPolicy("CosmosIdentityAdmin");
+        var policy = authOptions.Value.GetPolicy(CosmosIdentityConstants.AdminPolicyName);
         Assert.NotNull(policy);
 
         // The policy should exist; the role requirement is baked in via RequireRole

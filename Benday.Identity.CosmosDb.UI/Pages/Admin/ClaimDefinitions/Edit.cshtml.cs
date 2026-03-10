@@ -1,16 +1,17 @@
 using System.ComponentModel.DataAnnotations;
+using Benday.Identity.CosmosDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Benday.Identity.CosmosDb.UI.Pages.Account;
+namespace Benday.Identity.CosmosDb.UI.Pages.Admin.ClaimDefinitions;
 
-[Authorize(Policy = "CosmosIdentityAdmin")]
-public class AdminClaimDefinitionEditModel : PageModel
+[Authorize(Policy = CosmosIdentityConstants.AdminPolicyName)]
+public class EditModel : PageModel
 {
     private readonly ICosmosDbClaimDefinitionStore _store;
 
-    public AdminClaimDefinitionEditModel(ICosmosDbClaimDefinitionStore store)
+    public EditModel(ICosmosDbClaimDefinitionStore store)
     {
         _store = store;
     }
@@ -42,7 +43,7 @@ public class AdminClaimDefinitionEditModel : PageModel
 
             if (claimDef == null)
             {
-                return RedirectToPage("AdminClaimDefinitions");
+                return RedirectToPage("/Admin/ClaimDefinitions/Index");
             }
 
             IsNew = false;

@@ -17,11 +17,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <TheVersion>3.1.0</TheVersion>
+    <TheVersion>3.1.1</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
     <Description>ASP.NET Core Identity UI for Azure Cosmos DB. Provides pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and AddCosmosIdentityWithUI() convenience method that combines core identity registration with cookie authentication. Built on top of Benday.Identity.CosmosDb.</Description>
     <PackageReleaseNotes>
+v3.1.1 - Fix admin policy constant usage, consolidate admin pages under /Admin, rename MyAccount route to /Account.
 v3.1.0 - Added My Account hub page, Edit Profile page, and full admin dashboard with user management (create, edit, lock/unlock, reset password, delete), role management (CRUD), claim definition management (CRUD with allowed values), user role assignment, and user claim assignment pages. All admin pages protected by CosmosIdentityAdmin policy.
 v3.0.0 - BREAKING: Target net10.0 only (drop net9.0). Added passkey (WebAuthn/FIDO2) login button on login page, ManagePasskeys page for passkey registration and management.
 v2.2.0 - Added net10.0 target framework (multi-targets net9.0 and net10.0). Added NuGet package README.

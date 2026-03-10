@@ -10,7 +10,7 @@ public interface ICosmosDbClaimDefinitionStore : IOwnedItemRepository<CosmosIden
     /// <summary>
     /// Gets all claim definitions.
     /// </summary>
-    Task<IList<CosmosIdentityClaimDefinition>> GetAllAsync();
+    new Task<IList<CosmosIdentityClaimDefinition>> GetAllAsync();
 
     /// <summary>
     /// Finds a claim definition by its claim type name.

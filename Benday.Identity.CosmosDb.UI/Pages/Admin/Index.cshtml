@@ -1,5 +1,5 @@
 @page
-@model AdminModel
+@model DashboardModel
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@
         <div class="section-title">User Management</div>
         <ul class="menu-list">
             <li class="menu-item">
-                <a href="/Account/AdminUsers">
+                <a href="/Admin/Users">
                     <div class="menu-item-content">
                         <span class="menu-label">Users</span>
                         <span class="menu-desc">Search, create, edit, and manage user accounts</span>
@@ -48,7 +48,7 @@
         <div class="section-title">Access Control</div>
         <ul class="menu-list">
             <li class="menu-item">
-                <a href="/Account/AdminRoles">
+                <a href="/Admin/Roles">
                     <div class="menu-item-content">
                         <span class="menu-label">Roles</span>
                         <span class="menu-desc">Create and manage security roles</span>
@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="/Account/AdminClaimDefinitions">
+                <a href="/Admin/ClaimDefinitions">
                     <div class="menu-item-content">
                         <span class="menu-label">Claim Definitions</span>
                         <span class="menu-desc">Define claim types and allowed values</span>
@@ -68,7 +68,7 @@
         </ul>
 
         <div class="links">
-            <a href="/Account/MyAccount">Back to My Account</a>
+            <a href="/Account">Back to My Account</a>
         </div>
     </div>
 </body>

@@ -17,7 +17,7 @@ public class CosmosDbClaimDefinitionStore :
     {
     }
 
-    public async Task<IList<CosmosIdentityClaimDefinition>> GetAllAsync()
+    public new async Task<IList<CosmosIdentityClaimDefinition>> GetAllAsync()
     {
         var query = await GetQueryable();
         var results = await GetResults(query.Queryable, GetQueryDescription(), query.PartitionKey);

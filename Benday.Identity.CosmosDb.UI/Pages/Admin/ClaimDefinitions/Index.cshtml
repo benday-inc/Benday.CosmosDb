@@ -1,5 +1,5 @@
 @page
-@model AdminClaimDefinitionsModel
+@model IndexModel
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +39,7 @@
         }
 
         <div class="actions-bar">
-            <a href="/Account/AdminClaimDefinitionEdit" class="btn-primary">Create New</a>
+            <a href="/Admin/ClaimDefinitions/Edit" class="btn-primary">Create New</a>
         </div>
 
         @if (Model.ClaimDefinitions.Count == 0)
@@ -65,7 +65,7 @@
                             <td>@item.ClaimType</td>
                             <td>@item.Description</td>
                             <td>@item.AllowedValues.Count</td>
-                            <td><a href="/Account/AdminClaimDefinitionEdit?id=@item.Id">Edit</a></td>
+                            <td><a href="/Admin/ClaimDefinitions/Edit?id=@item.Id">Edit</a></td>
                             <td>
                                 <form method="post" asp-page-handler="Delete" style="display:inline;">
                                     <input type="hidden" name="id" value="@item.Id" />
@@ -79,7 +79,7 @@
         }
 
         <div class="links">
-            <a href="/Account/Admin">Back to Admin</a>
+            <a href="/Admin">Back to Admin</a>
         </div>
     </div>
 </body>

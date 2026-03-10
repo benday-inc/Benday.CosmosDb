@@ -1,17 +1,18 @@
 using System.ComponentModel.DataAnnotations;
+using Benday.Identity.CosmosDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Benday.Identity.CosmosDb.UI.Pages.Account;
+namespace Benday.Identity.CosmosDb.UI.Pages.Admin.Users;
 
-[Authorize(Policy = "CosmosIdentityAdmin")]
-public class AdminUserCreateModel : PageModel
+[Authorize(Policy = CosmosIdentityConstants.AdminPolicyName)]
+public class CreateModel : PageModel
 {
     private readonly UserManager<CosmosIdentityUser> _userManager;
 
-    public AdminUserCreateModel(UserManager<CosmosIdentityUser> userManager)
+    public CreateModel(UserManager<CosmosIdentityUser> userManager)
     {
         _userManager = userManager;
     }
@@ -69,7 +70,7 @@ public class AdminUserCreateModel : PageModel
 
         if (result.Succeeded)
         {
-            return RedirectToPage("AdminUsers");
+            return RedirectToPage("/Admin/Users/Index");
         }
 
         foreach (var error in result.Errors)

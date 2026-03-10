@@ -219,34 +219,34 @@ If no custom sender is registered, the no-op default is used and password reset 
 
 ### Account Pages
 
-The UI package provides a **My Account** hub page at `/Account/MyAccount` that links to all account management features. This is the page you'd link to from your app's navbar.
+The UI package provides a **My Account** hub page at `/Account` that links to all account management features. This is the page you'd link to from your app's navbar.
 
 **Account pages:**
 
 | Page | Path | Description |
 |---|---|---|
-| My Account | `/Account/MyAccount` | Hub page with links to profile, security, and admin |
+| My Account | `/Account` | Hub page with links to profile, security, and admin |
 | Edit Profile | `/Account/EditProfile` | Update first name, last name, phone number |
 | Change Password | `/Account/ChangePassword` | Change your password |
 | Manage Passkeys | `/Account/ManagePasskeys` | Add/remove passkeys (when enabled) |
 
 ### Admin Pages
 
-The UI package includes a full admin dashboard at `/Account/Admin`. All admin pages are protected by the `CosmosIdentityAdmin` authorization policy, which requires the role specified by `AdminRoleName` (default: `"UserAdmin"`). The admin link appears on the My Account page only for users in the admin role.
+The UI package includes a full admin dashboard at `/Admin`. All admin pages are protected by the `CosmosIdentityAdmin` authorization policy, which requires the role specified by `AdminRoleName` (default: `"UserAdmin"`). The admin link appears on the My Account page only for users in the admin role.
 
 **Admin pages:**
 
 | Page | Path | Description |
 |---|---|---|
-| Admin Dashboard | `/Account/Admin` | Hub page for all admin features |
-| Users | `/Account/AdminUsers` | Search and list users |
-| Create User | `/Account/AdminUserCreate` | Create a new user account |
-| Edit User | `/Account/AdminUserEdit?id=` | Edit profile, lock/unlock, reset password, delete |
-| User Roles | `/Account/AdminUserRoles?id=` | Assign/remove roles for a user |
-| User Claims | `/Account/AdminUserClaims?id=` | Assign/remove claims (uses claim definitions) |
-| Roles | `/Account/AdminRoles` | Create and delete security roles |
-| Claim Definitions | `/Account/AdminClaimDefinitions` | Define claim types and allowed values |
-| Edit Claim Def | `/Account/AdminClaimDefinitionEdit?id=` | Create/edit a claim definition |
+| Admin Dashboard | `/Admin` | Hub page for all admin features |
+| Users | `/Admin/Users` | Search and list users |
+| Create User | `/Admin/Users/Create` | Create a new user account |
+| Edit User | `/Admin/Users/Edit?id=` | Edit profile, lock/unlock, reset password, delete |
+| User Roles | `/Admin/Users/Roles?id=` | Assign/remove roles for a user |
+| User Claims | `/Admin/Users/Claims?id=` | Assign/remove claims (uses claim definitions) |
+| Roles | `/Admin/Roles` | Create and delete security roles |
+| Claim Definitions | `/Admin/ClaimDefinitions` | Define claim types and allowed values |
+| Edit Claim Def | `/Admin/ClaimDefinitions/Edit?id=` | Create/edit a claim definition |
 
 **Claim Definitions** allow you to define the available claim types and optional allowed values. When assigning claims to users, the admin UI presents dropdowns from these definitions instead of requiring free-text entry.
 

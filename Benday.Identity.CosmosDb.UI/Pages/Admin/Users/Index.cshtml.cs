@@ -1,3 +1,4 @@
+using Benday.Identity.CosmosDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -5,51 +6,43 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Benday.Identity.CosmosDb.UI.Pages.Admin.Users;
 
-[Authorize(Policy = "CosmosIdentityAdmin")]
+[Authorize(Policy = CosmosIdentityConstants.AdminPolicyName)]
 public class IndexModel : PageModel
 {
     private readonly UserManager<CosmosIdentityUser> _userManager;
+    private readonly IUserStore<CosmosIdentityUser> _userStore;
 
-    public IndexModel(UserManager<CosmosIdentityUser> userManager)
+    public IndexModel(
+        UserManager<CosmosIdentityUser> userManager,
+        IUserStore<CosmosIdentityUser> userStore)
     {
         _userManager = userManager;
+        _userStore = userStore;
     }
 
-    public List<CosmosIdentityUser> Users { get; set; } = new();
+    public IList<CosmosIdentityUser> Users { get; set; } = new List<CosmosIdentityUser>();
 
-    [BindProperty(SupportsGet = true)]
-    public string? SearchTerm { get; set; }
+    public string? Search { get; set; }
 
-    [BindProperty(SupportsGet = true)]
-    public int PageNumber { get; set; } = 1;
-
-    public int PageSize { get; set; } = 25;
-    public int TotalCount { get; set; }
-    public int TotalPages => (int)Math.Ceiling((double)TotalCount / PageSize);
-
-    public void OnGet()
+    public async Task<IActionResult> OnGetAsync(string? search)
     {
-        // Materialize to list for safe in-memory filtering (Cosmos DB LINQ has limited operator support)
-        var allUsers = _userManager.Users.OrderBy(u => u.Email).ToList();
+        Search = search;
 
-        if (!string.IsNullOrWhiteSpace(SearchTerm))
+        var queryableStore = (IQueryableUserStore<CosmosIdentityUser>)_userStore;
+        var query = queryableStore.Users;
+
+        if (!string.IsNullOrWhiteSpace(search))
         {
-            var term = SearchTerm.Trim().ToUpperInvariant();
-            allUsers = allUsers
-                .Where(u =>
-                    (u.NormalizedEmail ?? "").Contains(term) ||
-                    (u.NormalizedUserName ?? "").Contains(term))
-                .ToList();
+            var searchUpper = search.ToUpper();
+            query = query.Where(u =>
+                u.Email.ToUpper().Contains(searchUpper) ||
+                u.UserName.ToUpper().Contains(searchUpper) ||
+                u.FirstName.ToUpper().Contains(searchUpper) ||
+                u.LastName.ToUpper().Contains(searchUpper));
         }
 
-        TotalCount = allUsers.Count;
+        Users = query.Take(50).ToList();
 
-        if (PageNumber < 1) PageNumber = 1;
-        if (PageNumber > TotalPages && TotalPages > 0) PageNumber = TotalPages;
-
-        Users = allUsers
-            .Skip((PageNumber - 1) * PageSize)
-            .Take(PageSize)
-            .ToList();
+        return Page();
     }
 }

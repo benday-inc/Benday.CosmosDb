@@ -1,18 +1,19 @@
 using System.Security.Claims;
+using Benday.Identity.CosmosDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Benday.Identity.CosmosDb.UI.Pages.Account;
+namespace Benday.Identity.CosmosDb.UI.Pages.Admin.Users;
 
-[Authorize(Policy = "CosmosIdentityAdmin")]
-public class AdminUserClaimsModel : PageModel
+[Authorize(Policy = CosmosIdentityConstants.AdminPolicyName)]
+public class ClaimsModel : PageModel
 {
     private readonly UserManager<CosmosIdentityUser> _userManager;
     private readonly ICosmosDbClaimDefinitionStore _claimDefinitionStore;
 
-    public AdminUserClaimsModel(
+    public ClaimsModel(
         UserManager<CosmosIdentityUser> userManager,
         ICosmosDbClaimDefinitionStore claimDefinitionStore)
     {

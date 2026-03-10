@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using System.Security.Claims;
+using Benday.Identity.CosmosDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,199 +7,194 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Benday.Identity.CosmosDb.UI.Pages.Admin.Users;
 
-[Authorize(Policy = "CosmosIdentityAdmin")]
+[Authorize(Policy = CosmosIdentityConstants.AdminPolicyName)]
 public class EditModel : PageModel
 {
     private readonly UserManager<CosmosIdentityUser> _userManager;
-    private readonly RoleManager<CosmosIdentityRole> _roleManager;
 
-    public EditModel(
-        UserManager<CosmosIdentityUser> userManager,
-        RoleManager<CosmosIdentityRole> roleManager)
+    public EditModel(UserManager<CosmosIdentityUser> userManager)
     {
         _userManager = userManager;
-        _roleManager = roleManager;
     }
 
-    [BindProperty(SupportsGet = true)]
-    public string Id { get; set; } = string.Empty;
+    [BindProperty]
+    public InputModel Input { get; set; } = new();
 
-    public CosmosIdentityUser? EditUser { get; set; }
-    public IList<string> UserRoles { get; set; } = new List<string>();
-    public IList<Claim> UserClaims { get; set; } = new List<Claim>();
-    public List<string> AvailableRoles { get; set; } = new List<string>();
-    public bool IsLockedOut { get; set; }
+    public bool IsLocked { get; set; }
+
     public string? StatusMessage { get; set; }
 
-    [BindProperty]
-    public EditEmailInput EmailInput { get; set; } = new();
+    public string UserId { get; set; } = string.Empty;
 
-    [BindProperty]
-    public AddClaimInput ClaimInput { get; set; } = new();
-
-    [BindProperty]
-    public AddRoleInput RoleInput { get; set; } = new();
-
-    public class EditEmailInput
+    public class InputModel
     {
+        [Required]
+        public string Id { get; set; } = string.Empty;
+
         [Required]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; } = string.Empty;
+
+        [Display(Name = "First name")]
+        [StringLength(100)]
+        public string FirstName { get; set; } = string.Empty;
+
+        [Display(Name = "Last name")]
+        [StringLength(100)]
+        public string LastName { get; set; } = string.Empty;
+
+        [Display(Name = "Phone number")]
+        [Phone]
+        public string? PhoneNumber { get; set; }
     }
 
-    public class AddClaimInput
+    public async Task<IActionResult> OnGetAsync(string id)
     {
-        [Required]
-        [Display(Name = "Claim type")]
-        public string ClaimType { get; set; } = string.Empty;
-
-        [Required]
-        [Display(Name = "Claim value")]
-        public string ClaimValue { get; set; } = string.Empty;
-    }
-
-    public class AddRoleInput
-    {
-        [Required]
-        [Display(Name = "Role")]
-        public string RoleName { get; set; } = string.Empty;
-    }
-
-    public async Task<IActionResult> OnGetAsync()
-    {
-        return await LoadUserAndReturn();
-    }
-
-    public async Task<IActionResult> OnPostUpdateEmailAsync()
-    {
-        var user = await _userManager.FindByIdAsync(Id);
-        if (user == null) return NotFound();
-
-        var email = EmailInput.Email;
-        if (!new EmailAddressAttribute().IsValid(email))
+        if (string.IsNullOrEmpty(id))
         {
-            StatusMessage = "Invalid email address.";
-            return await LoadUserAndReturn();
+            return NotFound();
         }
 
-        user.Email = email;
-        user.UserName = email;
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        LoadUser(user);
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPostSaveAsync()
+    {
+        if (!ModelState.IsValid)
+        {
+            UserId = Input.Id;
+            var u = await _userManager.FindByIdAsync(Input.Id);
+            IsLocked = u != null && u.LockoutEnd.HasValue && u.LockoutEnd > DateTimeOffset.UtcNow;
+            return Page();
+        }
+
+        var user = await _userManager.FindByIdAsync(Input.Id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        user.FirstName = Input.FirstName;
+        user.LastName = Input.LastName;
+        user.Email = Input.Email;
+        user.UserName = Input.Email;
+        user.PhoneNumber = Input.PhoneNumber;
+
         var result = await _userManager.UpdateAsync(user);
-        StatusMessage = result.Succeeded
-            ? "Email updated successfully."
-            : string.Join(" ", result.Errors.Select(e => e.Description));
-
-        return RedirectToPage(new { id = Id });
-    }
-
-    public async Task<IActionResult> OnPostToggleLockoutAsync()
-    {
-        var user = await _userManager.FindByIdAsync(Id);
-        if (user == null) return NotFound();
-
-        // Prevent self-lockout
-        var currentUserId = _userManager.GetUserId(User);
-        if (user.Id == currentUserId)
+        if (!result.Succeeded)
         {
-            StatusMessage = "You cannot lock out your own account.";
-            return RedirectToPage(new { id = Id });
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+            LoadUser(user);
+            return Page();
         }
 
-        var isCurrentlyLocked = user.LockoutEnd.HasValue && user.LockoutEnd > DateTimeOffset.UtcNow;
+        StatusMessage = "User profile updated successfully.";
+        LoadUser(user);
+        return Page();
+    }
 
-        if (isCurrentlyLocked)
+    public async Task<IActionResult> OnPostToggleLockoutAsync(string id)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null)
         {
-            await _userManager.SetLockoutEndDateAsync(user, null);
-            StatusMessage = "User account has been unlocked.";
+            return NotFound();
+        }
+
+        if (user.LockoutEnd.HasValue && user.LockoutEnd > DateTimeOffset.UtcNow)
+        {
+            user.LockoutEnd = null;
+            await _userManager.UpdateAsync(user);
+            StatusMessage = "User has been unlocked.";
         }
         else
         {
-            await _userManager.SetLockoutEnabledAsync(user, true);
-            await _userManager.SetLockoutEndDateAsync(user, DateTimeOffset.MaxValue);
-            StatusMessage = "User account has been locked.";
+            user.LockoutEnd = DateTimeOffset.MaxValue;
+            await _userManager.UpdateAsync(user);
+            StatusMessage = "User has been locked.";
         }
 
-        return RedirectToPage(new { id = Id });
-    }
-
-    public async Task<IActionResult> OnPostAddRoleAsync()
-    {
-        var user = await _userManager.FindByIdAsync(Id);
-        if (user == null) return NotFound();
-
-        if (!string.IsNullOrWhiteSpace(RoleInput.RoleName))
-        {
-            var result = await _userManager.AddToRoleAsync(user, RoleInput.RoleName);
-            StatusMessage = result.Succeeded
-                ? $"Role '{RoleInput.RoleName}' added."
-                : string.Join(" ", result.Errors.Select(e => e.Description));
-        }
-
-        return RedirectToPage(new { id = Id });
-    }
-
-    public async Task<IActionResult> OnPostRemoveRoleAsync(string roleName)
-    {
-        var user = await _userManager.FindByIdAsync(Id);
-        if (user == null) return NotFound();
-
-        var result = await _userManager.RemoveFromRoleAsync(user, roleName);
-        StatusMessage = result.Succeeded
-            ? $"Role '{roleName}' removed."
-            : string.Join(" ", result.Errors.Select(e => e.Description));
-
-        return RedirectToPage(new { id = Id });
-    }
-
-    public async Task<IActionResult> OnPostAddClaimAsync()
-    {
-        var user = await _userManager.FindByIdAsync(Id);
-        if (user == null) return NotFound();
-
-        if (!string.IsNullOrWhiteSpace(ClaimInput.ClaimType) &&
-            !string.IsNullOrWhiteSpace(ClaimInput.ClaimValue))
-        {
-            var claim = new Claim(ClaimInput.ClaimType, ClaimInput.ClaimValue);
-            var result = await _userManager.AddClaimAsync(user, claim);
-            StatusMessage = result.Succeeded
-                ? "Claim added."
-                : string.Join(" ", result.Errors.Select(e => e.Description));
-        }
-
-        return RedirectToPage(new { id = Id });
-    }
-
-    public async Task<IActionResult> OnPostRemoveClaimAsync(string claimType, string claimValue)
-    {
-        var user = await _userManager.FindByIdAsync(Id);
-        if (user == null) return NotFound();
-
-        var claim = new Claim(claimType, claimValue);
-        var result = await _userManager.RemoveClaimAsync(user, claim);
-        StatusMessage = result.Succeeded
-            ? "Claim removed."
-            : string.Join(" ", result.Errors.Select(e => e.Description));
-
-        return RedirectToPage(new { id = Id });
-    }
-
-    private async Task<IActionResult> LoadUserAndReturn()
-    {
-        var user = await _userManager.FindByIdAsync(Id);
-        if (user == null) return NotFound();
-
-        EditUser = user;
-        EmailInput.Email = user.Email ?? string.Empty;
-        UserRoles = await _userManager.GetRolesAsync(user);
-        UserClaims = (await _userManager.GetClaimsAsync(user))
-            .Where(c => c.Type != ClaimTypes.Role) // roles shown separately
-            .ToList();
-
-        var allRoleNames = _roleManager.Roles.Select(r => r.Name ?? "").ToList();
-        AvailableRoles = allRoleNames.Except(UserRoles).ToList();
-
-        IsLockedOut = user.LockoutEnd.HasValue && user.LockoutEnd > DateTimeOffset.UtcNow;
-
+        LoadUser(user);
         return Page();
+    }
+
+    public async Task<IActionResult> OnPostResetPasswordAsync(string id, string newPassword)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        if (string.IsNullOrWhiteSpace(newPassword))
+        {
+            StatusMessage = "Password cannot be empty.";
+            LoadUser(user);
+            return Page();
+        }
+
+        var removeResult = await _userManager.RemovePasswordAsync(user);
+        if (!removeResult.Succeeded)
+        {
+            StatusMessage = "Error removing password: " + string.Join(" ", removeResult.Errors.Select(e => e.Description));
+            LoadUser(user);
+            return Page();
+        }
+
+        var addResult = await _userManager.AddPasswordAsync(user, newPassword);
+        if (!addResult.Succeeded)
+        {
+            StatusMessage = "Error setting password: " + string.Join(" ", addResult.Errors.Select(e => e.Description));
+            LoadUser(user);
+            return Page();
+        }
+
+        StatusMessage = "Password has been reset successfully.";
+        LoadUser(user);
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPostDeleteAsync(string id)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var result = await _userManager.DeleteAsync(user);
+        if (result.Succeeded)
+        {
+            return RedirectToPage("/Admin/Users/Index");
+        }
+
+        StatusMessage = "Error deleting user: " + string.Join(" ", result.Errors.Select(e => e.Description));
+        LoadUser(user);
+        return Page();
+    }
+
+    private void LoadUser(CosmosIdentityUser user)
+    {
+        UserId = user.Id;
+        IsLocked = user.LockoutEnd.HasValue && user.LockoutEnd > DateTimeOffset.UtcNow;
+        Input = new InputModel
+        {
+            Id = user.Id,
+            Email = user.Email,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            PhoneNumber = user.PhoneNumber
+        };
     }
 }

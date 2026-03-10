@@ -9,186 +9,124 @@
     <title>Edit User</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 2rem; }
-        .admin-container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 700px; margin: 0 auto; }
-        h1 { margin: 0 0 1.5rem; font-size: 1.5rem; }
-        h2 { margin: 1.5rem 0 0.75rem; font-size: 1.125rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
+        h1 { margin: 0 0 1.5rem; font-size: 1.5rem; text-align: center; }
+        .section-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #999; margin: 1.5rem 0 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid #eee; }
         .form-group { margin-bottom: 1rem; }
         label { display: block; margin-bottom: 0.25rem; font-weight: 600; font-size: 0.875rem; }
-        input[type="email"], input[type="text"] { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
-        input[type="email"]:focus, input[type="text"]:focus { outline: none; border-color: #0078d4; box-shadow: 0 0 0 2px rgba(0,120,212,0.2); }
-        select { padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; min-width: 200px; }
-        .btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; font-size: 0.875rem; cursor: pointer; text-decoration: none; display: inline-block; }
-        .btn-primary { background: #0078d4; color: #fff; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"] { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="password"]:focus { outline: none; border-color: #0078d4; box-shadow: 0 0 0 2px rgba(0,120,212,0.2); }
+        .btn-primary { padding: 0.5rem 1rem; background: #0078d4; color: #fff; border: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer; }
         .btn-primary:hover { background: #106ebe; }
-        .btn-danger { background: #d32f2f; color: #fff; }
-        .btn-danger:hover { background: #b71c1c; }
-        .btn-warning { background: #f57c00; color: #fff; }
-        .btn-warning:hover { background: #e65100; }
-        .btn-success { background: #2e7d32; color: #fff; }
-        .btn-success:hover { background: #1b5e20; }
-        .btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
-        .status-message { padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem; background: #e3f2fd; color: #1565c0; font-size: 0.875rem; }
-        .inline-form { display: flex; gap: 0.5rem; align-items: flex-end; }
-        .inline-form .form-group { margin-bottom: 0; flex: 1; }
-        table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
-        th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 0.875rem; }
-        th { font-weight: 600; background: #fafafa; }
-        .badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.75rem; font-weight: 600; }
-        .badge-active { background: #e8f5e9; color: #2e7d32; }
-        .badge-locked { background: #fff3e0; color: #e65100; }
-        .links { margin-top: 1.5rem; font-size: 0.875rem; }
+        .btn-delete { padding: 0.5rem 1rem; background: #d32f2f; color: #fff; border: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer; }
+        .btn-delete:hover { background: #b71c1c; }
+        .btn-secondary { padding: 0.5rem 1rem; background: #666; color: #fff; border: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer; }
+        .btn-secondary:hover { background: #555; }
+        .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+        .status-active { background: #e8f5e9; color: #2e7d32; }
+        .status-locked { background: #ffebee; color: #d32f2f; }
+        .status-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+        .password-form { display: flex; gap: 0.5rem; }
+        .password-form input[type="password"] { flex: 1; }
+        .validation-summary-errors { color: #d32f2f; margin-bottom: 1rem; font-size: 0.875rem; }
+        .validation-summary-errors ul { margin: 0; padding-left: 1.25rem; }
+        .field-validation-error { color: #d32f2f; font-size: 0.8rem; }
+        .status-message { text-align: center; color: #2e7d32; font-weight: 600; margin-bottom: 1rem; }
+        .danger-zone { background: #fff5f5; border: 1px solid #ffcdd2; border-radius: 4px; padding: 1rem; margin-top: 1rem; }
+        .link-list { list-style: none; padding: 0; margin: 0; }
+        .link-list li { margin-bottom: 0.5rem; }
+        .link-list a { color: #0078d4; text-decoration: none; font-size: 0.9rem; }
+        .link-list a:hover { text-decoration: underline; }
+        .links { margin-top: 1.5rem; text-align: center; font-size: 0.875rem; }
         .links a { color: #0078d4; text-decoration: none; }
         .links a:hover { text-decoration: underline; }
-        .tag { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.5rem; background: #e3f2fd; border-radius: 3px; font-size: 0.8rem; margin: 0.25rem; }
-        .empty-text { color: #999; font-size: 0.875rem; font-style: italic; }
     </style>
 </head>
 <body>
-    <div class="admin-container">
-        @if (Model.EditUser == null)
+    <div class="container">
+        <h1>Edit User</h1>
+
+        @if (!string.IsNullOrEmpty(Model.StatusMessage))
         {
-            <h1>User Not Found</h1>
+            <p class="status-message">@Model.StatusMessage</p>
         }
-        else
-        {
-            <h1>Edit User</h1>
 
-            @if (!string.IsNullOrEmpty(Model.StatusMessage))
-            {
-                <div class="status-message">@Model.StatusMessage</div>
-            }
+        <div asp-validation-summary="ModelOnly"></div>
 
-            @* --- Email Section --- *@
-            <h2>Email</h2>
-            <form method="post" asp-page-handler="UpdateEmail">
-                <input type="hidden" asp-for="Id" />
-                <div class="inline-form">
-                    <div class="form-group">
-                        <input asp-for="EmailInput.Email" type="email" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">Update Email</button>
-                </div>
-            </form>
-
-            @* --- Account Status Section --- *@
-            <h2>Account Status</h2>
-            <p>
-                Status:
-                @if (Model.IsLockedOut)
-                {
-                    <span class="badge badge-locked">Locked</span>
-                }
-                else
-                {
-                    <span class="badge badge-active">Active</span>
-                }
-            </p>
-            <form method="post" asp-page-handler="ToggleLockout">
-                <input type="hidden" asp-for="Id" />
-                @if (Model.IsLockedOut)
-                {
-                    <button type="submit" class="btn btn-success">Unlock Account</button>
-                }
-                else
-                {
-                    <button type="submit" class="btn btn-warning">Lock Account</button>
-                }
-            </form>
-
-            @* --- Roles Section --- *@
-            <h2>Roles</h2>
-            @if (Model.UserRoles.Count == 0)
-            {
-                <p class="empty-text">No roles assigned.</p>
-            }
-            else
-            {
-                <div>
-                    @foreach (var role in Model.UserRoles)
-                    {
-                        <span class="tag">
-                            @role
-                            <form method="post" asp-page-handler="RemoveRole" style="display:inline;margin:0;">
-                                <input type="hidden" asp-for="Id" />
-                                <input type="hidden" name="roleName" value="@role" />
-                                <button type="submit" class="btn btn-danger btn-sm" title="Remove role">&times;</button>
-                            </form>
-                        </span>
-                    }
-                </div>
-            }
-            @if (Model.AvailableRoles.Count > 0)
-            {
-                <form method="post" asp-page-handler="AddRole" style="margin-top: 0.5rem;">
-                    <input type="hidden" asp-for="Id" />
-                    <div class="inline-form">
-                        <div class="form-group">
-                            <select asp-for="RoleInput.RoleName">
-                                <option value="">Select a role...</option>
-                                @foreach (var role in Model.AvailableRoles)
-                                {
-                                    <option value="@role">@role</option>
-                                }
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Role</button>
-                    </div>
-                </form>
-            }
-
-            @* --- Claims Section --- *@
-            <h2>Claims</h2>
-            @if (Model.UserClaims.Count == 0)
-            {
-                <p class="empty-text">No custom claims.</p>
-            }
-            else
-            {
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Value</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var claim in Model.UserClaims)
-                        {
-                            <tr>
-                                <td>@claim.Type</td>
-                                <td>@claim.Value</td>
-                                <td>
-                                    <form method="post" asp-page-handler="RemoveClaim" style="margin:0;">
-                                        <input type="hidden" asp-for="Id" />
-                                        <input type="hidden" name="claimType" value="@claim.Type" />
-                                        <input type="hidden" name="claimValue" value="@claim.Value" />
-                                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            <form method="post" asp-page-handler="AddClaim" style="margin-top: 0.75rem;">
-                <input type="hidden" asp-for="Id" />
-                <div class="inline-form">
-                    <div class="form-group">
-                        <input asp-for="ClaimInput.ClaimType" type="text" placeholder="Claim type" />
-                    </div>
-                    <div class="form-group">
-                        <input asp-for="ClaimInput.ClaimValue" type="text" placeholder="Claim value" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Claim</button>
-                </div>
-            </form>
-
-            <div class="links">
-                <a href="/Admin/Users">Back to user list</a>
+        <div class="section-title">Profile</div>
+        <form method="post" asp-page-handler="Save">
+            <input type="hidden" asp-for="Input.Id" />
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" type="email" />
+                <span asp-validation-for="Input.Email" class="field-validation-error"></span>
             </div>
-        }
+            <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" type="text" />
+                <span asp-validation-for="Input.FirstName" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" type="text" />
+                <span asp-validation-for="Input.LastName" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" type="tel" />
+                <span asp-validation-for="Input.PhoneNumber" class="field-validation-error"></span>
+            </div>
+            <button type="submit" class="btn-primary">Save Changes</button>
+        </form>
+
+        <div class="section-title">Account Status</div>
+        <div class="status-row">
+            @if (Model.IsLocked)
+            {
+                <span class="status-badge status-locked">Locked</span>
+            }
+            else
+            {
+                <span class="status-badge status-active">Active</span>
+            }
+            <form method="post" asp-page-handler="ToggleLockout">
+                <input type="hidden" name="id" value="@Model.UserId" />
+                @if (Model.IsLocked)
+                {
+                    <button type="submit" class="btn-primary">Unlock User</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn-secondary">Lock User</button>
+                }
+            </form>
+        </div>
+
+        <div class="section-title">Reset Password</div>
+        <form method="post" asp-page-handler="ResetPassword" class="password-form">
+            <input type="hidden" name="id" value="@Model.UserId" />
+            <input type="password" name="newPassword" placeholder="New password" required />
+            <button type="submit" class="btn-primary">Reset Password</button>
+        </form>
+
+        <div class="section-title">Roles &amp; Claims</div>
+        <ul class="link-list">
+            <li><a href="/Admin/Users/Roles?id=@Model.UserId">Manage Roles</a></li>
+            <li><a href="/Admin/Users/Claims?id=@Model.UserId">Manage Claims</a></li>
+        </ul>
+
+        <div class="section-title">Danger Zone</div>
+        <div class="danger-zone">
+            <form method="post" asp-page-handler="Delete">
+                <input type="hidden" name="id" value="@Model.UserId" />
+                <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this user? This action cannot be undone.');">Delete User</button>
+            </form>
+        </div>
+
+        <div class="links">
+            <a href="/Admin/Users">Back to Users</a>
+        </div>
     </div>
 </body>
 </html>

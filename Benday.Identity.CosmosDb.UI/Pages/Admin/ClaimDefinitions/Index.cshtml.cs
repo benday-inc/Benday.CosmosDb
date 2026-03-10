@@ -1,15 +1,16 @@
+using Benday.Identity.CosmosDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Benday.Identity.CosmosDb.UI.Pages.Account;
+namespace Benday.Identity.CosmosDb.UI.Pages.Admin.ClaimDefinitions;
 
-[Authorize(Policy = "CosmosIdentityAdmin")]
-public class AdminClaimDefinitionsModel : PageModel
+[Authorize(Policy = CosmosIdentityConstants.AdminPolicyName)]
+public class IndexModel : PageModel
 {
     private readonly ICosmosDbClaimDefinitionStore _store;
 
-    public AdminClaimDefinitionsModel(ICosmosDbClaimDefinitionStore store)
+    public IndexModel(ICosmosDbClaimDefinitionStore store)
     {
         _store = store;
     }

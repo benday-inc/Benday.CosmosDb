@@ -1,14 +1,15 @@
+using Benday.Identity.CosmosDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Benday.Identity.CosmosDb.UI.Pages.Account;
+namespace Benday.Identity.CosmosDb.UI.Pages.Admin;
 
-[Authorize(Policy = "CosmosIdentityAdmin")]
-public class AdminModel : PageModel
+[Authorize(Policy = CosmosIdentityConstants.AdminPolicyName)]
+public class DashboardModel : PageModel
 {
     private readonly CosmosIdentityOptions _options;
 
-    public AdminModel(CosmosIdentityOptions options)
+    public DashboardModel(CosmosIdentityOptions options)
     {
         _options = options;
     }

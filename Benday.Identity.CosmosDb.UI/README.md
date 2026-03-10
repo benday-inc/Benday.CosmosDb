@@ -20,7 +20,7 @@ Built on top of [Benday.Identity.CosmosDb](https://www.nuget.org/packages/Benday
 ### Account Management
 | Page | Path | Description |
 |---|---|---|
-| My Account | `/Account/MyAccount` | Hub page linking to all account features |
+| My Account | `/Account` | Hub page linking to all account features |
 | Edit Profile | `/Account/EditProfile` | Update first name, last name, phone number |
 | Change Password | `/Account/ChangePassword` | Authenticated password change |
 | Manage Passkeys | `/Account/ManagePasskeys` | Add/remove passkeys for passwordless sign-in |
@@ -28,15 +28,15 @@ Built on top of [Benday.Identity.CosmosDb](https://www.nuget.org/packages/Benday
 ### Admin Dashboard (requires `CosmosIdentityAdmin` policy)
 | Page | Path | Description |
 |---|---|---|
-| Admin Dashboard | `/Account/Admin` | Hub page for all admin features |
-| Users | `/Account/AdminUsers` | Search and list users |
-| Create User | `/Account/AdminUserCreate` | Create a new user account |
-| Edit User | `/Account/AdminUserEdit?id=` | Edit profile, lock/unlock, reset password, delete |
-| User Roles | `/Account/AdminUserRoles?id=` | Assign/remove roles for a user |
-| User Claims | `/Account/AdminUserClaims?id=` | Assign/remove claims using claim definitions |
-| Roles | `/Account/AdminRoles` | Create and delete security roles |
-| Claim Definitions | `/Account/AdminClaimDefinitions` | Define claim types and allowed values |
-| Edit Claim Def | `/Account/AdminClaimDefinitionEdit?id=` | Create/edit a claim definition |
+| Admin Dashboard | `/Admin` | Hub page for all admin features |
+| Users | `/Admin/Users` | Search and list users |
+| Create User | `/Admin/Users/Create` | Create a new user account |
+| Edit User | `/Admin/Users/Edit?id=` | Edit profile, lock/unlock, reset password, delete |
+| User Roles | `/Admin/Users/Roles?id=` | Assign/remove roles for a user |
+| User Claims | `/Admin/Users/Claims?id=` | Assign/remove claims using claim definitions |
+| Roles | `/Admin/Roles` | Create and delete security roles |
+| Claim Definitions | `/Admin/ClaimDefinitions` | Define claim types and allowed values |
+| Edit Claim Def | `/Admin/ClaimDefinitions/Edit?id=` | Create/edit a claim definition |
 
 ## Quick Start
 
@@ -163,11 +163,11 @@ Then run: `dotnet run -- --seed-admin`
 
 ## Admin Pages
 
-The admin dashboard at `/Account/Admin` is protected by the `CosmosIdentityAdmin` authorization policy (requires the role specified by `AdminRoleName`, default `"UserAdmin"`). The `CosmosIdentitySeeder` automatically assigns this role when seeding.
+The admin dashboard at `/Admin` is protected by the `CosmosIdentityAdmin` authorization policy (requires the role specified by `AdminRoleName`, default `"UserAdmin"`). The `CosmosIdentitySeeder` automatically assigns this role when seeding.
 
 The admin section includes full user management (create, edit, lock/unlock, reset password, delete), role management, claim definition management (with optional allowed values), and user role/claim assignment.
 
-**Navigation flow:** Navbar -> My Account (`/Account/MyAccount`) -> Admin Dashboard (shown only for admins) -> Users / Roles / Claim Definitions
+**Navigation flow:** Navbar -> My Account (`/Account`) -> Admin Dashboard (shown only for admins) -> Users / Roles / Claim Definitions
 
 ## License
 
