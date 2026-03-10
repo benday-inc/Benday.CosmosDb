@@ -29,11 +29,19 @@ function bytesToBase64Url(bytes) {
     return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
+function getAntiForgeryToken() {
+    var tokenInput = document.querySelector('input[name="__RequestVerificationToken"]');
+    return tokenInput ? tokenInput.value : '';
+}
+
 async function startPasskeyLogin(optionsEndpoint, returnUrl) {
     // Request assertion options from server
     var optionsResponse = await fetch(optionsEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+            'Content-Type': 'application/json',
+            'RequestVerificationToken': getAntiForgeryToken()
+        }
     });
 
     if (!optionsResponse.ok) {
@@ -71,7 +79,10 @@ async function startPasskeyRegistration(optionsEndpoint, registerEndpoint, passk
     // Request creation options from server
     var optionsResponse = await fetch(optionsEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+            'Content-Type': 'application/json',
+            'RequestVerificationToken': getAntiForgeryToken()
+        }
     });
 
     if (!optionsResponse.ok) {

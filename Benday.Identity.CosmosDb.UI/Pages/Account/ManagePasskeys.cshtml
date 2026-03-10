@@ -107,7 +107,10 @@
                     // Get creation options from server
                     var optionsResponse = await fetch(optionsEndpoint, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' }
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': getAntiForgeryToken()
+                        }
                     });
 
                     if (!optionsResponse.ok) {

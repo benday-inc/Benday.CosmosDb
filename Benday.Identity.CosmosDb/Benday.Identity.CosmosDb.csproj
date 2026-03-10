@@ -16,11 +16,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>3.1.1</TheVersion>
+    <TheVersion>3.1.2</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
     <Description>ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Provides user store, role store, claims, lockout, two-factor authentication, and external login support. Built on top of the Benday.CosmosDb repository pattern library.</Description>
     <PackageReleaseNotes>
+v3.1.2 - No changes (version bump to match UI package).
 v3.1.1 - Fix CS0108 warnings: added 'new' keyword to GetAllAsync() in ICosmosDbClaimDefinitionStore and CosmosDbClaimDefinitionStore to explicitly hide inherited member.
 v3.1.0 - Added FirstName/LastName to CosmosIdentityUser. Added CosmosIdentityClaimDefinition model and ICosmosDbClaimDefinitionStore for claim type lookup tables. Registered claim definition store in DI.
 v3.0.0 - BREAKING: Target net10.0 only (drop netstandard2.1). Added passkey (WebAuthn/FIDO2) support via IUserPasskeyStore. Passkeys enabled by default with integrated login UX.
