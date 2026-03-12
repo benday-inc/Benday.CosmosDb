@@ -46,5 +46,6 @@ public interface IRepository<T> where T : class
     /// <param name="pageSize">Maximum number of items to return</param>
     /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
     /// <returns>A page of results with continuation information</returns>
+    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetPagedAsync(string firstLevelPartitionKeyValue, ...) instead unless you explicitly need a cross-partition scan.")]
     Task<PagedResults<T>> GetPagedAsync(int pageSize = 100, string? continuationToken = null);
 }

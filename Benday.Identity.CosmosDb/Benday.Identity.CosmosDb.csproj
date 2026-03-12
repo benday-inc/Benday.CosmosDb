@@ -53,7 +53,6 @@ v1.0.0 - Initial release with full ASP.NET Core Identity store implementations f
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="10.*" />
+    <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />    
   </ItemGroup>
 </Project>

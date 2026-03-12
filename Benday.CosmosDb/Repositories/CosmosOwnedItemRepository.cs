@@ -131,6 +131,18 @@ public class CosmosOwnedItemRepository<T>(
         }
     }
 
+    /// <summary>
+    /// Gets a page of results for the specified owner with continuation support.
+    /// </summary>
+    /// <param name="ownerId">Owner id</param>
+    /// <param name="pageSize">Maximum number of items to return</param>
+    /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
+    /// <returns>A page of results with continuation information</returns>
+    public new async Task<PagedResults<T>> GetPagedAsync(string ownerId, int pageSize = 100, string? continuationToken = null)
+    {
+        return await base.GetPagedAsync(ownerId, pageSize, continuationToken);
+    }
+
     #region Bulk Operation Settings
 
     /// <summary>

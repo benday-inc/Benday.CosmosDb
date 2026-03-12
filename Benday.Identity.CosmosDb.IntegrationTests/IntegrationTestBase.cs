@@ -1,6 +1,7 @@
 using Benday.Common.Testing;
 using Benday.CosmosDb.Repositories;
 using Benday.Identity.CosmosDb;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -34,7 +35,9 @@ public abstract class IntegrationTestBase : TestClassBase
 
         var logger = new Mock<ILogger<CosmosDbUserStore>>();
 
-        return new CosmosDbUserStore(options, Emulator.Client, logger.Object);
+        var roleStore = CreateRoleStore();
+
+        return new CosmosDbUserStore(options, Emulator.Client, logger.Object, roleStore);
     }
 
     protected CosmosDbRoleStore CreateRoleStore()

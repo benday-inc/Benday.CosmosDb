@@ -1,6 +1,7 @@
 using Benday.Common.Testing;
 using Benday.CosmosDb.Repositories;
 using Benday.Identity.CosmosDb;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -32,8 +33,9 @@ public class CosmosDbUserStorePropertyFixture : TestClassBase
                 "0123456789012345678901234567890123456789012345678901234567890123"));
         var client = new CosmosClient("https://localhost:8081", fakeKey);
         var logger = new Mock<ILogger<CosmosDbUserStore>>();
+        var roleStore = new Mock<IRoleStore<CosmosIdentityRole>>();
 
-        return new CosmosDbUserStore(options, client, logger.Object);
+        return new CosmosDbUserStore(options, client, logger.Object, roleStore.Object);
     }
 
     [Fact]

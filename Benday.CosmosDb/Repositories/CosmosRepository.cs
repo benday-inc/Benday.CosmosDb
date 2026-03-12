@@ -145,7 +145,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         var container = await GetContainer();
 
+
+#pragma warning disable CS0618 // Intentional cross-partition query at the base repository level
         var queryable = await GetQueryable();
+#pragma warning restore CS0618
 
         var query = queryable.Queryable.Where(x => x.DiscriminatorValue == DiscriminatorValue);
 
@@ -269,7 +272,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         try
         {
+
+#pragma warning disable CS0618 // Intentional cross-partition query at the base repository level
             var queryable = await GetQueryable();
+#pragma warning restore CS0618
 
             var query = queryable.Queryable.Where(x => x.Id == id && x.DiscriminatorValue == DiscriminatorValue);
 
@@ -710,6 +716,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// </summary>
     /// <returns></returns>
     /// <exception cref="InvalidOperationException"></exception>
+    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetQueryable(string firstLevelPartitionKeyValue) instead unless you explicitly need a cross-partition scan.")]
     protected virtual async Task<QueryableInfo<T>> GetQueryable()
     {
         var container = await GetContainer();
@@ -737,6 +744,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="pageSize">Maximum number of items to return in this page</param>
     /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
     /// <returns>A page of results with continuation information</returns>
+    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetPagedAsync(string firstLevelPartitionKeyValue, ...) instead unless you explicitly need a cross-partition scan.")]
     public virtual async Task<PagedResults<T>> GetPagedAsync(int pageSize = 100, string? continuationToken = null)
     {
         if (pageSize <= 0)

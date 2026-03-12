@@ -62,4 +62,13 @@ public interface IOwnedItemRepository<T> : IRepository<T>
     /// <param name="maxRetries">Maximum number of retry attempts for throttled requests</param>
     /// <param name="cancellationToken">Cancellation token</param>
     Task SaveAllAsync(IEnumerable<T> items, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets a page of results for the specified owner with continuation support.
+    /// </summary>
+    /// <param name="ownerId">Owner id</param>
+    /// <param name="pageSize">Maximum number of items to return</param>
+    /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
+    /// <returns>A page of results with continuation information</returns>
+    Task<PagedResults<T>> GetPagedAsync(string ownerId, int pageSize = 100, string? continuationToken = null);
 }
