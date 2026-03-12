@@ -7,7 +7,7 @@ simplify using hierarchical partition keys and to make sure that query operation
 Written by Benjamin Day  
 Pluralsight Author | Microsoft MVP | Scrum.org Professional Scrum Trainer  
 https://www.benday.com  
-https://www.slidespeaker.ai  
+https://www.honestcheetah.com  
 info@benday.com  
 YouTube: https://www.youtube.com/@_benday  
 
