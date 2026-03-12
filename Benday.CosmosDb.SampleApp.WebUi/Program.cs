@@ -56,8 +56,9 @@ builder.Services.AddTransient<ILookupValueService, LookupValueService>();
 
 var app = builder.Build();
 
-// Seed admin user on startup
+// Seed admin user and claim definitions on startup
 await SeedAdminUserAsync(app.Services);
+await SeedClaimDefinitionsAsync(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -81,6 +82,46 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+/// <summary>
+/// Seeds default claim definitions if they don't already exist.
+/// </summary>
+static async Task SeedClaimDefinitionsAsync(IServiceProvider services)
+{
+    using var scope = services.CreateScope();
+    var store = scope.ServiceProvider.GetRequiredService<ICosmosDbClaimDefinitionStore>();
+
+    var existing = await store.GetAllAsync();
+    if (existing.Count > 0)
+    {
+        return;
+    }
+
+    var claimDefinitions = new List<CosmosIdentityClaimDefinition>
+    {
+        new()
+        {
+            ClaimType = "Department",
+            Description = "The department the user belongs to",
+            AllowedValues = new List<string> { "Engineering", "Sales", "Marketing", "Support", "HR" }
+        },
+        new()
+        {
+            ClaimType = "CanExport",
+            Description = "Whether the user can export data",
+            AllowedValues = new List<string> { "true", "false" }
+        },
+        new()
+        {
+            ClaimType = "AccessLevel",
+            Description = "The user's access level",
+            AllowedValues = new List<string> { "Read", "Write", "Admin" }
+        }
+    };
+
+    await store.SaveAsync(claimDefinitions);
+    Console.WriteLine($"Seeded {claimDefinitions.Count} claim definitions.");
+}
 
 /// <summary>
 /// Seeds a default admin user (admin@test.org / password) if it doesn't already exist.
