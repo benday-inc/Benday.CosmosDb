@@ -34,31 +34,31 @@ jobs:
           dotnet-version: 10.0.x
 
       - name: Restore Benday.Identity.CosmosDb
-        run: dotnet restore Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj
+        run: dotnet restore Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj -p:UseProjectReferences=false
 
       - name: Restore Benday.Identity.CosmosDb.UI
-        run: dotnet restore Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj
+        run: dotnet restore Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj -p:UseProjectReferences=false
 
       - name: Build Benday.Identity.CosmosDb (Release)
-        run: dotnet build Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --configuration Release --no-restore
+        run: dotnet build Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --configuration Release --no-restore -p:UseProjectReferences=false
 
       - name: Build Benday.Identity.CosmosDb.UI (Release)
-        run: dotnet build Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --configuration Release --no-restore
+        run: dotnet build Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --configuration Release --no-restore -p:UseProjectReferences=false
 
       - name: Restore Benday.Identity.CosmosDb.UnitTests
-        run: dotnet restore Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj
+        run: dotnet restore Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj -p:UseProjectReferences=false
 
       - name: Build Benday.Identity.CosmosDb.UnitTests (Release)
-        run: dotnet build Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-restore
+        run: dotnet build Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-restore -p:UseProjectReferences=false
 
       - name: Run Unit Tests
-        run: dotnet test Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-build --verbosity normal
+        run: dotnet test Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-build --verbosity normal -p:UseProjectReferences=false
 
       - name: Pack Benday.Identity.CosmosDb
-        run: dotnet pack Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --no-build --configuration Release --output ./artifacts
+        run: dotnet pack Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --no-build --configuration Release --output ./artifacts -p:UseProjectReferences=false
 
       - name: Pack Benday.Identity.CosmosDb.UI
-        run: dotnet pack Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --no-build --configuration Release --output ./artifacts
+        run: dotnet pack Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --no-build --configuration Release --output ./artifacts -p:UseProjectReferences=false
 
       - name: Upload NuGet packages
         uses: actions/upload-artifact@v4

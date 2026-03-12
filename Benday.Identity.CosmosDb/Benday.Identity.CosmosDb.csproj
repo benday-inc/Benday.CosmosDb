@@ -52,7 +52,11 @@ v1.0.0 - Initial release with full ASP.NET Core Identity store implementations f
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />    
+  <ItemGroup Condition="'$(UseProjectReferences)' == 'true'">
+    <ProjectReference Include="..\Benday.CosmosDb\Benday.CosmosDb.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseProjectReferences)' != 'true'">
+    <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />
   </ItemGroup>
 </Project>

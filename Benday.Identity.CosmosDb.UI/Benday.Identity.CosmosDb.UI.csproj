@@ -56,7 +56,11 @@ v2.0.0 - BREAKING: AddCosmosIdentity() moved to core Benday.Identity.CosmosDb pa
     <ProjectReference Include="..\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(UseProjectReferences)' == 'true'">
+    <ProjectReference Include="..\Benday.CosmosDb\Benday.CosmosDb.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseProjectReferences)' != 'true'">
     <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />
   </ItemGroup>
 </Project>
