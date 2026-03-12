@@ -1,0 +1,167 @@
+@{
+    ViewData["Title"] = "Auth Debug";
+
+    var identity = User.Identity;
+    var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+}
+
+<h1>Authentication Debug</h1>
+
+<h2>Authentication Status</h2>
+<table class="table table-bordered table-sm">
+    <tr>
+        <th>Property</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>IsAuthenticated</td>
+        <td>
+            @if (identity?.IsAuthenticated == true)
+            {
+                <span class="badge bg-success">true</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">false</span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>AuthenticationType</td>
+        <td>@(identity?.AuthenticationType ?? "(null)")</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>@(identity?.Name ?? "(null)")</td>
+    </tr>
+    @if (claimsIdentity != null)
+    {
+        <tr>
+            <td>RoleClaimType</td>
+            <td><code>@claimsIdentity.RoleClaimType</code></td>
+        </tr>
+        <tr>
+            <td>NameClaimType</td>
+            <td><code>@claimsIdentity.NameClaimType</code></td>
+        </tr>
+    }
+</table>
+
+<h2>Claims (@(User.Claims.Count()))</h2>
+@if (User.Claims.Any())
+{
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Value</th>
+                <th>Issuer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var claim in User.Claims.OrderBy(c => c.Type))
+            {
+                <tr>
+                    <td><code>@claim.Type</code></td>
+                    <td>@claim.Value</td>
+                    <td>@claim.Issuer</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No claims present.</p>
+}
+
+<h2>Role Checks</h2>
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>User.IsInRole()</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var roleName in new[] { "UserAdmin", "Admin", "admin", "useradmin" })
+        {
+            <tr>
+                <td>@roleName</td>
+                <td>
+                    @if (User.IsInRole(roleName))
+                    {
+                        <span class="badge bg-success">true</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">false</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Cookies</h2>
+@if (Context.Request.Cookies.Any())
+{
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value (truncated)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cookie in Context.Request.Cookies.OrderBy(c => c.Key))
+            {
+                <tr>
+                    <td><code>@cookie.Key</code></td>
+                    <td>
+                        @if (cookie.Value.Length > 80)
+                        {
+                            @(cookie.Value.Substring(0, 80))@("...")
+                        }
+                        else
+                        {
+                            @cookie.Value
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No cookies present.</p>
+}
+
+<h2>Policy Check: CosmosIdentityAdmin</h2>
+<p>
+    This policy requires a claim of type
+    <code>@System.Security.Claims.ClaimTypes.Role</code>
+    with value <strong>UserAdmin</strong>.
+</p>
+@{
+    var roleClaims = User.Claims
+        .Where(c => c.Type == System.Security.Claims.ClaimTypes.Role ||
+                     c.Type == "role" ||
+                     c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
+        .ToList();
+}
+@if (roleClaims.Any())
+{
+    <p>Found <strong>@roleClaims.Count</strong> role claim(s):</p>
+    <ul>
+        @foreach (var rc in roleClaims)
+        {
+            <li>Type: <code>@rc.Type</code> | Value: <strong>@rc.Value</strong></li>
+        }
+    </ul>
+}
+else
+{
+    <p class="text-danger">No role claims found. The admin policy will deny access.</p>
+}

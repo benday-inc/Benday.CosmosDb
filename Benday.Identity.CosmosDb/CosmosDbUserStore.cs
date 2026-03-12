@@ -24,11 +24,26 @@ public class CosmosDbUserStore : CosmosOwnedItemRepository<CosmosIdentityUser>,
     IQueryableUserStore<CosmosIdentityUser>,
     ICosmosDbUserStore
 {
+    private readonly IRoleStore<CosmosIdentityRole> _roleStore;
+
     public CosmosDbUserStore(
        IOptions<CosmosRepositoryOptions<CosmosIdentityUser>> options,
-       CosmosClient client, ILogger<CosmosDbUserStore> logger) :
+       CosmosClient client, ILogger<CosmosDbUserStore> logger,
+       IRoleStore<CosmosIdentityRole> roleStore) :
        base(options, client, logger)
     {
+        _roleStore = roleStore;
+    }
+
+    /// <summary>
+    /// Looks up a role by its normalized name and returns the original Role.Name.
+    /// UserManager passes normalized (uppercased) role names to the store;
+    /// we resolve back to the original casing for storage and comparison.
+    /// </summary>
+    private async Task<string> ResolveRoleNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
+    {
+        var role = await _roleStore.FindByNameAsync(normalizedRoleName, cancellationToken);
+        return role?.Name ?? normalizedRoleName;
     }
 
     #region IUserStore
@@ -182,14 +197,16 @@ public class CosmosDbUserStore : CosmosOwnedItemRepository<CosmosIdentityUser>,
 
     public async Task AddToRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
     {
-        var match = user.Claims.Find(x => x.ClaimType == ClaimTypes.Role && x.ClaimValue == roleName);
+        var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
+        var match = user.Claims.Find(x => x.ClaimType == ClaimTypes.Role &&
+            string.Equals(x.ClaimValue, originalName, StringComparison.OrdinalIgnoreCase));
 
         if (match == null)
         {
             user.Claims.Add(new CosmosIdentityUserClaim()
             {
                 ClaimType = ClaimTypes.Role,
-                ClaimValue = roleName
+                ClaimValue = originalName
             });
 
             await SaveAsync(user);
@@ -198,7 +215,9 @@ public class CosmosDbUserStore : CosmosOwnedItemRepository<CosmosIdentityUser>,
 
     public async Task RemoveFromRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
     {
-        var match = user.Claims.Find(x => x.ClaimType == ClaimTypes.Role && x.ClaimValue == roleName);
+        var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
+        var match = user.Claims.Find(x => x.ClaimType == ClaimTypes.Role &&
+            string.Equals(x.ClaimValue, originalName, StringComparison.OrdinalIgnoreCase));
 
         if (match != null)
         {
@@ -213,17 +232,20 @@ public class CosmosDbUserStore : CosmosOwnedItemRepository<CosmosIdentityUser>,
         return Task.FromResult<IList<string>>(roles.Select(x => x.ClaimValue).ToList());
     }
 
-    public Task<bool> IsInRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
+    public async Task<bool> IsInRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
     {
-        var isInRole = user.Claims.Any(x => x.ClaimType == ClaimTypes.Role && x.ClaimValue == roleName);
-        return Task.FromResult(isInRole);
+        var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
+        var isInRole = user.Claims.Any(x => x.ClaimType == ClaimTypes.Role &&
+            string.Equals(x.ClaimValue, originalName, StringComparison.OrdinalIgnoreCase));
+        return isInRole;
     }
 
     public async Task<IList<CosmosIdentityUser>> GetUsersInRoleAsync(string roleName, CancellationToken cancellationToken)
     {
+        var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
         var query = await GetQueryable();
         var queryable = query.Queryable.Where(x =>
-            x.Claims.Any(y => y.ClaimType == ClaimTypes.Role && y.ClaimValue == roleName));
+            x.Claims.Any(y => y.ClaimType == ClaimTypes.Role && y.ClaimValue == originalName));
         var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
         return results;
     }
