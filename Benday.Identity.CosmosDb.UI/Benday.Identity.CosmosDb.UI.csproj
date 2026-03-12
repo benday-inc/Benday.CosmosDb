@@ -17,11 +17,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <TheVersion>3.1.2</TheVersion>
+    <TheVersion>3.2.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(VersionPrefix)$(TheVersion)</Version>
     <Description>ASP.NET Core Identity UI for Azure Cosmos DB. Provides pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and AddCosmosIdentityWithUI() convenience method that combines core identity registration with cookie authentication. Built on top of Benday.Identity.CosmosDb.</Description>
     <PackageReleaseNotes>
+v3.2.0 - Fixed some pretty massive bugs in the data access layer where partition keys were being ignored; Made the root partition key configurable via options and also default to 'SYSTEM';      
 v3.1.2 - Fix passkey 400 errors: add anti-forgery token to all WebAuthn fetch POST requests.
 v3.1.1 - Fix admin policy constant usage, consolidate admin pages under /Admin, rename MyAccount route to /Account.
 v3.1.0 - Added My Account hub page, Edit Profile page, and full admin dashboard with user management (create, edit, lock/unlock, reset password, delete), role management (CRUD), claim definition management (CRUD with allowed values), user role assignment, and user claim assignment pages. All admin pages protected by CosmosIdentityAdmin policy.
@@ -61,6 +62,6 @@ v2.0.0 - BREAKING: AddCosmosIdentity() moved to core Benday.Identity.CosmosDb pa
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseProjectReferences)' != 'true'">
-    <PackageReference Include="Benday.CosmosDb" Version="5.2.0" />
+    <PackageReference Include="Benday.CosmosDb" Version="5.3.0" />
   </ItemGroup>
 </Project>
