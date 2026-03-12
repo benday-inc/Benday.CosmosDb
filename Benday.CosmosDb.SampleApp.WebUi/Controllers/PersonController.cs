@@ -2,10 +2,13 @@
 using Benday.CosmosDb.SampleApp.Api;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.ServiceLayers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Benday.CosmosDb.SampleApp.WebUi.Controllers;
+
+[Authorize]
 public class PersonController : Controller
 {
     private readonly IPersonService _PersonService;

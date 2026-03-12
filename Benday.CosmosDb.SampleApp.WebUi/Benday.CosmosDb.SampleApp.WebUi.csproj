@@ -4,14 +4,14 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="appsettings.unversioned.json.unversioned" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.*" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Benday.CosmosDb.SampleApp.Api\Benday.CosmosDb.SampleApp.Api.csproj" />
     <ProjectReference Include="..\Benday.CosmosDb\Benday.CosmosDb.csproj" />
+    <ProjectReference Include="..\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
+    <ProjectReference Include="..\Benday.Identity.CosmosDb.UI\Benday.Identity.CosmosDb.UI.csproj" />
   </ItemGroup>
 </Project>

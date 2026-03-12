@@ -3,11 +3,13 @@ using Benday.CosmosDb.SampleApp.Api;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.ServiceLayers;
 using Benday.CosmosDb.ServiceLayers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Benday.CosmosDb.SampleApp.WebUi.Controllers;
 
+[Authorize(Policy = Benday.Identity.CosmosDb.CosmosIdentityConstants.AdminPolicyName)]
 public class LookupController : Controller
 {
     private readonly ILookupValueService _LookupValueService;
