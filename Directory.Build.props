@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
     <UseProjectReferences Condition="'$(UseProjectReferences)' == ''">true</UseProjectReferences>
+    <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
   </PropertyGroup>
 </Project>

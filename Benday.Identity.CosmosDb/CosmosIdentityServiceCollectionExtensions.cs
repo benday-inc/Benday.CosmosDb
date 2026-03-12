@@ -34,6 +34,9 @@ public static class CosmosIdentityServiceCollectionExtensions
 
         configureOptions?.Invoke(options);
 
+        // Keep the static constant in sync so SystemOwnedItem.OwnerId matches
+        CosmosIdentityConstants.SystemOwnerId = options.IdentityOwnerId;
+
         // Register options as singleton so pages can inject CosmosIdentityOptions
         services.TryAddSingleton(options);
 

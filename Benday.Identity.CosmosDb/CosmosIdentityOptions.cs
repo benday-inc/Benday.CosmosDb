@@ -103,4 +103,11 @@ public class CosmosIdentityOptions
     /// Set this explicitly in production (e.g., "contoso.com").
     /// </summary>
     public string? PasskeyServerDomain { get; set; }
+
+    /// <summary>
+    /// The owner ID (partition key) used for all identity data stored in Cosmos DB.
+    /// Defaults to <see cref="CosmosIdentityConstants.SystemOwnerId"/> ("SYSTEM").
+    /// Override this if you need identity data partitioned under a different owner.
+    /// </summary>
+    public string IdentityOwnerId { get; set; } = CosmosIdentityConstants.SystemOwnerId;
 }

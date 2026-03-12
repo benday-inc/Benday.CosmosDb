@@ -13,11 +13,15 @@ namespace Benday.Identity.CosmosDb
         IRoleClaimStore<CosmosIdentityRole>,
         IQueryableRoleStore<CosmosIdentityRole>
     {
+        private readonly string _identityOwnerId;
+
         public CosmosDbRoleStore(
            IOptions<CosmosRepositoryOptions<CosmosIdentityRole>> options,
-           CosmosClient client, ILogger<CosmosDbRoleStore> logger) :
+           CosmosClient client, ILogger<CosmosDbRoleStore> logger,
+           CosmosIdentityOptions identityOptions) :
            base(options, client, logger)
         {
+            _identityOwnerId = identityOptions.IdentityOwnerId;
         }
 
         #region IRoleStore
@@ -43,12 +47,12 @@ namespace Benday.Identity.CosmosDb
 
         public async Task<CosmosIdentityRole?> FindByIdAsync(string roleId, CancellationToken cancellationToken)
         {
-            return await GetByIdAsync(CosmosIdentityConstants.SystemOwnerId, roleId);
+            return await GetByIdAsync(_identityOwnerId, roleId);
         }
 
         public async Task<CosmosIdentityRole?> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
         {
-            var query = await GetQueryable();
+            var query = await GetQueryable(_identityOwnerId);
             var queryable = query.Queryable.Where(x => x.NormalizedName == normalizedRoleName);
             var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
             return results.FirstOrDefault();
@@ -136,7 +140,7 @@ namespace Benday.Identity.CosmosDb
         {
             get
             {
-                var query = GetQueryable().GetAwaiter().GetResult();
+                var query = GetQueryable(_identityOwnerId).GetAwaiter().GetResult();
                 return query.Queryable;
             }
         }

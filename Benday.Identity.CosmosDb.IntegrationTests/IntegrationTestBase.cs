@@ -37,7 +37,7 @@ public abstract class IntegrationTestBase : TestClassBase
 
         var roleStore = CreateRoleStore();
 
-        return new CosmosDbUserStore(options, Emulator.Client, logger.Object, roleStore);
+        return new CosmosDbUserStore(options, Emulator.Client, logger.Object, roleStore, new CosmosIdentityOptions());
     }
 
     protected CosmosDbRoleStore CreateRoleStore()
@@ -54,7 +54,7 @@ public abstract class IntegrationTestBase : TestClassBase
 
         var logger = new Mock<ILogger<CosmosDbRoleStore>>();
 
-        return new CosmosDbRoleStore(options, Emulator.Client, logger.Object);
+        return new CosmosDbRoleStore(options, Emulator.Client, logger.Object, new CosmosIdentityOptions());
     }
 
     protected CosmosIdentityUser CreateTestUser(string? email = null)

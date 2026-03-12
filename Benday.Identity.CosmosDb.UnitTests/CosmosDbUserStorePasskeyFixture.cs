@@ -35,7 +35,7 @@ public class CosmosDbUserStorePasskeyFixture : TestClassBase
         var logger = new Mock<ILogger<CosmosDbUserStore>>();
         var roleStore = new Mock<IRoleStore<CosmosIdentityRole>>();
 
-        return new CosmosDbUserStore(options, client, logger.Object, roleStore.Object);
+        return new CosmosDbUserStore(options, client, logger.Object, roleStore.Object, new CosmosIdentityOptions());
     }
 
     private static UserPasskeyInfo CreateTestPasskey(

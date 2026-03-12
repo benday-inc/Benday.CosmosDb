@@ -34,7 +34,7 @@ public class CosmosDbRoleStoreFixture : TestClassBase
         var client = new CosmosClient("https://localhost:8081", fakeKey);
         var logger = new Mock<ILogger<CosmosDbRoleStore>>();
 
-        return new CosmosDbRoleStore(options, client, logger.Object);
+        return new CosmosDbRoleStore(options, client, logger.Object, new CosmosIdentityOptions());
     }
 
     [Fact]
