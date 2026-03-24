@@ -13,15 +13,15 @@ namespace Benday.CosmosDb.SampleApp.Api.DomainModels;
 /// </summary>
 public class Comment : ParentedItemBase
 {
-    private string _parentDiscriminator = string.Empty;
+    private string _parentEntityType = string.Empty;
 
     /// <summary>
-    /// Discriminator/type of the parent entity
+    /// EntityType/type of the parent entity
     /// </summary>
-    public override string ParentDiscriminator
+    public override string ParentEntityType
     {
-        get => _parentDiscriminator;
-        set => _parentDiscriminator = value;
+        get => _parentEntityType;
+        set => _parentEntityType = value;
     }
 
     public string Text { get; set; } = string.Empty;

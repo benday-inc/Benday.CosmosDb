@@ -3,6 +3,6 @@
 
 public class ApiConstants
 {
-    public const string OWNER_FOR_SYSTEM = "SYSTEM";
-    public const string DEFAULT_OWNER_ID = OWNER_FOR_SYSTEM;
+    public const string TENANT_FOR_SYSTEM = "SYSTEM";
+    public const string DEFAULT_TENANT_ID = TENANT_FOR_SYSTEM;
 }

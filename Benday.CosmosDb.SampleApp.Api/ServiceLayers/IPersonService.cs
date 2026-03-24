@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Benday.CosmosDb.SampleApp.Api.ServiceLayers;
 
-public interface IPersonService : IOwnedItemService<Person>
+public interface IPersonService : ITenantItemService<Person>
 {
     Task<Person?> GetPersonByEmailAddress(string emailAddress);
 }

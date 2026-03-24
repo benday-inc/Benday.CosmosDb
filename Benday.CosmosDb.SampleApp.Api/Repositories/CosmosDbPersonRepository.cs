@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Benday.CosmosDb.SampleApp.Api.Repositories;
-public class CosmosDbPersonRepository : CosmosOwnedItemRepository<Person>, IPersonRepository
+public class CosmosDbPersonRepository : CosmosTenantItemRepository<Person>, IPersonRepository
 {
     public CosmosDbPersonRepository(
         IOptions<CosmosRepositoryOptions<Person>> options, 
@@ -23,7 +23,7 @@ public class CosmosDbPersonRepository : CosmosOwnedItemRepository<Person>, IPers
 
     public async Task<Person?> GetPersonByEmailAddress(string emailAddress)
     {
-        var queryable = await GetQueryable(ApiConstants.DEFAULT_OWNER_ID);
+        var queryable = await GetQueryable(ApiConstants.DEFAULT_TENANT_ID);
 
         var query = queryable.Queryable.Where(x => x.EmailAddress == emailAddress);
 

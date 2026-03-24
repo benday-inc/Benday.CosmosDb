@@ -1,10 +1,10 @@
 namespace Benday.CosmosDb.DomainModels;
 
 /// <summary>
-/// Base class for an item that has both an owner and a parent entity.
-/// Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties.
+/// Base class for an item that has both a tenant and a parent entity.
+/// Inherits from TenantItemBase and adds ParentId and ParentEntityType properties.
 /// </summary>
-public abstract class ParentedItemBase : OwnedItemBase, IParentedItem
+public abstract class ParentedItemBase : TenantItemBase, IParentedItem
 {
     /// <summary>
     /// Parent ID in our system
@@ -12,7 +12,7 @@ public abstract class ParentedItemBase : OwnedItemBase, IParentedItem
     public string ParentId { get; set; } = string.Empty;
 
     /// <summary>
-    /// Discriminator/type of the parent entity
+    /// Entity type of the parent entity
     /// </summary>
-    public abstract string ParentDiscriminator { get; set; }
+    public abstract string ParentEntityType { get; set; }
 }

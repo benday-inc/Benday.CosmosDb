@@ -8,12 +8,12 @@ using Microsoft.Extensions.Options;
 namespace Benday.Identity.CosmosDb
 {
     public class CosmosDbRoleStore :
-        CosmosOwnedItemRepository<CosmosIdentityRole>,
+        CosmosTenantItemRepository<CosmosIdentityRole>,
         IRoleStore<CosmosIdentityRole>,
         IRoleClaimStore<CosmosIdentityRole>,
         IQueryableRoleStore<CosmosIdentityRole>
     {
-        private readonly string _identityOwnerId;
+        private readonly string _identityTenantId;
 
         public CosmosDbRoleStore(
            IOptions<CosmosRepositoryOptions<CosmosIdentityRole>> options,
@@ -21,7 +21,7 @@ namespace Benday.Identity.CosmosDb
            CosmosIdentityOptions identityOptions) :
            base(options, client, logger)
         {
-            _identityOwnerId = identityOptions.IdentityOwnerId;
+            _identityTenantId = identityOptions.IdentityTenantId;
         }
 
         #region IRoleStore
@@ -47,12 +47,12 @@ namespace Benday.Identity.CosmosDb
 
         public async Task<CosmosIdentityRole?> FindByIdAsync(string roleId, CancellationToken cancellationToken)
         {
-            return await GetByIdAsync(_identityOwnerId, roleId);
+            return await GetByIdAsync(_identityTenantId, roleId);
         }
 
         public async Task<CosmosIdentityRole?> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
         {
-            var query = await GetQueryable(_identityOwnerId);
+            var query = await GetQueryable(_identityTenantId);
             var queryable = query.Queryable.Where(x => x.NormalizedName == normalizedRoleName);
             var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
             return results.FirstOrDefault();
@@ -140,7 +140,7 @@ namespace Benday.Identity.CosmosDb
         {
             get
             {
-                var query = GetQueryable(_identityOwnerId).GetAwaiter().GetResult();
+                var query = GetQueryable(_identityTenantId).GetAwaiter().GetResult();
                 return query.Queryable;
             }
         }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Benday.CosmosDb.SampleApp.Api.ServiceLayers;
 
-public class PersonService : OwnedItemService<Person>, IPersonService
+public class PersonService : TenantItemService<Person>, IPersonService
 {
     private IPersonRepository _Repository;
 
@@ -27,9 +27,9 @@ public class PersonService : OwnedItemService<Person>, IPersonService
 
     public override Task<Person?> SaveAsync(Person item)
     {
-        if (string.IsNullOrEmpty(item.OwnerId) == true)
+        if (string.IsNullOrEmpty(item.TenantId) == true)
         {
-            item.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+            item.TenantId = ApiConstants.DEFAULT_TENANT_ID;
         }
         
         return base.SaveAsync(item);

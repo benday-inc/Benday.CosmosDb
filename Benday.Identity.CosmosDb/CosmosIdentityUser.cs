@@ -1,6 +1,6 @@
 namespace Benday.Identity.CosmosDb
 {
-    public class CosmosIdentityUser : SystemOwnedItem
+    public class CosmosIdentityUser : SystemTenantItem
     {
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;

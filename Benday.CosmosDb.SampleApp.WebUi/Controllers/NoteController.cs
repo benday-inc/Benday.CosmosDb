@@ -9,8 +9,8 @@ namespace Benday.CosmosDb.SampleApp.WebUi.Controllers;
 
 public class NoteController : Controller
 {
-    private readonly IOwnedItemService<Note> _NoteService;
-    public NoteController(IOwnedItemService<Note> noteService)
+    private readonly ITenantItemService<Note> _NoteService;
+    public NoteController(ITenantItemService<Note> noteService)
     {
         _NoteService = noteService;
     }
@@ -20,7 +20,7 @@ public class NoteController : Controller
     {
         // Fetch list of Notes asynchronously
         var notes = await _NoteService.GetAllAsync(
-            ApiConstants.DEFAULT_OWNER_ID);
+            ApiConstants.DEFAULT_TENANT_ID);
         return View(notes);
     }
 
@@ -34,7 +34,7 @@ public class NoteController : Controller
 
         // Fetch note details asynchronously
         var note = await _NoteService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
 
         if (note == null)
@@ -79,7 +79,7 @@ public class NoteController : Controller
 
         // Fetch note details asynchronously
         var note = await _NoteService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
         if (note == null)
         {
@@ -98,7 +98,7 @@ public class NoteController : Controller
             if (string.IsNullOrEmpty(id) == true)
             {
                 note.Id = Guid.NewGuid().ToString();
-                note.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+                note.TenantId = ApiConstants.DEFAULT_TENANT_ID;
             }
             else
             {
@@ -106,7 +106,7 @@ public class NoteController : Controller
                 {
                     note.Id = Guid.NewGuid().ToString();
 
-                    note.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+                    note.TenantId = ApiConstants.DEFAULT_TENANT_ID;
                 }
             }
 
@@ -138,7 +138,7 @@ public class NoteController : Controller
         }
 
         var note = await _NoteService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID,
+            ApiConstants.DEFAULT_TENANT_ID,
             id);
 
         if (note == null)
@@ -167,7 +167,7 @@ public class NoteController : Controller
             }
 
             var existing = await _NoteService.GetByIdAsync(
-                ApiConstants.DEFAULT_OWNER_ID, id);
+                ApiConstants.DEFAULT_TENANT_ID, id);
 
             if (existing == null)
             {

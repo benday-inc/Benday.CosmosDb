@@ -1,6 +1,6 @@
 namespace Benday.CosmosDb.DomainModels;
 
-public interface IParentedItem : IOwnedItem
+public interface IParentedItem : ITenantItem
 {
     /// <summary>
     /// Parent ID in our system
@@ -8,7 +8,7 @@ public interface IParentedItem : IOwnedItem
     string ParentId { get; set; }
 
     /// <summary>
-    /// Discriminator/type of the parent entity
+    /// Entity type of the parent entity
     /// </summary>
-    string ParentDiscriminator { get; set; }
+    string ParentEntityType { get; set; }
 }

@@ -1,6 +1,6 @@
 namespace Benday.Identity.CosmosDb
 {
-    public class CosmosIdentityRole : SystemOwnedItem
+    public class CosmosIdentityRole : SystemTenantItem
     {
         public string Name { get; set; } = string.Empty;
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using Benday.CosmosDb.DomainModels;
@@ -43,9 +43,9 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     private readonly List<string> _PartitionKeyStrings = [];
 
     /// <summary>
-    /// Get the discriminator value for the entity. By default this is the class name for the domain model type managed by this repository.
+    /// Get the entity type value for this repository. By default this is the class name for the domain model type managed by this repository.
     /// </summary>
-    public virtual string DiscriminatorValue => typeof(T).Name;
+    public virtual string EntityType => typeof(T).Name;
 
 
     protected ILogger Logger { get; }
@@ -99,9 +99,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         var itemToDelete = await GetByIdAsync(id) ?? throw new CosmosDbItemNotFoundException(id, _Options.ContainerName);
         var builder = new PartitionKeyBuilder();
 
-        _ = builder.Add(itemToDelete.PartitionKey);
-        _ = builder.Add(itemToDelete.DiscriminatorValue);
-        // builder.Add(id);        
+        _ = builder.Add(itemToDelete.TenantId);
+        _ = builder.Add(itemToDelete.EntityType);
 
         var partitionKey = builder.Build();
 
@@ -150,7 +149,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         var queryable = await GetQueryable();
 #pragma warning restore CS0618
 
-        var query = queryable.Queryable.Where(x => x.DiscriminatorValue == DiscriminatorValue);
+        var query = queryable.Queryable.Where(x => x.EntityType == EntityType);
 
         var items = await GetResults(query, nameof(GetAllAsync), queryable.PartitionKey);
 
@@ -215,8 +214,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     }
 
     /// <summary>
-    /// Gets a description for a query. By default, this will return the type 
-    /// name of the repository and the method name. By default, detect and use 
+    /// Gets a description for a query. By default, this will return the type
+    /// name of the repository and the method name. By default, detect and use
     /// the method name of the caller.
     /// </summary>
     /// <param name="methodName">Method that's calling the query</param>
@@ -261,7 +260,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
     /// <summary>
     /// Get an item by its id. This method will return null if the item is not found.
-    /// NOTE: this almost certainly performs a cross-partition query and should be used with caution because 
+    /// NOTE: this almost certainly performs a cross-partition query and should be used with caution because
     /// it does not use a partition key.
     /// </summary>
     /// <param name="Id">Id of the entity</param>
@@ -277,7 +276,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             var queryable = await GetQueryable();
 #pragma warning restore CS0618
 
-            var query = queryable.Queryable.Where(x => x.Id == id && x.DiscriminatorValue == DiscriminatorValue);
+            var query = queryable.Queryable.Where(x => x.Id == id && x.EntityType == EntityType);
 
             var result = await GetResults(query, nameof(GetByIdAsync), queryable.PartitionKey);
 
@@ -519,14 +518,14 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
         catch (CosmosException ex)
         {
-            Logger.LogError($"Error saving {saveThis.DiscriminatorValue} item {saveThis.Id} to container {_Options.ContainerName} in database {_Options.DatabaseName}.  {ex}");
+            Logger.LogError($"Error saving {saveThis.EntityType} item {saveThis.Id} to container {_Options.ContainerName} in database {_Options.DatabaseName}.  {ex}");
 
             throw;
         }
     }
 
     /// <summary>
-    /// Batch size for saving items to the Cosmos DB container. 
+    /// Batch size for saving items to the Cosmos DB container.
     /// This is used to limit the number of items saved in a single batch.
     /// Default is 50 items per batch.
     /// </summary>
@@ -560,7 +559,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             foreach (var batch in batches)
             {
                 currentBatch++;
-                using var response = 
+                using var response =
                     await SaveBatchAsync(batchCount, currentBatch, batch);
             }
 
@@ -631,62 +630,62 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <returns></returns>
     protected virtual PartitionKey GetPartitionKey(T item)
     {
-        return GetPartitionKey(item.PartitionKey, item.DiscriminatorValue);
+        return GetPartitionKey(item.TenantId, item.EntityType);
     }
 
     /// <summary>
     /// Get the partition key for an item.
     /// </summary>
-    /// <param name="partitionKey">Top-level partition key value</param>
-    /// <param name="discriminatorValue">Second-level partition key value</param>
+    /// <param name="tenantId">Top-level partition key value (tenant id)</param>
+    /// <param name="entityType">Second-level partition key value (entity type)</param>
     /// <returns></returns>
 
     protected virtual PartitionKey GetPartitionKey(
-        string partitionKey, string discriminatorValue)
+        string tenantId, string entityType)
     {
         var builder = new PartitionKeyBuilder();
 
-        _ = builder.Add(partitionKey);
+        _ = builder.Add(tenantId);
 
         if (_Options.UseHierarchicalPartitionKey == true)
         {
-            _ = builder.Add(discriminatorValue);
+            _ = builder.Add(entityType);
         }
 
         return builder.Build();
     }
 
     /// <summary>
-    /// Creates a queryable for the repository with the specified partition key 
-    /// configuration. This is the starting point for all custom LINQ queries built 
+    /// Creates a queryable for the repository with the specified partition key
+    /// configuration. This is the starting point for all custom LINQ queries built
     /// off of this repository by child repository classes.
     /// </summary>
-    /// <param name="firstLevelPartitionKeyValue">Value to use for the first-level partition key. NOTE: this is probably ownerId.</param>
+    /// <param name="tenantId">Value to use for the first-level partition key (tenant id).</param>
     /// <returns>Queryable and it's configured partition key</returns>
     protected virtual async Task<QueryableInfo<T>> GetQueryable(
-        string firstLevelPartitionKeyValue)
+        string tenantId)
     {
-        return await GetQueryable(firstLevelPartitionKeyValue, DiscriminatorValue);
+        return await GetQueryable(tenantId, EntityType);
     }
 
     /// <summary>
-    /// Creates a queryable for the repository with the specified partition key 
-    /// configuration. This is the starting point for all custom LINQ queries built 
+    /// Creates a queryable for the repository with the specified partition key
+    /// configuration. This is the starting point for all custom LINQ queries built
     /// off of this repository by child repository classes.
     /// </summary>
-    /// <param name="firstLevelPartitionKeyValue">Value to use for the first-level partition key. NOTE: this is probably ownerId.</param>
-    /// <param name="discriminatorValue">Discriminator value</param>
+    /// <param name="tenantId">Value to use for the first-level partition key (tenant id).</param>
+    /// <param name="entityType">Entity type value</param>
     /// <returns>Queryable and it's configured partition key</returns>
     protected virtual async Task<QueryableInfo<T>> GetQueryable(
-        string firstLevelPartitionKeyValue, string discriminatorValue)
+        string tenantId, string entityType)
     {
         var builder = new PartitionKeyBuilder();
 
-        builder.Add(firstLevelPartitionKeyValue);
+        builder.Add(tenantId);
 
         if (_Options.UseHierarchicalPartitionKey == true)
         {
-            builder.Add(discriminatorValue);
+            builder.Add(entityType);
         }
         var pk = builder.Build();
 
@@ -716,7 +715,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// </summary>
     /// <returns></returns>
     /// <exception cref="InvalidOperationException"></exception>
-    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetQueryable(string firstLevelPartitionKeyValue) instead unless you explicitly need a cross-partition scan.")]
+    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetQueryable(string tenantId) instead unless you explicitly need a cross-partition scan.")]
     protected virtual async Task<QueryableInfo<T>> GetQueryable()
     {
         var container = await GetContainer();
@@ -744,7 +743,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="pageSize">Maximum number of items to return in this page</param>
     /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
     /// <returns>A page of results with continuation information</returns>
-    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetPagedAsync(string firstLevelPartitionKeyValue, ...) instead unless you explicitly need a cross-partition scan.")]
+    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetPagedAsync(string tenantId, ...) instead unless you explicitly need a cross-partition scan.")]
     public virtual async Task<PagedResults<T>> GetPagedAsync(int pageSize = 100, string? continuationToken = null)
     {
         if (pageSize <= 0)
@@ -756,7 +755,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         var queryable = await GetQueryable();
 
         var query = queryable.Queryable
-            .Where(x => x.DiscriminatorValue == DiscriminatorValue)
+            .Where(x => x.EntityType == EntityType)
             .Take(pageSize);
 
         var feedIterator = query.ToFeedIterator();
@@ -772,8 +771,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
             var queryDefinition = new QueryDefinition(query.ToQueryDefinition().QueryText);
             feedIterator = container.GetItemQueryIterator<T>(
-                queryDefinition, 
-                continuationToken, 
+                queryDefinition,
+                continuationToken,
                 queryRequestOptions);
         }
 
@@ -807,13 +806,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <summary>
     /// Gets a page of results for a specific partition with continuation support.
     /// </summary>
-    /// <param name="firstLevelPartitionKeyValue">Value to use for the first-level partition key</param>
+    /// <param name="tenantId">Value to use for the first-level partition key (tenant id)</param>
     /// <param name="pageSize">Maximum number of items to return in this page</param>
     /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
     /// <returns>A page of results with continuation information</returns>
     protected virtual async Task<PagedResults<T>> GetPagedAsync(
-        string firstLevelPartitionKeyValue, 
-        int pageSize = 100, 
+        string tenantId,
+        int pageSize = 100,
         string? continuationToken = null)
     {
         if (pageSize <= 0)
@@ -822,10 +821,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
 
         var container = await GetContainer();
-        var queryable = await GetQueryable(firstLevelPartitionKeyValue);
+        var queryable = await GetQueryable(tenantId);
 
         var query = queryable.Queryable
-            .Where(x => x.DiscriminatorValue == DiscriminatorValue)
+            .Where(x => x.EntityType == EntityType)
             .Take(pageSize);
 
         var queryRequestOptions = new QueryRequestOptions
@@ -836,8 +835,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         var queryDefinition = new QueryDefinition(query.ToQueryDefinition().QueryText);
         var feedIterator = container.GetItemQueryIterator<T>(
-            queryDefinition, 
-            continuationToken, 
+            queryDefinition,
+            continuationToken,
             queryRequestOptions);
 
         var items = new List<T>();

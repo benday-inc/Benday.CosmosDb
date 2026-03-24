@@ -22,7 +22,7 @@ public class PersonController : Controller
     {
         // Fetch list of persons asynchronously
         var persons = await _PersonService.GetAllAsync(
-            ApiConstants.DEFAULT_OWNER_ID);
+            ApiConstants.DEFAULT_TENANT_ID);
         return View(persons);
     }
 
@@ -36,7 +36,7 @@ public class PersonController : Controller
 
         // Fetch person details asynchronously
         var person = await _PersonService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
 
         if (person == null)
@@ -81,7 +81,7 @@ public class PersonController : Controller
 
         // Fetch person details asynchronously
         var person = await _PersonService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
         if (person == null)
         {
@@ -100,7 +100,7 @@ public class PersonController : Controller
             if (string.IsNullOrEmpty(id) == true)
             {
                 person.Id = Guid.NewGuid().ToString();
-                person.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+                person.TenantId = ApiConstants.DEFAULT_TENANT_ID;
             }
             else
             {
@@ -108,7 +108,7 @@ public class PersonController : Controller
                 {
                     person.Id = Guid.NewGuid().ToString();
 
-                    person.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+                    person.TenantId = ApiConstants.DEFAULT_TENANT_ID;
                 }
             }
 
@@ -140,7 +140,7 @@ public class PersonController : Controller
         }
 
         var person = await _PersonService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID,
+            ApiConstants.DEFAULT_TENANT_ID,
             id);
 
         if (person == null)
@@ -169,7 +169,7 @@ public class PersonController : Controller
             }
 
             var existing = await _PersonService.GetByIdAsync(
-                ApiConstants.DEFAULT_OWNER_ID, id);
+                ApiConstants.DEFAULT_TENANT_ID, id);
 
             if (existing == null)
             {

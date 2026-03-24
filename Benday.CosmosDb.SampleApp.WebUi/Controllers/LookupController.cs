@@ -37,7 +37,7 @@ public class LookupController : Controller
     public async Task<ActionResult> Index()
     {
         var lookupValues = await _LookupValueService.GetAllAsync(
-            ApiConstants.DEFAULT_OWNER_ID);
+            ApiConstants.DEFAULT_TENANT_ID);
         return View(lookupValues);
     }
 
@@ -50,7 +50,7 @@ public class LookupController : Controller
         }
 
         var lookupValue = await _LookupValueService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
         if (lookupValue == null)
         {
@@ -93,7 +93,7 @@ public class LookupController : Controller
         }
 
         var lookupValue = await _LookupValueService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
         if (lookupValue == null)
         {
@@ -114,14 +114,14 @@ public class LookupController : Controller
             if (string.IsNullOrEmpty(id))
             {
                 lookupValue.Id = Guid.NewGuid().ToString();
-                lookupValue.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+                lookupValue.TenantId = ApiConstants.DEFAULT_TENANT_ID;
             }
             else
             {
                 if (string.IsNullOrEmpty(lookupValue.Id))
                 {
                     lookupValue.Id = Guid.NewGuid().ToString();
-                    lookupValue.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+                    lookupValue.TenantId = ApiConstants.DEFAULT_TENANT_ID;
                 }
             }
 
@@ -153,7 +153,7 @@ public class LookupController : Controller
         }
 
         var lookupValue = await _LookupValueService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
         if (lookupValue == null)
         {
@@ -181,7 +181,7 @@ public class LookupController : Controller
             }
 
             var existing = await _LookupValueService.GetByIdAsync(
-                ApiConstants.DEFAULT_OWNER_ID, id);
+                ApiConstants.DEFAULT_TENANT_ID, id);
 
             if (existing == null)
             {

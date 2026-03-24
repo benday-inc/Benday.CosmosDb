@@ -25,7 +25,7 @@ public class CommentController : Controller
 
         // Fetch comments for this note using GetAllByParentIdAsync
         var comments = await _CommentService.GetAllByParentIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, noteId, "Note");
+            ApiConstants.DEFAULT_TENANT_ID, noteId, "Note");
 
         // Pass noteId to view so we can add new comments
         ViewData["NoteId"] = noteId;
@@ -42,7 +42,7 @@ public class CommentController : Controller
         }
 
         var comment = await _CommentService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
         if (comment == null)
         {
@@ -80,8 +80,8 @@ public class CommentController : Controller
 
             // Set parent information
             comment.ParentId = noteId;
-            comment.ParentDiscriminator = "Note";
-            comment.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+            comment.ParentEntityType = "Note";
+            comment.TenantId = ApiConstants.DEFAULT_TENANT_ID;
             comment.Id = Guid.NewGuid().ToString();
             comment.CreatedDate = DateTime.UtcNow;
 
@@ -105,7 +105,7 @@ public class CommentController : Controller
         }
 
         var comment = await _CommentService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
         if (comment == null)
         {
@@ -140,14 +140,14 @@ public class CommentController : Controller
                 comment.ParentId = noteId;
             }
 
-            if (string.IsNullOrEmpty(comment.ParentDiscriminator))
+            if (string.IsNullOrEmpty(comment.ParentEntityType))
             {
-                comment.ParentDiscriminator = "Note";
+                comment.ParentEntityType = "Note";
             }
 
-            if (string.IsNullOrEmpty(comment.OwnerId))
+            if (string.IsNullOrEmpty(comment.TenantId))
             {
-                comment.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+                comment.TenantId = ApiConstants.DEFAULT_TENANT_ID;
             }
 
             try
@@ -179,7 +179,7 @@ public class CommentController : Controller
         }
 
         var comment = await _CommentService.GetByIdAsync(
-            ApiConstants.DEFAULT_OWNER_ID, id);
+            ApiConstants.DEFAULT_TENANT_ID, id);
 
         if (comment == null)
         {
@@ -209,7 +209,7 @@ public class CommentController : Controller
             }
 
             var existing = await _CommentService.GetByIdAsync(
-                ApiConstants.DEFAULT_OWNER_ID, id);
+                ApiConstants.DEFAULT_TENANT_ID, id);
 
             if (existing == null)
             {

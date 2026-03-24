@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Benday.Identity.CosmosDb;
 
-public interface ICosmosDbUserStore : IOwnedItemRepository<CosmosIdentityUser>,
+public interface ICosmosDbUserStore : ITenantItemRepository<CosmosIdentityUser>,
     IUserStore<CosmosIdentityUser>,
     IUserPasswordStore<CosmosIdentityUser>,
     IUserEmailStore<CosmosIdentityUser>,

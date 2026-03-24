@@ -1,4 +1,4 @@
-﻿using Benday.CosmosDb.Repositories;
+using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.Utilities;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -7,7 +7,7 @@ namespace Benday.CosmosDb.DomainModels;
 /// <summary>
 /// Provides the implementation of the basic properties of a Cosmos DB entity.
 /// </summary>
-public abstract class CosmosIdentityBase : IOwnedItem
+public abstract class CosmosIdentityBase : ITenantItem
 {
     /// <summary>
     /// Id of the entity.
@@ -16,15 +16,10 @@ public abstract class CosmosIdentityBase : IOwnedItem
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
     /// <summary>
-    /// Top-level partition key of the entity.
+    /// Top-level partition key of the entity. Represents the tenant that owns this entity.
     /// </summary>
-    [JsonPropertyName(CosmosDbConstants.PropertyName_PartitionKey)]
-    public abstract string PartitionKey { get; set; }
-
-    /// <summary>
-    /// The owner id of the entity. By default, this value will be the same as the PartitionKey for the entity.
-    /// </summary>
-    public virtual string OwnerId { get; set; } = string.Empty;
+    [JsonPropertyName(CosmosDbConstants.PropertyName_TenantId)]
+    public virtual string TenantId { get; set; } = string.Empty;
 
     /// <summary>
     /// Timestamp of the entity.
@@ -53,14 +48,14 @@ public abstract class CosmosIdentityBase : IOwnedItem
     public string Etag { get; set; } = string.Empty;
 
     /// <summary>
-    /// Second-level partition key for the entity.  This value describes the domain model type for the entity.
+    /// Second-level partition key for the entity. This value describes the domain model type for the entity.
     /// </summary>
-    [JsonPropertyName(CosmosDbConstants.PropertyName_Discriminator)]
-    public virtual string DiscriminatorValue
+    [JsonPropertyName(CosmosDbConstants.PropertyName_EntityType)]
+    public virtual string EntityType
     {
         get
         {
-            return GetDiscriminatorName();
+            return GetEntityTypeName();
         }
         set
         {
@@ -69,9 +64,9 @@ public abstract class CosmosIdentityBase : IOwnedItem
     }
 
     /// <summary>
-    /// Get the discriminator value for the entity. 
+    /// Get the entity type name for this entity.
     /// </summary>
-    /// <returns>Discriminator value</returns>
+    /// <returns>Entity type name</returns>
     /// <example>Recommendation: this should be the class name for the domain model class</example>
-    protected abstract string GetDiscriminatorName();
+    protected abstract string GetEntityTypeName();
 }

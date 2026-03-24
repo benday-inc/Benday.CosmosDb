@@ -4,7 +4,7 @@ using Benday.CosmosDb.ServiceLayers;
 
 namespace Benday.CosmosDb.SampleApp.Api.ServiceLayers;
 
-public class LookupValueService : OwnedItemService<LookupValue>, ILookupValueService
+public class LookupValueService : TenantItemService<LookupValue>, ILookupValueService
 {
     public LookupValueService(ILookupValueRepository repository) : base(repository)
     {
@@ -12,9 +12,9 @@ public class LookupValueService : OwnedItemService<LookupValue>, ILookupValueSer
 
     public override Task<LookupValue?> SaveAsync(LookupValue item)
     {
-        if (string.IsNullOrEmpty(item.OwnerId) == true)
+        if (string.IsNullOrEmpty(item.TenantId) == true)
         {
-            item.OwnerId = ApiConstants.DEFAULT_OWNER_ID;
+            item.TenantId = ApiConstants.DEFAULT_TENANT_ID;
         }
 
         return base.SaveAsync(item);
