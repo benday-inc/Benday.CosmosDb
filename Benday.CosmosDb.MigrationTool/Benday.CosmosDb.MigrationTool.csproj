@@ -1,17 +1,22 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.19.0" />
-    <PackageReference Include="Benday.CommandsFramework" Version="4.16.0" />
-    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.58.0" />
-  </ItemGroup>
-
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>cosmosmigrator</AssemblyName>
+        <PackageId>cosmosmigrator</PackageId>
+        <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
+        <PackAsTool>True</PackAsTool>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Azure.Identity"
+                          Version="1.19.0" />
+        <PackageReference Include="Benday.CommandsFramework"
+                          Version="4.16.0" />
+        <PackageReference Include="Microsoft.Azure.Cosmos"
+                          Version="3.58.0" />
+    </ItemGroup>
 </Project>

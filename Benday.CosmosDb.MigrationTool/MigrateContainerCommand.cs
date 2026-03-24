@@ -7,6 +7,7 @@ namespace Benday.CosmosDb.MigrationTool;
 
 [Command(
     Name = "migrate",
+    IsAsync = true,
     Description = "Migrate a Cosmos DB container from v5 schema (pk/discriminator) to v6 schema (tenantId/entityType) with camelCase property names.")]
 public class MigrateContainerCommand : AsynchronousCommand
 {
