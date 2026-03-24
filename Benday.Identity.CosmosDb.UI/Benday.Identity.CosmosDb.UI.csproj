@@ -19,7 +19,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <TheVersion>3.2.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
-    <Version>$(VersionPrefix)$(TheVersion)</Version>
+    <Version>$(TheVersion)-alpha</Version>
     <Description>ASP.NET Core Identity UI for Azure Cosmos DB. Provides pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and AddCosmosIdentityWithUI() convenience method that combines core identity registration with cookie authentication. Built on top of Benday.Identity.CosmosDb.</Description>
     <PackageReleaseNotes>
 v3.2.0 - Fixed some pretty massive bugs in the data access layer where partition keys were being ignored; Made the root partition key configurable via options and also default to 'SYSTEM';      

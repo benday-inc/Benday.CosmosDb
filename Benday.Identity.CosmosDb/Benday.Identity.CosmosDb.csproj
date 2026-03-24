@@ -18,7 +18,7 @@
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
     <TheVersion>3.2.0</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
-    <Version>$(VersionPrefix)$(TheVersion)</Version>
+    <Version>$(TheVersion)-alpha</Version>
     <Description>ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Provides user store, role store, claims, lockout, two-factor authentication, and external login support. Built on top of the Benday.CosmosDb repository pattern library.</Description>
     <PackageReleaseNotes>
 v3.2.0 - Fixed some pretty massive bugs in the data access layer where partition keys were being ignored;
