@@ -1,5 +1,3 @@
-using System.Text.Json;
-using Azure.Identity;
 using Benday.CommandsFramework;
 using Microsoft.Azure.Cosmos;
 
@@ -162,31 +160,10 @@ public class MigrateContainerCommand : AsynchronousCommand
 
     private CosmosClient CreateCosmosClient(MigrationOptions options)
     {
-        var connectionMode = options.UseGatewayMode
-            ? ConnectionMode.Gateway
-            : ConnectionMode.Direct;
-
-        var cosmosOptions = new CosmosClientOptions
-        {
-            AllowBulkExecution = true,
-            ConnectionMode = connectionMode,
-            HttpClientFactory = () =>
-            {
-                var handler = new HttpClientHandler();
-                handler.ServerCertificateCustomValidationCallback =
-                    (message, cert, chain, errors) => true;
-                return new HttpClient(handler);
-            }
-        };
-
-        if (options.UseManagedIdentity)
-        {
-            return new CosmosClient(options.Endpoint, new DefaultAzureCredential(), cosmosOptions);
-        }
-        else
-        {
-            var connectionString = $"AccountEndpoint={options.Endpoint};AccountKey={options.AccountKey};";
-            return new CosmosClient(connectionString, cosmosOptions);
-        }
+        return CosmosClientFactory.Create(
+            options.Endpoint,
+            options.AccountKey,
+            options.UseManagedIdentity,
+            options.UseGatewayMode);
     }
 }

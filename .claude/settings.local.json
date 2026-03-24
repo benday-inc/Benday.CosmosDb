@@ -23,7 +23,8 @@
       "WebFetch(domain:www.nuget.org)",
       "Bash(dotnet add:*)",
       "Bash(dotnet tool:*)",
-      "Read(//Users/benday/code/benday-inc/**)"
+      "Read(//Users/benday/code/benday-inc/**)",
+      "Bash(dotnet run:*)"
     ],
     "deny": [],
     "ask": []

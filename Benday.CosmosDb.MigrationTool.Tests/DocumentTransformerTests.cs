@@ -225,7 +225,7 @@ public class DocumentTransformerTests
         var result = _sut.Transform(doc);
 
         Assert.False(result.IsError);
-        Assert.Single(result.Warnings.Where(w => w.Contains("collision")));
+        Assert.Single(result.Warnings, w => w.Contains("collision") && w.Contains("abc-123"));
 
         var transformed = result.TransformedDocument!;
         // Both should exist — the original PascalCase kept and lowercase kept

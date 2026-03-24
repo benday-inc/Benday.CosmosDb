@@ -85,13 +85,14 @@ public class DocumentTransformer
         RemoveProperty(doc, "_etag");
 
         // Step 5: Convert PascalCase property names to camelCase (recursively)
-        ConvertToCamelCase(doc, result);
+        var docId = doc["id"]?.GetValue<string>() ?? "unknown";
+        ConvertToCamelCase(doc, result, docId);
 
         result.TransformedDocument = doc;
         return result;
     }
 
-    private void ConvertToCamelCase(JsonObject obj, TransformResult result)
+    private void ConvertToCamelCase(JsonObject obj, TransformResult result, string docId)
     {
         // Collect renames to avoid modifying collection during iteration
         var renames = new List<(string oldName, string newName, JsonNode? value)>();
@@ -106,11 +107,11 @@ public class DocumentTransformer
                 // Still recurse into nested objects
                 if (property.Value is JsonObject nested)
                 {
-                    ConvertToCamelCase(nested, result);
+                    ConvertToCamelCase(nested, result, docId);
                 }
                 else if (property.Value is JsonArray array)
                 {
-                    ConvertArrayToCamelCase(array, result);
+                    ConvertArrayToCamelCase(array, result, docId);
                 }
                 continue;
             }
@@ -123,7 +124,7 @@ public class DocumentTransformer
                 // Check for collision
                 if (obj.ContainsKey(camelName))
                 {
-                    result.Warnings.Add($"Property name collision: both '{name}' and '{camelName}' exist. Keeping original '{name}'.");
+                    result.Warnings.Add($"Property name collision: both '{name}' and '{camelName}' exist in document '{docId}'. Keeping original '{name}'.");
                     continue;
                 }
 
@@ -134,11 +135,11 @@ public class DocumentTransformer
                 // Already camelCase — still recurse into nested objects
                 if (property.Value is JsonObject nested)
                 {
-                    ConvertToCamelCase(nested, result);
+                    ConvertToCamelCase(nested, result, docId);
                 }
                 else if (property.Value is JsonArray array)
                 {
-                    ConvertArrayToCamelCase(array, result);
+                    ConvertArrayToCamelCase(array, result, docId);
                 }
             }
         }
@@ -152,24 +153,24 @@ public class DocumentTransformer
             // Recurse into nested objects after cloning
             if (clonedValue is JsonObject nested)
             {
-                ConvertToCamelCase(nested, result);
+                ConvertToCamelCase(nested, result, docId);
             }
             else if (clonedValue is JsonArray array)
             {
-                ConvertArrayToCamelCase(array, result);
+                ConvertArrayToCamelCase(array, result, docId);
             }
 
             obj[newName] = clonedValue;
         }
     }
 
-    private void ConvertArrayToCamelCase(JsonArray array, TransformResult result)
+    private void ConvertArrayToCamelCase(JsonArray array, TransformResult result, string docId)
     {
         foreach (var item in array)
         {
             if (item is JsonObject obj)
             {
-                ConvertToCamelCase(obj, result);
+                ConvertToCamelCase(obj, result, docId);
             }
         }
     }
