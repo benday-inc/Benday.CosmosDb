@@ -87,7 +87,7 @@ This registers the Cosmos DB user/role stores and ASP.NET Core Identity, but doe
 
 ### Container Names
 
-By default, both `AddCosmosIdentity` and `AddCosmosIdentityWithUI` store users and roles in the container specified by your `CosmosConfig` (i.e., `CosmosConfiguration:ContainerName` from appsettings). Users and roles coexist in the same container, separated by the hierarchical partition key's discriminator value.
+By default, both `AddCosmosIdentity` and `AddCosmosIdentityWithUI` store users and roles in the container specified by your `CosmosConfig` (i.e., `CosmosConfiguration:ContainerName` from appsettings). Users and roles coexist in the same container, separated by the hierarchical partition key's entity type value.
 
 You can override the container names if you want separate containers:
 
@@ -333,7 +333,7 @@ The role entity with support for:
 
 ## Partition Key Strategy
 
-All identity entities use a "SYSTEM" partition key by default, meaning all users and roles are stored in the same logical partition. This simplifies queries and works well for most applications. If you need a different partitioning strategy, you can override the `SystemOwnedItem` base class.
+All identity entities use a "SYSTEM" tenant ID by default, meaning all users and roles are stored in the same logical partition. This simplifies queries and works well for most applications. If you need a different partitioning strategy, you can override the `SystemTenantItem` base class.
 
 ## Migration from v1.x
 
