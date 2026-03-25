@@ -14,9 +14,9 @@
         <form asp-action="Edit">
             <input type="hidden" name="noteId" value="@noteId" />
             <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="OwnerId" />
+            <input type="hidden" asp-for="TenantId" />
             <input type="hidden" asp-for="ParentId" />
-            <input type="hidden" asp-for="ParentDiscriminator" />
+            <input type="hidden" asp-for="ParentEntityType" />
             <input type="hidden" asp-for="Etag" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">

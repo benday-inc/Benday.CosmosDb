@@ -28,7 +28,7 @@ public abstract class IntegrationTestBase : TestClassBase
             ConnectionString = Emulator.Config.ConnectionString,
             DatabaseName = CosmosEmulatorFixture.DatabaseName,
             ContainerName = CosmosEmulatorFixture.UsersContainerName,
-            PartitionKey = "/pk,/discriminator",
+            PartitionKey = "/tenantId,/entityType",
             UseHierarchicalPartitionKey = true,
             WithCreateStructures = DEFAULT_CREATE_STRUCTURES
         });
@@ -47,7 +47,7 @@ public abstract class IntegrationTestBase : TestClassBase
             ConnectionString = Emulator.Config.ConnectionString,
             DatabaseName = CosmosEmulatorFixture.DatabaseName,
             ContainerName = CosmosEmulatorFixture.RolesContainerName,
-            PartitionKey = "/pk,/discriminator",
+            PartitionKey = "/tenantId,/entityType",
             UseHierarchicalPartitionKey = true,
             WithCreateStructures = DEFAULT_CREATE_STRUCTURES
         });

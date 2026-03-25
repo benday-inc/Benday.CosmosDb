@@ -245,10 +245,10 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
 
         // Verify the repository interface was registered
         var repositoryDescriptor = services.FirstOrDefault(
-            sd => sd.ServiceType == typeof(IOwnedItemRepository<TestEntity>));
+            sd => sd.ServiceType == typeof(ITenantItemRepository<TestEntity>));
         Assert.NotNull(repositoryDescriptor);
         Assert.Equal(ServiceLifetime.Transient, repositoryDescriptor.Lifetime);
-        Assert.Equal(typeof(CosmosOwnedItemRepository<TestEntity>), repositoryDescriptor.ImplementationType);
+        Assert.Equal(typeof(CosmosTenantItemRepository<TestEntity>), repositoryDescriptor.ImplementationType);
 
         // Verify options were registered
         var optionsDescriptor = services.FirstOrDefault(

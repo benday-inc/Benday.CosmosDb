@@ -19,14 +19,12 @@
                 @Html.DisplayNameFor(model => model.Subject)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PartitionKey)
+                @Html.DisplayNameFor(model => model.TenantId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OwnerId)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.TimestampUnixStyle)
             </th>
@@ -37,7 +35,7 @@
                 @Html.DisplayNameFor(model => model.Etag)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DiscriminatorValue)
+                @Html.DisplayNameFor(model => model.EntityType)
             </th>
             <th></th>
         </tr>
@@ -52,14 +50,11 @@
                 @Html.DisplayFor(modelItem => item.Subject)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PartitionKey)
+                @Html.DisplayFor(modelItem => item.TenantId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerId)
-            </td>
+            </td>           
             <td>
                 @Html.DisplayFor(modelItem => item.TimestampUnixStyle)
             </td>
@@ -70,7 +65,7 @@
                 @Html.DisplayFor(modelItem => item.Etag)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DiscriminatorValue)
+                @Html.DisplayFor(modelItem => item.EntityType)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

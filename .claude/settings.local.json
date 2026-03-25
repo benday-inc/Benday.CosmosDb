@@ -14,7 +14,18 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push)",
-      "Bash(dotnet list:*)"
+      "Bash(dotnet list:*)",
+      "Bash(git checkout:*)",
+      "Bash(for f:*)",
+      "Bash(do sed:*)",
+      "Bash(done)",
+      "WebSearch",
+      "WebFetch(domain:www.nuget.org)",
+      "Bash(dotnet add:*)",
+      "Bash(dotnet tool:*)",
+      "Read(//Users/benday/code/benday-inc/**)",
+      "Bash(dotnet run:*)",
+      "Bash(pwsh /Users/benday/code/benday-inc/Benday.CosmosDb/copy-nupkg-local.ps1)"
     ],
     "deny": [],
     "ask": []

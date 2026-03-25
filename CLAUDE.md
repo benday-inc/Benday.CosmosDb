@@ -28,9 +28,9 @@ This is a .NET library for implementing domain model and repository patterns wit
 ### Core Components
 
 **Benday.CosmosDb** - Main library (targets netstandard2.1)
-- `DomainModels/` - Base classes and interfaces for domain entities (`ICosmosIdentity`, `CosmosIdentityBase`, `IOwnedItem`, `OwnedItemBase`)
-- `Repositories/` - Repository pattern implementations (`CosmosRepository<T>`, `CosmosOwnedItemRepository<T>`)
-- `ServiceLayers/` - Service layer abstractions (`IOwnedItemService<T>`, `OwnedItemService<T>`)
+- `DomainModels/` - Base classes and interfaces for domain entities (`ICosmosIdentity`, `CosmosIdentityBase`, `ITenantItem`, `TenantItemBase`)
+- `Repositories/` - Repository pattern implementations (`CosmosRepository<T>`, `CosmosTenantItemRepository<T>`)
+- `ServiceLayers/` - Service layer abstractions (`ITenantItemService<T>`, `TenantItemService<T>`)
 - `Utilities/` - Helper classes for configuration and registration (`CosmosRegistrationHelper`, `CosmosConfig`, `CosmosDbUtilities`)
 
 ### Key Patterns
@@ -43,8 +43,10 @@ This is a .NET library for implementing domain model and repository patterns wit
 - Optimistic concurrency control using ETags
 
 **Domain Model Pattern**: Entities implement `ICosmosIdentity` which provides:
-- Required properties: `Id`, `PartitionKey`, `Discriminator`, `_etag`
+- Required properties: `Id`, `TenantId`, `EntityType`, `_etag`
+- Default partition key path: `/tenantId,/entityType` (hierarchical)
 - Support for both flat and hierarchical partition keys
+- CamelCase JSON serialization by default
 
 **Configuration**: The library uses `CosmosConfig` for connection settings:
 - Supports both connection string and DefaultAzureCredential authentication

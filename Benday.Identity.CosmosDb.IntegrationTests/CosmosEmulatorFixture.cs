@@ -25,7 +25,7 @@ public class CosmosEmulatorFixture : IAsyncLifetime
             .ForEmulator()
             .WithDatabase(DatabaseName)
             .WithContainer(UsersContainerName)
-            .WithPartitionKey("/pk,/discriminator", useHierarchical: true)            
+            .WithPartitionKey("/tenantId,/entityType", useHierarchical: true)
             .Build();
 
         // Use the library's built-in client options which configures
@@ -42,11 +42,11 @@ public class CosmosEmulatorFixture : IAsyncLifetime
 
         await db.Database.CreateContainerIfNotExistsAsync(
             new ContainerProperties(UsersContainerName,
-                new List<string> { "/pk", "/discriminator" }));
+                new List<string> { "/tenantId", "/entityType" }));
 
         await db.Database.CreateContainerIfNotExistsAsync(
             new ContainerProperties(RolesContainerName,
-                new List<string> { "/pk", "/discriminator" }));
+                new List<string> { "/tenantId", "/entityType" }));
     }
 
     public Task DisposeAsync()

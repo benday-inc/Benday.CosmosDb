@@ -39,7 +39,7 @@ public class EditModel : PageModel
     {
         if (!string.IsNullOrEmpty(id))
         {
-            var claimDef = await _store.GetByIdAsync(CosmosIdentityConstants.SystemOwnerId, id);
+            var claimDef = await _store.GetByIdAsync(CosmosIdentityConstants.SystemTenantId, id);
 
             if (claimDef == null)
             {
@@ -71,7 +71,7 @@ public class EditModel : PageModel
 
         if (!string.IsNullOrEmpty(Input.Id))
         {
-            claimDef = await _store.GetByIdAsync(CosmosIdentityConstants.SystemOwnerId, Input.Id)
+            claimDef = await _store.GetByIdAsync(CosmosIdentityConstants.SystemTenantId, Input.Id)
                         ?? new CosmosIdentityClaimDefinition();
             IsNew = false;
         }

@@ -1,4 +1,4 @@
-﻿using Benday.CosmosDb.Repositories;
+using Benday.CosmosDb.Repositories;
 
 namespace Benday.CosmosDb.DomainModels;
 
@@ -17,21 +17,21 @@ public interface ICosmosIdentity
     string Id { get; set; }
 
     /// <summary>
-    /// Top-level partition key of the entity.
+    /// Top-level partition key of the entity. Represents the tenant that owns this entity.
     /// </summary>
-    [JsonPropertyName(CosmosDbConstants.PropertyName_PartitionKey)]
-    string PartitionKey { get; set; }
+    [JsonPropertyName(CosmosDbConstants.PropertyName_TenantId)]
+    string TenantId { get; set; }
 
     /// <summary>
     /// Timestamp of the entity.
     /// </summary>
-    [JsonPropertyName(CosmosDbConstants.PropertyName_Timestamp)]    
+    [JsonPropertyName(CosmosDbConstants.PropertyName_Timestamp)]
     long TimestampUnixStyle { get; set; }
 
     /// <summary>
     /// Timestamp of the entity.
     /// </summary>
-    DateTime Timestamp 
+    DateTime Timestamp
     {
         get;
         set;
@@ -44,10 +44,10 @@ public interface ICosmosIdentity
     string Etag { get; set; }
 
     /// <summary>
-    /// Second-level partition key for the entity.  This value describes the domain model type for the entity.
+    /// Second-level partition key for the entity. This value describes the domain model type for the entity.
     /// </summary>
-    [JsonPropertyName(CosmosDbConstants.PropertyName_Discriminator)]
-    string DiscriminatorValue
+    [JsonPropertyName(CosmosDbConstants.PropertyName_EntityType)]
+    string EntityType
     {
         get;
     }

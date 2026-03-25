@@ -24,7 +24,7 @@ public class CosmosDbRoleStoreFixture : TestClassBase
             ConnectionString = "https://localhost:8081",
             DatabaseName = "TestDb",
             ContainerName = "Roles",
-            PartitionKey = "/pk,/discriminator",
+            PartitionKey = "/tenantId,/entityType",
             UseHierarchicalPartitionKey = true
         });
 

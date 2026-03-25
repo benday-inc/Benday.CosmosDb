@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 namespace Benday.CosmosDb.UnitTests;
 
-public class CosmosDbTestEntityRepository : CosmosOwnedItemRepository<TestEntity>, ITestEntityRepository
+public class CosmosDbTestEntityRepository : CosmosTenantItemRepository<TestEntity>, ITestEntityRepository
 {
     public CosmosDbTestEntityRepository(
         IOptions<CosmosRepositoryOptions<TestEntity>> options,

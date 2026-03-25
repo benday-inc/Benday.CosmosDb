@@ -3,7 +3,7 @@ using Benday.CosmosDb.DomainModels;
 
 namespace Benday.CosmosDb.SampleApp.Api.DomainModels;
 
-public class Person : OwnedItemBase
+public class Person : TenantItemBase
 {
     [Display(Name = "First Name")]
     public string FirstName { get; set; } = string.Empty;

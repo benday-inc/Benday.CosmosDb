@@ -3,6 +3,6 @@ using Benday.CosmosDb.ServiceLayers;
 
 namespace Benday.CosmosDb.SampleApp.Api.ServiceLayers;
 
-public interface ILookupValueService : IOwnedItemService<LookupValue>
+public interface ILookupValueService : ITenantItemService<LookupValue>
 {
 }

@@ -29,7 +29,7 @@ public class AddCosmosIdentityWithUIFixture : TestClassBase
             AccountKey = fakeKey,
             DatabaseName = "TestDatabase",
             ContainerName = "TestContainer",
-            PartitionKey = "/pk",
+            PartitionKey = "/tenantId",
             CreateStructures = false,
             UseDefaultAzureCredential = false
         };

@@ -140,6 +140,18 @@ public class CosmosConfigBuilder
     }
 
     /// <summary>
+    /// Configures camelCase JSON serialization. Enabled by default.
+    /// When enabled, C# PascalCase properties will be serialized as camelCase in Cosmos DB documents.
+    /// </summary>
+    /// <param name="useCamelCase">Whether to use camelCase (default: true)</param>
+    /// <returns>The builder instance for chaining</returns>
+    public CosmosConfigBuilder WithCamelCase(bool useCamelCase = true)
+    {
+        _config.UseCamelCase = useCamelCase;
+        return this;
+    }
+
+    /// <summary>
     /// Creates a CosmosConfigBuilder from an existing CosmosConfig instance.
     /// Useful for modifying existing configurations.
     /// </summary>
@@ -159,6 +171,7 @@ public class CosmosConfigBuilder
         builder._config.UseHierarchicalPartitionKey = config.UseHierarchicalPartitionKey;
         builder._config.AllowBulkExecution = config.AllowBulkExecution;
         builder._config.UseDefaultAzureCredential = config.UseDefaultAzureCredential;
+        builder._config.UseCamelCase = config.UseCamelCase;
         return builder;
     }
 

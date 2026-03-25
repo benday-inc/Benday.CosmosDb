@@ -16,7 +16,7 @@ public class CosmosIdentityRoleFixture : TestClassBase
     {
         var role = new CosmosIdentityRole();
 
-        Assert.Equal(CosmosIdentityConstants.SystemOwnerId, role.OwnerId);
+        Assert.Equal(CosmosIdentityConstants.SystemTenantId, role.TenantId);
         Assert.NotNull(role.Claims);
         Assert.Empty(role.Claims);
         Assert.False(string.IsNullOrEmpty(role.ConcurrencyStamp));

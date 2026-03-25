@@ -76,6 +76,13 @@ public class CosmosConfig
     public bool AllowBulkExecution { get; set; } = true;
 
     /// <summary>
+    /// Use camelCase for JSON property names. This is enabled by default.
+    /// When enabled, C# PascalCase properties will be serialized as camelCase in Cosmos DB documents.
+    /// Properties with explicit [JsonPropertyName] attributes are not affected.
+    /// </summary>
+    public bool UseCamelCase { get; set; } = true;
+
+    /// <summary>
     /// Gets the connection string for the Cosmos DB account.
     /// </summary>
     public string ConnectionString

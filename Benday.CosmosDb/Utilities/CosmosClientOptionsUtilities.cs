@@ -123,6 +123,8 @@ public static class CosmosClientOptionsUtilities
 
         var allowBulkExecution =
             GetBoolean(configuration, "CosmosConfiguration:AllowBulkExecution", true);
+        var useCamelCase =
+            GetBoolean(configuration, "CosmosConfiguration:UseCamelCase", true);
 
         var temp = new CosmosConfig
         {
@@ -136,7 +138,8 @@ public static class CosmosClientOptionsUtilities
             UseGatewayMode = useGatewayMode,
             UseHierarchicalPartitionKey = useHierarchicalPartitionKey,
             AllowBulkExecution = allowBulkExecution,
-            UseDefaultAzureCredential = useDefaultAzureCredential
+            UseDefaultAzureCredential = useDefaultAzureCredential,
+            UseCamelCase = useCamelCase
         };
 
         return temp;
@@ -238,7 +241,11 @@ public static class CosmosClientOptionsUtilities
             connectionMode = ConnectionMode.Gateway;
         }
 
-        var options = GetCosmosDbClientOptions(null, connectionMode, cosmosConfig.AllowBulkExecution);
+        JsonNamingPolicy? namingPolicy = cosmosConfig.UseCamelCase
+            ? JsonNamingPolicy.CamelCase
+            : null;
+
+        var options = GetCosmosDbClientOptions(namingPolicy, connectionMode, cosmosConfig.AllowBulkExecution);
 
         if (cosmosConfig.UseDefaultAzureCredential == true)
         {
@@ -259,7 +266,7 @@ public static class CosmosClientOptionsUtilities
 
 
     /// <summary>
-    /// Configures a repository for a specific domain model entity type using default implementation of CosmosOwnedItemRepository.
+    /// Configures a repository for a specific domain model entity type using default implementation of CosmosTenantItemRepository.
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     /// <param name="services">Services collection</param>
@@ -277,13 +284,13 @@ public static class CosmosClientOptionsUtilities
         string partitionKey,
         bool createStructures,
         bool useHierarchicalPartitionKey,
-        bool useDefaultAzureCredential = false) where TEntity : OwnedItemBase, new()
+        bool useDefaultAzureCredential = false) where TEntity : TenantItemBase, new()
     {
         services.RegisterOptionsForRepository<TEntity>(
             connectionString, databaseName, containerName, partitionKey, createStructures,
             useHierarchicalPartitionKey, useDefaultAzureCredential);
 
-        services.AddTransient<IOwnedItemRepository<TEntity>, CosmosOwnedItemRepository<TEntity>>();
+        services.AddTransient<ITenantItemRepository<TEntity>, CosmosTenantItemRepository<TEntity>>();
     }
 
     /// <summary>

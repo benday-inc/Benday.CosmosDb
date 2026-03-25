@@ -16,7 +16,7 @@ public class CosmosIdentityUserFixture : TestClassBase
     {
         var user = new CosmosIdentityUser();
 
-        Assert.Equal(CosmosIdentityConstants.SystemOwnerId, user.OwnerId);
+        Assert.Equal(CosmosIdentityConstants.SystemTenantId, user.TenantId);
         Assert.NotNull(user.Claims);
         Assert.Empty(user.Claims);
         Assert.NotNull(user.Logins);

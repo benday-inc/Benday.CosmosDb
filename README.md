@@ -15,7 +15,7 @@ YouTube: https://www.youtube.com/@_benday
 
 * Interfaces and base classes for implementing the [repository pattern](https://martinfowler.com/eaaCatalog/repository.html) with CosmosDb
 * Interfaces and base classes for implementing the [domain model pattern](https://en.wikipedia.org/wiki/Domain_model) with CosmosDb
-* Service layer abstractions (`IOwnedItemService`, `IParentedItemService`)
+* Service layer abstractions (`ITenantItemService`, `IParentedItemService`)
 * Support for parent-child entity relationships with `ParentedItemBase` and `IParentedItem`
 * Help you to write LINQ queries against CosmosDb without having to worry whether you're using the right partition keys
 * Support for configuring repositories for use in ASP.NET Core projects
@@ -47,7 +47,7 @@ That's it! See [EMULATOR-SETUP.md](EMULATOR-SETUP.md) for complete emulator conf
     "DatabaseName": "ProductionDb",
     "ContainerName": "ProductionContainer",
     "CreateStructures": false,
-    "PartitionKey": "/pk,/discriminator",
+    "PartitionKey": "/tenantId,/entityType",
     "HierarchicalPartitionKey": true,
     "Endpoint": "https://your-cosmos.documents.azure.com:443/",
     "UseDefaultAzureCredential": true
@@ -88,10 +88,10 @@ public class CommentService
         _commentService = commentService;
     }
 
-    public async Task<IEnumerable<Comment>> GetCommentsForNote(string ownerId, string noteId)
+    public async Task<IEnumerable<Comment>> GetCommentsForNote(string tenantId, string noteId)
     {
-        // Query comments by parent ID with type discrimination
-        return await _commentService.GetAllByParentIdAsync(ownerId, noteId, "Note");
+        // Query comments by parent ID with entity type filtering
+        return await _commentService.GetAllByParentIdAsync(tenantId, noteId, "Note");
     }
 }
 ```
@@ -123,9 +123,9 @@ Any parameter left as `null` will use the default value from the `CosmosRegistra
 
 A complete working sample application is included in this repository demonstrating all major features:
 
-- **Person Entity** - Demonstrates `OwnedItemBase` with custom repository and service layer implementations. Shows complex domain models with nested Address objects.
-- **Note Entity** - Simple `OwnedItemBase` implementation using default repository and service registrations. Serves as parent entity for Comments.
-- **Comment Entity** - Demonstrates `ParentedItemBase` pattern showing parent-child relationships with `ParentId` and `ParentDiscriminator` for type-safe queries.
+- **Person Entity** - Demonstrates `TenantItemBase` with custom repository and service layer implementations. Shows complex domain models with nested Address objects.
+- **Note Entity** - Simple `TenantItemBase` implementation using default repository and service registrations. Serves as parent entity for Comments.
+- **Comment Entity** - Demonstrates `ParentedItemBase` pattern showing parent-child relationships with `ParentId` and `ParentEntityType` for type-safe queries.
 - **LookupValue Entity** - Demonstrates custom repository configuration to store entities in a separate Cosmos DB container using the `RegisterRepository` overload with configuration options.
 
 To run the sample application:

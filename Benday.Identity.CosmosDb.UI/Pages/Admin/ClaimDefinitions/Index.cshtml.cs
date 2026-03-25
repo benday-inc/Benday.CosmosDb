@@ -34,7 +34,7 @@ public class IndexModel : PageModel
             return Page();
         }
 
-        var claimDef = await _store.GetByIdAsync(CosmosIdentityConstants.SystemOwnerId, id);
+        var claimDef = await _store.GetByIdAsync(CosmosIdentityConstants.SystemTenantId, id);
 
         if (claimDef == null)
         {

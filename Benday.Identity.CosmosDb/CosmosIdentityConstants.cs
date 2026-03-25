@@ -2,7 +2,7 @@ namespace Benday.Identity.CosmosDb
 {
     public static class CosmosIdentityConstants
     {
-        public static string SystemOwnerId = "SYSTEM";
+        public static string SystemTenantId = "SYSTEM";
 
         /// <summary>
         /// The authorization policy name used to protect admin pages.

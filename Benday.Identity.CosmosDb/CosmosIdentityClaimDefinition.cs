@@ -5,7 +5,7 @@ namespace Benday.Identity.CosmosDb
     /// Stored in Cosmos DB and used by admin screens to provide a
     /// consistent list of claim types and optional allowed values.
     /// </summary>
-    public class CosmosIdentityClaimDefinition : SystemOwnedItem
+    public class CosmosIdentityClaimDefinition : SystemTenantItem
     {
         /// <summary>
         /// The claim type name (e.g., "Department", "CanExport").

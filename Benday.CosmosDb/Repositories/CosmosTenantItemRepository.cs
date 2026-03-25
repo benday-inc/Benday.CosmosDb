@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Threading;
 using Benday.CosmosDb.DomainModels;
 using Microsoft.Azure.Cosmos;
@@ -9,47 +9,47 @@ using Microsoft.Extensions.Options;
 namespace Benday.CosmosDb.Repositories;
 
 /// <summary>
-/// Provides repository implementation for items that are owned by a user.
+/// Provides repository implementation for items that belong to a tenant.
 /// </summary>
 /// <typeparam name="T">Domain model type managed by the repository</typeparam>
 /// <param name="options">Configuration options for the repository</param>
 /// <param name="client">Instance of the cosmos db client. NOTE: for performance reasons, this should probably be a singleton in the application.</param>
-public class CosmosOwnedItemRepository<T>(
-        IOptions<CosmosRepositoryOptions<T>> options, 
-        CosmosClient client, 
-        ILogger<CosmosOwnedItemRepository<T>> logger) :
-    CosmosRepository<T>(options, client, logger), IOwnedItemRepository<T>
-    where T : class, IOwnedItem, new()
+public class CosmosTenantItemRepository<T>(
+        IOptions<CosmosRepositoryOptions<T>> options,
+        CosmosClient client,
+        ILogger<CosmosTenantItemRepository<T>> logger) :
+    CosmosRepository<T>(options, client, logger), ITenantItemRepository<T>
+    where T : class, ITenantItem, new()
 {
     /// <summary>
-    /// Get all items in the repository that have the specified owner id. 
+    /// Get all items in the repository that have the specified tenant id.
     /// Default implementation will return items in descending order by timestamp.
     /// </summary>
-    /// <param name="ownerId">Owner id</param>
+    /// <param name="tenantId">Tenant id</param>
     /// <returns></returns>
-    public async Task<IEnumerable<T>> GetAllAsync(string ownerId)
+    public async Task<IEnumerable<T>> GetAllAsync(string tenantId)
     {
         var container = await GetContainer();
 
-        var queryable = await GetQueryable(ownerId);
+        var queryable = await GetQueryable(tenantId);
 
         var query = queryable.Queryable.OrderByDescending(x => x.Timestamp);
-        
-        var results = await GetResults(query, 
+
+        var results = await GetResults(query,
             GetQueryDescription(nameof(GetAllAsync)), queryable.PartitionKey);
 
         return results;
     }
 
     /// <summary>
-    /// Gets an entity by its id and owner id.
+    /// Gets an entity by its id and tenant id.
     /// </summary>
-    /// <param name="ownerId"></param>
+    /// <param name="tenantId"></param>
     /// <param name="id"></param>
     /// <returns>Matching item or null if not found</returns>
-    public virtual async Task<T?> GetByIdAsync(string ownerId, string id)
+    public virtual async Task<T?> GetByIdAsync(string tenantId, string id)
     {
-        if (string.IsNullOrWhiteSpace(ownerId) == true || 
+        if (string.IsNullOrWhiteSpace(tenantId) == true ||
             string.IsNullOrWhiteSpace(id) == true)
         {
             return null;
@@ -59,7 +59,7 @@ public class CosmosOwnedItemRepository<T>(
         {
             var container = await GetContainer();
 
-            var pk = new PartitionKeyBuilder().Add(ownerId).Add(DiscriminatorValue).Build();
+            var pk = new PartitionKeyBuilder().Add(tenantId).Add(EntityType).Build();
 
             ItemResponse<T?>? response;
 
@@ -67,10 +67,9 @@ public class CosmosOwnedItemRepository<T>(
             {
                 response = await container.ReadItemAsync<T?>(id, pk);
             }
-            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound) 
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 Logger.LogDebug($"{nameof(GetByIdAsync)}() -- Not found. Partition key: {pk}, Id: {id}");
-                
 
                 return null;
             }
@@ -95,10 +94,10 @@ public class CosmosOwnedItemRepository<T>(
                 return item;
             }
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             Logger.LogError(ex, $"Error in {nameof(GetByIdAsync)}().");
-            
+
             throw;
         }
     }
@@ -114,9 +113,8 @@ public class CosmosOwnedItemRepository<T>(
 
         var builder = new PartitionKeyBuilder();
 
-        _ = builder.Add(itemToDelete.PartitionKey);
-        _ = builder.Add(itemToDelete.DiscriminatorValue);
-        // builder.Add(id);
+        _ = builder.Add(itemToDelete.TenantId);
+        _ = builder.Add(itemToDelete.EntityType);
 
         var partitionKey = builder.Build();
 
@@ -132,15 +130,15 @@ public class CosmosOwnedItemRepository<T>(
     }
 
     /// <summary>
-    /// Gets a page of results for the specified owner with continuation support.
+    /// Gets a page of results for the specified tenant with continuation support.
     /// </summary>
-    /// <param name="ownerId">Owner id</param>
+    /// <param name="tenantId">Tenant id</param>
     /// <param name="pageSize">Maximum number of items to return</param>
     /// <param name="continuationToken">Continuation token from previous query (null for first page)</param>
     /// <returns>A page of results with continuation information</returns>
-    public new async Task<PagedResults<T>> GetPagedAsync(string ownerId, int pageSize = 100, string? continuationToken = null)
+    public new async Task<PagedResults<T>> GetPagedAsync(string tenantId, int pageSize = 100, string? continuationToken = null)
     {
-        return await base.GetPagedAsync(ownerId, pageSize, continuationToken);
+        return await base.GetPagedAsync(tenantId, pageSize, continuationToken);
     }
 
     #region Bulk Operation Settings
@@ -160,42 +158,42 @@ public class CosmosOwnedItemRepository<T>(
     #region Bulk Delete Operations
 
     /// <summary>
-    /// Deletes all items for the specified owner with throttling and retry logic.
+    /// Deletes all items for the specified tenant with throttling and retry logic.
     /// </summary>
-    /// <param name="ownerId">Owner id for the items to delete</param>
+    /// <param name="tenantId">Tenant id for the items to delete</param>
     /// <param name="cancellationToken">Cancellation token</param>
-    public async Task DeleteAllByOwnerIdAsync(
-        string ownerId,
+    public async Task DeleteAllByTenantIdAsync(
+        string tenantId,
         CancellationToken cancellationToken = default)
     {
-        await DeleteAllByOwnerIdAsync(ownerId, BulkMaxConcurrency, BulkMaxRetries, cancellationToken);
+        await DeleteAllByTenantIdAsync(tenantId, BulkMaxConcurrency, BulkMaxRetries, cancellationToken);
     }
 
     /// <summary>
-    /// Deletes all items for the specified owner with configurable throttling and retry logic.
+    /// Deletes all items for the specified tenant with configurable throttling and retry logic.
     /// </summary>
-    /// <param name="ownerId">Owner id for the items to delete</param>
+    /// <param name="tenantId">Tenant id for the items to delete</param>
     /// <param name="maxConcurrency">Maximum number of concurrent delete operations</param>
     /// <param name="maxRetries">Maximum number of retry attempts for throttled requests</param>
     /// <param name="cancellationToken">Cancellation token</param>
-    public async Task DeleteAllByOwnerIdAsync(
-        string ownerId,
+    public async Task DeleteAllByTenantIdAsync(
+        string tenantId,
         int maxConcurrency,
         int maxRetries,
         CancellationToken cancellationToken = default)
     {
-        var items = await GetAllAsync(ownerId);
+        var items = await GetAllAsync(tenantId);
         var itemList = items.ToList();
 
         if (itemList.Count == 0)
         {
-            Logger.LogDebug("No items to delete for owner {OwnerId}", ownerId);
+            Logger.LogDebug("No items to delete for tenant {TenantId}", tenantId);
             return;
         }
 
         Logger.LogInformation(
-            "Deleting {Count} items for owner {OwnerId} with max concurrency {MaxConcurrency}",
-            itemList.Count, ownerId, maxConcurrency);
+            "Deleting {Count} items for tenant {TenantId} with max concurrency {MaxConcurrency}",
+            itemList.Count, tenantId, maxConcurrency);
 
         var failedItems = new List<(T Item, Exception Exception)>();
 
@@ -226,8 +224,8 @@ public class CosmosOwnedItemRepository<T>(
         if (failedItems.Count > 0)
         {
             Logger.LogError(
-                "Failed to delete {FailedCount} of {TotalCount} items for owner {OwnerId}",
-                failedItems.Count, itemList.Count, ownerId);
+                "Failed to delete {FailedCount} of {TotalCount} items for tenant {TenantId}",
+                failedItems.Count, itemList.Count, tenantId);
 
             throw new AggregateException(
                 $"Failed to delete {failedItems.Count} items",
@@ -235,8 +233,8 @@ public class CosmosOwnedItemRepository<T>(
         }
 
         Logger.LogInformation(
-            "Successfully deleted {Count} items for owner {OwnerId}",
-            itemList.Count, ownerId);
+            "Successfully deleted {Count} items for tenant {TenantId}",
+            itemList.Count, tenantId);
     }
 
     /// <summary>

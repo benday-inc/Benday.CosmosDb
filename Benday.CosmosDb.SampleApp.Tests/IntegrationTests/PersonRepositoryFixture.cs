@@ -26,7 +26,7 @@ public class PersonRepositoryFixture
 
         var person = new Person()
         {
-            OwnerId = "TestOwner",
+            TenantId = "TestOwner",
             FirstName = "TestFirstName",
             LastName = "TestLastName"
         };
@@ -57,7 +57,7 @@ public class PersonRepositoryFixture
 
         Person person = new Person()
         {
-            OwnerId = "TestOwner",
+            TenantId = "TestOwner",
             FirstName = "TestFirstName",
             LastName = "TestLastName"
         };
@@ -65,7 +65,7 @@ public class PersonRepositoryFixture
         await repository.SaveAsync(person);
 
         // act
-        var reloaded = await repository.GetByIdAsync(person.OwnerId, person.Id);
+        var reloaded = await repository.GetByIdAsync(person.TenantId, person.Id);
 
         // assert
 
@@ -98,7 +98,7 @@ public class PersonRepositoryFixture
         {
             persons[i] = new Person()
             {
-                OwnerId = "TestOwner",
+                TenantId = "TestOwner",
                 FirstName = $"TestFirstName{i}",
                 LastName = $"TestLastName{i}"
             };

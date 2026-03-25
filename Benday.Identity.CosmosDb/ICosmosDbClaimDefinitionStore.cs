@@ -5,7 +5,7 @@ namespace Benday.Identity.CosmosDb;
 /// <summary>
 /// Repository interface for managing claim definitions.
 /// </summary>
-public interface ICosmosDbClaimDefinitionStore : IOwnedItemRepository<CosmosIdentityClaimDefinition>
+public interface ICosmosDbClaimDefinitionStore : ITenantItemRepository<CosmosIdentityClaimDefinition>
 {
     /// <summary>
     /// Gets all claim definitions.

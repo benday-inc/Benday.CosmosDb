@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 
 namespace Benday.CosmosDb.SampleApp.Api.Repositories;
-public interface IPersonRepository : IOwnedItemRepository<Person>
+public interface IPersonRepository : ITenantItemRepository<Person>
 {
     Task<Person?> GetPersonByEmailAddress(string emailAddress);
 }
