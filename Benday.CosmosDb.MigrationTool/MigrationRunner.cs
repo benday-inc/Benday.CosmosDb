@@ -55,7 +55,6 @@ public class MigrationRunner
         // Read, transform, and write documents
         var processedCount = 0;
         var transformedCount = 0;
-        var skippedCount = 0;
         var errorCount = 0;
         var totalRUs = 0.0;
         var sampleCount = 0;
@@ -110,18 +109,18 @@ public class MigrationRunner
             // Write batch to destination
             if (!_options.DryRun && destContainer != null && batch.Count > 0)
             {
-                var writeRUs = await WriteBatchAsync(destContainer, batch);
+                var (writeRUs, writeErrors) = await WriteBatchAsync(destContainer, batch);
                 totalRUs += writeRUs;
+                errorCount += writeErrors;
             }
 
-            _writeLine($"Progress: {processedCount}/{totalDocs} documents processed ({transformedCount} transformed, {skippedCount} skipped, {errorCount} errors). RUs: {totalRUs:N1}");
+            _writeLine($"Progress: {processedCount}/{totalDocs} documents processed ({transformedCount} transformed, {errorCount} errors). RUs: {totalRUs:N1}");
         }
 
         // Final summary
         _writeLine("\n=== Migration Summary ===");
         _writeLine($"Total documents read:    {processedCount}");
         _writeLine($"Documents transformed:   {transformedCount}");
-        _writeLine($"Documents skipped:       {skippedCount}");
         _writeLine($"Documents with errors:   {errorCount}");
         _writeLine($"Total request units:     {totalRUs:N1}");
 
@@ -178,7 +177,7 @@ public class MigrationRunner
         return containerResponse.Container;
     }
 
-    private async Task<double> WriteBatchAsync(
+    private async Task<(double rUs, int errorCount)> WriteBatchAsync(
         Container destContainer,
         List<(JsonObject doc, string tenantId, string entityType)> batch)
     {
@@ -228,7 +227,7 @@ public class MigrationRunner
             }
         }
 
-        return totalRUs;
+        return (totalRUs, failedItems.Count);
     }
 }
 
