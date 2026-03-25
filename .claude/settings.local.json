@@ -24,7 +24,8 @@
       "Bash(dotnet add:*)",
       "Bash(dotnet tool:*)",
       "Read(//Users/benday/code/benday-inc/**)",
-      "Bash(dotnet run:*)"
+      "Bash(dotnet run:*)",
+      "Bash(pwsh /Users/benday/code/benday-inc/Benday.CosmosDb/copy-nupkg-local.ps1)"
     ],
     "deny": [],
     "ask": []
