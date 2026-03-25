@@ -22,41 +22,8 @@
                 <input asp-for="Subject" class="form-control" />
                 <span asp-validation-for="Subject" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TenantId" class="control-label"></label>
-                <input asp-for="TenantId" class="form-control" />
-                <span asp-validation-for="TenantId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TenantId" class="control-label"></label>
-                <input asp-for="TenantId" class="form-control" />
-                <span asp-validation-for="TenantId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TimestampUnixStyle" class="control-label"></label>
-                <input asp-for="TimestampUnixStyle" class="form-control" />
-                <span asp-validation-for="TimestampUnixStyle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Timestamp" class="control-label"></label>
-                <input asp-for="Timestamp" class="form-control" />
-                <span asp-validation-for="Timestamp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Etag" class="control-label"></label>
-                <input asp-for="Etag" class="form-control" />
-                <span asp-validation-for="Etag" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EntityType" class="control-label"></label>
-                <input asp-for="EntityType" class="form-control" />
-                <span asp-validation-for="EntityType" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="TenantId" />
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

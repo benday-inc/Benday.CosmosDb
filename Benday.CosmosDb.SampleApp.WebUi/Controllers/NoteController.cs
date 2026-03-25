@@ -48,7 +48,13 @@ public class NoteController : Controller
     // GET: NoteController/Create
     public ActionResult Create()
     {
-        return View();
+        var note = new Note
+        {
+            Id = Guid.NewGuid().ToString(),
+            TenantId = ApiConstants.DEFAULT_TENANT_ID
+        };
+
+        return View(note);
     }
 
     // POST: NoteController/Create
@@ -58,14 +64,16 @@ public class NoteController : Controller
     {
         try
         {
-            // Save note asynchronously
+            note.Id = Guid.NewGuid().ToString();
+            note.TenantId = ApiConstants.DEFAULT_TENANT_ID;
+
             await _NoteService.SaveAsync(note);
 
             return RedirectToAction(nameof(Index));
         }
         catch
         {
-            return View();
+            return View(note);
         }
     }
 
