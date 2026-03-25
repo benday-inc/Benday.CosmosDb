@@ -15,12 +15,6 @@ When upgrading an application from Benday.CosmosDb v5.x to v6.x, apply these cha
 - `CosmosOwnedItemRepository<T>` → `CosmosTenantItemRepository<T>`
 - `IOwnedItemService<T>` → `ITenantItemService<T>`
 - `OwnedItemService<T>` → `TenantItemService<T>`
-- `IParentedItem` → `IChildItem`
-- `ParentedItemBase` → `ChildItemBase`
-- `IParentedItemRepository<T>` → `IChildItemRepository<T>`
-- `CosmosDbParentedItemRepository<T>` → `CosmosChildItemRepository<T>`
-- `IParentedItemService<T>` → `IChildItemService<T>`
-- `ParentedItemService<T>` → `ChildItemService<T>`
 
 ## Identity Library Renames
 - `CosmosIdentityConstants.SystemOwnerId` → `CosmosIdentityConstants.SystemTenantId`

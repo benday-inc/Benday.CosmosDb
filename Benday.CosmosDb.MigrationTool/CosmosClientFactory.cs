@@ -17,7 +17,8 @@ public static class CosmosClientFactory
         string accountKey,
         bool useManagedIdentity = false,
         bool useGatewayMode = false,
-        bool allowBulkExecution = true)
+        bool allowBulkExecution = true,
+        bool isEmulator = false)
     {
         var connectionMode = useGatewayMode
             ? ConnectionMode.Gateway
@@ -28,14 +29,18 @@ public static class CosmosClientFactory
             AllowBulkExecution = allowBulkExecution,
             ConnectionMode = connectionMode,
             Serializer = new SystemTextJsonCosmosSerializer(new JsonSerializerOptions()),
-            HttpClientFactory = () =>
+        };
+
+        if (isEmulator)
+        {
+            options.HttpClientFactory = () =>
             {
                 var handler = new HttpClientHandler();
                 handler.ServerCertificateCustomValidationCallback =
                     (message, cert, chain, errors) => true;
                 return new HttpClient(handler);
-            }
-        };
+            };
+        }
 
         if (useManagedIdentity)
         {
@@ -50,6 +55,6 @@ public static class CosmosClientFactory
 
     public static CosmosClient CreateForEmulator()
     {
-        return Create(EmulatorEndpoint, EmulatorAccountKey, useGatewayMode: true);
+        return Create(EmulatorEndpoint, EmulatorAccountKey, useGatewayMode: true, isEmulator: true);
     }
 }

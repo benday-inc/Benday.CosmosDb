@@ -97,12 +97,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         var container = await GetContainer();
 
         var itemToDelete = await GetByIdAsync(id) ?? throw new CosmosDbItemNotFoundException(id, _Options.ContainerName);
-        var builder = new PartitionKeyBuilder();
 
-        _ = builder.Add(itemToDelete.TenantId);
-        _ = builder.Add(itemToDelete.EntityType);
-
-        var partitionKey = builder.Build();
+        var partitionKey = GetPartitionKey(itemToDelete);
 
         ItemResponse<T> response;
         try

@@ -170,10 +170,11 @@ public class CopyContainerCommand : AsynchronousCommand
             // Write batch to emulator
             if (batch.Count > 0)
             {
-                var writeRUs = await WriteBatchAsync(
+                var (writeRUs, writeErrors) = await WriteBatchAsync(
                     destContainer, batch, partitionKeyPaths, maxConcurrency);
                 totalWriteRUs += writeRUs;
-                writtenCount += batch.Count;
+                writtenCount += batch.Count - writeErrors;
+                errorCount += writeErrors;
             }
 
             _OutputProvider.WriteLine(
@@ -204,7 +205,7 @@ public class CopyContainerCommand : AsynchronousCommand
         return 0;
     }
 
-    private async Task<double> WriteBatchAsync(
+    private async Task<(double rUs, int errorCount)> WriteBatchAsync(
         Container destContainer,
         List<JsonObject> batch,
         List<string> partitionKeyPaths,
@@ -212,6 +213,7 @@ public class CopyContainerCommand : AsynchronousCommand
     {
         var totalRUs = 0.0;
         var ruLock = new object();
+        var failedItems = new List<string>();
 
         using var semaphore = new SemaphoreSlim(maxConcurrency, maxConcurrency);
 
@@ -231,6 +233,10 @@ public class CopyContainerCommand : AsynchronousCommand
             {
                 var docId = doc["id"]?.GetValue<string>() ?? "unknown";
                 _OutputProvider.WriteLine($"  WRITE ERROR [{docId}]: {ex.Message}");
+                lock (failedItems)
+                {
+                    failedItems.Add(docId);
+                }
             }
             finally
             {
@@ -239,7 +245,48 @@ public class CopyContainerCommand : AsynchronousCommand
         });
 
         await Task.WhenAll(tasks);
-        return totalRUs;
+        return (totalRUs, failedItems.Count);
+    }
+
+    private static void AddPartitionKeyComponent(PartitionKeyBuilder builder, JsonNode? node)
+    {
+        if (node == null)
+        {
+            // Missing property is treated as a null partition key component.
+            builder.AddNullValue();
+            return;
+        }
+
+        var element = node.Deserialize<System.Text.Json.JsonElement>();
+
+        switch (element.ValueKind)
+        {
+            case System.Text.Json.JsonValueKind.String:
+                builder.Add(element.GetString() ?? string.Empty);
+                break;
+            case System.Text.Json.JsonValueKind.Number:
+                if (element.TryGetInt64(out var longValue))
+                {
+                    builder.Add(longValue);
+                }
+                else
+                {
+                    builder.Add(element.GetDouble());
+                }
+                break;
+            case System.Text.Json.JsonValueKind.True:
+            case System.Text.Json.JsonValueKind.False:
+                builder.Add(element.GetBoolean());
+                break;
+            case System.Text.Json.JsonValueKind.Null:
+            case System.Text.Json.JsonValueKind.Undefined:
+                builder.AddNullValue();
+                break;
+            default:
+                // Fallback for objects/arrays: use string representation to avoid throwing.
+                builder.Add(element.ToString());
+                break;
+        }
     }
 
     private static PartitionKey BuildPartitionKey(JsonObject doc, List<string> partitionKeyPaths)
@@ -249,19 +296,11 @@ public class CopyContainerCommand : AsynchronousCommand
             return PartitionKey.None;
         }
 
-        if (partitionKeyPaths.Count == 1)
-        {
-            var propName = partitionKeyPaths[0].TrimStart('/');
-            var value = doc[propName]?.GetValue<string>() ?? string.Empty;
-            return new PartitionKey(value);
-        }
-
         var builder = new PartitionKeyBuilder();
         foreach (var path in partitionKeyPaths)
         {
             var propName = path.TrimStart('/');
-            var value = doc[propName]?.GetValue<string>() ?? string.Empty;
-            builder.Add(value);
+            AddPartitionKeyComponent(builder, doc[propName]);
         }
         return builder.Build();
     }

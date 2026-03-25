@@ -28,8 +28,11 @@ $grouped = $allPackages | ForEach-Object {
 } | Group-Object PackageName
 
 foreach ($group in $grouped) {
-    # Pick the most recently modified file as the "highest version"
-    $latest = $group.Group | Sort-Object { $_.File.LastWriteTime } -Descending | Select-Object -First 1
+    # Pick the highest semantic version by parsing the version from the filename
+    $latest = $group.Group | Sort-Object {
+        $ver = if ($_.File.BaseName -match '\.(\d+\.\d+\.\d+(?:\.\d+)?)') { [System.Version]$Matches[1] } else { [System.Version]"0.0.0" }
+        $ver
+    } -Descending | Select-Object -First 1
     $dest = Join-Path $destDir $latest.File.Name
     Copy-Item -Path $latest.File.FullName -Destination $dest -Force
     Write-Host "Copied $($latest.File.Name) -> $destDir"
