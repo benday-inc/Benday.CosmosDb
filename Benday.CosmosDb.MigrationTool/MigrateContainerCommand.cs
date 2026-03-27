@@ -33,30 +33,42 @@ public class MigrateContainerCommand : AsynchronousCommand
 
         args.AddBoolean("use-emulator")
             .AsNotRequired()
+            .WithDefaultValue(false)
             .AllowEmptyValue()
             .WithDescription("Use Azure Cosmos DB Emulator (localhost:8081)");
 
         args.AddString("endpoint")
             .AsNotRequired()
+            .WithDefaultValue(string.Empty)
             .WithDescription("Cosmos DB endpoint URL");
 
         args.AddString("account-key")
             .AsNotRequired()
+            .WithDefaultValue(string.Empty)
             .WithDescription("Cosmos DB account key");
 
         args.AddBoolean("use-managed-identity")
             .AsNotRequired()
             .AllowEmptyValue()
+            .WithDefaultValue(false)
             .WithDescription("Use DefaultAzureCredential for authentication");
 
         args.AddBoolean("gateway-mode")
             .AsNotRequired()
             .AllowEmptyValue()
+            .WithDefaultValue(false)
             .WithDescription("Use gateway connection mode");
+
+        args.AddBoolean("validate-only")
+            .AsNotRequired()
+            .AllowEmptyValue()
+            .WithDefaultValue(false)
+            .WithDescription("Validate source container exists, create destination if needed, then exit — no data migration");
 
         args.AddBoolean("dry-run")
             .AsNotRequired()
             .AllowEmptyValue()
+            .WithDefaultValue(true)
             .WithDescription("Read and transform only — do not write to destination");
 
         args.AddInt32("batch-size")
@@ -66,8 +78,18 @@ public class MigrateContainerCommand : AsynchronousCommand
 
         args.AddInt32("max-concurrency")
             .AsNotRequired()
-            .WithDescription("Max concurrent write operations (default: 5)")
-            .WithDefaultValue(5);
+            .WithDescription("Initial concurrent write operations (default: 50, adapts automatically)")
+            .WithDefaultValue(50);
+
+        args.AddInt32("max-concurrency-ceiling")
+            .AsNotRequired()
+            .WithDescription("Upper limit for adaptive concurrency (default: 200)")
+            .WithDefaultValue(200);
+
+        args.AddString("progress-dir")
+            .AsNotRequired()
+            .WithDefaultValue(string.Empty)
+            .WithDescription("Directory for tracking progress (enables resume). Defaults to ./progress/{db}_{src}_to_{dest}");
 
         return args;
     }
@@ -87,54 +109,31 @@ public class MigrateContainerCommand : AsynchronousCommand
 
     private MigrationOptions BuildMigrationOptions()
     {
+        var useEmulator = Arguments.GetBooleanValue("use-emulator");
+
         var options = new MigrationOptions
         {
             DatabaseName = Arguments.GetStringValue("database"),
             SourceContainerName = Arguments.GetStringValue("source-container"),
             DestContainerName = Arguments.GetStringValue("dest-container"),
+            UseEmulator = useEmulator,
+            UseManagedIdentity = Arguments.GetBooleanValue("use-managed-identity"),
+            UseGatewayMode = Arguments.GetBooleanValue("gateway-mode"),
+            ValidateOnly = Arguments.GetBooleanValue("validate-only"),
+            DryRun = Arguments.GetBooleanValue("dry-run"),
+            BatchSize = Arguments.GetInt32Value("batch-size"),
+            MaxConcurrency = Arguments.GetInt32Value("max-concurrency"),
+            MaxConcurrencyCeiling = Arguments.GetInt32Value("max-concurrency-ceiling"),
+            Endpoint = Arguments.GetStringValue("endpoint"),
+            AccountKey = Arguments.GetStringValue("account-key"),
+            ProgressDirectory = Arguments.GetStringValue("progress-dir"),
         };
 
-        if (Arguments.ContainsKey("use-emulator") && Arguments["use-emulator"].HasValue)
+        if (useEmulator)
         {
-            options.UseEmulator = true;
-            options.Endpoint = "https://localhost:8081/";
-            options.AccountKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+            options.Endpoint = CosmosClientFactory.EmulatorEndpoint;
+            options.AccountKey = CosmosClientFactory.EmulatorAccountKey;
             options.UseGatewayMode = true;
-        }
-
-        if (Arguments.ContainsKey("endpoint") && Arguments["endpoint"].HasValue)
-        {
-            options.Endpoint = Arguments.GetStringValue("endpoint");
-        }
-
-        if (Arguments.ContainsKey("account-key") && Arguments["account-key"].HasValue)
-        {
-            options.AccountKey = Arguments.GetStringValue("account-key");
-        }
-
-        if (Arguments.ContainsKey("use-managed-identity") && Arguments["use-managed-identity"].HasValue)
-        {
-            options.UseManagedIdentity = true;
-        }
-
-        if (Arguments.ContainsKey("gateway-mode") && Arguments["gateway-mode"].HasValue)
-        {
-            options.UseGatewayMode = true;
-        }
-
-        if (Arguments.ContainsKey("dry-run") && Arguments["dry-run"].HasValue)
-        {
-            options.DryRun = true;
-        }
-
-        if (Arguments.ContainsKey("batch-size") && Arguments["batch-size"].HasValue)
-        {
-            options.BatchSize = Arguments.GetInt32Value("batch-size");
-        }
-
-        if (Arguments.ContainsKey("max-concurrency") && Arguments["max-concurrency"].HasValue)
-        {
-            options.MaxConcurrency = Arguments.GetInt32Value("max-concurrency");
         }
 
         return options;

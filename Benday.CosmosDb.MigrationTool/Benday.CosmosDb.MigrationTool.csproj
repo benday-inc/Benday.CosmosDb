@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -12,11 +12,10 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Azure.Identity"
-                          Version="1.19.0" />
-        <PackageReference Include="Benday.CommandsFramework"
-                          Version="4.16.0" />
-        <PackageReference Include="Microsoft.Azure.Cosmos"
-                          Version="3.58.0" />
+        <PackageReference Include="Azure.Identity" Version="1.19.0" />
+        <PackageReference Include="Benday.CommandsFramework" Version="4.16.0" />
+        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.58.0" />
+		<!-- The Newtonsoft.Json package reference is required to fix a cosmos sdk startup problem -->
+        <PackageReference Include="Newtonsoft.Json" Version="13.*" />
     </ItemGroup>
 </Project>

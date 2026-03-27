@@ -28,6 +28,8 @@ public static class CosmosClientFactory
         {
             AllowBulkExecution = allowBulkExecution,
             ConnectionMode = connectionMode,
+            MaxRetryAttemptsOnRateLimitedRequests = 30,
+            MaxRetryWaitTimeOnRateLimitedRequests = TimeSpan.FromSeconds(60),
             Serializer = new SystemTextJsonCosmosSerializer(new JsonSerializerOptions()),
         };
 

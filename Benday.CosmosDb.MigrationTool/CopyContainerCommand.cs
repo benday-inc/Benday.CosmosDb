@@ -144,6 +144,7 @@ public class CopyContainerCommand : AsynchronousCommand
         var errorCount = 0;
         var totalReadRUs = 0.0;
         var totalWriteRUs = 0.0;
+        var startTime = DateTime.UtcNow;
 
         var query = new QueryDefinition("SELECT * FROM c");
         var requestOptions = new QueryRequestOptions { MaxItemCount = batchSize };
@@ -154,6 +155,7 @@ public class CopyContainerCommand : AsynchronousCommand
         {
             var response = await feedIterator.ReadNextAsync();
             totalReadRUs += response.RequestCharge;
+            var batchRUs = response.RequestCharge;
 
             var batch = new List<JsonObject>();
 
@@ -173,13 +175,27 @@ public class CopyContainerCommand : AsynchronousCommand
                 var (writeRUs, writeErrors) = await WriteBatchAsync(
                     destContainer, batch, partitionKeyPaths, maxConcurrency);
                 totalWriteRUs += writeRUs;
+                batchRUs += writeRUs;
                 writtenCount += batch.Count - writeErrors;
                 errorCount += writeErrors;
             }
 
+            var percentDone = totalDocs > 0 ? (double)processedCount / totalDocs * 100 : 0;
+            var elapsed = DateTime.UtcNow - startTime;
+            var etaString = "calculating...";
+            if (processedCount > 0 && processedCount < totalDocs)
+            {
+                var estimatedTotal = TimeSpan.FromTicks((long)(elapsed.Ticks * ((double)totalDocs / processedCount)));
+                var remaining = estimatedTotal - elapsed;
+                etaString = FormatTimeSpan(remaining);
+            }
+            else if (processedCount >= totalDocs)
+            {
+                etaString = "done";
+            }
+
             _OutputProvider.WriteLine(
-                $"Progress: {processedCount}/{totalDocs} read, {writtenCount} written, {errorCount} errors. " +
-                $"Read RUs: {totalReadRUs:N1}, Write RUs: {totalWriteRUs:N1}");
+                $"Progress: {processedCount}/{totalDocs} ({percentDone:N1}%) | {writtenCount} written, {errorCount} errors | Batch RUs: {batchRUs:N1} | ETA: {etaString}");
         }
 
         _OutputProvider.WriteLine("\n=== Copy Summary ===");
@@ -189,6 +205,19 @@ public class CopyContainerCommand : AsynchronousCommand
         _OutputProvider.WriteLine($"Source read RUs:      {totalReadRUs:N1}");
         _OutputProvider.WriteLine($"Emulator write RUs:   {totalWriteRUs:N1}");
         _OutputProvider.WriteLine($"\nDocuments copied to emulator: {destDatabaseName}/{destContainerName}");
+    }
+
+    private static string FormatTimeSpan(TimeSpan ts)
+    {
+        if (ts.TotalHours >= 1)
+        {
+            return $"{(int)ts.TotalHours}h {ts.Minutes:D2}m {ts.Seconds:D2}s";
+        }
+        if (ts.TotalMinutes >= 1)
+        {
+            return $"{(int)ts.TotalMinutes}m {ts.Seconds:D2}s";
+        }
+        return $"{ts.Seconds}s";
     }
 
     private async Task<int> CountDocumentsAsync(Container container)
