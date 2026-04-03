@@ -14,7 +14,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>6.0.0</TheVersion>
+    <TheVersion>6.0.1</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(TheVersion)-alpha</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure Cosmos DB. Features hierarchical partition key support, LINQ queries with automatic partition keys, optimistic concurrency with ETags, ASP.NET Core dependency injection helpers, and per-repository custom container configuration.</Description>
