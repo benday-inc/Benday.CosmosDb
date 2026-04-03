@@ -1,11 +1,14 @@
+using Benday.Common.Interfaces;
 using Benday.CosmosDb.DomainModels;
 
 namespace Benday.CosmosDb.ServiceLayers;
 
-public interface ITenantItemService<T> where T : class, ITenantItem, new()
+public interface ITenantItemService<T> :
+    IAsyncTenantService<T, string>
+    where T : class, ITenantItem, new()
 {
-    Task DeleteAsync(T item);
+    new Task DeleteAsync(T item);
     Task<IEnumerable<T>> GetAllAsync(string tenantId);
-    Task<T?> GetByIdAsync(string tenantId, string id);
-    Task<T?> SaveAsync(T item);
+    new Task<T?> GetByIdAsync(string tenantId, string id);
+    new Task<T?> SaveAsync(T item);
 }

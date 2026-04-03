@@ -7,21 +7,12 @@ using System.Text.Json.Serialization;
 
 /// <summary>
 /// Represents the basic properties of a Cosmos DB entity.
+/// Identity and tenant properties (Id, TenantId) come from the shared
+/// ITenantItem&lt;string&gt; interface.
 /// </summary>
 public interface ICosmosIdentity
+    : Benday.Common.Interfaces.ITenantItem<string>
 {
-    /// <summary>
-    /// Id of the entity.
-    /// </summary>
-    [JsonPropertyName(CosmosDbConstants.PropertyName_Id)]
-    string Id { get; set; }
-
-    /// <summary>
-    /// Top-level partition key of the entity. Represents the tenant that owns this entity.
-    /// </summary>
-    [JsonPropertyName(CosmosDbConstants.PropertyName_TenantId)]
-    string TenantId { get; set; }
-
     /// <summary>
     /// Timestamp of the entity.
     /// </summary>

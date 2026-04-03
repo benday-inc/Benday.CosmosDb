@@ -25,7 +25,14 @@
       "Bash(dotnet tool:*)",
       "Read(//Users/benday/code/benday-inc/**)",
       "Bash(dotnet run:*)",
-      "Bash(pwsh /Users/benday/code/benday-inc/Benday.CosmosDb/copy-nupkg-local.ps1)"
+      "Bash(pwsh /Users/benday/code/benday-inc/Benday.CosmosDb/copy-nupkg-local.ps1)",
+      "Bash(find:*)",
+      "Bash(dotnet build-server:*)",
+      "Bash(unzip -l ~/LocalNuGet/Benday.Common.Interfaces.1.0.1-alpha.nupkg)",
+      "Read(//Users/benday/.nuget/packages/benday.common.interfaces/**)",
+      "Read(//Users/benday/.nuget/packages/benday.common/**)",
+      "Bash(dotnet ~/.nuget/packages/benday.common.interfaces/1.0.1-alpha/lib/netstandard2.1/Benday.Common.Interfaces.dll)",
+      "Bash(ilspycmd ~/.nuget/packages/benday.common.interfaces/1.0.1-alpha/lib/netstandard2.1/Benday.Common.Interfaces.dll)"
     ],
     "deny": [],
     "ask": []

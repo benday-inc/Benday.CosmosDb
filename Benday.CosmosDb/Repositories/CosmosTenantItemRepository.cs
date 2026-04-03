@@ -391,4 +391,27 @@ public class CosmosTenantItemRepository<T>(
     }
 
     #endregion
+
+    #region IAsyncTenantRepository<T, string> explicit implementations
+
+    /// <summary>
+    /// Gets all items for the specified tenant. Satisfies the shared
+    /// IAsyncTenantRepository&lt;T, string&gt; contract.
+    /// </summary>
+    async Task<IList<T>> Benday.Common.Interfaces.IAsyncTenantRepository<T, string>.GetByTenantAsync(string tenantId)
+    {
+        var results = await GetAllAsync(tenantId);
+        return results.ToList();
+    }
+
+    /// <summary>
+    /// Saves an entity. Explicit implementation for the shared
+    /// IAsyncRepository&lt;T, string&gt; contract which returns Task (not Task&lt;T&gt;).
+    /// </summary>
+    async Task Benday.Common.Interfaces.IAsyncRepository<T, string>.SaveAsync(T entity)
+    {
+        await SaveAsync(entity);
+    }
+
+    #endregion
 }

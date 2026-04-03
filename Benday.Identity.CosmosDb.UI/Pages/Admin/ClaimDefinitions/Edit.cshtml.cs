@@ -91,7 +91,7 @@ public class EditModel : PageModel
                 .Where(v => !string.IsNullOrEmpty(v))
                 .ToList();
 
-        await _store.SaveAsync(claimDef);
+        await ((Benday.CosmosDb.Repositories.IRepository<CosmosIdentityClaimDefinition>)_store).SaveAsync(claimDef);
 
         StatusMessage = IsNew ? "Claim definition created successfully." : "Claim definition updated successfully.";
         IsNew = false;

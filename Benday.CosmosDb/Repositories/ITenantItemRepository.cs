@@ -1,3 +1,4 @@
+using Benday.Common.Interfaces;
 using Benday.CosmosDb.DomainModels;
 
 namespace Benday.CosmosDb.Repositories;
@@ -6,9 +7,26 @@ namespace Benday.CosmosDb.Repositories;
 /// Defines the contract for a repository that manages items that belong to a tenant.
 /// </summary>
 /// <typeparam name="T">Domain model type managed by the repository</typeparam>
-public interface ITenantItemRepository<T> : IRepository<T>
+public interface ITenantItemRepository<T> : IRepository<T>,
+    IAsyncTenantRepository<T, string>
     where T : class, ITenantItem, new()
 {
+    /// <summary>
+    /// Save the entity to the repository. Hides the shared IAsyncRepository SaveAsync
+    /// to resolve ambiguity with IRepository&lt;T&gt;.SaveAsync which returns Task&lt;T&gt;.
+    /// </summary>
+    /// <param name="entity">Entity to save</param>
+    /// <returns>The saved entity</returns>
+    new Task<T> SaveAsync(T entity);
+
+    /// <summary>
+    /// Delete an item from the repository. Hides the shared IAsyncRepository DeleteAsync
+    /// to provide a single unambiguous member.
+    /// </summary>
+    /// <param name="itemToDelete">Item to delete</param>
+    /// <returns></returns>
+    new Task DeleteAsync(T itemToDelete);
+
     /// <summary>
     /// Get all items in the repository that have the specified tenant id.
     /// </summary>
@@ -22,14 +40,7 @@ public interface ITenantItemRepository<T> : IRepository<T>
     /// <param name="tenantId">Tenant id</param>
     /// <param name="id">Id for the entity</param>
     /// <returns>The matching item or null</returns>
-    Task<T?> GetByIdAsync(string tenantId, string id);
-
-    /// <summary>
-    /// Delete an item from the repository.
-    /// </summary>
-    /// <param name="itemToDelete">Item to delete</param>
-    /// <returns></returns>
-    Task DeleteAsync(T itemToDelete);
+    new Task<T?> GetByIdAsync(string tenantId, string id);
 
     /// <summary>
     /// Deletes all items for the specified tenant with throttling and retry logic.

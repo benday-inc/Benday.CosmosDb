@@ -1,14 +1,11 @@
 namespace Benday.CosmosDb.DomainModels;
 
-public interface IParentedItem : ITenantItem
+public interface IParentedItem
+    : ITenantItem,
+      Benday.Common.Interfaces.IParentedItem<string>
 {
     /// <summary>
-    /// Parent ID in our system
-    /// </summary>
-    string ParentId { get; set; }
-
-    /// <summary>
-    /// Entity type of the parent entity
+    /// Entity type of the parent entity. Cosmos-specific discriminator.
     /// </summary>
     string ParentEntityType { get; set; }
 }
