@@ -3,6 +3,7 @@ using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.Repositories;
 using Benday.CosmosDb.SampleApp.Api.ServiceLayers;
+using Benday.CosmosDb.SampleApp.WebUi.Services;
 using Benday.CosmosDb.ServiceLayers;
 using Benday.CosmosDb.Utilities;
 using Benday.Identity.CosmosDb;
@@ -60,6 +61,9 @@ helper.RegisterRepository<LookupValue, ILookupValueRepository, CosmosDbLookupVal
 
 builder.Services.AddTransient<ILookupValueService, LookupValueService>();
 
+// Startup service status checker
+builder.Services.AddSingleton<ServiceStatusChecker>();
+
 var app = builder.Build();
 
 // Seed admin user and claim definitions on startup
@@ -84,7 +88,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Startup}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();

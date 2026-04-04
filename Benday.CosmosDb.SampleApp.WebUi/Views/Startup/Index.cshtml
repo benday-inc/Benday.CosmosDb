@@ -1,0 +1,88 @@
+@{
+    ViewData["Title"] = "Checking Services";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">Benday.CosmosDb Sample App - Service Check</h4>
+                </div>
+                <div class="card-body">
+                    <p>Verifying that required services are available...</p>
+
+                    <table class="table table-sm mb-4">
+                        <tbody>
+                            <tr>
+                                <td><strong>Cosmos DB Emulator</strong> <span class="text-muted small">(localhost:8081)</span></td>
+                                <td id="cosmos-status">
+                                    <span class="badge bg-secondary">Checking...</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Azurite Blob Service</strong> <span class="text-muted small">(localhost:10000)</span></td>
+                                <td id="azurite-status">
+                                    <span class="badge bg-secondary">Checking...</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div id="error-panel" style="display:none;">
+                        <div class="alert alert-danger">
+                            <h5>One or more services are not available</h5>
+                            <p>Start the local development emulators by running:</p>
+                            <pre class="bg-light p-2 rounded"><code>./start-local-dev.ps1</code></pre>
+                            <p class="mb-0">Or start them individually:</p>
+                            <pre class="bg-light p-2 rounded mb-0"><code>./start-cosmos-db-emulator.ps1
+./start-azurite.ps1</code></pre>
+                        </div>
+                        <button id="retry-btn" class="btn btn-primary" onclick="checkServices()">Retry</button>
+                    </div>
+
+                    <div id="success-panel" style="display:none;">
+                        <div class="alert alert-success">
+                            All services are available. Redirecting...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function checkServices() {
+        document.getElementById('error-panel').style.display = 'none';
+        document.getElementById('success-panel').style.display = 'none';
+        document.getElementById('cosmos-status').innerHTML = '<span class="badge bg-secondary">Checking...</span>';
+        document.getElementById('azurite-status').innerHTML = '<span class="badge bg-secondary">Checking...</span>';
+
+        fetch('@Url.Action("Check", "Startup")')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('cosmos-status').innerHTML = data.cosmosDb.reachable
+                    ? '<span class="badge bg-success">Connected</span>'
+                    : '<span class="badge bg-danger">Unavailable</span>';
+
+                document.getElementById('azurite-status').innerHTML = data.azurite.reachable
+                    ? '<span class="badge bg-success">Connected</span>'
+                    : '<span class="badge bg-danger">Unavailable</span>';
+
+                if (data.passed) {
+                    document.getElementById('success-panel').style.display = '';
+                    setTimeout(() => window.location.href = '@Url.Action("Index", "Home")', 1000);
+                } else {
+                    document.getElementById('error-panel').style.display = '';
+                }
+            })
+            .catch(() => {
+                document.getElementById('cosmos-status').innerHTML = '<span class="badge bg-danger">Error</span>';
+                document.getElementById('azurite-status').innerHTML = '<span class="badge bg-danger">Error</span>';
+                document.getElementById('error-panel').style.display = '';
+            });
+    }
+
+    checkServices();
+</script>
