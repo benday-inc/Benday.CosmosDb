@@ -395,9 +395,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
                 return container;
             }
-            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Conflict)
+            catch (CosmosException ex) when (
+                ex.StatusCode == System.Net.HttpStatusCode.Conflict ||
+                (ex.StatusCode == System.Net.HttpStatusCode.InternalServerError &&
+                 (ex.Message.Contains("already exists", StringComparison.OrdinalIgnoreCase) ||
+                  ex.Message.Contains("E23505", StringComparison.OrdinalIgnoreCase))))
             {
-                // Another thread/process already created the container
+                // Another thread/process already created the container.
+                // The vnext-preview emulator returns 500 with PostgresError E23505
+                // (unique constraint violation) instead of the expected 409 Conflict.
                 Logger.LogInformation($"Container '{_Options.ContainerName}' was created by another process.");
 
                 return _Database.GetContainer(_Options.ContainerName);
@@ -453,9 +459,12 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             catch (CosmosException ex) when (
                 ex.StatusCode == System.Net.HttpStatusCode.Conflict ||
                 (ex.StatusCode == System.Net.HttpStatusCode.InternalServerError &&
-                 ex.Message.Contains("already exists", StringComparison.OrdinalIgnoreCase)))
+                 (ex.Message.Contains("already exists", StringComparison.OrdinalIgnoreCase) ||
+                  ex.Message.Contains("E23505", StringComparison.OrdinalIgnoreCase))))
             {
-                // Another thread/process already created the database
+                // Another thread/process already created the database.
+                // The vnext-preview emulator returns 500 with PostgresError E23505
+                // (unique constraint violation) instead of the expected 409 Conflict.
                 Logger.LogInformation($"Database '{_Options.DatabaseName}' was created by another process.");
 
                 return _Client.GetDatabase(_Options.DatabaseName);
