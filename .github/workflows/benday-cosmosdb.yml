@@ -6,17 +6,23 @@ on:
     paths:
       - 'Benday.CosmosDb/**'
       - 'Benday.CosmosDb.UnitTests/**'
+      - 'Benday.CosmosDb.SampleApp.Api/**'
+      - 'Benday.CosmosDb.SampleApp.WebUi/**'
+      - 'Benday.CosmosDb.SampleApp.Tests/**'
       - '.github/workflows/benday-cosmosdb.yml'
   pull_request:
     branches: [ "master" ]
     paths:
       - 'Benday.CosmosDb/**'
       - 'Benday.CosmosDb.UnitTests/**'
+      - 'Benday.CosmosDb.SampleApp.Api/**'
+      - 'Benday.CosmosDb.SampleApp.WebUi/**'
+      - 'Benday.CosmosDb.SampleApp.Tests/**'
       - '.github/workflows/benday-cosmosdb.yml'
   workflow_dispatch:
 
 jobs:
-  build:
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,8 +49,8 @@ jobs:
       - name: Build UnitTests (Release)
         run: dotnet build Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --no-restore
 
-      - name: Test (Release)
-        run: dotnet test Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --verbosity normal
+      - name: Run Unit Tests (Release)
+        run: dotnet test Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --no-build --verbosity normal
 
       - name: Pack Benday.CosmosDb
         run: dotnet pack Benday.CosmosDb/Benday.CosmosDb.csproj --no-build --configuration Release --output ./artifacts
@@ -55,8 +61,74 @@ jobs:
           name: nuget-packages-cosmosdb
           path: ./artifacts/*.nupkg
 
+  integration-tests:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+
+    services:
+      cosmosdb:
+        image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
+        ports:
+          - 8081:8081
+          - 1234:1234
+        env:
+          PROTOCOL: https
+      azurite:
+        image: mcr.microsoft.com/azure-storage/azurite
+        ports:
+          - 10000:10000
+          - 10001:10001
+          - 10002:10002
+        options: >-
+          azurite
+          --skipApiVersionCheck
+          --blobHost 0.0.0.0
+          --queueHost 0.0.0.0
+          --tableHost 0.0.0.0
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore SampleApp.Tests
+        run: dotnet restore Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj
+
+      - name: Build SampleApp.Tests (Release)
+        run: dotnet build Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj --configuration Release --no-restore
+
+      - name: Wait for Cosmos DB Emulator
+        run: |
+          echo "Waiting for Cosmos DB Emulator to be ready..."
+          for i in $(seq 1 30); do
+            if curl -sk https://localhost:8081/_explorer/emulator.pem > /dev/null 2>&1; then
+              echo "Cosmos DB Emulator is ready."
+              break
+            fi
+            echo "Attempt $i/30 - waiting 10s..."
+            sleep 10
+          done
+
+      - name: Wait for Azurite
+        run: |
+          echo "Waiting for Azurite to be ready..."
+          for i in $(seq 1 10); do
+            if curl -s http://localhost:10000 > /dev/null 2>&1; then
+              echo "Azurite is ready."
+              break
+            fi
+            echo "Attempt $i/10 - waiting 3s..."
+            sleep 3
+          done
+
+      - name: Run Integration Tests (Release, .NET 10)
+        run: dotnet test Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj --configuration Release --no-build --verbosity normal --framework net10.0
+
   deploy:
-    needs: build
+    needs: [unit-tests, integration-tests]
     runs-on: ubuntu-latest
     environment: nuget-deploy
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
