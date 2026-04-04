@@ -335,7 +335,18 @@ The role entity with support for:
 
 All identity entities use a "SYSTEM" tenant ID by default, meaning all users and roles are stored in the same logical partition. This simplifies queries and works well for most applications. If you need a different partitioning strategy, you can override the `SystemTenantItem` base class.
 
-## Migration from v1.x
+## Migration from Earlier Versions
+
+### v5.x to v6.x
+
+v6.0 aligns with the Benday.CosmosDb v6 core library. Key changes:
+
+- `CosmosIdentityConstants.SystemOwnerId` renamed to `CosmosIdentityConstants.SystemTenantId`
+- `CosmosIdentityOptions.IdentityOwnerId` renamed to `CosmosIdentityOptions.IdentityTenantId`
+- Underlying partition key path changed from `/pk,/discriminator` to `/tenantId,/entityType`
+- See [MIGRATION-v6.md](../MIGRATION-v6.md) for the complete core library migration guide
+
+### v1.x to v2.x
 
 v2.0 is a breaking change. All identity classes have been renamed to avoid namespace collisions with `Microsoft.AspNetCore.Identity`:
 

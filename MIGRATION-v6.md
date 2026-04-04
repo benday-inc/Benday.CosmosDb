@@ -36,6 +36,13 @@ When upgrading an application from Benday.CosmosDb v5.x to v6.x, apply these cha
 - Any method parameter named `parentDiscriminator` is now `parentEntityType`
 
 ## How to Apply
+
+### Option 1: Use an AI coding agent
+
+This migration guide works as a prompt for AI coding agents like Claude Code, GitHub Copilot, or similar tools. Paste the contents of this file as a prompt and point the agent at your project. The rename rules above give the agent enough context to update your code automatically.
+
+### Option 2: Manual migration
+
 1. Update NuGet packages to v6.x
 2. Do a find-and-replace for each rename above, starting with the longest names first
    to avoid partial replacements (e.g., rename `IOwnedItemRepository` before `IOwnedItem`)
