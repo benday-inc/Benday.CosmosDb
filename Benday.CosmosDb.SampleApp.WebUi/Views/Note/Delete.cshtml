@@ -7,6 +7,12 @@
 <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
+@if (Model.HasAttachment)
+{
+    <div class="alert alert-warning">
+        This note has file attachments. Deleting the note will also delete all attachments.
+    </div>
+}
 <div>
     <h4>Note</h4>
     <hr />

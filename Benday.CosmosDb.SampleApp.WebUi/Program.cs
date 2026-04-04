@@ -1,3 +1,4 @@
+using Benday.AzureStorage.Configuration;
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.Repositories;
@@ -45,6 +46,11 @@ var helper = new CosmosRegistrationHelper(
 
 helper.RegisterRepositoryAndService<Note>();
 helper.RegisterParentedRepositoryAndService<Comment>();
+
+// Register Azure Blob Storage services for note attachments
+builder.Services.AddBendayAzureStorage(builder.Configuration);
+builder.Services.AddBlobRepository("note-attachments");
+builder.Services.AddTransient<INoteAttachmentService, NoteAttachmentService>();
 helper.RegisterRepository<Person, IPersonRepository, CosmosDbPersonRepository>();
 builder.Services.AddTransient<IPersonService, PersonService>();
 

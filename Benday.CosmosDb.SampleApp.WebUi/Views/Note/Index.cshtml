@@ -19,6 +19,9 @@
                 @Html.DisplayNameFor(model => model.Subject)
             </th>
             <th>
+                Has Attachments
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TenantId)
             </th>
             <th>
@@ -26,13 +29,7 @@
             </th>
             
             <th>
-                @Html.DisplayNameFor(model => model.TimestampUnixStyle)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Timestamp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Etag)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EntityType)
@@ -50,20 +47,26 @@
                 @Html.DisplayFor(modelItem => item.Subject)
             </td>
             <td>
+                @if (item.HasAttachment)
+                {
+                    <span title="Has attachments">True</span>
+                }
+                else
+                {
+                    <span title="No attachments">False</span>
+                }
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TenantId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
             </td>           
-            <td>
-                @Html.DisplayFor(modelItem => item.TimestampUnixStyle)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Timestamp)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Etag)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.EntityType)
             </td>

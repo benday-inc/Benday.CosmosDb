@@ -11,4 +11,5 @@ public class Note : TenantItemBase
 {
     public string Text { get; set; } = string.Empty;
     public string Subject { get; set; } = string.Empty;
+    public bool HasAttachment { get; set; }
 }

@@ -1,8 +1,9 @@
-﻿using Benday.CosmosDb.Repositories;
+using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.ServiceLayers;
 using Benday.CosmosDb.ServiceLayers;
+using Benday.CosmosDb.SampleApp.WebUi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Benday.CosmosDb.SampleApp.WebUi.Controllers;
@@ -10,9 +11,14 @@ namespace Benday.CosmosDb.SampleApp.WebUi.Controllers;
 public class NoteController : Controller
 {
     private readonly ITenantItemService<Note> _NoteService;
-    public NoteController(ITenantItemService<Note> noteService)
+    private readonly INoteAttachmentService _attachmentService;
+
+    public NoteController(
+        ITenantItemService<Note> noteService,
+        INoteAttachmentService attachmentService)
     {
         _NoteService = noteService;
+        _attachmentService = attachmentService;
     }
 
     // GET: NoteController
@@ -42,7 +48,16 @@ public class NoteController : Controller
             return NotFound();
         }
 
-        return View(note);
+        var attachments = await _attachmentService.ListAttachmentsAsync(
+            ApiConstants.DEFAULT_TENANT_ID, id);
+
+        var viewModel = new NoteDetailsViewModel
+        {
+            Note = note,
+            Attachments = attachments
+        };
+
+        return View(viewModel);
     }
 
     // GET: NoteController/Create
@@ -182,6 +197,13 @@ public class NoteController : Controller
                 return NotFound();
             }
 
+            // Delete all attachments before deleting the note
+            if (existing.HasAttachment)
+            {
+                await _attachmentService.DeleteAllAttachmentsAsync(
+                    ApiConstants.DEFAULT_TENANT_ID, id);
+            }
+
             await _NoteService.DeleteAsync(existing);
 
             return RedirectToAction(nameof(Index));
@@ -190,5 +212,57 @@ public class NoteController : Controller
         {
             return View();
         }
+    }
+
+    // POST: NoteController/UploadAttachment
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> UploadAttachment(string id, IFormFile file)
+    {
+        if (string.IsNullOrEmpty(id))
+        {
+            return BadRequest("Id is required.");
+        }
+
+        if (file == null || file.Length == 0)
+        {
+            return RedirectToAction(nameof(Details), new { id });
+        }
+
+        using var stream = file.OpenReadStream();
+        await _attachmentService.AttachFileAsync(
+            ApiConstants.DEFAULT_TENANT_ID, id, file.FileName, stream);
+
+        return RedirectToAction(nameof(Details), new { id });
+    }
+
+    // GET: NoteController/DownloadAttachment
+    public async Task<ActionResult> DownloadAttachment(string id, string filename)
+    {
+        if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(filename))
+        {
+            return BadRequest("Id and filename are required.");
+        }
+
+        var bytes = await _attachmentService.DownloadAsync(
+            ApiConstants.DEFAULT_TENANT_ID, id, filename);
+
+        return File(bytes, "application/octet-stream", filename);
+    }
+
+    // POST: NoteController/DeleteAttachment
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> DeleteAttachment(string id, string filename)
+    {
+        if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(filename))
+        {
+            return BadRequest("Id and filename are required.");
+        }
+
+        await _attachmentService.DeleteAttachmentAsync(
+            ApiConstants.DEFAULT_TENANT_ID, id, filename);
+
+        return RedirectToAction(nameof(Details), new { id });
     }
 }

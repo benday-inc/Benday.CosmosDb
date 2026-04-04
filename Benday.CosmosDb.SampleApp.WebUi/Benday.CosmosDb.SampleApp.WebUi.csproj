@@ -8,6 +8,11 @@
  
  
   <ItemGroup>
+    <PackageReference Include="Benday.AzureStorage" Version="1.0.0-alpha" />
+    <PackageReference Include="Benday.BlobStorage" Version="1.0.0-alpha" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Benday.CosmosDb.SampleApp.Api\Benday.CosmosDb.SampleApp.Api.csproj" />
     <ProjectReference Include="..\Benday.CosmosDb\Benday.CosmosDb.csproj" />
     <ProjectReference Include="..\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />

@@ -1,4 +1,4 @@
-﻿@model Benday.CosmosDb.SampleApp.Api.DomainModels.Note
+@model Benday.CosmosDb.SampleApp.WebUi.Models.NoteDetailsViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -11,66 +11,118 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Note.Text)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Text)
+            @Html.DisplayFor(model => model.Note.Text)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Subject)
+            @Html.DisplayNameFor(model => model.Note.Subject)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Subject)
+            @Html.DisplayFor(model => model.Note.Subject)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TenantId)
+            @Html.DisplayNameFor(model => model.Note.TenantId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TenantId)
+            @Html.DisplayFor(model => model.Note.TenantId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
+            @Html.DisplayNameFor(model => model.Note.Id)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
+            @Html.DisplayFor(model => model.Note.Id)
         </dd>
-        
+
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TimestampUnixStyle)
+            @Html.DisplayNameFor(model => model.Note.TimestampUnixStyle)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TimestampUnixStyle)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Timestamp)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Timestamp)
+            @Html.DisplayFor(model => model.Note.TimestampUnixStyle)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Etag)
+            @Html.DisplayNameFor(model => model.Note.Timestamp)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Etag)
+            @Html.DisplayFor(model => model.Note.Timestamp)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EntityType)
+            @Html.DisplayNameFor(model => model.Note.Etag)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EntityType)
+            @Html.DisplayFor(model => model.Note.Etag)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Note.EntityType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Note.EntityType)
         </dd>
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Note.Id }) |
     <a asp-action="Index">Back to List</a>
+</div>
+
+<hr />
+<div>
+    <h4>Attachments</h4>
+
+    <form asp-action="UploadAttachment" asp-route-id="@Model.Note.Id" method="post" enctype="multipart/form-data" class="mb-3">
+        @Html.AntiForgeryToken()
+        <div class="input-group">
+            <input type="file" name="file" class="form-control" />
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+    </form>
+
+    @if (Model.Attachments.Count > 0)
+    {
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var filename in Model.Attachments)
+                {
+                    <tr>
+                        <td>@filename</td>
+                        <td>
+                            <a asp-action="DownloadAttachment"
+                               asp-route-id="@Model.Note.Id"
+                               asp-route-filename="@filename"
+                               class="btn btn-sm btn-outline-primary">Download</a>
+                            <form asp-action="DeleteAttachment"
+                                  asp-route-id="@Model.Note.Id"
+                                  asp-route-filename="@filename"
+                                  method="post"
+                                  style="display:inline;"
+                                  onsubmit="return confirm('Delete this attachment?');">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">No attachments.</p>
+    }
 </div>
 
 <hr />
 <div>
     <h4>Comments</h4>
     <p>
-        <a asp-controller="Comment" asp-action="Index" asp-route-noteId="@Model.Id" class="btn btn-primary">View All Comments</a>
-        <a asp-controller="Comment" asp-action="Create" asp-route-noteId="@Model.Id" class="btn btn-success">Add New Comment</a>
+        <a asp-controller="Comment" asp-action="Index" asp-route-noteId="@Model.Note.Id" class="btn btn-primary">View All Comments</a>
+        <a asp-controller="Comment" asp-action="Create" asp-route-noteId="@Model.Note.Id" class="btn btn-success">Add New Comment</a>
     </p>
 </div>
