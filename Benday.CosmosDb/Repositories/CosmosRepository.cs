@@ -395,6 +395,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
                 return container;
             }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Conflict)
+            {
+                // Another thread/process already created the container
+                Logger.LogInformation($"Container '{_Options.ContainerName}' was created by another process.");
+
+                return _Database.GetContainer(_Options.ContainerName);
+            }
             catch (Exception ex)
             {
                 Logger.LogError($"Error creating container '{_Options.ContainerName}' in database '{_Options.DatabaseName}'.  {ex}");
@@ -435,11 +442,24 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         {
             Logger.LogInformation($"Creating database '{_Options.DatabaseName}'...");
 
-            var response = await _Client.CreateDatabaseAsync(_Options.DatabaseName, throughput: _Options.DatabaseThroughput);
+            try
+            {
+                var response = await _Client.CreateDatabaseAsync(_Options.DatabaseName, throughput: _Options.DatabaseThroughput);
 
-            Logger.LogInformation($"Database '{_Options.DatabaseName}' created.");
+                Logger.LogInformation($"Database '{_Options.DatabaseName}' created.");
 
-            return response.Database;
+                return response.Database;
+            }
+            catch (CosmosException ex) when (
+                ex.StatusCode == System.Net.HttpStatusCode.Conflict ||
+                (ex.StatusCode == System.Net.HttpStatusCode.InternalServerError &&
+                 ex.Message.Contains("already exists", StringComparison.OrdinalIgnoreCase)))
+            {
+                // Another thread/process already created the database
+                Logger.LogInformation($"Database '{_Options.DatabaseName}' was created by another process.");
+
+                return _Client.GetDatabase(_Options.DatabaseName);
+            }
         }
     }
 
