@@ -17,7 +17,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <TheVersion>6.0.2</TheVersion>
+    <TheVersion>6.0.3</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(TheVersion)-alpha</Version>
     <Description>ASP.NET Core Identity UI for Azure Cosmos DB. Provides pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and AddCosmosIdentityWithUI() convenience method that combines core identity registration with cookie authentication. Built on top of Benday.Identity.CosmosDb.</Description>
