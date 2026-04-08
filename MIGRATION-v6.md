@@ -40,6 +40,17 @@ When upgrading an application from Benday.CosmosDb v5.x to v6.x, apply these cha
 - `GetContainer()` → `GetContainerAsync()` (on `CosmosRepository<T>` — do NOT rename Cosmos SDK calls like `Database.GetContainer()` or `Database.GetContainerQueryIterator()`)
 - Variable naming convention: store the result in `queryContext` (not `queryable` or `query`), then access `queryContext.Queryable` for the LINQ expression tree and `queryContext.PartitionKey` for the partition key
 
+## Diagnostics Refactoring
+- Inline diagnostic logging in `DeleteAsync`, `SaveAsync`, `GetResultsAsync`, `GetPagedAsync`, and `CosmosTenantItemRepository.GetByIdAsync` has been consolidated into three helper methods on `CosmosRepository<T>`:
+  - `LogPointOperationDiagnostics(string operationName, double requestCharge, CosmosDiagnostics diagnostics)` — for save, delete, and point-read operations
+  - `LogFeedResponseDiagnostics(string queryDescription, double requestCharge, CosmosDiagnostics diagnostics)` — for per-page feed iterator results with cross-partition detection
+  - `LogQueryTotalDiagnostics(string queryDescription, double totalRequestCharge)` — for total RU charge at query completion
+- Two new virtual template methods allow derived repositories to hook into diagnostics:
+  - `OnLogPointOperationDiagnostics(string operationName, double requestCharge, string diagnosticsString)`
+  - `OnLogFeedResponseDiagnostics(string queryDescription, double requestCharge, bool isCrossPartition)`
+- `DiagnosticsHandler` class has been removed (was unused dead code)
+- If you had custom code that overrode or called the old inline diagnostic patterns, update to use the new helper methods
+
 ## Method Parameter Renames
 - Any method parameter named `ownerId` is now `tenantId`
 - Any method parameter named `parentDiscriminator` is now `parentEntityType`

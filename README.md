@@ -24,8 +24,9 @@ YouTube: https://www.youtube.com/@_benday
 * Bulk operations with throttling and retry logic (`SaveAllAsync`, `DeleteAllByTenantIdAsync`)
 * Paged query results with continuation tokens (`GetPagedAsync`)
 * Shared interface contracts via `Benday.Common.Interfaces` (`IAsyncTenantRepository`, `IBlobOwner`, `IParentedItem`)
-* Logging of query performance and [request units](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units)
+* Logging of query performance and [request units](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units) with consolidated diagnostics helpers
 * Detect and warn when you have cross-partition queries
+* Template method hooks (`OnLogPointOperationDiagnostics`, `OnLogFeedResponseDiagnostics`) for custom diagnostics handling in derived repositories
 * Helper classes and methods for registering types and handling connection configuration
 * Ultra-simple configuration for Azure Cosmos DB Linux emulator
 * Optimistic concurrency control using ETags

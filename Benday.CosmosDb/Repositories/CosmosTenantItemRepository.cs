@@ -74,9 +74,7 @@ public class CosmosTenantItemRepository<T>(
                 return null;
             }
 
-            var ruCharge = response.RequestCharge;
-
-            Logger.LogInformation($"Request Charge: {ruCharge}");
+            LogPointOperationDiagnostics(nameof(GetByIdAsync), response.RequestCharge, response.Diagnostics);
 
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {

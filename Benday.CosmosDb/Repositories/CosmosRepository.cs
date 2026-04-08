@@ -111,11 +111,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             }
             else
             {
-                // print diagnostics
-                var diagnostics = response.Diagnostics;
-                var diagnosticsString = diagnostics.ToString();
-                Logger.LogInformation($"Request Charge (DeleteAsync): {response.RequestCharge}");
-                Logger.LogInformation($"Diagnostics (DeleteAsync): {diagnosticsString}");
+                LogPointOperationDiagnostics(nameof(DeleteAsync), response.RequestCharge, response.Diagnostics);
                 if (response.StatusCode is System.Net.HttpStatusCode.OK or System.Net.HttpStatusCode.NoContent)
                 {
                     return;
@@ -187,24 +183,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         {
             var response = await resultSetIterator.ReadNextAsync();
 
-            var diagnostics = response.Diagnostics;
-            var ruCharge = response.RequestCharge;
-
-            Logger.LogInformation($"Request Charge ({queryDescription}): {ruCharge}");
-
-            totalRequestCharge += ruCharge;
-
-            var isCrossPartition = IsCrossPartitionQuery(diagnostics);
-
-            if (isCrossPartition)
-            {
-                Logger.LogInformation($"*** WARNING ***: Cross-partition query for {queryDescription}");
-            }
+            totalRequestCharge += response.RequestCharge;
+            LogFeedResponseDiagnostics(queryDescription, response.RequestCharge, response.Diagnostics);
 
             items.AddRange(response);
         }
 
-        Logger.LogInformation($"Total request charge ({queryDescription}): {totalRequestCharge}");
+        LogQueryTotalDiagnostics(queryDescription, totalRequestCharge);
 
         return items;
     }
@@ -252,6 +237,78 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
 
         return isCrossPartition;
+    }
+
+    /// <summary>
+    /// Logs diagnostics for a point operation (save, delete, point-read).
+    /// </summary>
+    /// <param name="operationName">Name of the operation for log messages.</param>
+    /// <param name="requestCharge">RU charge from the response.</param>
+    /// <param name="diagnostics">Cosmos diagnostics from the response.</param>
+    protected void LogPointOperationDiagnostics(
+        string operationName, double requestCharge, CosmosDiagnostics diagnostics)
+    {
+        var diagnosticsString = diagnostics.ToString();
+        Logger.LogInformation($"Request Charge ({operationName}): {requestCharge}");
+        Logger.LogInformation($"Diagnostics ({operationName}): {diagnosticsString}");
+        OnLogPointOperationDiagnostics(operationName, requestCharge, diagnosticsString);
+    }
+
+    /// <summary>
+    /// Called after a point operation (save, delete, point-read) is logged.
+    /// Override in derived classes to add custom diagnostics handling.
+    /// </summary>
+    /// <param name="operationName">Name of the operation.</param>
+    /// <param name="requestCharge">RU charge from the response.</param>
+    /// <param name="diagnosticsString">Stringified Cosmos diagnostics.</param>
+    protected virtual void OnLogPointOperationDiagnostics(
+        string operationName, double requestCharge, string diagnosticsString)
+    {
+    }
+
+    /// <summary>
+    /// Logs diagnostics for a single page of feed iterator results,
+    /// including cross-partition query detection.
+    /// </summary>
+    /// <param name="queryDescription">Description of the query for log messages.</param>
+    /// <param name="requestCharge">RU charge for this page.</param>
+    /// <param name="diagnostics">Cosmos diagnostics for this page.</param>
+    protected void LogFeedResponseDiagnostics(
+        string queryDescription, double requestCharge, CosmosDiagnostics diagnostics)
+    {
+        Logger.LogInformation($"Request Charge ({queryDescription}): {requestCharge}");
+
+        var isCrossPartition = IsCrossPartitionQuery(diagnostics);
+
+        if (isCrossPartition)
+        {
+            Logger.LogWarning($"Cross-partition query detected for {queryDescription}. This may impact performance.");
+        }
+
+        OnLogFeedResponseDiagnostics(queryDescription, requestCharge, isCrossPartition);
+    }
+
+    /// <summary>
+    /// Called after a feed response page is logged.
+    /// Override in derived classes to add custom diagnostics handling.
+    /// </summary>
+    /// <param name="queryDescription">Description of the query.</param>
+    /// <param name="requestCharge">RU charge for this page.</param>
+    /// <param name="isCrossPartition">Whether a cross-partition query was detected.</param>
+    protected virtual void OnLogFeedResponseDiagnostics(
+        string queryDescription, double requestCharge, bool isCrossPartition)
+    {
+    }
+
+    /// <summary>
+    /// Logs the total RU charge for a completed query.
+    /// </summary>
+    /// <param name="queryDescription">Description of the query for log messages.</param>
+    /// <param name="totalRequestCharge">Accumulated RU charge across all pages.</param>
+    protected void LogQueryTotalDiagnostics(
+        string queryDescription, double totalRequestCharge)
+    {
+        Logger.LogInformation($"Total request charge ({queryDescription}): {totalRequestCharge}");
     }
 
     /// <summary>
@@ -514,13 +571,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                     saveThis.TimestampUnixStyle = response.Resource.TimestampUnixStyle;
                 }
 
-                // print diagnostics
-                var diagnostics = response.Diagnostics;
-                var diagnosticsString = diagnostics.ToString();
-
-                Logger.LogInformation($"Request Charge (SaveAsync): {response.RequestCharge}");
-
-                Logger.LogInformation($"Diagnostics (SaveAsync): {diagnosticsString}");
+                LogPointOperationDiagnostics(nameof(SaveAsync), response.RequestCharge, response.Diagnostics);
 
                 if (response.StatusCode is
                     System.Net.HttpStatusCode.OK or System.Net.HttpStatusCode.Created)
@@ -816,14 +867,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             newContinuationToken = response.ContinuationToken;
             hasMoreResults = !string.IsNullOrEmpty(newContinuationToken);
 
-            var diagnostics = response.Diagnostics;
-            Logger.LogInformation($"Request Charge (GetPagedAsync): {response.RequestCharge}");
-
-            var isCrossPartition = IsCrossPartitionQuery(diagnostics);
-            if (isCrossPartition)
-            {
-                Logger.LogWarning($"GetPagedAsync is performing a cross-partition query. This may impact performance.");
-            }
+            LogFeedResponseDiagnostics(nameof(GetPagedAsync), response.RequestCharge, response.Diagnostics);
         }
 
         return new PagedResults<T>(items, newContinuationToken, hasMoreResults, totalRequestCharge);
@@ -879,7 +923,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             newContinuationToken = response.ContinuationToken;
             hasMoreResults = !string.IsNullOrEmpty(newContinuationToken);
 
-            Logger.LogInformation($"Request Charge (GetPagedAsync with partition): {response.RequestCharge}");
+            LogFeedResponseDiagnostics(nameof(GetPagedAsync), response.RequestCharge, response.Diagnostics);
         }
 
         return new PagedResults<T>(items, newContinuationToken, hasMoreResults, totalRequestCharge);
