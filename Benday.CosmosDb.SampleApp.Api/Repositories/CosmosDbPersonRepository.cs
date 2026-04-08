@@ -23,14 +23,14 @@ public class CosmosDbPersonRepository : CosmosTenantItemRepository<Person>, IPer
 
     public async Task<Person?> GetPersonByEmailAddress(string emailAddress)
     {
-        var queryable = await GetQueryable(ApiConstants.DEFAULT_TENANT_ID);
+        var queryContext = await GetQueryContextAsync(ApiConstants.DEFAULT_TENANT_ID);
 
-        var query = queryable.Queryable.Where(x => x.EmailAddress == emailAddress);
+        var query = queryContext.Queryable.Where(x => x.EmailAddress == emailAddress);
 
-        var results = await GetResults(
+        var results = await GetResultsAsync(
             query,
-            GetQueryDescription(nameof(GetPersonByEmailAddress)), 
-            queryable.PartitionKey);
+            GetQueryDescription(nameof(GetPersonByEmailAddress)),
+            queryContext.PartitionKey);
 
         return results.FirstOrDefault();
     }

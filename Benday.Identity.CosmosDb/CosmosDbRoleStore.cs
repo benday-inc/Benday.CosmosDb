@@ -52,9 +52,9 @@ namespace Benday.Identity.CosmosDb
 
         public async Task<CosmosIdentityRole?> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
         {
-            var query = await GetQueryable(_identityTenantId);
-            var queryable = query.Queryable.Where(x => x.NormalizedName == normalizedRoleName);
-            var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+            var queryContext = await GetQueryContextAsync(_identityTenantId);
+            var queryable = queryContext.Queryable.Where(x => x.NormalizedName == normalizedRoleName);
+            var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
             return results.FirstOrDefault();
         }
 
@@ -140,8 +140,8 @@ namespace Benday.Identity.CosmosDb
         {
             get
             {
-                var query = GetQueryable(_identityTenantId).GetAwaiter().GetResult();
-                return query.Queryable;
+                var queryContext = GetQueryContextAsync(_identityTenantId).GetAwaiter().GetResult();
+                return queryContext.Queryable;
             }
         }
 

@@ -77,9 +77,9 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     public async Task<CosmosIdentityUser?> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
     {
-        var query = await GetQueryable(_identityTenantId);
-        var queryable = query.Queryable.Where(x => x.NormalizedUserName == normalizedUserName);
-        var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x => x.NormalizedUserName == normalizedUserName);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
         return results.FirstOrDefault();
     }
 
@@ -125,9 +125,9 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     public async Task<CosmosIdentityUser?> FindByEmailAsync(string normalizedEmail, CancellationToken cancellationToken)
     {
-        var query = await GetQueryable(_identityTenantId);
-        var queryable = query.Queryable.Where(x => x.NormalizedEmail == normalizedEmail);
-        var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x => x.NormalizedEmail == normalizedEmail);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
         return results.FirstOrDefault();
     }
 
@@ -246,10 +246,10 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
     public async Task<IList<CosmosIdentityUser>> GetUsersInRoleAsync(string roleName, CancellationToken cancellationToken)
     {
         var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
-        var query = await GetQueryable(_identityTenantId);
-        var queryable = query.Queryable.Where(x =>
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x =>
             x.Claims.Any(y => y.ClaimType == ClaimTypes.Role && y.ClaimValue == originalName));
-        var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
         return results;
     }
 
@@ -371,10 +371,10 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     public async Task<IList<CosmosIdentityUser>> GetUsersForClaimAsync(Claim claim, CancellationToken cancellationToken)
     {
-        var query = await GetQueryable(_identityTenantId);
-        var queryable = query.Queryable.Where(x =>
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x =>
             x.Claims.Any(c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value));
-        var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
         return results;
     }
 
@@ -502,10 +502,10 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     public async Task<CosmosIdentityUser?> FindByLoginAsync(string loginProvider, string providerKey, CancellationToken cancellationToken)
     {
-        var query = await GetQueryable(_identityTenantId);
-        var queryable = query.Queryable.Where(x =>
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x =>
             x.Logins.Any(l => l.LoginProvider == loginProvider && l.ProviderKey == providerKey));
-        var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
         return results.FirstOrDefault();
     }
 
@@ -517,8 +517,8 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
     {
         get
         {
-            var query = GetQueryable(_identityTenantId).GetAwaiter().GetResult();
-            return query.Queryable;
+            var queryContext = GetQueryContextAsync(_identityTenantId).GetAwaiter().GetResult();
+            return queryContext.Queryable;
         }
     }
 
@@ -576,10 +576,10 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
     public async Task<CosmosIdentityUser?> FindByPasskeyIdAsync(byte[] credentialId, CancellationToken cancellationToken)
     {
         var encodedId = Base64UrlEncode(credentialId);
-        var query = await GetQueryable(_identityTenantId);
-        var queryable = query.Queryable.Where(x =>
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x =>
             x.Passkeys.Any(p => p.CredentialId == encodedId));
-        var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
         return results.FirstOrDefault();
     }
 

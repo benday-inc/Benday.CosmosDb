@@ -78,7 +78,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// </summary>
     /// <returns>Reference to the container</returns>
     /// <exception cref="InvalidOperationException"></exception>
-    protected async Task<Microsoft.Azure.Cosmos.Container> GetContainer()
+    protected async Task<Microsoft.Azure.Cosmos.Container> GetContainerAsync()
     {
         await Initialize();
 
@@ -94,7 +94,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <exception cref="InvalidOperationException"></exception>
     public async Task DeleteAsync(string id)
     {
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
         var itemToDelete = await GetByIdAsync(id) ?? throw new CosmosDbItemNotFoundException(id, _Options.ContainerName);
 
@@ -138,16 +138,16 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <returns>The matching items</returns>
     public async Task<IEnumerable<T>> GetAllAsync()
     {
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
 
 #pragma warning disable CS0618 // Intentional cross-partition query at the base repository level
-        var queryable = await GetQueryable();
+        var queryContext = await GetQueryContextAsync();
 #pragma warning restore CS0618
 
-        var query = queryable.Queryable.Where(x => x.EntityType == EntityType);
+        var query = queryContext.Queryable.Where(x => x.EntityType == EntityType);
 
-        var items = await GetResults(query, nameof(GetAllAsync), queryable.PartitionKey);
+        var items = await GetResultsAsync(query, nameof(GetAllAsync), queryContext.PartitionKey);
 
         return items;
     }
@@ -159,14 +159,14 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="queryDescription">logging description for the query</param>
     /// <param name="partitionKey">partition key that's configured for this query. NOTE: this is purely to logging purposes</param>
     /// <returns></returns>
-    protected async Task<List<T>> GetResults(
+    protected async Task<List<T>> GetResultsAsync(
         IQueryable<T> query, string queryDescription, PartitionKey partitionKey)
     {
-        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResults)} - {queryDescription} query {query} with partition key {partitionKey}");
+        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResultsAsync)} - {queryDescription} query {query} with partition key {partitionKey}");
 
         var feedIterator = query.ToFeedIterator();
 
-        var results = await GetResults(feedIterator, queryDescription);
+        var results = await GetResultsAsync(feedIterator, queryDescription);
 
         return results;
     }
@@ -177,7 +177,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="resultSetIterator">Feed iterator to read the results from</param>
     /// <param name="queryDescription">Description of this query for logging</param>
     /// <returns></returns>
-    protected async Task<List<T>> GetResults(FeedIterator<T> resultSetIterator, string queryDescription)
+    protected async Task<List<T>> GetResultsAsync(FeedIterator<T> resultSetIterator, string queryDescription)
     {
         var items = new List<T>();
 
@@ -263,18 +263,18 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <returns>The first matching entity</returns>
     public async Task<T?> GetByIdAsync(string id)
     {
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
         try
         {
 
 #pragma warning disable CS0618 // Intentional cross-partition query at the base repository level
-            var queryable = await GetQueryable();
+            var queryContext = await GetQueryContextAsync();
 #pragma warning restore CS0618
 
-            var query = queryable.Queryable.Where(x => x.Id == id && x.EntityType == EntityType);
+            var query = queryContext.Queryable.Where(x => x.Id == id && x.EntityType == EntityType);
 
-            var result = await GetResults(query, nameof(GetByIdAsync), queryable.PartitionKey);
+            var result = await GetResultsAsync(query, nameof(GetByIdAsync), queryContext.PartitionKey);
 
             var item = result.FirstOrDefault();
 
@@ -480,7 +480,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <exception cref="InvalidOperationException"></exception>
     public virtual async Task<T> SaveAsync(T saveThis)
     {
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
         if (string.IsNullOrEmpty(saveThis.Id))
         {
@@ -596,7 +596,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         var partitionKey = GetPartitionKey(batch.First());
 
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
         var cosmosBatch = container.CreateTransactionalBatch(partitionKey);
 
@@ -681,27 +681,27 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     }
 
     /// <summary>
-    /// Creates a queryable for the repository with the specified partition key
+    /// Creates a query context for the repository with the specified partition key
     /// configuration. This is the starting point for all custom LINQ queries built
     /// off of this repository by child repository classes.
     /// </summary>
     /// <param name="tenantId">Value to use for the first-level partition key (tenant id).</param>
-    /// <returns>Queryable and it's configured partition key</returns>
-    protected virtual async Task<QueryableInfo<T>> GetQueryable(
+    /// <returns>A query context containing the LINQ queryable and its configured partition key.</returns>
+    protected virtual async Task<QueryContext<T>> GetQueryContextAsync(
         string tenantId)
     {
-        return await GetQueryable(tenantId, EntityType);
+        return await GetQueryContextAsync(tenantId, EntityType);
     }
 
     /// <summary>
-    /// Creates a queryable for the repository with the specified partition key
+    /// Creates a query context for the repository with the specified partition key
     /// configuration. This is the starting point for all custom LINQ queries built
     /// off of this repository by child repository classes.
     /// </summary>
     /// <param name="tenantId">Value to use for the first-level partition key (tenant id).</param>
-    /// <param name="entityType">Entity type value</param>
-    /// <returns>Queryable and it's configured partition key</returns>
-    protected virtual async Task<QueryableInfo<T>> GetQueryable(
+    /// <param name="entityType">Entity type value for the second-level partition key.</param>
+    /// <returns>A query context containing the LINQ queryable and its configured partition key.</returns>
+    protected virtual async Task<QueryContext<T>> GetQueryContextAsync(
         string tenantId, string entityType)
     {
         var builder = new PartitionKeyBuilder();
@@ -714,7 +714,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
         var pk = builder.Build();
 
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
         var queryable =
             container.GetItemLinqQueryable<T>(true,
@@ -730,20 +730,21 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             throw new InvalidOperationException("Queryable object is null.");
         }
 
-        var info = new QueryableInfo<T>(pk, queryable);
+        var info = new QueryContext<T>(pk, queryable);
 
         return info;
     }
 
     /// <summary>
-    /// Get the queryable object for the repository. This method will create a queryable object WITHOUT a partition key configuration for the repository.
+    /// Creates a query context for the repository WITHOUT a partition key, resulting in a cross-partition query.
+    /// Prefer the overload that accepts a tenantId for partition-scoped queries.
     /// </summary>
-    /// <returns></returns>
-    /// <exception cref="InvalidOperationException"></exception>
-    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetQueryable(string tenantId) instead unless you explicitly need a cross-partition scan.")]
-    protected virtual async Task<QueryableInfo<T>> GetQueryable()
+    /// <returns>A query context containing the LINQ queryable with an empty partition key.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the underlying LINQ queryable cannot be created.</exception>
+    [Obsolete("This overload performs a cross-partition query without a partition key. Use GetQueryContextAsync(string tenantId) instead unless you explicitly need a cross-partition scan.")]
+    protected virtual async Task<QueryContext<T>> GetQueryContextAsync()
     {
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
         var queryable =
             container.GetItemLinqQueryable<T>(true,
@@ -757,7 +758,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             throw new InvalidOperationException("Queryable object is null.");
         }
 
-        var info = new QueryableInfo<T>(new PartitionKey(), queryable);
+        var info = new QueryContext<T>(new PartitionKey(), queryable);
 
         return info;
     }
@@ -776,10 +777,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             throw new ArgumentException("Page size must be greater than zero.", nameof(pageSize));
         }
 
-        var container = await GetContainer();
-        var queryable = await GetQueryable();
+        var container = await GetContainerAsync();
+        var queryContext = await GetQueryContextAsync();
 
-        var query = queryable.Queryable
+        var query = queryContext.Queryable
             .Where(x => x.EntityType == EntityType)
             .Take(pageSize);
 
@@ -791,7 +792,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             var queryRequestOptions = new QueryRequestOptions
             {
                 MaxItemCount = pageSize,
-                PartitionKey = queryable.PartitionKey
+                PartitionKey = queryContext.PartitionKey
             };
 
             var queryDefinition = new QueryDefinition(query.ToQueryDefinition().QueryText);
@@ -845,17 +846,17 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             throw new ArgumentException("Page size must be greater than zero.", nameof(pageSize));
         }
 
-        var container = await GetContainer();
-        var queryable = await GetQueryable(tenantId);
+        var container = await GetContainerAsync();
+        var queryContext = await GetQueryContextAsync(tenantId);
 
-        var query = queryable.Queryable
+        var query = queryContext.Queryable
             .Where(x => x.EntityType == EntityType)
             .Take(pageSize);
 
         var queryRequestOptions = new QueryRequestOptions
         {
             MaxItemCount = pageSize,
-            PartitionKey = queryable.PartitionKey
+            PartitionKey = queryContext.PartitionKey
         };
 
         var queryDefinition = new QueryDefinition(query.ToQueryDefinition().QueryText);

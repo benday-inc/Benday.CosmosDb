@@ -31,6 +31,15 @@ When upgrading an application from Benday.CosmosDb v5.x to v6.x, apply these cha
 - If your app depends on PascalCase JSON, set `UseCamelCase = false`
 - Documents in existing containers need property name migration
 
+## Class Renames
+- `QueryableInfo<T>` → `QueryContext<T>`
+
+## Method Renames
+- `GetQueryable()` → `GetQueryContextAsync()` (all overloads on `CosmosRepository<T>`)
+- `GetResults()` → `GetResultsAsync()` (on `CosmosRepository<T>`)
+- `GetContainer()` → `GetContainerAsync()` (on `CosmosRepository<T>` — do NOT rename Cosmos SDK calls like `Database.GetContainer()` or `Database.GetContainerQueryIterator()`)
+- Variable naming convention: store the result in `queryContext` (not `queryable` or `query`), then access `queryContext.Queryable` for the LINQ expression tree and `queryContext.PartitionKey` for the partition key
+
 ## Method Parameter Renames
 - Any method parameter named `ownerId` is now `tenantId`
 - Any method parameter named `parentDiscriminator` is now `parentEntityType`

@@ -29,14 +29,14 @@ public class CosmosTenantItemRepository<T>(
     /// <returns></returns>
     public async Task<IEnumerable<T>> GetAllAsync(string tenantId)
     {
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
-        var queryable = await GetQueryable(tenantId);
+        var queryContext = await GetQueryContextAsync(tenantId);
 
-        var query = queryable.Queryable.OrderByDescending(x => x.Timestamp);
+        var query = queryContext.Queryable.OrderByDescending(x => x.Timestamp);
 
-        var results = await GetResults(query,
-            GetQueryDescription(nameof(GetAllAsync)), queryable.PartitionKey);
+        var results = await GetResultsAsync(query,
+            GetQueryDescription(nameof(GetAllAsync)), queryContext.PartitionKey);
 
         return results;
     }
@@ -57,7 +57,7 @@ public class CosmosTenantItemRepository<T>(
 
         try
         {
-            var container = await GetContainer();
+            var container = await GetContainerAsync();
 
             var pk = new PartitionKeyBuilder().Add(tenantId).Add(EntityType).Build();
 
@@ -109,7 +109,7 @@ public class CosmosTenantItemRepository<T>(
     /// <returns></returns>
     public async Task DeleteAsync(T itemToDelete)
     {
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
         var builder = new PartitionKeyBuilder();
 

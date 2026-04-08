@@ -23,16 +23,16 @@ public class CosmosDbClaimDefinitionStore :
 
     public new async Task<IList<CosmosIdentityClaimDefinition>> GetAllAsync()
     {
-        var query = await GetQueryable(_identityTenantId);
-        var results = await GetResults(query.Queryable, GetQueryDescription(), query.PartitionKey);
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var results = await GetResultsAsync(queryContext.Queryable, GetQueryDescription(), queryContext.PartitionKey);
         return results;
     }
 
     public async Task<CosmosIdentityClaimDefinition?> FindByClaimTypeAsync(string claimType)
     {
-        var query = await GetQueryable(_identityTenantId);
-        var queryable = query.Queryable.Where(x => x.ClaimType == claimType);
-        var results = await GetResults(queryable, GetQueryDescription(), query.PartitionKey);
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x => x.ClaimType == claimType);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
         return results.FirstOrDefault();
     }
 }

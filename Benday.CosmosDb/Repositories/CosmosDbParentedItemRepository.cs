@@ -19,11 +19,11 @@ public class CosmosDbParentedItemRepository<T> :
 
     public async Task<List<T>> GetAllByParentIdAsync(string tenantId, string parentId, string? parentEntityType = null)
     {
-        var container = await GetContainer();
+        var container = await GetContainerAsync();
 
-        var queryable = await GetQueryable(tenantId);
+        var queryContext = await GetQueryContextAsync(tenantId);
 
-        var query = queryable.Queryable
+        var query = queryContext.Queryable
                     .Where(x => x.ParentId == parentId);
 
         if (!string.IsNullOrEmpty(parentEntityType))
@@ -31,7 +31,7 @@ public class CosmosDbParentedItemRepository<T> :
             query = query.Where(x => x.ParentEntityType == parentEntityType);
         }
 
-        var results = await GetResults(query, GetQueryDescription(), queryable.PartitionKey);
+        var results = await GetResultsAsync(query, GetQueryDescription(), queryContext.PartitionKey);
 
         return results;
     }
