@@ -25,7 +25,7 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Setup .NET 9
         uses: actions/setup-dotnet@v5
@@ -56,7 +56,7 @@ jobs:
         run: dotnet pack Benday.CosmosDb/Benday.CosmosDb.csproj --no-build --configuration Release --output ./artifacts
 
       - name: Upload NuGet packages
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: nuget-packages-cosmosdb
           path: ./artifacts/*.nupkg
@@ -75,7 +75,7 @@ jobs:
           PROTOCOL: https
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Start Azurite
         run: |
@@ -130,7 +130,7 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: nuget-packages-cosmosdb
 
