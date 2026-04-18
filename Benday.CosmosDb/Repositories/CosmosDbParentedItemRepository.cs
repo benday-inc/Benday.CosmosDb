@@ -1,3 +1,4 @@
+using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.DomainModels;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
@@ -12,8 +13,9 @@ public class CosmosDbParentedItemRepository<T> :
     public CosmosDbParentedItemRepository(
         IOptions<CosmosRepositoryOptions<T>> options,
         CosmosClient client,
-        ILogger<CosmosTenantItemRepository<T>> logger) :
-        base(options, client, logger)
+        ILogger<CosmosTenantItemRepository<T>> logger,
+        ICosmosQueryLogSink? sink = null) :
+        base(options, client, logger, sink)
     {
     }
 

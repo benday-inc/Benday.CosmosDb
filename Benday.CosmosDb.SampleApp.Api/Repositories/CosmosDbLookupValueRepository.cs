@@ -1,3 +1,4 @@
+using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Microsoft.Azure.Cosmos;
@@ -11,8 +12,9 @@ public class CosmosDbLookupValueRepository : CosmosTenantItemRepository<LookupVa
     public CosmosDbLookupValueRepository(
         IOptions<CosmosRepositoryOptions<LookupValue>> options,
         CosmosClient client,
-        ILogger<CosmosDbLookupValueRepository> logger) :
-        base(options, client, logger)
+        ILogger<CosmosDbLookupValueRepository> logger,
+        ICosmosQueryLogSink? sink = null) :
+        base(options, client, logger, sink)
     {
     }
 

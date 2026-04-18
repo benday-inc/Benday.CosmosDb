@@ -1,4 +1,5 @@
-﻿using Benday.CosmosDb.Repositories;
+﻿using Benday.CosmosDb.Diagnostics;
+using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
@@ -16,8 +17,9 @@ public class CosmosDbPersonRepository : CosmosTenantItemRepository<Person>, IPer
     public CosmosDbPersonRepository(
         IOptions<CosmosRepositoryOptions<Person>> options,
         CosmosClient client,
-        ILogger<CosmosDbPersonRepository> logger) :
-        base(options, client, logger)
+        ILogger<CosmosDbPersonRepository> logger,
+        ICosmosQueryLogSink? sink = null) :
+        base(options, client, logger, sink)
     {
 
     }

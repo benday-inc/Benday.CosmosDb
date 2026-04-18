@@ -30,6 +30,7 @@
   <ItemGroup>
     <PackageReference Include="Benday.Common" Version="9.*" />
     <PackageReference Include="Benday.Common.Testing" Version="2.*" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.*" />
     <PackageReference Include="Moq" Version="4.*" />
   </ItemGroup>
   <!--<ItemGroup>

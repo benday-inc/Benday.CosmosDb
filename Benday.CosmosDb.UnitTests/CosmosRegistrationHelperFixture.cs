@@ -130,9 +130,8 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
                  config);
 
         Assert.NotNull(systemUnderTest);
-        Assert.True(descriptors.Count == 1);
 
-        var descriptor = descriptors[0];
+        var descriptor = descriptors.Single(d => d.ServiceType == typeof(CosmosClient));
         Assert.Equal(ServiceLifetime.Singleton, descriptor.Lifetime);
         Assert.Equal(typeof(CosmosClient), descriptor.ServiceType);
         Assert.IsType<CosmosClient>(descriptor.ImplementationInstance);
@@ -192,9 +191,8 @@ public class CosmosRegistrationHelperFixture : Benday.Common.Testing.TestClassBa
                  config);
 
         Assert.NotNull(systemUnderTest);
-        Assert.True(descriptors.Count == 1);
 
-        var descriptor = descriptors[0];
+        var descriptor = descriptors.Single(d => d.ServiceType == typeof(CosmosClient));
         Assert.Equal(ServiceLifetime.Singleton, descriptor.Lifetime);
         Assert.Equal(typeof(CosmosClient), descriptor.ServiceType);
         Assert.IsType<CosmosClient>(descriptor.ImplementationInstance);

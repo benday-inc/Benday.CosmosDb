@@ -1,3 +1,4 @@
+using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.ServiceLayers;
@@ -207,5 +208,35 @@ public class CosmosRegistrationHelper
             _Services.ConfigureCosmosClient(
                 ConnectionString, UseGatewayMode, AllowBulkExecution);
         }
+    }
+
+    /// <summary>
+    /// Registers a custom <see cref="ICosmosQueryLogSink"/> to receive
+    /// query diagnostics from every repository. If no sink is explicitly
+    /// registered, the default <see cref="NoOpCosmosQueryLogSink"/> is used.
+    /// </summary>
+    /// <typeparam name="TSink">
+    /// The sink implementation type. Registered as a singleton.
+    /// </typeparam>
+    /// <returns>This helper, for fluent chaining.</returns>
+    public CosmosRegistrationHelper WithQueryLogSink<TSink>()
+        where TSink : class, ICosmosQueryLogSink
+    {
+        _Services.AddSingleton<ICosmosQueryLogSink, TSink>();
+        return this;
+    }
+
+    /// <summary>
+    /// Registers a specific <see cref="ICosmosQueryLogSink"/> instance to
+    /// receive query diagnostics. Useful for test scenarios where a
+    /// pre-constructed capture sink should be used.
+    /// </summary>
+    /// <param name="sink">The sink instance. Registered as a singleton.</param>
+    /// <returns>This helper, for fluent chaining.</returns>
+    public CosmosRegistrationHelper WithQueryLogSink(ICosmosQueryLogSink sink)
+    {
+        if (sink is null) throw new ArgumentNullException(nameof(sink));
+        _Services.AddSingleton<ICosmosQueryLogSink>(sink);
+        return this;
     }
 }

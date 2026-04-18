@@ -18,8 +18,9 @@ public class DiagnosticsTestRepository : CosmosTenantItemRepository<TestEntity>
     public DiagnosticsTestRepository(
         IOptions<CosmosRepositoryOptions<TestEntity>> options,
         CosmosClient client,
-        ILogger<DiagnosticsTestRepository> logger) :
-        base(options, client, logger)
+        ILogger<DiagnosticsTestRepository> logger,
+        ICosmosQueryLogSink? sink = null) :
+        base(options, client, logger, sink)
     {
     }
 

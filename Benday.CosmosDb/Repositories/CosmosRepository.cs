@@ -18,12 +18,37 @@ namespace Benday.CosmosDb.Repositories;
 /// Basic implementation of a Cosmos DB repository. Provides basic CRUD operations for a Cosmos DB entity, manages the container instance, and provides common functionality for custom queries as protected values and methods.
 /// </summary>
 /// <remarks>
-/// Derived classes can override <see cref="OnQueryDiagnostics"/> to route
-/// structured diagnostics to additional sinks (a file, a test capture, an
-/// observability pipeline, etc.). The hook fires for every query execution
-/// event — point operations, per-page feed responses, and query totals —
-/// distinguished by <see cref="CosmosQueryDiagnostics.EventKind"/>. Overriding
-/// the hook does not affect the base <see cref="ILogger"/> output.
+/// <para>
+/// The library supports two complementary ways to capture query diagnostics,
+/// and both fire for every event — using one does not disable the other:
+/// </para>
+/// <list type="bullet">
+///   <item>
+///     <description>
+///       <b>Per-repository customization</b> via overriding
+///       <see cref="OnQueryDiagnostics"/>. Use this when a specific repository
+///       needs non-default handling of its own events.
+///     </description>
+///   </item>
+///   <item>
+///     <description>
+///       <b>App-wide structured diagnostics</b> via implementing and registering
+///       an <see cref="ICosmosQueryLogSink"/> in DI. Use this for cross-cutting
+///       behavior like structured log files, test captures, or production
+///       observability pipelines. A default <see cref="NoOpCosmosQueryLogSink"/>
+///       is registered automatically; consumers override it by calling
+///       <c>CosmosRegistrationHelper.WithQueryLogSink</c> or by registering
+///       their own implementation in the service collection before
+///       <c>AddCosmosDb</c>.
+///     </description>
+///   </item>
+/// </list>
+/// <para>
+/// Diagnostic events are distinguished by
+/// <see cref="CosmosQueryDiagnostics.EventKind"/> — point operations, per-page
+/// feed responses, and query totals. Neither channel affects <see cref="ILogger"/>
+/// output, which fires unchanged regardless of how diagnostics are routed.
+/// </para>
 /// </remarks>
 /// <typeparam name="T">Domain model type managed by this repository</typeparam>
 public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICosmosIdentity, new()
@@ -64,12 +89,31 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     protected readonly CosmosRepositoryOptions<T> _Options;
 
     /// <summary>
+    /// Sink that receives every <see cref="CosmosQueryDiagnostics"/> event
+    /// the repository emits. Defaults to <see cref="NoOpCosmosQueryLogSink.Instance"/>
+    /// when no sink is provided via constructor injection.
+    /// </summary>
+    protected readonly ICosmosQueryLogSink _sink;
+
+    /// <summary>
     /// Constructor for the repository.
     /// </summary>
     /// <param name="options">Configuration options</param>
     /// <param name="client">Cosmos Db client instance. NOTE: for performance reasons, this should probably be a singleton in the application.</param>
+    /// <param name="logger">Logger instance.</param>
+    /// <param name="sink">
+    /// Optional app-wide diagnostics sink. When <c>null</c> (including when this
+    /// constructor is called from a derived class that doesn't pass one), falls
+    /// back to <see cref="NoOpCosmosQueryLogSink.Instance"/>. Register a real
+    /// sink in DI via
+    /// <see cref="Utilities.CosmosRegistrationHelper.WithQueryLogSink{TSink}()"/>.
+    /// </param>
     /// <exception cref="ArgumentException"></exception>
-    public CosmosRepository(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client, ILogger logger)
+    public CosmosRepository(
+        IOptions<CosmosRepositoryOptions<T>> options,
+        CosmosClient client,
+        ILogger logger,
+        ICosmosQueryLogSink? sink = null)
     {
         Logger = logger;
 
@@ -82,6 +126,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         _PartitionKeyStrings =
             CosmosDbUtilities.GetPartitionKeyStrings(_Options.PartitionKey);
+
+        _sink = sink ?? NoOpCosmosQueryLogSink.Instance;
     }
 
     /// <summary>
@@ -344,7 +390,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         Logger.LogInformation($"Request Charge ({operationName}): {requestCharge}");
         Logger.LogInformation($"Diagnostics ({operationName}): {diagnosticsString}");
 
-        OnQueryDiagnostics(new CosmosQueryDiagnostics
+        EmitQueryDiagnostics(new CosmosQueryDiagnostics
         {
             EventKind = CosmosQueryEventKind.PointOperation,
             Timestamp = DateTimeOffset.UtcNow,
@@ -388,7 +434,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             Logger.LogWarning($"Cross-partition query detected for {queryDescription}. This may impact performance.");
         }
 
-        OnQueryDiagnostics(new CosmosQueryDiagnostics
+        EmitQueryDiagnostics(new CosmosQueryDiagnostics
         {
             EventKind = CosmosQueryEventKind.FeedResponsePage,
             Timestamp = DateTimeOffset.UtcNow,
@@ -431,7 +477,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     {
         Logger.LogInformation($"Total request charge ({queryDescription}): {totalRequestCharge}");
 
-        OnQueryDiagnostics(new CosmosQueryDiagnostics
+        EmitQueryDiagnostics(new CosmosQueryDiagnostics
         {
             EventKind = CosmosQueryEventKind.QueryTotal,
             Timestamp = DateTimeOffset.UtcNow,
@@ -450,13 +496,38 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <summary>
     /// Called for every query execution event: point operations, feed
     /// response pages, and query totals. Override in derived classes to
-    /// route diagnostics to additional sinks (structured logging, tests,
-    /// an observability pipeline, etc.). The base <see cref="ILogger"/>
-    /// output is not affected by overriding this.
+    /// route diagnostics to additional sinks for THIS repository only.
+    /// For app-wide routing use <see cref="ICosmosQueryLogSink"/> instead.
+    /// The base <see cref="ILogger"/> output is not affected by overriding this.
     /// </summary>
     /// <param name="diagnostics">Structured payload describing the event.</param>
+    /// <seealso cref="ICosmosQueryLogSink"/>
     protected virtual void OnQueryDiagnostics(CosmosQueryDiagnostics diagnostics)
     {
+    }
+
+    /// <summary>
+    /// Fires <see cref="OnQueryDiagnostics"/> (per-repository hook) and then
+    /// routes the event to the DI-injected <see cref="ICosmosQueryLogSink"/>
+    /// (app-wide sink). Exceptions thrown by the sink are caught, logged at
+    /// Warning level, and suppressed — a broken sink never breaks a query.
+    /// </summary>
+    private void EmitQueryDiagnostics(CosmosQueryDiagnostics diagnostics)
+    {
+        OnQueryDiagnostics(diagnostics);
+
+        try
+        {
+            _sink.Record(diagnostics);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(
+                ex,
+                "ICosmosQueryLogSink.Record threw. Diagnostics event was dropped. Sink type: {SinkType}. Event kind: {EventKind}.",
+                _sink.GetType().FullName,
+                diagnostics.EventKind);
+        }
     }
 
     /// <summary>
@@ -541,7 +612,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             ? resultCountSelector(response.Resource)
             : (response.Resource == null ? 0 : 1);
 
-        OnQueryDiagnostics(new CosmosQueryDiagnostics
+        EmitQueryDiagnostics(new CosmosQueryDiagnostics
         {
             EventKind = CosmosQueryEventKind.QueryTotal,
             Timestamp = DateTimeOffset.UtcNow,

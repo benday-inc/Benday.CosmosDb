@@ -1,8 +1,10 @@
+using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Repositories;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using System.ComponentModel;
 using System.Configuration;
@@ -223,6 +225,8 @@ public static class CosmosClientOptionsUtilities
         var options = GetCosmosDbClientOptions(jsonNamingPolicy, connectionMode, allowBulkExecution);
 
         services.AddSingleton(new CosmosClient(connectionString, options));
+
+        services.TryAddSingleton<ICosmosQueryLogSink>(NoOpCosmosQueryLogSink.Instance);
     }
 
     /// <summary>
@@ -257,11 +261,13 @@ public static class CosmosClientOptionsUtilities
             services.AddSingleton(client);
         }
         else
-        {            
+        {
             var client = new CosmosClient(cosmosConfig.ConnectionString, options);
-            
+
             services.AddSingleton(client);
         }
+
+        services.TryAddSingleton<ICosmosQueryLogSink>(NoOpCosmosQueryLogSink.Instance);
     }
 
 

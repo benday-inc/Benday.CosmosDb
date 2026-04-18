@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Net;
 using System.Threading;
+using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.DomainModels;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
@@ -18,8 +19,9 @@ namespace Benday.CosmosDb.Repositories;
 public class CosmosTenantItemRepository<T>(
         IOptions<CosmosRepositoryOptions<T>> options,
         CosmosClient client,
-        ILogger<CosmosTenantItemRepository<T>> logger) :
-    CosmosRepository<T>(options, client, logger), ITenantItemRepository<T>
+        ILogger<CosmosTenantItemRepository<T>> logger,
+        ICosmosQueryLogSink? sink = null) :
+    CosmosRepository<T>(options, client, logger, sink), ITenantItemRepository<T>
     where T : class, ITenantItem, new()
 {
     /// <summary>

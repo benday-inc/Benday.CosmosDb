@@ -1,3 +1,4 @@
+using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.Repositories;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
@@ -10,10 +11,11 @@ public class CosmosDbTestEntityRepository : CosmosTenantItemRepository<TestEntit
     public CosmosDbTestEntityRepository(
         IOptions<CosmosRepositoryOptions<TestEntity>> options,
         CosmosClient client,
-        ILogger<CosmosDbTestEntityRepository> logger) :
-        base(options, client, logger)
+        ILogger<CosmosDbTestEntityRepository> logger,
+        ICosmosQueryLogSink? sink = null) :
+        base(options, client, logger, sink)
     {
     }
 
-    
+
 }
