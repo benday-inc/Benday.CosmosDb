@@ -16,7 +16,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>6.0.3</TheVersion>
+    <TheVersion>6.0.4</TheVersion>
     <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
     <Version>$(TheVersion)-alpha</Version>
     <Description>ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Provides user store, role store, claims, lockout, two-factor authentication, and external login support. Built on top of the Benday.CosmosDb repository pattern library.</Description>
@@ -58,6 +58,6 @@ v1.0.0 - Initial release with full ASP.NET Core Identity store implementations f
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseProjectReferences)' != 'true'">
-    <PackageReference Include="Benday.CosmosDb" Version="6.0.0" />
+    <PackageReference Include="Benday.CosmosDb" Version="6.0.*" />
   </ItemGroup>
 </Project>
