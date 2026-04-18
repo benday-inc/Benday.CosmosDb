@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
+using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Exceptions;
 using Benday.CosmosDb.Utilities;
@@ -14,6 +17,14 @@ namespace Benday.CosmosDb.Repositories;
 /// <summary>
 /// Basic implementation of a Cosmos DB repository. Provides basic CRUD operations for a Cosmos DB entity, manages the container instance, and provides common functionality for custom queries as protected values and methods.
 /// </summary>
+/// <remarks>
+/// Derived classes can override <see cref="OnQueryDiagnostics"/> to route
+/// structured diagnostics to additional sinks (a file, a test capture, an
+/// observability pipeline, etc.). The hook fires for every query execution
+/// event — point operations, per-page feed responses, and query totals —
+/// distinguished by <see cref="CosmosQueryDiagnostics.EventKind"/>. Overriding
+/// the hook does not affect the base <see cref="ILogger"/> output.
+/// </remarks>
 /// <typeparam name="T">Domain model type managed by this repository</typeparam>
 public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICosmosIdentity, new()
 {
@@ -103,7 +114,9 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         ItemResponse<T> response;
         try
         {
+            var stopwatch = Stopwatch.StartNew();
             response = await container.DeleteItemAsync<T>(id, partitionKey);
+            stopwatch.Stop();
 
             if (response == null)
             {
@@ -111,7 +124,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             }
             else
             {
-                LogPointOperationDiagnostics(nameof(DeleteAsync), response.RequestCharge, response.Diagnostics);
+                LogPointOperationDiagnostics(nameof(DeleteAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed);
                 if (response.StatusCode is System.Net.HttpStatusCode.OK or System.Net.HttpStatusCode.NoContent)
                 {
                     return;
@@ -149,47 +162,123 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     }
 
     /// <summary>
-    /// Gets the results from a query.
+    /// Executes a LINQ query and returns all results, logging per-page and
+    /// total diagnostics through <see cref="OnQueryDiagnostics"/>.
     /// </summary>
     /// <param name="query">query to run</param>
     /// <param name="queryDescription">logging description for the query</param>
     /// <param name="partitionKey">partition key that's configured for this query. NOTE: this is purely to logging purposes</param>
-    /// <returns></returns>
+    /// <returns>All matching items.</returns>
+    /// <seealso cref="GetResultsAsync(QueryDefinition, string, PartitionKey)"/>
+    /// <seealso cref="ExecuteScalarAsync{TResult}(IQueryable{T}, Func{IQueryable{T}, Task{Response{TResult}}}, string, PartitionKey, Func{TResult, int}?)"/>
     protected async Task<List<T>> GetResultsAsync(
         IQueryable<T> query, string queryDescription, PartitionKey partitionKey)
     {
-        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResultsAsync)} - {queryDescription} query {query} with partition key {partitionKey}");
+        var queryDefinition = query.ToQueryDefinition();
+        var queryText = queryDefinition.QueryText;
+        var parameters = ExtractParameters(queryDefinition);
+
+        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResultsAsync)} - {queryDescription} query {{\"query\":\"{queryText}\"}} with partition key {partitionKey}");
 
         var feedIterator = query.ToFeedIterator();
 
-        var results = await GetResultsAsync(feedIterator, queryDescription);
+        var results = await GetResultsAsync(
+            feedIterator, queryDescription, queryText, parameters, partitionKey);
 
         return results;
     }
 
     /// <summary>
-    /// Get results from a query
+    /// Executes a raw Cosmos SQL query and returns all results, logging the
+    /// same diagnostics as the LINQ overload so raw-SQL queries and LINQ
+    /// queries show up symmetrically in structured logs.
     /// </summary>
-    /// <param name="resultSetIterator">Feed iterator to read the results from</param>
-    /// <param name="queryDescription">Description of this query for logging</param>
-    /// <returns></returns>
-    protected async Task<List<T>> GetResultsAsync(FeedIterator<T> resultSetIterator, string queryDescription)
+    /// <remarks>
+    /// Use this when a query can't be expressed in LINQ — cross-apply joins
+    /// over nested arrays, dynamic EXISTS clauses, VectorDistance, conditional
+    /// aggregation, etc. The library's LINQ support handles the common case;
+    /// this overload covers the cases it can't.
+    /// </remarks>
+    /// <param name="query">The parameterized Cosmos SQL query to run.</param>
+    /// <param name="queryDescription">Logging description for the query.</param>
+    /// <param name="partitionKey">Partition key scope for the query.</param>
+    /// <returns>All matching items.</returns>
+    /// <seealso cref="GetResultsAsync(IQueryable{T}, string, PartitionKey)"/>
+    protected async Task<List<T>> GetResultsAsync(
+        QueryDefinition query, string queryDescription, PartitionKey partitionKey)
+    {
+        var container = await GetContainerAsync();
+
+        var queryText = query.QueryText;
+        var parameters = ExtractParameters(query);
+
+        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResultsAsync)} - {queryDescription} query {{\"query\":\"{queryText}\"}} with partition key {partitionKey}");
+
+        using var iterator = container.GetItemQueryIterator<T>(
+            query,
+            requestOptions: new QueryRequestOptions { PartitionKey = partitionKey });
+
+        return await GetResultsAsync(
+            iterator, queryDescription, queryText, parameters, partitionKey);
+    }
+
+    /// <summary>
+    /// Reads all pages from a feed iterator, timing each page, accumulating
+    /// totals, and emitting per-page and total diagnostics through
+    /// <see cref="OnQueryDiagnostics"/>.
+    /// </summary>
+    /// <param name="resultSetIterator">Feed iterator to read the results from.</param>
+    /// <param name="queryDescription">Description of this query for logging.</param>
+    /// <param name="queryText">The generated SQL text (for diagnostics). Optional.</param>
+    /// <param name="parameters">Query parameters (for diagnostics). Optional.</param>
+    /// <param name="partitionKey">Partition key scope for the query (for diagnostics).</param>
+    /// <returns>All items from the iterator.</returns>
+    protected async Task<List<T>> GetResultsAsync(
+        FeedIterator<T> resultSetIterator,
+        string queryDescription,
+        string? queryText = null,
+        IReadOnlyDictionary<string, object?>? parameters = null,
+        PartitionKey partitionKey = default)
     {
         var items = new List<T>();
 
         var totalRequestCharge = 0.0;
+        var totalDuration = TimeSpan.Zero;
+        var anyCrossPartition = false;
 
         while (resultSetIterator.HasMoreResults)
         {
+            var pageStopwatch = Stopwatch.StartNew();
             var response = await resultSetIterator.ReadNextAsync();
+            pageStopwatch.Stop();
 
             totalRequestCharge += response.RequestCharge;
-            LogFeedResponseDiagnostics(queryDescription, response.RequestCharge, response.Diagnostics);
+            totalDuration += pageStopwatch.Elapsed;
+
+            var isPageCrossPartition = LogFeedResponseDiagnostics(
+                queryDescription,
+                response.RequestCharge,
+                response.Diagnostics,
+                pageStopwatch.Elapsed,
+                response.Count,
+                queryText,
+                parameters,
+                partitionKey);
+
+            anyCrossPartition |= isPageCrossPartition;
 
             items.AddRange(response);
         }
 
-        LogQueryTotalDiagnostics(queryDescription, totalRequestCharge);
+        LogQueryTotalDiagnostics(
+            queryDescription,
+            totalRequestCharge,
+            totalDuration,
+            items.Count,
+            queryText,
+            parameters,
+            partitionKey,
+            anyCrossPartition);
 
         return items;
     }
@@ -222,7 +311,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// </summary>
     /// <param name="diagnostics">Diagnostics for a query response</param>
     /// <returns>True if it detects a cross-partition query.</returns>
-    protected bool IsCrossPartitionQuery(CosmosDiagnostics diagnostics)
+    protected virtual bool IsCrossPartitionQuery(CosmosDiagnostics diagnostics)
     {
         // Convert the diagnostics to a string and analyze it
         string diagnosticsString = diagnostics.ToString();
@@ -240,41 +329,55 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     }
 
     /// <summary>
-    /// Logs diagnostics for a point operation (save, delete, point-read).
+    /// Logs diagnostics for a point operation (save, delete, point-read)
+    /// and fires <see cref="OnQueryDiagnostics"/> with a
+    /// <see cref="CosmosQueryEventKind.PointOperation"/> event.
     /// </summary>
     /// <param name="operationName">Name of the operation for log messages.</param>
     /// <param name="requestCharge">RU charge from the response.</param>
     /// <param name="diagnostics">Cosmos diagnostics from the response.</param>
+    /// <param name="duration">Wall-clock duration of the SDK round trip.</param>
     protected void LogPointOperationDiagnostics(
-        string operationName, double requestCharge, CosmosDiagnostics diagnostics)
+        string operationName, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration)
     {
         var diagnosticsString = diagnostics.ToString();
         Logger.LogInformation($"Request Charge ({operationName}): {requestCharge}");
         Logger.LogInformation($"Diagnostics ({operationName}): {diagnosticsString}");
-        OnLogPointOperationDiagnostics(operationName, requestCharge, diagnosticsString);
+
+        OnQueryDiagnostics(new CosmosQueryDiagnostics
+        {
+            EventKind = CosmosQueryEventKind.PointOperation,
+            Timestamp = DateTimeOffset.UtcNow,
+            RepositoryName = GetType().Name,
+            QueryDescription = GetQueryDescription(operationName),
+            RequestCharge = requestCharge,
+            Duration = duration,
+        });
     }
 
     /// <summary>
-    /// Called after a point operation (save, delete, point-read) is logged.
-    /// Override in derived classes to add custom diagnostics handling.
-    /// </summary>
-    /// <param name="operationName">Name of the operation.</param>
-    /// <param name="requestCharge">RU charge from the response.</param>
-    /// <param name="diagnosticsString">Stringified Cosmos diagnostics.</param>
-    protected virtual void OnLogPointOperationDiagnostics(
-        string operationName, double requestCharge, string diagnosticsString)
-    {
-    }
-
-    /// <summary>
-    /// Logs diagnostics for a single page of feed iterator results,
-    /// including cross-partition query detection.
+    /// Logs diagnostics for a single page of feed iterator results (including
+    /// cross-partition query detection) and fires <see cref="OnQueryDiagnostics"/>
+    /// with a <see cref="CosmosQueryEventKind.FeedResponsePage"/> event.
     /// </summary>
     /// <param name="queryDescription">Description of the query for log messages.</param>
     /// <param name="requestCharge">RU charge for this page.</param>
     /// <param name="diagnostics">Cosmos diagnostics for this page.</param>
-    protected void LogFeedResponseDiagnostics(
-        string queryDescription, double requestCharge, CosmosDiagnostics diagnostics)
+    /// <param name="duration">Wall-clock duration of this page's round trip.</param>
+    /// <param name="resultCount">Number of documents returned on this page.</param>
+    /// <param name="queryText">The generated SQL text.</param>
+    /// <param name="parameters">Query parameters.</param>
+    /// <param name="partitionKey">Partition key scope for this query.</param>
+    /// <returns>Whether the page was detected as a cross-partition execution.</returns>
+    protected bool LogFeedResponseDiagnostics(
+        string queryDescription,
+        double requestCharge,
+        CosmosDiagnostics diagnostics,
+        TimeSpan duration,
+        int resultCount,
+        string? queryText,
+        IReadOnlyDictionary<string, object?>? parameters,
+        PartitionKey partitionKey)
     {
         Logger.LogInformation($"Request Charge ({queryDescription}): {requestCharge}");
 
@@ -285,30 +388,175 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             Logger.LogWarning($"Cross-partition query detected for {queryDescription}. This may impact performance.");
         }
 
-        OnLogFeedResponseDiagnostics(queryDescription, requestCharge, isCrossPartition);
+        OnQueryDiagnostics(new CosmosQueryDiagnostics
+        {
+            EventKind = CosmosQueryEventKind.FeedResponsePage,
+            Timestamp = DateTimeOffset.UtcNow,
+            RepositoryName = GetType().Name,
+            QueryDescription = queryDescription,
+            QueryText = queryText,
+            Parameters = parameters,
+            PartitionKey = partitionKey,
+            RequestCharge = requestCharge,
+            Duration = duration,
+            ResultCount = resultCount,
+            IsCrossPartition = isCrossPartition,
+        });
+
+        return isCrossPartition;
     }
 
     /// <summary>
-    /// Called after a feed response page is logged.
-    /// Override in derived classes to add custom diagnostics handling.
-    /// </summary>
-    /// <param name="queryDescription">Description of the query.</param>
-    /// <param name="requestCharge">RU charge for this page.</param>
-    /// <param name="isCrossPartition">Whether a cross-partition query was detected.</param>
-    protected virtual void OnLogFeedResponseDiagnostics(
-        string queryDescription, double requestCharge, bool isCrossPartition)
-    {
-    }
-
-    /// <summary>
-    /// Logs the total RU charge for a completed query.
+    /// Logs the total RU charge for a completed query and fires
+    /// <see cref="OnQueryDiagnostics"/> with a
+    /// <see cref="CosmosQueryEventKind.QueryTotal"/> event.
     /// </summary>
     /// <param name="queryDescription">Description of the query for log messages.</param>
     /// <param name="totalRequestCharge">Accumulated RU charge across all pages.</param>
+    /// <param name="totalDuration">Accumulated round-trip duration across all pages.</param>
+    /// <param name="totalResultCount">Total document count across all pages.</param>
+    /// <param name="queryText">The generated SQL text.</param>
+    /// <param name="parameters">Query parameters.</param>
+    /// <param name="partitionKey">Partition key scope for this query.</param>
+    /// <param name="isCrossPartition">OR across all pages of the cross-partition flag.</param>
     protected void LogQueryTotalDiagnostics(
-        string queryDescription, double totalRequestCharge)
+        string queryDescription,
+        double totalRequestCharge,
+        TimeSpan totalDuration,
+        int totalResultCount,
+        string? queryText,
+        IReadOnlyDictionary<string, object?>? parameters,
+        PartitionKey partitionKey,
+        bool isCrossPartition)
     {
         Logger.LogInformation($"Total request charge ({queryDescription}): {totalRequestCharge}");
+
+        OnQueryDiagnostics(new CosmosQueryDiagnostics
+        {
+            EventKind = CosmosQueryEventKind.QueryTotal,
+            Timestamp = DateTimeOffset.UtcNow,
+            RepositoryName = GetType().Name,
+            QueryDescription = queryDescription,
+            QueryText = queryText,
+            Parameters = parameters,
+            PartitionKey = partitionKey,
+            RequestCharge = totalRequestCharge,
+            Duration = totalDuration,
+            ResultCount = totalResultCount,
+            IsCrossPartition = isCrossPartition,
+        });
+    }
+
+    /// <summary>
+    /// Called for every query execution event: point operations, feed
+    /// response pages, and query totals. Override in derived classes to
+    /// route diagnostics to additional sinks (structured logging, tests,
+    /// an observability pipeline, etc.). The base <see cref="ILogger"/>
+    /// output is not affected by overriding this.
+    /// </summary>
+    /// <param name="diagnostics">Structured payload describing the event.</param>
+    protected virtual void OnQueryDiagnostics(CosmosQueryDiagnostics diagnostics)
+    {
+    }
+
+    /// <summary>
+    /// Copies the parameters of a <see cref="QueryDefinition"/> into a
+    /// read-only dictionary for inclusion in <see cref="CosmosQueryDiagnostics.Parameters"/>.
+    /// </summary>
+    private static IReadOnlyDictionary<string, object?> ExtractParameters(
+        QueryDefinition definition)
+    {
+        var dict = new Dictionary<string, object?>();
+        foreach (var param in definition.GetQueryParameters())
+        {
+            dict[param.Name] = param.Value;
+        }
+        return dict;
+    }
+
+    /// <summary>
+    /// Executes a scalar Cosmos SDK LINQ operation (such as <c>CountAsync</c>,
+    /// <c>FirstOrDefaultAsync</c>, <c>MaxAsync</c>) through the library's
+    /// diagnostics pipeline. The SDK's extension methods on <see cref="IQueryable"/>
+    /// bypass this pipeline when called directly; this helper lets you call
+    /// them while still capturing request charge, timing, query text, and
+    /// cross-partition warnings in the same format as list queries.
+    /// </summary>
+    /// <typeparam name="TResult">The return type of the SDK operation.</typeparam>
+    /// <param name="query">The <see cref="IQueryable{T}"/> against which to execute the operation.</param>
+    /// <param name="operation">
+    /// A delegate that invokes the desired SDK extension method on the queryable
+    /// and returns its <see cref="Response{T}"/>.
+    /// </param>
+    /// <param name="queryDescription">Logging description for the query.</param>
+    /// <param name="partitionKey">Partition key scope for the query.</param>
+    /// <param name="resultCountSelector">
+    /// Optional: a delegate that maps the scalar result to an integer count for
+    /// diagnostics purposes. Defaults to 1 if the result is non-null or a value
+    /// type; 0 if the result is null. For most scalar operations the default
+    /// is fine.
+    /// </param>
+    /// <returns>The resource value from the SDK's <see cref="Response{T}"/>.</returns>
+    /// <example>
+    /// <code>
+    /// public async Task&lt;int&gt; GetCountAsync(string tenantId)
+    /// {
+    ///     var queryContext = await GetQueryContextAsync(tenantId);
+    ///     return await ExecuteScalarAsync(
+    ///         queryContext.Queryable,
+    ///         q =&gt; q.CountAsync(),
+    ///         GetQueryDescription(nameof(GetCountAsync)),
+    ///         queryContext.PartitionKey);
+    /// }
+    /// </code>
+    /// </example>
+    /// <seealso cref="GetResultsAsync(IQueryable{T}, string, PartitionKey)"/>
+    protected async Task<TResult> ExecuteScalarAsync<TResult>(
+        IQueryable<T> query,
+        Func<IQueryable<T>, Task<Response<TResult>>> operation,
+        string queryDescription,
+        PartitionKey partitionKey,
+        Func<TResult, int>? resultCountSelector = null)
+    {
+        var queryDefinition = query.ToQueryDefinition();
+        var queryText = queryDefinition.QueryText;
+        var parameters = ExtractParameters(queryDefinition);
+
+        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(ExecuteScalarAsync)} - {queryDescription} query {{\"query\":\"{queryText}\"}} with partition key {partitionKey}");
+
+        var stopwatch = Stopwatch.StartNew();
+        var response = await operation(query);
+        stopwatch.Stop();
+
+        var isCrossPartition = IsCrossPartitionQuery(response.Diagnostics);
+
+        Logger.LogInformation($"Request Charge ({queryDescription}): {response.RequestCharge}");
+        if (isCrossPartition)
+        {
+            Logger.LogWarning($"Cross-partition query detected for {queryDescription}. This may impact performance.");
+        }
+        Logger.LogInformation($"Total request charge ({queryDescription}): {response.RequestCharge}");
+
+        var resultCount = resultCountSelector != null
+            ? resultCountSelector(response.Resource)
+            : (response.Resource == null ? 0 : 1);
+
+        OnQueryDiagnostics(new CosmosQueryDiagnostics
+        {
+            EventKind = CosmosQueryEventKind.QueryTotal,
+            Timestamp = DateTimeOffset.UtcNow,
+            RepositoryName = GetType().Name,
+            QueryDescription = queryDescription,
+            QueryText = queryText,
+            Parameters = parameters,
+            PartitionKey = partitionKey,
+            RequestCharge = response.RequestCharge,
+            Duration = stopwatch.Elapsed,
+            ResultCount = resultCount,
+            IsCrossPartition = isCrossPartition,
+        });
+
+        return response.Resource;
     }
 
     /// <summary>
@@ -554,8 +802,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 IfMatchEtag = saveThis.Etag
             };
 
+            var stopwatch = Stopwatch.StartNew();
             response = await container.UpsertItemAsync(
                 saveThis, partitionKey, requestOptions);
+            stopwatch.Stop();
 
             if (response == null)
             {
@@ -571,7 +821,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                     saveThis.TimestampUnixStyle = response.Resource.TimestampUnixStyle;
                 }
 
-                LogPointOperationDiagnostics(nameof(SaveAsync), response.RequestCharge, response.Diagnostics);
+                LogPointOperationDiagnostics(nameof(SaveAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed);
 
                 if (response.StatusCode is
                     System.Net.HttpStatusCode.OK or System.Net.HttpStatusCode.Created)
@@ -860,14 +1110,24 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         if (feedIterator.HasMoreResults)
         {
+            var pageStopwatch = Stopwatch.StartNew();
             var response = await feedIterator.ReadNextAsync();
+            pageStopwatch.Stop();
 
             items.AddRange(response);
             totalRequestCharge += response.RequestCharge;
             newContinuationToken = response.ContinuationToken;
             hasMoreResults = !string.IsNullOrEmpty(newContinuationToken);
 
-            LogFeedResponseDiagnostics(nameof(GetPagedAsync), response.RequestCharge, response.Diagnostics);
+            LogFeedResponseDiagnostics(
+                nameof(GetPagedAsync),
+                response.RequestCharge,
+                response.Diagnostics,
+                pageStopwatch.Elapsed,
+                response.Count,
+                queryText: null,
+                parameters: null,
+                partitionKey: queryContext.PartitionKey);
         }
 
         return new PagedResults<T>(items, newContinuationToken, hasMoreResults, totalRequestCharge);
@@ -916,14 +1176,24 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         if (feedIterator.HasMoreResults)
         {
+            var pageStopwatch = Stopwatch.StartNew();
             var response = await feedIterator.ReadNextAsync();
+            pageStopwatch.Stop();
 
             items.AddRange(response);
             totalRequestCharge += response.RequestCharge;
             newContinuationToken = response.ContinuationToken;
             hasMoreResults = !string.IsNullOrEmpty(newContinuationToken);
 
-            LogFeedResponseDiagnostics(nameof(GetPagedAsync), response.RequestCharge, response.Diagnostics);
+            LogFeedResponseDiagnostics(
+                nameof(GetPagedAsync),
+                response.RequestCharge,
+                response.Diagnostics,
+                pageStopwatch.Elapsed,
+                response.Count,
+                queryText: queryDefinition.QueryText,
+                parameters: ExtractParameters(queryDefinition),
+                partitionKey: queryContext.PartitionKey);
         }
 
         return new PagedResults<T>(items, newContinuationToken, hasMoreResults, totalRequestCharge);

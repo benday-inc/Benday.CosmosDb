@@ -14,11 +14,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>6.0.4</TheVersion>
-    <AssemblyVersion>$(TheVersion).0</AssemblyVersion>
-    <Version>$(TheVersion)-alpha</Version>
+    <TheVersion>6.1.0-alpha</TheVersion>
+    <AssemblyVersion>6.1.0.0</AssemblyVersion>
+    <Version>$(TheVersion)</Version>
     <Description>A collection of classes for implementing the domain model and repository patterns with Azure Cosmos DB. Features hierarchical partition key support, LINQ queries with automatic partition keys, optimistic concurrency with ETags, ASP.NET Core dependency injection helpers, and per-repository custom container configuration.</Description>
     <PackageReleaseNotes>
+v6.1 - BREAKING (template methods only): Removed OnLogPointOperationDiagnostics and OnLogFeedResponseDiagnostics virtual hooks. Introduced CosmosQueryDiagnostics structured payload and the single OnQueryDiagnostics(CosmosQueryDiagnostics) hook that fires for point operations, feed response pages, and query totals — distinguished by CosmosQueryEventKind. LogPointOperationDiagnostics now takes a TimeSpan duration; LogFeedResponseDiagnostics and LogQueryTotalDiagnostics take duration, result count, query text, parameters, partition key, and cross-partition flag. Added ExecuteScalarAsync&lt;TResult&gt; helper so Cosmos SDK scalar LINQ operators (CountAsync, MaxAsync, etc.) flow through the library's diagnostics pipeline. Added GetResultsAsync(QueryDefinition, ...) overload for raw Cosmos SQL that emits the same diagnostics as the LINQ overload. ILogger output unchanged. Migrate overrides of the old hooks to OnQueryDiagnostics by switching on diagnostics.EventKind;
 v6.0 - BREAKING: Renamed OwnerId to TenantId, DiscriminatorValue to EntityType, IOwnedItem to ITenantItem, OwnedItemBase to TenantItemBase, and all related types. Default partition key path changed from /pk,/discriminator to /tenantId,/entityType. JSON serialization defaults to camelCase. Added IBlobOwner support on TenantItemBase for blob attachments via Benday.BlobStorage. Added bulk SaveAllAsync and DeleteAllByTenantIdAsync with throttling and retry. Added paged queries with GetPagedAsync. Added shared interface contracts from Benday.Common.Interfaces. See MIGRATION-v6.md for upgrade guide;
 v5.3 - Added some deprecation attributes to warn devs about some methods that ignore partition keys;
 v5.2 - Added bulk delete support to repository;

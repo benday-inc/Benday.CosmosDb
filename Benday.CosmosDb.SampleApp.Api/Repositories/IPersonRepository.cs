@@ -7,4 +7,5 @@ namespace Benday.CosmosDb.SampleApp.Api.Repositories;
 public interface IPersonRepository : ITenantItemRepository<Person>
 {
     Task<Person?> GetPersonByEmailAddress(string emailAddress);
+    Task<int> GetPersonCountAsync();
 }

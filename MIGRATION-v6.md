@@ -42,12 +42,15 @@ When upgrading an application from Benday.CosmosDb v5.x to v6.x, apply these cha
 
 ## Diagnostics Refactoring
 - Inline diagnostic logging in `DeleteAsync`, `SaveAsync`, `GetResultsAsync`, `GetPagedAsync`, and `CosmosTenantItemRepository.GetByIdAsync` has been consolidated into three helper methods on `CosmosRepository<T>`:
-  - `LogPointOperationDiagnostics(string operationName, double requestCharge, CosmosDiagnostics diagnostics)` — for save, delete, and point-read operations
-  - `LogFeedResponseDiagnostics(string queryDescription, double requestCharge, CosmosDiagnostics diagnostics)` — for per-page feed iterator results with cross-partition detection
-  - `LogQueryTotalDiagnostics(string queryDescription, double totalRequestCharge)` — for total RU charge at query completion
-- Two new virtual template methods allow derived repositories to hook into diagnostics:
-  - `OnLogPointOperationDiagnostics(string operationName, double requestCharge, string diagnosticsString)`
-  - `OnLogFeedResponseDiagnostics(string queryDescription, double requestCharge, bool isCrossPartition)`
+  - `LogPointOperationDiagnostics(string operationName, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration)` — for save, delete, and point-read operations
+  - `LogFeedResponseDiagnostics(string queryDescription, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration, int resultCount, string? queryText, IReadOnlyDictionary<string, object?>? parameters, PartitionKey partitionKey)` — for per-page feed iterator results; returns the cross-partition flag so callers can aggregate it into the query-total event
+  - `LogQueryTotalDiagnostics(string queryDescription, double totalRequestCharge, TimeSpan totalDuration, int totalResultCount, string? queryText, IReadOnlyDictionary<string, object?>? parameters, PartitionKey partitionKey, bool isCrossPartition)` — for total RU charge and timing at query completion
+- A single virtual template method on `CosmosRepository<T>` lets derived repositories hook into every diagnostics event:
+  - `OnQueryDiagnostics(CosmosQueryDiagnostics diagnostics)` — fires for point operations, feed response pages, and query totals. Distinguish kinds via `diagnostics.EventKind` (`CosmosQueryEventKind.PointOperation`, `.FeedResponsePage`, `.QueryTotal`).
+- **Breaking:** the previous `OnLogPointOperationDiagnostics` and `OnLogFeedResponseDiagnostics` template methods were removed. Migrate overrides to `OnQueryDiagnostics` by switching on `diagnostics.EventKind`.
+- New library-side helpers on `CosmosRepository<T>` keep raw-SQL and scalar-SDK paths inside the diagnostics pipeline:
+  - `GetResultsAsync(QueryDefinition, string, PartitionKey)` — raw Cosmos SQL queries.
+  - `ExecuteScalarAsync<TResult>(IQueryable<T>, Func<IQueryable<T>, Task<Response<TResult>>>, string, PartitionKey, Func<TResult, int>?)` — wraps scalar SDK operators (`CountAsync`, `MaxAsync`, etc.) so they log the same request-charge and cross-partition output as list queries.
 - `DiagnosticsHandler` class has been removed (was unused dead code)
 - If you had custom code that overrode or called the old inline diagnostic patterns, update to use the new helper methods
 

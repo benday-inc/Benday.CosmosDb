@@ -26,7 +26,7 @@ YouTube: https://www.youtube.com/@_benday
 * Shared interface contracts via `Benday.Common.Interfaces` (`IAsyncTenantRepository`, `IBlobOwner`, `IParentedItem`)
 * Logging of query performance and [request units](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units) with consolidated diagnostics helpers
 * Detect and warn when you have cross-partition queries
-* Template method hooks (`OnLogPointOperationDiagnostics`, `OnLogFeedResponseDiagnostics`) for custom diagnostics handling in derived repositories
+* Structured diagnostics hook (`OnQueryDiagnostics`) fires a `CosmosQueryDiagnostics` event for every point operation, feed response page, and query total — same payload shape regardless of whether the source is a LINQ query, raw Cosmos SQL (`GetResultsAsync(QueryDefinition, ...)`), or a scalar SDK operator (`ExecuteScalarAsync` wrapping `CountAsync`, `MaxAsync`, etc.)
 * Helper classes and methods for registering types and handling connection configuration
 * Ultra-simple configuration for Azure Cosmos DB Linux emulator
 * Optimistic concurrency control using ETags

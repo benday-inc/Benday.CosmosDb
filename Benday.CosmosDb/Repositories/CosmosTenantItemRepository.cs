@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Net;
 using System.Threading;
 using Benday.CosmosDb.DomainModels;
@@ -63,6 +64,7 @@ public class CosmosTenantItemRepository<T>(
 
             ItemResponse<T?>? response;
 
+            var stopwatch = Stopwatch.StartNew();
             try
             {
                 response = await container.ReadItemAsync<T?>(id, pk);
@@ -73,8 +75,12 @@ public class CosmosTenantItemRepository<T>(
 
                 return null;
             }
+            finally
+            {
+                stopwatch.Stop();
+            }
 
-            LogPointOperationDiagnostics(nameof(GetByIdAsync), response.RequestCharge, response.Diagnostics);
+            LogPointOperationDiagnostics(nameof(GetByIdAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed);
 
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {

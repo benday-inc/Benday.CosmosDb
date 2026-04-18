@@ -1,6 +1,7 @@
 ﻿using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
@@ -13,8 +14,8 @@ namespace Benday.CosmosDb.SampleApp.Api.Repositories;
 public class CosmosDbPersonRepository : CosmosTenantItemRepository<Person>, IPersonRepository
 {
     public CosmosDbPersonRepository(
-        IOptions<CosmosRepositoryOptions<Person>> options, 
-        CosmosClient client, 
+        IOptions<CosmosRepositoryOptions<Person>> options,
+        CosmosClient client,
         ILogger<CosmosDbPersonRepository> logger) :
         base(options, client, logger)
     {
@@ -33,5 +34,17 @@ public class CosmosDbPersonRepository : CosmosTenantItemRepository<Person>, IPer
             queryContext.PartitionKey);
 
         return results.FirstOrDefault();
+    }
+
+    public async Task<int> GetPersonCountAsync()
+    {
+        var queryContext = await GetQueryContextAsync(ApiConstants.DEFAULT_TENANT_ID);
+
+        return await ExecuteScalarAsync(
+            queryContext.Queryable,
+            q => q.CountAsync(),
+            GetQueryDescription(nameof(GetPersonCountAsync)),
+            queryContext.PartitionKey,
+            resultCountSelector: count => count);
     }
 }
