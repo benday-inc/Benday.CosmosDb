@@ -1,0 +1,1 @@
+/Users/benday/dotfiles/start-cosmos-db-emulator.ps1

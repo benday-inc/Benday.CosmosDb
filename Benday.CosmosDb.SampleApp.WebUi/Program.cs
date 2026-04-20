@@ -1,4 +1,5 @@
 using Benday.AzureStorage.Configuration;
+using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.Repositories;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.SampleApp.Api.Repositories;
@@ -44,6 +45,13 @@ builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
 
 var helper = new CosmosRegistrationHelper(
     builder.Services, cosmosConfig);
+
+builder.Services.Configure<CosmosFileLogSinkOptions>(options =>
+{
+    options.FilePath = "logs/cosmos-queries.ndjson";
+    options.QueueCapacity = 100;
+});
+helper.WithQueryLogSink<FileCosmosQueryLogSink>();
 
 helper.RegisterRepositoryAndService<Note>();
 helper.RegisterParentedRepositoryAndService<Comment>();
