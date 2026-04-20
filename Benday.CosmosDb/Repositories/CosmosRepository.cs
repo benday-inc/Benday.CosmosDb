@@ -220,11 +220,34 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     protected async Task<List<T>> GetResultsAsync(
         IQueryable<T> query, string queryDescription, PartitionKey partitionKey)
     {
-        var queryDefinition = query.ToQueryDefinition();
-        var queryText = queryDefinition.QueryText;
-        var parameters = ExtractParameters(queryDefinition);
+        string? queryText;
+        IReadOnlyDictionary<string, object?>? parameters;
 
-        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResultsAsync)} - {queryDescription} query {{\"query\":\"{queryText}\"}} with partition key {partitionKey}");
+        try
+        {
+            var queryDefinition = query.ToQueryDefinition();
+            queryText = queryDefinition.QueryText;
+            parameters = ExtractParameters(queryDefinition);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogDebug(
+                ex,
+                "Unable to extract query definition for diagnostics on {QueryDescription}. " +
+                "The query will still execute, but the SQL text will not be logged.",
+                queryDescription);
+            queryText = null;
+            parameters = null;
+        }
+
+        if (queryText != null)
+        {
+            Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResultsAsync)} - {queryDescription} query {{\"query\":\"{queryText}\"}} with partition key {partitionKey}");
+        }
+        else
+        {
+            Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResultsAsync)} - {queryDescription} (query text unavailable) with partition key {partitionKey}");
+        }
 
         var feedIterator = query.ToFeedIterator();
 
@@ -553,6 +576,17 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// them while still capturing request charge, timing, query text, and
     /// cross-partition warnings in the same format as list queries.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The SQL text for diagnostics is extracted from the <paramref name="query"/>
+    /// via <see cref="CosmosLinqExtensions.ToQueryDefinition{T}"/>. For some
+    /// queryable shapes this extraction can fail; when it does, the query
+    /// still executes normally and all other diagnostics fields
+    /// (request charge, duration, result count, cross-partition) are
+    /// populated. The <see cref="CosmosQueryDiagnostics.QueryText"/> field
+    /// on the resulting event will be null in that case.
+    /// </para>
+    /// </remarks>
     /// <typeparam name="TResult">The return type of the SDK operation.</typeparam>
     /// <param name="query">The <see cref="IQueryable{T}"/> against which to execute the operation.</param>
     /// <param name="operation">
@@ -589,11 +623,34 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         PartitionKey partitionKey,
         Func<TResult, int>? resultCountSelector = null)
     {
-        var queryDefinition = query.ToQueryDefinition();
-        var queryText = queryDefinition.QueryText;
-        var parameters = ExtractParameters(queryDefinition);
+        string? queryText;
+        IReadOnlyDictionary<string, object?>? parameters;
 
-        Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(ExecuteScalarAsync)} - {queryDescription} query {{\"query\":\"{queryText}\"}} with partition key {partitionKey}");
+        try
+        {
+            var queryDefinition = query.ToQueryDefinition();
+            queryText = queryDefinition.QueryText;
+            parameters = ExtractParameters(queryDefinition);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogDebug(
+                ex,
+                "Unable to extract query definition for diagnostics on {QueryDescription}. " +
+                "The query will still execute, but the SQL text will not be logged.",
+                queryDescription);
+            queryText = null;
+            parameters = null;
+        }
+
+        if (queryText != null)
+        {
+            Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(ExecuteScalarAsync)} - {queryDescription} query {{\"query\":\"{queryText}\"}} with partition key {partitionKey}");
+        }
+        else
+        {
+            Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(ExecuteScalarAsync)} - {queryDescription} (query text unavailable) with partition key {partitionKey}");
+        }
 
         var stopwatch = Stopwatch.StartNew();
         var response = await operation(query);

@@ -51,6 +51,19 @@ public class CosmosQueryDiagnosticsFixture
         return queryable.Where(x => x.EntityType == nameof(TestEntity));
     }
 
+    private static IQueryable<TestEntity> CreateBareCosmosQueryable()
+    {
+        var fakeAccountKey = Convert.ToBase64String(Encoding.UTF8.GetBytes("fakeAccountKey"));
+        var client = new CosmosClient("https://example.com", fakeAccountKey);
+        var container = client.GetDatabase("Test").GetContainer("Test");
+        return container.GetItemLinqQueryable<TestEntity>(
+            allowSynchronousQueryExecution: true,
+            linqSerializerOptions: new CosmosLinqSerializerOptions
+            {
+                PropertyNamingPolicy = CosmosPropertyNamingPolicy.Default
+            });
+    }
+
     private static Mock<CosmosDiagnostics> CreateDiagnosticsMock()
     {
         var mock = new Mock<CosmosDiagnostics>();
@@ -341,6 +354,62 @@ public class CosmosQueryDiagnosticsFixture
 
         Assert.Single(repo.CapturedEvents);
         Assert.True(repo.CapturedEvents[0].IsCrossPartition);
+    }
+
+    [Fact]
+    public async Task ExecuteScalarAsync_BareQueryable_DoesNotThrow_AndFiresQueryTotal()
+    {
+        var repo = CreateRepository();
+        var bareQueryable = CreateBareCosmosQueryable();
+
+        var responseMock = new Mock<Response<int>>();
+        responseMock.Setup(r => r.Resource).Returns(11);
+        responseMock.Setup(r => r.RequestCharge).Returns(2.5);
+        responseMock.Setup(r => r.Diagnostics).Returns(CreateDiagnosticsMock().Object);
+
+        var result = await repo.CallExecuteScalarAsync(
+            bareQueryable,
+            _ => Task.FromResult(responseMock.Object),
+            queryDescription: "bare-scalar",
+            partitionKey: default,
+            resultCountSelector: count => count);
+
+        Assert.Equal(11, result);
+
+        var evt = Assert.Single(repo.CapturedEvents);
+        Assert.Equal(CosmosQueryEventKind.QueryTotal, evt.EventKind);
+        Assert.Equal(2.5, evt.RequestCharge);
+        Assert.Equal(11, evt.ResultCount);
+        // QueryText is null-or-valid-string depending on whether ToQueryDefinition
+        // threw on the bare queryable — both outcomes are acceptable.
+        if (evt.QueryText != null)
+        {
+            Assert.NotEmpty(evt.QueryText);
+        }
+    }
+
+    [Fact]
+    public async Task ExecuteScalarAsync_WhereClauseQueryable_PopulatesQueryText()
+    {
+        var repo = CreateRepository();
+        var filteredQueryable = CreateCosmosQueryable();
+
+        var responseMock = new Mock<Response<int>>();
+        responseMock.Setup(r => r.Resource).Returns(3);
+        responseMock.Setup(r => r.RequestCharge).Returns(1.5);
+        responseMock.Setup(r => r.Diagnostics).Returns(CreateDiagnosticsMock().Object);
+
+        await repo.CallExecuteScalarAsync(
+            filteredQueryable,
+            _ => Task.FromResult(responseMock.Object),
+            queryDescription: "happy-scalar",
+            partitionKey: default,
+            resultCountSelector: count => count);
+
+        var evt = Assert.Single(repo.CapturedEvents);
+        Assert.Equal(CosmosQueryEventKind.QueryTotal, evt.EventKind);
+        Assert.NotNull(evt.QueryText);
+        Assert.Contains("SELECT", evt.QueryText, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
