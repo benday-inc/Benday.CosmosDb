@@ -1,0 +1,1016 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  id: CosmosQueryDiagnostics
+  parent: Benday.CosmosDb.Diagnostics
+  children:
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp
+  langs:
+  - csharp
+  - vb
+  name: CosmosQueryDiagnostics
+  nameWithType: CosmosQueryDiagnostics
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  type: Class
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: CosmosQueryDiagnostics
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 11
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Structured payload describing a single Cosmos DB query execution event.
+
+    Delivered to <code>CosmosRepository&lt;T&gt;.OnQueryDiagnostics</code> for point
+
+    operations, per-page feed responses, and query totals.
+  example: []
+  syntax:
+    content: public sealed class CosmosQueryDiagnostics
+    content.vb: Public NotInheritable Class CosmosQueryDiagnostics
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind
+  id: EventKind
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: EventKind
+  nameWithType: CosmosQueryDiagnostics.EventKind
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: EventKind
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 16
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: Which kind of event this is. Drives how sinks route and aggregate.
+  example: []
+  syntax:
+    content: public CosmosQueryEventKind EventKind { get; init; }
+    parameters: []
+    return:
+      type: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+    content.vb: Public Property EventKind As CosmosQueryEventKind
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp
+  id: Timestamp
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: CosmosQueryDiagnostics.Timestamp
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Timestamp
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 21
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: When the event was captured, in UTC.
+  example: []
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName
+  id: RepositoryName
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: RepositoryName
+  nameWithType: CosmosQueryDiagnostics.RepositoryName
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RepositoryName
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 26
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: Name of the repository type (e.g. "CocktailRecipeRepository").
+  example: []
+  syntax:
+    content: public string RepositoryName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property RepositoryName As String
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription
+  id: QueryDescription
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: QueryDescription
+  nameWithType: CosmosQueryDiagnostics.QueryDescription
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: QueryDescription
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 33
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Logging description for the operation, typically the repository
+
+    name plus the caller method name, e.g.
+
+    "CocktailRecipeRepository - SearchByTitleAsync".
+  example: []
+  syntax:
+    content: public string QueryDescription { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property QueryDescription As String
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText
+  id: QueryText
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: QueryText
+  nameWithType: CosmosQueryDiagnostics.QueryText
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: QueryText
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 41
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    The generated SQL text. Null for <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation" data-throw-if-not-resolved="false"></xref>
+
+    events (point operations don't have a query text — just an id and a
+
+    partition key). Populated for <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage" data-throw-if-not-resolved="false"></xref>
+
+    and <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal" data-throw-if-not-resolved="false"></xref> events.
+  example: []
+  syntax:
+    content: public string? QueryText { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property QueryText As String
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters
+  id: Parameters
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: Parameters
+  nameWithType: CosmosQueryDiagnostics.Parameters
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Parameters
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 48
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Query parameters. Null for <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation" data-throw-if-not-resolved="false"></xref>.
+
+    Populated for LINQ and raw-SQL queries from the underlying
+
+    <xref href="Microsoft.Azure.Cosmos.QueryDefinition" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<string, object?>? Parameters { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+    content.vb: Public Property Parameters As IReadOnlyDictionary(Of String, Object)
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+  id: PartitionKey
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: PartitionKey
+  nameWithType: CosmosQueryDiagnostics.PartitionKey
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: PartitionKey
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 54
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Partition key scope for the operation. Uses a default
+
+    <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey" data-throw-if-not-resolved="false"></xref> value (no partition) for cross-partition queries.
+  example: []
+  syntax:
+    content: public PartitionKey PartitionKey { get; init; }
+    parameters: []
+    return:
+      type: Microsoft.Azure.Cosmos.PartitionKey
+    content.vb: Public Property PartitionKey As PartitionKey
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge
+  id: RequestCharge
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: RequestCharge
+  nameWithType: CosmosQueryDiagnostics.RequestCharge
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RequestCharge
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 62
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    RU consumed. For <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal" data-throw-if-not-resolved="false"></xref>, this is the
+
+    accumulated charge across all pages. For <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage" data-throw-if-not-resolved="false"></xref>,
+
+    just that page. For <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation" data-throw-if-not-resolved="false"></xref>, the
+
+    single-operation charge.
+  example: []
+  syntax:
+    content: public double RequestCharge { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property RequestCharge As Double
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration
+  id: Duration
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: Duration
+  nameWithType: CosmosQueryDiagnostics.Duration
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Duration
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 69
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Wall-clock duration of the SDK round trip. For
+
+    <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal" data-throw-if-not-resolved="false"></xref> this is the aggregated duration
+
+    across all pages.
+  example: []
+  syntax:
+    content: public TimeSpan Duration { get; init; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property Duration As TimeSpan
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount
+  id: ResultCount
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: ResultCount
+  nameWithType: CosmosQueryDiagnostics.ResultCount
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ResultCount
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 78
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Number of documents or rows returned. For scalar operations this
+
+    reflects the scalar result (1 for a successful value, 0 for a
+
+    null FirstOrDefault, etc.). For <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage" data-throw-if-not-resolved="false"></xref>,
+
+    the count for that page. For <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal" data-throw-if-not-resolved="false"></xref> on
+
+    a feed, the total across pages.
+  example: []
+  syntax:
+    content: public int ResultCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ResultCount As Integer
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition
+  id: IsCrossPartition
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: IsCrossPartition
+  nameWithType: CosmosQueryDiagnostics.IsCrossPartition
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: IsCrossPartition
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 86
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    True if this event (or any page of a multi-page query) was
+
+    detected as a cross-partition execution. For
+
+    <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal" data-throw-if-not-resolved="false"></xref> events this is the OR across
+
+    all pages.
+  example: []
+  syntax:
+    content: public bool IsCrossPartition { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsCrossPartition As Boolean
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition*
+references:
+- uid: Benday.CosmosDb.Diagnostics
+  commentId: N:Benday.CosmosDb.Diagnostics
+  href: Benday.html
+  name: Benday.CosmosDb.Diagnostics
+  nameWithType: Benday.CosmosDb.Diagnostics
+  fullName: Benday.CosmosDb.Diagnostics
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_EventKind
+  name: EventKind
+  nameWithType: CosmosQueryDiagnostics.EventKind
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html
+  name: CosmosQueryEventKind
+  nameWithType: CosmosQueryEventKind
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Timestamp
+  name: Timestamp
+  nameWithType: CosmosQueryDiagnostics.Timestamp
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_RepositoryName
+  name: RepositoryName
+  nameWithType: CosmosQueryDiagnostics.RepositoryName
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_QueryDescription
+  name: QueryDescription
+  nameWithType: CosmosQueryDiagnostics.QueryDescription
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation
+  commentId: F:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_PointOperation
+  name: PointOperation
+  nameWithType: CosmosQueryEventKind.PointOperation
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+  commentId: F:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_FeedResponsePage
+  name: FeedResponsePage
+  nameWithType: CosmosQueryEventKind.FeedResponsePage
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal
+  commentId: F:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_QueryTotal
+  name: QueryTotal
+  nameWithType: CosmosQueryEventKind.QueryTotal
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_QueryText
+  name: QueryText
+  nameWithType: CosmosQueryDiagnostics.QueryText
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText
+- uid: Microsoft.Azure.Cosmos.QueryDefinition
+  commentId: T:Microsoft.Azure.Cosmos.QueryDefinition
+  parent: Microsoft.Azure.Cosmos
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.querydefinition
+  name: QueryDefinition
+  nameWithType: QueryDefinition
+  fullName: Microsoft.Azure.Cosmos.QueryDefinition
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Parameters
+  name: Parameters
+  nameWithType: CosmosQueryDiagnostics.Parameters
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, object>
+  nameWithType: IReadOnlyDictionary<string, object>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object)
+  name.vb: IReadOnlyDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Microsoft.Azure.Cosmos
+  commentId: N:Microsoft.Azure.Cosmos
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Azure.Cosmos
+  nameWithType: Microsoft.Azure.Cosmos
+  fullName: Microsoft.Azure.Cosmos
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Azure
+    name: Azure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure
+  - name: .
+  - uid: Microsoft.Azure.Cosmos
+    name: Cosmos
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Azure
+    name: Azure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure
+  - name: .
+  - uid: Microsoft.Azure.Cosmos
+    name: Cosmos
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_PartitionKey
+  name: PartitionKey
+  nameWithType: CosmosQueryDiagnostics.PartitionKey
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_PartitionKey
+  name: PartitionKey
+  nameWithType: CosmosQueryDiagnostics.PartitionKey
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
+- uid: Microsoft.Azure.Cosmos.PartitionKey
+  commentId: T:Microsoft.Azure.Cosmos.PartitionKey
+  parent: Microsoft.Azure.Cosmos
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  name: PartitionKey
+  nameWithType: PartitionKey
+  fullName: Microsoft.Azure.Cosmos.PartitionKey
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_RequestCharge
+  name: RequestCharge
+  nameWithType: CosmosQueryDiagnostics.RequestCharge
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Duration
+  name: Duration
+  nameWithType: CosmosQueryDiagnostics.Duration
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_ResultCount
+  name: ResultCount
+  nameWithType: CosmosQueryDiagnostics.ResultCount
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_IsCrossPartition
+  name: IsCrossPartition
+  nameWithType: CosmosQueryDiagnostics.IsCrossPartition
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

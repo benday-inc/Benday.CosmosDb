@@ -1,0 +1,75 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Exceptions
+  commentId: N:Benday.CosmosDb.Exceptions
+  id: Benday.CosmosDb.Exceptions
+  children:
+  - Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  - Benday.CosmosDb.Exceptions.CosmosDbConfigurationException
+  - Benday.CosmosDb.Exceptions.CosmosDbException
+  - Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException
+  langs:
+  - csharp
+  - vb
+  name: Benday.CosmosDb.Exceptions
+  nameWithType: Benday.CosmosDb.Exceptions
+  fullName: Benday.CosmosDb.Exceptions
+  type: Namespace
+  assemblies:
+  - Benday.CosmosDb
+references:
+- uid: Benday.CosmosDb.Exceptions.CosmosDbException
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbException
+  parent: Benday.CosmosDb.Exceptions
+  href: Benday.CosmosDb.Exceptions.CosmosDbException.html
+  name: CosmosDbException
+  nameWithType: CosmosDbException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbException
+- uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException
+  href: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException.html
+  name: CosmosDbItemNotFoundException
+  nameWithType: CosmosDbItemNotFoundException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException
+- uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbConfigurationException
+  href: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException.html
+  name: CosmosDbConfigurationException
+  nameWithType: CosmosDbConfigurationException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  href: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html
+  name: CosmosDbBatchOperationException
+  nameWithType: CosmosDbBatchOperationException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+- uid: Benday.CosmosDb.Exceptions
+  commentId: N:Benday.CosmosDb.Exceptions
+  href: Benday.html
+  name: Benday.CosmosDb.Exceptions
+  nameWithType: Benday.CosmosDb.Exceptions
+  fullName: Benday.CosmosDb.Exceptions
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Exceptions
+    name: Exceptions
+    href: Benday.CosmosDb.Exceptions.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Exceptions
+    name: Exceptions
+    href: Benday.CosmosDb.Exceptions.html

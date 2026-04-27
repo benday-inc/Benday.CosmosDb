@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Interface IParentedItemService&lt;T&gt; ">
     
-    <meta name="description" content="Service layer interface for parented items. Extends IOwnedItemService with parent-specific operations.">
+    <meta name="description" content="Service layer interface for parented items. Extends ITenantItemService with parent-specific operations.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -72,29 +72,44 @@
 
 
   <h1 id="Benday_CosmosDb_ServiceLayers_IParentedItemService_1" data-uid="Benday.CosmosDb.ServiceLayers.IParentedItemService`1" class="text-break">Interface IParentedItemService&lt;T&gt;</h1>
-  <div class="markdown level0 summary"><p>Service layer interface for parented items. Extends IOwnedItemService with parent-specific operations.</p>
+  <div class="markdown level0 summary"><p>Service layer interface for parented items. Extends ITenantItemService with parent-specific operations.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemService_1_DeleteAsync__0_">IOwnedItemService&lt;T&gt;.DeleteAsync(T)</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html#Benday_CosmosDb_ServiceLayers_ITenantItemService_1_DeleteAsync__0_">ITenantItemService&lt;T&gt;.DeleteAsync(T)</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemService_1_GetAllAsync_System_String_">IOwnedItemService&lt;T&gt;.GetAllAsync(string)</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html#Benday_CosmosDb_ServiceLayers_ITenantItemService_1_GetAllAsync_System_String_">ITenantItemService&lt;T&gt;.GetAllAsync(string)</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemService_1_GetByIdAsync_System_String_System_String_">IOwnedItemService&lt;T&gt;.GetByIdAsync(string, string)</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html#Benday_CosmosDb_ServiceLayers_ITenantItemService_1_GetByIdAsync_System_String_System_String_">ITenantItemService&lt;T&gt;.GetByIdAsync(string, string)</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html#Benday_CosmosDb_ServiceLayers_IOwnedItemService_1_SaveAsync__0_">IOwnedItemService&lt;T&gt;.SaveAsync(T)</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html#Benday_CosmosDb_ServiceLayers_ITenantItemService_1_SaveAsync__0_">ITenantItemService&lt;T&gt;.SaveAsync(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">IAsyncTenantService&lt;T, string&gt;.GetByIdAsync(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">IAsyncTenantService&lt;T, string&gt;.GetByTenantAsync(string)</a>
+    </div>
+    <div>
+      <span class="xref">IAsyncService&lt;T, string&gt;.SaveAsync(T)</span>
+    </div>
+    <div>
+      <span class="xref">IAsyncService&lt;T, string&gt;.DeleteAsync(T)</span>
+    </div>
+    <div>
+      <span class="xref">IAsyncService&lt;T, string&gt;.GetByIdAsync(string)</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Benday.html">Benday</a>.<a class="xref" href="Benday.CosmosDb.html">CosmosDb</a>.<a class="xref" href="Benday.CosmosDb.ServiceLayers.html">ServiceLayers</a></h6>
   <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
   <h5 id="Benday_CosmosDb_ServiceLayers_IParentedItemService_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IParentedItemService&lt;T&gt; : IOwnedItemService&lt;T&gt; where T : class, IParentedItem, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IParentedItemService&lt;T&gt; : ITenantItemService&lt;T&gt;, IAsyncTenantService&lt;T, string&gt;, IAsyncService&lt;T, string&gt; where T : class, IParentedItem, new()</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -123,12 +138,12 @@
   </span>
   <a id="Benday_CosmosDb_ServiceLayers_IParentedItemService_1_GetAllByParentIdAsync_" data-uid="Benday.CosmosDb.ServiceLayers.IParentedItemService`1.GetAllByParentIdAsync*"></a>
   <h4 id="Benday_CosmosDb_ServiceLayers_IParentedItemService_1_GetAllByParentIdAsync_System_String_System_String_System_String_" data-uid="Benday.CosmosDb.ServiceLayers.IParentedItemService`1.GetAllByParentIdAsync(System.String,System.String,System.String)">GetAllByParentIdAsync(string, string, string?)</h4>
-  <div class="markdown level1 summary"><p>Gets all items by parent ID and optionally filters by parent discriminator</p>
+  <div class="markdown level1 summary"><p>Gets all items by parent ID and optionally filters by parent entity type</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; GetAllByParentIdAsync(string ownerId, string parentId, string? parentDiscriminator = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; GetAllByParentIdAsync(string tenantId, string parentId, string? parentEntityType = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -142,8 +157,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">ownerId</span></td>
-        <td><p>The owner ID</p>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>The tenant ID</p>
 </td>
       </tr>
       <tr>
@@ -154,8 +169,8 @@
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">parentDiscriminator</span></td>
-        <td><p>Optional parent discriminator to filter by parent type</p>
+        <td><span class="parametername">parentEntityType</span></td>
+        <td><p>Optional parent entity type to filter by parent type</p>
 </td>
       </tr>
     </tbody>

@@ -1,0 +1,681 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  commentId: T:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  id: CosmosRepositoryOptions`1
+  parent: Benday.CosmosDb.Repositories
+  children:
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ConnectionString
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ContainerName
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseName
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseThroughput
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.PartitionKey
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseDefaultAzureCredential
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseHierarchicalPartitionKey
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.WithCreateStructures
+  langs:
+  - csharp
+  - vb
+  name: CosmosRepositoryOptions<T>
+  nameWithType: CosmosRepositoryOptions<T>
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>
+  type: Class
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: CosmosRepositoryOptions
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 8
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Configuration options for a repository.
+  example: []
+  syntax:
+    content: public class CosmosRepositoryOptions<T>
+    typeParameters:
+    - id: T
+      description: Domain model type managed by the repository
+    content.vb: Public Class CosmosRepositoryOptions(Of T)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: CosmosRepositoryOptions(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T)
+  name.vb: CosmosRepositoryOptions(Of T)
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ConnectionString
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ConnectionString
+  id: ConnectionString
+  parent: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  langs:
+  - csharp
+  - vb
+  name: ConnectionString
+  nameWithType: CosmosRepositoryOptions<T>.ConnectionString
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.ConnectionString
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ConnectionString
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 13
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Connection string for the Cosmos DB account.
+  example: []
+  syntax:
+    content: public string? ConnectionString { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ConnectionString As String
+  overload: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ConnectionString*
+  nameWithType.vb: CosmosRepositoryOptions(Of T).ConnectionString
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).ConnectionString
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.WithCreateStructures
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.WithCreateStructures
+  id: WithCreateStructures
+  parent: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  langs:
+  - csharp
+  - vb
+  name: WithCreateStructures
+  nameWithType: CosmosRepositoryOptions<T>.WithCreateStructures
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.WithCreateStructures
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithCreateStructures
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 19
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Configure whether to create Cosmos DB structures if they don't already exists. This option is disabled by default.
+  example: []
+  syntax:
+    content: public bool WithCreateStructures { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property WithCreateStructures As Boolean
+  overload: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.WithCreateStructures*
+  nameWithType.vb: CosmosRepositoryOptions(Of T).WithCreateStructures
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).WithCreateStructures
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseName
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseName
+  id: DatabaseName
+  parent: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  langs:
+  - csharp
+  - vb
+  name: DatabaseName
+  nameWithType: CosmosRepositoryOptions<T>.DatabaseName
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.DatabaseName
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: DatabaseName
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 25
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Cosmos DB database name.
+  example: []
+  syntax:
+    content: public string DatabaseName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DatabaseName As String
+  overload: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseName*
+  nameWithType.vb: CosmosRepositoryOptions(Of T).DatabaseName
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).DatabaseName
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ContainerName
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ContainerName
+  id: ContainerName
+  parent: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  langs:
+  - csharp
+  - vb
+  name: ContainerName
+  nameWithType: CosmosRepositoryOptions<T>.ContainerName
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.ContainerName
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ContainerName
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 31
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Name of the container in the Cosmos DB database.
+  example: []
+  syntax:
+    content: public string ContainerName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ContainerName As String
+  overload: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ContainerName*
+  nameWithType.vb: CosmosRepositoryOptions(Of T).ContainerName
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).ContainerName
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.PartitionKey
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.PartitionKey
+  id: PartitionKey
+  parent: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  langs:
+  - csharp
+  - vb
+  name: PartitionKey
+  nameWithType: CosmosRepositoryOptions<T>.PartitionKey
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.PartitionKey
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: PartitionKey
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 37
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Partition key configuration for the Cosmos DB container.
+  example: []
+  syntax:
+    content: public string PartitionKey { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PartitionKey As String
+  overload: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.PartitionKey*
+  nameWithType.vb: CosmosRepositoryOptions(Of T).PartitionKey
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).PartitionKey
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseThroughput
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseThroughput
+  id: DatabaseThroughput
+  parent: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  langs:
+  - csharp
+  - vb
+  name: DatabaseThroughput
+  nameWithType: CosmosRepositoryOptions<T>.DatabaseThroughput
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.DatabaseThroughput
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: DatabaseThroughput
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 43
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Throughput for the database. This is only used if the database is created.
+  example: []
+  syntax:
+    content: public int DatabaseThroughput { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DatabaseThroughput As Integer
+  overload: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseThroughput*
+  nameWithType.vb: CosmosRepositoryOptions(Of T).DatabaseThroughput
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).DatabaseThroughput
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseHierarchicalPartitionKey
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseHierarchicalPartitionKey
+  id: UseHierarchicalPartitionKey
+  parent: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  langs:
+  - csharp
+  - vb
+  name: UseHierarchicalPartitionKey
+  nameWithType: CosmosRepositoryOptions<T>.UseHierarchicalPartitionKey
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.UseHierarchicalPartitionKey
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: UseHierarchicalPartitionKey
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 49
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Use hierarchical partition key. This option is disabled by default.
+  example: []
+  syntax:
+    content: public bool UseHierarchicalPartitionKey { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseHierarchicalPartitionKey As Boolean
+  overload: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseHierarchicalPartitionKey*
+  nameWithType.vb: CosmosRepositoryOptions(Of T).UseHierarchicalPartitionKey
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).UseHierarchicalPartitionKey
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseDefaultAzureCredential
+  commentId: P:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseDefaultAzureCredential
+  id: UseDefaultAzureCredential
+  parent: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  langs:
+  - csharp
+  - vb
+  name: UseDefaultAzureCredential
+  nameWithType: CosmosRepositoryOptions<T>.UseDefaultAzureCredential
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.UseDefaultAzureCredential
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: UseDefaultAzureCredential
+    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 51
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  syntax:
+    content: public bool UseDefaultAzureCredential { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseDefaultAzureCredential As Boolean
+  overload: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseDefaultAzureCredential*
+  nameWithType.vb: CosmosRepositoryOptions(Of T).UseDefaultAzureCredential
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).UseDefaultAzureCredential
+references:
+- uid: Benday.CosmosDb.Repositories
+  commentId: N:Benday.CosmosDb.Repositories
+  href: Benday.html
+  name: Benday.CosmosDb.Repositories
+  nameWithType: Benday.CosmosDb.Repositories
+  fullName: Benday.CosmosDb.Repositories
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Repositories
+    name: Repositories
+    href: Benday.CosmosDb.Repositories.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Repositories
+    name: Repositories
+    href: Benday.CosmosDb.Repositories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ConnectionString*
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ConnectionString
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html#Benday_CosmosDb_Repositories_CosmosRepositoryOptions_1_ConnectionString
+  name: ConnectionString
+  nameWithType: CosmosRepositoryOptions<T>.ConnectionString
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.ConnectionString
+  nameWithType.vb: CosmosRepositoryOptions(Of T).ConnectionString
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).ConnectionString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.WithCreateStructures*
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.WithCreateStructures
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html#Benday_CosmosDb_Repositories_CosmosRepositoryOptions_1_WithCreateStructures
+  name: WithCreateStructures
+  nameWithType: CosmosRepositoryOptions<T>.WithCreateStructures
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.WithCreateStructures
+  nameWithType.vb: CosmosRepositoryOptions(Of T).WithCreateStructures
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).WithCreateStructures
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseName*
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseName
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html#Benday_CosmosDb_Repositories_CosmosRepositoryOptions_1_DatabaseName
+  name: DatabaseName
+  nameWithType: CosmosRepositoryOptions<T>.DatabaseName
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.DatabaseName
+  nameWithType.vb: CosmosRepositoryOptions(Of T).DatabaseName
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).DatabaseName
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ContainerName*
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.ContainerName
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html#Benday_CosmosDb_Repositories_CosmosRepositoryOptions_1_ContainerName
+  name: ContainerName
+  nameWithType: CosmosRepositoryOptions<T>.ContainerName
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.ContainerName
+  nameWithType.vb: CosmosRepositoryOptions(Of T).ContainerName
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).ContainerName
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.PartitionKey*
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.PartitionKey
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html#Benday_CosmosDb_Repositories_CosmosRepositoryOptions_1_PartitionKey
+  name: PartitionKey
+  nameWithType: CosmosRepositoryOptions<T>.PartitionKey
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.PartitionKey
+  nameWithType.vb: CosmosRepositoryOptions(Of T).PartitionKey
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).PartitionKey
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseThroughput*
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.DatabaseThroughput
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html#Benday_CosmosDb_Repositories_CosmosRepositoryOptions_1_DatabaseThroughput
+  name: DatabaseThroughput
+  nameWithType: CosmosRepositoryOptions<T>.DatabaseThroughput
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.DatabaseThroughput
+  nameWithType.vb: CosmosRepositoryOptions(Of T).DatabaseThroughput
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).DatabaseThroughput
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseHierarchicalPartitionKey*
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseHierarchicalPartitionKey
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html#Benday_CosmosDb_Repositories_CosmosRepositoryOptions_1_UseHierarchicalPartitionKey
+  name: UseHierarchicalPartitionKey
+  nameWithType: CosmosRepositoryOptions<T>.UseHierarchicalPartitionKey
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.UseHierarchicalPartitionKey
+  nameWithType.vb: CosmosRepositoryOptions(Of T).UseHierarchicalPartitionKey
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).UseHierarchicalPartitionKey
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseDefaultAzureCredential*
+  commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1.UseDefaultAzureCredential
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html#Benday_CosmosDb_Repositories_CosmosRepositoryOptions_1_UseDefaultAzureCredential
+  name: UseDefaultAzureCredential
+  nameWithType: CosmosRepositoryOptions<T>.UseDefaultAzureCredential
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>.UseDefaultAzureCredential
+  nameWithType.vb: CosmosRepositoryOptions(Of T).UseDefaultAzureCredential
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T).UseDefaultAzureCredential

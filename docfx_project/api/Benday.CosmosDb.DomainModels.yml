@@ -1,0 +1,93 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.DomainModels
+  commentId: N:Benday.CosmosDb.DomainModels
+  id: Benday.CosmosDb.DomainModels
+  children:
+  - Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity
+  - Benday.CosmosDb.DomainModels.IParentedItem
+  - Benday.CosmosDb.DomainModels.ITenantItem
+  - Benday.CosmosDb.DomainModels.ParentedItemBase
+  - Benday.CosmosDb.DomainModels.TenantItemBase
+  langs:
+  - csharp
+  - vb
+  name: Benday.CosmosDb.DomainModels
+  nameWithType: Benday.CosmosDb.DomainModels
+  fullName: Benday.CosmosDb.DomainModels
+  type: Namespace
+  assemblies:
+  - Benday.CosmosDb
+references:
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  commentId: T:Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.CosmosIdentityBase.html
+  name: CosmosIdentityBase
+  nameWithType: CosmosIdentityBase
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  commentId: T:Benday.CosmosDb.DomainModels.ICosmosIdentity
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html
+  name: ICosmosIdentity
+  nameWithType: ICosmosIdentity
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity
+- uid: Benday.CosmosDb.DomainModels.IParentedItem
+  commentId: T:Benday.CosmosDb.DomainModels.IParentedItem
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.IParentedItem.html
+  name: IParentedItem
+  nameWithType: IParentedItem
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem
+- uid: Benday.CosmosDb.DomainModels.ITenantItem
+  commentId: T:Benday.CosmosDb.DomainModels.ITenantItem
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.ITenantItem.html
+  name: ITenantItem
+  nameWithType: ITenantItem
+  fullName: Benday.CosmosDb.DomainModels.ITenantItem
+- uid: Benday.CosmosDb.DomainModels.ParentedItemBase
+  commentId: T:Benday.CosmosDb.DomainModels.ParentedItemBase
+  href: Benday.CosmosDb.DomainModels.ParentedItemBase.html
+  name: ParentedItemBase
+  nameWithType: ParentedItemBase
+  fullName: Benday.CosmosDb.DomainModels.ParentedItemBase
+- uid: Benday.CosmosDb.DomainModels.TenantItemBase
+  commentId: T:Benday.CosmosDb.DomainModels.TenantItemBase
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.TenantItemBase.html
+  name: TenantItemBase
+  nameWithType: TenantItemBase
+  fullName: Benday.CosmosDb.DomainModels.TenantItemBase
+- uid: Benday.CosmosDb.DomainModels
+  commentId: N:Benday.CosmosDb.DomainModels
+  href: Benday.html
+  name: Benday.CosmosDb.DomainModels
+  nameWithType: Benday.CosmosDb.DomainModels
+  fullName: Benday.CosmosDb.DomainModels
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html

@@ -1,0 +1,93 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Diagnostics
+  commentId: N:Benday.CosmosDb.Diagnostics
+  id: Benday.CosmosDb.Diagnostics
+  children:
+  - Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  - Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  - Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  - Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: Benday.CosmosDb.Diagnostics
+  nameWithType: Benday.CosmosDb.Diagnostics
+  fullName: Benday.CosmosDb.Diagnostics
+  type: Namespace
+  assemblies:
+  - Benday.CosmosDb
+references:
+- uid: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.html
+  name: CosmosFileLogSinkOptions
+  nameWithType: CosmosFileLogSinkOptions
+  fullName: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  name: CosmosQueryDiagnostics
+  nameWithType: CosmosQueryDiagnostics
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html
+  name: CosmosQueryEventKind
+  nameWithType: CosmosQueryEventKind
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html
+  name: FileCosmosQueryLogSink
+  nameWithType: FileCosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html
+  name: ICosmosQueryLogSink
+  nameWithType: ICosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink.html
+  name: NoOpCosmosQueryLogSink
+  nameWithType: NoOpCosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics
+  commentId: N:Benday.CosmosDb.Diagnostics
+  href: Benday.html
+  name: Benday.CosmosDb.Diagnostics
+  nameWithType: Benday.CosmosDb.Diagnostics
+  fullName: Benday.CosmosDb.Diagnostics
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html

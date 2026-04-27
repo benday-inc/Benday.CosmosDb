@@ -79,12 +79,14 @@
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><span class="xref">CosmosIdentityBase</span></div>
-      <div class="level2"><a class="xref" href="Benday.CosmosDb.DomainModels.OwnedItemBase.html">OwnedItemBase</a></div>
+      <div class="level2"><a class="xref" href="Benday.CosmosDb.DomainModels.TenantItemBase.html">TenantItemBase</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Benday.CosmosDb.DomainModels.IOwnedItem.html">IOwnedItem</a></div>
+    <div><a class="xref" href="Benday.CosmosDb.DomainModels.ITenantItem.html">ITenantItem</a></div>
     <div><a class="xref" href="Benday.CosmosDb.DomainModels.ICosmosIdentity.html">ICosmosIdentity</a></div>
+    <div><span class="xref">ITenantItem</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+    <div><span class="xref">IEntityIdentity</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -114,26 +116,26 @@
   <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
   <h5 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class CosmosIdentityBase : IOwnedItem, ICosmosIdentity</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class CosmosIdentityBase : ITenantItem, ICosmosIdentity, ITenantItem&lt;string&gt;, IEntityIdentity&lt;string&gt;</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_DiscriminatorValue.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.DiscriminatorValue%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_EntityType.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L58">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L53">View Source</a>
   </span>
-  <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_DiscriminatorValue_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.DiscriminatorValue*"></a>
-  <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_DiscriminatorValue" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.DiscriminatorValue">DiscriminatorValue</h4>
-  <div class="markdown level1 summary"><p>Second-level partition key for the entity.  This value describes the domain model type for the entity.</p>
+  <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_EntityType_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType*"></a>
+  <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_EntityType" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType">EntityType</h4>
+  <div class="markdown level1 summary"><p>Second-level partition key for the entity. This value describes the domain model type for the entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;discriminator&quot;)]
-public virtual string DiscriminatorValue { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;entityType&quot;)]
+public virtual string EntityType { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -155,7 +157,7 @@ public virtual string DiscriminatorValue { get; set; }</code></pre>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_Etag.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L52">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L47">View Source</a>
   </span>
   <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_Etag_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag*"></a>
   <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_Etag" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag">Etag</h4>
@@ -216,51 +218,20 @@ public string Id { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_OwnerId.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.OwnerId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L27">View Source</a>
-  </span>
-  <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_OwnerId_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.OwnerId*"></a>
-  <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_OwnerId" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.OwnerId">OwnerId</h4>
-  <div class="markdown level1 summary"><p>The owner id of the entity. By default, this value will be the same as the PartitionKey for the entity.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string OwnerId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_PartitionKey.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.PartitionKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_TenantId.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L21">View Source</a>
   </span>
-  <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_PartitionKey_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.PartitionKey*"></a>
-  <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_PartitionKey" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.PartitionKey">PartitionKey</h4>
-  <div class="markdown level1 summary"><p>Top-level partition key of the entity.</p>
+  <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_TenantId_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId*"></a>
+  <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_TenantId" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId">TenantId</h4>
+  <div class="markdown level1 summary"><p>Top-level partition key of the entity. Represents the tenant that owns this entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;pk&quot;)]
-public abstract string PartitionKey { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;tenantId&quot;)]
+public virtual string TenantId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -282,7 +253,7 @@ public abstract string PartitionKey { get; set; }</code></pre>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_Timestamp.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L38">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L33">View Source</a>
   </span>
   <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_Timestamp_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp*"></a>
   <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_Timestamp" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp">Timestamp</h4>
@@ -313,7 +284,7 @@ public abstract string PartitionKey { get; set; }</code></pre>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_TimestampUnixStyle.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L32">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L27">View Source</a>
   </span>
   <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_TimestampUnixStyle_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle*"></a>
   <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_TimestampUnixStyle" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle">TimestampUnixStyle</h4>
@@ -344,19 +315,19 @@ public long TimestampUnixStyle { get; set; }</code></pre>
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetDiscriminatorName.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetDiscriminatorName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetEntityTypeName.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L76">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs/#L71">View Source</a>
   </span>
-  <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetDiscriminatorName_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetDiscriminatorName*"></a>
-  <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetDiscriminatorName" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetDiscriminatorName">GetDiscriminatorName()</h4>
-  <div class="markdown level1 summary"><p>Get the discriminator value for the entity.</p>
+  <a id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetEntityTypeName_" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName*"></a>
+  <h4 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetEntityTypeName" data-uid="Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName">GetEntityTypeName()</h4>
+  <div class="markdown level1 summary"><p>Get the entity type name for this entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract string GetDiscriminatorName()</code></pre>
+    <pre><code class="lang-csharp hljs">protected abstract string GetEntityTypeName()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-condensed">
@@ -369,20 +340,26 @@ public long TimestampUnixStyle { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><p>Discriminator value</p>
+        <td><p>Entity type name</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetDiscriminatorName_examples">Examples</h5>
+  <h5 id="Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetEntityTypeName_examples">Examples</h5>
   <p>Recommendation: this should be the class name for the domain model class</p>
 
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="Benday.CosmosDb.DomainModels.IOwnedItem.html">IOwnedItem</a>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.ITenantItem.html">ITenantItem</a>
   </div>
   <div>
       <a class="xref" href="Benday.CosmosDb.DomainModels.ICosmosIdentity.html">ICosmosIdentity</a>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.ITenantItem&lt;TKey&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.IEntityIdentity&lt;TKey&gt;</span>
   </div>
 
 </article>

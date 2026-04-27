@@ -1,0 +1,666 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Repositories.PagedResults`1
+  commentId: T:Benday.CosmosDb.Repositories.PagedResults`1
+  id: PagedResults`1
+  parent: Benday.CosmosDb.Repositories
+  children:
+  - Benday.CosmosDb.Repositories.PagedResults`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.String,System.Boolean,System.Double)
+  - Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken
+  - Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults
+  - Benday.CosmosDb.Repositories.PagedResults`1.Items
+  - Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge
+  langs:
+  - csharp
+  - vb
+  name: PagedResults<T>
+  nameWithType: PagedResults<T>
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>
+  type: Class
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/PagedResults.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: PagedResults
+    path: ../Benday.CosmosDb/Repositories/PagedResults.cs
+    startLine: 8
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Represents a page of results from a query with continuation support.
+  example: []
+  syntax:
+    content: public class PagedResults<T>
+    typeParameters:
+    - id: T
+      description: The type of items in the result set
+    content.vb: Public Class PagedResults(Of T)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: PagedResults(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T)
+  name.vb: PagedResults(Of T)
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.String,System.Boolean,System.Double)
+  commentId: M:Benday.CosmosDb.Repositories.PagedResults`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.String,System.Boolean,System.Double)
+  id: '#ctor(System.Collections.Generic.IEnumerable{`0},System.String,System.Boolean,System.Double)'
+  parent: Benday.CosmosDb.Repositories.PagedResults`1
+  langs:
+  - csharp
+  - vb
+  name: PagedResults(IEnumerable<T>, string?, bool, double)
+  nameWithType: PagedResults<T>.PagedResults(IEnumerable<T>, string?, bool, double)
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.PagedResults(System.Collections.Generic.IEnumerable<T>, string?, bool, double)
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/PagedResults.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Repositories/PagedResults.cs
+    startLine: 17
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Initializes a new instance of the PagedResults class.
+  example: []
+  syntax:
+    content: public PagedResults(IEnumerable<T> items, string? continuationToken = null, bool hasMoreResults = false, double totalRequestCharge = 0)
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: The items in this page
+    - id: continuationToken
+      type: System.String
+      description: Token for retrieving the next page
+    - id: hasMoreResults
+      type: System.Boolean
+      description: Whether more results are available
+    - id: totalRequestCharge
+      type: System.Double
+      description: The total request charge in RUs for this query
+    content.vb: Public Sub New(items As IEnumerable(Of T), continuationToken As String = Nothing, hasMoreResults As Boolean = False, totalRequestCharge As Double = 0)
+  overload: Benday.CosmosDb.Repositories.PagedResults`1.#ctor*
+  nameWithType.vb: PagedResults(Of T).New(IEnumerable(Of T), String, Boolean, Double)
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).New(System.Collections.Generic.IEnumerable(Of T), String, Boolean, Double)
+  name.vb: New(IEnumerable(Of T), String, Boolean, Double)
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.Items
+  commentId: P:Benday.CosmosDb.Repositories.PagedResults`1.Items
+  id: Items
+  parent: Benday.CosmosDb.Repositories.PagedResults`1
+  langs:
+  - csharp
+  - vb
+  name: Items
+  nameWithType: PagedResults<T>.Items
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.Items
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/PagedResults.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Items
+    path: ../Benday.CosmosDb/Repositories/PagedResults.cs
+    startLine: 32
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Gets the items in this page of results.
+  example: []
+  syntax:
+    content: public IEnumerable<T> Items { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{{T}}
+    content.vb: Public ReadOnly Property Items As IEnumerable(Of T)
+  overload: Benday.CosmosDb.Repositories.PagedResults`1.Items*
+  nameWithType.vb: PagedResults(Of T).Items
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).Items
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken
+  commentId: P:Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken
+  id: ContinuationToken
+  parent: Benday.CosmosDb.Repositories.PagedResults`1
+  langs:
+  - csharp
+  - vb
+  name: ContinuationToken
+  nameWithType: PagedResults<T>.ContinuationToken
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.ContinuationToken
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/PagedResults.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ContinuationToken
+    path: ../Benday.CosmosDb/Repositories/PagedResults.cs
+    startLine: 38
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Gets the continuation token for retrieving the next page.
+
+    Null if there are no more results.
+  example: []
+  syntax:
+    content: public string? ContinuationToken { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ContinuationToken As String
+  overload: Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken*
+  nameWithType.vb: PagedResults(Of T).ContinuationToken
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).ContinuationToken
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults
+  commentId: P:Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults
+  id: HasMoreResults
+  parent: Benday.CosmosDb.Repositories.PagedResults`1
+  langs:
+  - csharp
+  - vb
+  name: HasMoreResults
+  nameWithType: PagedResults<T>.HasMoreResults
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.HasMoreResults
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/PagedResults.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: HasMoreResults
+    path: ../Benday.CosmosDb/Repositories/PagedResults.cs
+    startLine: 43
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Gets a value indicating whether more results are available.
+  example: []
+  syntax:
+    content: public bool HasMoreResults { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasMoreResults As Boolean
+  overload: Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults*
+  nameWithType.vb: PagedResults(Of T).HasMoreResults
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).HasMoreResults
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge
+  commentId: P:Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge
+  id: TotalRequestCharge
+  parent: Benday.CosmosDb.Repositories.PagedResults`1
+  langs:
+  - csharp
+  - vb
+  name: TotalRequestCharge
+  nameWithType: PagedResults<T>.TotalRequestCharge
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.TotalRequestCharge
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/PagedResults.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: TotalRequestCharge
+    path: ../Benday.CosmosDb/Repositories/PagedResults.cs
+    startLine: 48
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Gets the total request charge in RUs for this query.
+  example: []
+  syntax:
+    content: public double TotalRequestCharge { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public ReadOnly Property TotalRequestCharge As Double
+  overload: Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge*
+  nameWithType.vb: PagedResults(Of T).TotalRequestCharge
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).TotalRequestCharge
+references:
+- uid: Benday.CosmosDb.Repositories
+  commentId: N:Benday.CosmosDb.Repositories
+  href: Benday.html
+  name: Benday.CosmosDb.Repositories
+  nameWithType: Benday.CosmosDb.Repositories
+  fullName: Benday.CosmosDb.Repositories
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Repositories
+    name: Repositories
+    href: Benday.CosmosDb.Repositories.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Repositories
+    name: Repositories
+    href: Benday.CosmosDb.Repositories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.#ctor*
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.#ctor
+  href: Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1__ctor_System_Collections_Generic_IEnumerable__0__System_String_System_Boolean_System_Double_
+  name: PagedResults
+  nameWithType: PagedResults<T>.PagedResults
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.PagedResults
+  nameWithType.vb: PagedResults(Of T).New
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).New
+  name.vb: New
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.Items*
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.Items
+  href: Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_Items
+  name: Items
+  nameWithType: PagedResults<T>.Items
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.Items
+  nameWithType.vb: PagedResults(Of T).Items
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).Items
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken*
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.ContinuationToken
+  href: Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_ContinuationToken
+  name: ContinuationToken
+  nameWithType: PagedResults<T>.ContinuationToken
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.ContinuationToken
+  nameWithType.vb: PagedResults(Of T).ContinuationToken
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).ContinuationToken
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults*
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.HasMoreResults
+  href: Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_HasMoreResults
+  name: HasMoreResults
+  nameWithType: PagedResults<T>.HasMoreResults
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.HasMoreResults
+  nameWithType.vb: PagedResults(Of T).HasMoreResults
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).HasMoreResults
+- uid: Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge*
+  commentId: Overload:Benday.CosmosDb.Repositories.PagedResults`1.TotalRequestCharge
+  href: Benday.CosmosDb.Repositories.PagedResults-1.html#Benday_CosmosDb_Repositories_PagedResults_1_TotalRequestCharge
+  name: TotalRequestCharge
+  nameWithType: PagedResults<T>.TotalRequestCharge
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>.TotalRequestCharge
+  nameWithType.vb: PagedResults(Of T).TotalRequestCharge
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T).TotalRequestCharge

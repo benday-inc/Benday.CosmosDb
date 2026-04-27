@@ -1,0 +1,415 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.DomainModels.IParentedItem
+  commentId: T:Benday.CosmosDb.DomainModels.IParentedItem
+  id: IParentedItem
+  parent: Benday.CosmosDb.DomainModels
+  children:
+  - Benday.CosmosDb.DomainModels.IParentedItem.ParentEntityType
+  langs:
+  - csharp
+  - vb
+  name: IParentedItem
+  nameWithType: IParentedItem
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem
+  type: Interface
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/IParentedItem.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: IParentedItem
+    path: ../Benday.CosmosDb/DomainModels/IParentedItem.cs
+    startLine: 2
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  syntax:
+    content: 'public interface IParentedItem : ITenantItem, ICosmosIdentity, IParentedItem<string>, ITenantItem<string>, IEntityIdentity<string>'
+    content.vb: Public Interface IParentedItem Inherits ITenantItem, ICosmosIdentity, IParentedItem(Of String), ITenantItem(Of String), IEntityIdentity(Of String)
+  derivedClasses:
+  - Benday.CosmosDb.DomainModels.ParentedItemBase
+  inheritedMembers:
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity.Etag
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity.EntityType
+  - Benday.Common.Interfaces.IParentedItem{System.String}.ParentId
+  - Benday.Common.Interfaces.ITenantItem{System.String}.TenantId
+  - Benday.Common.Interfaces.IEntityIdentity{System.String}.Id
+- uid: Benday.CosmosDb.DomainModels.IParentedItem.ParentEntityType
+  commentId: P:Benday.CosmosDb.DomainModels.IParentedItem.ParentEntityType
+  id: ParentEntityType
+  parent: Benday.CosmosDb.DomainModels.IParentedItem
+  langs:
+  - csharp
+  - vb
+  name: ParentEntityType
+  nameWithType: IParentedItem.ParentEntityType
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem.ParentEntityType
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/IParentedItem.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ParentEntityType
+    path: ../Benday.CosmosDb/DomainModels/IParentedItem.cs
+    startLine: 9
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Entity type of the parent entity. Cosmos-specific discriminator.
+  example: []
+  syntax:
+    content: string ParentEntityType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property ParentEntityType As String
+  overload: Benday.CosmosDb.DomainModels.IParentedItem.ParentEntityType*
+references:
+- uid: Benday.CosmosDb.DomainModels
+  commentId: N:Benday.CosmosDb.DomainModels
+  href: Benday.html
+  name: Benday.CosmosDb.DomainModels
+  nameWithType: Benday.CosmosDb.DomainModels
+  fullName: Benday.CosmosDb.DomainModels
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
+  commentId: P:Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
+  parent: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html#Benday_CosmosDb_DomainModels_ICosmosIdentity_TimestampUnixStyle
+  name: TimestampUnixStyle
+  nameWithType: ICosmosIdentity.TimestampUnixStyle
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp
+  commentId: P:Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp
+  parent: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html#Benday_CosmosDb_DomainModels_ICosmosIdentity_Timestamp
+  name: Timestamp
+  nameWithType: ICosmosIdentity.Timestamp
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity.Etag
+  commentId: P:Benday.CosmosDb.DomainModels.ICosmosIdentity.Etag
+  parent: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html#Benday_CosmosDb_DomainModels_ICosmosIdentity_Etag
+  name: Etag
+  nameWithType: ICosmosIdentity.Etag
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity.Etag
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity.EntityType
+  commentId: P:Benday.CosmosDb.DomainModels.ICosmosIdentity.EntityType
+  parent: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html#Benday_CosmosDb_DomainModels_ICosmosIdentity_EntityType
+  name: EntityType
+  nameWithType: ICosmosIdentity.EntityType
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity.EntityType
+- uid: Benday.Common.Interfaces.IParentedItem{System.String}.ParentId
+  commentId: P:Benday.Common.Interfaces.IParentedItem{System.String}.ParentId
+  parent: Benday.Common.Interfaces.IParentedItem{System.String}
+  definition: Benday.Common.Interfaces.IParentedItem`1.ParentId
+  name: ParentId
+  nameWithType: IParentedItem<string>.ParentId
+  fullName: Benday.Common.Interfaces.IParentedItem<string>.ParentId
+  nameWithType.vb: IParentedItem(Of String).ParentId
+  fullName.vb: Benday.Common.Interfaces.IParentedItem(Of String).ParentId
+- uid: Benday.Common.Interfaces.ITenantItem{System.String}.TenantId
+  commentId: P:Benday.Common.Interfaces.ITenantItem{System.String}.TenantId
+  parent: Benday.Common.Interfaces.ITenantItem{System.String}
+  definition: Benday.Common.Interfaces.ITenantItem`1.TenantId
+  name: TenantId
+  nameWithType: ITenantItem<string>.TenantId
+  fullName: Benday.Common.Interfaces.ITenantItem<string>.TenantId
+  nameWithType.vb: ITenantItem(Of String).TenantId
+  fullName.vb: Benday.Common.Interfaces.ITenantItem(Of String).TenantId
+- uid: Benday.Common.Interfaces.IEntityIdentity{System.String}.Id
+  commentId: P:Benday.Common.Interfaces.IEntityIdentity{System.String}.Id
+  parent: Benday.Common.Interfaces.IEntityIdentity{System.String}
+  definition: Benday.Common.Interfaces.IEntityIdentity`1.Id
+  name: Id
+  nameWithType: IEntityIdentity<string>.Id
+  fullName: Benday.Common.Interfaces.IEntityIdentity<string>.Id
+  nameWithType.vb: IEntityIdentity(Of String).Id
+  fullName.vb: Benday.Common.Interfaces.IEntityIdentity(Of String).Id
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  commentId: T:Benday.CosmosDb.DomainModels.ICosmosIdentity
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html
+  name: ICosmosIdentity
+  nameWithType: ICosmosIdentity
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity
+- uid: Benday.Common.Interfaces.IParentedItem`1.ParentId
+  commentId: P:Benday.Common.Interfaces.IParentedItem`1.ParentId
+  isExternal: true
+  name: ParentId
+  nameWithType: IParentedItem<TKey>.ParentId
+  fullName: Benday.Common.Interfaces.IParentedItem<TKey>.ParentId
+  nameWithType.vb: IParentedItem(Of TKey).ParentId
+  fullName.vb: Benday.Common.Interfaces.IParentedItem(Of TKey).ParentId
+- uid: Benday.Common.Interfaces.IParentedItem{System.String}
+  commentId: T:Benday.Common.Interfaces.IParentedItem{System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.IParentedItem`1
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: IParentedItem<string>
+  nameWithType: IParentedItem<string>
+  fullName: Benday.Common.Interfaces.IParentedItem<string>
+  nameWithType.vb: IParentedItem(Of String)
+  fullName.vb: Benday.Common.Interfaces.IParentedItem(Of String)
+  name.vb: IParentedItem(Of String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IParentedItem`1
+    name: IParentedItem
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IParentedItem`1
+    name: IParentedItem
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.ITenantItem`1.TenantId
+  commentId: P:Benday.Common.Interfaces.ITenantItem`1.TenantId
+  isExternal: true
+  name: TenantId
+  nameWithType: ITenantItem<TKey>.TenantId
+  fullName: Benday.Common.Interfaces.ITenantItem<TKey>.TenantId
+  nameWithType.vb: ITenantItem(Of TKey).TenantId
+  fullName.vb: Benday.Common.Interfaces.ITenantItem(Of TKey).TenantId
+- uid: Benday.Common.Interfaces.ITenantItem{System.String}
+  commentId: T:Benday.Common.Interfaces.ITenantItem{System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.ITenantItem`1
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ITenantItem<string>
+  nameWithType: ITenantItem<string>
+  fullName: Benday.Common.Interfaces.ITenantItem<string>
+  nameWithType.vb: ITenantItem(Of String)
+  fullName.vb: Benday.Common.Interfaces.ITenantItem(Of String)
+  name.vb: ITenantItem(Of String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.ITenantItem`1
+    name: ITenantItem
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.ITenantItem`1
+    name: ITenantItem
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IEntityIdentity`1.Id
+  commentId: P:Benday.Common.Interfaces.IEntityIdentity`1.Id
+  isExternal: true
+  name: Id
+  nameWithType: IEntityIdentity<TKey>.Id
+  fullName: Benday.Common.Interfaces.IEntityIdentity<TKey>.Id
+  nameWithType.vb: IEntityIdentity(Of TKey).Id
+  fullName.vb: Benday.Common.Interfaces.IEntityIdentity(Of TKey).Id
+- uid: Benday.Common.Interfaces.IEntityIdentity{System.String}
+  commentId: T:Benday.Common.Interfaces.IEntityIdentity{System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.IEntityIdentity`1
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: IEntityIdentity<string>
+  nameWithType: IEntityIdentity<string>
+  fullName: Benday.Common.Interfaces.IEntityIdentity<string>
+  nameWithType.vb: IEntityIdentity(Of String)
+  fullName.vb: Benday.Common.Interfaces.IEntityIdentity(Of String)
+  name.vb: IEntityIdentity(Of String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IEntityIdentity`1
+    name: IEntityIdentity
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IEntityIdentity`1
+    name: IEntityIdentity
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IParentedItem`1
+  commentId: T:Benday.Common.Interfaces.IParentedItem`1
+  isExternal: true
+  name: IParentedItem<TKey>
+  nameWithType: IParentedItem<TKey>
+  fullName: Benday.Common.Interfaces.IParentedItem<TKey>
+  nameWithType.vb: IParentedItem(Of TKey)
+  fullName.vb: Benday.Common.Interfaces.IParentedItem(Of TKey)
+  name.vb: IParentedItem(Of TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IParentedItem`1
+    name: IParentedItem
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IParentedItem`1
+    name: IParentedItem
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.Common.Interfaces
+  commentId: N:Benday.Common.Interfaces
+  isExternal: true
+  name: Benday.Common.Interfaces
+  nameWithType: Benday.Common.Interfaces
+  fullName: Benday.Common.Interfaces
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    isExternal: true
+  - name: .
+  - uid: Benday.Common
+    name: Common
+    isExternal: true
+  - name: .
+  - uid: Benday.Common.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    isExternal: true
+  - name: .
+  - uid: Benday.Common
+    name: Common
+    isExternal: true
+  - name: .
+  - uid: Benday.Common.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Benday.Common.Interfaces.ITenantItem`1
+  commentId: T:Benday.Common.Interfaces.ITenantItem`1
+  isExternal: true
+  name: ITenantItem<TKey>
+  nameWithType: ITenantItem<TKey>
+  fullName: Benday.Common.Interfaces.ITenantItem<TKey>
+  nameWithType.vb: ITenantItem(Of TKey)
+  fullName.vb: Benday.Common.Interfaces.ITenantItem(Of TKey)
+  name.vb: ITenantItem(Of TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.ITenantItem`1
+    name: ITenantItem
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.ITenantItem`1
+    name: ITenantItem
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.Common.Interfaces.IEntityIdentity`1
+  commentId: T:Benday.Common.Interfaces.IEntityIdentity`1
+  isExternal: true
+  name: IEntityIdentity<TKey>
+  nameWithType: IEntityIdentity<TKey>
+  fullName: Benday.Common.Interfaces.IEntityIdentity<TKey>
+  nameWithType.vb: IEntityIdentity(Of TKey)
+  fullName.vb: Benday.Common.Interfaces.IEntityIdentity(Of TKey)
+  name.vb: IEntityIdentity(Of TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IEntityIdentity`1
+    name: IEntityIdentity
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IEntityIdentity`1
+    name: IEntityIdentity
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.CosmosDb.DomainModels.IParentedItem.ParentEntityType*
+  commentId: Overload:Benday.CosmosDb.DomainModels.IParentedItem.ParentEntityType
+  href: Benday.CosmosDb.DomainModels.IParentedItem.html#Benday_CosmosDb_DomainModels_IParentedItem_ParentEntityType
+  name: ParentEntityType
+  nameWithType: IParentedItem.ParentEntityType
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem.ParentEntityType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

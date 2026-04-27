@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ParentedItemService&lt;T&gt; ">
     
-    <meta name="description" content="Service layer implementation for parented items. Extends OwnedItemService with parent-specific operations.">
+    <meta name="description" content="Service layer implementation for parented items. Extends TenantItemService with parent-specific operations.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -72,33 +72,35 @@
 
 
   <h1 id="Benday_CosmosDb_ServiceLayers_ParentedItemService_1" data-uid="Benday.CosmosDb.ServiceLayers.ParentedItemService`1" class="text-break">Class ParentedItemService&lt;T&gt;</h1>
-  <div class="markdown level0 summary"><p>Service layer implementation for parented items. Extends OwnedItemService with parent-specific operations.</p>
+  <div class="markdown level0 summary"><p>Service layer implementation for parented items. Extends TenantItemService with parent-specific operations.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html">OwnedItemService</a>&lt;T&gt;</div>
+    <div class="level1"><a class="xref" href="Benday.CosmosDb.ServiceLayers.TenantItemService-1.html">TenantItemService</a>&lt;T&gt;</div>
     <div class="level2"><span class="xref">ParentedItemService&lt;T&gt;</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html">IParentedItemService</a>&lt;T&gt;</div>
-    <div><a class="xref" href="Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html">IOwnedItemService</a>&lt;T&gt;</div>
+    <div><a class="xref" href="Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html">ITenantItemService</a>&lt;T&gt;</div>
+    <div><span class="xref">IAsyncTenantService</span>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+    <div><span class="xref">IAsyncService</span>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemService_1_GetAllAsync_System_String_">OwnedItemService&lt;T&gt;.GetAllAsync(string)</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.TenantItemService-1.html#Benday_CosmosDb_ServiceLayers_TenantItemService_1_GetAllAsync_System_String_">TenantItemService&lt;T&gt;.GetAllAsync(string)</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemService_1_GetByIdAsync_System_String_System_String_">OwnedItemService&lt;T&gt;.GetByIdAsync(string, string)</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.TenantItemService-1.html#Benday_CosmosDb_ServiceLayers_TenantItemService_1_GetByIdAsync_System_String_System_String_">TenantItemService&lt;T&gt;.GetByIdAsync(string, string)</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemService_1_SaveAsync__0_">OwnedItemService&lt;T&gt;.SaveAsync(T)</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.TenantItemService-1.html#Benday_CosmosDb_ServiceLayers_TenantItemService_1_SaveAsync__0_">TenantItemService&lt;T&gt;.SaveAsync(T)</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html#Benday_CosmosDb_ServiceLayers_OwnedItemService_1_DeleteAsync__0_">OwnedItemService&lt;T&gt;.DeleteAsync(T)</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.TenantItemService-1.html#Benday_CosmosDb_ServiceLayers_TenantItemService_1_DeleteAsync__0_">TenantItemService&lt;T&gt;.DeleteAsync(T)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -126,7 +128,7 @@
   <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
   <h5 id="Benday_CosmosDb_ServiceLayers_ParentedItemService_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ParentedItemService&lt;T&gt; : OwnedItemService&lt;T&gt;, IParentedItemService&lt;T&gt;, IOwnedItemService&lt;T&gt; where T : class, IParentedItem, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public class ParentedItemService&lt;T&gt; : TenantItemService&lt;T&gt;, IParentedItemService&lt;T&gt;, ITenantItemService&lt;T&gt;, IAsyncTenantService&lt;T, string&gt;, IAsyncService&lt;T, string&gt; where T : class, IParentedItem, new()</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -189,12 +191,12 @@
   </span>
   <a id="Benday_CosmosDb_ServiceLayers_ParentedItemService_1_GetAllByParentIdAsync_" data-uid="Benday.CosmosDb.ServiceLayers.ParentedItemService`1.GetAllByParentIdAsync*"></a>
   <h4 id="Benday_CosmosDb_ServiceLayers_ParentedItemService_1_GetAllByParentIdAsync_System_String_System_String_System_String_" data-uid="Benday.CosmosDb.ServiceLayers.ParentedItemService`1.GetAllByParentIdAsync(System.String,System.String,System.String)">GetAllByParentIdAsync(string, string, string?)</h4>
-  <div class="markdown level1 summary"><p>Gets all items by parent ID and optionally filters by parent discriminator</p>
+  <div class="markdown level1 summary"><p>Gets all items by parent ID and optionally filters by parent entity type</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task&lt;IEnumerable&lt;T&gt;&gt; GetAllByParentIdAsync(string ownerId, string parentId, string? parentDiscriminator = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;IEnumerable&lt;T&gt;&gt; GetAllByParentIdAsync(string tenantId, string parentId, string? parentEntityType = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -208,8 +210,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">ownerId</span></td>
-        <td><p>The owner ID</p>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>The tenant ID</p>
 </td>
       </tr>
       <tr>
@@ -220,8 +222,8 @@
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">parentDiscriminator</span></td>
-        <td><p>Optional parent discriminator to filter by parent type</p>
+        <td><span class="parametername">parentEntityType</span></td>
+        <td><p>Optional parent entity type to filter by parent type</p>
 </td>
       </tr>
     </tbody>
@@ -247,7 +249,13 @@
       <a class="xref" href="Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html">IParentedItemService&lt;T&gt;</a>
   </div>
   <div>
-      <a class="xref" href="Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html">IOwnedItemService&lt;T&gt;</a>
+      <a class="xref" href="Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html">ITenantItemService&lt;T&gt;</a>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.IAsyncTenantService&lt;T, TKey&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.IAsyncService&lt;T, TKey&gt;</span>
   </div>
 
 </article>

@@ -1,0 +1,1652 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  id: ITenantItemRepository`1
+  parent: Benday.CosmosDb.Repositories
+  children:
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Threading.CancellationToken)
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAsync(`0)
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetAllAsync(System.String)
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetByIdAsync(System.String,System.String)
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetPagedAsync(System.String,System.Int32,System.String)
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAsync(`0)
+  langs:
+  - csharp
+  - vb
+  name: ITenantItemRepository<T>
+  nameWithType: ITenantItemRepository<T>
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>
+  type: Interface
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ITenantItemRepository
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 9
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Defines the contract for a repository that manages items that belong to a tenant.
+  example: []
+  syntax:
+    content: 'public interface ITenantItemRepository<T> : IRepository<T>, IAsyncTenantRepository<T, string>, IAsyncRepository<T, string> where T : class, ITenantItem, new()'
+    typeParameters:
+    - id: T
+      description: Domain model type managed by the repository
+    content.vb: Public Interface ITenantItemRepository(Of T As {Class, ITenantItem, New}) Inherits IRepository(Of T), IAsyncTenantRepository(Of T, String), IAsyncRepository(Of T, String)
+  derivedClasses:
+  - Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+  - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
+  inheritedMembers:
+  - Benday.CosmosDb.Repositories.IRepository{{T}}.SaveAsync(System.Collections.Generic.IList{{T}})
+  - Benday.CosmosDb.Repositories.IRepository{{T}}.DeleteAsync(System.String)
+  - Benday.CosmosDb.Repositories.IRepository{{T}}.GetByIdAsync(System.String)
+  - Benday.CosmosDb.Repositories.IRepository{{T}}.GetAllAsync
+  - Benday.CosmosDb.Repositories.IRepository{{T}}.GetPagedAsync(System.Int32,System.String)
+  - Benday.Common.Interfaces.IAsyncTenantRepository{{T},System.String}.GetByIdAsync(System.String,System.String)
+  - Benday.Common.Interfaces.IAsyncTenantRepository{{T},System.String}.GetByTenantAsync(System.String)
+  - Benday.Common.Interfaces.IAsyncRepository{{T},System.String}.SaveAsync({T})
+  - Benday.Common.Interfaces.IAsyncRepository{{T},System.String}.DeleteAsync({T})
+  nameWithType.vb: ITenantItemRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T)
+  name.vb: ITenantItemRepository(Of T)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAsync(`0)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAsync(`0)
+  id: SaveAsync(`0)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: SaveAsync(T)
+  nameWithType: ITenantItemRepository<T>.SaveAsync(T)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.SaveAsync(T)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: SaveAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 19
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Save the entity to the repository. Hides the shared IAsyncRepository SaveAsync
+
+    to resolve ambiguity with IRepository&lt;T&gt;.SaveAsync which returns Task&lt;T&gt;.
+  example: []
+  syntax:
+    content: Task<T> SaveAsync(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: Entity to save
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: The saved entity
+    content.vb: Function SaveAsync(entity As T) As Task(Of T)
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).SaveAsync(T)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).SaveAsync(T)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAsync(`0)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAsync(`0)
+  id: DeleteAsync(`0)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: DeleteAsync(T)
+  nameWithType: ITenantItemRepository<T>.DeleteAsync(T)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.DeleteAsync(T)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: DeleteAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 27
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Delete an item from the repository. Hides the shared IAsyncRepository DeleteAsync
+
+    to provide a single unambiguous member.
+  example: []
+  syntax:
+    content: Task DeleteAsync(T itemToDelete)
+    parameters:
+    - id: itemToDelete
+      type: '{T}'
+      description: Item to delete
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Function DeleteAsync(itemToDelete As T) As Task
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).DeleteAsync(T)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).DeleteAsync(T)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetAllAsync(System.String)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetAllAsync(System.String)
+  id: GetAllAsync(System.String)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: GetAllAsync(string)
+  nameWithType: ITenantItemRepository<T>.GetAllAsync(string)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.GetAllAsync(string)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: GetAllAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 34
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Get all items in the repository that have the specified tenant id.
+  example: []
+  syntax:
+    content: Task<IEnumerable<T>> GetAllAsync(string tenantId)
+    parameters:
+    - id: tenantId
+      type: System.String
+      description: Tenant id
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+      description: Matching items
+    content.vb: Function GetAllAsync(tenantId As String) As Task(Of IEnumerable(Of T))
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetAllAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).GetAllAsync(String)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).GetAllAsync(String)
+  name.vb: GetAllAsync(String)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetByIdAsync(System.String,System.String)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetByIdAsync(System.String,System.String)
+  id: GetByIdAsync(System.String,System.String)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: GetByIdAsync(string, string)
+  nameWithType: ITenantItemRepository<T>.GetByIdAsync(string, string)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.GetByIdAsync(string, string)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: GetByIdAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 42
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Get a specific item by its id and tenant id.
+  example: []
+  syntax:
+    content: Task<T?> GetByIdAsync(string tenantId, string id)
+    parameters:
+    - id: tenantId
+      type: System.String
+      description: Tenant id
+    - id: id
+      type: System.String
+      description: Id for the entity
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: The matching item or null
+    content.vb: Function GetByIdAsync(tenantId As String, id As String) As Task(Of T)
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetByIdAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).GetByIdAsync(String, String)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).GetByIdAsync(String, String)
+  name.vb: GetByIdAsync(String, String)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Threading.CancellationToken)
+  id: DeleteAllByTenantIdAsync(System.String,System.Threading.CancellationToken)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: DeleteAllByTenantIdAsync(string, CancellationToken)
+  nameWithType: ITenantItemRepository<T>.DeleteAllByTenantIdAsync(string, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.DeleteAllByTenantIdAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: DeleteAllByTenantIdAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 49
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Deletes all items for the specified tenant with throttling and retry logic.
+  example: []
+  syntax:
+    content: Task DeleteAllByTenantIdAsync(string tenantId, CancellationToken cancellationToken = default)
+    parameters:
+    - id: tenantId
+      type: System.String
+      description: Tenant id for the items to delete
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function DeleteAllByTenantIdAsync(tenantId As String, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).DeleteAllByTenantIdAsync(String, CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).DeleteAllByTenantIdAsync(String, System.Threading.CancellationToken)
+  name.vb: DeleteAllByTenantIdAsync(String, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
+  id: DeleteAllByTenantIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: DeleteAllByTenantIdAsync(string, int, int, CancellationToken)
+  nameWithType: ITenantItemRepository<T>.DeleteAllByTenantIdAsync(string, int, int, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.DeleteAllByTenantIdAsync(string, int, int, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: DeleteAllByTenantIdAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 58
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Deletes all items for the specified tenant with configurable throttling and retry logic.
+  example: []
+  syntax:
+    content: Task DeleteAllByTenantIdAsync(string tenantId, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default)
+    parameters:
+    - id: tenantId
+      type: System.String
+      description: Tenant id for the items to delete
+    - id: maxConcurrency
+      type: System.Int32
+      description: Maximum number of concurrent delete operations
+    - id: maxRetries
+      type: System.Int32
+      description: Maximum number of retry attempts for throttled requests
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function DeleteAllByTenantIdAsync(tenantId As String, maxConcurrency As Integer, maxRetries As Integer, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).DeleteAllByTenantIdAsync(String, Integer, Integer, CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).DeleteAllByTenantIdAsync(String, Integer, Integer, System.Threading.CancellationToken)
+  name.vb: DeleteAllByTenantIdAsync(String, Integer, Integer, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  id: SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: SaveAllAsync(IEnumerable<T>, CancellationToken)
+  nameWithType: ITenantItemRepository<T>.SaveAllAsync(IEnumerable<T>, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.SaveAllAsync(System.Collections.Generic.IEnumerable<T>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: SaveAllAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 65
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Saves multiple items with throttling and retry logic.
+  example: []
+  syntax:
+    content: Task SaveAllAsync(IEnumerable<T> items, CancellationToken cancellationToken = default)
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: Items to save
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function SaveAllAsync(items As IEnumerable(Of T), cancellationToken As CancellationToken = Nothing) As Task
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).SaveAllAsync(IEnumerable(Of T), CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).SaveAllAsync(System.Collections.Generic.IEnumerable(Of T), System.Threading.CancellationToken)
+  name.vb: SaveAllAsync(IEnumerable(Of T), CancellationToken)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)
+  id: SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: SaveAllAsync(IEnumerable<T>, int, int, CancellationToken)
+  nameWithType: ITenantItemRepository<T>.SaveAllAsync(IEnumerable<T>, int, int, CancellationToken)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.SaveAllAsync(System.Collections.Generic.IEnumerable<T>, int, int, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: SaveAllAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 74
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Saves multiple items with configurable throttling and retry logic.
+  example: []
+  syntax:
+    content: Task SaveAllAsync(IEnumerable<T> items, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default)
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: Items to save
+    - id: maxConcurrency
+      type: System.Int32
+      description: Maximum number of concurrent save operations
+    - id: maxRetries
+      type: System.Int32
+      description: Maximum number of retry attempts for throttled requests
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function SaveAllAsync(items As IEnumerable(Of T), maxConcurrency As Integer, maxRetries As Integer, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).SaveAllAsync(IEnumerable(Of T), Integer, Integer, CancellationToken)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).SaveAllAsync(System.Collections.Generic.IEnumerable(Of T), Integer, Integer, System.Threading.CancellationToken)
+  name.vb: SaveAllAsync(IEnumerable(Of T), Integer, Integer, CancellationToken)
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetPagedAsync(System.String,System.Int32,System.String)
+  commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetPagedAsync(System.String,System.Int32,System.String)
+  id: GetPagedAsync(System.String,System.Int32,System.String)
+  parent: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  langs:
+  - csharp
+  - vb
+  name: GetPagedAsync(string, int, string?)
+  nameWithType: ITenantItemRepository<T>.GetPagedAsync(string, int, string?)
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.GetPagedAsync(string, int, string?)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: GetPagedAsync
+    path: ../Benday.CosmosDb/Repositories/ITenantItemRepository.cs
+    startLine: 83
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: Gets a page of results for the specified tenant with continuation support.
+  example: []
+  syntax:
+    content: Task<PagedResults<T>> GetPagedAsync(string tenantId, int pageSize = 100, string? continuationToken = null)
+    parameters:
+    - id: tenantId
+      type: System.String
+      description: Tenant id
+    - id: pageSize
+      type: System.Int32
+      description: Maximum number of items to return
+    - id: continuationToken
+      type: System.String
+      description: Continuation token from previous query (null for first page)
+    return:
+      type: System.Threading.Tasks.Task{Benday.CosmosDb.Repositories.PagedResults{{T}}}
+      description: A page of results with continuation information
+    content.vb: Function GetPagedAsync(tenantId As String, pageSize As Integer = 100, continuationToken As String = Nothing) As Task(Of PagedResults(Of T))
+  overload: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetPagedAsync*
+  nameWithType.vb: ITenantItemRepository(Of T).GetPagedAsync(String, Integer, String)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).GetPagedAsync(String, Integer, String)
+  name.vb: GetPagedAsync(String, Integer, String)
+references:
+- uid: Benday.CosmosDb.Repositories
+  commentId: N:Benday.CosmosDb.Repositories
+  href: Benday.html
+  name: Benday.CosmosDb.Repositories
+  nameWithType: Benday.CosmosDb.Repositories
+  fullName: Benday.CosmosDb.Repositories
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Repositories
+    name: Repositories
+    href: Benday.CosmosDb.Repositories.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Repositories
+    name: Repositories
+    href: Benday.CosmosDb.Repositories.html
+- uid: Benday.CosmosDb.Repositories.IRepository{{T}}.SaveAsync(System.Collections.Generic.IList{{T}})
+  commentId: M:Benday.CosmosDb.Repositories.IRepository{`0}.SaveAsync(System.Collections.Generic.IList{`0})
+  parent: Benday.CosmosDb.Repositories.IRepository{{T}}
+  definition: Benday.CosmosDb.Repositories.IRepository`1.SaveAsync(System.Collections.Generic.IList{`0})
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_SaveAsync_System_Collections_Generic_IList__0__
+  name: SaveAsync(IList<T>)
+  nameWithType: IRepository<T>.SaveAsync(IList<T>)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.SaveAsync(System.Collections.Generic.IList<T>)
+  nameWithType.vb: IRepository(Of T).SaveAsync(IList(Of T))
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).SaveAsync(System.Collections.Generic.IList(Of T))
+  name.vb: SaveAsync(IList(Of T))
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.SaveAsync(System.Collections.Generic.IList{`0})
+    name: SaveAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_SaveAsync_System_Collections_Generic_IList__0__
+  - name: (
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.SaveAsync(System.Collections.Generic.IList{`0})
+    name: SaveAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_SaveAsync_System_Collections_Generic_IList__0__
+  - name: (
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository{{T}}.DeleteAsync(System.String)
+  commentId: M:Benday.CosmosDb.Repositories.IRepository{`0}.DeleteAsync(System.String)
+  parent: Benday.CosmosDb.Repositories.IRepository{{T}}
+  definition: Benday.CosmosDb.Repositories.IRepository`1.DeleteAsync(System.String)
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_DeleteAsync_System_String_
+  name: DeleteAsync(string)
+  nameWithType: IRepository<T>.DeleteAsync(string)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.DeleteAsync(string)
+  nameWithType.vb: IRepository(Of T).DeleteAsync(String)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).DeleteAsync(String)
+  name.vb: DeleteAsync(String)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.DeleteAsync(System.String)
+    name: DeleteAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_DeleteAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.DeleteAsync(System.String)
+    name: DeleteAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_DeleteAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository{{T}}.GetByIdAsync(System.String)
+  commentId: M:Benday.CosmosDb.Repositories.IRepository{`0}.GetByIdAsync(System.String)
+  parent: Benday.CosmosDb.Repositories.IRepository{{T}}
+  definition: Benday.CosmosDb.Repositories.IRepository`1.GetByIdAsync(System.String)
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetByIdAsync_System_String_
+  name: GetByIdAsync(string)
+  nameWithType: IRepository<T>.GetByIdAsync(string)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.GetByIdAsync(string)
+  nameWithType.vb: IRepository(Of T).GetByIdAsync(String)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetByIdAsync(String)
+  name.vb: GetByIdAsync(String)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.GetByIdAsync(System.String)
+    name: GetByIdAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetByIdAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.GetByIdAsync(System.String)
+    name: GetByIdAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetByIdAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository{{T}}.GetAllAsync
+  commentId: M:Benday.CosmosDb.Repositories.IRepository{`0}.GetAllAsync
+  parent: Benday.CosmosDb.Repositories.IRepository{{T}}
+  definition: Benday.CosmosDb.Repositories.IRepository`1.GetAllAsync
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetAllAsync
+  name: GetAllAsync()
+  nameWithType: IRepository<T>.GetAllAsync()
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.GetAllAsync()
+  nameWithType.vb: IRepository(Of T).GetAllAsync()
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetAllAsync()
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.GetAllAsync
+    name: GetAllAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetAllAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.GetAllAsync
+    name: GetAllAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetAllAsync
+  - name: (
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository{{T}}.GetPagedAsync(System.Int32,System.String)
+  commentId: M:Benday.CosmosDb.Repositories.IRepository{`0}.GetPagedAsync(System.Int32,System.String)
+  parent: Benday.CosmosDb.Repositories.IRepository{{T}}
+  definition: Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync(System.Int32,System.String)
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_
+  name: GetPagedAsync(int, string)
+  nameWithType: IRepository<T>.GetPagedAsync(int, string)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.GetPagedAsync(int, string)
+  nameWithType.vb: IRepository(Of T).GetPagedAsync(Integer, String)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetPagedAsync(Integer, String)
+  name.vb: GetPagedAsync(Integer, String)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.GetPagedAsync(System.Int32,System.String)
+    name: GetPagedAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository{`0}.GetPagedAsync(System.Int32,System.String)
+    name: GetPagedAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantRepository{{T},System.String}.GetByIdAsync(System.String,System.String)
+  commentId: M:Benday.Common.Interfaces.IAsyncTenantRepository{`0,System.String}.GetByIdAsync(System.String,System.String)
+  parent: Benday.Common.Interfaces.IAsyncTenantRepository{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByIdAsync(System.String,`1)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByIdAsync(string, string)
+  nameWithType: IAsyncTenantRepository<T, string>.GetByIdAsync(string, string)
+  fullName: Benday.Common.Interfaces.IAsyncTenantRepository<T, string>.GetByIdAsync(string, string)
+  nameWithType.vb: IAsyncTenantRepository(Of T, String).GetByIdAsync(String, String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantRepository(Of T, String).GetByIdAsync(String, String)
+  name.vb: GetByIdAsync(String, String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository{`0,System.String}.GetByIdAsync(System.String,System.String)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository{`0,System.String}.GetByIdAsync(System.String,System.String)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantRepository{{T},System.String}.GetByTenantAsync(System.String)
+  commentId: M:Benday.Common.Interfaces.IAsyncTenantRepository{`0,System.String}.GetByTenantAsync(System.String)
+  parent: Benday.Common.Interfaces.IAsyncTenantRepository{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByTenantAsync(System.String)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByTenantAsync(string)
+  nameWithType: IAsyncTenantRepository<T, string>.GetByTenantAsync(string)
+  fullName: Benday.Common.Interfaces.IAsyncTenantRepository<T, string>.GetByTenantAsync(string)
+  nameWithType.vb: IAsyncTenantRepository(Of T, String).GetByTenantAsync(String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantRepository(Of T, String).GetByTenantAsync(String)
+  name.vb: GetByTenantAsync(String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository{`0,System.String}.GetByTenantAsync(System.String)
+    name: GetByTenantAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository{`0,System.String}.GetByTenantAsync(System.String)
+    name: GetByTenantAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncRepository{{T},System.String}.SaveAsync({T})
+  commentId: M:Benday.Common.Interfaces.IAsyncRepository{`0,System.String}.SaveAsync(`0)
+  parent: Benday.Common.Interfaces.IAsyncRepository{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncRepository`2.SaveAsync(`0)
+  name: SaveAsync(T)
+  nameWithType: IAsyncRepository<T, string>.SaveAsync(T)
+  fullName: Benday.Common.Interfaces.IAsyncRepository<T, string>.SaveAsync(T)
+  nameWithType.vb: IAsyncRepository(Of T, String).SaveAsync(T)
+  fullName.vb: Benday.Common.Interfaces.IAsyncRepository(Of T, String).SaveAsync(T)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncRepository{`0,System.String}.SaveAsync(`0)
+    name: SaveAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncRepository{`0,System.String}.SaveAsync(`0)
+    name: SaveAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncRepository{{T},System.String}.DeleteAsync({T})
+  commentId: M:Benday.Common.Interfaces.IAsyncRepository{`0,System.String}.DeleteAsync(`0)
+  parent: Benday.Common.Interfaces.IAsyncRepository{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncRepository`2.DeleteAsync(`0)
+  name: DeleteAsync(T)
+  nameWithType: IAsyncRepository<T, string>.DeleteAsync(T)
+  fullName: Benday.Common.Interfaces.IAsyncRepository<T, string>.DeleteAsync(T)
+  nameWithType.vb: IAsyncRepository(Of T, String).DeleteAsync(T)
+  fullName.vb: Benday.Common.Interfaces.IAsyncRepository(Of T, String).DeleteAsync(T)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncRepository{`0,System.String}.DeleteAsync(`0)
+    name: DeleteAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncRepository{`0,System.String}.DeleteAsync(`0)
+    name: DeleteAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository`1.SaveAsync(System.Collections.Generic.IList{`0})
+  commentId: M:Benday.CosmosDb.Repositories.IRepository`1.SaveAsync(System.Collections.Generic.IList{`0})
+  isExternal: true
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_SaveAsync_System_Collections_Generic_IList__0__
+  name: SaveAsync(IList<T>)
+  nameWithType: IRepository<T>.SaveAsync(IList<T>)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.SaveAsync(System.Collections.Generic.IList<T>)
+  nameWithType.vb: IRepository(Of T).SaveAsync(IList(Of T))
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).SaveAsync(System.Collections.Generic.IList(Of T))
+  name.vb: SaveAsync(IList(Of T))
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.SaveAsync(System.Collections.Generic.IList{`0})
+    name: SaveAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_SaveAsync_System_Collections_Generic_IList__0__
+  - name: (
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.SaveAsync(System.Collections.Generic.IList{`0})
+    name: SaveAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_SaveAsync_System_Collections_Generic_IList__0__
+  - name: (
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository{{T}}
+  commentId: T:Benday.CosmosDb.Repositories.IRepository{`0}
+  parent: Benday.CosmosDb.Repositories
+  definition: Benday.CosmosDb.Repositories.IRepository`1
+  href: Benday.CosmosDb.Repositories.IRepository-1.html
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T)
+  name.vb: IRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1
+    name: IRepository
+    href: Benday.CosmosDb.Repositories.IRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1
+    name: IRepository
+    href: Benday.CosmosDb.Repositories.IRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository`1.DeleteAsync(System.String)
+  commentId: M:Benday.CosmosDb.Repositories.IRepository`1.DeleteAsync(System.String)
+  isExternal: true
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_DeleteAsync_System_String_
+  name: DeleteAsync(string)
+  nameWithType: IRepository<T>.DeleteAsync(string)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.DeleteAsync(string)
+  nameWithType.vb: IRepository(Of T).DeleteAsync(String)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).DeleteAsync(String)
+  name.vb: DeleteAsync(String)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.DeleteAsync(System.String)
+    name: DeleteAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_DeleteAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.DeleteAsync(System.String)
+    name: DeleteAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_DeleteAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository`1.GetByIdAsync(System.String)
+  commentId: M:Benday.CosmosDb.Repositories.IRepository`1.GetByIdAsync(System.String)
+  isExternal: true
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetByIdAsync_System_String_
+  name: GetByIdAsync(string)
+  nameWithType: IRepository<T>.GetByIdAsync(string)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.GetByIdAsync(string)
+  nameWithType.vb: IRepository(Of T).GetByIdAsync(String)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetByIdAsync(String)
+  name.vb: GetByIdAsync(String)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.GetByIdAsync(System.String)
+    name: GetByIdAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetByIdAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.GetByIdAsync(System.String)
+    name: GetByIdAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetByIdAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository`1.GetAllAsync
+  commentId: M:Benday.CosmosDb.Repositories.IRepository`1.GetAllAsync
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetAllAsync
+  name: GetAllAsync()
+  nameWithType: IRepository<T>.GetAllAsync()
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.GetAllAsync()
+  nameWithType.vb: IRepository(Of T).GetAllAsync()
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetAllAsync()
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.GetAllAsync
+    name: GetAllAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetAllAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.GetAllAsync
+    name: GetAllAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetAllAsync
+  - name: (
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync(System.Int32,System.String)
+  commentId: M:Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync(System.Int32,System.String)
+  isExternal: true
+  href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_
+  name: GetPagedAsync(int, string)
+  nameWithType: IRepository<T>.GetPagedAsync(int, string)
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>.GetPagedAsync(int, string)
+  nameWithType.vb: IRepository(Of T).GetPagedAsync(Integer, String)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T).GetPagedAsync(Integer, String)
+  name.vb: GetPagedAsync(Integer, String)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync(System.Int32,System.String)
+    name: GetPagedAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1.GetPagedAsync(System.Int32,System.String)
+    name: GetPagedAsync
+    href: Benday.CosmosDb.Repositories.IRepository-1.html#Benday_CosmosDb_Repositories_IRepository_1_GetPagedAsync_System_Int32_System_String_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByIdAsync(System.String,`1)
+  commentId: M:Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByIdAsync(System.String,`1)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByIdAsync(string, TKey)
+  nameWithType: IAsyncTenantRepository<T, TKey>.GetByIdAsync(string, TKey)
+  fullName: Benday.Common.Interfaces.IAsyncTenantRepository<T, TKey>.GetByIdAsync(string, TKey)
+  nameWithType.vb: IAsyncTenantRepository(Of T, TKey).GetByIdAsync(String, TKey)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantRepository(Of T, TKey).GetByIdAsync(String, TKey)
+  name.vb: GetByIdAsync(String, TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByIdAsync(System.String,`1)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByIdAsync(System.String,`1)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantRepository{{T},System.String}
+  commentId: T:Benday.Common.Interfaces.IAsyncTenantRepository{`0,System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.IAsyncTenantRepository`2
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: IAsyncTenantRepository<T, string>
+  nameWithType: IAsyncTenantRepository<T, string>
+  fullName: Benday.Common.Interfaces.IAsyncTenantRepository<T, string>
+  nameWithType.vb: IAsyncTenantRepository(Of T, String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantRepository(Of T, String)
+  name.vb: IAsyncTenantRepository(Of T, String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository`2
+    name: IAsyncTenantRepository
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository`2
+    name: IAsyncTenantRepository
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByTenantAsync(System.String)
+  commentId: M:Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByTenantAsync(System.String)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByTenantAsync(string)
+  nameWithType: IAsyncTenantRepository<T, TKey>.GetByTenantAsync(string)
+  fullName: Benday.Common.Interfaces.IAsyncTenantRepository<T, TKey>.GetByTenantAsync(string)
+  nameWithType.vb: IAsyncTenantRepository(Of T, TKey).GetByTenantAsync(String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantRepository(Of T, TKey).GetByTenantAsync(String)
+  name.vb: GetByTenantAsync(String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByTenantAsync(System.String)
+    name: GetByTenantAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository`2.GetByTenantAsync(System.String)
+    name: GetByTenantAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncRepository`2.SaveAsync(`0)
+  commentId: M:Benday.Common.Interfaces.IAsyncRepository`2.SaveAsync(`0)
+  isExternal: true
+  name: SaveAsync(T)
+  nameWithType: IAsyncRepository<T, TKey>.SaveAsync(T)
+  fullName: Benday.Common.Interfaces.IAsyncRepository<T, TKey>.SaveAsync(T)
+  nameWithType.vb: IAsyncRepository(Of T, TKey).SaveAsync(T)
+  fullName.vb: Benday.Common.Interfaces.IAsyncRepository(Of T, TKey).SaveAsync(T)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncRepository`2.SaveAsync(`0)
+    name: SaveAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncRepository`2.SaveAsync(`0)
+    name: SaveAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncRepository{{T},System.String}
+  commentId: T:Benday.Common.Interfaces.IAsyncRepository{`0,System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.IAsyncRepository`2
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: IAsyncRepository<T, string>
+  nameWithType: IAsyncRepository<T, string>
+  fullName: Benday.Common.Interfaces.IAsyncRepository<T, string>
+  nameWithType.vb: IAsyncRepository(Of T, String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncRepository(Of T, String)
+  name.vb: IAsyncRepository(Of T, String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncRepository`2
+    name: IAsyncRepository
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncRepository`2
+    name: IAsyncRepository
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncRepository`2.DeleteAsync(`0)
+  commentId: M:Benday.Common.Interfaces.IAsyncRepository`2.DeleteAsync(`0)
+  isExternal: true
+  name: DeleteAsync(T)
+  nameWithType: IAsyncRepository<T, TKey>.DeleteAsync(T)
+  fullName: Benday.Common.Interfaces.IAsyncRepository<T, TKey>.DeleteAsync(T)
+  nameWithType.vb: IAsyncRepository(Of T, TKey).DeleteAsync(T)
+  fullName.vb: Benday.Common.Interfaces.IAsyncRepository(Of T, TKey).DeleteAsync(T)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncRepository`2.DeleteAsync(`0)
+    name: DeleteAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncRepository`2.DeleteAsync(`0)
+    name: DeleteAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.IRepository`1
+  href: Benday.CosmosDb.Repositories.IRepository-1.html
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T)
+  name.vb: IRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1
+    name: IRepository
+    href: Benday.CosmosDb.Repositories.IRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1
+    name: IRepository
+    href: Benday.CosmosDb.Repositories.IRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantRepository`2
+  commentId: T:Benday.Common.Interfaces.IAsyncTenantRepository`2
+  isExternal: true
+  name: IAsyncTenantRepository<T, TKey>
+  nameWithType: IAsyncTenantRepository<T, TKey>
+  fullName: Benday.Common.Interfaces.IAsyncTenantRepository<T, TKey>
+  nameWithType.vb: IAsyncTenantRepository(Of T, TKey)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantRepository(Of T, TKey)
+  name.vb: IAsyncTenantRepository(Of T, TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository`2
+    name: IAsyncTenantRepository
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantRepository`2
+    name: IAsyncTenantRepository
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.Common.Interfaces
+  commentId: N:Benday.Common.Interfaces
+  isExternal: true
+  name: Benday.Common.Interfaces
+  nameWithType: Benday.Common.Interfaces
+  fullName: Benday.Common.Interfaces
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    isExternal: true
+  - name: .
+  - uid: Benday.Common
+    name: Common
+    isExternal: true
+  - name: .
+  - uid: Benday.Common.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    isExternal: true
+  - name: .
+  - uid: Benday.Common
+    name: Common
+    isExternal: true
+  - name: .
+  - uid: Benday.Common.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Benday.Common.Interfaces.IAsyncRepository`2
+  commentId: T:Benday.Common.Interfaces.IAsyncRepository`2
+  isExternal: true
+  name: IAsyncRepository<T, TKey>
+  nameWithType: IAsyncRepository<T, TKey>
+  fullName: Benday.Common.Interfaces.IAsyncRepository<T, TKey>
+  nameWithType.vb: IAsyncRepository(Of T, TKey)
+  fullName.vb: Benday.Common.Interfaces.IAsyncRepository(Of T, TKey)
+  name.vb: IAsyncRepository(Of T, TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncRepository`2
+    name: IAsyncRepository
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncRepository`2
+    name: IAsyncRepository
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAsync*
+  commentId: Overload:Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAsync
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html#Benday_CosmosDb_Repositories_ITenantItemRepository_1_SaveAsync__0_
+  name: SaveAsync
+  nameWithType: ITenantItemRepository<T>.SaveAsync
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.SaveAsync
+  nameWithType.vb: ITenantItemRepository(Of T).SaveAsync
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).SaveAsync
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{`0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAsync*
+  commentId: Overload:Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAsync
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html#Benday_CosmosDb_Repositories_ITenantItemRepository_1_DeleteAsync__0_
+  name: DeleteAsync
+  nameWithType: ITenantItemRepository<T>.DeleteAsync
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.DeleteAsync
+  nameWithType.vb: ITenantItemRepository(Of T).DeleteAsync
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).DeleteAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetAllAsync*
+  commentId: Overload:Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetAllAsync
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html#Benday_CosmosDb_Repositories_ITenantItemRepository_1_GetAllAsync_System_String_
+  name: GetAllAsync
+  nameWithType: ITenantItemRepository<T>.GetAllAsync
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.GetAllAsync
+  nameWithType.vb: ITenantItemRepository(Of T).GetAllAsync
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).GetAllAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{`0}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IEnumerable<T>>
+  nameWithType: Task<IEnumerable<T>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<T>>
+  nameWithType.vb: Task(Of IEnumerable(Of T))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Task(Of IEnumerable(Of T))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetByIdAsync*
+  commentId: Overload:Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetByIdAsync
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html#Benday_CosmosDb_Repositories_ITenantItemRepository_1_GetByIdAsync_System_String_System_String_
+  name: GetByIdAsync
+  nameWithType: ITenantItemRepository<T>.GetByIdAsync
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.GetByIdAsync
+  nameWithType.vb: ITenantItemRepository(Of T).GetByIdAsync
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).GetByIdAsync
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync*
+  commentId: Overload:Benday.CosmosDb.Repositories.ITenantItemRepository`1.DeleteAllByTenantIdAsync
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html#Benday_CosmosDb_Repositories_ITenantItemRepository_1_DeleteAllByTenantIdAsync_System_String_System_Threading_CancellationToken_
+  name: DeleteAllByTenantIdAsync
+  nameWithType: ITenantItemRepository<T>.DeleteAllByTenantIdAsync
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.DeleteAllByTenantIdAsync
+  nameWithType.vb: ITenantItemRepository(Of T).DeleteAllByTenantIdAsync
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).DeleteAllByTenantIdAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync*
+  commentId: Overload:Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAllAsync
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html#Benday_CosmosDb_Repositories_ITenantItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  name: SaveAllAsync
+  nameWithType: ITenantItemRepository<T>.SaveAllAsync
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.SaveAllAsync
+  nameWithType.vb: ITenantItemRepository(Of T).SaveAllAsync
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).SaveAllAsync
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetPagedAsync*
+  commentId: Overload:Benday.CosmosDb.Repositories.ITenantItemRepository`1.GetPagedAsync
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html#Benday_CosmosDb_Repositories_ITenantItemRepository_1_GetPagedAsync_System_String_System_Int32_System_String_
+  name: GetPagedAsync
+  nameWithType: ITenantItemRepository<T>.GetPagedAsync
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>.GetPagedAsync
+  nameWithType.vb: ITenantItemRepository(Of T).GetPagedAsync
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T).GetPagedAsync
+- uid: System.Threading.Tasks.Task{Benday.CosmosDb.Repositories.PagedResults{{T}}}
+  commentId: T:System.Threading.Tasks.Task{Benday.CosmosDb.Repositories.PagedResults{`0}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<PagedResults<T>>
+  nameWithType: Task<PagedResults<T>>
+  fullName: System.Threading.Tasks.Task<Benday.CosmosDb.Repositories.PagedResults<T>>
+  nameWithType.vb: Task(Of PagedResults(Of T))
+  fullName.vb: System.Threading.Tasks.Task(Of Benday.CosmosDb.Repositories.PagedResults(Of T))
+  name.vb: Task(Of PagedResults(Of T))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Benday.CosmosDb.Repositories.PagedResults`1
+    name: PagedResults
+    href: Benday.CosmosDb.Repositories.PagedResults-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Benday.CosmosDb.Repositories.PagedResults`1
+    name: PagedResults
+    href: Benday.CosmosDb.Repositories.PagedResults-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )

@@ -1,0 +1,183 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  id: CosmosQueryEventKind
+  parent: Benday.CosmosDb.Diagnostics
+  children:
+  - Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+  - Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation
+  - Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal
+  langs:
+  - csharp
+  - vb
+  name: CosmosQueryEventKind
+  nameWithType: CosmosQueryEventKind
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  type: Enum
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: CosmosQueryEventKind
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+    startLine: 6
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Distinguishes the three kinds of events that <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics" data-throw-if-not-resolved="false"></xref>
+
+    can represent. Sinks use the kind to route, filter, and aggregate events.
+  example: []
+  syntax:
+    content: public enum CosmosQueryEventKind
+    content.vb: Public Enum CosmosQueryEventKind
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation
+  commentId: F:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation
+  id: PointOperation
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  langs:
+  - csharp
+  - vb
+  name: PointOperation
+  nameWithType: CosmosQueryEventKind.PointOperation
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation
+  type: Field
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: PointOperation
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+    startLine: 11
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: 'A single-document operation: save, delete, or point-read.'
+  example: []
+  syntax:
+    content: PointOperation = 0
+    return:
+      type: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+  commentId: F:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+  id: FeedResponsePage
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  langs:
+  - csharp
+  - vb
+  name: FeedResponsePage
+  nameWithType: CosmosQueryEventKind.FeedResponsePage
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+  type: Field
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: FeedResponsePage
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+    startLine: 17
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    One page of results from a multi-page feed iterator read.
+
+    Emitted once per page for both LINQ queries and raw-SQL queries.
+  example: []
+  syntax:
+    content: FeedResponsePage = 1
+    return:
+      type: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal
+  commentId: F:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal
+  id: QueryTotal
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  langs:
+  - csharp
+  - vb
+  name: QueryTotal
+  nameWithType: CosmosQueryEventKind.QueryTotal
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.QueryTotal
+  type: Field
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: QueryTotal
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+    startLine: 26
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    The aggregate total for a completed query. Emitted exactly once
+
+    per top-level query execution, regardless of how many
+
+    <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage" data-throw-if-not-resolved="false"></xref> events preceded it. For scalar operations
+
+    (<code>CountAsync</code>, <code>FirstOrDefaultAsync</code> via <code>ExecuteScalarAsync</code>)
+
+    this is the only event emitted.
+  example: []
+  syntax:
+    content: QueryTotal = 2
+    return:
+      type: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+references:
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  name: CosmosQueryDiagnostics
+  nameWithType: CosmosQueryDiagnostics
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+- uid: Benday.CosmosDb.Diagnostics
+  commentId: N:Benday.CosmosDb.Diagnostics
+  href: Benday.html
+  name: Benday.CosmosDb.Diagnostics
+  nameWithType: Benday.CosmosDb.Diagnostics
+  fullName: Benday.CosmosDb.Diagnostics
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html
+  name: CosmosQueryEventKind
+  nameWithType: CosmosQueryEventKind
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+  commentId: F:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_FeedResponsePage
+  name: FeedResponsePage
+  nameWithType: CosmosQueryEventKind.FeedResponsePage
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage

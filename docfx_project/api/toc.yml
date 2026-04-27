@@ -1,0 +1,144 @@
+### YamlMime:TableOfContent
+items:
+- uid: Benday.CosmosDb.Diagnostics
+  name: Benday.CosmosDb.Diagnostics
+  type: Namespace
+  items:
+  - uid: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+    name: CosmosFileLogSinkOptions
+    type: Class
+  - uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+    name: CosmosQueryDiagnostics
+    type: Class
+  - uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+    name: CosmosQueryEventKind
+    type: Enum
+  - uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+    name: FileCosmosQueryLogSink
+    type: Class
+  - uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+    name: ICosmosQueryLogSink
+    type: Interface
+  - uid: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+    name: NoOpCosmosQueryLogSink
+    type: Class
+- uid: Benday.CosmosDb.DomainModels
+  name: Benday.CosmosDb.DomainModels
+  type: Namespace
+  items:
+  - uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+    name: CosmosIdentityBase
+    type: Class
+  - uid: Benday.CosmosDb.DomainModels.ICosmosIdentity
+    name: ICosmosIdentity
+    type: Interface
+  - uid: Benday.CosmosDb.DomainModels.IParentedItem
+    name: IParentedItem
+    type: Interface
+  - uid: Benday.CosmosDb.DomainModels.ITenantItem
+    name: ITenantItem
+    type: Interface
+  - uid: Benday.CosmosDb.DomainModels.ParentedItemBase
+    name: ParentedItemBase
+    type: Class
+  - uid: Benday.CosmosDb.DomainModels.TenantItemBase
+    name: TenantItemBase
+    type: Class
+- uid: Benday.CosmosDb.Exceptions
+  name: Benday.CosmosDb.Exceptions
+  type: Namespace
+  items:
+  - uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+    name: CosmosDbBatchOperationException
+    type: Class
+  - uid: Benday.CosmosDb.Exceptions.CosmosDbConfigurationException
+    name: CosmosDbConfigurationException
+    type: Class
+  - uid: Benday.CosmosDb.Exceptions.CosmosDbException
+    name: CosmosDbException
+    type: Class
+  - uid: Benday.CosmosDb.Exceptions.CosmosDbItemNotFoundException
+    name: CosmosDbItemNotFoundException
+    type: Class
+- uid: Benday.CosmosDb.Repositories
+  name: Benday.CosmosDb.Repositories
+  type: Namespace
+  items:
+  - uid: Benday.CosmosDb.Repositories.CosmosDbConstants
+    name: CosmosDbConstants
+    type: Class
+  - uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+    name: CosmosDbParentedItemRepository<T>
+    type: Class
+  - uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+    name: CosmosRepositoryOptions<T>
+    type: Class
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1
+    name: CosmosRepository<T>
+    type: Class
+  - uid: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
+    name: CosmosTenantItemRepository<T>
+    type: Class
+  - uid: Benday.CosmosDb.Repositories.IParentedItemRepository`1
+    name: IParentedItemRepository<T>
+    type: Interface
+  - uid: Benday.CosmosDb.Repositories.IRepository`1
+    name: IRepository<T>
+    type: Interface
+  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+    name: ITenantItemRepository<T>
+    type: Interface
+  - uid: Benday.CosmosDb.Repositories.OptimisticConcurrencyException
+    name: OptimisticConcurrencyException
+    type: Class
+  - uid: Benday.CosmosDb.Repositories.PagedResults`1
+    name: PagedResults<T>
+    type: Class
+  - uid: Benday.CosmosDb.Repositories.QueryContext`1
+    name: QueryContext<T>
+    type: Class
+- uid: Benday.CosmosDb.ServiceLayers
+  name: Benday.CosmosDb.ServiceLayers
+  type: Namespace
+  items:
+  - uid: Benday.CosmosDb.ServiceLayers.IParentedItemService`1
+    name: IParentedItemService<T>
+    type: Interface
+  - uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+    name: ITenantItemService<T>
+    type: Interface
+  - uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+    name: ParentedItemService<T>
+    type: Class
+  - uid: Benday.CosmosDb.ServiceLayers.TenantItemService`1
+    name: TenantItemService<T>
+    type: Class
+- uid: Benday.CosmosDb.Utilities
+  name: Benday.CosmosDb.Utilities
+  type: Namespace
+  items:
+  - uid: Benday.CosmosDb.Utilities.BatchUtility
+    name: BatchUtility
+    type: Class
+  - uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities
+    name: CosmosClientOptionsUtilities
+    type: Class
+  - uid: Benday.CosmosDb.Utilities.CosmosConfig
+    name: CosmosConfig
+    type: Class
+  - uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+    name: CosmosConfigBuilder
+    type: Class
+  - uid: Benday.CosmosDb.Utilities.CosmosDbUtilities
+    name: CosmosDbUtilities
+    type: Class
+  - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+    name: CosmosRegistrationHelper
+    type: Class
+  - uid: Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer
+    name: SystemTextJsonCosmosSerializer
+    type: Class
+  - uid: Benday.CosmosDb.Utilities.UnixDateTimeConverter
+    name: UnixDateTimeConverter
+    type: Class
+memberLayout: SamePage

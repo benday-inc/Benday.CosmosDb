@@ -40,7 +40,10 @@
       "Bash(git -C /Users/benday/code/benday-inc/Benday.CosmosDb check-ignore -v RELEASE-NOTES-6.1.md)",
       "Bash(git -C /Users/benday/code/benday-inc/Benday.CosmosDb commit -m ' *)",
       "Bash(git -C /Users/benday/code/benday-inc/Benday.CosmosDb status)",
-      "Bash(git -C /Users/benday/code/benday-inc/Benday.CosmosDb add Benday.CosmosDb.SampleApp.Api/Repositories/CosmosDbLookupValueRepository.cs Benday.CosmosDb.SampleApp.Api/Repositories/CosmosDbPersonRepository.cs Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj Benday.CosmosDb.UnitTests/CosmosDbTestEntityRepository.cs Benday.CosmosDb.UnitTests/CosmosRegistrationHelperFixture.cs Benday.CosmosDb.UnitTests/Diagnostics Benday.CosmosDb/Benday.CosmosDb.csproj Benday.CosmosDb/Diagnostics Benday.CosmosDb/Repositories/CosmosDbParentedItemRepository.cs Benday.CosmosDb/Repositories/CosmosRepository.cs Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs)"
+      "Bash(git -C /Users/benday/code/benday-inc/Benday.CosmosDb add Benday.CosmosDb.SampleApp.Api/Repositories/CosmosDbLookupValueRepository.cs Benday.CosmosDb.SampleApp.Api/Repositories/CosmosDbPersonRepository.cs Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj Benday.CosmosDb.UnitTests/CosmosDbTestEntityRepository.cs Benday.CosmosDb.UnitTests/CosmosRegistrationHelperFixture.cs Benday.CosmosDb.UnitTests/Diagnostics Benday.CosmosDb/Benday.CosmosDb.csproj Benday.CosmosDb/Diagnostics Benday.CosmosDb/Repositories/CosmosDbParentedItemRepository.cs Benday.CosmosDb/Repositories/CosmosRepository.cs Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs)",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(git restore *)"
     ],
     "deny": [],
     "ask": []

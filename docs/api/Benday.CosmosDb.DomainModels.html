@@ -79,24 +79,26 @@ Classes
       <h4><a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html">CosmosIdentityBase</a></h4>
       <section><p>Provides the implementation of the basic properties of a Cosmos DB entity.</p>
 </section>
-      <h4><a class="xref" href="Benday.CosmosDb.DomainModels.OwnedItemBase.html">OwnedItemBase</a></h4>
-      <section><p>Base class for an item that has an owner.  By default, the PartitionKey will be the same as the OwnerId.</p>
-</section>
       <h4><a class="xref" href="Benday.CosmosDb.DomainModels.ParentedItemBase.html">ParentedItemBase</a></h4>
-      <section><p>Base class for an item that has both an owner and a parent entity.
-Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties.</p>
+      <section><p>Base class for an item that has both a tenant and a parent entity.
+Inherits from TenantItemBase and adds ParentId and ParentEntityType properties.</p>
+</section>
+      <h4><a class="xref" href="Benday.CosmosDb.DomainModels.TenantItemBase.html">TenantItemBase</a></h4>
+      <section><p>Base class for an item that belongs to a tenant.</p>
 </section>
     <h3 id="interfaces">
 Interfaces
 </h3>
       <h4><a class="xref" href="Benday.CosmosDb.DomainModels.ICosmosIdentity.html">ICosmosIdentity</a></h4>
-      <section><p>Represents the basic properties of a Cosmos DB entity.</p>
-</section>
-      <h4><a class="xref" href="Benday.CosmosDb.DomainModels.IOwnedItem.html">IOwnedItem</a></h4>
-      <section><p>Interface for an item that has an owner.</p>
+      <section><p>Represents the basic properties of a Cosmos DB entity.
+Identity and tenant properties (Id, TenantId) come from the shared
+ITenantItem&lt;string&gt; interface.</p>
 </section>
       <h4><a class="xref" href="Benday.CosmosDb.DomainModels.IParentedItem.html">IParentedItem</a></h4>
       <section></section>
+      <h4><a class="xref" href="Benday.CosmosDb.DomainModels.ITenantItem.html">ITenantItem</a></h4>
+      <section><p>Interface for an item that belongs to a tenant.</p>
+</section>
 
 
 </article>

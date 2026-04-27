@@ -1,0 +1,120 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.ServiceLayers
+  commentId: N:Benday.CosmosDb.ServiceLayers
+  id: Benday.CosmosDb.ServiceLayers
+  children:
+  - Benday.CosmosDb.ServiceLayers.IParentedItemService`1
+  - Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  - Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+  - Benday.CosmosDb.ServiceLayers.TenantItemService`1
+  langs:
+  - csharp
+  - vb
+  name: Benday.CosmosDb.ServiceLayers
+  nameWithType: Benday.CosmosDb.ServiceLayers
+  fullName: Benday.CosmosDb.ServiceLayers
+  type: Namespace
+  assemblies:
+  - Benday.CosmosDb
+references:
+- uid: Benday.CosmosDb.ServiceLayers.IParentedItemService`1
+  commentId: T:Benday.CosmosDb.ServiceLayers.IParentedItemService`1
+  href: Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html
+  name: IParentedItemService<T>
+  nameWithType: IParentedItemService<T>
+  fullName: Benday.CosmosDb.ServiceLayers.IParentedItemService<T>
+  nameWithType.vb: IParentedItemService(Of T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.IParentedItemService(Of T)
+  name.vb: IParentedItemService(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.ServiceLayers.IParentedItemService`1
+    name: IParentedItemService
+    href: Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.ServiceLayers.IParentedItemService`1
+    name: IParentedItemService
+    href: Benday.CosmosDb.ServiceLayers.IParentedItemService-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  commentId: T:Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
+  name: ITenantItemService<T>
+  nameWithType: ITenantItemService<T>
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>
+  nameWithType.vb: ITenantItemService(Of T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T)
+  name.vb: ITenantItemService(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+    name: ITenantItemService
+    href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+    name: ITenantItemService
+    href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+  commentId: T:Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+  href: Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html
+  name: ParentedItemService<T>
+  nameWithType: ParentedItemService<T>
+  fullName: Benday.CosmosDb.ServiceLayers.ParentedItemService<T>
+  nameWithType.vb: ParentedItemService(Of T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ParentedItemService(Of T)
+  name.vb: ParentedItemService(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+    name: ParentedItemService
+    href: Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+    name: ParentedItemService
+    href: Benday.CosmosDb.ServiceLayers.ParentedItemService-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.ServiceLayers.TenantItemService`1
+  commentId: T:Benday.CosmosDb.ServiceLayers.TenantItemService`1
+  href: Benday.CosmosDb.ServiceLayers.TenantItemService-1.html
+  name: TenantItemService<T>
+  nameWithType: TenantItemService<T>
+  fullName: Benday.CosmosDb.ServiceLayers.TenantItemService<T>
+  nameWithType.vb: TenantItemService(Of T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.TenantItemService(Of T)
+  name.vb: TenantItemService(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.ServiceLayers.TenantItemService`1
+    name: TenantItemService
+    href: Benday.CosmosDb.ServiceLayers.TenantItemService-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.ServiceLayers.TenantItemService`1
+    name: TenantItemService
+    href: Benday.CosmosDb.ServiceLayers.TenantItemService-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

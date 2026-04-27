@@ -1,0 +1,856 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  id: CosmosDbBatchOperationException
+  parent: Benday.CosmosDb.Exceptions
+  children:
+  - Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String)
+  - Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Exception)
+  - Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  - Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  - Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  langs:
+  - csharp
+  - vb
+  name: CosmosDbBatchOperationException
+  nameWithType: CosmosDbBatchOperationException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  type: Class
+  source:
+    remote:
+      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: CosmosDbBatchOperationException
+    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    startLine: 180
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Exceptions
+  summary: Exception thrown when a batch operation fails in Cosmos DB.
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class CosmosDbBatchOperationException : CosmosDbException, ISerializable
+    content.vb: >-
+      <Serializable>
+
+      Public Class CosmosDbBatchOperationException Inherits CosmosDbException Implements ISerializable
+  inheritance:
+  - System.Object
+  - System.Exception
+  - Benday.CosmosDb.Exceptions.CosmosDbException
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Exception.GetBaseException
+  - System.Exception.GetType
+  - System.Exception.ToString
+  - System.Exception.Data
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.SerializeObjectState
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  id: BatchNumber
+  parent: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  langs:
+  - csharp
+  - vb
+  name: BatchNumber
+  nameWithType: CosmosDbBatchOperationException.BatchNumber
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: BatchNumber
+    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    startLine: 186
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Exceptions
+  summary: Gets the batch number that failed.
+  example: []
+  syntax:
+    content: public int BatchNumber { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property BatchNumber As Integer
+  overload: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber*
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  id: TotalBatches
+  parent: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  langs:
+  - csharp
+  - vb
+  name: TotalBatches
+  nameWithType: CosmosDbBatchOperationException.TotalBatches
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: TotalBatches
+    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    startLine: 191
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Exceptions
+  summary: Gets the total number of batches.
+  example: []
+  syntax:
+    content: public int TotalBatches { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TotalBatches As Integer
+  overload: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches*
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  commentId: P:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  id: BatchSize
+  parent: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  langs:
+  - csharp
+  - vb
+  name: BatchSize
+  nameWithType: CosmosDbBatchOperationException.BatchSize
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: BatchSize
+    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    startLine: 196
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Exceptions
+  summary: Gets the number of items in the failed batch.
+  example: []
+  syntax:
+    content: public int BatchSize { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property BatchSize As Integer
+  overload: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize*
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String)
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.String)'
+  parent: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  langs:
+  - csharp
+  - vb
+  name: CosmosDbBatchOperationException(int, int, int, string)
+  nameWithType: CosmosDbBatchOperationException.CosmosDbBatchOperationException(int, int, int, string)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.CosmosDbBatchOperationException(int, int, int, string)
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    startLine: 205
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Exceptions
+  summary: Initializes a new instance of the CosmosDbBatchOperationException class.
+  example: []
+  syntax:
+    content: public CosmosDbBatchOperationException(int batchNumber, int totalBatches, int batchSize, string message)
+    parameters:
+    - id: batchNumber
+      type: System.Int32
+      description: The batch number that failed
+    - id: totalBatches
+      type: System.Int32
+      description: The total number of batches
+    - id: batchSize
+      type: System.Int32
+      description: The size of the failed batch
+    - id: message
+      type: System.String
+      description: The error message
+    content.vb: Public Sub New(batchNumber As Integer, totalBatches As Integer, batchSize As Integer, message As String)
+  overload: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor*
+  nameWithType.vb: CosmosDbBatchOperationException.New(Integer, Integer, Integer, String)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.New(Integer, Integer, Integer, String)
+  name.vb: New(Integer, Integer, Integer, String)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Exception)
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Exception)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Exception)'
+  parent: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  langs:
+  - csharp
+  - vb
+  name: CosmosDbBatchOperationException(int, int, int, string, Exception)
+  nameWithType: CosmosDbBatchOperationException.CosmosDbBatchOperationException(int, int, int, string, Exception)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.CosmosDbBatchOperationException(int, int, int, string, System.Exception)
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    startLine: 221
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Exceptions
+  summary: Initializes a new instance of the CosmosDbBatchOperationException class.
+  example: []
+  syntax:
+    content: public CosmosDbBatchOperationException(int batchNumber, int totalBatches, int batchSize, string message, Exception innerException)
+    parameters:
+    - id: batchNumber
+      type: System.Int32
+      description: The batch number that failed
+    - id: totalBatches
+      type: System.Int32
+      description: The total number of batches
+    - id: batchSize
+      type: System.Int32
+      description: The size of the failed batch
+    - id: message
+      type: System.String
+      description: The error message
+    - id: innerException
+      type: System.Exception
+      description: The inner exception
+    content.vb: Public Sub New(batchNumber As Integer, totalBatches As Integer, batchSize As Integer, message As String, innerException As Exception)
+  overload: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor*
+  nameWithType.vb: CosmosDbBatchOperationException.New(Integer, Integer, Integer, String, Exception)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.New(Integer, Integer, Integer, String, System.Exception)
+  name.vb: New(Integer, Integer, Integer, String, Exception)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  langs:
+  - csharp
+  - vb
+  name: CosmosDbBatchOperationException(SerializationInfo, StreamingContext)
+  nameWithType: CosmosDbBatchOperationException.CosmosDbBatchOperationException(SerializationInfo, StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.CosmosDbBatchOperationException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    startLine: 232
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Exceptions
+  summary: Initializes a new instance of the CosmosDbBatchOperationException class with serialized data.
+  example: []
+  syntax:
+    content: protected CosmosDbBatchOperationException(SerializationInfo info, StreamingContext context)
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+    content.vb: Protected Sub New(info As SerializationInfo, context As StreamingContext)
+  overload: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor*
+  nameWithType.vb: CosmosDbBatchOperationException.New(SerializationInfo, StreamingContext)
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.New(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  name.vb: New(SerializationInfo, StreamingContext)
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException
+  langs:
+  - csharp
+  - vb
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: CosmosDbBatchOperationException.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: GetObjectData
+    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    startLine: 243
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Exceptions
+  summary: Sets the SerializationInfo with information about the exception.
+  example: []
+  syntax:
+    content: public override void GetObjectData(SerializationInfo info, StreamingContext context)
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+    content.vb: Public Overrides Sub GetObjectData(info As SerializationInfo, context As StreamingContext)
+  overridden: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  overload: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData*
+references:
+- uid: Benday.CosmosDb.Exceptions
+  commentId: N:Benday.CosmosDb.Exceptions
+  href: Benday.html
+  name: Benday.CosmosDb.Exceptions
+  nameWithType: Benday.CosmosDb.Exceptions
+  fullName: Benday.CosmosDb.Exceptions
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Exceptions
+    name: Exceptions
+    href: Benday.CosmosDb.Exceptions.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Exceptions
+    name: Exceptions
+    href: Benday.CosmosDb.Exceptions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Benday.CosmosDb.Exceptions.CosmosDbException
+  commentId: T:Benday.CosmosDb.Exceptions.CosmosDbException
+  parent: Benday.CosmosDb.Exceptions
+  href: Benday.CosmosDb.Exceptions.CosmosDbException.html
+  name: CosmosDbException
+  nameWithType: CosmosDbException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbException
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: System.Exception.GetBaseException
+  commentId: M:System.Exception.GetBaseException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  name: GetBaseException()
+  nameWithType: Exception.GetBaseException()
+  fullName: System.Exception.GetBaseException()
+  spec.csharp:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+- uid: System.Exception.GetType
+  commentId: M:System.Exception.GetType
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  name: GetType()
+  nameWithType: Exception.GetType()
+  fullName: System.Exception.GetType()
+  spec.csharp:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+- uid: System.Exception.ToString
+  commentId: M:System.Exception.ToString
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  name: ToString()
+  nameWithType: Exception.ToString()
+  fullName: System.Exception.ToString()
+  spec.csharp:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+- uid: System.Exception.Data
+  commentId: P:System.Exception.Data
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.data
+  name: Data
+  nameWithType: Exception.Data
+  fullName: System.Exception.Data
+- uid: System.Exception.HelpLink
+  commentId: P:System.Exception.HelpLink
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.helplink
+  name: HelpLink
+  nameWithType: Exception.HelpLink
+  fullName: System.Exception.HelpLink
+- uid: System.Exception.HResult
+  commentId: P:System.Exception.HResult
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.hresult
+  name: HResult
+  nameWithType: Exception.HResult
+  fullName: System.Exception.HResult
+- uid: System.Exception.InnerException
+  commentId: P:System.Exception.InnerException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.innerexception
+  name: InnerException
+  nameWithType: Exception.InnerException
+  fullName: System.Exception.InnerException
+- uid: System.Exception.Message
+  commentId: P:System.Exception.Message
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.message
+  name: Message
+  nameWithType: Exception.Message
+  fullName: System.Exception.Message
+- uid: System.Exception.Source
+  commentId: P:System.Exception.Source
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.source
+  name: Source
+  nameWithType: Exception.Source
+  fullName: System.Exception.Source
+- uid: System.Exception.StackTrace
+  commentId: P:System.Exception.StackTrace
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.stacktrace
+  name: StackTrace
+  nameWithType: Exception.StackTrace
+  fullName: System.Exception.StackTrace
+- uid: System.Exception.TargetSite
+  commentId: P:System.Exception.TargetSite
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.targetsite
+  name: TargetSite
+  nameWithType: Exception.TargetSite
+  fullName: System.Exception.TargetSite
+- uid: System.Exception.SerializeObjectState
+  commentId: E:System.Exception.SerializeObjectState
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.serializeobjectstate
+  name: SerializeObjectState
+  nameWithType: Exception.SerializeObjectState
+  fullName: System.Exception.SerializeObjectState
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber*
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+  href: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_BatchNumber
+  name: BatchNumber
+  nameWithType: CosmosDbBatchOperationException.BatchNumber
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchNumber
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches*
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+  href: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_TotalBatches
+  name: TotalBatches
+  nameWithType: CosmosDbBatchOperationException.TotalBatches
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.TotalBatches
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize*
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+  href: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_BatchSize
+  name: BatchSize
+  nameWithType: CosmosDbBatchOperationException.BatchSize
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.BatchSize
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor*
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.#ctor
+  href: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException__ctor_System_Int32_System_Int32_System_Int32_System_String_
+  name: CosmosDbBatchOperationException
+  nameWithType: CosmosDbBatchOperationException.CosmosDbBatchOperationException
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.CosmosDbBatchOperationException
+  nameWithType.vb: CosmosDbBatchOperationException.New
+  fullName.vb: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Runtime.Serialization.SerializationInfo
+  commentId: T:System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  commentId: T:System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: Exception.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  spec.csharp:
+  - uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+- uid: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData*
+  commentId: Overload:Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData
+  href: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.html#Benday_CosmosDb_Exceptions_CosmosDbBatchOperationException_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  name: GetObjectData
+  nameWithType: CosmosDbBatchOperationException.GetObjectData
+  fullName: Benday.CosmosDb.Exceptions.CosmosDbBatchOperationException.GetObjectData

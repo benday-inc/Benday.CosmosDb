@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ParentedItemBase ">
     
-    <meta name="description" content="Base class for an item that has both an owner and a parent entity. Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties.">
+    <meta name="description" content="Base class for an item that has both a tenant and a parent entity. Inherits from TenantItemBase and adds ParentId and ParentEntityType properties.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -72,36 +72,40 @@
 
 
   <h1 id="Benday_CosmosDb_DomainModels_ParentedItemBase" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase" class="text-break">Class ParentedItemBase</h1>
-  <div class="markdown level0 summary"><p>Base class for an item that has both an owner and a parent entity.
-Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties.</p>
+  <div class="markdown level0 summary"><p>Base class for an item that has both a tenant and a parent entity.
+Inherits from TenantItemBase and adds ParentId and ParentEntityType properties.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html">CosmosIdentityBase</a></div>
-    <div class="level2"><a class="xref" href="Benday.CosmosDb.DomainModels.OwnedItemBase.html">OwnedItemBase</a></div>
+    <div class="level2"><a class="xref" href="Benday.CosmosDb.DomainModels.TenantItemBase.html">TenantItemBase</a></div>
     <div class="level3"><span class="xref">ParentedItemBase</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
+    <div><span class="xref">IBlobOwner</span></div>
     <div><a class="xref" href="Benday.CosmosDb.DomainModels.IParentedItem.html">IParentedItem</a></div>
-    <div><a class="xref" href="Benday.CosmosDb.DomainModels.IOwnedItem.html">IOwnedItem</a></div>
+    <div><a class="xref" href="Benday.CosmosDb.DomainModels.ITenantItem.html">ITenantItem</a></div>
     <div><a class="xref" href="Benday.CosmosDb.DomainModels.ICosmosIdentity.html">ICosmosIdentity</a></div>
+    <div><span class="xref">IParentedItem</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+    <div><span class="xref">ITenantItem</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+    <div><span class="xref">IEntityIdentity</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Benday.CosmosDb.DomainModels.OwnedItemBase.html#Benday_CosmosDb_DomainModels_OwnedItemBase_PartitionKey">OwnedItemBase.PartitionKey</a>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.TenantItemBase.html#Benday_CosmosDb_DomainModels_TenantItemBase_GetEntityTypeName">TenantItemBase.GetEntityTypeName()</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.DomainModels.OwnedItemBase.html#Benday_CosmosDb_DomainModels_OwnedItemBase_GetDiscriminatorName">OwnedItemBase.GetDiscriminatorName()</a>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.TenantItemBase.html#Benday_CosmosDb_DomainModels_TenantItemBase_GetBlobPrefix">TenantItemBase.GetBlobPrefix()</a>
     </div>
     <div>
       <a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_Id">CosmosIdentityBase.Id</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_OwnerId">CosmosIdentityBase.OwnerId</a>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_TenantId">CosmosIdentityBase.TenantId</a>
     </div>
     <div>
       <a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_TimestampUnixStyle">CosmosIdentityBase.TimestampUnixStyle</a>
@@ -113,7 +117,7 @@ Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties
       <a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_Etag">CosmosIdentityBase.Etag</a>
     </div>
     <div>
-      <a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_DiscriminatorValue">CosmosIdentityBase.DiscriminatorValue</a>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_EntityType">CosmosIdentityBase.EntityType</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -141,25 +145,25 @@ Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties
   <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
   <h5 id="Benday_CosmosDb_DomainModels_ParentedItemBase_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ParentedItemBase : OwnedItemBase, IParentedItem, IOwnedItem, ICosmosIdentity</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class ParentedItemBase : TenantItemBase, IBlobOwner, IParentedItem, ITenantItem, ICosmosIdentity, IParentedItem&lt;string&gt;, ITenantItem&lt;string&gt;, IEntityIdentity&lt;string&gt;</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_ParentedItemBase_ParentDiscriminator.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_DomainModels_ParentedItemBase_ParentEntityType.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.DomainModels.ParentedItemBase.ParentEntityType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/DomainModels/ParentedItemBase.cs/#L17">View Source</a>
   </span>
-  <a id="Benday_CosmosDb_DomainModels_ParentedItemBase_ParentDiscriminator_" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator*"></a>
-  <h4 id="Benday_CosmosDb_DomainModels_ParentedItemBase_ParentDiscriminator" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase.ParentDiscriminator">ParentDiscriminator</h4>
-  <div class="markdown level1 summary"><p>Discriminator/type of the parent entity</p>
+  <a id="Benday_CosmosDb_DomainModels_ParentedItemBase_ParentEntityType_" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase.ParentEntityType*"></a>
+  <h4 id="Benday_CosmosDb_DomainModels_ParentedItemBase_ParentEntityType" data-uid="Benday.CosmosDb.DomainModels.ParentedItemBase.ParentEntityType">ParentEntityType</h4>
+  <div class="markdown level1 summary"><p>Entity type of the parent entity</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract string ParentDiscriminator { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract string ParentEntityType { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -209,13 +213,25 @@ Inherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties
   </table>
   <h3 id="implements">Implements</h3>
   <div>
+      <span class="xref">Benday.Common.Interfaces.IBlobOwner</span>
+  </div>
+  <div>
       <a class="xref" href="Benday.CosmosDb.DomainModels.IParentedItem.html">IParentedItem</a>
   </div>
   <div>
-      <a class="xref" href="Benday.CosmosDb.DomainModels.IOwnedItem.html">IOwnedItem</a>
+      <a class="xref" href="Benday.CosmosDb.DomainModels.ITenantItem.html">ITenantItem</a>
   </div>
   <div>
       <a class="xref" href="Benday.CosmosDb.DomainModels.ICosmosIdentity.html">ICosmosIdentity</a>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.IParentedItem&lt;TKey&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.ITenantItem&lt;TKey&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.IEntityIdentity&lt;TKey&gt;</span>
   </div>
 
 </article>

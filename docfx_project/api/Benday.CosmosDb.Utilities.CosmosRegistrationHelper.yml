@@ -1,0 +1,1275 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  commentId: T:Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  id: CosmosRegistrationHelper
+  parent: Benday.CosmosDb.Utilities
+  children:
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,Benday.CosmosDb.Utilities.CosmosConfig)
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService``1
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``1
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``3
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService``1
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``1
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``3
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``3(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink(Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink``1
+  langs:
+  - csharp
+  - vb
+  name: CosmosRegistrationHelper
+  nameWithType: CosmosRegistrationHelper
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  type: Class
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: CosmosRegistrationHelper
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 13
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public class CosmosRegistrationHelper
+    content.vb: Public Class CosmosRegistrationHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString
+  id: ConnectionString
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: ConnectionString
+  nameWithType: CosmosRegistrationHelper.ConnectionString
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ConnectionString
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 15
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public string ConnectionString { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ConnectionString As String
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures
+  id: WithCreateStructures
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: WithCreateStructures
+  nameWithType: CosmosRegistrationHelper.WithCreateStructures
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithCreateStructures
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 17
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public bool WithCreateStructures { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property WithCreateStructures As Boolean
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode
+  id: UseGatewayMode
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: UseGatewayMode
+  nameWithType: CosmosRegistrationHelper.UseGatewayMode
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: UseGatewayMode
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 18
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public bool UseGatewayMode { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseGatewayMode As Boolean
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  id: AllowBulkExecution
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: AllowBulkExecution
+  nameWithType: CosmosRegistrationHelper.AllowBulkExecution
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: AllowBulkExecution
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 19
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public bool AllowBulkExecution { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AllowBulkExecution As Boolean
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  id: UseHierarchicalPartitionKey
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: UseHierarchicalPartitionKey
+  nameWithType: CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: UseHierarchicalPartitionKey
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 20
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public bool UseHierarchicalPartitionKey { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseHierarchicalPartitionKey As Boolean
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential
+  id: UseDefaultAzureCredential
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: UseDefaultAzureCredential
+  nameWithType: CosmosRegistrationHelper.UseDefaultAzureCredential
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: UseDefaultAzureCredential
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 21
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public bool UseDefaultAzureCredential { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseDefaultAzureCredential As Boolean
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName
+  id: DatabaseName
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: DatabaseName
+  nameWithType: CosmosRegistrationHelper.DatabaseName
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: DatabaseName
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 23
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public string DatabaseName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DatabaseName As String
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName
+  id: ContainerName
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: ContainerName
+  nameWithType: CosmosRegistrationHelper.ContainerName
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ContainerName
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 25
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public string ContainerName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ContainerName As String
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey
+  id: PartitionKey
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: PartitionKey
+  nameWithType: CosmosRegistrationHelper.PartitionKey
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: PartitionKey
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 27
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public string PartitionKey { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PartitionKey As String
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration
+  commentId: P:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration
+  id: Configuration
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: Configuration
+  nameWithType: CosmosRegistrationHelper.Configuration
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Configuration
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 31
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public CosmosConfig? Configuration { get; }
+    parameters: []
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfig
+    content.vb: Public Property Configuration As CosmosConfig
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,Benday.CosmosDb.Utilities.CosmosConfig)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,Benday.CosmosDb.Utilities.CosmosConfig)
+  id: '#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,Benday.CosmosDb.Utilities.CosmosConfig)'
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: CosmosRegistrationHelper(IServiceCollection, CosmosConfig)
+  nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper(IServiceCollection, CosmosConfig)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.CosmosRegistrationHelper(Microsoft.Extensions.DependencyInjection.IServiceCollection, Benday.CosmosDb.Utilities.CosmosConfig)
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 33
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  syntax:
+    content: public CosmosRegistrationHelper(IServiceCollection services, CosmosConfig config)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    - id: config
+      type: Benday.CosmosDb.Utilities.CosmosConfig
+    content.vb: Public Sub New(services As IServiceCollection, config As CosmosConfig)
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor*
+  nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, CosmosConfig)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New(Microsoft.Extensions.DependencyInjection.IServiceCollection, Benday.CosmosDb.Utilities.CosmosConfig)
+  name.vb: New(IServiceCollection, CosmosConfig)
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``1
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``1
+  id: RegisterRepository``1
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterRepository<TEntity>()
+  nameWithType: CosmosRegistrationHelper.RegisterRepository<TEntity>()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository<TEntity>()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RegisterRepository
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 54
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Registers a repository for a specific domain model entity type.
+  example: []
+  syntax:
+    content: 'public void RegisterRepository<TEntity>() where TEntity : TenantItemBase, new()'
+    typeParameters:
+    - id: TEntity
+      description: ''
+    content.vb: Public Sub RegisterRepository(Of TEntity As {TenantItemBase, New})()
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
+  nameWithType.vb: CosmosRegistrationHelper.RegisterRepository(Of TEntity)()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository(Of TEntity)()
+  name.vb: RegisterRepository(Of TEntity)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``3
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``3
+  id: RegisterRepository``3
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterRepository<TEntity, TInterface, TImplementation>()
+  nameWithType: CosmosRegistrationHelper.RegisterRepository<TEntity, TInterface, TImplementation>()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository<TEntity, TInterface, TImplementation>()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RegisterRepository
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 68
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Registers a repository for a specific domain model entity type using a custom implementation of the repository.
+  example: []
+  syntax:
+    content: 'public void RegisterRepository<TEntity, TInterface, TImplementation>() where TEntity : TenantItemBase, new() where TInterface : class where TImplementation : class, TInterface'
+    typeParameters:
+    - id: TEntity
+      description: ''
+    - id: TInterface
+      description: ''
+    - id: TImplementation
+      description: ''
+    content.vb: Public Sub RegisterRepository(Of TEntity As {TenantItemBase, New}, TInterface As Class, TImplementation As {Class, TInterface})()
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
+  nameWithType.vb: CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)()
+  name.vb: RegisterRepository(Of TEntity, TInterface, TImplementation)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``3(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository``3(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  id: RegisterRepository``3(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterRepository<TEntity, TInterface, TImplementation>(string?, string?, string?, string?, bool?, bool?, bool?)
+  nameWithType: CosmosRegistrationHelper.RegisterRepository<TEntity, TInterface, TImplementation>(string?, string?, string?, string?, bool?, bool?, bool?)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository<TEntity, TInterface, TImplementation>(string?, string?, string?, string?, bool?, bool?, bool?)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RegisterRepository
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 85
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Registers a repository for a specific domain model entity type using a custom configuration values.
+
+    Null or empty values will use the defaults from the helper instance.
+  example: []
+  syntax:
+    content: 'public void RegisterRepository<TEntity, TInterface, TImplementation>(string? connectionString = null, string? databaseName = null, string? containerName = null, string? partitionKey = null, bool? useHierarchicalPartitionKey = null, bool? useDefaultAzureCredential = null, bool? withCreateStructures = null) where TEntity : TenantItemBase, new() where TInterface : class where TImplementation : class, TInterface'
+    parameters:
+    - id: connectionString
+      type: System.String
+    - id: databaseName
+      type: System.String
+    - id: containerName
+      type: System.String
+    - id: partitionKey
+      type: System.String
+    - id: useHierarchicalPartitionKey
+      type: System.Nullable{System.Boolean}
+    - id: useDefaultAzureCredential
+      type: System.Nullable{System.Boolean}
+    - id: withCreateStructures
+      type: System.Nullable{System.Boolean}
+    typeParameters:
+    - id: TEntity
+      description: ''
+    - id: TInterface
+      description: ''
+    - id: TImplementation
+      description: ''
+    content.vb: Public Sub RegisterRepository(Of TEntity As {TenantItemBase, New}, TInterface As Class, TImplementation As {Class, TInterface})(connectionString As String = Nothing, databaseName As String = Nothing, containerName As String = Nothing, partitionKey As String = Nothing, useHierarchicalPartitionKey As Boolean? = Nothing, useDefaultAzureCredential As Boolean? = Nothing, withCreateStructures As Boolean? = Nothing)
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
+  nameWithType.vb: CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)(String, String, String, String, Boolean?, Boolean?, Boolean?)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)(String, String, String, String, Boolean?, Boolean?, Boolean?)
+  name.vb: RegisterRepository(Of TEntity, TInterface, TImplementation)(String, String, String, String, Boolean?, Boolean?, Boolean?)
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService``1
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService``1
+  id: RegisterRepositoryAndService``1
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterRepositoryAndService<TEntity>()
+  nameWithType: CosmosRegistrationHelper.RegisterRepositoryAndService<TEntity>()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService<TEntity>()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RegisterRepositoryAndService
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 147
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Registers a repository and service for a domain model entity type using default implementations.
+  example: []
+  syntax:
+    content: 'public void RegisterRepositoryAndService<TEntity>() where TEntity : TenantItemBase, new()'
+    typeParameters:
+    - id: TEntity
+      description: ''
+    content.vb: Public Sub RegisterRepositoryAndService(Of TEntity As {TenantItemBase, New})()
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService*
+  nameWithType.vb: CosmosRegistrationHelper.RegisterRepositoryAndService(Of TEntity)()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService(Of TEntity)()
+  name.vb: RegisterRepositoryAndService(Of TEntity)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``1
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``1
+  id: RegisterParentedRepository``1
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterParentedRepository<TEntity>()
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepository<TEntity>()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository<TEntity>()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RegisterParentedRepository
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 161
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Registers a repository for a specific parented item entity type using default implementation of CosmosDbParentedItemRepository.
+  example: []
+  syntax:
+    content: 'public void RegisterParentedRepository<TEntity>() where TEntity : ParentedItemBase, new()'
+    typeParameters:
+    - id: TEntity
+      description: Entity type that inherits from ParentedItemBase
+    content.vb: Public Sub RegisterParentedRepository(Of TEntity As {ParentedItemBase, New})()
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository*
+  nameWithType.vb: CosmosRegistrationHelper.RegisterParentedRepository(Of TEntity)()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository(Of TEntity)()
+  name.vb: RegisterParentedRepository(Of TEntity)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``3
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository``3
+  id: RegisterParentedRepository``3
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterParentedRepository<TEntity, TInterface, TImplementation>()
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepository<TEntity, TInterface, TImplementation>()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository<TEntity, TInterface, TImplementation>()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RegisterParentedRepository
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 175
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Registers a repository for a specific parented item entity type using a custom implementation of the repository.
+  example: []
+  syntax:
+    content: 'public void RegisterParentedRepository<TEntity, TInterface, TImplementation>() where TEntity : ParentedItemBase, new() where TInterface : class where TImplementation : class, TInterface'
+    typeParameters:
+    - id: TEntity
+      description: Entity type that inherits from ParentedItemBase
+    - id: TInterface
+      description: Repository interface
+    - id: TImplementation
+      description: Repository implementation
+    content.vb: Public Sub RegisterParentedRepository(Of TEntity As {ParentedItemBase, New}, TInterface As Class, TImplementation As {Class, TInterface})()
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository*
+  nameWithType.vb: CosmosRegistrationHelper.RegisterParentedRepository(Of TEntity, TInterface, TImplementation)()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository(Of TEntity, TInterface, TImplementation)()
+  name.vb: RegisterParentedRepository(Of TEntity, TInterface, TImplementation)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService``1
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService``1
+  id: RegisterParentedRepositoryAndService``1
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterParentedRepositoryAndService<TEntity>()
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepositoryAndService<TEntity>()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService<TEntity>()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: RegisterParentedRepositoryAndService
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 189
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Registers a repository and service for a parented item entity type using default implementations.
+  example: []
+  syntax:
+    content: 'public void RegisterParentedRepositoryAndService<TEntity>() where TEntity : ParentedItemBase, new()'
+    typeParameters:
+    - id: TEntity
+      description: Entity type that inherits from ParentedItemBase
+    content.vb: Public Sub RegisterParentedRepositoryAndService(Of TEntity As {ParentedItemBase, New})()
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService*
+  nameWithType.vb: CosmosRegistrationHelper.RegisterParentedRepositoryAndService(Of TEntity)()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService(Of TEntity)()
+  name.vb: RegisterParentedRepositoryAndService(Of TEntity)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink``1
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink``1
+  id: WithQueryLogSink``1
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: WithQueryLogSink<TSink>()
+  nameWithType: CosmosRegistrationHelper.WithQueryLogSink<TSink>()
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink<TSink>()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithQueryLogSink
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 221
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Registers a custom <xref href="Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink" data-throw-if-not-resolved="false"></xref> to receive
+
+    query diagnostics from every repository. If no sink is explicitly
+
+    registered, the default <xref href="Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink" data-throw-if-not-resolved="false"></xref> is used.
+  example: []
+  syntax:
+    content: 'public CosmosRegistrationHelper WithQueryLogSink<TSink>() where TSink : class, ICosmosQueryLogSink'
+    typeParameters:
+    - id: TSink
+      description: The sink implementation type. Registered as a singleton.
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+      description: This helper, for fluent chaining.
+    content.vb: Public Function WithQueryLogSink(Of TSink As {Class, ICosmosQueryLogSink})() As CosmosRegistrationHelper
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink*
+  nameWithType.vb: CosmosRegistrationHelper.WithQueryLogSink(Of TSink)()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink(Of TSink)()
+  name.vb: WithQueryLogSink(Of TSink)()
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink(Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink(Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
+  id: WithQueryLogSink(Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: WithQueryLogSink(ICosmosQueryLogSink)
+  nameWithType: CosmosRegistrationHelper.WithQueryLogSink(ICosmosQueryLogSink)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink(Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithQueryLogSink
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 235
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Registers a specific <xref href="Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink" data-throw-if-not-resolved="false"></xref> instance to
+
+    receive query diagnostics. Useful for test scenarios where a
+
+    pre-constructed capture sink should be used.
+  example: []
+  syntax:
+    content: public CosmosRegistrationHelper WithQueryLogSink(ICosmosQueryLogSink sink)
+    parameters:
+    - id: sink
+      type: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+      description: The sink instance. Registered as a singleton.
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+      description: This helper, for fluent chaining.
+    content.vb: Public Function WithQueryLogSink(sink As ICosmosQueryLogSink) As CosmosRegistrationHelper
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink*
+references:
+- uid: Benday.CosmosDb.Utilities
+  commentId: N:Benday.CosmosDb.Utilities
+  href: Benday.html
+  name: Benday.CosmosDb.Utilities
+  nameWithType: Benday.CosmosDb.Utilities
+  fullName: Benday.CosmosDb.Utilities
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Utilities
+    name: Utilities
+    href: Benday.CosmosDb.Utilities.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Utilities
+    name: Utilities
+    href: Benday.CosmosDb.Utilities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConnectionString
+  name: ConnectionString
+  nameWithType: CosmosRegistrationHelper.ConnectionString
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_WithCreateStructures
+  name: WithCreateStructures
+  nameWithType: CosmosRegistrationHelper.WithCreateStructures
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithCreateStructures
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_UseGatewayMode
+  name: UseGatewayMode
+  nameWithType: CosmosRegistrationHelper.UseGatewayMode
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseGatewayMode
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_AllowBulkExecution
+  name: AllowBulkExecution
+  nameWithType: CosmosRegistrationHelper.AllowBulkExecution
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_UseHierarchicalPartitionKey
+  name: UseHierarchicalPartitionKey
+  nameWithType: CosmosRegistrationHelper.UseHierarchicalPartitionKey
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseHierarchicalPartitionKey
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_UseDefaultAzureCredential
+  name: UseDefaultAzureCredential
+  nameWithType: CosmosRegistrationHelper.UseDefaultAzureCredential
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.UseDefaultAzureCredential
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_DatabaseName
+  name: DatabaseName
+  nameWithType: CosmosRegistrationHelper.DatabaseName
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ContainerName
+  name: ContainerName
+  nameWithType: CosmosRegistrationHelper.ContainerName
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_PartitionKey
+  name: PartitionKey
+  nameWithType: CosmosRegistrationHelper.PartitionKey
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.PartitionKey
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_Configuration
+  name: Configuration
+  nameWithType: CosmosRegistrationHelper.Configuration
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration
+- uid: Benday.CosmosDb.Utilities.CosmosConfig
+  commentId: T:Benday.CosmosDb.Utilities.CosmosConfig
+  parent: Benday.CosmosDb.Utilities
+  href: Benday.CosmosDb.Utilities.CosmosConfig.html
+  name: CosmosConfig
+  nameWithType: CosmosConfig
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_Benday_CosmosDb_Utilities_CosmosConfig_
+  name: CosmosRegistrationHelper
+  nameWithType: CosmosRegistrationHelper.CosmosRegistrationHelper
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.CosmosRegistrationHelper
+  nameWithType.vb: CosmosRegistrationHelper.New
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.New
+  name.vb: New
+- uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceCollection
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceCollection
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterRepository__1
+  name: RegisterRepository
+  nameWithType: CosmosRegistrationHelper.RegisterRepository
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterRepositoryAndService__1
+  name: RegisterRepositoryAndService
+  nameWithType: CosmosRegistrationHelper.RegisterRepositoryAndService
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterParentedRepository__1
+  name: RegisterParentedRepository
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepository
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepository
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterParentedRepositoryAndService__1
+  name: RegisterParentedRepositoryAndService
+  nameWithType: CosmosRegistrationHelper.RegisterParentedRepositoryAndService
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html
+  name: ICosmosQueryLogSink
+  nameWithType: ICosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink.html
+  name: NoOpCosmosQueryLogSink
+  nameWithType: NoOpCosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_WithQueryLogSink__1
+  name: WithQueryLogSink
+  nameWithType: CosmosRegistrationHelper.WithQueryLogSink
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  commentId: T:Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  parent: Benday.CosmosDb.Utilities
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html
+  name: CosmosRegistrationHelper
+  nameWithType: CosmosRegistrationHelper
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+- uid: Benday.CosmosDb.Diagnostics
+  commentId: N:Benday.CosmosDb.Diagnostics
+  href: Benday.html
+  name: Benday.CosmosDb.Diagnostics
+  nameWithType: Benday.CosmosDb.Diagnostics
+  fullName: Benday.CosmosDb.Diagnostics
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html

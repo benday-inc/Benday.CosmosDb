@@ -212,11 +212,12 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// Executes a LINQ query and returns all results, logging per-page and
     /// total diagnostics through <see cref="OnQueryDiagnostics"/>.
     /// </summary>
+    /// <typeparam name="TResult">Type of item returned by the query. Typically <typeparamref name="T"/>, but may be a projected type when the LINQ query selects into a different shape.</typeparam>
     /// <param name="query">query to run</param>
     /// <param name="queryDescription">logging description for the query</param>
     /// <param name="partitionKey">partition key that's configured for this query. NOTE: this is purely to logging purposes</param>
     /// <returns>All matching items.</returns>
-    /// <seealso cref="GetResultsAsync(QueryDefinition, string, PartitionKey)"/>
+    /// <seealso cref="GetResultsAsync{TResult}(QueryDefinition, string, PartitionKey)"/>
     /// <seealso cref="ExecuteScalarAsync{TResult}(IQueryable{T}, Func{IQueryable{T}, Task{Response{TResult}}}, string, PartitionKey, Func{TResult, int}?)"/>
     protected async Task<List<TResult>> GetResultsAsync<TResult>(
         IQueryable<TResult> query, string queryDescription, PartitionKey partitionKey)
@@ -269,11 +270,12 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// aggregation, etc. The library's LINQ support handles the common case;
     /// this overload covers the cases it can't.
     /// </remarks>
+    /// <typeparam name="TResult">Type of item returned by the query. Typically <typeparamref name="T"/>, but may be a projected type when the SQL query selects into a different shape.</typeparam>
     /// <param name="query">The parameterized Cosmos SQL query to run.</param>
     /// <param name="queryDescription">Logging description for the query.</param>
     /// <param name="partitionKey">Partition key scope for the query.</param>
     /// <returns>All matching items.</returns>
-    /// <seealso cref="GetResultsAsync(IQueryable{T}, string, PartitionKey)"/>
+    /// <seealso cref="GetResultsAsync{TResult}(IQueryable{TResult}, string, PartitionKey)"/>
     protected async Task<List<TResult>> GetResultsAsync<TResult>(
         QueryDefinition query, string queryDescription, PartitionKey partitionKey)
     {
@@ -292,6 +294,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             iterator, queryDescription, queryText, parameters, partitionKey);
     }
 
+    /// <summary>
+    /// Convenience overload of <see cref="GetResultsAsync{TResult}(QueryDefinition, string, PartitionKey)"/>
+    /// for the common case where the result type is the repository's own
+    /// entity type <typeparamref name="T"/>.
+    /// </summary>
+    /// <param name="query">The parameterized Cosmos SQL query to run.</param>
+    /// <param name="queryDescription">Logging description for the query.</param>
+    /// <param name="partitionKey">Partition key scope for the query.</param>
+    /// <returns>All matching items.</returns>
     protected async Task<List<T>> GetResultsAsync(
         QueryDefinition query, string queryDescription, PartitionKey partitionKey)
     {
@@ -303,6 +314,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// totals, and emitting per-page and total diagnostics through
     /// <see cref="OnQueryDiagnostics"/>.
     /// </summary>
+    /// <typeparam name="TResult">Type of item produced by the feed iterator. Typically <typeparamref name="T"/>, but may be a projected type when the underlying query selects into a different shape.</typeparam>
     /// <param name="resultSetIterator">Feed iterator to read the results from.</param>
     /// <param name="queryDescription">Description of this query for logging.</param>
     /// <param name="queryText">The generated SQL text (for diagnostics). Optional.</param>
@@ -622,7 +634,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// }
     /// </code>
     /// </example>
-    /// <seealso cref="GetResultsAsync(IQueryable{T}, string, PartitionKey)"/>
+    /// <seealso cref="GetResultsAsync{TResult}(IQueryable{TResult}, string, PartitionKey)"/>
     protected async Task<TResult> ExecuteScalarAsync<TResult>(
         IQueryable<T> query,
         Func<IQueryable<T>, Task<Response<TResult>>> operation,

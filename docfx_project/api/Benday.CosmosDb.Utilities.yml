@@ -1,0 +1,105 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Utilities
+  commentId: N:Benday.CosmosDb.Utilities
+  id: Benday.CosmosDb.Utilities
+  children:
+  - Benday.CosmosDb.Utilities.BatchUtility
+  - Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities
+  - Benday.CosmosDb.Utilities.CosmosConfig
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  - Benday.CosmosDb.Utilities.CosmosDbUtilities
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  - Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer
+  - Benday.CosmosDb.Utilities.UnixDateTimeConverter
+  langs:
+  - csharp
+  - vb
+  name: Benday.CosmosDb.Utilities
+  nameWithType: Benday.CosmosDb.Utilities
+  fullName: Benday.CosmosDb.Utilities
+  type: Namespace
+  assemblies:
+  - Benday.CosmosDb
+references:
+- uid: Benday.CosmosDb.Utilities.BatchUtility
+  commentId: T:Benday.CosmosDb.Utilities.BatchUtility
+  href: Benday.CosmosDb.Utilities.BatchUtility.html
+  name: BatchUtility
+  nameWithType: BatchUtility
+  fullName: Benday.CosmosDb.Utilities.BatchUtility
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities
+  commentId: T:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities
+  href: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html
+  name: CosmosClientOptionsUtilities
+  nameWithType: CosmosClientOptionsUtilities
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities
+- uid: Benday.CosmosDb.Utilities.CosmosConfig
+  commentId: T:Benday.CosmosDb.Utilities.CosmosConfig
+  parent: Benday.CosmosDb.Utilities
+  href: Benday.CosmosDb.Utilities.CosmosConfig.html
+  name: CosmosConfig
+  nameWithType: CosmosConfig
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  commentId: T:Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  parent: Benday.CosmosDb.Utilities
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html
+  name: CosmosConfigBuilder
+  nameWithType: CosmosConfigBuilder
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+- uid: Benday.CosmosDb.Utilities.CosmosDbUtilities
+  commentId: T:Benday.CosmosDb.Utilities.CosmosDbUtilities
+  href: Benday.CosmosDb.Utilities.CosmosDbUtilities.html
+  name: CosmosDbUtilities
+  nameWithType: CosmosDbUtilities
+  fullName: Benday.CosmosDb.Utilities.CosmosDbUtilities
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  commentId: T:Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  parent: Benday.CosmosDb.Utilities
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html
+  name: CosmosRegistrationHelper
+  nameWithType: CosmosRegistrationHelper
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+- uid: Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer
+  commentId: T:Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer
+  href: Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.html
+  name: SystemTextJsonCosmosSerializer
+  nameWithType: SystemTextJsonCosmosSerializer
+  fullName: Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer
+- uid: Benday.CosmosDb.Utilities.UnixDateTimeConverter
+  commentId: T:Benday.CosmosDb.Utilities.UnixDateTimeConverter
+  href: Benday.CosmosDb.Utilities.UnixDateTimeConverter.html
+  name: UnixDateTimeConverter
+  nameWithType: UnixDateTimeConverter
+  fullName: Benday.CosmosDb.Utilities.UnixDateTimeConverter
+- uid: Benday.CosmosDb.Utilities
+  commentId: N:Benday.CosmosDb.Utilities
+  href: Benday.html
+  name: Benday.CosmosDb.Utilities
+  nameWithType: Benday.CosmosDb.Utilities
+  fullName: Benday.CosmosDb.Utilities
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Utilities
+    name: Utilities
+    href: Benday.CosmosDb.Utilities.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Utilities
+    name: Utilities
+    href: Benday.CosmosDb.Utilities.html

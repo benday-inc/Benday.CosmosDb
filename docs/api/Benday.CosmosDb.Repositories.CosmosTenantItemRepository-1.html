@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class CosmosTenantItemRepository&lt;T&gt; </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class CosmosTenantItemRepository&lt;T&gt; ">
+    
+    <meta name="description" content="Provides repository implementation for items that belong to a tenant.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-brand">
+                <a href="../">
+                  <img id="logo" src="../logo.png" alt="" alt="asdf" width="50" height="50">
+                </a>
+
+              </div>            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1">
+
+
+
+  <h1 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1" class="text-break">Class CosmosTenantItemRepository&lt;T&gt;</h1>
+  <div class="markdown level0 summary"><p>Provides repository implementation for items that belong to a tenant.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html">CosmosRepository</a>&lt;T&gt;</div>
+    <div class="level2"><span class="xref">CosmosTenantItemRepository&lt;T&gt;</span></div>
+      <div class="level3"><a class="xref" href="Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html">CosmosDbParentedItemRepository&lt;T&gt;</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Benday.CosmosDb.Repositories.ITenantItemRepository-1.html">ITenantItemRepository</a>&lt;T&gt;</div>
+    <div><a class="xref" href="Benday.CosmosDb.Repositories.IRepository-1.html">IRepository</a>&lt;T&gt;</div>
+    <div><span class="xref">IAsyncTenantRepository</span>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+    <div><span class="xref">IAsyncRepository</span>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_EntityType">CosmosRepository&lt;T&gt;.EntityType</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_Logger">CosmosRepository&lt;T&gt;.Logger</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1__Options">CosmosRepository&lt;T&gt;._Options</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1__sink">CosmosRepository&lt;T&gt;._sink</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetContainerAsync">CosmosRepository&lt;T&gt;.GetContainerAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_DeleteAsync_System_String_">CosmosRepository&lt;T&gt;.DeleteAsync(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetAllAsync">CosmosRepository&lt;T&gt;.GetAllAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_System_Linq_IQueryable___0__System_String_Microsoft_Azure_Cosmos_PartitionKey_">CosmosRepository&lt;T&gt;.GetResultsAsync&lt;TResult&gt;(IQueryable&lt;TResult&gt;, string, PartitionKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_Microsoft_Azure_Cosmos_QueryDefinition_System_String_Microsoft_Azure_Cosmos_PartitionKey_">CosmosRepository&lt;T&gt;.GetResultsAsync&lt;TResult&gt;(QueryDefinition, string, PartitionKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync_Microsoft_Azure_Cosmos_QueryDefinition_System_String_Microsoft_Azure_Cosmos_PartitionKey_">CosmosRepository&lt;T&gt;.GetResultsAsync(QueryDefinition, string, PartitionKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_Microsoft_Azure_Cosmos_FeedIterator___0__System_String_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_">CosmosRepository&lt;T&gt;.GetResultsAsync&lt;TResult&gt;(FeedIterator&lt;TResult&gt;, string, string, IReadOnlyDictionary&lt;string, object&gt;, PartitionKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryDescription_System_String_">CosmosRepository&lt;T&gt;.GetQueryDescription(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryDescription_System_String_System_String_">CosmosRepository&lt;T&gt;.GetQueryDescription(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_IsCrossPartitionQuery_Microsoft_Azure_Cosmos_CosmosDiagnostics_">CosmosRepository&lt;T&gt;.IsCrossPartitionQuery(CosmosDiagnostics)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogPointOperationDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_">CosmosRepository&lt;T&gt;.LogPointOperationDiagnostics(string, double, CosmosDiagnostics, TimeSpan)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_">CosmosRepository&lt;T&gt;.LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary&lt;string, object&gt;, PartitionKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_">CosmosRepository&lt;T&gt;.LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary&lt;string, object&gt;, PartitionKey, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_OnQueryDiagnostics_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_">CosmosRepository&lt;T&gt;.OnQueryDiagnostics(CosmosQueryDiagnostics)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_ExecuteScalarAsync__1_System_Linq_IQueryable__0__System_Func_System_Linq_IQueryable__0__System_Threading_Tasks_Task_Microsoft_Azure_Cosmos_Response___0____System_String_Microsoft_Azure_Cosmos_PartitionKey_System_Func___0_System_Int32__">CosmosRepository&lt;T&gt;.ExecuteScalarAsync&lt;TResult&gt;(IQueryable&lt;T&gt;, Func&lt;IQueryable&lt;T&gt;, Task&lt;Response&lt;TResult&gt;&gt;&gt;, string, PartitionKey, Func&lt;TResult, int&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetByIdAsync_System_String_">CosmosRepository&lt;T&gt;.GetByIdAsync(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_Initialize">CosmosRepository&lt;T&gt;.Initialize()</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_SaveAsync__0_">CosmosRepository&lt;T&gt;.SaveAsync(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_BatchSize">CosmosRepository&lt;T&gt;.BatchSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_SaveAsync_System_Collections_Generic_IList__0__">CosmosRepository&lt;T&gt;.SaveAsync(IList&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_SaveBatchAsync_System_Int32_System_Int32__0___">CosmosRepository&lt;T&gt;.SaveBatchAsync(int, int, T[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_AfterSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatchResponse__0___System_Int32_System_Int32_">CosmosRepository&lt;T&gt;.AfterSaveBatch(TransactionalBatchResponse, T[], int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_BeforeSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatch__0___System_Int32_System_Int32_">CosmosRepository&lt;T&gt;.BeforeSaveBatch(TransactionalBatch, T[], int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey__0_">CosmosRepository&lt;T&gt;.GetPartitionKey(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey_System_String_System_String_">CosmosRepository&lt;T&gt;.GetPartitionKey(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_System_String_">CosmosRepository&lt;T&gt;.GetQueryContextAsync(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_System_String_System_String_">CosmosRepository&lt;T&gt;.GetQueryContextAsync(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync">CosmosRepository&lt;T&gt;.GetQueryContextAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_System_Int32_System_String_">CosmosRepository&lt;T&gt;.GetPagedAsync(int, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Benday.html">Benday</a>.<a class="xref" href="Benday.CosmosDb.html">CosmosDb</a>.<a class="xref" href="Benday.CosmosDb.Repositories.html">Repositories</a></h6>
+  <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
+  <h5 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CosmosTenantItemRepository&lt;T&gt; : CosmosRepository&lt;T&gt;, ITenantItemRepository&lt;T&gt;, IRepository&lt;T&gt;, IAsyncTenantRepository&lt;T, string&gt;, IAsyncRepository&lt;T, string&gt; where T : class, ITenantItem, new()</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Domain model type managed by the repository</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Repositories_CosmosTenantItemRepository__0___Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.%23ctor(Microsoft.Extensions.Options.IOptions%7BBenday.CosmosDb.Repositories.CosmosRepositoryOptions%7B%600%7D%7D%2CMicrosoft.Azure.Cosmos.CosmosClient%2CMicrosoft.Extensions.Logging.ILogger%7BBenday.CosmosDb.Repositories.CosmosTenantItemRepository%7B%600%7D%7D%2CBenday.CosmosDb.Diagnostics.ICosmosQueryLogSink)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L19">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1__ctor_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Repositories_CosmosTenantItemRepository__0___Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)">CosmosTenantItemRepository(IOptions&lt;CosmosRepositoryOptions&lt;T&gt;&gt;, CosmosClient, ILogger&lt;CosmosTenantItemRepository&lt;T&gt;&gt;, ICosmosQueryLogSink?)</h4>
+  <div class="markdown level1 summary"><p>Provides repository implementation for items that belong to a tenant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosTenantItemRepository(IOptions&lt;CosmosRepositoryOptions&lt;T&gt;&gt; options, CosmosClient client, ILogger&lt;CosmosTenantItemRepository&lt;T&gt;&gt; logger, ICosmosQueryLogSink? sink = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1">IOptions</a>&lt;<a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html">CosmosRepositoryOptions</a>&lt;T&gt;&gt;</td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Configuration options for the repository</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient">CosmosClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Instance of the cosmos db client. NOTE: for performance reasons, this should probably be a singleton in the application.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.html">CosmosTenantItemRepository</a>&lt;T&gt;&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html">ICosmosQueryLogSink</a></td>
+        <td><span class="parametername">sink</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_BulkMaxConcurrency.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.BulkMaxConcurrency%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L155">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_BulkMaxConcurrency_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.BulkMaxConcurrency*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_BulkMaxConcurrency" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.BulkMaxConcurrency">BulkMaxConcurrency</h4>
+  <div class="markdown level1 summary"><p>Maximum concurrent operations for bulk operations. Override in derived class if needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual int BulkMaxConcurrency { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_BulkMaxRetries.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.BulkMaxRetries%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L160">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_BulkMaxRetries_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.BulkMaxRetries*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_BulkMaxRetries" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.BulkMaxRetries">BulkMaxRetries</h4>
+  <div class="markdown level1 summary"><p>Maximum retry attempts for throttled requests. Override in derived class if needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual int BulkMaxRetries { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAllByTenantIdAsync_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.DeleteAllByTenantIdAsync(System.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L185">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAllByTenantIdAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteAllByTenantIdAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAllByTenantIdAsync_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">DeleteAllByTenantIdAsync(string, int, int, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes all items for the specified tenant with configurable throttling and retry logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAllByTenantIdAsync(string tenantId, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Tenant id for the items to delete</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxConcurrency</span></td>
+        <td><p>Maximum number of concurrent delete operations</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxRetries</span></td>
+        <td><p>Maximum number of retry attempts for throttled requests</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAllByTenantIdAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.DeleteAllByTenantIdAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L171">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAllByTenantIdAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteAllByTenantIdAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAllByTenantIdAsync_System_String_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Threading.CancellationToken)">DeleteAllByTenantIdAsync(string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes all items for the specified tenant with throttling and retry logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAllByTenantIdAsync(string tenantId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Tenant id for the items to delete</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAsync__0_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.DeleteAsync(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L116">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteAsync__0_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteAsync(`0)">DeleteAsync(T)</h4>
+  <div class="markdown level1 summary"><p>Delete an item from the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(T itemToDelete)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">itemToDelete</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteWithRetryAsync__0_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.DeleteWithRetryAsync(%600%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L252">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteWithRetryAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteWithRetryAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_DeleteWithRetryAsync__0_System_Int32_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteWithRetryAsync(`0,System.Int32,System.Threading.CancellationToken)">DeleteWithRetryAsync(T, int, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes a single item with retry logic for throttled requests (HTTP 429).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Task DeleteWithRetryAsync(T item, int maxRetries, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>Item to delete</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxRetries</span></td>
+        <td><p>Maximum number of retry attempts</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetAllAsync_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.GetAllAsync(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L33">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetAllAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.GetAllAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetAllAsync_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.GetAllAsync(System.String)">GetAllAsync(string)</h4>
+  <div class="markdown level1 summary"><p>Get all items in the repository that have the specified tenant id.
+Default implementation will return items in descending order by timestamp.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;T&gt;&gt; GetAllAsync(string tenantId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Tenant id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetByIdAsync_System_String_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.GetByIdAsync(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L53">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetByIdAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.GetByIdAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetByIdAsync_System_String_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.GetByIdAsync(System.String,System.String)">GetByIdAsync(string, string)</h4>
+  <div class="markdown level1 summary"><p>Gets an entity by its id and tenant id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;T?&gt; GetByIdAsync(string tenantId, string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td><p>Matching item or null if not found</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetPagedAsync_System_String_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.GetPagedAsync(System.String%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L145">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetPagedAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.GetPagedAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_GetPagedAsync_System_String_System_Int32_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.GetPagedAsync(System.String,System.Int32,System.String)">GetPagedAsync(string, int, string?)</h4>
+  <div class="markdown level1 summary"><p>Gets a page of results for the specified tenant with continuation support.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;PagedResults&lt;T&gt;&gt; GetPagedAsync(string tenantId, int pageSize = 100, string? continuationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Tenant id</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">pageSize</span></td>
+        <td><p>Maximum number of items to return</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">continuationToken</span></td>
+        <td><p>Continuation token from previous query (null for first page)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Benday.CosmosDb.Repositories.PagedResults-1.html">PagedResults</a>&lt;T&gt;&gt;</td>
+        <td><p>A page of results with continuation information</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Int32_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.SaveAllAsync(System.Collections.Generic.IEnumerable%7B%600%7D%2CSystem.Int32%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L307">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveAllAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.SaveAllAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Threading.CancellationToken)">SaveAllAsync(IEnumerable&lt;T&gt;, int, int, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Saves multiple items with configurable throttling and retry logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SaveAllAsync(IEnumerable&lt;T&gt; items, int maxConcurrency, int maxRetries, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">items</span></td>
+        <td><p>Items to save</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxConcurrency</span></td>
+        <td><p>Maximum number of concurrent save operations</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxRetries</span></td>
+        <td><p>Maximum number of retry attempts for throttled requests</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.SaveAllAsync(System.Collections.Generic.IEnumerable%7B%600%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L293">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveAllAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.SaveAllAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveAllAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.SaveAllAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">SaveAllAsync(IEnumerable&lt;T&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Saves multiple items with throttling and retry logic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SaveAllAsync(IEnumerable&lt;T&gt; items, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">items</span></td>
+        <td><p>Items to save</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveWithRetryAsync__0_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601.SaveWithRetryAsync(%600%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L367">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveWithRetryAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.SaveWithRetryAsync*"></a>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1_SaveWithRetryAsync__0_System_Int32_System_Threading_CancellationToken_" data-uid="Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.SaveWithRetryAsync(`0,System.Int32,System.Threading.CancellationToken)">SaveWithRetryAsync(T, int, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Saves a single item with retry logic for throttled requests (HTTP 429).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Task SaveWithRetryAsync(T item, int maxRetries, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>Item to save</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">maxRetries</span></td>
+        <td><p>Maximum number of retry attempts</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.ITenantItemRepository-1.html">ITenantItemRepository&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="Benday.CosmosDb.Repositories.IRepository-1.html">IRepository&lt;T&gt;</a>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.IAsyncTenantRepository&lt;T, TKey&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Benday.Common.Interfaces.IAsyncRepository&lt;T, TKey&gt;</span>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosTenantItemRepository%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs/#L19" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      Copyright © <a href="https://www.benday.com/">www.benday.com</a> | <a href="mailto:info@benday.com">info@benday.com</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

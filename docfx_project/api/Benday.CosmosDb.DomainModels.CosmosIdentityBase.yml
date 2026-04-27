@@ -1,0 +1,909 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  commentId: T:Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  id: CosmosIdentityBase
+  parent: Benday.CosmosDb.DomainModels
+  children:
+  - Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType
+  - Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag
+  - Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName
+  - Benday.CosmosDb.DomainModels.CosmosIdentityBase.Id
+  - Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId
+  - Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp
+  - Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle
+  langs:
+  - csharp
+  - vb
+  name: CosmosIdentityBase
+  nameWithType: CosmosIdentityBase
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  type: Class
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: CosmosIdentityBase
+    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    startLine: 9
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Provides the implementation of the basic properties of a Cosmos DB entity.
+  example: []
+  syntax:
+    content: 'public abstract class CosmosIdentityBase : ITenantItem, ICosmosIdentity, ITenantItem<string>, IEntityIdentity<string>'
+    content.vb: Public MustInherit Class CosmosIdentityBase Implements ITenantItem, ICosmosIdentity, ITenantItem(Of String), IEntityIdentity(Of String)
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Benday.CosmosDb.DomainModels.TenantItemBase
+  implements:
+  - Benday.CosmosDb.DomainModels.ITenantItem
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity
+  - Benday.Common.Interfaces.ITenantItem{System.String}
+  - Benday.Common.Interfaces.IEntityIdentity{System.String}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Id
+  commentId: P:Benday.CosmosDb.DomainModels.CosmosIdentityBase.Id
+  id: Id
+  parent: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: CosmosIdentityBase.Id
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Id
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Id
+    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    startLine: 14
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Id of the entity.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("id")]
+
+      public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("id")>
+
+      Public Property Id As String
+  overload: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Id*
+  implements:
+  - Benday.Common.Interfaces.IEntityIdentity{System.String}.Id
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: id
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId
+  commentId: P:Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId
+  id: TenantId
+  parent: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  langs:
+  - csharp
+  - vb
+  name: TenantId
+  nameWithType: CosmosIdentityBase.TenantId
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: TenantId
+    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    startLine: 20
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Top-level partition key of the entity. Represents the tenant that owns this entity.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("tenantId")]
+
+      public virtual string TenantId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("tenantId")>
+
+      Public Overridable Property TenantId As String
+  overload: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId*
+  implements:
+  - Benday.Common.Interfaces.ITenantItem{System.String}.TenantId
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: tenantId
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle
+  commentId: P:Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle
+  id: TimestampUnixStyle
+  parent: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  langs:
+  - csharp
+  - vb
+  name: TimestampUnixStyle
+  nameWithType: CosmosIdentityBase.TimestampUnixStyle
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: TimestampUnixStyle
+    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    startLine: 26
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Timestamp of the entity.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("_ts")]
+
+      public long TimestampUnixStyle { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonPropertyName("_ts")>
+
+      Public Property TimestampUnixStyle As Long
+  overload: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle*
+  implements:
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: _ts
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp
+  commentId: P:Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp
+  id: Timestamp
+  parent: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: CosmosIdentityBase.Timestamp
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Timestamp
+    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    startLine: 32
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Timestamp of the entity in human-readable format.
+  example: []
+  syntax:
+    content: public DateTime Timestamp { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property Timestamp As Date
+  overload: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp*
+  implements:
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag
+  commentId: P:Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag
+  id: Etag
+  parent: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  langs:
+  - csharp
+  - vb
+  name: Etag
+  nameWithType: CosmosIdentityBase.Etag
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Etag
+    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    startLine: 46
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Optimistic concurrency token for the entity.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("_etag")]
+
+      public string Etag { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("_etag")>
+
+      Public Property Etag As String
+  overload: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag*
+  implements:
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity.Etag
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: _etag
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType
+  commentId: P:Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType
+  id: EntityType
+  parent: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  langs:
+  - csharp
+  - vb
+  name: EntityType
+  nameWithType: CosmosIdentityBase.EntityType
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: EntityType
+    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    startLine: 52
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Second-level partition key for the entity. This value describes the domain model type for the entity.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("entityType")]
+
+      public virtual string EntityType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("entityType")>
+
+      Public Overridable Property EntityType As String
+  overload: Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType*
+  implements:
+  - Benday.CosmosDb.DomainModels.ICosmosIdentity.EntityType
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: entityType
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName
+  commentId: M:Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName
+  id: GetEntityTypeName
+  parent: Benday.CosmosDb.DomainModels.CosmosIdentityBase
+  langs:
+  - csharp
+  - vb
+  name: GetEntityTypeName()
+  nameWithType: CosmosIdentityBase.GetEntityTypeName()
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: GetEntityTypeName
+    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    startLine: 70
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.DomainModels
+  summary: Get the entity type name for this entity.
+  example:
+  - 'Recommendation: this should be the class name for the domain model class'
+  syntax:
+    content: protected abstract string GetEntityTypeName()
+    return:
+      type: System.String
+      description: Entity type name
+    content.vb: Protected MustOverride Function GetEntityTypeName() As String
+  overload: Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName*
+references:
+- uid: Benday.CosmosDb.DomainModels
+  commentId: N:Benday.CosmosDb.DomainModels
+  href: Benday.html
+  name: Benday.CosmosDb.DomainModels
+  nameWithType: Benday.CosmosDb.DomainModels
+  fullName: Benday.CosmosDb.DomainModels
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Benday.CosmosDb.DomainModels.ITenantItem
+  commentId: T:Benday.CosmosDb.DomainModels.ITenantItem
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.ITenantItem.html
+  name: ITenantItem
+  nameWithType: ITenantItem
+  fullName: Benday.CosmosDb.DomainModels.ITenantItem
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  commentId: T:Benday.CosmosDb.DomainModels.ICosmosIdentity
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html
+  name: ICosmosIdentity
+  nameWithType: ICosmosIdentity
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity
+- uid: Benday.Common.Interfaces.ITenantItem{System.String}
+  commentId: T:Benday.Common.Interfaces.ITenantItem{System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.ITenantItem`1
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ITenantItem<string>
+  nameWithType: ITenantItem<string>
+  fullName: Benday.Common.Interfaces.ITenantItem<string>
+  nameWithType.vb: ITenantItem(Of String)
+  fullName.vb: Benday.Common.Interfaces.ITenantItem(Of String)
+  name.vb: ITenantItem(Of String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.ITenantItem`1
+    name: ITenantItem
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.ITenantItem`1
+    name: ITenantItem
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IEntityIdentity{System.String}
+  commentId: T:Benday.Common.Interfaces.IEntityIdentity{System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.IEntityIdentity`1
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: IEntityIdentity<string>
+  nameWithType: IEntityIdentity<string>
+  fullName: Benday.Common.Interfaces.IEntityIdentity<string>
+  nameWithType.vb: IEntityIdentity(Of String)
+  fullName.vb: Benday.Common.Interfaces.IEntityIdentity(Of String)
+  name.vb: IEntityIdentity(Of String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IEntityIdentity`1
+    name: IEntityIdentity
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IEntityIdentity`1
+    name: IEntityIdentity
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.Common.Interfaces.ITenantItem`1
+  commentId: T:Benday.Common.Interfaces.ITenantItem`1
+  isExternal: true
+  name: ITenantItem<TKey>
+  nameWithType: ITenantItem<TKey>
+  fullName: Benday.Common.Interfaces.ITenantItem<TKey>
+  nameWithType.vb: ITenantItem(Of TKey)
+  fullName.vb: Benday.Common.Interfaces.ITenantItem(Of TKey)
+  name.vb: ITenantItem(Of TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.ITenantItem`1
+    name: ITenantItem
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.ITenantItem`1
+    name: ITenantItem
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.Common.Interfaces
+  commentId: N:Benday.Common.Interfaces
+  isExternal: true
+  name: Benday.Common.Interfaces
+  nameWithType: Benday.Common.Interfaces
+  fullName: Benday.Common.Interfaces
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    isExternal: true
+  - name: .
+  - uid: Benday.Common
+    name: Common
+    isExternal: true
+  - name: .
+  - uid: Benday.Common.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    isExternal: true
+  - name: .
+  - uid: Benday.Common
+    name: Common
+    isExternal: true
+  - name: .
+  - uid: Benday.Common.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Benday.Common.Interfaces.IEntityIdentity`1
+  commentId: T:Benday.Common.Interfaces.IEntityIdentity`1
+  isExternal: true
+  name: IEntityIdentity<TKey>
+  nameWithType: IEntityIdentity<TKey>
+  fullName: Benday.Common.Interfaces.IEntityIdentity<TKey>
+  nameWithType.vb: IEntityIdentity(Of TKey)
+  fullName.vb: Benday.Common.Interfaces.IEntityIdentity(Of TKey)
+  name.vb: IEntityIdentity(Of TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IEntityIdentity`1
+    name: IEntityIdentity
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IEntityIdentity`1
+    name: IEntityIdentity
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Id*
+  commentId: Overload:Benday.CosmosDb.DomainModels.CosmosIdentityBase.Id
+  href: Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_Id
+  name: Id
+  nameWithType: CosmosIdentityBase.Id
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Id
+- uid: Benday.Common.Interfaces.IEntityIdentity{System.String}.Id
+  commentId: P:Benday.Common.Interfaces.IEntityIdentity{System.String}.Id
+  parent: Benday.Common.Interfaces.IEntityIdentity{System.String}
+  definition: Benday.Common.Interfaces.IEntityIdentity`1.Id
+  name: Id
+  nameWithType: IEntityIdentity<string>.Id
+  fullName: Benday.Common.Interfaces.IEntityIdentity<string>.Id
+  nameWithType.vb: IEntityIdentity(Of String).Id
+  fullName.vb: Benday.Common.Interfaces.IEntityIdentity(Of String).Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Benday.Common.Interfaces.IEntityIdentity`1.Id
+  commentId: P:Benday.Common.Interfaces.IEntityIdentity`1.Id
+  isExternal: true
+  name: Id
+  nameWithType: IEntityIdentity<TKey>.Id
+  fullName: Benday.Common.Interfaces.IEntityIdentity<TKey>.Id
+  nameWithType.vb: IEntityIdentity(Of TKey).Id
+  fullName.vb: Benday.Common.Interfaces.IEntityIdentity(Of TKey).Id
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId*
+  commentId: Overload:Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId
+  href: Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_TenantId
+  name: TenantId
+  nameWithType: CosmosIdentityBase.TenantId
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TenantId
+- uid: Benday.Common.Interfaces.ITenantItem{System.String}.TenantId
+  commentId: P:Benday.Common.Interfaces.ITenantItem{System.String}.TenantId
+  parent: Benday.Common.Interfaces.ITenantItem{System.String}
+  definition: Benday.Common.Interfaces.ITenantItem`1.TenantId
+  name: TenantId
+  nameWithType: ITenantItem<string>.TenantId
+  fullName: Benday.Common.Interfaces.ITenantItem<string>.TenantId
+  nameWithType.vb: ITenantItem(Of String).TenantId
+  fullName.vb: Benday.Common.Interfaces.ITenantItem(Of String).TenantId
+- uid: Benday.Common.Interfaces.ITenantItem`1.TenantId
+  commentId: P:Benday.Common.Interfaces.ITenantItem`1.TenantId
+  isExternal: true
+  name: TenantId
+  nameWithType: ITenantItem<TKey>.TenantId
+  fullName: Benday.Common.Interfaces.ITenantItem<TKey>.TenantId
+  nameWithType.vb: ITenantItem(Of TKey).TenantId
+  fullName.vb: Benday.Common.Interfaces.ITenantItem(Of TKey).TenantId
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle*
+  commentId: Overload:Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle
+  href: Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_TimestampUnixStyle
+  name: TimestampUnixStyle
+  nameWithType: CosmosIdentityBase.TimestampUnixStyle
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.TimestampUnixStyle
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
+  commentId: P:Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
+  parent: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html#Benday_CosmosDb_DomainModels_ICosmosIdentity_TimestampUnixStyle
+  name: TimestampUnixStyle
+  nameWithType: ICosmosIdentity.TimestampUnixStyle
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp*
+  commentId: Overload:Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp
+  href: Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_Timestamp
+  name: Timestamp
+  nameWithType: CosmosIdentityBase.Timestamp
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Timestamp
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp
+  commentId: P:Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp
+  parent: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html#Benday_CosmosDb_DomainModels_ICosmosIdentity_Timestamp
+  name: Timestamp
+  nameWithType: ICosmosIdentity.Timestamp
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag*
+  commentId: Overload:Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag
+  href: Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_Etag
+  name: Etag
+  nameWithType: CosmosIdentityBase.Etag
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.Etag
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity.Etag
+  commentId: P:Benday.CosmosDb.DomainModels.ICosmosIdentity.Etag
+  parent: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html#Benday_CosmosDb_DomainModels_ICosmosIdentity_Etag
+  name: Etag
+  nameWithType: ICosmosIdentity.Etag
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity.Etag
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType*
+  commentId: Overload:Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType
+  href: Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_EntityType
+  name: EntityType
+  nameWithType: CosmosIdentityBase.EntityType
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.EntityType
+- uid: Benday.CosmosDb.DomainModels.ICosmosIdentity.EntityType
+  commentId: P:Benday.CosmosDb.DomainModels.ICosmosIdentity.EntityType
+  parent: Benday.CosmosDb.DomainModels.ICosmosIdentity
+  href: Benday.CosmosDb.DomainModels.ICosmosIdentity.html#Benday_CosmosDb_DomainModels_ICosmosIdentity_EntityType
+  name: EntityType
+  nameWithType: ICosmosIdentity.EntityType
+  fullName: Benday.CosmosDb.DomainModels.ICosmosIdentity.EntityType
+- uid: Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName*
+  commentId: Overload:Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName
+  href: Benday.CosmosDb.DomainModels.CosmosIdentityBase.html#Benday_CosmosDb_DomainModels_CosmosIdentityBase_GetEntityTypeName
+  name: GetEntityTypeName
+  nameWithType: CosmosIdentityBase.GetEntityTypeName
+  fullName: Benday.CosmosDb.DomainModels.CosmosIdentityBase.GetEntityTypeName

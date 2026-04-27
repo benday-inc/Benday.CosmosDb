@@ -1,0 +1,264 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Repositories
+  commentId: N:Benday.CosmosDb.Repositories
+  id: Benday.CosmosDb.Repositories
+  children:
+  - Benday.CosmosDb.Repositories.CosmosDbConstants
+  - Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+  - Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  - Benday.CosmosDb.Repositories.CosmosRepository`1
+  - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
+  - Benday.CosmosDb.Repositories.IParentedItemRepository`1
+  - Benday.CosmosDb.Repositories.IRepository`1
+  - Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  - Benday.CosmosDb.Repositories.OptimisticConcurrencyException
+  - Benday.CosmosDb.Repositories.PagedResults`1
+  - Benday.CosmosDb.Repositories.QueryContext`1
+  langs:
+  - csharp
+  - vb
+  name: Benday.CosmosDb.Repositories
+  nameWithType: Benday.CosmosDb.Repositories
+  fullName: Benday.CosmosDb.Repositories
+  type: Namespace
+  assemblies:
+  - Benday.CosmosDb
+references:
+- uid: Benday.CosmosDb.Repositories.CosmosDbConstants
+  commentId: T:Benday.CosmosDb.Repositories.CosmosDbConstants
+  href: Benday.CosmosDb.Repositories.CosmosDbConstants.html
+  name: CosmosDbConstants
+  nameWithType: CosmosDbConstants
+  fullName: Benday.CosmosDb.Repositories.CosmosDbConstants
+- uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+  href: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html
+  name: CosmosDbParentedItemRepository<T>
+  nameWithType: CosmosDbParentedItemRepository<T>
+  fullName: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository<T>
+  nameWithType.vb: CosmosDbParentedItemRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository(Of T)
+  name.vb: CosmosDbParentedItemRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+    name: CosmosDbParentedItemRepository
+    href: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
+    name: CosmosDbParentedItemRepository
+    href: Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.CosmosRepository`1
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html
+  name: CosmosRepository<T>
+  nameWithType: CosmosRepository<T>
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>
+  nameWithType.vb: CosmosRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T)
+  name.vb: CosmosRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1
+    name: CosmosRepository
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1
+    name: CosmosRepository
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  commentId: T:Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+  href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html
+  name: CosmosRepositoryOptions<T>
+  nameWithType: CosmosRepositoryOptions<T>
+  fullName: Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>
+  nameWithType.vb: CosmosRepositoryOptions(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T)
+  name.vb: CosmosRepositoryOptions(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+    name: CosmosRepositoryOptions
+    href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.CosmosRepositoryOptions`1
+    name: CosmosRepositoryOptions
+    href: Benday.CosmosDb.Repositories.CosmosRepositoryOptions-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
+  href: Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.html
+  name: CosmosTenantItemRepository<T>
+  nameWithType: CosmosTenantItemRepository<T>
+  fullName: Benday.CosmosDb.Repositories.CosmosTenantItemRepository<T>
+  nameWithType.vb: CosmosTenantItemRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosTenantItemRepository(Of T)
+  name.vb: CosmosTenantItemRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
+    name: CosmosTenantItemRepository
+    href: Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
+    name: CosmosTenantItemRepository
+    href: Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IParentedItemRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.IParentedItemRepository`1
+  href: Benday.CosmosDb.Repositories.IParentedItemRepository-1.html
+  name: IParentedItemRepository<T>
+  nameWithType: IParentedItemRepository<T>
+  fullName: Benday.CosmosDb.Repositories.IParentedItemRepository<T>
+  nameWithType.vb: IParentedItemRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.IParentedItemRepository(Of T)
+  name.vb: IParentedItemRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IParentedItemRepository`1
+    name: IParentedItemRepository
+    href: Benday.CosmosDb.Repositories.IParentedItemRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IParentedItemRepository`1
+    name: IParentedItemRepository
+    href: Benday.CosmosDb.Repositories.IParentedItemRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.IRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.IRepository`1
+  href: Benday.CosmosDb.Repositories.IRepository-1.html
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: Benday.CosmosDb.Repositories.IRepository<T>
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T)
+  name.vb: IRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1
+    name: IRepository
+    href: Benday.CosmosDb.Repositories.IRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.IRepository`1
+    name: IRepository
+    href: Benday.CosmosDb.Repositories.IRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  name: ITenantItemRepository<T>
+  nameWithType: ITenantItemRepository<T>
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>
+  nameWithType.vb: ITenantItemRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T)
+  name.vb: ITenantItemRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+    name: ITenantItemRepository
+    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+    name: ITenantItemRepository
+    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.OptimisticConcurrencyException
+  commentId: T:Benday.CosmosDb.Repositories.OptimisticConcurrencyException
+  href: Benday.CosmosDb.Repositories.OptimisticConcurrencyException.html
+  name: OptimisticConcurrencyException
+  nameWithType: OptimisticConcurrencyException
+  fullName: Benday.CosmosDb.Repositories.OptimisticConcurrencyException
+- uid: Benday.CosmosDb.Repositories.PagedResults`1
+  commentId: T:Benday.CosmosDb.Repositories.PagedResults`1
+  href: Benday.CosmosDb.Repositories.PagedResults-1.html
+  name: PagedResults<T>
+  nameWithType: PagedResults<T>
+  fullName: Benday.CosmosDb.Repositories.PagedResults<T>
+  nameWithType.vb: PagedResults(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.PagedResults(Of T)
+  name.vb: PagedResults(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.PagedResults`1
+    name: PagedResults
+    href: Benday.CosmosDb.Repositories.PagedResults-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.PagedResults`1
+    name: PagedResults
+    href: Benday.CosmosDb.Repositories.PagedResults-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.QueryContext`1
+  commentId: T:Benday.CosmosDb.Repositories.QueryContext`1
+  href: Benday.CosmosDb.Repositories.QueryContext-1.html
+  name: QueryContext<T>
+  nameWithType: QueryContext<T>
+  fullName: Benday.CosmosDb.Repositories.QueryContext<T>
+  nameWithType.vb: QueryContext(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.QueryContext(Of T)
+  name.vb: QueryContext(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.QueryContext`1
+    name: QueryContext
+    href: Benday.CosmosDb.Repositories.QueryContext-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.QueryContext`1
+    name: QueryContext
+    href: Benday.CosmosDb.Repositories.QueryContext-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

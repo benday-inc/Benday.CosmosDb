@@ -1,0 +1,197 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  id: ICosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  children:
+  - Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  langs:
+  - csharp
+  - vb
+  name: ICosmosQueryLogSink
+  nameWithType: ICosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  type: Interface
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ICosmosQueryLogSink
+    path: ../Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
+    startLine: 29
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    A sink for Cosmos query diagnostics. Implementations receive a
+
+    <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics" data-throw-if-not-resolved="false"></xref> event for every query execution
+
+    the library captures — point operations, feed response pages, and
+
+    query totals.
+  remarks: >-
+    <p>
+
+    Implementations are registered in the DI container (typically as
+
+    singletons) and injected into <code>CosmosRepository&lt;T&gt;</code> instances.
+
+    A default <xref href="Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink" data-throw-if-not-resolved="false"></xref> is registered
+
+    automatically if no other sink is configured, so consumers only
+
+    register a sink when they want non-default behavior.
+
+    </p>
+
+    <p>
+
+    The <xref href="Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)" data-throw-if-not-resolved="false"></xref> method is synchronous and fire-and-forget
+
+    from the library's perspective. Sinks that need async I/O (file
+
+    writes, network calls) should buffer internally and flush from a
+
+    background worker — the library will not await the sink and will
+
+    not retry on failure.
+
+    </p>
+
+    <p>
+
+    Exceptions thrown from <xref href="Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)" data-throw-if-not-resolved="false"></xref> are caught by the
+
+    library, logged as warnings to <code>ILogger</code>, and suppressed. A
+
+    broken sink must not prevent a query from completing.
+
+    </p>
+  example: []
+  syntax:
+    content: public interface ICosmosQueryLogSink
+    content.vb: Public Interface ICosmosQueryLogSink
+  derivedClasses:
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  - Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  commentId: M:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  id: Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  parent: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: Record(CosmosQueryDiagnostics)
+  nameWithType: ICosmosQueryLogSink.Record(CosmosQueryDiagnostics)
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Record
+    path: ../Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
+    startLine: 38
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Records a diagnostics event. Called synchronously from the
+
+    library on the thread that executed the query.
+  example: []
+  syntax:
+    content: void Record(CosmosQueryDiagnostics diagnostics)
+    parameters:
+    - id: diagnostics
+      type: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+      description: The diagnostics payload for this event. Never null.
+    content.vb: Sub Record(diagnostics As CosmosQueryDiagnostics)
+  overload: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record*
+references:
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  name: CosmosQueryDiagnostics
+  nameWithType: CosmosQueryDiagnostics
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+- uid: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink.html
+  name: NoOpCosmosQueryLogSink
+  nameWithType: NoOpCosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  commentId: M:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  parent: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  name: Record(CosmosQueryDiagnostics)
+  nameWithType: ICosmosQueryLogSink.Record(CosmosQueryDiagnostics)
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+    name: Record
+    href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  - name: (
+  - uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+    name: CosmosQueryDiagnostics
+    href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+    name: Record
+    href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  - name: (
+  - uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+    name: CosmosQueryDiagnostics
+    href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  - name: )
+- uid: Benday.CosmosDb.Diagnostics
+  commentId: N:Benday.CosmosDb.Diagnostics
+  href: Benday.html
+  name: Benday.CosmosDb.Diagnostics
+  nameWithType: Benday.CosmosDb.Diagnostics
+  fullName: Benday.CosmosDb.Diagnostics
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html
+  name: ICosmosQueryLogSink
+  nameWithType: ICosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record
+  href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  name: Record
+  nameWithType: ICosmosQueryLogSink.Record
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record

@@ -1,0 +1,821 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  id: FileCosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  children:
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions)
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions})
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(System.String)
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Dispose
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount
+  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  langs:
+  - csharp
+  - vb
+  name: FileCosmosQueryLogSink
+  nameWithType: FileCosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  type: Class
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: FileCosmosQueryLogSink
+    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 27
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    An <xref href="Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink" data-throw-if-not-resolved="false"></xref> that appends each diagnostics
+
+    event as a single line of JSON (NDJSON / JSON Lines) to a file.
+  remarks: >-
+    <p>
+
+    Events are handed to an in-memory queue from <xref href="Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)" data-throw-if-not-resolved="false"></xref> and
+
+    written to disk by a single background thread, so the library's
+
+    query-execution path is never blocked on file I/O. Dispose the sink
+
+    (or let the host shut it down) to flush any queued events.
+
+    </p>
+
+    <p>
+
+    If the queue fills past <xref href="Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.QueueCapacity" data-throw-if-not-resolved="false"></xref>
+
+    (default 10,000), new events are dropped. This keeps a stuck disk
+
+    from growing memory without bound.
+
+    </p>
+  example: []
+  syntax:
+    content: 'public sealed class FileCosmosQueryLogSink : ICosmosQueryLogSink, IDisposable'
+    content.vb: Public NotInheritable Class FileCosmosQueryLogSink Implements ICosmosQueryLogSink, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(System.String)
+  commentId: M:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: FileCosmosQueryLogSink(string)
+  nameWithType: FileCosmosQueryLogSink.FileCosmosQueryLogSink(string)
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.FileCosmosQueryLogSink(string)
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 44
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  syntax:
+    content: public FileCosmosQueryLogSink(string filePath)
+    parameters:
+    - id: filePath
+      type: System.String
+    content.vb: Public Sub New(filePath As String)
+  overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor*
+  nameWithType.vb: FileCosmosQueryLogSink.New(String)
+  fullName.vb: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.New(String)
+  name.vb: New(String)
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor
+  commentId: M:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor
+  id: '#ctor'
+  parent: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: FileCosmosQueryLogSink()
+  nameWithType: FileCosmosQueryLogSink.FileCosmosQueryLogSink()
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.FileCosmosQueryLogSink()
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 49
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  syntax:
+    content: public FileCosmosQueryLogSink()
+    content.vb: Public Sub New()
+  overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor*
+  nameWithType.vb: FileCosmosQueryLogSink.New()
+  fullName.vb: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.New()
+  name.vb: New()
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions})
+  commentId: M:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions})
+  id: '#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions})'
+  parent: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: FileCosmosQueryLogSink(IOptions<CosmosFileLogSinkOptions>)
+  nameWithType: FileCosmosQueryLogSink.FileCosmosQueryLogSink(IOptions<CosmosFileLogSinkOptions>)
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.FileCosmosQueryLogSink(Microsoft.Extensions.Options.IOptions<Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions>)
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 61
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    DI-friendly constructor. Resolves options via the
+
+    <xref href="Microsoft.Extensions.Options.IOptions%601" data-throw-if-not-resolved="false"></xref> pattern so consumers can register
+
+    <xref href="Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions" data-throw-if-not-resolved="false"></xref> with
+
+    <code>services.Configure&lt;CosmosFileLogSinkOptions&gt;(...)</code> or bind
+
+    from <code>IConfiguration</code>.
+  example: []
+  syntax:
+    content: >-
+      [ActivatorUtilitiesConstructor]
+
+      public FileCosmosQueryLogSink(IOptions<CosmosFileLogSinkOptions> options)
+    parameters:
+    - id: options
+      type: Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions}
+    content.vb: >-
+      <ActivatorUtilitiesConstructor>
+
+      Public Sub New(options As IOptions(Of CosmosFileLogSinkOptions))
+  overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor*
+  attributes:
+  - type: Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructorAttribute
+    ctor: Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructorAttribute.#ctor
+    arguments: []
+  nameWithType.vb: FileCosmosQueryLogSink.New(IOptions(Of CosmosFileLogSinkOptions))
+  fullName.vb: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.New(Microsoft.Extensions.Options.IOptions(Of Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions))
+  name.vb: New(IOptions(Of CosmosFileLogSinkOptions))
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions)
+  commentId: M:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor(Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions)
+  id: '#ctor(Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions)'
+  parent: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: FileCosmosQueryLogSink(CosmosFileLogSinkOptions)
+  nameWithType: FileCosmosQueryLogSink.FileCosmosQueryLogSink(CosmosFileLogSinkOptions)
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.FileCosmosQueryLogSink(Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions)
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 67
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  syntax:
+    content: public FileCosmosQueryLogSink(CosmosFileLogSinkOptions options)
+    parameters:
+    - id: options
+      type: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+    content.vb: Public Sub New(options As CosmosFileLogSinkOptions)
+  overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor*
+  nameWithType.vb: FileCosmosQueryLogSink.New(CosmosFileLogSinkOptions)
+  fullName.vb: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.New(Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions)
+  name.vb: New(CosmosFileLogSinkOptions)
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount
+  commentId: P:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount
+  id: DroppedCount
+  parent: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: DroppedCount
+  nameWithType: FileCosmosQueryLogSink.DroppedCount
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: DroppedCount
+    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 95
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Number of events dropped because the queue was full. Useful for
+
+    surfacing back-pressure in tests or health checks.
+  example: []
+  syntax:
+    content: public int DroppedCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property DroppedCount As Integer
+  overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount*
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  commentId: M:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  id: Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  parent: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: Record(CosmosQueryDiagnostics)
+  nameWithType: FileCosmosQueryLogSink.Record(CosmosQueryDiagnostics)
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Record
+    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 98
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Records a diagnostics event. Called synchronously from the
+
+    library on the thread that executed the query.
+  example: []
+  syntax:
+    content: public void Record(CosmosQueryDiagnostics diagnostics)
+    parameters:
+    - id: diagnostics
+      type: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+      description: The diagnostics payload for this event. Never null.
+    content.vb: Public Sub Record(diagnostics As CosmosQueryDiagnostics)
+  overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record*
+  implements:
+  - Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Dispose
+  commentId: M:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Dispose
+  id: Dispose
+  parent: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: FileCosmosQueryLogSink.Dispose()
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Dispose()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Dispose
+    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 158
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Stops accepting new events and blocks until the background writer
+
+    has flushed everything currently queued.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  commentId: T:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html
+  name: ICosmosQueryLogSink
+  nameWithType: ICosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  commentId: M:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_FileCosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  name: Record(CosmosQueryDiagnostics)
+  nameWithType: FileCosmosQueryLogSink.Record(CosmosQueryDiagnostics)
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+    name: Record
+    href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_FileCosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  - name: (
+  - uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+    name: CosmosQueryDiagnostics
+    href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+    name: Record
+    href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_FileCosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  - name: (
+  - uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+    name: CosmosQueryDiagnostics
+    href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  - name: )
+- uid: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.QueueCapacity
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.QueueCapacity
+  href: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.html#Benday_CosmosDb_Diagnostics_CosmosFileLogSinkOptions_QueueCapacity
+  name: QueueCapacity
+  nameWithType: CosmosFileLogSinkOptions.QueueCapacity
+  fullName: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.QueueCapacity
+- uid: Benday.CosmosDb.Diagnostics
+  commentId: N:Benday.CosmosDb.Diagnostics
+  href: Benday.html
+  name: Benday.CosmosDb.Diagnostics
+  nameWithType: Benday.CosmosDb.Diagnostics
+  fullName: Benday.CosmosDb.Diagnostics
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Diagnostics
+    name: Diagnostics
+    href: Benday.CosmosDb.Diagnostics.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor
+  href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_FileCosmosQueryLogSink__ctor_System_String_
+  name: FileCosmosQueryLogSink
+  nameWithType: FileCosmosQueryLogSink.FileCosmosQueryLogSink
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.FileCosmosQueryLogSink
+  nameWithType.vb: FileCosmosQueryLogSink.New
+  fullName.vb: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Microsoft.Extensions.Options.IOptions`1
+  commentId: T:Microsoft.Extensions.Options.IOptions`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  name: IOptions<TOptions>
+  nameWithType: IOptions<TOptions>
+  fullName: Microsoft.Extensions.Options.IOptions<TOptions>
+  nameWithType.vb: IOptions(Of TOptions)
+  fullName.vb: Microsoft.Extensions.Options.IOptions(Of TOptions)
+  name.vb: IOptions(Of TOptions)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Options.IOptions`1
+    name: IOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  - name: <
+  - name: TOptions
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Options.IOptions`1
+    name: IOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TOptions
+  - name: )
+- uid: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.html
+  name: CosmosFileLogSinkOptions
+  nameWithType: CosmosFileLogSinkOptions
+  fullName: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+- uid: Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions}
+  commentId: T:Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions}
+  parent: Microsoft.Extensions.Options
+  definition: Microsoft.Extensions.Options.IOptions`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  name: IOptions<CosmosFileLogSinkOptions>
+  nameWithType: IOptions<CosmosFileLogSinkOptions>
+  fullName: Microsoft.Extensions.Options.IOptions<Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions>
+  nameWithType.vb: IOptions(Of CosmosFileLogSinkOptions)
+  fullName.vb: Microsoft.Extensions.Options.IOptions(Of Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions)
+  name.vb: IOptions(Of CosmosFileLogSinkOptions)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Options.IOptions`1
+    name: IOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  - name: <
+  - uid: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+    name: CosmosFileLogSinkOptions
+    href: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Options.IOptions`1
+    name: IOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+    name: CosmosFileLogSinkOptions
+    href: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.html
+  - name: )
+- uid: Microsoft.Extensions.Options
+  commentId: N:Microsoft.Extensions.Options
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Options
+  nameWithType: Microsoft.Extensions.Options
+  fullName: Microsoft.Extensions.Options
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Options
+    name: Options
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Options
+    name: Options
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount
+  href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_FileCosmosQueryLogSink_DroppedCount
+  name: DroppedCount
+  nameWithType: FileCosmosQueryLogSink.DroppedCount
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record
+  href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_FileCosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  name: Record
+  nameWithType: FileCosmosQueryLogSink.Record
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Record
+- uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  commentId: M:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  parent: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+  href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  name: Record(CosmosQueryDiagnostics)
+  nameWithType: ICosmosQueryLogSink.Record(CosmosQueryDiagnostics)
+  fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+    name: Record
+    href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  - name: (
+  - uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+    name: CosmosQueryDiagnostics
+    href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
+    name: Record
+    href: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Record_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_
+  - name: (
+  - uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+    name: CosmosQueryDiagnostics
+    href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  - name: )
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html
+  name: CosmosQueryDiagnostics
+  nameWithType: CosmosQueryDiagnostics
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+- uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Dispose*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Dispose
+  href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_FileCosmosQueryLogSink_Dispose
+  name: Dispose
+  nameWithType: FileCosmosQueryLogSink.Dispose
+  fullName: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

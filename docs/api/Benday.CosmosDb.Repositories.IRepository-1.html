@@ -243,7 +243,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;PagedResults&lt;T&gt;&gt; GetPagedAsync(int pageSize = 100, string? continuationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This overload performs a cross-partition query without a partition key. Use GetPagedAsync(string firstLevelPartitionKeyValue, ...) instead unless you explicitly need a cross-partition scan.&quot;)]
+Task&lt;PagedResults&lt;T&gt;&gt; GetPagedAsync(int pageSize = 100, string? continuationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">

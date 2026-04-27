@@ -1,0 +1,1063 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  commentId: T:Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  id: CosmosConfigBuilder
+  parent: Benday.CosmosDb.Utilities
+  children:
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(System.String)
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(System.Boolean)
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase(System.Boolean)
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(System.String)
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(System.String,System.Nullable{System.Int32})
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(System.String)
+  - Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(System.String,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: CosmosConfigBuilder
+  nameWithType: CosmosConfigBuilder
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  type: Class
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: CosmosConfigBuilder
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 9
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Builder pattern for creating CosmosConfig instances with a fluent API.
+
+    This provides a cleaner way to configure Cosmos DB settings without
+
+    dealing with multiple constructor parameters.
+  example: []
+  syntax:
+    content: public class CosmosConfigBuilder
+    content.vb: Public Class CosmosConfigBuilder
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor
+  id: '#ctor'
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: CosmosConfigBuilder()
+  nameWithType: CosmosConfigBuilder.CosmosConfigBuilder()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.CosmosConfigBuilder()
+  type: Constructor
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: .ctor
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 16
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Initializes a new instance of the CosmosConfigBuilder.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder()
+    content.vb: Public Sub New()
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor*
+  nameWithType.vb: CosmosConfigBuilder.New()
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.New()
+  name.vb: New()
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(System.String)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(System.String)
+  id: WithEndpoint(System.String)
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithEndpoint(string)
+  nameWithType: CosmosConfigBuilder.WithEndpoint(string)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(string)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithEndpoint
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 29
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Sets the Cosmos DB endpoint URL.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder WithEndpoint(string endpoint)
+    parameters:
+    - id: endpoint
+      type: System.String
+      description: The endpoint URL
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function WithEndpoint(endpoint As String) As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint*
+  nameWithType.vb: CosmosConfigBuilder.WithEndpoint(String)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint(String)
+  name.vb: WithEndpoint(String)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(System.String)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(System.String)
+  id: WithAccountKey(System.String)
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithAccountKey(string)
+  nameWithType: CosmosConfigBuilder.WithAccountKey(string)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(string)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithAccountKey
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 40
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Sets the Cosmos DB account key for authentication.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder WithAccountKey(string accountKey)
+    parameters:
+    - id: accountKey
+      type: System.String
+      description: The account key
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function WithAccountKey(accountKey As String) As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey*
+  nameWithType.vb: CosmosConfigBuilder.WithAccountKey(String)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey(String)
+  name.vb: WithAccountKey(String)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+  id: UseDefaultAzureCredential
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: UseDefaultAzureCredential()
+  nameWithType: CosmosConfigBuilder.UseDefaultAzureCredential()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: UseDefaultAzureCredential
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 51
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Configures the builder to use DefaultAzureCredential for authentication
+
+    instead of an account key.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder UseDefaultAzureCredential()
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function UseDefaultAzureCredential() As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential*
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(System.String,System.Nullable{System.Int32})
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(System.String,System.Nullable{System.Int32})
+  id: WithDatabase(System.String,System.Nullable{System.Int32})
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithDatabase(string, int?)
+  nameWithType: CosmosConfigBuilder.WithDatabase(string, int?)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(string, int?)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithDatabase
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 64
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Sets the database configuration.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder WithDatabase(string databaseName, int? throughput = null)
+    parameters:
+    - id: databaseName
+      type: System.String
+      description: The name of the database
+    - id: throughput
+      type: System.Nullable{System.Int32}
+      description: 'Optional throughput for the database (default: 400 RU/s)'
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function WithDatabase(databaseName As String, throughput As Integer? = Nothing) As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase*
+  nameWithType.vb: CosmosConfigBuilder.WithDatabase(String, Integer?)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase(String, Integer?)
+  name.vb: WithDatabase(String, Integer?)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(System.String)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(System.String)
+  id: WithContainer(System.String)
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithContainer(string)
+  nameWithType: CosmosConfigBuilder.WithContainer(string)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(string)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithContainer
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 79
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Sets the container configuration.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder WithContainer(string containerName)
+    parameters:
+    - id: containerName
+      type: System.String
+      description: The name of the container
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function WithContainer(containerName As String) As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer*
+  nameWithType.vb: CosmosConfigBuilder.WithContainer(String)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer(String)
+  name.vb: WithContainer(String)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(System.String,System.Boolean)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(System.String,System.Boolean)
+  id: WithPartitionKey(System.String,System.Boolean)
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithPartitionKey(string, bool)
+  nameWithType: CosmosConfigBuilder.WithPartitionKey(string, bool)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(string, bool)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithPartitionKey
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 91
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Sets the partition key configuration.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder WithPartitionKey(string partitionKey, bool useHierarchical = false)
+    parameters:
+    - id: partitionKey
+      type: System.String
+      description: The partition key path(s), comma-separated for hierarchical keys
+    - id: useHierarchical
+      type: System.Boolean
+      description: Whether to use hierarchical partition keys
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function WithPartitionKey(partitionKey As String, useHierarchical As Boolean = False) As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey*
+  nameWithType.vb: CosmosConfigBuilder.WithPartitionKey(String, Boolean)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey(String, Boolean)
+  name.vb: WithPartitionKey(String, Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  id: UseHierarchicalPartitionKeys
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: UseHierarchicalPartitionKeys()
+  nameWithType: CosmosConfigBuilder.UseHierarchicalPartitionKeys()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: UseHierarchicalPartitionKeys
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 102
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Enables hierarchical partition keys.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder UseHierarchicalPartitionKeys()
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function UseHierarchicalPartitionKeys() As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys*
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+  id: WithCreateStructures
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithCreateStructures()
+  nameWithType: CosmosConfigBuilder.WithCreateStructures()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithCreateStructures
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 113
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Enables automatic creation of database and container structures if they don't exist.
+
+    Note: This should typically be disabled in production environments.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder WithCreateStructures()
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function WithCreateStructures() As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures*
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+  id: UseGatewayMode
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: UseGatewayMode()
+  nameWithType: CosmosConfigBuilder.UseGatewayMode()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: UseGatewayMode
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 124
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Enables Gateway connection mode instead of Direct mode.
+
+    Gateway mode can be useful for development or firewall-restricted environments.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder UseGatewayMode()
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function UseGatewayMode() As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode*
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(System.Boolean)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(System.Boolean)
+  id: WithBulkExecution(System.Boolean)
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithBulkExecution(bool)
+  nameWithType: CosmosConfigBuilder.WithBulkExecution(bool)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(bool)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithBulkExecution
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 135
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Configures bulk execution settings.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder WithBulkExecution(bool allowBulkExecution = true)
+    parameters:
+    - id: allowBulkExecution
+      type: System.Boolean
+      description: 'Whether to allow bulk execution (default: true)'
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function WithBulkExecution(allowBulkExecution As Boolean = True) As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution*
+  nameWithType.vb: CosmosConfigBuilder.WithBulkExecution(Boolean)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution(Boolean)
+  name.vb: WithBulkExecution(Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase(System.Boolean)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase(System.Boolean)
+  id: WithCamelCase(System.Boolean)
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithCamelCase(bool)
+  nameWithType: CosmosConfigBuilder.WithCamelCase(bool)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase(bool)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: WithCamelCase
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 147
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Configures camelCase JSON serialization. Enabled by default.
+
+    When enabled, C# PascalCase properties will be serialized as camelCase in Cosmos DB documents.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder WithCamelCase(bool useCamelCase = true)
+    parameters:
+    - id: useCamelCase
+      type: System.Boolean
+      description: 'Whether to use camelCase (default: true)'
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function WithCamelCase(useCamelCase As Boolean = True) As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase*
+  nameWithType.vb: CosmosConfigBuilder.WithCamelCase(Boolean)
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase(Boolean)
+  name.vb: WithCamelCase(Boolean)
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)
+  id: FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: FromConfig(CosmosConfig)
+  nameWithType: CosmosConfigBuilder.FromConfig(CosmosConfig)
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig(Benday.CosmosDb.Utilities.CosmosConfig)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: FromConfig
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 159
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Creates a CosmosConfigBuilder from an existing CosmosConfig instance.
+
+    Useful for modifying existing configurations.
+  example: []
+  syntax:
+    content: public static CosmosConfigBuilder FromConfig(CosmosConfig config)
+    parameters:
+    - id: config
+      type: Benday.CosmosDb.Utilities.CosmosConfig
+      description: The existing configuration
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: A new builder with the existing configuration values
+    content.vb: Public Shared Function FromConfig(config As CosmosConfig) As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig*
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+  id: ForEmulator
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: ForEmulator()
+  nameWithType: CosmosConfigBuilder.ForEmulator()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ForEmulator
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 183
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Configures the builder with optimal settings for the Azure Cosmos DB Linux emulator.
+
+    This sets Gateway mode (required), disables bulk execution (not supported), 
+
+    enables structure creation (convenient for dev), and uses the standard emulator endpoint and key.
+  example: []
+  syntax:
+    content: public CosmosConfigBuilder ForEmulator()
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+      description: The builder instance for chaining
+    content.vb: Public Function ForEmulator() As CosmosConfigBuilder
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator*
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build
+  commentId: M:Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build
+  id: Build
+  parent: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build()
+  nameWithType: CosmosConfigBuilder.Build()
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build()
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: Build
+    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    startLine: 197
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: Builds the CosmosConfig instance with the configured settings.
+  example: []
+  syntax:
+    content: public CosmosConfig Build()
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosConfig
+      description: The configured CosmosConfig instance
+    content.vb: Public Function Build() As CosmosConfig
+  overload: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when required settings are missing
+references:
+- uid: Benday.CosmosDb.Utilities
+  commentId: N:Benday.CosmosDb.Utilities
+  href: Benday.html
+  name: Benday.CosmosDb.Utilities
+  nameWithType: Benday.CosmosDb.Utilities
+  fullName: Benday.CosmosDb.Utilities
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Utilities
+    name: Utilities
+    href: Benday.CosmosDb.Utilities.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.Utilities
+    name: Utilities
+    href: Benday.CosmosDb.Utilities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.#ctor
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder__ctor
+  name: CosmosConfigBuilder
+  nameWithType: CosmosConfigBuilder.CosmosConfigBuilder
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.CosmosConfigBuilder
+  nameWithType.vb: CosmosConfigBuilder.New
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosConfigBuilder.New
+  name.vb: New
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithEndpoint_System_String_
+  name: WithEndpoint
+  nameWithType: CosmosConfigBuilder.WithEndpoint
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithEndpoint
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  commentId: T:Benday.CosmosDb.Utilities.CosmosConfigBuilder
+  parent: Benday.CosmosDb.Utilities
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html
+  name: CosmosConfigBuilder
+  nameWithType: CosmosConfigBuilder
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithAccountKey_System_String_
+  name: WithAccountKey
+  nameWithType: CosmosConfigBuilder.WithAccountKey
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithAccountKey
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseDefaultAzureCredential
+  name: UseDefaultAzureCredential
+  nameWithType: CosmosConfigBuilder.UseDefaultAzureCredential
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseDefaultAzureCredential
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithDatabase_System_String_System_Nullable_System_Int32__
+  name: WithDatabase
+  nameWithType: CosmosConfigBuilder.WithDatabase
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithDatabase
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithContainer_System_String_
+  name: WithContainer
+  nameWithType: CosmosConfigBuilder.WithContainer
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithContainer
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithPartitionKey_System_String_System_Boolean_
+  name: WithPartitionKey
+  nameWithType: CosmosConfigBuilder.WithPartitionKey
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithPartitionKey
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseHierarchicalPartitionKeys
+  name: UseHierarchicalPartitionKeys
+  nameWithType: CosmosConfigBuilder.UseHierarchicalPartitionKeys
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseHierarchicalPartitionKeys
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithCreateStructures
+  name: WithCreateStructures
+  nameWithType: CosmosConfigBuilder.WithCreateStructures
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCreateStructures
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_UseGatewayMode
+  name: UseGatewayMode
+  nameWithType: CosmosConfigBuilder.UseGatewayMode
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.UseGatewayMode
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithBulkExecution_System_Boolean_
+  name: WithBulkExecution
+  nameWithType: CosmosConfigBuilder.WithBulkExecution
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithBulkExecution
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_WithCamelCase_System_Boolean_
+  name: WithCamelCase
+  nameWithType: CosmosConfigBuilder.WithCamelCase
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.WithCamelCase
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_FromConfig_Benday_CosmosDb_Utilities_CosmosConfig_
+  name: FromConfig
+  nameWithType: CosmosConfigBuilder.FromConfig
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.FromConfig
+- uid: Benday.CosmosDb.Utilities.CosmosConfig
+  commentId: T:Benday.CosmosDb.Utilities.CosmosConfig
+  parent: Benday.CosmosDb.Utilities
+  href: Benday.CosmosDb.Utilities.CosmosConfig.html
+  name: CosmosConfig
+  nameWithType: CosmosConfig
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_ForEmulator
+  name: ForEmulator
+  nameWithType: CosmosConfigBuilder.ForEmulator
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.ForEmulator
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build
+  href: Benday.CosmosDb.Utilities.CosmosConfigBuilder.html#Benday_CosmosDb_Utilities_CosmosConfigBuilder_Build
+  name: Build
+  nameWithType: CosmosConfigBuilder.Build
+  fullName: Benday.CosmosDb.Utilities.CosmosConfigBuilder.Build

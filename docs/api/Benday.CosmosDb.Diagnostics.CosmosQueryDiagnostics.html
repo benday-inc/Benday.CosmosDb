@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class CosmosQueryDiagnostics </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class CosmosQueryDiagnostics ">
+    
+    <meta name="description" content="Structured payload describing a single Cosmos DB query execution event. Delivered to CosmosRepository&amp;lt;T&amp;gt;.OnQueryDiagnostics for point operations, per-page feed responses, and query totals.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-brand">
+                <a href="../">
+                  <img id="logo" src="../logo.png" alt="" alt="asdf" width="50" height="50">
+                </a>
+
+              </div>            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics">
+
+
+
+  <h1 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics" class="text-break">Class CosmosQueryDiagnostics</h1>
+  <div class="markdown level0 summary"><p>Structured payload describing a single Cosmos DB query execution event.
+Delivered to <code>CosmosRepository&lt;T&gt;.OnQueryDiagnostics</code> for point
+operations, per-page feed responses, and query totals.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">CosmosQueryDiagnostics</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Benday.html">Benday</a>.<a class="xref" href="Benday.CosmosDb.html">CosmosDb</a>.<a class="xref" href="Benday.CosmosDb.Diagnostics.html">Diagnostics</a></h6>
+  <h6><strong>Assembly</strong>: Benday.CosmosDb.dll</h6>
+  <h5 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CosmosQueryDiagnostics</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Duration.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L70">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Duration_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Duration" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration">Duration</h4>
+  <div class="markdown level1 summary"><p>Wall-clock duration of the SDK round trip. For
+<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_QueryTotal">QueryTotal</a> this is the aggregated duration
+across all pages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan Duration { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_EventKind.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L17">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_EventKind_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_EventKind" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind">EventKind</h4>
+  <div class="markdown level1 summary"><p>Which kind of event this is. Drives how sinks route and aggregate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosQueryEventKind EventKind { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html">CosmosQueryEventKind</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_IsCrossPartition.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L87">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_IsCrossPartition_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_IsCrossPartition" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition">IsCrossPartition</h4>
+  <div class="markdown level1 summary"><p>True if this event (or any page of a multi-page query) was
+detected as a cross-partition execution. For
+<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_QueryTotal">QueryTotal</a> events this is the OR across
+all pages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCrossPartition { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Parameters.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L49">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Parameters_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Parameters" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters">Parameters</h4>
+  <div class="markdown level1 summary"><p>Query parameters. Null for <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_PointOperation">PointOperation</a>.
+Populated for LINQ and raw-SQL queries from the underlying
+<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.querydefinition">QueryDefinition</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyDictionary&lt;string, object?&gt;? Parameters { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_PartitionKey.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L55">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_PartitionKey_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_PartitionKey" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey">PartitionKey</h4>
+  <div class="markdown level1 summary"><p>Partition key scope for the operation. Uses a default
+<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_PartitionKey">PartitionKey</a> value (no partition) for cross-partition queries.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PartitionKey PartitionKey { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey">PartitionKey</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_QueryDescription.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L34">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_QueryDescription_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_QueryDescription" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryDescription">QueryDescription</h4>
+  <div class="markdown level1 summary"><p>Logging description for the operation, typically the repository
+name plus the caller method name, e.g.
+&quot;CocktailRecipeRepository - SearchByTitleAsync&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string QueryDescription { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_QueryText.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L42">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_QueryText_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_QueryText" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.QueryText">QueryText</h4>
+  <div class="markdown level1 summary"><p>The generated SQL text. Null for <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_PointOperation">PointOperation</a>
+events (point operations don't have a query text — just an id and a
+partition key). Populated for <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_FeedResponsePage">FeedResponsePage</a>
+and <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_QueryTotal">QueryTotal</a> events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? QueryText { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_RepositoryName.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L27">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_RepositoryName_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_RepositoryName" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RepositoryName">RepositoryName</h4>
+  <div class="markdown level1 summary"><p>Name of the repository type (e.g. &quot;CocktailRecipeRepository&quot;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RepositoryName { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_RequestCharge.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L63">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_RequestCharge_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_RequestCharge" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.RequestCharge">RequestCharge</h4>
+  <div class="markdown level1 summary"><p>RU consumed. For <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_QueryTotal">QueryTotal</a>, this is the
+accumulated charge across all pages. For <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_FeedResponsePage">FeedResponsePage</a>,
+just that page. For <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_PointOperation">PointOperation</a>, the
+single-operation charge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double RequestCharge { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_ResultCount.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L79">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_ResultCount_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_ResultCount" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.ResultCount">ResultCount</h4>
+  <div class="markdown level1 summary"><p>Number of documents or rows returned. For scalar operations this
+reflects the scalar result (1 for a successful value, 0 for a
+null FirstOrDefault, etc.). For <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_FeedResponsePage">FeedResponsePage</a>,
+the count for that page. For <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_QueryTotal">QueryTotal</a> on
+a feed, the total across pages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ResultCount { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Timestamp.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L22">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Timestamp_" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp*"></a>
+  <h4 id="Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_Timestamp" data-uid="Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Timestamp">Timestamp</h4>
+  <div class="markdown level1 summary"><p>When the event was captured, in UTC.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset Timestamp { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      Copyright © <a href="https://www.benday.com/">www.benday.com</a> | <a href="mailto:info@benday.com">info@benday.com</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,7 +1,105 @@
 {
-  "source_base_path": "/Users/benday/code/benday-inc/Benday.CosmosDb/docfx_project",
+  "source_base_path": "C:/code/benday-inc/Benday.CosmosDb/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.yml\" sourcestartlinenumber=\"1\">Configuration options for <xref href=\"Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.yml\" sourcestartlinenumber=\"1\">Structured payload describing a single Cosmos DB query execution event.\nDelivered to <code>CosmosRepository&lt;T&gt;.OnQueryDiagnostics</code> for point\noperations, per-page feed responses, and query totals.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics.CosmosQueryEventKind",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.yml\" sourcestartlinenumber=\"1\">Distinguishes the three kinds of events that <xref href=\"Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics\" data-throw-if-not-resolved=\"false\"></xref>\ncan represent. Sinks use the kind to route, filter, and aggregate events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.yml\" sourcestartlinenumber=\"1\">An <xref href=\"Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink\" data-throw-if-not-resolved=\"false\"></xref> that appends each diagnostics\nevent as a single line of JSON (NDJSON / JSON Lines) to a file.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.yml\" sourcestartlinenumber=\"1\">A sink for Cosmos query diagnostics. Implementations receive a\n<xref href=\"Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics\" data-throw-if-not-resolved=\"false\"></xref> event for every query execution\nthe library captures — point operations, feed response pages, and\nquery totals.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink.yml\" sourcestartlinenumber=\"1\">Default implementation of <xref href=\"Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink\" data-throw-if-not-resolved=\"false\"></xref> that\ndiscards every event. Registered automatically by the library's DI\nsetup as the default sink when no other implementation is provided.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics",
+      "Summary": null
+    },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.DomainModels.CosmosIdentityBase.yml",
@@ -28,21 +126,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Benday.CosmosDb.DomainModels.ICosmosIdentity",
-      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.ICosmosIdentity.yml\" sourcestartlinenumber=\"1\">Represents the basic properties of a Cosmos DB entity.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.DomainModels.IOwnedItem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.DomainModels.IOwnedItem.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Benday.CosmosDb.DomainModels.IOwnedItem",
-      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.IOwnedItem.yml\" sourcestartlinenumber=\"1\">Interface for an item that has an owner.</p>\n"
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.ICosmosIdentity.yml\" sourcestartlinenumber=\"1\">Represents the basic properties of a Cosmos DB entity.\nIdentity and tenant properties (Id, TenantId) come from the shared\nITenantItem&lt;string&gt; interface.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -60,17 +144,17 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.DomainModels.OwnedItemBase.yml",
+      "source_relative_path": "api/Benday.CosmosDb.DomainModels.ITenantItem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Benday.CosmosDb.DomainModels.OwnedItemBase.html"
+          "relative_path": "api/Benday.CosmosDb.DomainModels.ITenantItem.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Benday.CosmosDb.DomainModels.OwnedItemBase",
-      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.OwnedItemBase.yml\" sourcestartlinenumber=\"1\">Base class for an item that has an owner.  By default, the PartitionKey will be the same as the OwnerId.</p>\n"
+      "Title": "Benday.CosmosDb.DomainModels.ITenantItem",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.ITenantItem.yml\" sourcestartlinenumber=\"1\">Interface for an item that belongs to a tenant.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -84,7 +168,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Benday.CosmosDb.DomainModels.ParentedItemBase",
-      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.ParentedItemBase.yml\" sourcestartlinenumber=\"1\">Base class for an item that has both an owner and a parent entity.\nInherits from OwnedItemBase and adds ParentId and ParentDiscriminator properties.</p>\n"
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.ParentedItemBase.yml\" sourcestartlinenumber=\"1\">Base class for an item that has both a tenant and a parent entity.\nInherits from TenantItemBase and adds ParentId and ParentEntityType properties.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.DomainModels.TenantItemBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.DomainModels.TenantItemBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.DomainModels.TenantItemBase",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.DomainModels.TenantItemBase.yml\" sourcestartlinenumber=\"1\">Base class for an item that belongs to a tenant.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -200,20 +298,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Benday.CosmosDb.Repositories.CosmosOwnedItemRepository<T>",
-      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.CosmosOwnedItemRepository-1.yml\" sourcestartlinenumber=\"1\">Provides repository implementation for items that are owned by a user.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Repositories.CosmosRepository-1.yml",
       "output": {
         ".html": {
@@ -242,17 +326,17 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.yml",
+      "source_relative_path": "api/Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.html"
+          "relative_path": "api/Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Benday.CosmosDb.Repositories.IOwnedItemRepository<T>",
-      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.IOwnedItemRepository-1.yml\" sourcestartlinenumber=\"1\">Defines the contract for a repository that manages items that have an owner.</p>\n"
+      "Title": "Benday.CosmosDb.Repositories.CosmosTenantItemRepository<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.yml\" sourcestartlinenumber=\"1\">Provides repository implementation for items that belong to a tenant.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -284,6 +368,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Repositories.ITenantItemRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Repositories.ITenantItemRepository-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Repositories.ITenantItemRepository<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.ITenantItemRepository-1.yml\" sourcestartlinenumber=\"1\">Defines the contract for a repository that manages items that belong to a tenant.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Repositories.OptimisticConcurrencyException.yml",
       "output": {
         ".html": {
@@ -312,17 +410,17 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.Repositories.QueryableInfo-1.yml",
+      "source_relative_path": "api/Benday.CosmosDb.Repositories.QueryContext-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Benday.CosmosDb.Repositories.QueryableInfo-1.html"
+          "relative_path": "api/Benday.CosmosDb.Repositories.QueryContext-1.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Benday.CosmosDb.Repositories.QueryableInfo<T>",
-      "Summary": null
+      "Title": "Benday.CosmosDb.Repositories.QueryContext<T>",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Repositories.QueryContext-1.yml\" sourcestartlinenumber=\"1\">Pairs a LINQ queryable expression tree with the partition key it was created for.\nReturned by <xref href=\"Benday.CosmosDb.Repositories.CosmosRepository%601.GetQueryContextAsync(System.String)\" data-throw-if-not-resolved=\"false\"></xref> as the\nstarting point for building custom queries in derived repository classes.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -340,20 +438,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.ServiceLayers.IOwnedItemService-1.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Benday.CosmosDb.ServiceLayers.IOwnedItemService<T>",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.yml",
       "output": {
         ".html": {
@@ -364,20 +448,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Benday.CosmosDb.ServiceLayers.IParentedItemService<T>",
-      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.yml\" sourcestartlinenumber=\"1\">Service layer interface for parented items. Extends IOwnedItemService with parent-specific operations.</p>\n"
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.ServiceLayers.IParentedItemService-1.yml\" sourcestartlinenumber=\"1\">Service layer interface for parented items. Extends ITenantItemService with parent-specific operations.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemService-1.yml",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.ITenantItemService-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Benday.CosmosDb.ServiceLayers.OwnedItemService-1.html"
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Benday.CosmosDb.ServiceLayers.OwnedItemService<T>",
+      "Title": "Benday.CosmosDb.ServiceLayers.ITenantItemService<T>",
       "Summary": null
     },
     {
@@ -392,7 +476,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Benday.CosmosDb.ServiceLayers.ParentedItemService<T>",
-      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.yml\" sourcestartlinenumber=\"1\">Service layer implementation for parented items. Extends OwnedItemService with parent-specific operations.</p>\n"
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.ServiceLayers.ParentedItemService-1.yml\" sourcestartlinenumber=\"1\">Service layer implementation for parented items. Extends TenantItemService with parent-specific operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.ServiceLayers.TenantItemService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.ServiceLayers.TenantItemService-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.ServiceLayers.TenantItemService<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -490,20 +588,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Benday.CosmosDb.Utilities.CosmosRegistrationHelper",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Benday.CosmosDb.Utilities.DiagnosticsHandler.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Benday.CosmosDb.Utilities.DiagnosticsHandler.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Benday.CosmosDb.Utilities.DiagnosticsHandler",
       "Summary": null
     },
     {

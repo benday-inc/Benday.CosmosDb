@@ -1,0 +1,871 @@
+### YamlMime:ManagedReference
+items:
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  commentId: T:Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  id: ITenantItemService`1
+  parent: Benday.CosmosDb.ServiceLayers
+  children:
+  - Benday.CosmosDb.ServiceLayers.ITenantItemService`1.DeleteAsync(`0)
+  - Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetAllAsync(System.String)
+  - Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetByIdAsync(System.String,System.String)
+  - Benday.CosmosDb.ServiceLayers.ITenantItemService`1.SaveAsync(`0)
+  langs:
+  - csharp
+  - vb
+  name: ITenantItemService<T>
+  nameWithType: ITenantItemService<T>
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>
+  type: Interface
+  source:
+    remote:
+      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ITenantItemService
+    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 5
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.ServiceLayers
+  syntax:
+    content: 'public interface ITenantItemService<T> : IAsyncTenantService<T, string>, IAsyncService<T, string> where T : class, ITenantItem, new()'
+    typeParameters:
+    - id: T
+    content.vb: Public Interface ITenantItemService(Of T As {Class, ITenantItem, New}) Inherits IAsyncTenantService(Of T, String), IAsyncService(Of T, String)
+  derivedClasses:
+  - Benday.CosmosDb.ServiceLayers.ParentedItemService`1
+  - Benday.CosmosDb.ServiceLayers.TenantItemService`1
+  inheritedMembers:
+  - Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}.GetByIdAsync(System.String,System.String)
+  - Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}.GetByTenantAsync(System.String)
+  - Benday.Common.Interfaces.IAsyncService{{T},System.String}.SaveAsync({T})
+  - Benday.Common.Interfaces.IAsyncService{{T},System.String}.DeleteAsync({T})
+  - Benday.Common.Interfaces.IAsyncService{{T},System.String}.GetByIdAsync(System.String)
+  nameWithType.vb: ITenantItemService(Of T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T)
+  name.vb: ITenantItemService(Of T)
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.DeleteAsync(`0)
+  commentId: M:Benday.CosmosDb.ServiceLayers.ITenantItemService`1.DeleteAsync(`0)
+  id: DeleteAsync(`0)
+  parent: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  langs:
+  - csharp
+  - vb
+  name: DeleteAsync(T)
+  nameWithType: ITenantItemService<T>.DeleteAsync(T)
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>.DeleteAsync(T)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: DeleteAsync
+    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 9
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.ServiceLayers
+  syntax:
+    content: Task DeleteAsync(T item)
+    parameters:
+    - id: item
+      type: '{T}'
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function DeleteAsync(item As T) As Task
+  overload: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.DeleteAsync*
+  nameWithType.vb: ITenantItemService(Of T).DeleteAsync(T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T).DeleteAsync(T)
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetAllAsync(System.String)
+  commentId: M:Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetAllAsync(System.String)
+  id: GetAllAsync(System.String)
+  parent: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  langs:
+  - csharp
+  - vb
+  name: GetAllAsync(string)
+  nameWithType: ITenantItemService<T>.GetAllAsync(string)
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>.GetAllAsync(string)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: GetAllAsync
+    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 10
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.ServiceLayers
+  syntax:
+    content: Task<IEnumerable<T>> GetAllAsync(string tenantId)
+    parameters:
+    - id: tenantId
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+    content.vb: Function GetAllAsync(tenantId As String) As Task(Of IEnumerable(Of T))
+  overload: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetAllAsync*
+  nameWithType.vb: ITenantItemService(Of T).GetAllAsync(String)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T).GetAllAsync(String)
+  name.vb: GetAllAsync(String)
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetByIdAsync(System.String,System.String)
+  commentId: M:Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetByIdAsync(System.String,System.String)
+  id: GetByIdAsync(System.String,System.String)
+  parent: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  langs:
+  - csharp
+  - vb
+  name: GetByIdAsync(string, string)
+  nameWithType: ITenantItemService<T>.GetByIdAsync(string, string)
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>.GetByIdAsync(string, string)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: GetByIdAsync
+    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 11
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.ServiceLayers
+  syntax:
+    content: Task<T?> GetByIdAsync(string tenantId, string id)
+    parameters:
+    - id: tenantId
+      type: System.String
+    - id: id
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+    content.vb: Function GetByIdAsync(tenantId As String, id As String) As Task(Of T)
+  overload: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetByIdAsync*
+  nameWithType.vb: ITenantItemService(Of T).GetByIdAsync(String, String)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T).GetByIdAsync(String, String)
+  name.vb: GetByIdAsync(String, String)
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.SaveAsync(`0)
+  commentId: M:Benday.CosmosDb.ServiceLayers.ITenantItemService`1.SaveAsync(`0)
+  id: SaveAsync(`0)
+  parent: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  langs:
+  - csharp
+  - vb
+  name: SaveAsync(T)
+  nameWithType: ITenantItemService<T>.SaveAsync(T)
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>.SaveAsync(T)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: SaveAsync
+    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 12
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.ServiceLayers
+  syntax:
+    content: Task<T?> SaveAsync(T item)
+    parameters:
+    - id: item
+      type: '{T}'
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+    content.vb: Function SaveAsync(item As T) As Task(Of T)
+  overload: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.SaveAsync*
+  nameWithType.vb: ITenantItemService(Of T).SaveAsync(T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T).SaveAsync(T)
+references:
+- uid: Benday.CosmosDb.ServiceLayers
+  commentId: N:Benday.CosmosDb.ServiceLayers
+  href: Benday.html
+  name: Benday.CosmosDb.ServiceLayers
+  nameWithType: Benday.CosmosDb.ServiceLayers
+  fullName: Benday.CosmosDb.ServiceLayers
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.ServiceLayers
+    name: ServiceLayers
+    href: Benday.CosmosDb.ServiceLayers.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.ServiceLayers
+    name: ServiceLayers
+    href: Benday.CosmosDb.ServiceLayers.html
+- uid: Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}.GetByIdAsync(System.String,System.String)
+  commentId: M:Benday.Common.Interfaces.IAsyncTenantService{`0,System.String}.GetByIdAsync(System.String,System.String)
+  parent: Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncTenantService`2.GetByIdAsync(System.String,`1)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByIdAsync(string, string)
+  nameWithType: IAsyncTenantService<T, string>.GetByIdAsync(string, string)
+  fullName: Benday.Common.Interfaces.IAsyncTenantService<T, string>.GetByIdAsync(string, string)
+  nameWithType.vb: IAsyncTenantService(Of T, String).GetByIdAsync(String, String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantService(Of T, String).GetByIdAsync(String, String)
+  name.vb: GetByIdAsync(String, String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService{`0,System.String}.GetByIdAsync(System.String,System.String)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService{`0,System.String}.GetByIdAsync(System.String,System.String)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}.GetByTenantAsync(System.String)
+  commentId: M:Benday.Common.Interfaces.IAsyncTenantService{`0,System.String}.GetByTenantAsync(System.String)
+  parent: Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncTenantService`2.GetByTenantAsync(System.String)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByTenantAsync(string)
+  nameWithType: IAsyncTenantService<T, string>.GetByTenantAsync(string)
+  fullName: Benday.Common.Interfaces.IAsyncTenantService<T, string>.GetByTenantAsync(string)
+  nameWithType.vb: IAsyncTenantService(Of T, String).GetByTenantAsync(String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantService(Of T, String).GetByTenantAsync(String)
+  name.vb: GetByTenantAsync(String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService{`0,System.String}.GetByTenantAsync(System.String)
+    name: GetByTenantAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService{`0,System.String}.GetByTenantAsync(System.String)
+    name: GetByTenantAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncService{{T},System.String}.SaveAsync({T})
+  commentId: M:Benday.Common.Interfaces.IAsyncService{`0,System.String}.SaveAsync(`0)
+  parent: Benday.Common.Interfaces.IAsyncService{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncService`2.SaveAsync(`0)
+  name: SaveAsync(T)
+  nameWithType: IAsyncService<T, string>.SaveAsync(T)
+  fullName: Benday.Common.Interfaces.IAsyncService<T, string>.SaveAsync(T)
+  nameWithType.vb: IAsyncService(Of T, String).SaveAsync(T)
+  fullName.vb: Benday.Common.Interfaces.IAsyncService(Of T, String).SaveAsync(T)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncService{`0,System.String}.SaveAsync(`0)
+    name: SaveAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncService{`0,System.String}.SaveAsync(`0)
+    name: SaveAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncService{{T},System.String}.DeleteAsync({T})
+  commentId: M:Benday.Common.Interfaces.IAsyncService{`0,System.String}.DeleteAsync(`0)
+  parent: Benday.Common.Interfaces.IAsyncService{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncService`2.DeleteAsync(`0)
+  name: DeleteAsync(T)
+  nameWithType: IAsyncService<T, string>.DeleteAsync(T)
+  fullName: Benday.Common.Interfaces.IAsyncService<T, string>.DeleteAsync(T)
+  nameWithType.vb: IAsyncService(Of T, String).DeleteAsync(T)
+  fullName.vb: Benday.Common.Interfaces.IAsyncService(Of T, String).DeleteAsync(T)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncService{`0,System.String}.DeleteAsync(`0)
+    name: DeleteAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncService{`0,System.String}.DeleteAsync(`0)
+    name: DeleteAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncService{{T},System.String}.GetByIdAsync(System.String)
+  commentId: M:Benday.Common.Interfaces.IAsyncService{`0,System.String}.GetByIdAsync(System.String)
+  parent: Benday.Common.Interfaces.IAsyncService{{T},System.String}
+  definition: Benday.Common.Interfaces.IAsyncService`2.GetByIdAsync(`1)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByIdAsync(string)
+  nameWithType: IAsyncService<T, string>.GetByIdAsync(string)
+  fullName: Benday.Common.Interfaces.IAsyncService<T, string>.GetByIdAsync(string)
+  nameWithType.vb: IAsyncService(Of T, String).GetByIdAsync(String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncService(Of T, String).GetByIdAsync(String)
+  name.vb: GetByIdAsync(String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncService{`0,System.String}.GetByIdAsync(System.String)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncService{`0,System.String}.GetByIdAsync(System.String)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantService`2.GetByIdAsync(System.String,`1)
+  commentId: M:Benday.Common.Interfaces.IAsyncTenantService`2.GetByIdAsync(System.String,`1)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByIdAsync(string, TKey)
+  nameWithType: IAsyncTenantService<T, TKey>.GetByIdAsync(string, TKey)
+  fullName: Benday.Common.Interfaces.IAsyncTenantService<T, TKey>.GetByIdAsync(string, TKey)
+  nameWithType.vb: IAsyncTenantService(Of T, TKey).GetByIdAsync(String, TKey)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantService(Of T, TKey).GetByIdAsync(String, TKey)
+  name.vb: GetByIdAsync(String, TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService`2.GetByIdAsync(System.String,`1)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService`2.GetByIdAsync(System.String,`1)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}
+  commentId: T:Benday.Common.Interfaces.IAsyncTenantService{`0,System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.IAsyncTenantService`2
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: IAsyncTenantService<T, string>
+  nameWithType: IAsyncTenantService<T, string>
+  fullName: Benday.Common.Interfaces.IAsyncTenantService<T, string>
+  nameWithType.vb: IAsyncTenantService(Of T, String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantService(Of T, String)
+  name.vb: IAsyncTenantService(Of T, String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService`2
+    name: IAsyncTenantService
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService`2
+    name: IAsyncTenantService
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantService`2.GetByTenantAsync(System.String)
+  commentId: M:Benday.Common.Interfaces.IAsyncTenantService`2.GetByTenantAsync(System.String)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetByTenantAsync(string)
+  nameWithType: IAsyncTenantService<T, TKey>.GetByTenantAsync(string)
+  fullName: Benday.Common.Interfaces.IAsyncTenantService<T, TKey>.GetByTenantAsync(string)
+  nameWithType.vb: IAsyncTenantService(Of T, TKey).GetByTenantAsync(String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantService(Of T, TKey).GetByTenantAsync(String)
+  name.vb: GetByTenantAsync(String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService`2.GetByTenantAsync(System.String)
+    name: GetByTenantAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService`2.GetByTenantAsync(System.String)
+    name: GetByTenantAsync
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncService`2.SaveAsync(`0)
+  commentId: M:Benday.Common.Interfaces.IAsyncService`2.SaveAsync(`0)
+  isExternal: true
+  name: SaveAsync(T)
+  nameWithType: IAsyncService<T, TKey>.SaveAsync(T)
+  fullName: Benday.Common.Interfaces.IAsyncService<T, TKey>.SaveAsync(T)
+  nameWithType.vb: IAsyncService(Of T, TKey).SaveAsync(T)
+  fullName.vb: Benday.Common.Interfaces.IAsyncService(Of T, TKey).SaveAsync(T)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncService`2.SaveAsync(`0)
+    name: SaveAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncService`2.SaveAsync(`0)
+    name: SaveAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncService{{T},System.String}
+  commentId: T:Benday.Common.Interfaces.IAsyncService{`0,System.String}
+  parent: Benday.Common.Interfaces
+  definition: Benday.Common.Interfaces.IAsyncService`2
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: IAsyncService<T, string>
+  nameWithType: IAsyncService<T, string>
+  fullName: Benday.Common.Interfaces.IAsyncService<T, string>
+  nameWithType.vb: IAsyncService(Of T, String)
+  fullName.vb: Benday.Common.Interfaces.IAsyncService(Of T, String)
+  name.vb: IAsyncService(Of T, String)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncService`2
+    name: IAsyncService
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncService`2
+    name: IAsyncService
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncService`2.DeleteAsync(`0)
+  commentId: M:Benday.Common.Interfaces.IAsyncService`2.DeleteAsync(`0)
+  isExternal: true
+  name: DeleteAsync(T)
+  nameWithType: IAsyncService<T, TKey>.DeleteAsync(T)
+  fullName: Benday.Common.Interfaces.IAsyncService<T, TKey>.DeleteAsync(T)
+  nameWithType.vb: IAsyncService(Of T, TKey).DeleteAsync(T)
+  fullName.vb: Benday.Common.Interfaces.IAsyncService(Of T, TKey).DeleteAsync(T)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncService`2.DeleteAsync(`0)
+    name: DeleteAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncService`2.DeleteAsync(`0)
+    name: DeleteAsync
+    isExternal: true
+  - name: (
+  - name: T
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncService`2.GetByIdAsync(`1)
+  commentId: M:Benday.Common.Interfaces.IAsyncService`2.GetByIdAsync(`1)
+  isExternal: true
+  name: GetByIdAsync(TKey)
+  nameWithType: IAsyncService<T, TKey>.GetByIdAsync(TKey)
+  fullName: Benday.Common.Interfaces.IAsyncService<T, TKey>.GetByIdAsync(TKey)
+  nameWithType.vb: IAsyncService(Of T, TKey).GetByIdAsync(TKey)
+  fullName.vb: Benday.Common.Interfaces.IAsyncService(Of T, TKey).GetByIdAsync(TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncService`2.GetByIdAsync(`1)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncService`2.GetByIdAsync(`1)
+    name: GetByIdAsync
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+- uid: Benday.Common.Interfaces.IAsyncTenantService`2
+  commentId: T:Benday.Common.Interfaces.IAsyncTenantService`2
+  isExternal: true
+  name: IAsyncTenantService<T, TKey>
+  nameWithType: IAsyncTenantService<T, TKey>
+  fullName: Benday.Common.Interfaces.IAsyncTenantService<T, TKey>
+  nameWithType.vb: IAsyncTenantService(Of T, TKey)
+  fullName.vb: Benday.Common.Interfaces.IAsyncTenantService(Of T, TKey)
+  name.vb: IAsyncTenantService(Of T, TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService`2
+    name: IAsyncTenantService
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncTenantService`2
+    name: IAsyncTenantService
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.Common.Interfaces
+  commentId: N:Benday.Common.Interfaces
+  isExternal: true
+  name: Benday.Common.Interfaces
+  nameWithType: Benday.Common.Interfaces
+  fullName: Benday.Common.Interfaces
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    isExternal: true
+  - name: .
+  - uid: Benday.Common
+    name: Common
+    isExternal: true
+  - name: .
+  - uid: Benday.Common.Interfaces
+    name: Interfaces
+    isExternal: true
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    isExternal: true
+  - name: .
+  - uid: Benday.Common
+    name: Common
+    isExternal: true
+  - name: .
+  - uid: Benday.Common.Interfaces
+    name: Interfaces
+    isExternal: true
+- uid: Benday.Common.Interfaces.IAsyncService`2
+  commentId: T:Benday.Common.Interfaces.IAsyncService`2
+  isExternal: true
+  name: IAsyncService<T, TKey>
+  nameWithType: IAsyncService<T, TKey>
+  fullName: Benday.Common.Interfaces.IAsyncService<T, TKey>
+  nameWithType.vb: IAsyncService(Of T, TKey)
+  fullName.vb: Benday.Common.Interfaces.IAsyncService(Of T, TKey)
+  name.vb: IAsyncService(Of T, TKey)
+  spec.csharp:
+  - uid: Benday.Common.Interfaces.IAsyncService`2
+    name: IAsyncService
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Benday.Common.Interfaces.IAsyncService`2
+    name: IAsyncService
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.DeleteAsync*
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.ITenantItemService`1.DeleteAsync
+  href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html#Benday_CosmosDb_ServiceLayers_ITenantItemService_1_DeleteAsync__0_
+  name: DeleteAsync
+  nameWithType: ITenantItemService<T>.DeleteAsync
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>.DeleteAsync
+  nameWithType.vb: ITenantItemService(Of T).DeleteAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T).DeleteAsync
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetAllAsync*
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetAllAsync
+  href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html#Benday_CosmosDb_ServiceLayers_ITenantItemService_1_GetAllAsync_System_String_
+  name: GetAllAsync
+  nameWithType: ITenantItemService<T>.GetAllAsync
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>.GetAllAsync
+  nameWithType.vb: ITenantItemService(Of T).GetAllAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T).GetAllAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{`0}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IEnumerable<T>>
+  nameWithType: Task<IEnumerable<T>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<T>>
+  nameWithType.vb: Task(Of IEnumerable(Of T))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Task(Of IEnumerable(Of T))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetByIdAsync*
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetByIdAsync
+  href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html#Benday_CosmosDb_ServiceLayers_ITenantItemService_1_GetByIdAsync_System_String_System_String_
+  name: GetByIdAsync
+  nameWithType: ITenantItemService<T>.GetByIdAsync
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>.GetByIdAsync
+  nameWithType.vb: ITenantItemService(Of T).GetByIdAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T).GetByIdAsync
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{`0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.SaveAsync*
+  commentId: Overload:Benday.CosmosDb.ServiceLayers.ITenantItemService`1.SaveAsync
+  href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html#Benday_CosmosDb_ServiceLayers_ITenantItemService_1_SaveAsync__0_
+  name: SaveAsync
+  nameWithType: ITenantItemService<T>.SaveAsync
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>.SaveAsync
+  nameWithType.vb: ITenantItemService(Of T).SaveAsync
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T).SaveAsync
