@@ -1,16 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
 using Benday.CosmosDb.Diagnostics;
 using Benday.CosmosDb.DomainModels;
 using Benday.CosmosDb.Exceptions;
 using Benday.CosmosDb.Utilities;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.Azure.Cosmos.Serialization.HybridRow;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
 
 namespace Benday.CosmosDb.Repositories;
 
@@ -217,8 +218,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <returns>All matching items.</returns>
     /// <seealso cref="GetResultsAsync(QueryDefinition, string, PartitionKey)"/>
     /// <seealso cref="ExecuteScalarAsync{TResult}(IQueryable{T}, Func{IQueryable{T}, Task{Response{TResult}}}, string, PartitionKey, Func{TResult, int}?)"/>
-    protected async Task<List<T>> GetResultsAsync(
-        IQueryable<T> query, string queryDescription, PartitionKey partitionKey)
+    protected async Task<List<TResult>> GetResultsAsync<TResult>(
+        IQueryable<TResult> query, string queryDescription, PartitionKey partitionKey)
     {
         string? queryText;
         IReadOnlyDictionary<string, object?>? parameters;
@@ -273,7 +274,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="partitionKey">Partition key scope for the query.</param>
     /// <returns>All matching items.</returns>
     /// <seealso cref="GetResultsAsync(IQueryable{T}, string, PartitionKey)"/>
-    protected async Task<List<T>> GetResultsAsync(
+    protected async Task<List<TResult>> GetResultsAsync<TResult>(
         QueryDefinition query, string queryDescription, PartitionKey partitionKey)
     {
         var container = await GetContainerAsync();
@@ -283,12 +284,18 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         Logger.LogInformation($"{nameof(CosmosRepository<T>)}.{nameof(GetResultsAsync)} - {queryDescription} query {{\"query\":\"{queryText}\"}} with partition key {partitionKey}");
 
-        using var iterator = container.GetItemQueryIterator<T>(
+        using var iterator = container.GetItemQueryIterator<TResult>(
             query,
             requestOptions: new QueryRequestOptions { PartitionKey = partitionKey });
 
-        return await GetResultsAsync(
+        return await GetResultsAsync<TResult>(
             iterator, queryDescription, queryText, parameters, partitionKey);
+    }
+
+    protected async Task<List<T>> GetResultsAsync(
+        QueryDefinition query, string queryDescription, PartitionKey partitionKey)
+    {
+        return await GetResultsAsync<T>(query, queryDescription, partitionKey);
     }
 
     /// <summary>
@@ -302,14 +309,14 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="parameters">Query parameters (for diagnostics). Optional.</param>
     /// <param name="partitionKey">Partition key scope for the query (for diagnostics).</param>
     /// <returns>All items from the iterator.</returns>
-    protected async Task<List<T>> GetResultsAsync(
-        FeedIterator<T> resultSetIterator,
+    protected async Task<List<TResult>> GetResultsAsync<TResult>(
+        FeedIterator<TResult> resultSetIterator,
         string queryDescription,
         string? queryText = null,
         IReadOnlyDictionary<string, object?>? parameters = null,
         PartitionKey partitionKey = default)
     {
-        var items = new List<T>();
+        var items = new List<TResult>();
 
         var totalRequestCharge = 0.0;
         var totalDuration = TimeSpan.Zero;
