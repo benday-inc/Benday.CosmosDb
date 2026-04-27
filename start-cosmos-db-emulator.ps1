@@ -25,3 +25,6 @@ docker run --name cosmosdb --detach --publish 8081:8081 --publish 1234:1234 -e P
 # Show exposed ports
 Write-Host "Exposed ports for 'cosmosdb' container:"
 docker port cosmosdb
+
+Write-Host
+Write-Host "The admin site is available at http://localhost:1234 "
