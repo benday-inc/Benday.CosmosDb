@@ -227,6 +227,7 @@ public static class CosmosClientOptionsUtilities
         services.AddSingleton(new CosmosClient(connectionString, options));
 
         services.TryAddSingleton<ICosmosQueryLogSink>(NoOpCosmosQueryLogSink.Instance);
+        services.TryAddSingleton(new CosmosDiagnosticsRegistry());
     }
 
     /// <summary>
@@ -268,6 +269,7 @@ public static class CosmosClientOptionsUtilities
         }
 
         services.TryAddSingleton<ICosmosQueryLogSink>(NoOpCosmosQueryLogSink.Instance);
+        services.TryAddSingleton(new CosmosDiagnosticsRegistry());
     }
 
 

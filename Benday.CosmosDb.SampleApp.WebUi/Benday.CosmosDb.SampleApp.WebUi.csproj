@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
     <ProjectReference Include="..\Benday.Identity.CosmosDb.UI\Benday.Identity.CosmosDb.UI.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="logs\" />
+  </ItemGroup>
 </Project>

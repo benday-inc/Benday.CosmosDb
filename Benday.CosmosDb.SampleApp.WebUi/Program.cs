@@ -56,6 +56,15 @@ helper.WithQueryLogSink<FileCosmosQueryLogSink>();
 helper.RegisterRepositoryAndService<Note>();
 helper.RegisterParentedRepositoryAndService<Comment>();
 
+// Capture Cosmos DB index utilization metrics in the diagnostics file sink
+// while running locally. Off in non-Development environments — the SDK
+// adds measurable RU/latency overhead per request when this is enabled.
+if (builder.Environment.IsDevelopment())
+{
+    helper.ConfigureDiagnosticsDefault(o => 
+        o.CaptureIndexMetrics = true);
+}
+
 // Register Azure Blob Storage services for note attachments
 builder.Services.AddBendayAzureStorage(builder.Configuration);
 builder.Services.AddBlobRepository("note-attachments");

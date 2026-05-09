@@ -97,6 +97,16 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     protected readonly ICosmosQueryLogSink _sink;
 
     /// <summary>
+    /// Cached flag captured at construction time from
+    /// <see cref="CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics"/>
+    /// for this repository's entity type. When true, the repository sets
+    /// <c>PopulateIndexMetrics</c> on every <see cref="QueryRequestOptions"/>
+    /// it builds and copies <c>FeedResponse.IndexMetrics</c> into emitted
+    /// diagnostics.
+    /// </summary>
+    protected readonly bool _captureIndexMetrics;
+
+    /// <summary>
     /// Constructor for the repository.
     /// </summary>
     /// <param name="options">Configuration options</param>
@@ -109,12 +119,18 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// sink in DI via
     /// <see cref="Utilities.CosmosRegistrationHelper.WithQueryLogSink{TSink}()"/>.
     /// </param>
+    /// <param name="diagnosticsRegistry">
+    /// Optional per-entity diagnostics registry. When <c>null</c>, all
+    /// per-entity flags fall back to their defaults (off). Configure via
+    /// <see cref="Utilities.CosmosRegistrationHelper.ConfigureDiagnostics{TEntity}"/>.
+    /// </param>
     /// <exception cref="ArgumentException"></exception>
     public CosmosRepository(
         IOptions<CosmosRepositoryOptions<T>> options,
         CosmosClient client,
         ILogger logger,
-        ICosmosQueryLogSink? sink = null)
+        ICosmosQueryLogSink? sink = null,
+        CosmosDiagnosticsRegistry? diagnosticsRegistry = null)
     {
         Logger = logger;
 
@@ -129,6 +145,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             CosmosDbUtilities.GetPartitionKeyStrings(_Options.PartitionKey);
 
         _sink = sink ?? NoOpCosmosQueryLogSink.Instance;
+
+        _captureIndexMetrics = diagnosticsRegistry?.GetFor<T>().CaptureIndexMetrics ?? false;
     }
 
     /// <summary>
@@ -288,7 +306,11 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         using var iterator = container.GetItemQueryIterator<TResult>(
             query,
-            requestOptions: new QueryRequestOptions { PartitionKey = partitionKey });
+            requestOptions: new QueryRequestOptions
+            {
+                PartitionKey = partitionKey,
+                PopulateIndexMetrics = _captureIndexMetrics,
+            });
 
         return await GetResultsAsync<TResult>(
             iterator, queryDescription, queryText, parameters, partitionKey);
@@ -333,6 +355,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         var totalRequestCharge = 0.0;
         var totalDuration = TimeSpan.Zero;
         var anyCrossPartition = false;
+        string? capturedIndexMetrics = null;
 
         while (resultSetIterator.HasMoreResults)
         {
@@ -343,6 +366,9 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             totalRequestCharge += response.RequestCharge;
             totalDuration += pageStopwatch.Elapsed;
 
+            var pageIndexMetrics = _captureIndexMetrics ? response.IndexMetrics : null;
+            capturedIndexMetrics ??= pageIndexMetrics;
+
             var isPageCrossPartition = LogFeedResponseDiagnostics(
                 queryDescription,
                 response.RequestCharge,
@@ -351,7 +377,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 response.Count,
                 queryText,
                 parameters,
-                partitionKey);
+                partitionKey,
+                pageIndexMetrics);
 
             anyCrossPartition |= isPageCrossPartition;
 
@@ -366,7 +393,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             queryText,
             parameters,
             partitionKey,
-            anyCrossPartition);
+            anyCrossPartition,
+            capturedIndexMetrics);
 
         return items;
     }
@@ -456,6 +484,12 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="queryText">The generated SQL text.</param>
     /// <param name="parameters">Query parameters.</param>
     /// <param name="partitionKey">Partition key scope for this query.</param>
+    /// <param name="indexMetrics">
+    /// Index utilization information from <c>FeedResponse.IndexMetrics</c>.
+    /// Populated by callers only when
+    /// <see cref="CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics"/>
+    /// is enabled for the repository's entity type. Null otherwise.
+    /// </param>
     /// <returns>Whether the page was detected as a cross-partition execution.</returns>
     protected bool LogFeedResponseDiagnostics(
         string queryDescription,
@@ -465,7 +499,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         int resultCount,
         string? queryText,
         IReadOnlyDictionary<string, object?>? parameters,
-        PartitionKey partitionKey)
+        PartitionKey partitionKey,
+        string? indexMetrics = null)
     {
         Logger.LogInformation($"Request Charge ({queryDescription}): {requestCharge}");
 
@@ -489,6 +524,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             Duration = duration,
             ResultCount = resultCount,
             IsCrossPartition = isCrossPartition,
+            IndexMetrics = indexMetrics,
         });
 
         return isCrossPartition;
@@ -507,6 +543,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="parameters">Query parameters.</param>
     /// <param name="partitionKey">Partition key scope for this query.</param>
     /// <param name="isCrossPartition">OR across all pages of the cross-partition flag.</param>
+    /// <param name="indexMetrics">
+    /// Index utilization for the query (typically the first non-null
+    /// per-page value, since the query plan is stable across pages).
+    /// Populated only when
+    /// <see cref="CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics"/>
+    /// is enabled. Null otherwise.
+    /// </param>
     protected void LogQueryTotalDiagnostics(
         string queryDescription,
         double totalRequestCharge,
@@ -515,7 +558,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         string? queryText,
         IReadOnlyDictionary<string, object?>? parameters,
         PartitionKey partitionKey,
-        bool isCrossPartition)
+        bool isCrossPartition,
+        string? indexMetrics = null)
     {
         Logger.LogInformation($"Total request charge ({queryDescription}): {totalRequestCharge}");
 
@@ -532,6 +576,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             Duration = totalDuration,
             ResultCount = totalResultCount,
             IsCrossPartition = isCrossPartition,
+            IndexMetrics = indexMetrics,
         });
     }
 
@@ -1166,7 +1211,11 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         var queryable =
             container.GetItemLinqQueryable<T>(true,
-            requestOptions: new QueryRequestOptions() { PartitionKey = pk },
+            requestOptions: new QueryRequestOptions()
+            {
+                PartitionKey = pk,
+                PopulateIndexMetrics = _captureIndexMetrics,
+            },
             linqSerializerOptions: new CosmosLinqSerializerOptions
             {
                 PropertyNamingPolicy = CosmosPropertyNamingPolicy.Default
@@ -1196,6 +1245,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
 
         var queryable =
             container.GetItemLinqQueryable<T>(true,
+            requestOptions: new QueryRequestOptions
+            {
+                PopulateIndexMetrics = _captureIndexMetrics,
+            },
             linqSerializerOptions: new CosmosLinqSerializerOptions
             {
                 PropertyNamingPolicy = CosmosPropertyNamingPolicy.Default
@@ -1240,7 +1293,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             var queryRequestOptions = new QueryRequestOptions
             {
                 MaxItemCount = pageSize,
-                PartitionKey = queryContext.PartitionKey
+                PartitionKey = queryContext.PartitionKey,
+                PopulateIndexMetrics = _captureIndexMetrics,
             };
 
             var queryDefinition = new QueryDefinition(query.ToQueryDefinition().QueryText);
@@ -1274,7 +1328,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 response.Count,
                 queryText: null,
                 parameters: null,
-                partitionKey: queryContext.PartitionKey);
+                partitionKey: queryContext.PartitionKey,
+                indexMetrics: _captureIndexMetrics ? response.IndexMetrics : null);
         }
 
         return new PagedResults<T>(items, newContinuationToken, hasMoreResults, totalRequestCharge);
@@ -1307,7 +1362,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         var queryRequestOptions = new QueryRequestOptions
         {
             MaxItemCount = pageSize,
-            PartitionKey = queryContext.PartitionKey
+            PartitionKey = queryContext.PartitionKey,
+            PopulateIndexMetrics = _captureIndexMetrics,
         };
 
         var queryDefinition = new QueryDefinition(query.ToQueryDefinition().QueryText);
@@ -1340,7 +1396,8 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                 response.Count,
                 queryText: queryDefinition.QueryText,
                 parameters: ExtractParameters(queryDefinition),
-                partitionKey: queryContext.PartitionKey);
+                partitionKey: queryContext.PartitionKey,
+                indexMetrics: _captureIndexMetrics ? response.IndexMetrics : null);
         }
 
         return new PagedResults<T>(items, newContinuationToken, hasMoreResults, totalRequestCharge);

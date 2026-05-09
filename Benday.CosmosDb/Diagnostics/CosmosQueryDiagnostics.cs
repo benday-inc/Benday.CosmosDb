@@ -85,4 +85,15 @@ public sealed class CosmosQueryDiagnostics
     /// all pages.
     /// </summary>
     public bool IsCrossPartition { get; init; }
+
+    /// <summary>
+    /// Cosmos DB index utilization information for the query, captured from
+    /// <c>FeedResponse&lt;T&gt;.IndexMetrics</c>. Populated only when the
+    /// repository's <see cref="CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics"/>
+    /// flag is enabled (off by default — incurs SDK overhead). Null otherwise.
+    /// Always null for <see cref="CosmosQueryEventKind.PointOperation"/> events.
+    /// The format is the SDK-formatted multi-line string and is not parsed
+    /// by the library.
+    /// </summary>
+    public string? IndexMetrics { get; init; }
 }

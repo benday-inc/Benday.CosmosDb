@@ -27,6 +27,8 @@ YouTube: https://www.youtube.com/@_benday
 * Logging of query performance and [request units](https://learn.microsoft.com/en-us/azure/cosmos-db/request-units) with consolidated diagnostics helpers
 * Detect and warn when you have cross-partition queries
 * Structured diagnostics hook (`OnQueryDiagnostics`) fires a `CosmosQueryDiagnostics` event for every point operation, feed response page, and query total — same payload shape regardless of whether the source is a LINQ query, raw Cosmos SQL (`GetResultsAsync(QueryDefinition, ...)`), or a scalar SDK operator (`ExecuteScalarAsync` wrapping `CountAsync`, `MaxAsync`, etc.)
+* Pluggable `ICosmosQueryLogSink` for app-wide diagnostics routing, with a built-in `FileCosmosQueryLogSink` that writes NDJSON
+* Opt-in capture of Cosmos DB [index utilization metrics](https://learn.microsoft.com/en-us/azure/cosmos-db/index-metrics) per entity type, surfaced through the same diagnostics pipeline
 * Helper classes and methods for registering types and handling connection configuration
 * Ultra-simple configuration for Azure Cosmos DB Linux emulator
 * Optimistic concurrency control using ETags
@@ -315,6 +317,54 @@ do
     token = page.ContinuationToken;
 } while (token != null);
 ```
+
+## Query Diagnostics
+
+The library emits a `CosmosQueryDiagnostics` event for every point operation, every page of feed-iterator results, and the rolled-up total of each query. Events carry the SQL text, parameters, partition key, RU charge, duration, result count, and a cross-partition flag. There are two channels for receiving them — both fire for every event and they don't interfere with each other:
+
+- **`ICosmosQueryLogSink`** — an app-wide singleton that receives every event from every repository. Use this for structured log files, observability pipelines, or test capture.
+- **`OnQueryDiagnostics(CosmosQueryDiagnostics)`** — a virtual hook on `CosmosRepository<T>` that you can override per-repository when one repo needs special handling.
+
+### File Log Sink
+
+`FileCosmosQueryLogSink` ships with the library and writes one NDJSON record per event to a file via a background queue:
+
+```csharp
+var helper = new CosmosRegistrationHelper(builder.Services, cosmosConfig);
+
+builder.Services.Configure<CosmosFileLogSinkOptions>(options =>
+{
+    options.FilePath = "logs/cosmos-queries.ndjson";
+    options.QueueCapacity = 100;
+});
+helper.WithQueryLogSink<FileCosmosQueryLogSink>();
+```
+
+To plug in your own sink, implement `ICosmosQueryLogSink` and pass it to `helper.WithQueryLogSink<TSink>()` (or `helper.WithQueryLogSink(instance)` for a pre-built instance).
+
+### Per-Entity Diagnostics Options
+
+Some pieces of telemetry — like Cosmos DB's [index utilization metrics](https://learn.microsoft.com/en-us/azure/cosmos-db/index-metrics) — add measurable RU and latency overhead to every query, so they're off by default and configured per entity type:
+
+```csharp
+// Capture index metrics only for one repository's entity type
+helper.ConfigureDiagnostics<Note>(o => o.CaptureIndexMetrics = true);
+
+// Or turn it on globally and selectively disable for hot-path entities
+helper.ConfigureDiagnosticsDefault(o => o.CaptureIndexMetrics = true);
+helper.ConfigureDiagnostics<LookupValue>(o => o.CaptureIndexMetrics = false);
+```
+
+When enabled, the repository sets `PopulateIndexMetrics` on every `QueryRequestOptions` it builds and copies the SDK-formatted metrics string into the `IndexMetrics` field of the diagnostics event — both per-page and on the rolled-up `QueryTotal`. The included `FileCosmosQueryLogSink` serializes this field as `indexMetrics` in the NDJSON output. Microsoft recommends only enabling index metrics while debugging slow queries, not in production. A common pattern is to gate it on the environment:
+
+```csharp
+if (builder.Environment.IsDevelopment())
+{
+    helper.ConfigureDiagnosticsDefault(o => o.CaptureIndexMetrics = true);
+}
+```
+
+The included sample application uses exactly this pattern — see [Benday.CosmosDb.SampleApp.WebUi/Program.cs](Benday.CosmosDb.SampleApp.WebUi/Program.cs).
 
 ## Sample Application
 

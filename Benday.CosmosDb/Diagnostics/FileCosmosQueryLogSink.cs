@@ -146,7 +146,8 @@ public sealed class FileCosmosQueryLogSink : ICosmosQueryLogSink, IDisposable
             ["requestCharge"] = d.RequestCharge,
             ["durationMs"] = d.Duration.TotalMilliseconds,
             ["resultCount"] = d.ResultCount,
-            ["isCrossPartition"] = d.IsCrossPartition
+            ["isCrossPartition"] = d.IsCrossPartition,
+            ["indexMetrics"] = d.IndexMetrics
         };
 
         return JsonSerializer.Serialize(payload, JsonOptions);

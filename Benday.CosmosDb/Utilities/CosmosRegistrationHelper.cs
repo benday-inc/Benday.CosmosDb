@@ -239,4 +239,64 @@ public class CosmosRegistrationHelper
         _Services.AddSingleton<ICosmosQueryLogSink>(sink);
         return this;
     }
+
+    /// <summary>
+    /// Configures per-entity diagnostic options for repositories that manage
+    /// <typeparamref name="TEntity"/>. The options are looked up by the
+    /// repository in its constructor via <see cref="CosmosDiagnosticsRegistry"/>.
+    /// </summary>
+    /// <typeparam name="TEntity">The repository's entity type.</typeparam>
+    /// <param name="configure">Callback that receives the entity's options
+    /// for mutation. Called once per call.</param>
+    /// <returns>This helper, for fluent chaining.</returns>
+    /// <example>
+    /// <code>
+    /// helper.ConfigureDiagnostics&lt;Note&gt;(o =&gt; o.CaptureIndexMetrics = true);
+    /// </code>
+    /// </example>
+    public CosmosRegistrationHelper ConfigureDiagnostics<TEntity>(
+        Action<CosmosRepositoryDiagnosticsOptions> configure)
+    {
+        if (configure is null) throw new ArgumentNullException(nameof(configure));
+
+        GetOrAddDiagnosticsRegistry().Set<TEntity>(configure);
+        return this;
+    }
+
+    /// <summary>
+    /// Configures the registry default that applies to any entity type that
+    /// does not have an explicit <see cref="ConfigureDiagnostics{TEntity}"/>
+    /// entry. Useful for turning a flag on globally and then disabling it
+    /// for hot-path repositories.
+    /// </summary>
+    /// <param name="configure">Callback that mutates the default options.</param>
+    /// <returns>This helper, for fluent chaining.</returns>
+    public CosmosRegistrationHelper ConfigureDiagnosticsDefault(
+        Action<CosmosRepositoryDiagnosticsOptions> configure)
+    {
+        if (configure is null) throw new ArgumentNullException(nameof(configure));
+
+        GetOrAddDiagnosticsRegistry().SetDefault(configure);
+        return this;
+    }
+
+    private CosmosDiagnosticsRegistry GetOrAddDiagnosticsRegistry()
+    {
+        // ConfigureCosmosClient registers a default singleton via TryAddSingleton,
+        // but ConfigureDiagnostics may be called before that path runs in tests
+        // or in callers that wire DI manually. Look up the existing registration;
+        // if none, add one and return it.
+        foreach (var descriptor in _Services)
+        {
+            if (descriptor.ServiceType == typeof(CosmosDiagnosticsRegistry) &&
+                descriptor.ImplementationInstance is CosmosDiagnosticsRegistry existing)
+            {
+                return existing;
+            }
+        }
+
+        var registry = new CosmosDiagnosticsRegistry();
+        _Services.AddSingleton(registry);
+        return registry;
+    }
 }

@@ -14,8 +14,9 @@ public class CosmosDbParentedItemRepository<T> :
         IOptions<CosmosRepositoryOptions<T>> options,
         CosmosClient client,
         ILogger<CosmosTenantItemRepository<T>> logger,
-        ICosmosQueryLogSink? sink = null) :
-        base(options, client, logger, sink)
+        ICosmosQueryLogSink? sink = null,
+        CosmosDiagnosticsRegistry? diagnosticsRegistry = null) :
+        base(options, client, logger, sink, diagnosticsRegistry)
     {
     }
 

@@ -20,8 +20,9 @@ public class CosmosTenantItemRepository<T>(
         IOptions<CosmosRepositoryOptions<T>> options,
         CosmosClient client,
         ILogger<CosmosTenantItemRepository<T>> logger,
-        ICosmosQueryLogSink? sink = null) :
-    CosmosRepository<T>(options, client, logger, sink), ITenantItemRepository<T>
+        ICosmosQueryLogSink? sink = null,
+        CosmosDiagnosticsRegistry? diagnosticsRegistry = null) :
+    CosmosRepository<T>(options, client, logger, sink, diagnosticsRegistry), ITenantItemRepository<T>
     where T : class, ITenantItem, new()
 {
     /// <summary>
