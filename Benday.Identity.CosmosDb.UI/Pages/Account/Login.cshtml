@@ -34,11 +34,16 @@
         .checkbox-group input[type="checkbox"] { margin-right: 0.5rem; width: 1rem; height: 1rem; }
         .checkbox-group label { margin-bottom: 0; font-weight: 400; font-size: 0.875rem; cursor: pointer; }
         .passkey-error { color: #d32f2f; font-size: 0.8rem; margin-top: 0.5rem; display: none; }
+        .login-message { background: #eef6fc; border: 1px solid #b6dffc; color: #0c5a8c; padding: 0.75rem 1rem; border-radius: 4px; margin-bottom: 1rem; font-size: 0.875rem; white-space: pre-line; }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h1>Log in</h1>
+        @if (!string.IsNullOrWhiteSpace(Model.LoginPageMessage))
+        {
+            <div class="login-message">@Model.LoginPageMessage</div>
+        }
         <div asp-validation-summary="ModelOnly"></div>
         <form method="post">
             <input type="hidden" asp-for="ReturnUrl" />

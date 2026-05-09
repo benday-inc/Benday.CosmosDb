@@ -32,6 +32,10 @@ builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
     {
         options.AdminRoleName = ADMIN_ROLE_NAME;
         options.EnablePasskeys = true; // Enable Passkeys (WebAuthn) support
+        options.LoginPageMessage =
+            "Sample app default credentials:\n" +
+            "Email: admin@test.org\n" +
+            "Password: password";
     },
     configureIdentity: options =>
     {

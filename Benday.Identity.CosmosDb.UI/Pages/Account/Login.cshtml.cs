@@ -34,6 +34,8 @@ public class LoginModel : PageModel
 
     public bool EnablePasskeys => _options.EnablePasskeys;
 
+    public string? LoginPageMessage => _options.LoginPageMessage;
+
     public class InputModel
     {
         [Required]

@@ -100,6 +100,30 @@ builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
 | `EnablePasskeys` | `true` | Whether passkey (WebAuthn) authentication is enabled |
 | `PasskeyServerDomain` | `null` | WebAuthn Relying Party ID (domain) |
 | `ClaimDefinitionsContainerName` | `CosmosConfig.ContainerName` | Container for claim definition documents |
+| `LoginPageMessage` | `null` | Optional informational message rendered above the sign-in form. Hidden when null/empty |
+
+## Login Page Message
+
+Set `LoginPageMessage` to display an informational banner above the sign-in form on `/Account/Login`. Useful for things like seeded test credentials in dev environments or scheduled-maintenance notices. Newlines in the message are preserved, and HTML is escaped — so arbitrary text is safe.
+
+```csharp
+builder.Services.AddCosmosIdentityWithUI(cosmosConfig,
+    options =>
+    {
+        options.LoginPageMessage =
+            "Sample app default credentials:\n" +
+            "Email: admin@test.org\n" +
+            "Password: password";
+    });
+```
+
+When the option is null or empty (the default), nothing is rendered. Gate it on environment if you don't want it to appear outside development:
+
+```csharp
+options.LoginPageMessage = builder.Environment.IsDevelopment()
+    ? "Test credentials: admin@test.org / password"
+    : null;
+```
 
 ## Password Reset & Email Confirmation
 

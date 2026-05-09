@@ -137,6 +137,7 @@ All available `CosmosIdentityOptions`:
 | `FromEmailAddress` | `""` | "From" address used by `SmtpCosmosIdentityEmailSender` |
 | `EnablePasskeys` | `true` | Whether passkey (WebAuthn) authentication is enabled |
 | `PasskeyServerDomain` | `null` | WebAuthn Relying Party ID (domain) |
+| `LoginPageMessage` | `null` | Optional informational message rendered above the sign-in form on the UI package's login page. Hidden when null/empty |
 
 ### Blazor Server: RedirectToLogin
 

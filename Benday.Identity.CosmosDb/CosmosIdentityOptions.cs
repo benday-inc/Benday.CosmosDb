@@ -110,4 +110,13 @@ public class CosmosIdentityOptions
     /// Override this if you need identity data partitioned under a different tenant.
     /// </summary>
     public string IdentityTenantId { get; set; } = CosmosIdentityConstants.SystemTenantId;
+
+    /// <summary>
+    /// Optional informational message rendered above the sign-in form on the
+    /// login page. Use for things like seeded test credentials in dev or a
+    /// scheduled-maintenance notice. When null or empty, nothing is rendered.
+    /// Newlines are preserved (CSS <c>white-space: pre-line</c>); HTML is
+    /// escaped, so this is safe for arbitrary text.
+    /// </summary>
+    public string? LoginPageMessage { get; set; }
 }
