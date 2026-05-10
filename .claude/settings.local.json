@@ -44,7 +44,9 @@
       "Bash(git check-ignore *)",
       "Bash(echo \"exit=$?\")",
       "Bash(git restore *)",
-      "mcp__claude_ai_Microsoft_Learn__microsoft_docs_search"
+      "mcp__claude_ai_Microsoft_Learn__microsoft_docs_search",
+      "Bash(git tag -a v6.0.10 -m ' *)",
+      "Bash(git push *)"
     ],
     "deny": [],
     "ask": []

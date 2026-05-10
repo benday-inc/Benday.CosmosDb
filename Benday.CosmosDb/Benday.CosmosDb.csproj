@@ -9,7 +9,7 @@
     <Authors>benday</Authors>
     <PackageProjectUrl>https://github.com/benday-inc/Benday.CosmosDb</PackageProjectUrl>
     <Copyright>2026</Copyright>
-    <RepositoryUrl>https://github.com/benday-inc/Benday.CosmosDb.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/benday-inc/Benday.CosmosDb</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
