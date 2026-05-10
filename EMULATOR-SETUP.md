@@ -19,7 +19,7 @@ Just set `UseEmulator: true` and everything else gets smart defaults:
 That's it! When `UseEmulator: true` is set, the library automatically configures:
 - 🗄️ **DatabaseName**: `"DevDb"`
 - 📦 **ContainerName**: `"DevContainer"`
-- 🔑 **PartitionKey**: `"/pk,/discriminator"`
+- 🔑 **PartitionKey**: `"/tenantId,/entityType"`
 - 🌳 **HierarchicalPartitionKey**: `true`
 - ⚡ **DatabaseThroughput**: `400 RU/s`
 - ✅ **Endpoint**: `https://localhost:8081/` 

@@ -113,7 +113,7 @@
     "DatabaseName": "ProductionDb",
     "ContainerName": "ProductionContainer",
     "CreateStructures": false,
-    "PartitionKey": "/pk,/discriminator",
+    "PartitionKey": "/tenantId,/entityType",
     "HierarchicalPartitionKey": true,
     "Endpoint": "https://your-cosmos.documents.azure.com:443/",
     "UseDefaultAzureCredential": true
