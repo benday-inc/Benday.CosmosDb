@@ -40,9 +40,6 @@ items:
     - id: T
       description: Domain model type managed by the repository
     content.vb: Public Interface ITenantItemRepository(Of T As {Class, ITenantItem, New}) Inherits IRepository(Of T), IAsyncTenantRepository(Of T, String), IAsyncRepository(Of T, String)
-  derivedClasses:
-  - Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
-  - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
   inheritedMembers:
   - Benday.CosmosDb.Repositories.IRepository{{T}}.SaveAsync(System.Collections.Generic.IList{{T}})
   - Benday.CosmosDb.Repositories.IRepository{{T}}.DeleteAsync(System.String)

@@ -8,6 +8,8 @@ items:
   - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,Benday.CosmosDb.Utilities.CosmosConfig)
   - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.AllowBulkExecution
   - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
   - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConnectionString
   - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ContainerName
   - Benday.CosmosDb.Utilities.CosmosRegistrationHelper.DatabaseName
@@ -730,6 +732,100 @@ items:
       description: This helper, for fluent chaining.
     content.vb: Public Function WithQueryLogSink(sink As ICosmosQueryLogSink) As CosmosRegistrationHelper
   overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.WithQueryLogSink*
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  id: ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: ConfigureDiagnostics<TEntity>(Action<CosmosRepositoryDiagnosticsOptions>)
+  nameWithType: CosmosRegistrationHelper.ConfigureDiagnostics<TEntity>(Action<CosmosRepositoryDiagnosticsOptions>)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics<TEntity>(System.Action<Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions>)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ConfigureDiagnostics
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 256
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Configures per-entity diagnostic options for repositories that manage
+
+    <code class="typeparamref">TEntity</code>. The options are looked up by the
+
+    repository in its constructor via <xref href="Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry" data-throw-if-not-resolved="false"></xref>.
+  example:
+  - <pre><code class="lang-csharp">helper.ConfigureDiagnostics&lt;Note&gt;(o =&gt; o.CaptureIndexMetrics = true);</code></pre>
+  syntax:
+    content: public CosmosRegistrationHelper ConfigureDiagnostics<TEntity>(Action<CosmosRepositoryDiagnosticsOptions> configure)
+    parameters:
+    - id: configure
+      type: System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions}
+      description: >-
+        Callback that receives the entity's options
+            for mutation. Called once per call.
+    typeParameters:
+    - id: TEntity
+      description: The repository's entity type.
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+      description: This helper, for fluent chaining.
+    content.vb: Public Function ConfigureDiagnostics(Of TEntity)(configure As Action(Of CosmosRepositoryDiagnosticsOptions)) As CosmosRegistrationHelper
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics*
+  nameWithType.vb: CosmosRegistrationHelper.ConfigureDiagnostics(Of TEntity)(Action(Of CosmosRepositoryDiagnosticsOptions))
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics(Of TEntity)(System.Action(Of Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions))
+  name.vb: ConfigureDiagnostics(Of TEntity)(Action(Of CosmosRepositoryDiagnosticsOptions))
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  id: ConfigureDiagnosticsDefault(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  parent: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+  langs:
+  - csharp
+  - vb
+  name: ConfigureDiagnosticsDefault(Action<CosmosRepositoryDiagnosticsOptions>)
+  nameWithType: CosmosRegistrationHelper.ConfigureDiagnosticsDefault(Action<CosmosRepositoryDiagnosticsOptions>)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action<Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions>)
+  type: Method
+  source:
+    remote:
+      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: ConfigureDiagnosticsDefault
+    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 273
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Configures the registry default that applies to any entity type that
+
+    does not have an explicit <xref href="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics%60%601(System.Action%7bBenday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions%7d)" data-throw-if-not-resolved="false"></xref>
+
+    entry. Useful for turning a flag on globally and then disabling it
+
+    for hot-path repositories.
+  example: []
+  syntax:
+    content: public CosmosRegistrationHelper ConfigureDiagnosticsDefault(Action<CosmosRepositoryDiagnosticsOptions> configure)
+    parameters:
+    - id: configure
+      type: System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions}
+      description: Callback that mutates the default options.
+    return:
+      type: Benday.CosmosDb.Utilities.CosmosRegistrationHelper
+      description: This helper, for fluent chaining.
+    content.vb: Public Function ConfigureDiagnosticsDefault(configure As Action(Of CosmosRepositoryDiagnosticsOptions)) As CosmosRegistrationHelper
+  overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault*
+  nameWithType.vb: CosmosRegistrationHelper.ConfigureDiagnosticsDefault(Action(Of CosmosRepositoryDiagnosticsOptions))
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action(Of Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions))
+  name.vb: ConfigureDiagnosticsDefault(Action(Of CosmosRepositoryDiagnosticsOptions))
 references:
 - uid: Benday.CosmosDb.Utilities
   commentId: N:Benday.CosmosDb.Utilities
@@ -1273,3 +1369,133 @@ references:
   - uid: Benday.CosmosDb.Diagnostics
     name: Diagnostics
     href: Benday.CosmosDb.Diagnostics.html
+- uid: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html
+  name: CosmosDiagnosticsRegistry
+  nameWithType: CosmosDiagnosticsRegistry
+  fullName: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__
+  name: ConfigureDiagnostics
+  nameWithType: CosmosRegistrationHelper.ConfigureDiagnostics
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics
+- uid: System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions}
+  commentId: T:System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<CosmosRepositoryDiagnosticsOptions>
+  nameWithType: Action<CosmosRepositoryDiagnosticsOptions>
+  fullName: System.Action<Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions>
+  nameWithType.vb: Action(Of CosmosRepositoryDiagnosticsOptions)
+  fullName.vb: System.Action(Of Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions)
+  name.vb: Action(Of CosmosRepositoryDiagnosticsOptions)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
+    name: CosmosRepositoryDiagnosticsOptions
+    href: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
+    name: CosmosRepositoryDiagnosticsOptions
+    href: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  commentId: M:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+  isExternal: true
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__
+  name: ConfigureDiagnostics<TEntity>(Action<CosmosRepositoryDiagnosticsOptions>)
+  nameWithType: CosmosRegistrationHelper.ConfigureDiagnostics<TEntity>(Action<CosmosRepositoryDiagnosticsOptions>)
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics<TEntity>(System.Action<Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions>)
+  nameWithType.vb: CosmosRegistrationHelper.ConfigureDiagnostics(Of TEntity)(Action(Of CosmosRepositoryDiagnosticsOptions))
+  fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics(Of TEntity)(System.Action(Of Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions))
+  name.vb: ConfigureDiagnostics(Of TEntity)(Action(Of CosmosRepositoryDiagnosticsOptions))
+  spec.csharp:
+  - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+    name: ConfigureDiagnostics
+    href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
+    name: CosmosRepositoryDiagnosticsOptions
+    href: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})
+    name: ConfigureDiagnostics
+    href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
+    name: CosmosRepositoryDiagnosticsOptions
+    href: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html
+  - name: )
+  - name: )
+- uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault
+  href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnosticsDefault_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__
+  name: ConfigureDiagnosticsDefault
+  nameWithType: CosmosRegistrationHelper.ConfigureDiagnosticsDefault
+  fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault

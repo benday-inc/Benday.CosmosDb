@@ -454,6 +454,131 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnosticsDefault_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action%7BBenday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs/#L274">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnosticsDefault_" data-uid="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnosticsDefault_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__" data-uid="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})">ConfigureDiagnosticsDefault(Action&lt;CosmosRepositoryDiagnosticsOptions&gt;)</h4>
+  <div class="markdown level1 summary"><p>Configures the registry default that applies to any entity type that
+does not have an explicit <a class="xref" href="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__">ConfigureDiagnostics&lt;TEntity&gt;(Action&lt;CosmosRepositoryDiagnosticsOptions&gt;)</a>
+entry. Useful for turning a flag on globally and then disabling it
+for hot-path repositories.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosRegistrationHelper ConfigureDiagnosticsDefault(Action&lt;CosmosRepositoryDiagnosticsOptions&gt; configure)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html">CosmosRepositoryDiagnosticsOptions</a>&gt;</td>
+        <td><span class="parametername">configure</span></td>
+        <td><p>Callback that mutates the default options.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html">CosmosRegistrationHelper</a></td>
+        <td><p>This helper, for fluent chaining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics%60%601(System.Action%7BBenday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs/#L257">View Source</a>
+  </span>
+  <a id="Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics_" data-uid="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics*"></a>
+  <h4 id="Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__" data-uid="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics``1(System.Action{Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions})">ConfigureDiagnostics&lt;TEntity&gt;(Action&lt;CosmosRepositoryDiagnosticsOptions&gt;)</h4>
+  <div class="markdown level1 summary"><p>Configures per-entity diagnostic options for repositories that manage
+<code class="typeparamref">TEntity</code>. The options are looked up by the
+repository in its constructor via <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html">CosmosDiagnosticsRegistry</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CosmosRegistrationHelper ConfigureDiagnostics&lt;TEntity&gt;(Action&lt;CosmosRepositoryDiagnosticsOptions&gt; configure)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html">CosmosRepositoryDiagnosticsOptions</a>&gt;</td>
+        <td><span class="parametername">configure</span></td>
+        <td><p>Callback that receives the entity's options
+for mutation. Called once per call.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html">CosmosRegistrationHelper</a></td>
+        <td><p>This helper, for fluent chaining.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEntity</span></td>
+        <td><p>The repository's entity type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions___examples">Examples</h5>
+  <pre><code class="lang-csharp">helper.ConfigureDiagnostics&lt;Note&gt;(o =&gt; o.CaptureIndexMetrics = true);</code></pre>
+
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterParentedRepositoryAndService__1.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterParentedRepositoryAndService%60%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">

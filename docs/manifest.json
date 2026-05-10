@@ -1,7 +1,21 @@
 {
-  "source_base_path": "C:/code/benday-inc/Benday.CosmosDb/docfx_project",
+  "source_base_path": "/Users/benday/code/benday-inc/Benday.CosmosDb/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.yml\" sourcestartlinenumber=\"1\">Singleton registry that holds per-entity-type diagnostic options for\n<code>CosmosRepository&lt;T&gt;</code>. Repositories resolve this from DI in\ntheir constructor and look up their own options via\n<xref href=\"Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.GetFor%60%601\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.yml",
@@ -43,6 +57,20 @@
       "IsMRef": true,
       "Title": "Benday.CosmosDb.Diagnostics.CosmosQueryEventKind",
       "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.yml\" sourcestartlinenumber=\"1\">Distinguishes the three kinds of events that <xref href=\"Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics\" data-throw-if-not-resolved=\"false\"></xref>\ncan represent. Sinks use the kind to route, filter, and aggregate events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions",
+      "Summary": "<p sourcefile=\"api/Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.yml\" sourcestartlinenumber=\"1\">Per-entity diagnostics toggles read by <code>CosmosRepository&lt;T&gt;</code> at\nquery time. Configure these through the\n<xref href=\"Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnostics%60%601(System.Action%7bBenday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions%7d)\" data-throw-if-not-resolved=\"false\"></xref>\nand <xref href=\"Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action%7bBenday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions%7d)\" data-throw-if-not-resolved=\"false\"></xref>\nhelpers; the repository looks up its options from\n<xref href=\"Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry\" data-throw-if-not-resolved=\"false\"></xref> in its constructor.</p>\n"
     },
     {
       "type": "ManagedReference",

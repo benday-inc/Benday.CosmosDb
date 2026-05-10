@@ -161,19 +161,19 @@ output, which fires unchanged regardless of how diagnostics are routed.
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.%23ctor(Microsoft.Extensions.Options.IOptions%7BBenday.CosmosDb.Repositories.CosmosRepositoryOptions%7B%600%7D%7D%2CMicrosoft.Azure.Cosmos.CosmosClient%2CMicrosoft.Extensions.Logging.ILogger%2CBenday.CosmosDb.Diagnostics.ICosmosQueryLogSink)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Benday_CosmosDb_Diagnostics_CosmosDiagnosticsRegistry_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.%23ctor(Microsoft.Extensions.Options.IOptions%7BBenday.CosmosDb.Repositories.CosmosRepositoryOptions%7B%600%7D%7D%2CMicrosoft.Azure.Cosmos.CosmosClient%2CMicrosoft.Extensions.Logging.ILogger%2CBenday.CosmosDb.Diagnostics.ICosmosQueryLogSink%2CBenday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L113">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L128">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1__ctor_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.#ctor*"></a>
-  <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger,Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)">CosmosRepository(IOptions&lt;CosmosRepositoryOptions&lt;T&gt;&gt;, CosmosClient, ILogger, ICosmosQueryLogSink?)</h4>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Benday_CosmosDb_Diagnostics_CosmosDiagnosticsRegistry_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger,Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink,Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry)">CosmosRepository(IOptions&lt;CosmosRepositoryOptions&lt;T&gt;&gt;, CosmosClient, ILogger, ICosmosQueryLogSink?, CosmosDiagnosticsRegistry?)</h4>
   <div class="markdown level1 summary"><p>Constructor for the repository.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CosmosRepository(IOptions&lt;CosmosRepositoryOptions&lt;T&gt;&gt; options, CosmosClient client, ILogger logger, ICosmosQueryLogSink? sink = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public CosmosRepository(IOptions&lt;CosmosRepositoryOptions&lt;T&gt;&gt; options, CosmosClient client, ILogger logger, ICosmosQueryLogSink? sink = null, CosmosDiagnosticsRegistry? diagnosticsRegistry = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -211,6 +211,14 @@ constructor is called from a derived class that doesn't pass one), falls
 back to <a class="xref" href="Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_NoOpCosmosQueryLogSink_Instance">Instance</a>. Register a real
 sink in DI via
 <a class="xref" href="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_WithQueryLogSink__1">WithQueryLogSink&lt;TSink&gt;()</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html">CosmosDiagnosticsRegistry</a></td>
+        <td><span class="parametername">diagnosticsRegistry</span></td>
+        <td><p>Optional per-entity diagnostics registry. When <code>null</code>, all
+per-entity flags fall back to their defaults (off). Configure via
+<a class="xref" href="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__">ConfigureDiagnostics&lt;TEntity&gt;(Action&lt;CosmosRepositoryDiagnosticsOptions&gt;)</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -263,6 +271,41 @@ sink in DI via
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1__captureIndexMetrics.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601._captureIndexMetrics%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L107">View Source</a>
+  </span>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1__captureIndexMetrics" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1._captureIndexMetrics">_captureIndexMetrics</h4>
+  <div class="markdown level1 summary"><p>Cached flag captured at construction time from
+<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html#Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions_CaptureIndexMetrics">CaptureIndexMetrics</a>
+for this repository's entity type. When true, the repository sets
+<code>PopulateIndexMetrics</code> on every <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.queryrequestoptions">QueryRequestOptions</a>
+it builds and copies <code>FeedResponse.IndexMetrics</code> into emitted
+diagnostics.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly bool _captureIndexMetrics</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1__sink.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601._sink%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -300,7 +343,7 @@ when no sink is provided via constructor injection.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_BatchSize.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.BatchSize%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1005">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1050">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_BatchSize_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.BatchSize*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_BatchSize" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.BatchSize">BatchSize</h4>
@@ -396,7 +439,7 @@ Default is 50 items per batch.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_AfterSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatchResponse__0___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse%2C%600%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1089">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1134">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_AfterSaveBatch_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.AfterSaveBatch*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_AfterSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatchResponse__0___System_Int32_System_Int32_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse,`0[],System.Int32,System.Int32)">AfterSaveBatch(TransactionalBatchResponse, T[], int, int)</h4>
@@ -458,7 +501,7 @@ Default is 50 items per batch.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_BeforeSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatch__0___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch%2C%600%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1094">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1139">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_BeforeSaveBatch_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.BeforeSaveBatch*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_BeforeSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatch__0___System_Int32_System_Int32_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch,`0[],System.Int32,System.Int32)">BeforeSaveBatch(TransactionalBatch, T[], int, int)</h4>
@@ -520,7 +563,7 @@ Default is 50 items per batch.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_DeleteAsync_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.DeleteAsync(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L153">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L171">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_DeleteAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.DeleteAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_DeleteAsync_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.DeleteAsync(System.String)">DeleteAsync(string)</h4>
@@ -584,7 +627,7 @@ Default is 50 items per batch.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_ExecuteScalarAsync__1_System_Linq_IQueryable__0__System_Func_System_Linq_IQueryable__0__System_Threading_Tasks_Task_Microsoft_Azure_Cosmos_Response___0____System_String_Microsoft_Azure_Cosmos_PartitionKey_System_Func___0_System_Int32__.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.ExecuteScalarAsync%60%601(System.Linq.IQueryable%7B%600%7D%2CSystem.Func%7BSystem.Linq.IQueryable%7B%600%7D%2CSystem.Threading.Tasks.Task%7BMicrosoft.Azure.Cosmos.Response%7B%60%600%7D%7D%7D%2CSystem.String%2CMicrosoft.Azure.Cosmos.PartitionKey%2CSystem.Func%7B%60%600%2CSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L638">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L683">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_ExecuteScalarAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.ExecuteScalarAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_ExecuteScalarAsync__1_System_Linq_IQueryable__0__System_Func_System_Linq_IQueryable__0__System_Threading_Tasks_Task_Microsoft_Azure_Cosmos_Response___0____System_String_Microsoft_Azure_Cosmos_PartitionKey_System_Func___0_System_Int32__" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.ExecuteScalarAsync``1(System.Linq.IQueryable{`0},System.Func{System.Linq.IQueryable{`0},System.Threading.Tasks.Task{Microsoft.Azure.Cosmos.Response{``0}}},System.String,Microsoft.Azure.Cosmos.PartitionKey,System.Func{``0,System.Int32})">ExecuteScalarAsync&lt;TResult&gt;(IQueryable&lt;T&gt;, Func&lt;IQueryable&lt;T&gt;, Task&lt;Response&lt;TResult&gt;&gt;&gt;, string, PartitionKey, Func&lt;TResult, int&gt;?)</h4>
@@ -709,7 +752,7 @@ on the resulting event will be null in that case.
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetAllAsync.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetAllAsync%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L195">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L213">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetAllAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetAllAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetAllAsync" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetAllAsync">GetAllAsync()</h4>
@@ -741,7 +784,7 @@ on the resulting event will be null in that case.
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetByIdAsync_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetByIdAsync(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L716">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L761">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetByIdAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetByIdAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetByIdAsync_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetByIdAsync(System.String)">GetByIdAsync(string)</h4>
@@ -792,7 +835,7 @@ it does not use a partition key.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetContainerAsync.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetContainerAsync%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L139">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L157">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetContainerAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetContainerAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetContainerAsync" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetContainerAsync">GetContainerAsync()</h4>
@@ -839,7 +882,7 @@ it does not use a partition key.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetPagedAsync(System.Int32%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1220">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1273">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_System_Int32_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync(System.Int32,System.String)">GetPagedAsync(int, string?)</h4>
@@ -896,7 +939,7 @@ public virtual Task&lt;PagedResults&lt;T&gt;&gt; GetPagedAsync(int pageSize = 10
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_System_String_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetPagedAsync(System.String%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1290">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1345">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetPagedAsync_System_String_System_Int32_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetPagedAsync(System.String,System.Int32,System.String)">GetPagedAsync(string, int, string?)</h4>
@@ -958,7 +1001,7 @@ public virtual Task&lt;PagedResults&lt;T&gt;&gt; GetPagedAsync(int pageSize = 10
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey_System_String_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetPartitionKey(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1116">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1161">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetPartitionKey*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey_System_String_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetPartitionKey(System.String,System.String)">GetPartitionKey(string, string)</h4>
@@ -1013,7 +1056,7 @@ public virtual Task&lt;PagedResults&lt;T&gt;&gt; GetPagedAsync(int pageSize = 10
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey__0_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetPartitionKey(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1104">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1149">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetPartitionKey*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetPartitionKey__0_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetPartitionKey(`0)">GetPartitionKey(T)</h4>
@@ -1061,7 +1104,7 @@ public virtual Task&lt;PagedResults&lt;T&gt;&gt; GetPagedAsync(int pageSize = 10
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetQueryContextAsync%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1192">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1241">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryContextAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryContextAsync">GetQueryContextAsync()</h4>
@@ -1111,7 +1154,7 @@ protected virtual Task&lt;QueryContext&lt;T&gt;&gt; GetQueryContextAsync()</code
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetQueryContextAsync(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1138">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1183">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryContextAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryContextAsync(System.String)">GetQueryContextAsync(string)</h4>
@@ -1163,7 +1206,7 @@ off of this repository by child repository classes.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_System_String_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetQueryContextAsync(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1152">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1197">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryContextAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryContextAsync_System_String_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryContextAsync(System.String,System.String)">GetQueryContextAsync(string, string)</h4>
@@ -1221,7 +1264,7 @@ off of this repository by child repository classes.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryDescription_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetQueryDescription(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L381">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L409">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryDescription_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryDescription*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryDescription_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryDescription(System.String)">GetQueryDescription(string)</h4>
@@ -1272,7 +1315,7 @@ the method name of the caller.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryDescription_System_String_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetQueryDescription(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L392">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L420">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryDescription_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryDescription*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetQueryDescription_System_String_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetQueryDescription(System.String,System.String)">GetQueryDescription(string, string)</h4>
@@ -1328,7 +1371,7 @@ the method name of the caller.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync_Microsoft_Azure_Cosmos_QueryDefinition_System_String_Microsoft_Azure_Cosmos_PartitionKey_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetResultsAsync(Microsoft.Azure.Cosmos.QueryDefinition%2CSystem.String%2CMicrosoft.Azure.Cosmos.PartitionKey)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L306">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L328">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetResultsAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync_Microsoft_Azure_Cosmos_QueryDefinition_System_String_Microsoft_Azure_Cosmos_PartitionKey_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetResultsAsync(Microsoft.Azure.Cosmos.QueryDefinition,System.String,Microsoft.Azure.Cosmos.PartitionKey)">GetResultsAsync(QueryDefinition, string, PartitionKey)</h4>
@@ -1392,7 +1435,7 @@ entity type <code class="typeparamref">T</code>.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_Microsoft_Azure_Cosmos_FeedIterator___0__System_String_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetResultsAsync%60%601(Microsoft.Azure.Cosmos.FeedIterator%7B%60%600%7D%2CSystem.String%2CSystem.String%2CSystem.Collections.Generic.IReadOnlyDictionary%7BSystem.String%2CSystem.Object%7D%2CMicrosoft.Azure.Cosmos.PartitionKey)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L324">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L346">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetResultsAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_Microsoft_Azure_Cosmos_FeedIterator___0__System_String_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetResultsAsync``1(Microsoft.Azure.Cosmos.FeedIterator{``0},System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)">GetResultsAsync&lt;TResult&gt;(FeedIterator&lt;TResult&gt;, string, string?, IReadOnlyDictionary&lt;string, object?&gt;?, PartitionKey)</h4>
@@ -1484,7 +1527,7 @@ totals, and emitting per-page and total diagnostics through
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_Microsoft_Azure_Cosmos_QueryDefinition_System_String_Microsoft_Azure_Cosmos_PartitionKey_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetResultsAsync%60%601(Microsoft.Azure.Cosmos.QueryDefinition%2CSystem.String%2CMicrosoft.Azure.Cosmos.PartitionKey)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L279">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L297">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetResultsAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_Microsoft_Azure_Cosmos_QueryDefinition_System_String_Microsoft_Azure_Cosmos_PartitionKey_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetResultsAsync``1(Microsoft.Azure.Cosmos.QueryDefinition,System.String,Microsoft.Azure.Cosmos.PartitionKey)">GetResultsAsync&lt;TResult&gt;(QueryDefinition, string, PartitionKey)</h4>
@@ -1574,7 +1617,7 @@ this overload covers the cases it can't.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_System_Linq_IQueryable___0__System_String_Microsoft_Azure_Cosmos_PartitionKey_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.GetResultsAsync%60%601(System.Linq.IQueryable%7B%60%600%7D%2CSystem.String%2CMicrosoft.Azure.Cosmos.PartitionKey)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L222">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L240">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetResultsAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_GetResultsAsync__1_System_Linq_IQueryable___0__System_String_Microsoft_Azure_Cosmos_PartitionKey_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.GetResultsAsync``1(System.Linq.IQueryable{``0},System.String,Microsoft.Azure.Cosmos.PartitionKey)">GetResultsAsync&lt;TResult&gt;(IQueryable&lt;TResult&gt;, string, PartitionKey)</h4>
@@ -1658,7 +1701,7 @@ total diagnostics through <a class="xref" href="Benday.CosmosDb.Repositories.Cos
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_Initialize.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.Initialize%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L745">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L790">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_Initialize_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.Initialize*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_Initialize" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.Initialize">Initialize()</h4>
@@ -1689,7 +1732,7 @@ total diagnostics through <a class="xref" href="Benday.CosmosDb.Repositories.Cos
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_IsCrossPartitionQuery_Microsoft_Azure_Cosmos_CosmosDiagnostics_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.IsCrossPartitionQuery(Microsoft.Azure.Cosmos.CosmosDiagnostics)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L402">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L430">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_IsCrossPartitionQuery_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.IsCrossPartitionQuery*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_IsCrossPartitionQuery_Microsoft_Azure_Cosmos_CosmosDiagnostics_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.IsCrossPartitionQuery(Microsoft.Azure.Cosmos.CosmosDiagnostics)">IsCrossPartitionQuery(CosmosDiagnostics)</h4>
@@ -1736,13 +1779,13 @@ total diagnostics through <a class="xref" href="Benday.CosmosDb.Repositories.Cos
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.LogFeedResponseDiagnostics(System.String%2CSystem.Double%2CMicrosoft.Azure.Cosmos.CosmosDiagnostics%2CSystem.TimeSpan%2CSystem.Int32%2CSystem.String%2CSystem.Collections.Generic.IReadOnlyDictionary%7BSystem.String%2CSystem.Object%7D%2CMicrosoft.Azure.Cosmos.PartitionKey)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.LogFeedResponseDiagnostics(System.String%2CSystem.Double%2CMicrosoft.Azure.Cosmos.CosmosDiagnostics%2CSystem.TimeSpan%2CSystem.Int32%2CSystem.String%2CSystem.Collections.Generic.IReadOnlyDictionary%7BSystem.String%2CSystem.Object%7D%2CMicrosoft.Azure.Cosmos.PartitionKey%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L460">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L494">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics*"></a>
-  <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)">LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string?, IReadOnlyDictionary&lt;string, object?&gt;?, PartitionKey)</h4>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)">LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string?, IReadOnlyDictionary&lt;string, object?&gt;?, PartitionKey, string?)</h4>
   <div class="markdown level1 summary"><p>Logs diagnostics for a single page of feed iterator results (including
 cross-partition query detection) and fires <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_OnQueryDiagnostics_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_">OnQueryDiagnostics(CosmosQueryDiagnostics)</a>
 with a <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_FeedResponsePage">FeedResponsePage</a> event.</p>
@@ -1750,7 +1793,7 @@ with a <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.ht
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected bool LogFeedResponseDiagnostics(string queryDescription, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration, int resultCount, string? queryText, IReadOnlyDictionary&lt;string, object?&gt;? parameters, PartitionKey partitionKey)</code></pre>
+    <pre><code class="lang-csharp hljs">protected bool LogFeedResponseDiagnostics(string queryDescription, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration, int resultCount, string? queryText, IReadOnlyDictionary&lt;string, object?&gt;? parameters, PartitionKey partitionKey, string? indexMetrics = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -1810,6 +1853,15 @@ with a <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.ht
         <td><p>Partition key scope for this query.</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">indexMetrics</span></td>
+        <td><p>Index utilization information from <code>FeedResponse.IndexMetrics</code>.
+Populated by callers only when
+<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html#Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions_CaptureIndexMetrics">CaptureIndexMetrics</a>
+is enabled for the repository's entity type. Null otherwise.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1833,7 +1885,7 @@ with a <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.ht
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_LogPointOperationDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.LogPointOperationDiagnostics(System.String%2CSystem.Double%2CMicrosoft.Azure.Cosmos.CosmosDiagnostics%2CSystem.TimeSpan)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L428">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L456">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_LogPointOperationDiagnostics_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_LogPointOperationDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan)">LogPointOperationDiagnostics(string, double, CosmosDiagnostics, TimeSpan)</h4>
@@ -1884,13 +1936,13 @@ and fires <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.LogQueryTotalDiagnostics(System.String%2CSystem.Double%2CSystem.TimeSpan%2CSystem.Int32%2CSystem.String%2CSystem.Collections.Generic.IReadOnlyDictionary%7BSystem.String%2CSystem.Object%7D%2CMicrosoft.Azure.Cosmos.PartitionKey%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.LogQueryTotalDiagnostics(System.String%2CSystem.Double%2CSystem.TimeSpan%2CSystem.Int32%2CSystem.String%2CSystem.Collections.Generic.IReadOnlyDictionary%7BSystem.String%2CSystem.Object%7D%2CMicrosoft.Azure.Cosmos.PartitionKey%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L510">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L553">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics*"></a>
-  <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)">LogQueryTotalDiagnostics(string, double, TimeSpan, int, string?, IReadOnlyDictionary&lt;string, object?&gt;?, PartitionKey, bool)</h4>
+  <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_System_String_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)">LogQueryTotalDiagnostics(string, double, TimeSpan, int, string?, IReadOnlyDictionary&lt;string, object?&gt;?, PartitionKey, bool, string?)</h4>
   <div class="markdown level1 summary"><p>Logs the total RU charge for a completed query and fires
 <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_OnQueryDiagnostics_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_">OnQueryDiagnostics(CosmosQueryDiagnostics)</a> with a
 <a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_QueryTotal">QueryTotal</a> event.</p>
@@ -1898,7 +1950,7 @@ and fires <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void LogQueryTotalDiagnostics(string queryDescription, double totalRequestCharge, TimeSpan totalDuration, int totalResultCount, string? queryText, IReadOnlyDictionary&lt;string, object?&gt;? parameters, PartitionKey partitionKey, bool isCrossPartition)</code></pre>
+    <pre><code class="lang-csharp hljs">protected void LogQueryTotalDiagnostics(string queryDescription, double totalRequestCharge, TimeSpan totalDuration, int totalResultCount, string? queryText, IReadOnlyDictionary&lt;string, object?&gt;? parameters, PartitionKey partitionKey, bool isCrossPartition, string? indexMetrics = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -1958,6 +2010,16 @@ and fires <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.
         <td><p>OR across all pages of the cross-partition flag.</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">indexMetrics</span></td>
+        <td><p>Index utilization for the query (typically the first non-null
+per-page value, since the query plan is stable across pages).
+Populated only when
+<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html#Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions_CaptureIndexMetrics">CaptureIndexMetrics</a>
+is enabled. Null otherwise.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
@@ -1965,7 +2027,7 @@ and fires <a class="xref" href="Benday.CosmosDb.Repositories.CosmosRepository-1.
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_OnQueryDiagnostics_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L547">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L592">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_OnQueryDiagnostics_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.OnQueryDiagnostics*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_OnQueryDiagnostics_Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)">OnQueryDiagnostics(CosmosQueryDiagnostics)</h4>
@@ -2007,7 +2069,7 @@ The base <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_SaveAsync_System_Collections_Generic_IList__0__.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.SaveAsync(System.Collections.Generic.IList%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1018">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1063">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_SaveAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.SaveAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_SaveAsync_System_Collections_Generic_IList__0__" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.SaveAsync(System.Collections.Generic.IList{`0})">SaveAsync(IList&lt;T&gt;)</h4>
@@ -2072,7 +2134,7 @@ Items are saved in batches of 50 by default.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_SaveAsync__0_.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.SaveAsync(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L933">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L978">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_SaveAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.SaveAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_SaveAsync__0_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.SaveAsync(`0)">SaveAsync(T)</h4>
@@ -2136,7 +2198,7 @@ Items are saved in batches of 50 by default.</p>
     <a href="https://github.com/benday-inc/Benday.CosmosDb/new/master/apiSpec/new?filename=Benday_CosmosDb_Repositories_CosmosRepository_1_SaveBatchAsync_System_Int32_System_Int32__0___.md&amp;value=---%0Auid%3A%20Benday.CosmosDb.Repositories.CosmosRepository%601.SaveBatchAsync(System.Int32%2CSystem.Int32%2C%600%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1043">View Source</a>
+    <a href="https://github.com/benday-inc/Benday.CosmosDb/blob/master/Benday.CosmosDb/Repositories/CosmosRepository.cs/#L1088">View Source</a>
   </span>
   <a id="Benday_CosmosDb_Repositories_CosmosRepository_1_SaveBatchAsync_" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync*"></a>
   <h4 id="Benday_CosmosDb_Repositories_CosmosRepository_1_SaveBatchAsync_System_Int32_System_Int32__0___" data-uid="Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync(System.Int32,System.Int32,`0[])">SaveBatchAsync(int, int, T[])</h4>

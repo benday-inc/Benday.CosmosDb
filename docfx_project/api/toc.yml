@@ -4,6 +4,9 @@ items:
   name: Benday.CosmosDb.Diagnostics
   type: Namespace
   items:
+  - uid: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+    name: CosmosDiagnosticsRegistry
+    type: Class
   - uid: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
     name: CosmosFileLogSinkOptions
     type: Class
@@ -13,6 +16,9 @@ items:
   - uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
     name: CosmosQueryEventKind
     type: Enum
+  - uid: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
+    name: CosmosRepositoryDiagnosticsOptions
+    type: Class
   - uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
     name: FileCosmosQueryLogSink
     type: Class

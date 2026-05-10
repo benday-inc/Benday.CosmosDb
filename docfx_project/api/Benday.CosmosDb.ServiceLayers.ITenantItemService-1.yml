@@ -32,9 +32,6 @@ items:
     typeParameters:
     - id: T
     content.vb: Public Interface ITenantItemService(Of T As {Class, ITenantItem, New}) Inherits IAsyncTenantService(Of T, String), IAsyncService(Of T, String)
-  derivedClasses:
-  - Benday.CosmosDb.ServiceLayers.ParentedItemService`1
-  - Benday.CosmosDb.ServiceLayers.TenantItemService`1
   inheritedMembers:
   - Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}.GetByIdAsync(System.String,System.String)
   - Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}.GetByTenantAsync(System.String)

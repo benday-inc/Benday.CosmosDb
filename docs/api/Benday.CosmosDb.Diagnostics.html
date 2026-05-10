@@ -76,6 +76,12 @@
     <h3 id="classes">
 Classes
 </h3>
+      <h4><a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html">CosmosDiagnosticsRegistry</a></h4>
+      <section><p>Singleton registry that holds per-entity-type diagnostic options for
+<code>CosmosRepository&lt;T&gt;</code>. Repositories resolve this from DI in
+their constructor and look up their own options via
+<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html#Benday_CosmosDb_Diagnostics_CosmosDiagnosticsRegistry_GetFor__1">GetFor&lt;TEntity&gt;()</a>.</p>
+</section>
       <h4><a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions.html">CosmosFileLogSinkOptions</a></h4>
       <section><p>Configuration options for <a class="xref" href="Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html">FileCosmosQueryLogSink</a>.</p>
 </section>
@@ -83,6 +89,14 @@ Classes
       <section><p>Structured payload describing a single Cosmos DB query execution event.
 Delivered to <code>CosmosRepository&lt;T&gt;.OnQueryDiagnostics</code> for point
 operations, per-page feed responses, and query totals.</p>
+</section>
+      <h4><a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html">CosmosRepositoryDiagnosticsOptions</a></h4>
+      <section><p>Per-entity diagnostics toggles read by <code>CosmosRepository&lt;T&gt;</code> at
+query time. Configure these through the
+<a class="xref" href="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnostics__1_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__">ConfigureDiagnostics&lt;TEntity&gt;(Action&lt;CosmosRepositoryDiagnosticsOptions&gt;)</a>
+and <a class="xref" href="Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_ConfigureDiagnosticsDefault_System_Action_Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions__">ConfigureDiagnosticsDefault(Action&lt;CosmosRepositoryDiagnosticsOptions&gt;)</a>
+helpers; the repository looks up its options from
+<a class="xref" href="Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html">CosmosDiagnosticsRegistry</a> in its constructor.</p>
 </section>
       <h4><a class="xref" href="Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html">FileCosmosQueryLogSink</a></h4>
       <section><p>An <a class="xref" href="Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.html">ICosmosQueryLogSink</a> that appends each diagnostics

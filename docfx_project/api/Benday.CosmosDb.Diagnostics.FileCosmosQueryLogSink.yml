@@ -307,7 +307,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Dispose
     path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
-    startLine: 158
+    startLine: 159
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Diagnostics

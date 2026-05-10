@@ -32,8 +32,6 @@ items:
     - id: T
       description: The entity type that implements IParentedItem
     content.vb: Public Interface IParentedItemService(Of T As {Class, IParentedItem, New}) Inherits ITenantItemService(Of T), IAsyncTenantService(Of T, String), IAsyncService(Of T, String)
-  derivedClasses:
-  - Benday.CosmosDb.ServiceLayers.ParentedItemService`1
   inheritedMembers:
   - Benday.CosmosDb.ServiceLayers.ITenantItemService{{T}}.DeleteAsync({T})
   - Benday.CosmosDb.ServiceLayers.ITenantItemService{{T}}.GetAllAsync(System.String)

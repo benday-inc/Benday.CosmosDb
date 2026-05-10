@@ -74,9 +74,6 @@ items:
   syntax:
     content: public interface ICosmosQueryLogSink
     content.vb: Public Interface ICosmosQueryLogSink
-  derivedClasses:
-  - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
-  - Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
 - uid: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
   commentId: M:Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink.Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
   id: Record(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)

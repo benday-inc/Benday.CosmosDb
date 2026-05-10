@@ -235,7 +235,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureCosmosClient
     path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 236
+    startLine: 237
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -271,7 +271,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureRepository
     path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 284
+    startLine: 286
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -330,7 +330,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureRepository
     path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 313
+    startLine: 315
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -392,7 +392,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureParentedRepository
     path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 342
+    startLine: 344
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -452,7 +452,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureParentedRepository
     path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 373
+    startLine: 375
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -516,7 +516,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterOptionsForRepository
     path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 401
+    startLine: 403
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -575,7 +575,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ThrowIfEmptyOrNull
     path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 424
+    startLine: 426
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities

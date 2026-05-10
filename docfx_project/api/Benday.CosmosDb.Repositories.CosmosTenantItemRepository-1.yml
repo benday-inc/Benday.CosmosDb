@@ -5,7 +5,7 @@ items:
   id: CosmosTenantItemRepository`1
   parent: Benday.CosmosDb.Repositories
   children:
-  - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
+  - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink,Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry)
   - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.BulkMaxConcurrency
   - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.BulkMaxRetries
   - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.DeleteAllByTenantIdAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)
@@ -59,6 +59,7 @@ items:
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.Logger
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}._Options
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}._sink
+  - Benday.CosmosDb.Repositories.CosmosRepository{{T}}._captureIndexMetrics
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.GetContainerAsync
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.DeleteAsync(System.String)
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.GetAllAsync
@@ -70,8 +71,8 @@ items:
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.GetQueryDescription(System.String,System.String)
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.IsCrossPartitionQuery(Microsoft.Azure.Cosmos.CosmosDiagnostics)
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan)
-  - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
-  - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
+  - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
+  - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.ExecuteScalarAsync``1(System.Linq.IQueryable{{T}},System.Func{System.Linq.IQueryable{{T}},System.Threading.Tasks.Task{Microsoft.Azure.Cosmos.Response{{TResult}}}},System.String,Microsoft.Azure.Cosmos.PartitionKey,System.Func{{TResult},System.Int32})
   - Benday.CosmosDb.Repositories.CosmosRepository{{T}}.GetByIdAsync(System.String)
@@ -98,16 +99,16 @@ items:
   nameWithType.vb: CosmosTenantItemRepository(Of T)
   fullName.vb: Benday.CosmosDb.Repositories.CosmosTenantItemRepository(Of T)
   name.vb: CosmosTenantItemRepository(Of T)
-- uid: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
-  commentId: M:Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
-  id: '#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)'
+- uid: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink,Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry)
+  commentId: M:Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink,Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry)
+  id: '#ctor(Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{`0}},Microsoft.Azure.Cosmos.CosmosClient,Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository{`0}},Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink,Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry)'
   parent: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
   langs:
   - csharp
   - vb
-  name: CosmosTenantItemRepository(IOptions<CosmosRepositoryOptions<T>>, CosmosClient, ILogger<CosmosTenantItemRepository<T>>, ICosmosQueryLogSink?)
-  nameWithType: CosmosTenantItemRepository<T>.CosmosTenantItemRepository(IOptions<CosmosRepositoryOptions<T>>, CosmosClient, ILogger<CosmosTenantItemRepository<T>>, ICosmosQueryLogSink?)
-  fullName: Benday.CosmosDb.Repositories.CosmosTenantItemRepository<T>.CosmosTenantItemRepository(Microsoft.Extensions.Options.IOptions<Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>>, Microsoft.Azure.Cosmos.CosmosClient, Microsoft.Extensions.Logging.ILogger<Benday.CosmosDb.Repositories.CosmosTenantItemRepository<T>>, Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink?)
+  name: CosmosTenantItemRepository(IOptions<CosmosRepositoryOptions<T>>, CosmosClient, ILogger<CosmosTenantItemRepository<T>>, ICosmosQueryLogSink?, CosmosDiagnosticsRegistry?)
+  nameWithType: CosmosTenantItemRepository<T>.CosmosTenantItemRepository(IOptions<CosmosRepositoryOptions<T>>, CosmosClient, ILogger<CosmosTenantItemRepository<T>>, ICosmosQueryLogSink?, CosmosDiagnosticsRegistry?)
+  fullName: Benday.CosmosDb.Repositories.CosmosTenantItemRepository<T>.CosmosTenantItemRepository(Microsoft.Extensions.Options.IOptions<Benday.CosmosDb.Repositories.CosmosRepositoryOptions<T>>, Microsoft.Azure.Cosmos.CosmosClient, Microsoft.Extensions.Logging.ILogger<Benday.CosmosDb.Repositories.CosmosTenantItemRepository<T>>, Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink?, Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry?)
   type: Constructor
   source:
     remote:
@@ -123,7 +124,7 @@ items:
   summary: Provides repository implementation for items that belong to a tenant.
   example: []
   syntax:
-    content: public CosmosTenantItemRepository(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client, ILogger<CosmosTenantItemRepository<T>> logger, ICosmosQueryLogSink? sink = null)
+    content: public CosmosTenantItemRepository(IOptions<CosmosRepositoryOptions<T>> options, CosmosClient client, ILogger<CosmosTenantItemRepository<T>> logger, ICosmosQueryLogSink? sink = null, CosmosDiagnosticsRegistry? diagnosticsRegistry = null)
     parameters:
     - id: options
       type: Microsoft.Extensions.Options.IOptions{Benday.CosmosDb.Repositories.CosmosRepositoryOptions{{T}}}
@@ -135,11 +136,13 @@ items:
       type: Microsoft.Extensions.Logging.ILogger{Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1}
     - id: sink
       type: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
-    content.vb: Public Sub New(options As IOptions(Of CosmosRepositoryOptions(Of T)), client As CosmosClient, logger As ILogger(Of CosmosTenantItemRepository(Of T)), sink As ICosmosQueryLogSink = Nothing)
+    - id: diagnosticsRegistry
+      type: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+    content.vb: Public Sub New(options As IOptions(Of CosmosRepositoryOptions(Of T)), client As CosmosClient, logger As ILogger(Of CosmosTenantItemRepository(Of T)), sink As ICosmosQueryLogSink = Nothing, diagnosticsRegistry As CosmosDiagnosticsRegistry = Nothing)
   overload: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor*
-  nameWithType.vb: CosmosTenantItemRepository(Of T).New(IOptions(Of CosmosRepositoryOptions(Of T)), CosmosClient, ILogger(Of CosmosTenantItemRepository(Of T)), ICosmosQueryLogSink)
-  fullName.vb: Benday.CosmosDb.Repositories.CosmosTenantItemRepository(Of T).New(Microsoft.Extensions.Options.IOptions(Of Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T)), Microsoft.Azure.Cosmos.CosmosClient, Microsoft.Extensions.Logging.ILogger(Of Benday.CosmosDb.Repositories.CosmosTenantItemRepository(Of T)), Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink)
-  name.vb: New(IOptions(Of CosmosRepositoryOptions(Of T)), CosmosClient, ILogger(Of CosmosTenantItemRepository(Of T)), ICosmosQueryLogSink)
+  nameWithType.vb: CosmosTenantItemRepository(Of T).New(IOptions(Of CosmosRepositoryOptions(Of T)), CosmosClient, ILogger(Of CosmosTenantItemRepository(Of T)), ICosmosQueryLogSink, CosmosDiagnosticsRegistry)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosTenantItemRepository(Of T).New(Microsoft.Extensions.Options.IOptions(Of Benday.CosmosDb.Repositories.CosmosRepositoryOptions(Of T)), Microsoft.Azure.Cosmos.CosmosClient, Microsoft.Extensions.Logging.ILogger(Of Benday.CosmosDb.Repositories.CosmosTenantItemRepository(Of T)), Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink, Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry)
+  name.vb: New(IOptions(Of CosmosRepositoryOptions(Of T)), CosmosClient, ILogger(Of CosmosTenantItemRepository(Of T)), ICosmosQueryLogSink, CosmosDiagnosticsRegistry)
 - uid: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.GetAllAsync(System.String)
   commentId: M:Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.GetAllAsync(System.String)
   id: GetAllAsync(System.String)
@@ -158,7 +161,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetAllAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 32
+    startLine: 33
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -201,7 +204,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetByIdAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 52
+    startLine: 53
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -245,7 +248,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DeleteAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 115
+    startLine: 116
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -285,7 +288,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetPagedAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 144
+    startLine: 145
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -331,7 +334,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: BulkMaxConcurrency
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 154
+    startLine: 155
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -364,7 +367,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: BulkMaxRetries
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 159
+    startLine: 160
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -397,7 +400,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DeleteAllByTenantIdAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 170
+    startLine: 171
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -439,7 +442,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DeleteAllByTenantIdAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 184
+    startLine: 185
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -487,7 +490,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DeleteWithRetryAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 251
+    startLine: 252
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -530,7 +533,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveAllAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 292
+    startLine: 293
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -572,7 +575,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveAllAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 306
+    startLine: 307
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -620,7 +623,7 @@ items:
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveWithRetryAsync
     path: ../Benday.CosmosDb/Repositories/CosmosTenantItemRepository.cs
-    startLine: 366
+    startLine: 367
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -886,6 +889,16 @@ references:
   fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>._sink
   nameWithType.vb: CosmosRepository(Of T)._sink
   fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T)._sink
+- uid: Benday.CosmosDb.Repositories.CosmosRepository{{T}}._captureIndexMetrics
+  commentId: F:Benday.CosmosDb.Repositories.CosmosRepository{`0}._captureIndexMetrics
+  parent: Benday.CosmosDb.Repositories.CosmosRepository{{T}}
+  definition: Benday.CosmosDb.Repositories.CosmosRepository`1._captureIndexMetrics
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1__captureIndexMetrics
+  name: _captureIndexMetrics
+  nameWithType: CosmosRepository<T>._captureIndexMetrics
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>._captureIndexMetrics
+  nameWithType.vb: CosmosRepository(Of T)._captureIndexMetrics
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T)._captureIndexMetrics
 - uid: Benday.CosmosDb.Repositories.CosmosRepository{{T}}.GetContainerAsync
   commentId: M:Benday.CosmosDb.Repositories.CosmosRepository{`0}.GetContainerAsync
   parent: Benday.CosmosDb.Repositories.CosmosRepository{{T}}
@@ -1442,21 +1455,21 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.timespan
   - name: )
-- uid: Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
-  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
+- uid: Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
   parent: Benday.CosmosDb.Repositories.CosmosRepository{{T}}
-  definition: Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
-  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_
-  name: LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey)
-  nameWithType: CosmosRepository<T>.LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey)
-  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogFeedResponseDiagnostics(string, double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, int, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, Microsoft.Azure.Cosmos.PartitionKey)
-  nameWithType.vb: CosmosRepository(Of T).LogFeedResponseDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey)
-  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogFeedResponseDiagnostics(String, Double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, Integer, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), Microsoft.Azure.Cosmos.PartitionKey)
-  name.vb: LogFeedResponseDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey)
+  definition: Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_String_
+  name: LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, string)
+  nameWithType: CosmosRepository<T>.LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, string)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogFeedResponseDiagnostics(string, double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, int, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, Microsoft.Azure.Cosmos.PartitionKey, string)
+  nameWithType.vb: CosmosRepository(Of T).LogFeedResponseDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, String)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogFeedResponseDiagnostics(String, Double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, Integer, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), Microsoft.Azure.Cosmos.PartitionKey, String)
+  name.vb: LogFeedResponseDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, String)
   spec.csharp:
-  - uid: Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
     name: LogFeedResponseDiagnostics
-    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_String_
   - name: (
   - uid: System.String
     name: string
@@ -1516,11 +1529,17 @@ references:
     name: PartitionKey
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
   spec.vb:
-  - uid: Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
     name: LogFeedResponseDiagnostics
-    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_String_
   - name: (
   - uid: System.String
     name: String
@@ -1582,22 +1601,28 @@ references:
     name: PartitionKey
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
-- uid: Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
-  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
+- uid: Benday.CosmosDb.Repositories.CosmosRepository{{T}}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
   parent: Benday.CosmosDb.Repositories.CosmosRepository{{T}}
-  definition: Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
-  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_
-  name: LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, bool)
-  nameWithType: CosmosRepository<T>.LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, bool)
-  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogQueryTotalDiagnostics(string, double, System.TimeSpan, int, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, Microsoft.Azure.Cosmos.PartitionKey, bool)
-  nameWithType.vb: CosmosRepository(Of T).LogQueryTotalDiagnostics(String, Double, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, Boolean)
-  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogQueryTotalDiagnostics(String, Double, System.TimeSpan, Integer, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), Microsoft.Azure.Cosmos.PartitionKey, Boolean)
-  name.vb: LogQueryTotalDiagnostics(String, Double, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, Boolean)
+  definition: Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_System_String_
+  name: LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, bool, string)
+  nameWithType: CosmosRepository<T>.LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, bool, string)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogQueryTotalDiagnostics(string, double, System.TimeSpan, int, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, Microsoft.Azure.Cosmos.PartitionKey, bool, string)
+  nameWithType.vb: CosmosRepository(Of T).LogQueryTotalDiagnostics(String, Double, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, Boolean, String)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogQueryTotalDiagnostics(String, Double, System.TimeSpan, Integer, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), Microsoft.Azure.Cosmos.PartitionKey, Boolean, String)
+  name.vb: LogQueryTotalDiagnostics(String, Double, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, Boolean, String)
   spec.csharp:
-  - uid: Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
     name: LogQueryTotalDiagnostics
-    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_System_String_
   - name: (
   - uid: System.String
     name: string
@@ -1657,11 +1682,17 @@ references:
     name: bool
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
   spec.vb:
-  - uid: Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository{`0}.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
     name: LogQueryTotalDiagnostics
-    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_System_String_
   - name: (
   - uid: System.String
     name: String
@@ -1723,6 +1754,12 @@ references:
     name: Boolean
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
 - uid: Benday.CosmosDb.Repositories.CosmosRepository{{T}}.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
   commentId: M:Benday.CosmosDb.Repositories.CosmosRepository{`0}.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
@@ -2863,6 +2900,14 @@ references:
   fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>._sink
   nameWithType.vb: CosmosRepository(Of T)._sink
   fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T)._sink
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1._captureIndexMetrics
+  commentId: F:Benday.CosmosDb.Repositories.CosmosRepository`1._captureIndexMetrics
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1__captureIndexMetrics
+  name: _captureIndexMetrics
+  nameWithType: CosmosRepository<T>._captureIndexMetrics
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>._captureIndexMetrics
+  nameWithType.vb: CosmosRepository(Of T)._captureIndexMetrics
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T)._captureIndexMetrics
 - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.GetContainerAsync
   commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.GetContainerAsync
   href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_GetContainerAsync
@@ -3406,20 +3451,20 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.timespan
   - name: )
-- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
-  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
   isExternal: true
-  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_
-  name: LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey)
-  nameWithType: CosmosRepository<T>.LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey)
-  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogFeedResponseDiagnostics(string, double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, int, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, Microsoft.Azure.Cosmos.PartitionKey)
-  nameWithType.vb: CosmosRepository(Of T).LogFeedResponseDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey)
-  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogFeedResponseDiagnostics(String, Double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, Integer, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), Microsoft.Azure.Cosmos.PartitionKey)
-  name.vb: LogFeedResponseDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey)
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_String_
+  name: LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, string)
+  nameWithType: CosmosRepository<T>.LogFeedResponseDiagnostics(string, double, CosmosDiagnostics, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, string)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogFeedResponseDiagnostics(string, double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, int, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, Microsoft.Azure.Cosmos.PartitionKey, string)
+  nameWithType.vb: CosmosRepository(Of T).LogFeedResponseDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, String)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogFeedResponseDiagnostics(String, Double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, Integer, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), Microsoft.Azure.Cosmos.PartitionKey, String)
+  name.vb: LogFeedResponseDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, String)
   spec.csharp:
-  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
     name: LogFeedResponseDiagnostics
-    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_String_
   - name: (
   - uid: System.String
     name: string
@@ -3479,11 +3524,17 @@ references:
     name: PartitionKey
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
   spec.vb:
-  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey)
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
     name: LogFeedResponseDiagnostics
-    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogFeedResponseDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_String_
   - name: (
   - uid: System.String
     name: String
@@ -3545,21 +3596,27 @@ references:
     name: PartitionKey
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
-- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
-  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
   isExternal: true
-  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_
-  name: LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, bool)
-  nameWithType: CosmosRepository<T>.LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, bool)
-  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogQueryTotalDiagnostics(string, double, System.TimeSpan, int, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, Microsoft.Azure.Cosmos.PartitionKey, bool)
-  nameWithType.vb: CosmosRepository(Of T).LogQueryTotalDiagnostics(String, Double, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, Boolean)
-  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogQueryTotalDiagnostics(String, Double, System.TimeSpan, Integer, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), Microsoft.Azure.Cosmos.PartitionKey, Boolean)
-  name.vb: LogQueryTotalDiagnostics(String, Double, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, Boolean)
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_System_String_
+  name: LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, bool, string)
+  nameWithType: CosmosRepository<T>.LogQueryTotalDiagnostics(string, double, TimeSpan, int, string, IReadOnlyDictionary<string, object>, PartitionKey, bool, string)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogQueryTotalDiagnostics(string, double, System.TimeSpan, int, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, Microsoft.Azure.Cosmos.PartitionKey, bool, string)
+  nameWithType.vb: CosmosRepository(Of T).LogQueryTotalDiagnostics(String, Double, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, Boolean, String)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogQueryTotalDiagnostics(String, Double, System.TimeSpan, Integer, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), Microsoft.Azure.Cosmos.PartitionKey, Boolean, String)
+  name.vb: LogQueryTotalDiagnostics(String, Double, TimeSpan, Integer, String, IReadOnlyDictionary(Of String, Object), PartitionKey, Boolean, String)
   spec.csharp:
-  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
     name: LogQueryTotalDiagnostics
-    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_System_String_
   - name: (
   - uid: System.String
     name: string
@@ -3619,11 +3676,17 @@ references:
     name: bool
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
   spec.vb:
-  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean)
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
     name: LogQueryTotalDiagnostics
-    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogQueryTotalDiagnostics_System_String_System_Double_System_TimeSpan_System_Int32_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__Microsoft_Azure_Cosmos_PartitionKey_System_Boolean_System_String_
   - name: (
   - uid: System.String
     name: String
@@ -3685,6 +3748,12 @@ references:
     name: Boolean
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
 - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
   commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
@@ -4380,7 +4449,7 @@ references:
   - name: )
 - uid: Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor*
   commentId: Overload:Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1.#ctor
-  href: Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Repositories_CosmosTenantItemRepository__0___Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_
+  href: Benday.CosmosDb.Repositories.CosmosTenantItemRepository-1.html#Benday_CosmosDb_Repositories_CosmosTenantItemRepository_1__ctor_Microsoft_Extensions_Options_IOptions_Benday_CosmosDb_Repositories_CosmosRepositoryOptions__0___Microsoft_Azure_Cosmos_CosmosClient_Microsoft_Extensions_Logging_ILogger_Benday_CosmosDb_Repositories_CosmosTenantItemRepository__0___Benday_CosmosDb_Diagnostics_ICosmosQueryLogSink_Benday_CosmosDb_Diagnostics_CosmosDiagnosticsRegistry_
   name: CosmosTenantItemRepository
   nameWithType: CosmosTenantItemRepository<T>.CosmosTenantItemRepository
   fullName: Benday.CosmosDb.Repositories.CosmosTenantItemRepository<T>.CosmosTenantItemRepository
@@ -4484,6 +4553,13 @@ references:
   name: ICosmosQueryLogSink
   nameWithType: ICosmosQueryLogSink
   fullName: Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
+- uid: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html
+  name: CosmosDiagnosticsRegistry
+  nameWithType: CosmosDiagnosticsRegistry
+  fullName: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
 - uid: Microsoft.Extensions.Options.IOptions`1
   commentId: T:Microsoft.Extensions.Options.IOptions`1
   isExternal: true

@@ -27,8 +27,6 @@ items:
   syntax:
     content: 'public interface IParentedItem : ITenantItem, ICosmosIdentity, IParentedItem<string>, ITenantItem<string>, IEntityIdentity<string>'
     content.vb: Public Interface IParentedItem Inherits ITenantItem, ICosmosIdentity, IParentedItem(Of String), ITenantItem(Of String), IEntityIdentity(Of String)
-  derivedClasses:
-  - Benday.CosmosDb.DomainModels.ParentedItemBase
   inheritedMembers:
   - Benday.CosmosDb.DomainModels.ICosmosIdentity.TimestampUnixStyle
   - Benday.CosmosDb.DomainModels.ICosmosIdentity.Timestamp

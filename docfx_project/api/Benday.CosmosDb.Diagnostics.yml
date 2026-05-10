@@ -4,9 +4,11 @@ items:
   commentId: N:Benday.CosmosDb.Diagnostics
   id: Benday.CosmosDb.Diagnostics
   children:
+  - Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
   - Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
   - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
   - Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+  - Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
   - Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
   - Benday.CosmosDb.Diagnostics.ICosmosQueryLogSink
   - Benday.CosmosDb.Diagnostics.NoOpCosmosQueryLogSink
@@ -20,6 +22,13 @@ items:
   assemblies:
   - Benday.CosmosDb
 references:
+- uid: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry.html
+  name: CosmosDiagnosticsRegistry
+  nameWithType: CosmosDiagnosticsRegistry
+  fullName: Benday.CosmosDb.Diagnostics.CosmosDiagnosticsRegistry
 - uid: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
   commentId: T:Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
   parent: Benday.CosmosDb.Diagnostics
@@ -41,6 +50,13 @@ references:
   name: CosmosQueryEventKind
   nameWithType: CosmosQueryEventKind
   fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind
+- uid: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
+  commentId: T:Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
+  parent: Benday.CosmosDb.Diagnostics
+  href: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html
+  name: CosmosRepositoryDiagnosticsOptions
+  nameWithType: CosmosRepositoryDiagnosticsOptions
+  fullName: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions
 - uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
   commentId: T:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink
   href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html

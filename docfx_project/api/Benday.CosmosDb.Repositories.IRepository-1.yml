@@ -37,10 +37,6 @@ items:
     - id: T
       description: Domain model type that is managed by this repository
     content.vb: Public Interface IRepository(Of T As Class)
-  derivedClasses:
-  - Benday.CosmosDb.Repositories.CosmosDbParentedItemRepository`1
-  - Benday.CosmosDb.Repositories.CosmosRepository`1
-  - Benday.CosmosDb.Repositories.CosmosTenantItemRepository`1
   nameWithType.vb: IRepository(Of T)
   fullName.vb: Benday.CosmosDb.Repositories.IRepository(Of T)
   name.vb: IRepository(Of T)

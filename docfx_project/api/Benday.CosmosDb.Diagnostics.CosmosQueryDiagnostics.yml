@@ -7,6 +7,7 @@ items:
   children:
   - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Duration
   - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.EventKind
+  - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IndexMetrics
   - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition
   - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.Parameters
   - Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.PartitionKey
@@ -442,6 +443,50 @@ items:
       type: System.Boolean
     content.vb: Public Property IsCrossPartition As Boolean
   overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IsCrossPartition*
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IndexMetrics
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IndexMetrics
+  id: IndexMetrics
+  parent: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics
+  langs:
+  - csharp
+  - vb
+  name: IndexMetrics
+  nameWithType: CosmosQueryDiagnostics.IndexMetrics
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IndexMetrics
+  type: Property
+  source:
+    remote:
+      path: Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: IndexMetrics
+    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryDiagnostics.cs
+    startLine: 97
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Cosmos DB index utilization information for the query, captured from
+
+    <code>FeedResponse&lt;T&gt;.IndexMetrics</code>. Populated only when the
+
+    repository's <xref href="Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics" data-throw-if-not-resolved="false"></xref>
+
+    flag is enabled (off by default — incurs SDK overhead). Null otherwise.
+
+    Always null for <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation" data-throw-if-not-resolved="false"></xref> events.
+
+    The format is the SDK-formatted multi-line string and is not parsed
+
+    by the library.
+  example: []
+  syntax:
+    content: public string? IndexMetrics { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property IndexMetrics As String
+  overload: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IndexMetrics*
 references:
 - uid: Benday.CosmosDb.Diagnostics
   commentId: N:Benday.CosmosDb.Diagnostics
@@ -1014,3 +1059,15 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics
+  commentId: P:Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics
+  href: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.html#Benday_CosmosDb_Diagnostics_CosmosRepositoryDiagnosticsOptions_CaptureIndexMetrics
+  name: CaptureIndexMetrics
+  nameWithType: CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics
+  fullName: Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions.CaptureIndexMetrics
+- uid: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IndexMetrics*
+  commentId: Overload:Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IndexMetrics
+  href: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.html#Benday_CosmosDb_Diagnostics_CosmosQueryDiagnostics_IndexMetrics
+  name: IndexMetrics
+  nameWithType: CosmosQueryDiagnostics.IndexMetrics
+  fullName: Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics.IndexMetrics
