@@ -38,7 +38,7 @@ dotnet test Benday.Identity.CosmosDb.IntegrationTests/Benday.Identity.CosmosDb.I
 | **Benday.CosmosDb.SampleApp.Api** | net10.0 | Sample domain models and repositories (Person, Note, Comment, LookupValue) |
 | **Benday.CosmosDb.SampleApp.WebUi** | net10.0 | Sample ASP.NET Core MVC app |
 
-Unit test projects multi-target net9.0 and net10.0. All packages are version 6.0.2-alpha with `GeneratePackageOnBuild`.
+Unit test projects multi-target net9.0 and net10.0. All packages are version 6.0.10 with `GeneratePackageOnBuild`. The Identity packages now share the same version line as the core package; they jumped from 3.x to 6.x to align release cadence.
 
 ## Architecture Overview
 
@@ -72,6 +72,17 @@ helper.RegisterRepository<LookupValue, ILookupValueRepository, // custom repo, s
 Per-repository overrides available: `connectionString`, `databaseName`, `containerName`, `partitionKey`, `useHierarchicalPartitionKey`, `useDefaultAzureCredential`, `withCreateStructures`.
 
 Template methods `BeforeSaveBatch` and `AfterSaveBatch` are available for batch save customization.
+
+### Query Diagnostics
+
+Every point operation, feed-iterator page, and query total emits a `CosmosQueryDiagnostics` event (event kinds: `PointOperation`, `FeedResponsePage`, `QueryTotal`). Two parallel channels deliver them — both fire for every event:
+
+- `OnQueryDiagnostics(CosmosQueryDiagnostics)` — virtual hook on `CosmosRepository<T>` for per-repository handling.
+- `ICosmosQueryLogSink` — app-wide singleton resolved from DI. Default is `NoOpCosmosQueryLogSink`; the library ships `FileCosmosQueryLogSink` (NDJSON via background queue, configured by `CosmosFileLogSinkOptions`). Register custom sinks via `helper.WithQueryLogSink<TSink>()`.
+
+Per-entity options live in `CosmosDiagnosticsRegistry`, configured fluently via `helper.ConfigureDiagnostics<TEntity>(o => ...)` or `helper.ConfigureDiagnosticsDefault(o => ...)`. The first opt-in flag is `CaptureIndexMetrics` — when on, the repository sets `PopulateIndexMetrics = true` on every `QueryRequestOptions` it builds and copies `FeedResponse.IndexMetrics` (the SDK's formatted index-utilization string) into the `IndexMetrics` field of the diagnostics event. Off by default because of measurable RU/latency overhead.
+
+Repository constructors accept optional `ICosmosQueryLogSink? sink = null` and `CosmosDiagnosticsRegistry? diagnosticsRegistry = null` trailing parameters. Derived classes that pass `base(...)` explicitly must forward both. DI resolves the registered singletons automatically.
 
 ### Configuration
 
