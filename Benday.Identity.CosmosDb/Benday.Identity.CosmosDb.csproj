@@ -21,6 +21,7 @@
     <Version>$(TheVersion)</Version>
     <Description>ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Provides user store, role store, claims, lockout, two-factor authentication, and external login support. Built on top of the Benday.CosmosDb repository pattern library.</Description>
     <PackageReleaseNotes>
+v6.0.10 - Aligned package version with the Benday.CosmosDb v6 core library so the two packages release together. Added LoginPageMessage option to CosmosIdentityOptions — an optional informational message rendered above the sign-in form on the UI package's login page (newlines preserved, HTML escaped). When null/empty (the default), nothing is rendered. Useful for displaying seeded test credentials in dev environments or scheduled-maintenance notices;
 v3.2.0 - Fixed some pretty massive bugs in the data access layer where partition keys were being ignored;
 v3.1.2 - No changes (version bump to match UI package).
 v3.1.1 - Fix CS0108 warnings: added 'new' keyword to GetAllAsync() in ICosmosDbClaimDefinitionStore and CosmosDbClaimDefinitionStore to explicitly hide inherited member.
