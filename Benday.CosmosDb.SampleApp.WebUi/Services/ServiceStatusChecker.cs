@@ -1,9 +1,22 @@
+using Benday.AzureStorage.Configuration;
+using Benday.CosmosDb.Utilities;
 using System.Net.Sockets;
 
 namespace Benday.CosmosDb.SampleApp.WebUi.Services;
 
 public class ServiceStatusChecker
 {
+    private readonly CosmosConfig _CosmosConfig;
+    private readonly AzureStorageConfig _AzureStorageConfig;
+
+    public ServiceStatusChecker(
+        IConfiguration configuration,
+        AzureStorageConfig azureStorageConfig)
+    {
+        _CosmosConfig = configuration.GetCosmosConfig();
+        _AzureStorageConfig = azureStorageConfig;
+    }
+
     public bool HasPassed { get; private set; }
 
     public bool CosmosDbReachable { get; private set; }
@@ -14,13 +27,16 @@ public class ServiceStatusChecker
 
     public async Task CheckAsync()
     {
-        CosmosDbReachable = await CheckEndpointAsync("localhost", 8081);
+        var cosmosUri = new Uri(_CosmosConfig.Endpoint);
+
+        CosmosDbReachable = await CheckEndpointAsync(cosmosUri.Host, cosmosUri.Port);
         if (!CosmosDbReachable)
         {
             CosmosDbError = "Cannot connect to Cosmos DB Emulator on localhost:8081";
         }
 
-        AzuriteReachable = await CheckEndpointAsync("localhost", 10000);
+        // this assumes that the cosmos container also hosts azurite
+        AzuriteReachable = await CheckEndpointAsync(cosmosUri.Host, 10000);
         if (!AzuriteReachable)
         {
             AzuriteError = "Cannot connect to Azurite Blob Service on localhost:10000";

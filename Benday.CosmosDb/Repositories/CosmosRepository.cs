@@ -246,8 +246,18 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         try
         {
             var queryDefinition = query.ToQueryDefinition();
-            queryText = queryDefinition.QueryText;
-            parameters = ExtractParameters(queryDefinition);
+
+            if (queryDefinition is null)
+            {
+                Logger.LogWarning($"Call to query.ToQueryDefinition() returned null for '{queryDescription}'");
+                queryText = string.Empty;
+                parameters = null;
+            }
+            else
+            {
+                queryText = queryDefinition.QueryText;
+                parameters = ExtractParameters(queryDefinition);
+            }
         }
         catch (Exception ex)
         {
