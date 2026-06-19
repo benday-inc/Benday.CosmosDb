@@ -32,14 +32,14 @@ public class ServiceStatusChecker
         CosmosDbReachable = await CheckEndpointAsync(cosmosUri.Host, cosmosUri.Port);
         if (!CosmosDbReachable)
         {
-            CosmosDbError = "Cannot connect to Cosmos DB Emulator on localhost:8081";
+            CosmosDbError = $"Cannot connect to Cosmos DB Emulator on {cosmosUri.Host}:8081";
         }
 
         // this assumes that the cosmos container also hosts azurite
         AzuriteReachable = await CheckEndpointAsync(cosmosUri.Host, 10000);
         if (!AzuriteReachable)
         {
-            AzuriteError = "Cannot connect to Azurite Blob Service on localhost:10000";
+            AzuriteError = $"Cannot connect to Azurite Blob Service on {cosmosUri.Host}:10000";
         }
 
         HasPassed = CosmosDbReachable && AzuriteReachable;
