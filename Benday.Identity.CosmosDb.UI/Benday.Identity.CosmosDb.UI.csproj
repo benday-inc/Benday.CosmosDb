@@ -22,6 +22,7 @@
     <Version>$(TheVersion)</Version>
     <Description>ASP.NET Core Identity UI for Azure Cosmos DB. Provides pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and AddCosmosIdentityWithUI() convenience method that combines core identity registration with cookie authentication. Built on top of Benday.Identity.CosmosDb.</Description>
     <PackageReleaseNotes>
+v6.1 - Bug fixes related to Benday.CosmosDb.CosmosRepository null reference exception;		
 v6.0.10 - Aligned package version with the Benday.CosmosDb v6 core library so the two packages release together. The login page (/Account/Login) now renders the optional CosmosIdentityOptions.LoginPageMessage as an informational banner above the sign-in form when the option is set. Newlines in the message are preserved (CSS white-space: pre-line) and HTML is escaped, so arbitrary multi-line text is safe. Useful for displaying seeded test credentials in dev environments or scheduled-maintenance notices;
 v3.2.0 - Fixed some pretty massive bugs in the data access layer where partition keys were being ignored; Made the root partition key configurable via options and also default to 'SYSTEM';
 v3.1.2 - Fix passkey 400 errors: add anti-forgery token to all WebAuthn fetch POST requests.
