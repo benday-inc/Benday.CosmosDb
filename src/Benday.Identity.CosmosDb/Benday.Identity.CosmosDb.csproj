@@ -41,7 +41,7 @@ v1.0.0 - Initial release with full ASP.NET Core Identity store implementations f
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\bdc_mark_128_128.png">
+    <None Include="..\..\bdc_mark_128_128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

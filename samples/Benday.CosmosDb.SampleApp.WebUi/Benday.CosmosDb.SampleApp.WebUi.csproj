@@ -14,9 +14,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Benday.CosmosDb.SampleApp.Api\Benday.CosmosDb.SampleApp.Api.csproj" />
-    <ProjectReference Include="..\Benday.CosmosDb\Benday.CosmosDb.csproj" />
-    <ProjectReference Include="..\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
-    <ProjectReference Include="..\Benday.Identity.CosmosDb.UI\Benday.Identity.CosmosDb.UI.csproj" />
+    <ProjectReference Include="..\..\src\Benday.CosmosDb\Benday.CosmosDb.csproj" />
+    <ProjectReference Include="..\..\src\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
+    <ProjectReference Include="..\..\src\Benday.Identity.CosmosDb.UI\Benday.Identity.CosmosDb.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

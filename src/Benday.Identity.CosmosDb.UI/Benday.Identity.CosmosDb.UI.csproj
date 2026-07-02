@@ -41,7 +41,7 @@ v2.0.0 - BREAKING: AddCosmosIdentity() moved to core Benday.Identity.CosmosDb pa
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\bdc_mark_128_128.png">
+    <None Include="..\..\bdc_mark_128_128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

@@ -22,7 +22,7 @@
     <PackageReference Include="Moq" Version="4.*" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
-    <ProjectReference Include="..\Benday.Identity.CosmosDb.UI\Benday.Identity.CosmosDb.UI.csproj" />
+    <ProjectReference Include="..\..\src\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
+    <ProjectReference Include="..\..\src\Benday.Identity.CosmosDb.UI\Benday.Identity.CosmosDb.UI.csproj" />
   </ItemGroup>
 </Project>

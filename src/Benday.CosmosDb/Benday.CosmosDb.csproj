@@ -55,11 +55,11 @@ v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository util
     <Compile Remove="Utilities\CosmosConfigurationUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\bdc_mark_128_128.png">
+    <None Include="..\..\bdc_mark_128_128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\README.md">
+    <None Include="..\..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

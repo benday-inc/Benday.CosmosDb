@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Benday.CosmosDb\Benday.CosmosDb.csproj" />
+    <ProjectReference Include="..\..\src\Benday.CosmosDb\Benday.CosmosDb.csproj" />
   </ItemGroup>
 
 </Project>

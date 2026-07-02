@@ -5,23 +5,22 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Benday.Common.Testing" Version="2.*" />
     <PackageReference Include="coverlet.collector" Version="8.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.*" />
     <PackageReference Include="xunit" Version="2.*" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.*" />
+    <PackageReference Include="Benday.Common" Version="9.*" />
+    <PackageReference Include="Benday.Common.Testing" Version="2.*" />
+    <PackageReference Include="Moq" Version="4.*" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Benday.CosmosDb.SampleApp.Api\Benday.CosmosDb.SampleApp.Api.csproj" />
-    <ProjectReference Include="..\Benday.CosmosDb.SampleApp.WebUi\Benday.CosmosDb.SampleApp.WebUi.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\..\src\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
+    <ProjectReference Include="..\..\src\Benday.Identity.CosmosDb.UI\Benday.Identity.CosmosDb.UI.csproj" />
   </ItemGroup>
 </Project>

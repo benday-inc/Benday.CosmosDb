@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Benday.CosmosDb.MigrationTool\Benday.CosmosDb.MigrationTool.csproj" />
+    <ProjectReference Include="..\..\src\Benday.CosmosDb.MigrationTool\Benday.CosmosDb.MigrationTool.csproj" />
   </ItemGroup>
 
 </Project>

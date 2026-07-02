@@ -25,7 +25,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="3.*" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Benday.CosmosDb\Benday.CosmosDb.csproj" />
+    <ProjectReference Include="..\..\src\Benday.CosmosDb\Benday.CosmosDb.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Benday.Common" Version="9.*" />
