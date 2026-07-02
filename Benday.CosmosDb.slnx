@@ -1,0 +1,31 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Misc/">
+    <File Path=".gitignore" />
+    <File Path="bdc_mark_128_128.png" />
+    <File Path="copy-docfx-site-to-docs.ps1" />
+    <File Path="copy-docfx-site-to-docs.sh" />
+    <File Path="generate-docfx-docs.ps1" />
+    <File Path="generate-docfx-docs.sh" />
+    <File Path="LICENSE.txt" />
+    <File Path="MIGRATION-v6.md" />
+    <File Path="README.md" />
+    <File Path="serve-docfx-docs.ps1" />
+    <File Path="serve-docfx-docs.sh" />
+  </Folder>
+  <Project Path="samples/Benday.CosmosDb.SampleApp.Api/Benday.CosmosDb.SampleApp.Api.csproj" />
+  <Project Path="samples/Benday.CosmosDb.SampleApp.WebUi/Benday.CosmosDb.SampleApp.WebUi.csproj" />
+  <Project Path="src/Benday.CosmosDb.MigrationTool/Benday.CosmosDb.MigrationTool.csproj" />
+  <Project Path="src/Benday.CosmosDb/Benday.CosmosDb.csproj" />
+  <Project Path="src/Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj" />
+  <Project Path="src/Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj" />
+  <Project Path="test/Benday.CosmosDb.MigrationTool.Tests/Benday.CosmosDb.MigrationTool.Tests.csproj" />
+  <Project Path="test/Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj" />
+  <Project Path="test/Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj" />
+  <Project Path="test/Benday.Identity.CosmosDb.IntegrationTests/Benday.Identity.CosmosDb.IntegrationTests.csproj" />
+  <Project Path="test/Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj" />
+</Solution>
