@@ -64,7 +64,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: nuget-packages-identity-cosmosdb
-          path: ./artifacts/*.nupkg
+          path: |
+            ./artifacts/*.nupkg
+            ./artifacts/*.snupkg
 
   deploy:
     needs: build

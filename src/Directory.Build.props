@@ -12,6 +12,15 @@
         <NoWarn>$(NoWarn);CS1591</NoWarn>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+        <!-- Ship a .snupkg symbol package alongside every NuGet package so Source Link
+             can step consumers into the exact library source at debug time. -->
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <!-- On CI, normalize source paths in the PDB (deterministic build) so Source Link
+             resolves against the committed sources rather than the build agent's file system. -->
+        <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
     </PropertyGroup>
 
     <ItemGroup>

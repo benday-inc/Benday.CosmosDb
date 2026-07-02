@@ -59,7 +59,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: nuget-packages-cosmosdb
-          path: ./artifacts/*.nupkg
+          path: |
+            ./artifacts/*.nupkg
+            ./artifacts/*.snupkg
 
   integration-tests:
     needs: unit-tests
