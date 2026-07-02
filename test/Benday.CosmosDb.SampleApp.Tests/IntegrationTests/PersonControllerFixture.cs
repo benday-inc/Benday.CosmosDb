@@ -18,12 +18,12 @@ public class PersonControllerFixture
         var client = factory.CreateClient();
 
         // act
-        var response = await client.GetAsync("/person");
+        var response = await client.GetAsync("/person", TestContext.Current.CancellationToken);
 
         // assert
         Assert.NotNull(response);
 
-        var content = await response.Content.ReadAsStringAsync();
+        var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
 
         if (response.IsSuccessStatusCode == false)
         {
@@ -53,12 +53,12 @@ public class PersonControllerFixture
             });
 
         // act
-        var response = await client.PostAsync("person/edit/", contentToPost);
+        var response = await client.PostAsync("person/edit/", contentToPost, TestContext.Current.CancellationToken);
 
         // assert
         Assert.NotNull(response);
 
-        var content = await response.Content.ReadAsStringAsync();
+        var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
 
         response.EnsureSuccessStatusCode();
     }
@@ -83,12 +83,12 @@ public class PersonControllerFixture
             });
 
         // act
-        var response = await client.PostAsync("person/edit/", contentToPost);
+        var response = await client.PostAsync("person/edit/", contentToPost, TestContext.Current.CancellationToken);
 
         // assert
         Assert.NotNull(response);
 
-        var content = await response.Content.ReadAsStringAsync();
+        var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
 
         response.EnsureSuccessStatusCode();
     }

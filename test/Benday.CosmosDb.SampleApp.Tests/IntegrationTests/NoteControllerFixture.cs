@@ -24,12 +24,12 @@ public class NoteControllerFixture : TestClassBase
         var client = factory.CreateClient();
 
         // act
-        var response = await client.GetAsync("/note");
+        var response = await client.GetAsync("/note", TestContext.Current.CancellationToken);
 
         // assert
         Assert.NotNull(response);
 
-        var content = await response.Content.ReadAsStringAsync();
+        var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
 
         if (response.IsSuccessStatusCode == false)
         {
@@ -59,12 +59,12 @@ public class NoteControllerFixture : TestClassBase
             });
 
         // act
-        var response = await client.PostAsync("note/edit/", contentToPost);
+        var response = await client.PostAsync("note/edit/", contentToPost, TestContext.Current.CancellationToken);
 
         // assert
         Assert.NotNull(response);
 
-        var content = await response.Content.ReadAsStringAsync();
+        var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
 
         response.EnsureSuccessStatusCode();
     }

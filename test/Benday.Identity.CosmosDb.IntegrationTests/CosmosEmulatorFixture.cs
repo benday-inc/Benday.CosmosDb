@@ -19,7 +19,7 @@ public class CosmosEmulatorFixture : IAsyncLifetime
     public const string UsersContainerName = "Users";
     public const string RolesContainerName = "Roles";
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         Config = new CosmosConfigBuilder()
             .ForEmulator()
@@ -49,10 +49,10 @@ public class CosmosEmulatorFixture : IAsyncLifetime
                 new List<string> { "/tenantId", "/entityType" }));
     }
 
-    public Task DisposeAsync()
+    public ValueTask DisposeAsync()
     {
         Client?.Dispose();
-        return Task.CompletedTask;
+        return ValueTask.CompletedTask;
     }
 }
 

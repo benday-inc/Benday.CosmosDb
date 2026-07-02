@@ -41,7 +41,7 @@ public class EmulatorConnectivityFixture : IntegrationTestBase
     public async Task CanAccessDatabase()
     {
         var database = Emulator.Client.GetDatabase(CosmosEmulatorFixture.DatabaseName);
-        var response = await database.ReadAsync();
+        var response = await database.ReadAsync(cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(response);
         Assert.Equal(CosmosEmulatorFixture.DatabaseName, response.Database.Id);
@@ -53,7 +53,7 @@ public class EmulatorConnectivityFixture : IntegrationTestBase
     {
         var database = Emulator.Client.GetDatabase(CosmosEmulatorFixture.DatabaseName);
         var container = database.GetContainer(CosmosEmulatorFixture.UsersContainerName);
-        var response = await container.ReadContainerAsync();
+        var response = await container.ReadContainerAsync(cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(response);
         Assert.Equal(CosmosEmulatorFixture.UsersContainerName, response.Resource.Id);
@@ -65,7 +65,7 @@ public class EmulatorConnectivityFixture : IntegrationTestBase
     {
         var database = Emulator.Client.GetDatabase(CosmosEmulatorFixture.DatabaseName);
         var container = database.GetContainer(CosmosEmulatorFixture.RolesContainerName);
-        var response = await container.ReadContainerAsync();
+        var response = await container.ReadContainerAsync(cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(response);
         Assert.Equal(CosmosEmulatorFixture.RolesContainerName, response.Resource.Id);
