@@ -6,15 +6,12 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="8.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.*" />
-    <PackageReference Include="xunit" Version="2.*" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.*" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.*" />
+    <PackageReference Include="xunit.v3.mtp-v2" Version="3.*" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Benday.Common" Version="9.*" />
@@ -24,5 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Benday.Identity.CosmosDb\Benday.Identity.CosmosDb.csproj" />
     <ProjectReference Include="..\..\src\Benday.Identity.CosmosDb.UI\Benday.Identity.CosmosDb.UI.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Xunit" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
-using Xunit.Abstractions;
+
 
 namespace Benday.CosmosDb.UnitTests;
 

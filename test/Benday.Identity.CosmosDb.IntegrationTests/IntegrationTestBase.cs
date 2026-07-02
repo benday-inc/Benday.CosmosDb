@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
-using Xunit.Abstractions;
+
 
 namespace Benday.Identity.CosmosDb.IntegrationTests;
 
