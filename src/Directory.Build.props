@@ -1,6 +1,15 @@
 <Project>
+    <!-- Chain up to the repo-root Directory.Build.props. MSBuild only auto-imports
+         the nearest Directory.Build.props, so without this the root one (which sets
+         UseProjectReferences and AzureCosmosDisableNewtonsoftJsonCheck) is shadowed. -->
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
     <PropertyGroup>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <!-- Keep generating the XML doc file (drives IntelliSense) but don't fail/nag
+             on public members that aren't documented yet. Remove this to surface CS1591
+             and document the API surface incrementally. -->
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
     </PropertyGroup>

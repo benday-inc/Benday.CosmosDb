@@ -206,8 +206,9 @@ public static class CosmosClientOptionsUtilities
     /// </summary>
     /// <param name="services"></param>
     /// <param name="connectionString"></param>
-    /// <param name="jsonNamingPolicy"></param>
     /// <param name="useGatewayMode"></param>
+    /// <param name="allowBulkExecution"></param>
+    /// <param name="jsonNamingPolicy"></param>
     public static void ConfigureCosmosClient(
         this IServiceCollection services,
         string connectionString,
@@ -284,6 +285,7 @@ public static class CosmosClientOptionsUtilities
     /// <param name="partitionKey">Partition key definition string</param>
     /// <param name="createStructures">Create structures as part of the instantiation of this repository class (NOTE: this should probably be false in production)</param>
     /// <param name="useHierarchicalPartitionKey">Use hierarchical partition key</param>
+    /// <param name="useDefaultAzureCredential">Authenticate using DefaultAzureCredential instead of the connection string key</param>
     public static void ConfigureRepository<TEntity>(
         this IServiceCollection services,
         string connectionString,
@@ -313,6 +315,8 @@ public static class CosmosClientOptionsUtilities
     /// <param name="containerName"></param>
     /// <param name="partitionKey"></param>
     /// <param name="createStructures"></param>
+    /// <param name="useHierarchicalPartitionKey"></param>
+    /// <param name="useDefaultAzureCredential"></param>
     public static void ConfigureRepository<TEntity, TInterface, TImplementation>(
         this IServiceCollection services,
         string connectionString,
@@ -401,6 +405,7 @@ public static class CosmosClientOptionsUtilities
     /// <param name="partitionKey"></param>
     /// <param name="createStructures"></param>
     /// <param name="useHierarchicalPartitionKey"></param>
+    /// <param name="useDefaultAzureCredential"></param>
     public static void RegisterOptionsForRepository<T>(
         this IServiceCollection services,
         string connectionString,

@@ -16,6 +16,9 @@ namespace Benday.CosmosDb.Repositories;
 /// <typeparam name="T">Domain model type managed by the repository</typeparam>
 /// <param name="options">Configuration options for the repository</param>
 /// <param name="client">Instance of the cosmos db client. NOTE: for performance reasons, this should probably be a singleton in the application.</param>
+/// <param name="logger">Logger for the repository</param>
+/// <param name="sink">Optional sink that receives query diagnostics events</param>
+/// <param name="diagnosticsRegistry">Optional registry of per-entity diagnostics options</param>
 public class CosmosTenantItemRepository<T>(
         IOptions<CosmosRepositoryOptions<T>> options,
         CosmosClient client,

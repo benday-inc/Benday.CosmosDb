@@ -766,7 +766,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// NOTE: this almost certainly performs a cross-partition query and should be used with caution because
     /// it does not use a partition key.
     /// </summary>
-    /// <param name="Id">Id of the entity</param>
+    /// <param name="id">Id of the entity</param>
     /// <returns>The first matching entity</returns>
     public async Task<T?> GetByIdAsync(string id)
     {
