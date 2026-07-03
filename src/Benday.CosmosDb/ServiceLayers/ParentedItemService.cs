@@ -12,6 +12,10 @@ public class ParentedItemService<T> : TenantItemService<T>, IParentedItemService
 {
     private IParentedItemRepository<T> _ParentedRepository;
 
+    /// <summary>
+    /// Initializes a new instance backed by the given parented-item repository.
+    /// </summary>
+    /// <param name="repository">The parented-item repository this service delegates to.</param>
     public ParentedItemService(IParentedItemRepository<T> repository) : base(repository)
     {
         _ParentedRepository = repository;

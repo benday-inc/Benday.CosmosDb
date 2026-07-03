@@ -7,6 +7,10 @@ using Microsoft.Extensions.Options;
 
 namespace Benday.Identity.CosmosDb
 {
+    /// <summary>
+    /// ASP.NET Core Identity role store backed by Cosmos DB. Provides role
+    /// persistence, role claim management, and queryable role access.
+    /// </summary>
     public class CosmosDbRoleStore :
         CosmosTenantItemRepository<CosmosIdentityRole>,
         IRoleStore<CosmosIdentityRole>,
@@ -15,6 +19,13 @@ namespace Benday.Identity.CosmosDb
     {
         private readonly string _identityTenantId;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CosmosDbRoleStore"/> class.
+        /// </summary>
+        /// <param name="options">Repository options for the identity role container.</param>
+        /// <param name="client">The Cosmos DB client used to access the container.</param>
+        /// <param name="logger">The logger for diagnostic output.</param>
+        /// <param name="identityOptions">Identity options that supply the tenant id used for role storage.</param>
         public CosmosDbRoleStore(
            IOptions<CosmosRepositoryOptions<CosmosIdentityRole>> options,
            CosmosClient client, ILogger<CosmosDbRoleStore> logger,
@@ -26,18 +37,21 @@ namespace Benday.Identity.CosmosDb
 
         #region IRoleStore
 
+        /// <inheritdoc/>
         public async Task<IdentityResult> CreateAsync(CosmosIdentityRole role, CancellationToken cancellationToken)
         {
             await SaveAsync(role);
             return IdentityResult.Success;
         }
 
+        /// <inheritdoc/>
         public async Task<IdentityResult> DeleteAsync(CosmosIdentityRole role, CancellationToken cancellationToken)
         {
             await DeleteAsync(role);
             return IdentityResult.Success;
         }
 
+        /// <inheritdoc/>
         public async Task<IdentityResult> UpdateAsync(CosmosIdentityRole role, CancellationToken cancellationToken)
         {
             role.ConcurrencyStamp = Guid.NewGuid().ToString();
@@ -45,11 +59,13 @@ namespace Benday.Identity.CosmosDb
             return IdentityResult.Success;
         }
 
+        /// <inheritdoc/>
         public async Task<CosmosIdentityRole?> FindByIdAsync(string roleId, CancellationToken cancellationToken)
         {
             return await GetByIdAsync(_identityTenantId, roleId);
         }
 
+        /// <inheritdoc/>
         public async Task<CosmosIdentityRole?> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
         {
             var queryContext = await GetQueryContextAsync(_identityTenantId);
@@ -58,16 +74,19 @@ namespace Benday.Identity.CosmosDb
             return results.FirstOrDefault();
         }
 
+        /// <inheritdoc/>
         public Task<string> GetRoleIdAsync(CosmosIdentityRole role, CancellationToken cancellationToken)
         {
             return Task.FromResult(role.Id);
         }
 
+        /// <inheritdoc/>
         public Task<string?> GetRoleNameAsync(CosmosIdentityRole role, CancellationToken cancellationToken)
         {
             return Task.FromResult<string?>(role.Name);
         }
 
+        /// <inheritdoc/>
         public Task SetRoleNameAsync(CosmosIdentityRole role, string? roleName, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(roleName))
@@ -79,17 +98,20 @@ namespace Benday.Identity.CosmosDb
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc/>
         public Task<string?> GetNormalizedRoleNameAsync(CosmosIdentityRole role, CancellationToken cancellationToken)
         {
             return Task.FromResult<string?>(role.NormalizedName);
         }
 
+        /// <inheritdoc/>
         public Task SetNormalizedRoleNameAsync(CosmosIdentityRole role, string? normalizedName, CancellationToken cancellationToken)
         {
             // no-op: normalized value is computed from Name
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc/>
         public void Dispose()
         {
         }
@@ -98,6 +120,7 @@ namespace Benday.Identity.CosmosDb
 
         #region IRoleClaimStore
 
+        /// <inheritdoc/>
         public Task AddClaimAsync(CosmosIdentityRole role, Claim claim, CancellationToken cancellationToken = default)
         {
             // Check for duplicates before adding
@@ -115,11 +138,13 @@ namespace Benday.Identity.CosmosDb
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc/>
         public Task<IList<Claim>> GetClaimsAsync(CosmosIdentityRole role, CancellationToken cancellationToken = default)
         {
             return Task.FromResult<IList<Claim>>(role.Claims.ToClaimList());
         }
 
+        /// <inheritdoc/>
         public Task RemoveClaimAsync(CosmosIdentityRole role, Claim claim, CancellationToken cancellationToken = default)
         {
             var roleClaim = role.Claims.Find(x => x.Type == claim.Type && x.Value == claim.Value);
@@ -136,6 +161,7 @@ namespace Benday.Identity.CosmosDb
 
         #region IQueryableRoleStore
 
+        /// <inheritdoc/>
         public IQueryable<CosmosIdentityRole> Roles
         {
             get

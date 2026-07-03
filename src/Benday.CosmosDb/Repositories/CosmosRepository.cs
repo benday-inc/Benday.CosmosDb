@@ -85,8 +85,10 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     public virtual string EntityType => typeof(T).Name;
 
 
+    /// <summary>Logger for this repository, available to derived classes.</summary>
     protected ILogger Logger { get; }
 
+    /// <summary>Resolved repository options (connection, database, container, partition key) for this entity type.</summary>
     protected readonly CosmosRepositoryOptions<T> _Options;
 
     /// <summary>
@@ -1095,6 +1097,15 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         }
     }
 
+    /// <summary>
+    /// Saves a single batch of items in one transactional batch, keyed by the batch's shared
+    /// partition key. Updates each item's ETag and timestamp on success and invokes the
+    /// <see cref="BeforeSaveBatch"/> / <see cref="AfterSaveBatch"/> hooks.
+    /// </summary>
+    /// <param name="batchCount">Total number of batches being saved.</param>
+    /// <param name="currentBatch">The 1-based index of this batch.</param>
+    /// <param name="batch">The items in this batch. All must share a partition key.</param>
+    /// <returns>The transactional batch response.</returns>
     protected virtual async Task<TransactionalBatchResponse> SaveBatchAsync(int batchCount, int currentBatch, T[] batch)
     {
         var partitionKey = GetPartitionKey(batch.First());
@@ -1141,11 +1152,27 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
         return response;
     }
 
+    /// <summary>
+    /// Template hook invoked after a batch executes. Override to inspect the response or perform
+    /// follow-up work. The default implementation does nothing.
+    /// </summary>
+    /// <param name="response">The transactional batch response.</param>
+    /// <param name="batch">The items in the batch.</param>
+    /// <param name="currentBatch">The 1-based index of this batch.</param>
+    /// <param name="batchCount">Total number of batches being saved.</param>
     protected virtual Task AfterSaveBatch(TransactionalBatchResponse response, T[] batch, int currentBatch, int batchCount)
     {
         return Task.CompletedTask;
     }
 
+    /// <summary>
+    /// Template hook invoked before a batch executes, after items are added to the transactional
+    /// batch. Override to add operations or validation. The default implementation does nothing.
+    /// </summary>
+    /// <param name="cosmosBatch">The transactional batch about to execute.</param>
+    /// <param name="batch">The items in the batch.</param>
+    /// <param name="currentBatch">The 1-based index of this batch.</param>
+    /// <param name="batchCount">Total number of batches being saved.</param>
     protected virtual Task BeforeSaveBatch(TransactionalBatch cosmosBatch, T[] batch, int currentBatch, int batchCount)
     {
         return Task.CompletedTask;

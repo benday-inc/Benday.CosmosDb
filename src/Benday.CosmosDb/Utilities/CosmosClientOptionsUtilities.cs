@@ -16,6 +16,10 @@ using Azure.Identity;
 namespace Benday.CosmosDb.Utilities;
 
 
+/// <summary>
+/// Helper methods for building <see cref="CosmosClientOptions"/> and registering the shared
+/// Cosmos client, repositories, and their options with the dependency injection container.
+/// </summary>
 public static class CosmosClientOptionsUtilities
 {
     /// <summary>
@@ -429,6 +433,13 @@ public static class CosmosClientOptionsUtilities
         services.AddTransient<CosmosRepositoryOptions<T>>();
     }
 
+    /// <summary>
+    /// Returns <paramref name="value"/> if it is non-empty; otherwise throws.
+    /// </summary>
+    /// <param name="value">The value to validate.</param>
+    /// <param name="valueName">Optional name used in the error message.</param>
+    /// <returns>The non-empty value.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when <paramref name="value"/> is null or whitespace.</exception>
     public static string ThrowIfEmptyOrNull(this string? value, string? valueName = null)
     {
         if (string.IsNullOrWhiteSpace(value) == true)

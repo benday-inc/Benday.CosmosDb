@@ -1,5 +1,9 @@
 namespace Benday.CosmosDb.DomainModels;
 
+/// <summary>
+/// A tenant-scoped entity that belongs to a parent entity. Adds a Cosmos-specific
+/// parent discriminator on top of the shared parented-item and tenant-item contracts.
+/// </summary>
 public interface IParentedItem
     : ITenantItem,
       Benday.Common.Interfaces.IParentedItem<string>

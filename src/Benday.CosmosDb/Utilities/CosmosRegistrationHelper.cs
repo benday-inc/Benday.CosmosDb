@@ -11,26 +11,72 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Benday.CosmosDb.Utilities;
 
 
+/// <summary>
+/// Registers Cosmos DB repositories and services with the dependency injection
+/// container. Reads default connection, database, container, and partition-key
+/// settings from a <see cref="CosmosConfig"/> and exposes them as defaults that
+/// each per-entity registration call can override.
+/// </summary>
 public class CosmosRegistrationHelper
 {
+    /// <summary>
+    /// Cosmos DB account endpoint (or connection string) used when registering repositories.
+    /// </summary>
     public string ConnectionString { get; private set; }
 
+    /// <summary>
+    /// When true, repositories create the database and container structures on startup if missing.
+    /// </summary>
     public bool WithCreateStructures { get; private set; }
+
+    /// <summary>
+    /// When true, the Cosmos client connects in gateway mode instead of direct mode.
+    /// </summary>
     public bool UseGatewayMode { get; private set; }
+
+    /// <summary>
+    /// When true, the Cosmos client enables bulk execution for higher-throughput batch operations. Defaults to true.
+    /// </summary>
     public bool AllowBulkExecution { get; private set; } = true;
+
+    /// <summary>
+    /// When true, containers are created with a hierarchical partition key (default path <c>/tenantId,/entityType</c>).
+    /// </summary>
     public bool UseHierarchicalPartitionKey { get; private set; }
+
+    /// <summary>
+    /// When true, the Cosmos client authenticates with <c>DefaultAzureCredential</c> instead of a connection-string key.
+    /// </summary>
     public bool UseDefaultAzureCredential { get; private set; }
 
+    /// <summary>
+    /// Default database name used when registering repositories.
+    /// </summary>
     public string DatabaseName { get; private set; } = string.Empty;
 
+    /// <summary>
+    /// Default container name used when registering repositories.
+    /// </summary>
     public string ContainerName { get; private set; } = string.Empty;
 
+    /// <summary>
+    /// Default partition key path used when registering repositories.
+    /// </summary>
     public string PartitionKey { get; private set; } = CosmosDbConstants.DefaultPartitionKey;
 
     private IServiceCollection _Services;
 
+    /// <summary>
+    /// The configuration this helper was constructed from, or null if constructed without one.
+    /// </summary>
     public CosmosConfig? Configuration { get; private set; }
 
+    /// <summary>
+    /// Initializes a new instance that reads its defaults from <paramref name="config"/> and
+    /// registers the shared Cosmos client on <paramref name="services"/>.
+    /// </summary>
+    /// <param name="services">The service collection to register repositories and the Cosmos client into.</param>
+    /// <param name="config">Connection and container settings used as registration defaults.</param>
     public CosmosRegistrationHelper(IServiceCollection services, CosmosConfig config)
     {
         _Services = services;
@@ -51,7 +97,7 @@ public class CosmosRegistrationHelper
     /// <summary>
     /// Registers a repository for a specific domain model entity type.
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TEntity">Entity type that inherits from <see cref="TenantItemBase"/>.</typeparam>
     public void RegisterRepository<TEntity>()
         where TEntity : TenantItemBase, new()
     {
@@ -63,9 +109,9 @@ public class CosmosRegistrationHelper
     /// <summary>
     /// Registers a repository for a specific domain model entity type using a custom implementation of the repository.
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    /// <typeparam name="TInterface"></typeparam>
-    /// <typeparam name="TImplementation"></typeparam>
+    /// <typeparam name="TEntity">Entity type that inherits from <see cref="TenantItemBase"/>.</typeparam>
+    /// <typeparam name="TInterface">The repository interface to register.</typeparam>
+    /// <typeparam name="TImplementation">The repository implementation to register.</typeparam>
     public void RegisterRepository<TEntity, TInterface, TImplementation>()
         where TEntity : TenantItemBase, new()
         where TImplementation : class, TInterface
@@ -80,9 +126,16 @@ public class CosmosRegistrationHelper
     /// Registers a repository for a specific domain model entity type using a custom configuration values.
     /// Null or empty values will use the defaults from the helper instance.
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    /// <typeparam name="TInterface"></typeparam>
-    /// <typeparam name="TImplementation"></typeparam>
+    /// <typeparam name="TEntity">Entity type that inherits from <see cref="TenantItemBase"/>.</typeparam>
+    /// <typeparam name="TInterface">The repository interface to register.</typeparam>
+    /// <typeparam name="TImplementation">The repository implementation to register.</typeparam>
+    /// <param name="connectionString">Overrides the helper's connection string when set.</param>
+    /// <param name="databaseName">Overrides the helper's database name when set.</param>
+    /// <param name="containerName">Overrides the helper's container name when set.</param>
+    /// <param name="partitionKey">Overrides the helper's partition key when set.</param>
+    /// <param name="useHierarchicalPartitionKey">Overrides the helper's hierarchical partition key flag when set.</param>
+    /// <param name="useDefaultAzureCredential">Overrides the helper's DefaultAzureCredential flag when set.</param>
+    /// <param name="withCreateStructures">Overrides the helper's create-structures flag when set.</param>
     public void RegisterRepository<TEntity, TInterface, TImplementation>(
         string? connectionString = null,
         string? databaseName = null,
@@ -144,7 +197,7 @@ public class CosmosRegistrationHelper
     /// <summary>
     /// Registers a repository and service for a domain model entity type using default implementations.
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TEntity">Entity type that inherits from <see cref="TenantItemBase"/>.</typeparam>
     public void RegisterRepositoryAndService<TEntity>()
         where TEntity : TenantItemBase, new()
     {

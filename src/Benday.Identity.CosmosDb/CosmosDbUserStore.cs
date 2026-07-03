@@ -7,6 +7,11 @@ using System.Security.Claims;
 
 namespace Benday.Identity.CosmosDb;
 
+/// <summary>
+/// Cosmos DB-backed implementation of the ASP.NET Core Identity user store interfaces
+/// for <see cref="CosmosIdentityUser"/>, covering user, password, email, role, claim,
+/// lockout, two-factor, phone, authenticator key, recovery code, login, and passkey storage.
+/// </summary>
 public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
     IUserStore<CosmosIdentityUser>,
     IUserPasswordStore<CosmosIdentityUser>,
@@ -27,6 +32,16 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
     private readonly IRoleStore<CosmosIdentityRole> _roleStore;
     private readonly string _identityTenantId;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CosmosDbUserStore"/> class using the
+    /// supplied repository options, Cosmos client, logger, role store (for resolving
+    /// normalized role names), and identity options (which provide the identity tenant id).
+    /// </summary>
+    /// <param name="options">Repository options for the user container.</param>
+    /// <param name="client">The Cosmos DB client.</param>
+    /// <param name="logger">Logger for the user store.</param>
+    /// <param name="roleStore">Role store used to resolve normalized role names to their stored form.</param>
+    /// <param name="identityOptions">Identity options providing the tenant id and related settings.</param>
     public CosmosDbUserStore(
        IOptions<CosmosRepositoryOptions<CosmosIdentityUser>> options,
        CosmosClient client, ILogger<CosmosDbUserStore> logger,
@@ -51,18 +66,21 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserStore
 
+    /// <inheritdoc/>
     public async Task<IdentityResult> CreateAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         await SaveAsync(user);
         return IdentityResult.Success;
     }
 
+    /// <inheritdoc/>
     public async Task<IdentityResult> DeleteAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         await DeleteAsync(user);
         return IdentityResult.Success;
     }
 
+    /// <inheritdoc/>
     public async Task<IdentityResult> UpdateAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         user.ConcurrencyStamp = Guid.NewGuid().ToString();
@@ -70,11 +88,13 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return IdentityResult.Success;
     }
 
+    /// <inheritdoc/>
     public async Task<CosmosIdentityUser?> FindByIdAsync(string userId, CancellationToken cancellationToken)
     {
         return await GetByIdAsync(_identityTenantId, userId);
     }
 
+    /// <inheritdoc/>
     public async Task<CosmosIdentityUser?> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
     {
         var queryContext = await GetQueryContextAsync(_identityTenantId);
@@ -83,16 +103,19 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return results.FirstOrDefault();
     }
 
+    /// <inheritdoc/>
     public Task<string> GetUserIdAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.Id);
     }
 
+    /// <inheritdoc/>
     public Task<string?> GetUserNameAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult<string?>(user.UserName);
     }
 
+    /// <inheritdoc/>
     public Task SetUserNameAsync(CosmosIdentityUser user, string? userName, CancellationToken cancellationToken)
     {
         if (string.IsNullOrEmpty(userName))
@@ -104,17 +127,20 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<string?> GetNormalizedUserNameAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult<string?>(user.NormalizedUserName);
     }
 
+    /// <inheritdoc/>
     public Task SetNormalizedUserNameAsync(CosmosIdentityUser user, string? normalizedName, CancellationToken cancellationToken)
     {
         // no-op: normalized value is computed from UserName
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public void Dispose()
     {
     }
@@ -123,6 +149,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserEmailStore
 
+    /// <inheritdoc/>
     public async Task<CosmosIdentityUser?> FindByEmailAsync(string normalizedEmail, CancellationToken cancellationToken)
     {
         var queryContext = await GetQueryContextAsync(_identityTenantId);
@@ -131,11 +158,13 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return results.FirstOrDefault();
     }
 
+    /// <inheritdoc/>
     public Task<string?> GetEmailAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult<string?>(user.Email);
     }
 
+    /// <inheritdoc/>
     public Task SetEmailAsync(CosmosIdentityUser user, string? email, CancellationToken cancellationToken)
     {
         if (string.IsNullOrEmpty(email))
@@ -147,22 +176,26 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<string?> GetNormalizedEmailAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult<string?>(user.NormalizedEmail);
     }
 
+    /// <inheritdoc/>
     public Task SetNormalizedEmailAsync(CosmosIdentityUser user, string? normalizedEmail, CancellationToken cancellationToken)
     {
         // no-op: normalized value is computed from Email
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<bool> GetEmailConfirmedAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.EmailConfirmed);
     }
 
+    /// <inheritdoc/>
     public Task SetEmailConfirmedAsync(CosmosIdentityUser user, bool confirmed, CancellationToken cancellationToken)
     {
         user.EmailConfirmed = confirmed;
@@ -173,11 +206,13 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserPasswordStore
 
+    /// <inheritdoc/>
     public Task<string?> GetPasswordHashAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult<string?>(user.PasswordHash);
     }
 
+    /// <inheritdoc/>
     public Task SetPasswordHashAsync(CosmosIdentityUser user, string? passwordHash, CancellationToken cancellationToken)
     {
         if (string.IsNullOrEmpty(passwordHash))
@@ -189,6 +224,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<bool> HasPasswordAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(!string.IsNullOrEmpty(user.PasswordHash));
@@ -198,6 +234,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserRoleStore
 
+    /// <inheritdoc/>
     public async Task AddToRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
     {
         var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
@@ -216,6 +253,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         }
     }
 
+    /// <inheritdoc/>
     public async Task RemoveFromRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
     {
         var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
@@ -229,12 +267,14 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         }
     }
 
+    /// <inheritdoc/>
     public Task<IList<string>> GetRolesAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         var roles = user.Claims.FindAll(x => x.ClaimType == ClaimTypes.Role);
         return Task.FromResult<IList<string>>(roles.Select(x => x.ClaimValue).ToList());
     }
 
+    /// <inheritdoc/>
     public async Task<bool> IsInRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
     {
         var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
@@ -243,6 +283,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return isInRole;
     }
 
+    /// <inheritdoc/>
     public async Task<IList<CosmosIdentityUser>> GetUsersInRoleAsync(string roleName, CancellationToken cancellationToken)
     {
         var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
@@ -257,11 +298,13 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserSecurityStampStore
 
+    /// <inheritdoc/>
     public Task<string?> GetSecurityStampAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult<string?>(user.SecurityStamp);
     }
 
+    /// <inheritdoc/>
     public Task SetSecurityStampAsync(CosmosIdentityUser user, string stamp, CancellationToken cancellationToken)
     {
         if (string.IsNullOrEmpty(stamp))
@@ -277,39 +320,46 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserLockoutStore
 
+    /// <inheritdoc/>
     public Task<DateTimeOffset?> GetLockoutEndDateAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.LockoutEnd);
     }
 
+    /// <inheritdoc/>
     public Task SetLockoutEndDateAsync(CosmosIdentityUser user, DateTimeOffset? lockoutEnd, CancellationToken cancellationToken)
     {
         user.LockoutEnd = lockoutEnd;
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<int> GetAccessFailedCountAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.AccessFailedCount);
     }
 
+    /// <inheritdoc/>
     public Task<int> IncrementAccessFailedCountAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         user.AccessFailedCount++;
         return Task.FromResult(user.AccessFailedCount);
     }
 
+    /// <inheritdoc/>
     public Task ResetAccessFailedCountAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         user.AccessFailedCount = 0;
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<bool> GetLockoutEnabledAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.LockoutEnabled);
     }
 
+    /// <inheritdoc/>
     public Task SetLockoutEnabledAsync(CosmosIdentityUser user, bool enabled, CancellationToken cancellationToken)
     {
         user.LockoutEnabled = enabled;
@@ -320,6 +370,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserClaimStore
 
+    /// <inheritdoc/>
     public Task<IList<Claim>> GetClaimsAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         var claims = user.Claims
@@ -328,6 +379,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.FromResult<IList<Claim>>(claims);
     }
 
+    /// <inheritdoc/>
     public Task AddClaimsAsync(CosmosIdentityUser user, IEnumerable<Claim> claims, CancellationToken cancellationToken)
     {
         foreach (var claim in claims)
@@ -345,6 +397,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task ReplaceClaimAsync(CosmosIdentityUser user, Claim claim, Claim newClaim, CancellationToken cancellationToken)
     {
         var matchingClaims = user.Claims.FindAll(c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value);
@@ -356,6 +409,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task RemoveClaimsAsync(CosmosIdentityUser user, IEnumerable<Claim> claims, CancellationToken cancellationToken)
     {
         foreach (var claim in claims)
@@ -369,6 +423,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public async Task<IList<CosmosIdentityUser>> GetUsersForClaimAsync(Claim claim, CancellationToken cancellationToken)
     {
         var queryContext = await GetQueryContextAsync(_identityTenantId);
@@ -382,11 +437,13 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserTwoFactorStore
 
+    /// <inheritdoc/>
     public Task<bool> GetTwoFactorEnabledAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.TwoFactorEnabled);
     }
 
+    /// <inheritdoc/>
     public Task SetTwoFactorEnabledAsync(CosmosIdentityUser user, bool enabled, CancellationToken cancellationToken)
     {
         user.TwoFactorEnabled = enabled;
@@ -397,22 +454,26 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserPhoneNumberStore
 
+    /// <inheritdoc/>
     public Task<string?> GetPhoneNumberAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.PhoneNumber);
     }
 
+    /// <inheritdoc/>
     public Task SetPhoneNumberAsync(CosmosIdentityUser user, string? phoneNumber, CancellationToken cancellationToken)
     {
         user.PhoneNumber = phoneNumber;
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<bool> GetPhoneNumberConfirmedAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.PhoneNumberConfirmed);
     }
 
+    /// <inheritdoc/>
     public Task SetPhoneNumberConfirmedAsync(CosmosIdentityUser user, bool confirmed, CancellationToken cancellationToken)
     {
         user.PhoneNumberConfirmed = confirmed;
@@ -423,11 +484,13 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserAuthenticatorKeyStore
 
+    /// <inheritdoc/>
     public Task<string?> GetAuthenticatorKeyAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.AuthenticatorKey);
     }
 
+    /// <inheritdoc/>
     public Task SetAuthenticatorKeyAsync(CosmosIdentityUser user, string key, CancellationToken cancellationToken)
     {
         user.AuthenticatorKey = key;
@@ -438,12 +501,14 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserTwoFactorRecoveryCodeStore
 
+    /// <inheritdoc/>
     public Task ReplaceCodesAsync(CosmosIdentityUser user, IEnumerable<string> recoveryCodes, CancellationToken cancellationToken)
     {
         user.RecoveryCodes = recoveryCodes.ToList();
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<bool> RedeemCodeAsync(CosmosIdentityUser user, string code, CancellationToken cancellationToken)
     {
         if (user.RecoveryCodes.Contains(code))
@@ -454,6 +519,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.FromResult(false);
     }
 
+    /// <inheritdoc/>
     public Task<int> CountCodesAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         return Task.FromResult(user.RecoveryCodes.Count);
@@ -463,6 +529,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserLoginStore
 
+    /// <inheritdoc/>
     public Task AddLoginAsync(CosmosIdentityUser user, UserLoginInfo login, CancellationToken cancellationToken)
     {
         var existing = user.Logins.Find(l =>
@@ -480,6 +547,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task RemoveLoginAsync(CosmosIdentityUser user, string loginProvider, string providerKey, CancellationToken cancellationToken)
     {
         var login = user.Logins.Find(l =>
@@ -492,6 +560,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<IList<UserLoginInfo>> GetLoginsAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         var logins = user.Logins
@@ -500,6 +569,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.FromResult<IList<UserLoginInfo>>(logins);
     }
 
+    /// <inheritdoc/>
     public async Task<CosmosIdentityUser?> FindByLoginAsync(string loginProvider, string providerKey, CancellationToken cancellationToken)
     {
         var queryContext = await GetQueryContextAsync(_identityTenantId);
@@ -513,6 +583,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IQueryableUserStore
 
+    /// <inheritdoc/>
     public IQueryable<CosmosIdentityUser> Users
     {
         get
@@ -526,6 +597,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
 
     #region IUserPasskeyStore
 
+    /// <inheritdoc/>
     public Task AddOrUpdatePasskeyAsync(CosmosIdentityUser user, UserPasskeyInfo passkey, CancellationToken cancellationToken)
     {
         var encodedCredentialId = Base64UrlEncode(passkey.CredentialId);
@@ -565,6 +637,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task<IList<UserPasskeyInfo>> GetPasskeysAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
     {
         var passkeys = user.Passkeys
@@ -573,6 +646,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.FromResult<IList<UserPasskeyInfo>>(passkeys);
     }
 
+    /// <inheritdoc/>
     public async Task<CosmosIdentityUser?> FindByPasskeyIdAsync(byte[] credentialId, CancellationToken cancellationToken)
     {
         var encodedId = Base64UrlEncode(credentialId);
@@ -583,6 +657,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return results.FirstOrDefault();
     }
 
+    /// <inheritdoc/>
     public Task<UserPasskeyInfo?> FindPasskeyAsync(CosmosIdentityUser user, byte[] credentialId, CancellationToken cancellationToken)
     {
         var encodedId = Base64UrlEncode(credentialId);
@@ -590,6 +665,7 @@ public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
         return Task.FromResult(match != null ? ToUserPasskeyInfo(match) : null);
     }
 
+    /// <inheritdoc/>
     public Task RemovePasskeyAsync(CosmosIdentityUser user, byte[] credentialId, CancellationToken cancellationToken)
     {
         var encodedId = Base64UrlEncode(credentialId);

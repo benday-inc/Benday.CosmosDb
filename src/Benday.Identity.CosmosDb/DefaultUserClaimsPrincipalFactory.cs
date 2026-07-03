@@ -11,12 +11,19 @@ namespace Benday.Identity.CosmosDb
     /// </summary>
     public class DefaultUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<CosmosIdentityUser, CosmosIdentityRole>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultUserClaimsPrincipalFactory"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager used to retrieve user information such as roles.</param>
+        /// <param name="roleManager">The role manager used to retrieve role information.</param>
+        /// <param name="optionsAccessor">The accessor for the configured identity options.</param>
         public DefaultUserClaimsPrincipalFactory(
             UserManager<CosmosIdentityUser> userManager,
             RoleManager<CosmosIdentityRole> roleManager,
             IOptions<IdentityOptions> optionsAccessor)
             : base(userManager, roleManager, optionsAccessor) { }
 
+        /// <inheritdoc/>
         protected override async Task<ClaimsIdentity> GenerateClaimsAsync(CosmosIdentityUser user)
         {
             var identity = await base.GenerateClaimsAsync(user);

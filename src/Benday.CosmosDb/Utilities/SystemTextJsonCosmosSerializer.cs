@@ -14,12 +14,20 @@ public class SystemTextJsonCosmosSerializer : CosmosLinqSerializer
     private readonly JsonObjectSerializer _SystemTextJsonSerializer;
     private readonly JsonSerializerOptions _JsonSerializerOptions;
 
+    /// <summary>
+    /// Initializes a new instance using the supplied System.Text.Json options.
+    /// </summary>
+    /// <param name="jsonSerializerOptions">The serialization options to use for all Cosmos payloads.</param>
     public SystemTextJsonCosmosSerializer(JsonSerializerOptions jsonSerializerOptions)
     {
         this._SystemTextJsonSerializer = new JsonObjectSerializer(jsonSerializerOptions);
         this._JsonSerializerOptions = jsonSerializerOptions;
     }
 
+    /// <summary>Deserializes an object of type <typeparamref name="T"/> from the given stream.</summary>
+    /// <typeparam name="T">The type to deserialize.</typeparam>
+    /// <param name="stream">The stream containing the serialized payload. The stream is disposed.</param>
+    /// <returns>The deserialized instance, or default if the stream is empty.</returns>
     public override T FromStream<T>(Stream stream)
     {
         using (stream)
@@ -48,6 +56,10 @@ public class SystemTextJsonCosmosSerializer : CosmosLinqSerializer
         }
     }
 
+    /// <summary>Serializes <paramref name="input"/> to a new stream positioned at the start.</summary>
+    /// <typeparam name="T">The type to serialize.</typeparam>
+    /// <param name="input">The object to serialize.</param>
+    /// <returns>A rewound stream containing the serialized payload.</returns>
     public override Stream ToStream<T>(T input)
     {
         MemoryStream streamPayload = new MemoryStream();
@@ -56,6 +68,13 @@ public class SystemTextJsonCosmosSerializer : CosmosLinqSerializer
         return streamPayload;
     }
 
+    /// <summary>
+    /// Resolves the serialized JSON name for a member, honoring <see cref="JsonExtensionDataAttribute"/>,
+    /// <see cref="JsonPropertyNameAttribute"/>, and the configured naming policy. Used by LINQ-to-Cosmos
+    /// translation.
+    /// </summary>
+    /// <param name="memberInfo">The member being serialized.</param>
+    /// <returns>The serialized name, or null for members that carry extension data.</returns>
     public override string? SerializeMemberName(MemberInfo memberInfo)
     {
         var jsonExtensionDataAttribute = memberInfo.GetCustomAttribute<JsonExtensionDataAttribute>(true);

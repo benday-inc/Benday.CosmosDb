@@ -49,5 +49,9 @@ public class CosmosRepositoryOptions<T>
     /// </summary>
     public bool UseHierarchicalPartitionKey { get; set; } = false;
 
+    /// <summary>
+    /// When true, the repository authenticates with <c>DefaultAzureCredential</c> instead of a
+    /// connection-string key. Disabled by default.
+    /// </summary>
     public bool UseDefaultAzureCredential { get; set; } = false;
 }

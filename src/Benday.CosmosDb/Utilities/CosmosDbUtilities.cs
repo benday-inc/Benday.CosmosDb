@@ -10,8 +10,17 @@ namespace Benday.CosmosDb.Utilities;
 /// </summary>
 public static class CosmosDbUtilities
 {
+    /// <summary>
+    /// Builds a <see cref="PartitionKey"/> from a comma-separated key string. When
+    /// <paramref name="useHierarchicalPartitionKey"/> is false, only the first component is used;
+    /// otherwise all components are combined into a hierarchical key.
+    /// </summary>
+    /// <param name="keyString">Comma-separated partition key values.</param>
+    /// <param name="useHierarchicalPartitionKey">Whether to build a hierarchical (multi-level) key.</param>
+    /// <returns>The constructed partition key.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when <paramref name="keyString"/> yields no components.</exception>
     public static PartitionKey GetPartitionKey(
-        string keyString, 
+        string keyString,
         bool useHierarchicalPartitionKey)
     {
         var keys = keyString.Split(',');
@@ -38,6 +47,9 @@ public static class CosmosDbUtilities
         }
     }
 
+    /// <summary>Splits a comma-separated partition key string into its individual component values.</summary>
+    /// <param name="keyString">Comma-separated partition key values.</param>
+    /// <returns>The list of component values.</returns>
     public static List<string> GetPartitionKeyStrings(string keyString)
     {
         var keys = keyString.Split(',').ToList();

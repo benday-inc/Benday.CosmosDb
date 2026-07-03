@@ -4,31 +4,45 @@ using Benday.CosmosDb.Repositories;
 
 namespace Benday.CosmosDb.ServiceLayers;
 
+/// <summary>
+/// Default <see cref="ITenantItemService{T}"/> implementation that delegates to an
+/// <see cref="ITenantItemRepository{T}"/>. Virtual members allow per-entity subclasses
+/// to add domain behavior around the repository calls.
+/// </summary>
+/// <typeparam name="T">The tenant-scoped entity type.</typeparam>
 public class TenantItemService<T> : ITenantItemService<T>
     where T : class, ITenantItem, new()
 {
     private ITenantItemRepository<T> _Repository;
 
+    /// <summary>
+    /// Initializes a new instance backed by the given repository.
+    /// </summary>
+    /// <param name="repository">The repository this service delegates to.</param>
     public TenantItemService(ITenantItemRepository<T> repository)
     {
         _Repository = repository;
     }
 
+    /// <inheritdoc/>
     public virtual async Task<IEnumerable<T>> GetAllAsync(string tenantId)
     {
         return await _Repository.GetAllAsync(tenantId);
     }
 
+    /// <inheritdoc/>
     public virtual async Task<T?> GetByIdAsync(string tenantId, string id)
     {
         return await _Repository.GetByIdAsync(tenantId, id);
     }
 
+    /// <inheritdoc/>
     public virtual async Task<T?> SaveAsync(T item)
     {
         return await ((IRepository<T>)_Repository).SaveAsync(item);
     }
 
+    /// <inheritdoc/>
     public virtual async Task DeleteAsync(T item)
     {
         await _Repository.DeleteAsync(item);

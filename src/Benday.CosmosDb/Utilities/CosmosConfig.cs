@@ -3,8 +3,14 @@ using Benday.CosmosDb.Repositories;
 
 namespace Benday.CosmosDb.Utilities;
 
+/// <summary>
+/// Connection and container settings for a Cosmos DB account. Bound from the
+/// <c>CosmosConfiguration</c> configuration section and supports connection-string,
+/// <c>DefaultAzureCredential</c>, and emulator modes.
+/// </summary>
 public class CosmosConfig
 {
+    /// <summary>Initializes a new instance with all string settings defaulted to empty.</summary>
     public CosmosConfig()
     {
         AccountKey = string.Empty;

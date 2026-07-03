@@ -42,11 +42,14 @@ public sealed class FileCosmosQueryLogSink : ICosmosQueryLogSink, IDisposable
     private int _droppedCount;
     private bool _disposed;
 
+    /// <summary>Initializes a new sink that writes NDJSON to the specified file path.</summary>
+    /// <param name="filePath">Destination file path for the query log.</param>
     public FileCosmosQueryLogSink(string filePath)
         : this(new CosmosFileLogSinkOptions { FilePath = filePath })
     {
     }
 
+    /// <summary>Initializes a new sink using default options (including the default file path).</summary>
     public FileCosmosQueryLogSink()
         : this(new CosmosFileLogSinkOptions())
     {
@@ -65,6 +68,12 @@ public sealed class FileCosmosQueryLogSink : ICosmosQueryLogSink, IDisposable
     {
     }
 
+    /// <summary>
+    /// Initializes a new sink from the given options, creating the target directory if needed and
+    /// starting the background writer thread.
+    /// </summary>
+    /// <param name="options">File path and queue-capacity settings for the sink.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="options"/> is null.</exception>
     public FileCosmosQueryLogSink(CosmosFileLogSinkOptions options)
     {
         if (options is null) throw new ArgumentNullException(nameof(options));

@@ -3,6 +3,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Benday.Identity.CosmosDb;
 
+/// <summary>
+/// Cosmos DB user store abstraction that aggregates the ASP.NET Core Identity user
+/// store interfaces (password, email, roles, claims, two-factor, lockout, logins,
+/// passkeys, and queryable access) with the tenant-aware repository contract.
+/// </summary>
 public interface ICosmosDbUserStore : ITenantItemRepository<CosmosIdentityUser>,
     IUserStore<CosmosIdentityUser>,
     IUserPasswordStore<CosmosIdentityUser>,
