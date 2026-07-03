@@ -69,7 +69,7 @@ jobs:
 
     services:
       cosmosdb:
-        image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
+        image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest
         ports:
           - 8081:8081
           - 1234:1234

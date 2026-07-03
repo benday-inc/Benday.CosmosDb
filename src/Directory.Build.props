@@ -9,7 +9,7 @@
         <!-- Keep generating the XML doc file (drives IntelliSense) but don't fail/nag
              on public members that aren't documented yet. Remove this to surface CS1591
              and document the API surface incrementally. -->
-        <NoWarn>$(NoWarn);CS1591</NoWarn>
+        <!-- <NoWarn>$(NoWarn);CS1591</NoWarn> -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
 
