@@ -10,6 +10,9 @@
         <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
         <PackAsTool>True</PackAsTool>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <!-- This is a CLI tool (cosmosmigrator); its public types aren't consumed as a
+             library API, so XML doc comments add no value. Suppress CS1591 here. -->
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Azure.Identity" Version="1.19.0" />
