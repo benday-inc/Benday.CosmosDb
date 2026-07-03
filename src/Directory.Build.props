@@ -1,0 +1,29 @@
+<Project>
+    <!-- Chain up to the repo-root Directory.Build.props. MSBuild only auto-imports
+         the nearest Directory.Build.props, so without this the root one (which sets
+         UseProjectReferences and AzureCosmosDisableNewtonsoftJsonCheck) is shadowed. -->
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <!-- Keep generating the XML doc file (drives IntelliSense) but don't fail/nag
+             on public members that aren't documented yet. Remove this to surface CS1591
+             and document the API surface incrementally. -->
+        <!-- <NoWarn>$(NoWarn);CS1591</NoWarn> -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+        <!-- Ship a .snupkg symbol package alongside every NuGet package so Source Link
+             can step consumers into the exact library source at debug time. -->
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <!-- On CI, normalize source paths in the PDB (deterministic build) so Source Link
+             resolves against the committed sources rather than the build agent's file system. -->
+        <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300" PrivateAssets="all" />
+    </ItemGroup>
+</Project>

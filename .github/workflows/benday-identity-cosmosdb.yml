@@ -4,16 +4,16 @@ on:
   push:
     branches: [ "master" ]
     paths:
-      - 'Benday.Identity.CosmosDb/**'
-      - 'Benday.Identity.CosmosDb.UI/**'
-      - 'Benday.Identity.CosmosDb.UnitTests/**'
+      - 'src/Benday.Identity.CosmosDb/**'
+      - 'src/Benday.Identity.CosmosDb.UI/**'
+      - 'test/Benday.Identity.CosmosDb.UnitTests/**'
       - '.github/workflows/benday-identity-cosmosdb.yml'
   pull_request:
     branches: [ "master" ]
     paths:
-      - 'Benday.Identity.CosmosDb/**'
-      - 'Benday.Identity.CosmosDb.UI/**'
-      - 'Benday.Identity.CosmosDb.UnitTests/**'
+      - 'src/Benday.Identity.CosmosDb/**'
+      - 'src/Benday.Identity.CosmosDb.UI/**'
+      - 'test/Benday.Identity.CosmosDb.UnitTests/**'
       - '.github/workflows/benday-identity-cosmosdb.yml'
   workflow_dispatch:
 
@@ -34,37 +34,39 @@ jobs:
           dotnet-version: 10.0.x
 
       - name: Restore Benday.Identity.CosmosDb
-        run: dotnet restore Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj -p:UseProjectReferences=true
+        run: dotnet restore src/Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj -p:UseProjectReferences=true
 
       - name: Restore Benday.Identity.CosmosDb.UI
-        run: dotnet restore Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj -p:UseProjectReferences=true
+        run: dotnet restore src/Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj -p:UseProjectReferences=true
 
       - name: Build Benday.Identity.CosmosDb (Release)
-        run: dotnet build Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --configuration Release --no-restore -p:UseProjectReferences=true
+        run: dotnet build src/Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --configuration Release --no-restore -p:UseProjectReferences=true
 
       - name: Build Benday.Identity.CosmosDb.UI (Release)
-        run: dotnet build Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --configuration Release --no-restore -p:UseProjectReferences=true
+        run: dotnet build src/Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --configuration Release --no-restore -p:UseProjectReferences=true
 
       - name: Restore Benday.Identity.CosmosDb.UnitTests
-        run: dotnet restore Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj -p:UseProjectReferences=true
+        run: dotnet restore test/Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj -p:UseProjectReferences=true
 
       - name: Build Benday.Identity.CosmosDb.UnitTests (Release)
-        run: dotnet build Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-restore -p:UseProjectReferences=true
+        run: dotnet build test/Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-restore -p:UseProjectReferences=true
 
       - name: Run Unit Tests
-        run: dotnet test Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-build --verbosity normal -p:UseProjectReferences=true
+        run: dotnet test test/Benday.Identity.CosmosDb.UnitTests/Benday.Identity.CosmosDb.UnitTests.csproj --configuration Release --no-build --verbosity normal -p:UseProjectReferences=true
 
       - name: Pack Benday.Identity.CosmosDb
-        run: dotnet pack Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --no-build --configuration Release --output ./artifacts -p:UseProjectReferences=true
+        run: dotnet pack src/Benday.Identity.CosmosDb/Benday.Identity.CosmosDb.csproj --no-build --configuration Release --output ./artifacts -p:UseProjectReferences=true
 
       - name: Pack Benday.Identity.CosmosDb.UI
-        run: dotnet pack Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --no-build --configuration Release --output ./artifacts -p:UseProjectReferences=true
+        run: dotnet pack src/Benday.Identity.CosmosDb.UI/Benday.Identity.CosmosDb.UI.csproj --no-build --configuration Release --output ./artifacts -p:UseProjectReferences=true
 
       - name: Upload NuGet packages
         uses: actions/upload-artifact@v7
         with:
           name: nuget-packages-identity-cosmosdb
-          path: ./artifacts/*.nupkg
+          path: |
+            ./artifacts/*.nupkg
+            ./artifacts/*.snupkg
 
   deploy:
     needs: build

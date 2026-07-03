@@ -1,0 +1,722 @@
+using Benday.CosmosDb.Repositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System.Security.Claims;
+
+namespace Benday.Identity.CosmosDb;
+
+/// <summary>
+/// Cosmos DB-backed implementation of the ASP.NET Core Identity user store interfaces
+/// for <see cref="CosmosIdentityUser"/>, covering user, password, email, role, claim,
+/// lockout, two-factor, phone, authenticator key, recovery code, login, and passkey storage.
+/// </summary>
+public class CosmosDbUserStore : CosmosTenantItemRepository<CosmosIdentityUser>,
+    IUserStore<CosmosIdentityUser>,
+    IUserPasswordStore<CosmosIdentityUser>,
+    IUserEmailStore<CosmosIdentityUser>,
+    IUserRoleStore<CosmosIdentityUser>,
+    IUserSecurityStampStore<CosmosIdentityUser>,
+    IUserLockoutStore<CosmosIdentityUser>,
+    IUserClaimStore<CosmosIdentityUser>,
+    IUserTwoFactorStore<CosmosIdentityUser>,
+    IUserPhoneNumberStore<CosmosIdentityUser>,
+    IUserAuthenticatorKeyStore<CosmosIdentityUser>,
+    IUserTwoFactorRecoveryCodeStore<CosmosIdentityUser>,
+    IUserLoginStore<CosmosIdentityUser>,
+    IUserPasskeyStore<CosmosIdentityUser>,
+    IQueryableUserStore<CosmosIdentityUser>,
+    ICosmosDbUserStore
+{
+    private readonly IRoleStore<CosmosIdentityRole> _roleStore;
+    private readonly string _identityTenantId;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CosmosDbUserStore"/> class using the
+    /// supplied repository options, Cosmos client, logger, role store (for resolving
+    /// normalized role names), and identity options (which provide the identity tenant id).
+    /// </summary>
+    /// <param name="options">Repository options for the user container.</param>
+    /// <param name="client">The Cosmos DB client.</param>
+    /// <param name="logger">Logger for the user store.</param>
+    /// <param name="roleStore">Role store used to resolve normalized role names to their stored form.</param>
+    /// <param name="identityOptions">Identity options providing the tenant id and related settings.</param>
+    public CosmosDbUserStore(
+       IOptions<CosmosRepositoryOptions<CosmosIdentityUser>> options,
+       CosmosClient client, ILogger<CosmosDbUserStore> logger,
+       IRoleStore<CosmosIdentityRole> roleStore,
+       CosmosIdentityOptions identityOptions) :
+       base(options, client, logger)
+    {
+        _roleStore = roleStore;
+        _identityTenantId = identityOptions.IdentityTenantId;
+    }
+
+    /// <summary>
+    /// Looks up a role by its normalized name and returns the original Role.Name.
+    /// UserManager passes normalized (uppercased) role names to the store;
+    /// we resolve back to the original casing for storage and comparison.
+    /// </summary>
+    private async Task<string> ResolveRoleNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
+    {
+        var role = await _roleStore.FindByNameAsync(normalizedRoleName, cancellationToken);
+        return role?.Name ?? normalizedRoleName;
+    }
+
+    #region IUserStore
+
+    /// <inheritdoc/>
+    public async Task<IdentityResult> CreateAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        await SaveAsync(user);
+        return IdentityResult.Success;
+    }
+
+    /// <inheritdoc/>
+    public async Task<IdentityResult> DeleteAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        await DeleteAsync(user);
+        return IdentityResult.Success;
+    }
+
+    /// <inheritdoc/>
+    public async Task<IdentityResult> UpdateAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        user.ConcurrencyStamp = Guid.NewGuid().ToString();
+        await SaveAsync(user);
+        return IdentityResult.Success;
+    }
+
+    /// <inheritdoc/>
+    public async Task<CosmosIdentityUser?> FindByIdAsync(string userId, CancellationToken cancellationToken)
+    {
+        return await GetByIdAsync(_identityTenantId, userId);
+    }
+
+    /// <inheritdoc/>
+    public async Task<CosmosIdentityUser?> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
+    {
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x => x.NormalizedUserName == normalizedUserName);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
+        return results.FirstOrDefault();
+    }
+
+    /// <inheritdoc/>
+    public Task<string> GetUserIdAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.Id);
+    }
+
+    /// <inheritdoc/>
+    public Task<string?> GetUserNameAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult<string?>(user.UserName);
+    }
+
+    /// <inheritdoc/>
+    public Task SetUserNameAsync(CosmosIdentityUser user, string? userName, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrEmpty(userName))
+        {
+            throw new ArgumentException($"{nameof(userName)} is null or empty.", nameof(userName));
+        }
+
+        user.UserName = userName;
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<string?> GetNormalizedUserNameAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult<string?>(user.NormalizedUserName);
+    }
+
+    /// <inheritdoc/>
+    public Task SetNormalizedUserNameAsync(CosmosIdentityUser user, string? normalizedName, CancellationToken cancellationToken)
+    {
+        // no-op: normalized value is computed from UserName
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public void Dispose()
+    {
+    }
+
+    #endregion
+
+    #region IUserEmailStore
+
+    /// <inheritdoc/>
+    public async Task<CosmosIdentityUser?> FindByEmailAsync(string normalizedEmail, CancellationToken cancellationToken)
+    {
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x => x.NormalizedEmail == normalizedEmail);
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
+        return results.FirstOrDefault();
+    }
+
+    /// <inheritdoc/>
+    public Task<string?> GetEmailAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult<string?>(user.Email);
+    }
+
+    /// <inheritdoc/>
+    public Task SetEmailAsync(CosmosIdentityUser user, string? email, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrEmpty(email))
+        {
+            throw new ArgumentException($"{nameof(email)} is null or empty.", nameof(email));
+        }
+
+        user.Email = email;
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<string?> GetNormalizedEmailAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult<string?>(user.NormalizedEmail);
+    }
+
+    /// <inheritdoc/>
+    public Task SetNormalizedEmailAsync(CosmosIdentityUser user, string? normalizedEmail, CancellationToken cancellationToken)
+    {
+        // no-op: normalized value is computed from Email
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<bool> GetEmailConfirmedAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.EmailConfirmed);
+    }
+
+    /// <inheritdoc/>
+    public Task SetEmailConfirmedAsync(CosmosIdentityUser user, bool confirmed, CancellationToken cancellationToken)
+    {
+        user.EmailConfirmed = confirmed;
+        return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region IUserPasswordStore
+
+    /// <inheritdoc/>
+    public Task<string?> GetPasswordHashAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult<string?>(user.PasswordHash);
+    }
+
+    /// <inheritdoc/>
+    public Task SetPasswordHashAsync(CosmosIdentityUser user, string? passwordHash, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrEmpty(passwordHash))
+        {
+            throw new ArgumentException($"{nameof(passwordHash)} is null or empty.", nameof(passwordHash));
+        }
+
+        user.PasswordHash = passwordHash;
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<bool> HasPasswordAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(!string.IsNullOrEmpty(user.PasswordHash));
+    }
+
+    #endregion
+
+    #region IUserRoleStore
+
+    /// <inheritdoc/>
+    public async Task AddToRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
+    {
+        var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
+        var match = user.Claims.Find(x => x.ClaimType == ClaimTypes.Role &&
+            string.Equals(x.ClaimValue, originalName, StringComparison.OrdinalIgnoreCase));
+
+        if (match == null)
+        {
+            user.Claims.Add(new CosmosIdentityUserClaim()
+            {
+                ClaimType = ClaimTypes.Role,
+                ClaimValue = originalName
+            });
+
+            await SaveAsync(user);
+        }
+    }
+
+    /// <inheritdoc/>
+    public async Task RemoveFromRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
+    {
+        var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
+        var match = user.Claims.Find(x => x.ClaimType == ClaimTypes.Role &&
+            string.Equals(x.ClaimValue, originalName, StringComparison.OrdinalIgnoreCase));
+
+        if (match != null)
+        {
+            user.Claims.Remove(match);
+            await SaveAsync(user);
+        }
+    }
+
+    /// <inheritdoc/>
+    public Task<IList<string>> GetRolesAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        var roles = user.Claims.FindAll(x => x.ClaimType == ClaimTypes.Role);
+        return Task.FromResult<IList<string>>(roles.Select(x => x.ClaimValue).ToList());
+    }
+
+    /// <inheritdoc/>
+    public async Task<bool> IsInRoleAsync(CosmosIdentityUser user, string roleName, CancellationToken cancellationToken)
+    {
+        var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
+        var isInRole = user.Claims.Any(x => x.ClaimType == ClaimTypes.Role &&
+            string.Equals(x.ClaimValue, originalName, StringComparison.OrdinalIgnoreCase));
+        return isInRole;
+    }
+
+    /// <inheritdoc/>
+    public async Task<IList<CosmosIdentityUser>> GetUsersInRoleAsync(string roleName, CancellationToken cancellationToken)
+    {
+        var originalName = await ResolveRoleNameAsync(roleName, cancellationToken);
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x =>
+            x.Claims.Any(y => y.ClaimType == ClaimTypes.Role && y.ClaimValue == originalName));
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
+        return results;
+    }
+
+    #endregion
+
+    #region IUserSecurityStampStore
+
+    /// <inheritdoc/>
+    public Task<string?> GetSecurityStampAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult<string?>(user.SecurityStamp);
+    }
+
+    /// <inheritdoc/>
+    public Task SetSecurityStampAsync(CosmosIdentityUser user, string stamp, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrEmpty(stamp))
+        {
+            throw new ArgumentException($"{nameof(stamp)} is null or empty.", nameof(stamp));
+        }
+
+        user.SecurityStamp = stamp;
+        return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region IUserLockoutStore
+
+    /// <inheritdoc/>
+    public Task<DateTimeOffset?> GetLockoutEndDateAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.LockoutEnd);
+    }
+
+    /// <inheritdoc/>
+    public Task SetLockoutEndDateAsync(CosmosIdentityUser user, DateTimeOffset? lockoutEnd, CancellationToken cancellationToken)
+    {
+        user.LockoutEnd = lockoutEnd;
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<int> GetAccessFailedCountAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.AccessFailedCount);
+    }
+
+    /// <inheritdoc/>
+    public Task<int> IncrementAccessFailedCountAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        user.AccessFailedCount++;
+        return Task.FromResult(user.AccessFailedCount);
+    }
+
+    /// <inheritdoc/>
+    public Task ResetAccessFailedCountAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        user.AccessFailedCount = 0;
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<bool> GetLockoutEnabledAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.LockoutEnabled);
+    }
+
+    /// <inheritdoc/>
+    public Task SetLockoutEnabledAsync(CosmosIdentityUser user, bool enabled, CancellationToken cancellationToken)
+    {
+        user.LockoutEnabled = enabled;
+        return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region IUserClaimStore
+
+    /// <inheritdoc/>
+    public Task<IList<Claim>> GetClaimsAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        var claims = user.Claims
+            .Select(c => new Claim(c.ClaimType, c.ClaimValue))
+            .ToList();
+        return Task.FromResult<IList<Claim>>(claims);
+    }
+
+    /// <inheritdoc/>
+    public Task AddClaimsAsync(CosmosIdentityUser user, IEnumerable<Claim> claims, CancellationToken cancellationToken)
+    {
+        foreach (var claim in claims)
+        {
+            var existing = user.Claims.Find(c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value);
+            if (existing == null)
+            {
+                user.Claims.Add(new CosmosIdentityUserClaim
+                {
+                    ClaimType = claim.Type,
+                    ClaimValue = claim.Value
+                });
+            }
+        }
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task ReplaceClaimAsync(CosmosIdentityUser user, Claim claim, Claim newClaim, CancellationToken cancellationToken)
+    {
+        var matchingClaims = user.Claims.FindAll(c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value);
+        foreach (var matchingClaim in matchingClaims)
+        {
+            matchingClaim.ClaimType = newClaim.Type;
+            matchingClaim.ClaimValue = newClaim.Value;
+        }
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task RemoveClaimsAsync(CosmosIdentityUser user, IEnumerable<Claim> claims, CancellationToken cancellationToken)
+    {
+        foreach (var claim in claims)
+        {
+            var matchingClaims = user.Claims.FindAll(c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value);
+            foreach (var matchingClaim in matchingClaims)
+            {
+                user.Claims.Remove(matchingClaim);
+            }
+        }
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public async Task<IList<CosmosIdentityUser>> GetUsersForClaimAsync(Claim claim, CancellationToken cancellationToken)
+    {
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x =>
+            x.Claims.Any(c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value));
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
+        return results;
+    }
+
+    #endregion
+
+    #region IUserTwoFactorStore
+
+    /// <inheritdoc/>
+    public Task<bool> GetTwoFactorEnabledAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.TwoFactorEnabled);
+    }
+
+    /// <inheritdoc/>
+    public Task SetTwoFactorEnabledAsync(CosmosIdentityUser user, bool enabled, CancellationToken cancellationToken)
+    {
+        user.TwoFactorEnabled = enabled;
+        return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region IUserPhoneNumberStore
+
+    /// <inheritdoc/>
+    public Task<string?> GetPhoneNumberAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.PhoneNumber);
+    }
+
+    /// <inheritdoc/>
+    public Task SetPhoneNumberAsync(CosmosIdentityUser user, string? phoneNumber, CancellationToken cancellationToken)
+    {
+        user.PhoneNumber = phoneNumber;
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<bool> GetPhoneNumberConfirmedAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.PhoneNumberConfirmed);
+    }
+
+    /// <inheritdoc/>
+    public Task SetPhoneNumberConfirmedAsync(CosmosIdentityUser user, bool confirmed, CancellationToken cancellationToken)
+    {
+        user.PhoneNumberConfirmed = confirmed;
+        return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region IUserAuthenticatorKeyStore
+
+    /// <inheritdoc/>
+    public Task<string?> GetAuthenticatorKeyAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.AuthenticatorKey);
+    }
+
+    /// <inheritdoc/>
+    public Task SetAuthenticatorKeyAsync(CosmosIdentityUser user, string key, CancellationToken cancellationToken)
+    {
+        user.AuthenticatorKey = key;
+        return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region IUserTwoFactorRecoveryCodeStore
+
+    /// <inheritdoc/>
+    public Task ReplaceCodesAsync(CosmosIdentityUser user, IEnumerable<string> recoveryCodes, CancellationToken cancellationToken)
+    {
+        user.RecoveryCodes = recoveryCodes.ToList();
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<bool> RedeemCodeAsync(CosmosIdentityUser user, string code, CancellationToken cancellationToken)
+    {
+        if (user.RecoveryCodes.Contains(code))
+        {
+            user.RecoveryCodes.Remove(code);
+            return Task.FromResult(true);
+        }
+        return Task.FromResult(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<int> CountCodesAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(user.RecoveryCodes.Count);
+    }
+
+    #endregion
+
+    #region IUserLoginStore
+
+    /// <inheritdoc/>
+    public Task AddLoginAsync(CosmosIdentityUser user, UserLoginInfo login, CancellationToken cancellationToken)
+    {
+        var existing = user.Logins.Find(l =>
+            l.LoginProvider == login.LoginProvider && l.ProviderKey == login.ProviderKey);
+
+        if (existing == null)
+        {
+            user.Logins.Add(new CosmosIdentityUserLogin
+            {
+                LoginProvider = login.LoginProvider,
+                ProviderKey = login.ProviderKey,
+                ProviderDisplayName = login.ProviderDisplayName ?? string.Empty
+            });
+        }
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task RemoveLoginAsync(CosmosIdentityUser user, string loginProvider, string providerKey, CancellationToken cancellationToken)
+    {
+        var login = user.Logins.Find(l =>
+            l.LoginProvider == loginProvider && l.ProviderKey == providerKey);
+
+        if (login != null)
+        {
+            user.Logins.Remove(login);
+        }
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<IList<UserLoginInfo>> GetLoginsAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        var logins = user.Logins
+            .Select(l => new UserLoginInfo(l.LoginProvider, l.ProviderKey, l.ProviderDisplayName))
+            .ToList();
+        return Task.FromResult<IList<UserLoginInfo>>(logins);
+    }
+
+    /// <inheritdoc/>
+    public async Task<CosmosIdentityUser?> FindByLoginAsync(string loginProvider, string providerKey, CancellationToken cancellationToken)
+    {
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x =>
+            x.Logins.Any(l => l.LoginProvider == loginProvider && l.ProviderKey == providerKey));
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
+        return results.FirstOrDefault();
+    }
+
+    #endregion
+
+    #region IQueryableUserStore
+
+    /// <inheritdoc/>
+    public IQueryable<CosmosIdentityUser> Users
+    {
+        get
+        {
+            var queryContext = GetQueryContextAsync(_identityTenantId).GetAwaiter().GetResult();
+            return queryContext.Queryable;
+        }
+    }
+
+    #endregion
+
+    #region IUserPasskeyStore
+
+    /// <inheritdoc/>
+    public Task AddOrUpdatePasskeyAsync(CosmosIdentityUser user, UserPasskeyInfo passkey, CancellationToken cancellationToken)
+    {
+        var encodedCredentialId = Base64UrlEncode(passkey.CredentialId);
+
+        var existing = user.Passkeys.Find(p => p.CredentialId == encodedCredentialId);
+
+        if (existing != null)
+        {
+            existing.PublicKey = Base64UrlEncode(passkey.PublicKey);
+            existing.SignCount = passkey.SignCount;
+            existing.Transports = passkey.Transports ?? Array.Empty<string>();
+            existing.AttestationObject = Base64UrlEncode(passkey.AttestationObject);
+            existing.ClientDataJson = Base64UrlEncode(passkey.ClientDataJson);
+            existing.IsUserVerified = passkey.IsUserVerified;
+            existing.IsBackupEligible = passkey.IsBackupEligible;
+            existing.IsBackedUp = passkey.IsBackedUp;
+            existing.Name = passkey.Name ?? string.Empty;
+        }
+        else
+        {
+            user.Passkeys.Add(new CosmosIdentityUserPasskey
+            {
+                CredentialId = encodedCredentialId,
+                PublicKey = Base64UrlEncode(passkey.PublicKey),
+                SignCount = passkey.SignCount,
+                Transports = passkey.Transports ?? Array.Empty<string>(),
+                AttestationObject = Base64UrlEncode(passkey.AttestationObject),
+                ClientDataJson = Base64UrlEncode(passkey.ClientDataJson),
+                IsUserVerified = passkey.IsUserVerified,
+                IsBackupEligible = passkey.IsBackupEligible,
+                IsBackedUp = passkey.IsBackedUp,
+                Name = passkey.Name ?? string.Empty,
+                CreatedAt = passkey.CreatedAt
+            });
+        }
+
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<IList<UserPasskeyInfo>> GetPasskeysAsync(CosmosIdentityUser user, CancellationToken cancellationToken)
+    {
+        var passkeys = user.Passkeys
+            .Select(ToUserPasskeyInfo)
+            .ToList();
+        return Task.FromResult<IList<UserPasskeyInfo>>(passkeys);
+    }
+
+    /// <inheritdoc/>
+    public async Task<CosmosIdentityUser?> FindByPasskeyIdAsync(byte[] credentialId, CancellationToken cancellationToken)
+    {
+        var encodedId = Base64UrlEncode(credentialId);
+        var queryContext = await GetQueryContextAsync(_identityTenantId);
+        var queryable = queryContext.Queryable.Where(x =>
+            x.Passkeys.Any(p => p.CredentialId == encodedId));
+        var results = await GetResultsAsync(queryable, GetQueryDescription(), queryContext.PartitionKey);
+        return results.FirstOrDefault();
+    }
+
+    /// <inheritdoc/>
+    public Task<UserPasskeyInfo?> FindPasskeyAsync(CosmosIdentityUser user, byte[] credentialId, CancellationToken cancellationToken)
+    {
+        var encodedId = Base64UrlEncode(credentialId);
+        var match = user.Passkeys.Find(p => p.CredentialId == encodedId);
+        return Task.FromResult(match != null ? ToUserPasskeyInfo(match) : null);
+    }
+
+    /// <inheritdoc/>
+    public Task RemovePasskeyAsync(CosmosIdentityUser user, byte[] credentialId, CancellationToken cancellationToken)
+    {
+        var encodedId = Base64UrlEncode(credentialId);
+        var match = user.Passkeys.Find(p => p.CredentialId == encodedId);
+        if (match != null)
+        {
+            user.Passkeys.Remove(match);
+        }
+        return Task.CompletedTask;
+    }
+
+    private static UserPasskeyInfo ToUserPasskeyInfo(CosmosIdentityUserPasskey passkey)
+    {
+        return new UserPasskeyInfo(
+            Base64UrlDecode(passkey.CredentialId),
+            Base64UrlDecode(passkey.PublicKey),
+            passkey.CreatedAt,
+            passkey.SignCount,
+            passkey.Transports,
+            passkey.IsUserVerified,
+            passkey.IsBackupEligible,
+            passkey.IsBackedUp,
+            Base64UrlDecode(passkey.AttestationObject),
+            Base64UrlDecode(passkey.ClientDataJson))
+        {
+            Name = passkey.Name
+        };
+    }
+
+    private static string Base64UrlEncode(byte[] data)
+    {
+        return Convert.ToBase64String(data)
+            .TrimEnd('=')
+            .Replace('+', '-')
+            .Replace('/', '_');
+    }
+
+    private static byte[] Base64UrlDecode(string base64Url)
+    {
+        var base64 = base64Url
+            .Replace('-', '+')
+            .Replace('_', '/');
+
+        switch (base64.Length % 4)
+        {
+            case 2: base64 += "=="; break;
+            case 3: base64 += "="; break;
+        }
+
+        return Convert.FromBase64String(base64);
+    }
+
+    #endregion
+}

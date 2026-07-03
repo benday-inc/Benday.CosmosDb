@@ -4,20 +4,20 @@ on:
   push:
     branches: [ "master" ]
     paths:
-      - 'Benday.CosmosDb/**'
-      - 'Benday.CosmosDb.UnitTests/**'
-      - 'Benday.CosmosDb.SampleApp.Api/**'
-      - 'Benday.CosmosDb.SampleApp.WebUi/**'
-      - 'Benday.CosmosDb.SampleApp.Tests/**'
+      - 'src/Benday.CosmosDb/**'
+      - 'test/Benday.CosmosDb.UnitTests/**'
+      - 'samples/Benday.CosmosDb.SampleApp.Api/**'
+      - 'samples/Benday.CosmosDb.SampleApp.WebUi/**'
+      - 'test/Benday.CosmosDb.SampleApp.Tests/**'
       - '.github/workflows/benday-cosmosdb.yml'
   pull_request:
     branches: [ "master" ]
     paths:
-      - 'Benday.CosmosDb/**'
-      - 'Benday.CosmosDb.UnitTests/**'
-      - 'Benday.CosmosDb.SampleApp.Api/**'
-      - 'Benday.CosmosDb.SampleApp.WebUi/**'
-      - 'Benday.CosmosDb.SampleApp.Tests/**'
+      - 'src/Benday.CosmosDb/**'
+      - 'test/Benday.CosmosDb.UnitTests/**'
+      - 'samples/Benday.CosmosDb.SampleApp.Api/**'
+      - 'samples/Benday.CosmosDb.SampleApp.WebUi/**'
+      - 'test/Benday.CosmosDb.SampleApp.Tests/**'
       - '.github/workflows/benday-cosmosdb.yml'
   workflow_dispatch:
 
@@ -38,28 +38,30 @@ jobs:
           dotnet-version: 10.0.x
 
       - name: Restore Benday.CosmosDb
-        run: dotnet restore Benday.CosmosDb/Benday.CosmosDb.csproj
+        run: dotnet restore src/Benday.CosmosDb/Benday.CosmosDb.csproj
 
       - name: Restore UnitTests
-        run: dotnet restore Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj
+        run: dotnet restore test/Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj
 
       - name: Build Benday.CosmosDb (Release)
-        run: dotnet build Benday.CosmosDb/Benday.CosmosDb.csproj --configuration Release --no-restore
+        run: dotnet build src/Benday.CosmosDb/Benday.CosmosDb.csproj --configuration Release --no-restore
 
       - name: Build UnitTests (Release)
-        run: dotnet build Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --no-restore
+        run: dotnet build test/Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --no-restore
 
       - name: Run Unit Tests (Release)
-        run: dotnet test Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --no-build --verbosity normal
+        run: dotnet test test/Benday.CosmosDb.UnitTests/Benday.CosmosDb.UnitTests.csproj --configuration Release --no-build --verbosity normal
 
       - name: Pack Benday.CosmosDb
-        run: dotnet pack Benday.CosmosDb/Benday.CosmosDb.csproj --no-build --configuration Release --output ./artifacts
+        run: dotnet pack src/Benday.CosmosDb/Benday.CosmosDb.csproj --no-build --configuration Release --output ./artifacts
 
       - name: Upload NuGet packages
         uses: actions/upload-artifact@v7
         with:
           name: nuget-packages-cosmosdb
-          path: ./artifacts/*.nupkg
+          path: |
+            ./artifacts/*.nupkg
+            ./artifacts/*.snupkg
 
   integration-tests:
     needs: unit-tests
@@ -67,7 +69,7 @@ jobs:
 
     services:
       cosmosdb:
-        image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
+        image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest
         ports:
           - 8081:8081
           - 1234:1234
@@ -90,10 +92,10 @@ jobs:
           dotnet-version: 10.0.x
 
       - name: Restore SampleApp.Tests
-        run: dotnet restore Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj
+        run: dotnet restore test/Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj
 
       - name: Build SampleApp.Tests (Release)
-        run: dotnet build Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj --configuration Release --no-restore
+        run: dotnet build test/Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj --configuration Release --no-restore
 
       - name: Wait for Cosmos DB Emulator
         run: |
@@ -120,7 +122,7 @@ jobs:
           done
 
       - name: Run Integration Tests (Release, .NET 10)
-        run: dotnet test Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj --configuration Release --no-build --verbosity normal --framework net10.0
+        run: dotnet test test/Benday.CosmosDb.SampleApp.Tests/Benday.CosmosDb.SampleApp.Tests.csproj --configuration Release --no-build --verbosity normal --framework net10.0
 
   deploy:
     needs: [unit-tests, integration-tests]

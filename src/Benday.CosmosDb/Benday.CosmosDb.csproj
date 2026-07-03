@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <!--<TargetFrameworks>net8.0;net9.0</TargetFrameworks>-->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>benday</Authors>
+    <PackageProjectUrl>https://github.com/benday-inc/Benday.CosmosDb</PackageProjectUrl>
+    <Copyright>2026</Copyright>
+    <RepositoryUrl>https://github.com/benday-inc/Benday.CosmosDb</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>bdc_mark_128_128.png</PackageIcon>
+    <TheVersion>6.1.1</TheVersion>
+    <AssemblyVersion>6.1.1.0</AssemblyVersion>
+    <Version>$(TheVersion)</Version>
+    <Description>A collection of classes for implementing the domain model and repository patterns with Azure Cosmos DB. Features hierarchical partition key support, LINQ queries with automatic partition keys, optimistic concurrency with ETags, ASP.NET Core dependency injection helpers, and per-repository custom container configuration.</Description>
+    <PackageReleaseNotes>
+v6.1.1 - Enabled Source Link (Microsoft.SourceLink.GitHub) with repository URL publishing and untracked-source embedding so consumers can step directly into the library source while debugging. Enabled XML documentation file generation for richer IntelliSense over the public API. No functional or API changes;
+v6.1 - Fixed null reference exception bug in CosmosRepository;
+v6.0.10 - Added FileCosmosQueryLogSink, an ICosmosQueryLogSink implementation that appends each query diagnostics event as a single line of NDJSON to a file via a background queue (configurable file path and queue capacity through CosmosFileLogSinkOptions). Added per-entity diagnostics options via the new CosmosDiagnosticsRegistry singleton and CosmosRegistrationHelper.ConfigureDiagnostics&lt;TEntity&gt;() / ConfigureDiagnosticsDefault() fluent helpers; the first opt-in flag is CaptureIndexMetrics, which sets PopulateIndexMetrics on every QueryRequestOptions the repository builds and copies FeedResponse.IndexMetrics into the new CosmosQueryDiagnostics.IndexMetrics field on per-page and query-total events. Off by default — Microsoft recommends only enabling index metrics while debugging slow queries because of measurable RU/latency overhead. Source-level breaking change: CosmosRepository&lt;T&gt;, CosmosTenantItemRepository&lt;T&gt;, and CosmosDbParentedItemRepository&lt;T&gt; constructors gained an optional trailing CosmosDiagnosticsRegistry? diagnosticsRegistry = null parameter; derived classes that pass base(...) explicitly must forward it (mechanical one-line change). Also: changed some method signatures in CosmosRepository to use generics for flexibility to support situations where the return type of the repository doesn't match the required return type of a repository method;
+v6.0.8-alpha - Fix: ExecuteScalarAsync no longer throws when the queryable has no LINQ operators applied (bare GetQueryContextAsync(...).Queryable). The query executes normally and diagnostics fire, with QueryText set to null if extraction fails. Fix: GetResultsAsync(IQueryable&lt;T&gt;, ...) defensively handles the same edge case. Not a breaking change — no public API surface changed; consumers who worked around the bug by chaining a redundant .Where(...) can remove the workaround;
+v6.0.8-alpha - Added ICosmosQueryLogSink for app-wide diagnostics routing alongside the existing OnQueryDiagnostics template-method hook. Default NoOpCosmosQueryLogSink is registered via TryAddSingleton so existing consumers get identical runtime behavior. Custom sinks register via CosmosRegistrationHelper.WithQueryLogSink&lt;TSink&gt;() (or the instance overload). Source-level breaking change: CosmosRepository&lt;T&gt;, CosmosTenantItemRepository&lt;T&gt;, and CosmosDbParentedItemRepository&lt;T&gt; constructors gained an optional trailing ICosmosQueryLogSink? sink = null parameter; derived classes that pass base(...) explicitly must forward it (mechanical one-line change). Sink exceptions are caught, logged as ILogger warnings, and suppressed — a broken sink cannot break queries. OnQueryDiagnostics and all existing ILogger output are unchanged;
+v6.1 - BREAKING (template methods only): Removed OnLogPointOperationDiagnostics and OnLogFeedResponseDiagnostics virtual hooks. Introduced CosmosQueryDiagnostics structured payload and the single OnQueryDiagnostics(CosmosQueryDiagnostics) hook that fires for point operations, feed response pages, and query totals — distinguished by CosmosQueryEventKind. LogPointOperationDiagnostics now takes a TimeSpan duration; LogFeedResponseDiagnostics and LogQueryTotalDiagnostics take duration, result count, query text, parameters, partition key, and cross-partition flag. Added ExecuteScalarAsync&lt;TResult&gt; helper so Cosmos SDK scalar LINQ operators (CountAsync, MaxAsync, etc.) flow through the library's diagnostics pipeline. Added GetResultsAsync(QueryDefinition, ...) overload for raw Cosmos SQL that emits the same diagnostics as the LINQ overload. ILogger output unchanged. Migrate overrides of the old hooks to OnQueryDiagnostics by switching on diagnostics.EventKind;
+v6.0 - BREAKING: Renamed OwnerId to TenantId, DiscriminatorValue to EntityType, IOwnedItem to ITenantItem, OwnedItemBase to TenantItemBase, and all related types. Default partition key path changed from /pk,/discriminator to /tenantId,/entityType. JSON serialization defaults to camelCase. Added IBlobOwner support on TenantItemBase for blob attachments via Benday.BlobStorage. Added bulk SaveAllAsync and DeleteAllByTenantIdAsync with throttling and retry. Added paged queries with GetPagedAsync. Added shared interface contracts from Benday.Common.Interfaces. See MIGRATION-v6.md for upgrade guide;
+v5.3 - Added some deprecation attributes to warn devs about some methods that ignore partition keys;
+v5.2 - Added bulk delete support to repository;
+v5.1 - Added per-repository custom container configuration support;
+v5.0 - Adding IParentedItem interface and IParentedItemRepository interface plus CosmosDbParentedItemRepository to support items that have a parent-child relationship in CosmosDb;
+v4.10 - Fixing bugs where etag and timestamp not getting updated on Save;
+v4.9 - Added simplified config options for local emulator; Added configuration builder extension method to simplify configuration of cosmos db in web projects; Added better paging support to repository;
+v4.8 - Refactored batch save to make the saving of each batch be a protected virtual method; Added batch size property;
+v4.7 - Adding BeforeSaveBatch and AfterSaveBatch template methods;
+v4.6 - Added configure option to use DefaultAzureCredential for authentication using managed service ids in azure; Fixed bug where cosmos client was improperly registered in DI when using managed ids;
+v4.5 - Added option to configure 'allow bulk execution' for the CosmosClient; Default value for 'allow bulk execution' is now true;
+v4.4 - Changed configuration reader to use default values rather than throwing exceptions when optional values are missing;
+v4.3 - Fixed bug where UseHierarchicalPartitionKey was sometimes not being set;
+v4.2.2 - Allowed cosmos db options UseHierarchicalPartitionKey to be set-able;
+v4.2.1 - Minor bug fix release;
+v4.2 - Fixed partition key bug on SaveAsync when in flat-partition key mode;
+v4.1 - Added option to CosmosConfig.ConnectionString to enable GatewayMode via connection string;
+v4.0 - Added support for non-hierarchical partition keys and made it the default; Added support for the beta version of the linux emulator container; Added configuration options for gateway mode and database throughput; Breaking change: renamed OwnedItemService interface and classes;
+v3.0 - Changed framework target to be netstandard2.1; Added helper classes and methods to simplify type registrations;
+v2.1 - Added optimistic concurrency checks using _etag to the repository SaveAsync method.
+v2.0 - Changed implementation to use System.Text.Json for serialization instead of Newtonsoft.Json. Added configuration utilities to make it easier to configure CosmosDb in web projects. Added service layer base classes.
+v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository utilities</PackageReleaseNotes>
+    <PackageTags>azure; cosmosdb; azure-cosmosdb; repository-pattern; domain-model; nosql; document-database; partition-key; hierarchical-partition-key; dependency-injection; aspnetcore; linq; crud; etag; concurrency; blob-storage; blob-attachments; iblobowner; multi-tenant</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Utilities\CosmosConfigurationUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\bdc_mark_128_128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.*" />
+    <PackageReference Include="Benday.Common" Version="9.*" />
+    <PackageReference Include="Benday.Common.Interfaces" Version="1.0.1-*" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.*" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="10.*" />
+    
+    <!-- 
+         this package reference is only here to avoid random runtime issues 
+         where AzureCosmosDisableNewtonsoftJsonCheck gets ignored 
+    -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.*" />
+  </ItemGroup>
+</Project>

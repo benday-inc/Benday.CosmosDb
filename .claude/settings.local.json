@@ -46,7 +46,9 @@
       "Bash(git restore *)",
       "mcp__claude_ai_Microsoft_Learn__microsoft_docs_search",
       "Bash(git tag -a v6.0.10 -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(curl -sk https://localhost:8081/_explorer/emulator.pem -o /dev/null -w \"emulator HTTP status: %{http_code}\\\\n\" --max-time 5)",
+      "Bash(dotnet --version)"
     ],
     "deny": [],
     "ask": []
