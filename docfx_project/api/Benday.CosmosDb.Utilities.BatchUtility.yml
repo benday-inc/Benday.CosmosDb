@@ -17,11 +17,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/BatchUtility.cs
+      path: src/Benday.CosmosDb/Utilities/BatchUtility.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: BatchUtility
-    path: ../Benday.CosmosDb/Utilities/BatchUtility.cs
+    path: ../src/Benday.CosmosDb/Utilities/BatchUtility.cs
     startLine: 5
   assemblies:
   - Benday.CosmosDb
@@ -54,11 +54,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/BatchUtility.cs
+      path: src/Benday.CosmosDb/Utilities/BatchUtility.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetBatches
-    path: ../Benday.CosmosDb/Utilities/BatchUtility.cs
+    path: ../src/Benday.CosmosDb/Utilities/BatchUtility.cs
     startLine: 14
   assemblies:
   - Benday.CosmosDb
@@ -98,11 +98,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/BatchUtility.cs
+      path: src/Benday.CosmosDb/Utilities/BatchUtility.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CreateArrayForBatch
-    path: ../Benday.CosmosDb/Utilities/BatchUtility.cs
+    path: ../src/Benday.CosmosDb/Utilities/BatchUtility.cs
     startLine: 39
   assemblies:
   - Benday.CosmosDb
@@ -149,11 +149,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/BatchUtility.cs
+      path: src/Benday.CosmosDb/Utilities/BatchUtility.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetBatchCount
-    path: ../Benday.CosmosDb/Utilities/BatchUtility.cs
+    path: ../src/Benday.CosmosDb/Utilities/BatchUtility.cs
     startLine: 65
   assemblies:
   - Benday.CosmosDb

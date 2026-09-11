@@ -8,7 +8,7 @@
  
  
   <ItemGroup>
-    <PackageReference Include="Benday.AzureStorage" Version="1.0.0-alpha" />
+    <PackageReference Include="Benday.AzureStorage" Version="1.4.0" />
     <PackageReference Include="Benday.BlobStorage" Version="1.0.0-alpha" />
   </ItemGroup>
 

@@ -17,11 +17,11 @@ items:
   type: Enum
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosQueryEventKind
-    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
     startLine: 6
   assemblies:
   - Benday.CosmosDb
@@ -47,11 +47,11 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PointOperation
-    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
     startLine: 11
   assemblies:
   - Benday.CosmosDb
@@ -75,11 +75,11 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: FeedResponsePage
-    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
     startLine: 17
   assemblies:
   - Benday.CosmosDb
@@ -106,11 +106,11 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: QueryTotal
-    path: ../Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosQueryEventKind.cs
     startLine: 26
   assemblies:
   - Benday.CosmosDb

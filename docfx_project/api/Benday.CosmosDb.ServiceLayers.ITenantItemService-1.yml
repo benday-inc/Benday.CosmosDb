@@ -18,19 +18,25 @@ items:
   type: Interface
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ITenantItemService
-    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
-    startLine: 5
+    path: ../src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 10
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: >-
+    Service abstraction over a tenant-scoped Cosmos DB repository for entity type <code class="typeparamref">T</code>.
+
+    Provides tenant-aware CRUD operations layered on top of the repository.
+  example: []
   syntax:
     content: 'public interface ITenantItemService<T> : IAsyncTenantService<T, string>, IAsyncService<T, string> where T : class, ITenantItem, new()'
     typeParameters:
     - id: T
+      description: The tenant-scoped entity type.
     content.vb: Public Interface ITenantItemService(Of T As {Class, ITenantItem, New}) Inherits IAsyncTenantService(Of T, String), IAsyncService(Of T, String)
   inheritedMembers:
   - Benday.Common.Interfaces.IAsyncTenantService{{T},System.String}.GetByIdAsync(System.String,System.String)
@@ -54,20 +60,23 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DeleteAsync
-    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
-    startLine: 9
+    path: ../src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 16
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Deletes the specified item.
+  example: []
   syntax:
     content: Task DeleteAsync(T item)
     parameters:
     - id: item
       type: '{T}'
+      description: The item to delete.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Function DeleteAsync(item As T) As Task
@@ -87,22 +96,26 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetAllAsync
-    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
-    startLine: 10
+    path: ../src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 21
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Gets all items belonging to the specified tenant.
+  example: []
   syntax:
     content: Task<IEnumerable<T>> GetAllAsync(string tenantId)
     parameters:
     - id: tenantId
       type: System.String
+      description: The tenant identifier.
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+      description: The items for the tenant.
     content.vb: Function GetAllAsync(tenantId As String) As Task(Of IEnumerable(Of T))
   overload: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetAllAsync*
   nameWithType.vb: ITenantItemService(Of T).GetAllAsync(String)
@@ -121,24 +134,29 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetByIdAsync
-    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
-    startLine: 11
+    path: ../src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 27
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Gets a single item by tenant and id.
+  example: []
   syntax:
     content: Task<T?> GetByIdAsync(string tenantId, string id)
     parameters:
     - id: tenantId
       type: System.String
+      description: The tenant identifier.
     - id: id
       type: System.String
+      description: The item identifier.
     return:
       type: System.Threading.Tasks.Task{{T}}
+      description: The matching item, or null if not found.
     content.vb: Function GetByIdAsync(tenantId As String, id As String) As Task(Of T)
   overload: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.GetByIdAsync*
   nameWithType.vb: ITenantItemService(Of T).GetByIdAsync(String, String)
@@ -157,22 +175,26 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveAsync
-    path: ../Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
-    startLine: 12
+    path: ../src/Benday.CosmosDb/ServiceLayers/ITenantItemService.cs
+    startLine: 32
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Inserts or updates the specified item.
+  example: []
   syntax:
     content: Task<T?> SaveAsync(T item)
     parameters:
     - id: item
       type: '{T}'
+      description: The item to save.
     return:
       type: System.Threading.Tasks.Task{{T}}
+      description: The saved item, including any server-assigned values.
     content.vb: Function SaveAsync(item As T) As Task(Of T)
   overload: Benday.CosmosDb.ServiceLayers.ITenantItemService`1.SaveAsync*
   nameWithType.vb: ITenantItemService(Of T).SaveAsync(T)

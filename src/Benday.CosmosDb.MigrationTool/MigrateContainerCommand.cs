@@ -5,9 +5,8 @@ namespace Benday.CosmosDb.MigrationTool;
 
 [Command(
     Name = "migrate",
-    IsAsync = true,
     Description = "Migrate a Cosmos DB container from v5 schema (pk/discriminator) to v6 schema (tenantId/entityType) with camelCase property names.")]
-public class MigrateContainerCommand : AsynchronousCommand
+public class MigrateContainerCommand : Command
 {
     public MigrateContainerCommand(
         CommandExecutionInfo info, ITextOutputProvider outputProvider)
@@ -91,10 +90,16 @@ public class MigrateContainerCommand : AsynchronousCommand
             .WithDefaultValue(string.Empty)
             .WithDescription("Directory for tracking progress (enables resume). Defaults to ./progress/{db}_{src}_to_{dest}");
 
+        // Declared as rules rather than checks in OnExecute so they are enforced before the
+        // command runs, printed in the usage text, and carried in the --json schema. A Boolean
+        // flag counts as supplied only when it is true.
+        args.AtLeastOneOf("endpoint", "use-emulator");
+        args.AtLeastOneOf("account-key", "use-emulator", "use-managed-identity");
+
         return args;
     }
 
-    protected override async Task OnExecute()
+    protected override async Task OnExecute(CancellationToken cancellationToken)
     {
         var options = BuildMigrationOptions();
 
@@ -104,7 +109,7 @@ public class MigrateContainerCommand : AsynchronousCommand
 
         var runner = new MigrationRunner(client, options, _OutputProvider.WriteLine);
 
-        await runner.RunAsync();
+        await runner.RunAsync(cancellationToken);
     }
 
     private MigrationOptions BuildMigrationOptions()
@@ -141,16 +146,8 @@ public class MigrateContainerCommand : AsynchronousCommand
 
     private void ValidateOptions(MigrationOptions options)
     {
-        if (string.IsNullOrWhiteSpace(options.Endpoint))
-        {
-            throw new KnownException("Endpoint is required. Use /use-emulator or provide /endpoint.");
-        }
-
-        if (!options.UseManagedIdentity && string.IsNullOrWhiteSpace(options.AccountKey))
-        {
-            throw new KnownException("Account key is required. Use /account-key, /use-emulator, or /use-managed-identity.");
-        }
-
+        // Endpoint and credential presence are argument rules (see GetArguments) and are
+        // enforced before OnExecute runs. What is left is a check about the values themselves.
         if (options.SourceContainerName == options.DestContainerName)
         {
             throw new KnownException("Source and destination container names must be different.");

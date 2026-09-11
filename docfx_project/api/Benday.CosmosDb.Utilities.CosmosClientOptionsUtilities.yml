@@ -25,15 +25,20 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosClientOptionsUtilities
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 18
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 22
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Helper methods for building <xref href="Microsoft.Azure.Cosmos.CosmosClientOptions" data-throw-if-not-resolved="false"></xref> and registering the shared
+
+    Cosmos client, repositories, and their options with the dependency injection container.
+  example: []
   syntax:
     content: public static class CosmosClientOptionsUtilities
     content.vb: Public Module CosmosClientOptionsUtilities
@@ -60,12 +65,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetCosmosDbClientOptions
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 25
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 29
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -95,12 +100,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetCosmosConfig
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 69
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 73
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -134,12 +139,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetCosmosDbClientOptions
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 177
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 181
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -183,12 +188,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureCosmosClient
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 210
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 215
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -208,6 +213,7 @@ items:
       description: ''
     - id: allowBulkExecution
       type: System.Boolean
+      description: ''
     - id: jsonNamingPolicy
       type: System.Text.Json.JsonNamingPolicy
       description: ''
@@ -230,12 +236,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureCosmosClient
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 237
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 242
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -266,12 +272,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 286
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 292
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -303,6 +309,7 @@ items:
       description: Use hierarchical partition key
     - id: useDefaultAzureCredential
       type: System.Boolean
+      description: Authenticate using DefaultAzureCredential instead of the connection string key
     typeParameters:
     - id: TEntity
       description: ''
@@ -325,12 +332,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 315
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 323
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -359,8 +366,10 @@ items:
       description: ''
     - id: useHierarchicalPartitionKey
       type: System.Boolean
+      description: ''
     - id: useDefaultAzureCredential
       type: System.Boolean
+      description: ''
     typeParameters:
     - id: TEntity
       description: ''
@@ -387,12 +396,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureParentedRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 344
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 352
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -447,12 +456,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureParentedRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 375
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 383
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -511,12 +520,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterOptionsForRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 403
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 412
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -548,6 +557,7 @@ items:
       description: ''
     - id: useDefaultAzureCredential
       type: System.Boolean
+      description: ''
     typeParameters:
     - id: T
       description: ''
@@ -570,30 +580,47 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ThrowIfEmptyOrNull
-    path: ../Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
-    startLine: 426
+    path: ../src/Benday.CosmosDb/Utilities/CosmosClientOptionsUtilities.cs
+    startLine: 442
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: Returns <code class="paramref">value</code> if it is non-empty; otherwise throws.
+  example: []
   syntax:
     content: public static string ThrowIfEmptyOrNull(this string? value, string? valueName = null)
     parameters:
     - id: value
       type: System.String
+      description: The value to validate.
     - id: valueName
       type: System.String
+      description: Optional name used in the error message.
     return:
       type: System.String
+      description: The non-empty value.
     content.vb: Public Shared Function ThrowIfEmptyOrNull(value As String, valueName As String = Nothing) As String
   overload: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ThrowIfEmptyOrNull*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <code class="paramref">value</code> is null or whitespace.
   nameWithType.vb: CosmosClientOptionsUtilities.ThrowIfEmptyOrNull(String, String)
   fullName.vb: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.ThrowIfEmptyOrNull(String, String)
   name.vb: ThrowIfEmptyOrNull(String, String)
 references:
+- uid: Microsoft.Azure.Cosmos.CosmosClientOptions
+  commentId: T:Microsoft.Azure.Cosmos.CosmosClientOptions
+  parent: Microsoft.Azure.Cosmos
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions
+  name: CosmosClientOptions
+  nameWithType: CosmosClientOptions
+  fullName: Microsoft.Azure.Cosmos.CosmosClientOptions
 - uid: Benday.CosmosDb.Utilities
   commentId: N:Benday.CosmosDb.Utilities
   href: Benday.html
@@ -854,27 +881,6 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
-- uid: System
-  commentId: N:System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System
-  nameWithType: System
-  fullName: System
-- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions*
-  commentId: Overload:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions
-  href: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions
-  name: GetCosmosDbClientOptions
-  nameWithType: CosmosClientOptionsUtilities.GetCosmosDbClientOptions
-  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions
-- uid: Microsoft.Azure.Cosmos.CosmosClientOptions
-  commentId: T:Microsoft.Azure.Cosmos.CosmosClientOptions
-  parent: Microsoft.Azure.Cosmos
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions
-  name: CosmosClientOptions
-  nameWithType: CosmosClientOptions
-  fullName: Microsoft.Azure.Cosmos.CosmosClientOptions
 - uid: Microsoft.Azure.Cosmos
   commentId: N:Microsoft.Azure.Cosmos
   isExternal: true
@@ -912,6 +918,19 @@ references:
     name: Cosmos
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions*
+  commentId: Overload:Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions
+  href: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.html#Benday_CosmosDb_Utilities_CosmosClientOptionsUtilities_GetCosmosDbClientOptions
+  name: GetCosmosDbClientOptions
+  nameWithType: CosmosClientOptionsUtilities.GetCosmosDbClientOptions
+  fullName: Benday.CosmosDb.Utilities.CosmosClientOptionsUtilities.GetCosmosDbClientOptions
 - uid: System.InvalidOperationException
   commentId: T:System.InvalidOperationException
   isExternal: true

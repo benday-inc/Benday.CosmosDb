@@ -18,11 +18,11 @@ items:
   type: Interface
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+      path: src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ICosmosIdentity
-    path: ../Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+    path: ../src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
     startLine: 12
   assemblies:
   - Benday.CosmosDb
@@ -53,11 +53,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+      path: src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: TimestampUnixStyle
-    path: ../Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+    path: ../src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
     startLine: 18
   assemblies:
   - Benday.CosmosDb
@@ -96,11 +96,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+      path: src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Timestamp
-    path: ../Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+    path: ../src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
     startLine: 24
   assemblies:
   - Benday.CosmosDb
@@ -127,11 +127,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+      path: src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Etag
-    path: ../Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+    path: ../src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
     startLine: 33
   assemblies:
   - Benday.CosmosDb
@@ -170,11 +170,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+      path: src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: EntityType
-    path: ../Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
+    path: ../src/Benday.CosmosDb/DomainModels/ICosmosIdentity.cs
     startLine: 39
   assemblies:
   - Benday.CosmosDb

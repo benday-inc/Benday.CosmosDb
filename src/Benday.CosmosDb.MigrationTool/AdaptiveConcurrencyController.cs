@@ -45,7 +45,7 @@ public class AdaptiveConcurrencyController
         _semaphore = new SemaphoreSlim(_currentConcurrency, _currentConcurrency);
     }
 
-    public async Task WaitAsync() => await _semaphore.WaitAsync();
+    public async Task WaitAsync(CancellationToken cancellationToken = default) => await _semaphore.WaitAsync(cancellationToken);
 
     public void Release() => _semaphore.Release();
 

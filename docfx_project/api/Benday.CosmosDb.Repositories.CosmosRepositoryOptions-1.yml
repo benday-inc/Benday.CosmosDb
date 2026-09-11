@@ -22,11 +22,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosRepositoryOptions
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
     startLine: 8
   assemblies:
   - Benday.CosmosDb
@@ -65,11 +65,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConnectionString
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
     startLine: 13
   assemblies:
   - Benday.CosmosDb
@@ -98,11 +98,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithCreateStructures
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
     startLine: 19
   assemblies:
   - Benday.CosmosDb
@@ -131,11 +131,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DatabaseName
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
     startLine: 25
   assemblies:
   - Benday.CosmosDb
@@ -164,11 +164,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ContainerName
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
     startLine: 31
   assemblies:
   - Benday.CosmosDb
@@ -197,11 +197,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PartitionKey
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
     startLine: 37
   assemblies:
   - Benday.CosmosDb
@@ -230,11 +230,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DatabaseThroughput
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
     startLine: 43
   assemblies:
   - Benday.CosmosDb
@@ -263,11 +263,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseHierarchicalPartitionKey
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
     startLine: 49
   assemblies:
   - Benday.CosmosDb
@@ -296,15 +296,20 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseDefaultAzureCredential
-    path: ../Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
-    startLine: 51
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepositoryOptions.cs
+    startLine: 55
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    When true, the repository authenticates with <code>DefaultAzureCredential</code> instead of a
+
+    connection-string key. Disabled by default.
+  example: []
   syntax:
     content: public bool UseDefaultAzureCredential { get; set; }
     parameters: []

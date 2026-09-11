@@ -7,6 +7,12 @@
         <Nullable>enable</Nullable>
         <AssemblyName>cosmosmigrator</AssemblyName>
         <PackageId>cosmosmigrator</PackageId>
+        <Version>2.0.0</Version>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <PackageReleaseNotes>
+v2.0.0 - Moved to Benday.CommandsFramework v5. Arguments are now typed POSIX-style (--database MyDb, --dry-run); the /name:value form still works but prints a deprecation warning on stderr. Unknown arguments are now rejected (strict validation) instead of being silently ignored, and the endpoint/credential requirements are declared as argument rules that appear in --help and in the --json schema. The process exit code now reflects failures (1) rather than always exiting 0. Ctrl+C cancels a migration cleanly. Updated Microsoft.Azure.Cosmos to 3.63 and Azure.Identity to 1.21;
+v1.0.0 - Initial release;
+        </PackageReleaseNotes>
         <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
         <PackAsTool>True</PackAsTool>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -15,9 +21,9 @@
         <NoWarn>$(NoWarn);CS1591</NoWarn>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Azure.Identity" Version="1.19.0" />
-        <PackageReference Include="Benday.CommandsFramework" Version="4.16.0" />
-        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.58.0" />
+        <PackageReference Include="Azure.Identity" Version="1.21.0" />
+        <PackageReference Include="Benday.CommandsFramework" Version="5.1.1" />
+        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.63.0" />
 		<!-- The Newtonsoft.Json package reference is required to fix a cosmos sdk startup problem -->
         <PackageReference Include="Newtonsoft.Json" Version="13.*" />
     </ItemGroup>

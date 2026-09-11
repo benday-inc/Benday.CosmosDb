@@ -298,6 +298,8 @@ await repository.SaveAllAsync(items, maxConcurrency: 10, maxRetries: 5);
 await repository.DeleteAllByTenantIdAsync("acme");
 ```
 
+`GetAllAsync(tenantId)` returns items newest-first by the server-assigned `_ts` (last-modified) value. Because `_ts` is a system property that Cosmos DB always indexes, the query works under any indexing policy, including opt-in policies that exclude every user path.
+
 ## Paged Queries
 
 Retrieve large result sets efficiently with continuation tokens:
@@ -320,7 +322,7 @@ do
 
 ## Query Diagnostics
 
-The library emits a `CosmosQueryDiagnostics` event for every point operation, every page of feed-iterator results, and the rolled-up total of each query. Events carry the SQL text, parameters, partition key, RU charge, duration, result count, and a cross-partition flag. There are two channels for receiving them — both fire for every event and they don't interfere with each other:
+The library emits a `CosmosQueryDiagnostics` event for every point operation, every page of feed-iterator results, and the rolled-up total of each query. Events carry the entity type, the SQL text, parameters, partition key, RU charge, duration, result count, and a cross-partition flag. Point operations (save, delete, get-by-id) carry the partition key they targeted; their SQL text and parameters are null. There are two channels for receiving them — both fire for every event and they don't interfere with each other:
 
 - **`ICosmosQueryLogSink`** — an app-wide singleton that receives every event from every repository. Use this for structured log files, observability pipelines, or test capture.
 - **`OnQueryDiagnostics(CosmosQueryDiagnostics)`** — a virtual hook on `CosmosRepository<T>` that you can override per-repository when one repo needs special handling.
@@ -339,6 +341,8 @@ builder.Services.Configure<CosmosFileLogSinkOptions>(options =>
 });
 helper.WithQueryLogSink<FileCosmosQueryLogSink>();
 ```
+
+Each record is one JSON object per line, written as UTF-8 without a byte-order mark, with these fields: `eventKind` (`PointOperation`, `FeedResponsePage`, `QueryTotal`), `timestamp`, `repositoryName`, `entityType`, `queryDescription`, `queryText`, `parameters`, `partitionKey`, `requestCharge`, `durationMs`, `resultCount`, `isCrossPartition`, and `indexMetrics`. `entityType` is the repository's `EntityType` value and is what tells the saves for one domain type apart from another when several share the generic `CosmosTenantItemRepository` class name.
 
 To plug in your own sink, implement `ICosmosQueryLogSink` and pass it to `helper.WithQueryLogSink<TSink>()` (or `helper.WithQueryLogSink(instance)` for a pre-built instance).
 

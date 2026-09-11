@@ -32,6 +32,7 @@ items:
   - Benday.CosmosDb.Repositories.CosmosRepository`1.IsCrossPartitionQuery(Microsoft.Azure.Cosmos.CosmosDiagnostics)
   - Benday.CosmosDb.Repositories.CosmosRepository`1.LogFeedResponseDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.String)
   - Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan)
+  - Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Nullable{Microsoft.Azure.Cosmos.PartitionKey})
   - Benday.CosmosDb.Repositories.CosmosRepository`1.LogQueryTotalDiagnostics(System.String,System.Double,System.TimeSpan,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},Microsoft.Azure.Cosmos.PartitionKey,System.Boolean,System.String)
   - Benday.CosmosDb.Repositories.CosmosRepository`1.Logger
   - Benday.CosmosDb.Repositories.CosmosRepository`1.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)
@@ -50,11 +51,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosRepository
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
     startLine: 54
   assemblies:
   - Benday.CosmosDb
@@ -131,11 +132,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: EntityType
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
     startLine: 84
   assemblies:
   - Benday.CosmosDb
@@ -164,15 +165,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Logger
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 87
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 88
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: Logger for this repository, available to derived classes.
+  example: []
   syntax:
     content: protected ILogger Logger { get; }
     parameters: []
@@ -195,15 +198,17 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: _Options
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 89
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 91
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: Resolved repository options (connection, database, container, partition key) for this entity type.
+  example: []
   syntax:
     content: protected readonly CosmosRepositoryOptions<T> _Options
     return:
@@ -224,12 +229,12 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: _sink
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 96
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 98
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -260,12 +265,12 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: _captureIndexMetrics
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 106
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 108
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -302,12 +307,12 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 127
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 129
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -367,12 +372,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetContainerAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 156
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 158
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -404,12 +409,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DeleteAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 170
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 172
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -448,12 +453,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetAllAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 212
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 214
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -483,12 +488,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetResultsAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 239
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 241
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -538,12 +543,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetResultsAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 296
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 308
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -601,12 +606,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetResultsAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 327
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 339
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -650,12 +655,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetResultsAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 345
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 357
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -708,12 +713,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetQueryDescription
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 408
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 420
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -751,12 +756,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetQueryDescription
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 419
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 431
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -792,12 +797,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: IsCrossPartitionQuery
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 429
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 441
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -816,6 +821,61 @@ items:
   overload: Benday.CosmosDb.Repositories.CosmosRepository`1.IsCrossPartitionQuery*
   nameWithType.vb: CosmosRepository(Of T).IsCrossPartitionQuery(CosmosDiagnostics)
   fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).IsCrossPartitionQuery(Microsoft.Azure.Cosmos.CosmosDiagnostics)
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Nullable{Microsoft.Azure.Cosmos.PartitionKey})
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Nullable{Microsoft.Azure.Cosmos.PartitionKey})
+  id: LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan,System.Nullable{Microsoft.Azure.Cosmos.PartitionKey})
+  parent: Benday.CosmosDb.Repositories.CosmosRepository`1
+  langs:
+  - csharp
+  - vb
+  name: LogPointOperationDiagnostics(string, double, CosmosDiagnostics, TimeSpan, PartitionKey?)
+  nameWithType: CosmosRepository<T>.LogPointOperationDiagnostics(string, double, CosmosDiagnostics, TimeSpan, PartitionKey?)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogPointOperationDiagnostics(string, double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, Microsoft.Azure.Cosmos.PartitionKey?)
+  type: Method
+  source:
+    remote:
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+      branch: master
+      repo: https://github.com/benday-inc/Benday.CosmosDb.git
+    id: LogPointOperationDiagnostics
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 471
+  assemblies:
+  - Benday.CosmosDb
+  namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Logs diagnostics for a point operation (save, delete, point-read)
+
+    and fires <xref href="Benday.CosmosDb.Repositories.CosmosRepository%601.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)" data-throw-if-not-resolved="false"></xref> with a
+
+    <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation" data-throw-if-not-resolved="false"></xref> event.
+  example: []
+  syntax:
+    content: protected void LogPointOperationDiagnostics(string operationName, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration, PartitionKey? partitionKey)
+    parameters:
+    - id: operationName
+      type: System.String
+      description: Name of the operation for log messages.
+    - id: requestCharge
+      type: System.Double
+      description: RU charge from the response.
+    - id: diagnostics
+      type: Microsoft.Azure.Cosmos.CosmosDiagnostics
+      description: Cosmos diagnostics from the response.
+    - id: duration
+      type: System.TimeSpan
+      description: Wall-clock duration of the SDK round trip.
+    - id: partitionKey
+      type: System.Nullable{Microsoft.Azure.Cosmos.PartitionKey}
+      description: >-
+        Partition key the operation targeted. Null records an empty
+
+        <xref href="Microsoft.Azure.Cosmos.PartitionKey" data-throw-if-not-resolved="false"></xref>; callers that know the key should pass it.
+    content.vb: Protected Sub LogPointOperationDiagnostics(operationName As String, requestCharge As Double, diagnostics As CosmosDiagnostics, duration As TimeSpan, partitionKey As PartitionKey?)
+  overload: Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics*
+  nameWithType.vb: CosmosRepository(Of T).LogPointOperationDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, PartitionKey?)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).LogPointOperationDiagnostics(String, Double, Microsoft.Azure.Cosmos.CosmosDiagnostics, System.TimeSpan, Microsoft.Azure.Cosmos.PartitionKey?)
+  name.vb: LogPointOperationDiagnostics(String, Double, CosmosDiagnostics, TimeSpan, PartitionKey?)
 - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan)
   commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan)
   id: LogPointOperationDiagnostics(System.String,System.Double,Microsoft.Azure.Cosmos.CosmosDiagnostics,System.TimeSpan)
@@ -829,31 +889,31 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: LogPointOperationDiagnostics
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 455
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 501
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
   summary: >-
-    Logs diagnostics for a point operation (save, delete, point-read)
+    Logs diagnostics for a point operation without a partition key. Kept so
 
-    and fires <xref href="Benday.CosmosDb.Repositories.CosmosRepository%601.OnQueryDiagnostics(Benday.CosmosDb.Diagnostics.CosmosQueryDiagnostics)" data-throw-if-not-resolved="false"></xref> with a
+    that repositories compiled against 6.1 keep binding at run time; new code
 
-    <xref href="Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation" data-throw-if-not-resolved="false"></xref> event.
+    should pass the partition key.
   example: []
   syntax:
     content: protected void LogPointOperationDiagnostics(string operationName, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration)
     parameters:
     - id: operationName
       type: System.String
-      description: Name of the operation for log messages.
+      description: Name of the operation (e.g. "SaveAsync").
     - id: requestCharge
       type: System.Double
-      description: RU charge from the response.
+      description: RU charge for the operation.
     - id: diagnostics
       type: Microsoft.Azure.Cosmos.CosmosDiagnostics
       description: Cosmos diagnostics from the response.
@@ -878,12 +938,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: LogFeedResponseDiagnostics
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 493
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 527
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -952,12 +1012,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: LogQueryTotalDiagnostics
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 552
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 587
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1025,12 +1085,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: OnQueryDiagnostics
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 591
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 627
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1071,12 +1131,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ExecuteScalarAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 682
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 718
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1177,12 +1237,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetByIdAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 760
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 797
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1198,6 +1258,7 @@ items:
     parameters:
     - id: id
       type: System.String
+      description: Id of the entity
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: The first matching entity
@@ -1221,12 +1282,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Initialize
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 789
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 826
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1254,12 +1315,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 977
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1014
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1297,12 +1358,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: BatchSize
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1049
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1086
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1335,12 +1396,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1062
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1099
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1382,26 +1443,37 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveBatchAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1087
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1133
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Saves a single batch of items in one transactional batch, keyed by the batch's shared
+
+    partition key. Updates each item's ETag and timestamp on success and invokes the
+
+    <xref href="Benday.CosmosDb.Repositories.CosmosRepository%601.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch%2c%600%5b%5d%2cSystem.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> / <xref href="Benday.CosmosDb.Repositories.CosmosRepository%601.AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse%2c%600%5b%5d%2cSystem.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> hooks.
+  example: []
   syntax:
     content: protected virtual Task<TransactionalBatchResponse> SaveBatchAsync(int batchCount, int currentBatch, T[] batch)
     parameters:
     - id: batchCount
       type: System.Int32
+      description: Total number of batches being saved.
     - id: currentBatch
       type: System.Int32
+      description: The 1-based index of this batch.
     - id: batch
       type: '{T}[]'
+      description: The items in this batch. All must share a partition key.
     return:
       type: System.Threading.Tasks.Task{Microsoft.Azure.Cosmos.TransactionalBatchResponse}
+      description: The transactional batch response.
     content.vb: Protected Overridable Function SaveBatchAsync(batchCount As Integer, currentBatch As Integer, batch As T()) As Task(Of TransactionalBatchResponse)
   overload: Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync*
   nameWithType.vb: CosmosRepository(Of T).SaveBatchAsync(Integer, Integer, T())
@@ -1420,26 +1492,35 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: AfterSaveBatch
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1133
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1187
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Template hook invoked after a batch executes. Override to inspect the response or perform
+
+    follow-up work. The default implementation does nothing.
+  example: []
   syntax:
     content: protected virtual Task AfterSaveBatch(TransactionalBatchResponse response, T[] batch, int currentBatch, int batchCount)
     parameters:
     - id: response
       type: Microsoft.Azure.Cosmos.TransactionalBatchResponse
+      description: The transactional batch response.
     - id: batch
       type: '{T}[]'
+      description: The items in the batch.
     - id: currentBatch
       type: System.Int32
+      description: The 1-based index of this batch.
     - id: batchCount
       type: System.Int32
+      description: Total number of batches being saved.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Protected Overridable Function AfterSaveBatch(response As TransactionalBatchResponse, batch As T(), currentBatch As Integer, batchCount As Integer) As Task
@@ -1460,26 +1541,35 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: BeforeSaveBatch
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1138
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1200
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Template hook invoked before a batch executes, after items are added to the transactional
+
+    batch. Override to add operations or validation. The default implementation does nothing.
+  example: []
   syntax:
     content: protected virtual Task BeforeSaveBatch(TransactionalBatch cosmosBatch, T[] batch, int currentBatch, int batchCount)
     parameters:
     - id: cosmosBatch
       type: Microsoft.Azure.Cosmos.TransactionalBatch
+      description: The transactional batch about to execute.
     - id: batch
       type: '{T}[]'
+      description: The items in the batch.
     - id: currentBatch
       type: System.Int32
+      description: The 1-based index of this batch.
     - id: batchCount
       type: System.Int32
+      description: Total number of batches being saved.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Protected Overridable Function BeforeSaveBatch(cosmosBatch As TransactionalBatch, batch As T(), currentBatch As Integer, batchCount As Integer) As Task
@@ -1500,12 +1590,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetPartitionKey
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1148
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1210
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1537,12 +1627,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetPartitionKey
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1160
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1222
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1578,12 +1668,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetQueryContextAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1182
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1244
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1621,12 +1711,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetQueryContextAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1196
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1258
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1667,12 +1757,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetQueryContextAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1240
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1302
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1719,12 +1809,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetPagedAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1272
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1334
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -1774,12 +1864,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosRepository.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetPagedAsync
-    path: ../Benday.CosmosDb/Repositories/CosmosRepository.cs
-    startLine: 1344
+    path: ../src/Benday.CosmosDb/Repositories/CosmosRepository.cs
+    startLine: 1406
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -3603,7 +3693,7 @@ references:
   fullName: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.PointOperation
 - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics*
   commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepository`1.LogPointOperationDiagnostics
-  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogPointOperationDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_LogPointOperationDiagnostics_System_String_System_Double_Microsoft_Azure_Cosmos_CosmosDiagnostics_System_TimeSpan_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__
   name: LogPointOperationDiagnostics
   nameWithType: CosmosRepository<T>.LogPointOperationDiagnostics
   fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.LogPointOperationDiagnostics
@@ -3628,6 +3718,54 @@ references:
   name: TimeSpan
   nameWithType: TimeSpan
   fullName: System.TimeSpan
+- uid: System.Nullable{Microsoft.Azure.Cosmos.PartitionKey}
+  commentId: T:System.Nullable{Microsoft.Azure.Cosmos.PartitionKey}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  name: PartitionKey?
+  nameWithType: PartitionKey?
+  fullName: Microsoft.Azure.Cosmos.PartitionKey?
+  spec.csharp:
+  - uid: Microsoft.Azure.Cosmos.PartitionKey
+    name: PartitionKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  - name: '?'
+  spec.vb:
+  - uid: Microsoft.Azure.Cosmos.PartitionKey
+    name: PartitionKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
   commentId: F:Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.FeedResponsePage
   href: Benday.CosmosDb.Diagnostics.CosmosQueryEventKind.html#Benday_CosmosDb_Diagnostics_CosmosQueryEventKind_FeedResponsePage
@@ -4301,6 +4439,134 @@ references:
   - name: Of
   - name: " "
   - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch,`0[],System.Int32,System.Int32)
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch,`0[],System.Int32,System.Int32)
+  isExternal: true
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_BeforeSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatch__0___System_Int32_System_Int32_
+  name: BeforeSaveBatch(TransactionalBatch, T[], int, int)
+  nameWithType: CosmosRepository<T>.BeforeSaveBatch(TransactionalBatch, T[], int, int)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch, T[], int, int)
+  nameWithType.vb: CosmosRepository(Of T).BeforeSaveBatch(TransactionalBatch, T(), Integer, Integer)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch, T(), Integer, Integer)
+  name.vb: BeforeSaveBatch(TransactionalBatch, T(), Integer, Integer)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch,`0[],System.Int32,System.Int32)
+    name: BeforeSaveBatch
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_BeforeSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatch__0___System_Int32_System_Int32_
+  - name: (
+  - uid: Microsoft.Azure.Cosmos.TransactionalBatch
+    name: TransactionalBatch
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.BeforeSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatch,`0[],System.Int32,System.Int32)
+    name: BeforeSaveBatch
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_BeforeSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatch__0___System_Int32_System_Int32_
+  - name: (
+  - uid: Microsoft.Azure.Cosmos.TransactionalBatch
+    name: TransactionalBatch
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch
+  - name: ','
+  - name: " "
+  - name: T
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Benday.CosmosDb.Repositories.CosmosRepository`1.AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse,`0[],System.Int32,System.Int32)
+  commentId: M:Benday.CosmosDb.Repositories.CosmosRepository`1.AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse,`0[],System.Int32,System.Int32)
+  isExternal: true
+  href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_AfterSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatchResponse__0___System_Int32_System_Int32_
+  name: AfterSaveBatch(TransactionalBatchResponse, T[], int, int)
+  nameWithType: CosmosRepository<T>.AfterSaveBatch(TransactionalBatchResponse, T[], int, int)
+  fullName: Benday.CosmosDb.Repositories.CosmosRepository<T>.AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse, T[], int, int)
+  nameWithType.vb: CosmosRepository(Of T).AfterSaveBatch(TransactionalBatchResponse, T(), Integer, Integer)
+  fullName.vb: Benday.CosmosDb.Repositories.CosmosRepository(Of T).AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse, T(), Integer, Integer)
+  name.vb: AfterSaveBatch(TransactionalBatchResponse, T(), Integer, Integer)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse,`0[],System.Int32,System.Int32)
+    name: AfterSaveBatch
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_AfterSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatchResponse__0___System_Int32_System_Int32_
+  - name: (
+  - uid: Microsoft.Azure.Cosmos.TransactionalBatchResponse
+    name: TransactionalBatchResponse
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatchresponse
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.AfterSaveBatch(Microsoft.Azure.Cosmos.TransactionalBatchResponse,`0[],System.Int32,System.Int32)
+    name: AfterSaveBatch
+    href: Benday.CosmosDb.Repositories.CosmosRepository-1.html#Benday_CosmosDb_Repositories_CosmosRepository_1_AfterSaveBatch_Microsoft_Azure_Cosmos_TransactionalBatchResponse__0___System_Int32_System_Int32_
+  - name: (
+  - uid: Microsoft.Azure.Cosmos.TransactionalBatchResponse
+    name: TransactionalBatchResponse
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatchresponse
+  - name: ','
+  - name: " "
+  - name: T
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
 - uid: Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync*
   commentId: Overload:Benday.CosmosDb.Repositories.CosmosRepository`1.SaveBatchAsync

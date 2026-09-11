@@ -15,19 +15,25 @@ items:
   type: Interface
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IParentedItemRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IParentedItemRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: IParentedItemRepository
-    path: ../Benday.CosmosDb/Repositories/IParentedItemRepository.cs
-    startLine: 4
+    path: ../src/Benday.CosmosDb/Repositories/IParentedItemRepository.cs
+    startLine: 9
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Repository for parent-child entities. Extends <xref href="Benday.CosmosDb.Repositories.ITenantItemRepository%601" data-throw-if-not-resolved="false"></xref>
+
+    with a query for retrieving all children of a given parent.
+  example: []
   syntax:
     content: 'public interface IParentedItemRepository<T> : ITenantItemRepository<T>, IRepository<T>, IAsyncTenantRepository<T, string>, IAsyncRepository<T, string> where T : class, IParentedItem, new()'
     typeParameters:
     - id: T
+      description: The entity type that implements <xref href="Benday.CosmosDb.DomainModels.IParentedItem" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Interface IParentedItemRepository(Of T As {Class, IParentedItem, New}) Inherits ITenantItemRepository(Of T), IRepository(Of T), IAsyncTenantRepository(Of T, String), IAsyncRepository(Of T, String)
   inheritedMembers:
   - Benday.CosmosDb.Repositories.ITenantItemRepository{{T}}.SaveAsync({T})
@@ -64,32 +70,70 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IParentedItemRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IParentedItemRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetAllByParentIdAsync
-    path: ../Benday.CosmosDb/Repositories/IParentedItemRepository.cs
-    startLine: 7
+    path: ../src/Benday.CosmosDb/Repositories/IParentedItemRepository.cs
+    startLine: 19
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: Gets all items belonging to the specified parent, optionally filtered by the parent's entity type.
+  example: []
   syntax:
     content: Task<List<T>> GetAllByParentIdAsync(string tenantId, string parentId, string? parentEntityType = null)
     parameters:
     - id: tenantId
       type: System.String
+      description: The tenant identifier.
     - id: parentId
       type: System.String
+      description: The parent entity's identifier.
     - id: parentEntityType
       type: System.String
+      description: Optional parent entity type to disambiguate parents that share an id space.
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.List{{T}}}
+      description: The child items belonging to the specified parent.
     content.vb: Function GetAllByParentIdAsync(tenantId As String, parentId As String, parentEntityType As String = Nothing) As Task(Of List(Of T))
   overload: Benday.CosmosDb.Repositories.IParentedItemRepository`1.GetAllByParentIdAsync*
   nameWithType.vb: IParentedItemRepository(Of T).GetAllByParentIdAsync(String, String, String)
   fullName.vb: Benday.CosmosDb.Repositories.IParentedItemRepository(Of T).GetAllByParentIdAsync(String, String, String)
   name.vb: GetAllByParentIdAsync(String, String, String)
 references:
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  name: ITenantItemRepository<T>
+  nameWithType: ITenantItemRepository<T>
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>
+  nameWithType.vb: ITenantItemRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T)
+  name.vb: ITenantItemRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+    name: ITenantItemRepository
+    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+    name: ITenantItemRepository
+    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.DomainModels.IParentedItem
+  commentId: T:Benday.CosmosDb.DomainModels.IParentedItem
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.IParentedItem.html
+  name: IParentedItem
+  nameWithType: IParentedItem
+  fullName: Benday.CosmosDb.DomainModels.IParentedItem
 - uid: Benday.CosmosDb.Repositories
   commentId: N:Benday.CosmosDb.Repositories
   href: Benday.html
@@ -819,6 +863,36 @@ references:
   - name: (
   - name: T
   - name: )
+- uid: Benday.CosmosDb.DomainModels
+  commentId: N:Benday.CosmosDb.DomainModels
+  href: Benday.html
+  name: Benday.CosmosDb.DomainModels
+  nameWithType: Benday.CosmosDb.DomainModels
+  fullName: Benday.CosmosDb.DomainModels
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
 - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAsync(`0)
   commentId: M:Benday.CosmosDb.Repositories.ITenantItemRepository`1.SaveAsync(`0)
   href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html#Benday_CosmosDb_Repositories_ITenantItemRepository_1_SaveAsync__0_
@@ -1621,31 +1695,6 @@ references:
     name: DeleteAsync
     isExternal: true
   - name: (
-  - name: T
-  - name: )
-- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
-  commentId: T:Benday.CosmosDb.Repositories.ITenantItemRepository`1
-  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
-  name: ITenantItemRepository<T>
-  nameWithType: ITenantItemRepository<T>
-  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>
-  nameWithType.vb: ITenantItemRepository(Of T)
-  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T)
-  name.vb: ITenantItemRepository(Of T)
-  spec.csharp:
-  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
-    name: ITenantItemRepository
-    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
-    name: ITenantItemRepository
-    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
-  - name: (
-  - name: Of
-  - name: " "
   - name: T
   - name: )
 - uid: Benday.CosmosDb.Repositories.IRepository`1

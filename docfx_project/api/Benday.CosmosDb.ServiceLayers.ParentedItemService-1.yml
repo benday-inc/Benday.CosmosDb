@@ -16,11 +16,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ParentedItemService
-    path: ../Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
+    path: ../src/Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
     startLine: 9
   assemblies:
   - Benday.CosmosDb
@@ -69,20 +69,23 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
-    startLine: 14
+    path: ../src/Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
+    startLine: 18
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Initializes a new instance backed by the given parented-item repository.
+  example: []
   syntax:
     content: public ParentedItemService(IParentedItemRepository<T> repository)
     parameters:
     - id: repository
       type: Benday.CosmosDb.Repositories.IParentedItemRepository{{T}}
+      description: The parented-item repository this service delegates to.
     content.vb: Public Sub New(repository As IParentedItemRepository(Of T))
   overload: Benday.CosmosDb.ServiceLayers.ParentedItemService`1.#ctor*
   nameWithType.vb: ParentedItemService(Of T).New(IParentedItemRepository(Of T))
@@ -101,12 +104,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetAllByParentIdAsync
-    path: ../Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
-    startLine: 26
+    path: ../src/Benday.CosmosDb/ServiceLayers/ParentedItemService.cs
+    startLine: 30
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers

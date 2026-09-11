@@ -19,11 +19,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosFileLogSinkOptions
-    path: ../Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
     startLine: 5
   assemblies:
   - Benday.CosmosDb
@@ -55,11 +55,11 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DefaultFileName
-    path: ../Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
     startLine: 11
   assemblies:
   - Benday.CosmosDb
@@ -87,11 +87,11 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DefaultDirectoryName
-    path: ../Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
     startLine: 17
   assemblies:
   - Benday.CosmosDb
@@ -119,11 +119,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetDefaultFilePath
-    path: ../Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
     startLine: 24
   assemblies:
   - Benday.CosmosDb
@@ -154,11 +154,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: FilePath
-    path: ../Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
     startLine: 32
   assemblies:
   - Benday.CosmosDb
@@ -190,11 +190,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: QueueCapacity
-    path: ../Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosFileLogSinkOptions.cs
     startLine: 40
   assemblies:
   - Benday.CosmosDb

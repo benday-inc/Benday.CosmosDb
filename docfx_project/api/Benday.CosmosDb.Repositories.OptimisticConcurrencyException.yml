@@ -17,15 +17,20 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
+      path: src/Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: OptimisticConcurrencyException
-    path: ../Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
-    startLine: 2
+    path: ../src/Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
+    startLine: 6
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: >-
+    Thrown when a save fails because the entity's ETag no longer matches the stored
+
+    document, indicating it was modified concurrently by another writer.
+  example: []
   syntax:
     content: 'public class OptimisticConcurrencyException : Exception, ISerializable'
     content.vb: Public Class OptimisticConcurrencyException Inherits Exception Implements ISerializable
@@ -66,15 +71,17 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
+      path: src/Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
-    startLine: 4
+    path: ../src/Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
+    startLine: 9
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: Initializes a new instance with no message.
+  example: []
   syntax:
     content: public OptimisticConcurrencyException()
     content.vb: Public Sub New()
@@ -95,20 +102,23 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
+      path: src/Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
-    startLine: 8
+    path: ../src/Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
+    startLine: 15
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: Initializes a new instance with the specified message.
+  example: []
   syntax:
     content: public OptimisticConcurrencyException(string message)
     parameters:
     - id: message
       type: System.String
+      description: The error message.
     content.vb: Public Sub New(message As String)
   overload: Benday.CosmosDb.Repositories.OptimisticConcurrencyException.#ctor*
   nameWithType.vb: OptimisticConcurrencyException.New(String)
@@ -127,22 +137,26 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
+      path: src/Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
-    startLine: 12
+    path: ../src/Benday.CosmosDb/Repositories/OptimisticConcurrencyException.cs
+    startLine: 22
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: Initializes a new instance with the specified message and inner exception.
+  example: []
   syntax:
     content: public OptimisticConcurrencyException(string message, Exception? innerException)
     parameters:
     - id: message
       type: System.String
+      description: The error message.
     - id: innerException
       type: System.Exception
+      description: The underlying exception that caused this error.
     content.vb: Public Sub New(message As String, innerException As Exception)
   overload: Benday.CosmosDb.Repositories.OptimisticConcurrencyException.#ctor*
   nameWithType.vb: OptimisticConcurrencyException.New(String, Exception)

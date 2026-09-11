@@ -15,15 +15,20 @@ items:
   type: Interface
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/IParentedItem.cs
+      path: src/Benday.CosmosDb/DomainModels/IParentedItem.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: IParentedItem
-    path: ../Benday.CosmosDb/DomainModels/IParentedItem.cs
-    startLine: 2
+    path: ../src/Benday.CosmosDb/DomainModels/IParentedItem.cs
+    startLine: 6
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.DomainModels
+  summary: >-
+    A tenant-scoped entity that belongs to a parent entity. Adds a Cosmos-specific
+
+    parent discriminator on top of the shared parented-item and tenant-item contracts.
+  example: []
   syntax:
     content: 'public interface IParentedItem : ITenantItem, ICosmosIdentity, IParentedItem<string>, ITenantItem<string>, IEntityIdentity<string>'
     content.vb: Public Interface IParentedItem Inherits ITenantItem, ICosmosIdentity, IParentedItem(Of String), ITenantItem(Of String), IEntityIdentity(Of String)
@@ -48,12 +53,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/IParentedItem.cs
+      path: src/Benday.CosmosDb/DomainModels/IParentedItem.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ParentEntityType
-    path: ../Benday.CosmosDb/DomainModels/IParentedItem.cs
-    startLine: 9
+    path: ../src/Benday.CosmosDb/DomainModels/IParentedItem.cs
+    startLine: 13
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.DomainModels

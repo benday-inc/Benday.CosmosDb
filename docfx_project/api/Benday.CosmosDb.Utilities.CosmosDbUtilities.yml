@@ -16,11 +16,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosDbUtilities
-    path: ../Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
     startLine: 10
   assemblies:
   - Benday.CosmosDb
@@ -53,26 +53,40 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetPartitionKey
-    path: ../Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
-    startLine: 12
+    path: ../src/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
+    startLine: 21
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Builds a <xref href="Microsoft.Azure.Cosmos.PartitionKey" data-throw-if-not-resolved="false"></xref> from a comma-separated key string. When
+
+    <code class="paramref">useHierarchicalPartitionKey</code> is false, only the first component is used;
+
+    otherwise all components are combined into a hierarchical key.
+  example: []
   syntax:
     content: public static PartitionKey GetPartitionKey(string keyString, bool useHierarchicalPartitionKey)
     parameters:
     - id: keyString
       type: System.String
+      description: Comma-separated partition key values.
     - id: useHierarchicalPartitionKey
       type: System.Boolean
+      description: Whether to build a hierarchical (multi-level) key.
     return:
       type: Microsoft.Azure.Cosmos.PartitionKey
+      description: The constructed partition key.
     content.vb: Public Shared Function GetPartitionKey(keyString As String, useHierarchicalPartitionKey As Boolean) As PartitionKey
   overload: Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKey*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <code class="paramref">keyString</code> yields no components.
   nameWithType.vb: CosmosDbUtilities.GetPartitionKey(String, Boolean)
   fullName.vb: Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKey(String, Boolean)
   name.vb: GetPartitionKey(String, Boolean)
@@ -89,22 +103,26 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetPartitionKeyStrings
-    path: ../Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
-    startLine: 40
+    path: ../src/Benday.CosmosDb/Utilities/CosmosDbUtilities.cs
+    startLine: 52
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: Splits a comma-separated partition key string into its individual component values.
+  example: []
   syntax:
     content: public static List<string> GetPartitionKeyStrings(string keyString)
     parameters:
     - id: keyString
       type: System.String
+      description: Comma-separated partition key values.
     return:
       type: System.Collections.Generic.List{System.String}
+      description: The list of component values.
     content.vb: Public Shared Function GetPartitionKeyStrings(keyString As String) As List(Of String)
   overload: Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKeyStrings*
   nameWithType.vb: CosmosDbUtilities.GetPartitionKeyStrings(String)
@@ -378,6 +396,21 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Microsoft.Azure.Cosmos.PartitionKey
+  commentId: T:Microsoft.Azure.Cosmos.PartitionKey
+  parent: Microsoft.Azure.Cosmos
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
+  name: PartitionKey
+  nameWithType: PartitionKey
+  fullName: Microsoft.Azure.Cosmos.PartitionKey
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
 - uid: Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKey*
   commentId: Overload:Benday.CosmosDb.Utilities.CosmosDbUtilities.GetPartitionKey
   href: Benday.CosmosDb.Utilities.CosmosDbUtilities.html#Benday_CosmosDb_Utilities_CosmosDbUtilities_GetPartitionKey_System_String_System_Boolean_
@@ -406,14 +439,6 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: Microsoft.Azure.Cosmos.PartitionKey
-  commentId: T:Microsoft.Azure.Cosmos.PartitionKey
-  parent: Microsoft.Azure.Cosmos
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.partitionkey
-  name: PartitionKey
-  nameWithType: PartitionKey
-  fullName: Microsoft.Azure.Cosmos.PartitionKey
 - uid: Microsoft.Azure.Cosmos
   commentId: N:Microsoft.Azure.Cosmos
   isExternal: true

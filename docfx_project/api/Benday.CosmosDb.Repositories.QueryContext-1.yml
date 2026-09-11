@@ -17,11 +17,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/QueryContext.cs
+      path: src/Benday.CosmosDb/Repositories/QueryContext.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: QueryContext
-    path: ../Benday.CosmosDb/Repositories/QueryContext.cs
+    path: ../src/Benday.CosmosDb/Repositories/QueryContext.cs
     startLine: 11
   assemblies:
   - Benday.CosmosDb
@@ -65,11 +65,11 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/QueryContext.cs
+      path: src/Benday.CosmosDb/Repositories/QueryContext.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Repositories/QueryContext.cs
+    path: ../src/Benday.CosmosDb/Repositories/QueryContext.cs
     startLine: 18
   assemblies:
   - Benday.CosmosDb
@@ -103,11 +103,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/QueryContext.cs
+      path: src/Benday.CosmosDb/Repositories/QueryContext.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PartitionKey
-    path: ../Benday.CosmosDb/Repositories/QueryContext.cs
+    path: ../src/Benday.CosmosDb/Repositories/QueryContext.cs
     startLine: 29
   assemblies:
   - Benday.CosmosDb
@@ -141,11 +141,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/QueryContext.cs
+      path: src/Benday.CosmosDb/Repositories/QueryContext.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Queryable
-    path: ../Benday.CosmosDb/Repositories/QueryContext.cs
+    path: ../src/Benday.CosmosDb/Repositories/QueryContext.cs
     startLine: 36
   assemblies:
   - Benday.CosmosDb

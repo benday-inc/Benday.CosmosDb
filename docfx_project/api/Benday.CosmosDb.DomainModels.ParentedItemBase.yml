@@ -16,11 +16,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/ParentedItemBase.cs
+      path: src/Benday.CosmosDb/DomainModels/ParentedItemBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ParentedItemBase
-    path: ../Benday.CosmosDb/DomainModels/ParentedItemBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/ParentedItemBase.cs
     startLine: 6
   assemblies:
   - Benday.CosmosDb
@@ -74,11 +74,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/ParentedItemBase.cs
+      path: src/Benday.CosmosDb/DomainModels/ParentedItemBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ParentId
-    path: ../Benday.CosmosDb/DomainModels/ParentedItemBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/ParentedItemBase.cs
     startLine: 11
   assemblies:
   - Benday.CosmosDb
@@ -107,11 +107,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/ParentedItemBase.cs
+      path: src/Benday.CosmosDb/DomainModels/ParentedItemBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ParentEntityType
-    path: ../Benday.CosmosDb/DomainModels/ParentedItemBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/ParentedItemBase.cs
     startLine: 16
   assemblies:
   - Benday.CosmosDb

@@ -18,11 +18,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      path: src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosDbException
-    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    path: ../src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
     startLine: 8
   assemblies:
   - Benday.CosmosDb
@@ -83,11 +83,11 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      path: src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    path: ../src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
     startLine: 14
   assemblies:
   - Benday.CosmosDb
@@ -114,11 +114,11 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      path: src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    path: ../src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
     startLine: 22
   assemblies:
   - Benday.CosmosDb
@@ -149,11 +149,11 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      path: src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    path: ../src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
     startLine: 32
   assemblies:
   - Benday.CosmosDb
@@ -190,11 +190,11 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Exceptions/CosmosDbException.cs
+      path: src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Exceptions/CosmosDbException.cs
+    path: ../src/Benday.CosmosDb/Exceptions/CosmosDbException.cs
     startLine: 41
   assemblies:
   - Benday.CosmosDb

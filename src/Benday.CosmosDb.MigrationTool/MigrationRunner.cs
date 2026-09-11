@@ -20,7 +20,7 @@ public class MigrationRunner
         _writeLine = writeLine;
     }
 
-    public async Task RunAsync()
+    public async Task RunAsync(CancellationToken cancellationToken = default)
     {
         var database = _client.GetDatabase(_options.DatabaseName);
 
@@ -28,7 +28,7 @@ public class MigrationRunner
         var sourceContainer = database.GetContainer(_options.SourceContainerName);
         try
         {
-            await sourceContainer.ReadContainerAsync();
+            await sourceContainer.ReadContainerAsync(cancellationToken: cancellationToken);
         }
         catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
         {
@@ -40,13 +40,13 @@ public class MigrationRunner
 
         // Count documents
         _writeLine("Counting documents in source container...");
-        var totalDocs = await CountDocumentsAsync(sourceContainer);
+        var totalDocs = await CountDocumentsAsync(sourceContainer, cancellationToken);
         _writeLine($"Found {totalDocs} documents.");
 
         if (_options.ValidateOnly)
         {
             // Create destination container if it doesn't exist, then exit
-            var destContainerValidate = await CreateDestinationContainerAsync(database);
+            var destContainerValidate = await CreateDestinationContainerAsync(database, cancellationToken);
             if (destContainerValidate == null)
             {
                 _writeLine("ERROR: Failed to create or find destination container.");
@@ -55,7 +55,7 @@ public class MigrationRunner
             _writeLine($"\n=== Validation Complete ===");
             _writeLine($"Source:      {_options.SourceContainerName} ({totalDocs} documents)");
             _writeLine($"Destination: {_options.DestContainerName} (ready)");
-            _writeLine("No data was migrated. Remove /validate-only to run the migration.");
+            _writeLine("No data was migrated. Remove --validate-only to run the migration.");
             return;
         }
 
@@ -82,7 +82,7 @@ public class MigrationRunner
         Container? destContainer = null;
         if (!_options.DryRun)
         {
-            destContainer = await CreateDestinationContainerAsync(database);
+            destContainer = await CreateDestinationContainerAsync(database, cancellationToken);
             if (destContainer == null) return;
         }
         else
@@ -114,11 +114,11 @@ public class MigrationRunner
         var startTime = DateTime.UtcNow;
 
         // Producer: reads from source, transforms, pushes into channel
-        var producerTask = RunProducerAsync(sourceContainer, channel.Writer, tracker, stats, totalDocs, startTime);
+        var producerTask = RunProducerAsync(sourceContainer, channel.Writer, tracker, stats, totalDocs, startTime, cancellationToken);
 
         // Consumer: pulls from channel, writes to destination
         var consumerTask = RunConsumerAsync(
-            channel.Reader, destContainer, tracker, concurrency, stats, totalDocs, startTime);
+            channel.Reader, destContainer, tracker, concurrency, stats, totalDocs, startTime, cancellationToken);
 
         await Task.WhenAll(producerTask, consumerTask);
 
@@ -138,7 +138,7 @@ public class MigrationRunner
 
         if (_options.DryRun)
         {
-            _writeLine("\n[DRY RUN] No documents were written. Run without /dry-run to perform the migration.");
+            _writeLine("\n[DRY RUN] No documents were written. Run without --dry-run to perform the migration.");
         }
         else
         {
@@ -153,7 +153,8 @@ public class MigrationRunner
         ProgressTracker tracker,
         MigrationStats stats,
         int totalDocs,
-        DateTime startTime)
+        DateTime startTime,
+        CancellationToken cancellationToken)
     {
         try
         {
@@ -165,7 +166,9 @@ public class MigrationRunner
 
             while (feedIterator.HasMoreResults)
             {
-                var response = await feedIterator.ReadNextAsync();
+                cancellationToken.ThrowIfCancellationRequested();
+
+                var response = await feedIterator.ReadNextAsync(cancellationToken);
                 stats.AddReadRUs(response.RequestCharge);
 
                 var items = new List<WriteItem>();
@@ -214,7 +217,7 @@ public class MigrationRunner
 
                 if (items.Count > 0)
                 {
-                    await writer.WriteAsync(new ReadBatch(items, response.RequestCharge));
+                    await writer.WriteAsync(new ReadBatch(items, response.RequestCharge), cancellationToken);
                 }
 
                 // Log read-side progress
@@ -237,9 +240,10 @@ public class MigrationRunner
         AdaptiveConcurrencyController concurrency,
         MigrationStats stats,
         int totalDocs,
-        DateTime startTime)
+        DateTime startTime,
+        CancellationToken cancellationToken)
     {
-        await foreach (var batch in reader.ReadAllAsync())
+        await foreach (var batch in reader.ReadAllAsync(cancellationToken))
         {
             if (_options.DryRun || destContainer == null)
             {
@@ -247,7 +251,7 @@ public class MigrationRunner
             }
 
             var (writeRUs, writeErrors, throttleCount, successIds, failedIds) =
-                await WriteBatchAsync(destContainer, batch.Items, concurrency);
+                await WriteBatchAsync(destContainer, batch.Items, concurrency, cancellationToken);
 
             stats.AddWriteRUs(writeRUs);
             Interlocked.Add(ref stats.WriteErrorCount, writeErrors);
@@ -278,7 +282,8 @@ public class MigrationRunner
         WriteBatchAsync(
             Container destContainer,
             List<WriteItem> batch,
-            AdaptiveConcurrencyController concurrency)
+            AdaptiveConcurrencyController concurrency,
+            CancellationToken cancellationToken)
     {
         var totalRUs = 0.0;
         var ruLock = new object();
@@ -290,7 +295,7 @@ public class MigrationRunner
 
         var tasks = batch.Select(async item =>
         {
-            await concurrency.WaitAsync();
+            await concurrency.WaitAsync(cancellationToken);
             try
             {
                 var pk = new PartitionKeyBuilder()
@@ -298,7 +303,7 @@ public class MigrationRunner
                     .Add(item.EntityType)
                     .Build();
 
-                var response = await destContainer.UpsertItemAsync(item.Document, pk);
+                var response = await destContainer.UpsertItemAsync(item.Document, pk, cancellationToken: cancellationToken);
                 lock (ruLock)
                 {
                     totalRUs += response.RequestCharge;
@@ -307,6 +312,11 @@ public class MigrationRunner
                 {
                     successIds.Add(item.DocumentId);
                 }
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                // A cancelled write is not a write error; let it surface as a cancellation.
+                throw;
             }
             catch (CosmosException ex) when (ex.StatusCode == (HttpStatusCode)429)
             {
@@ -360,27 +370,27 @@ public class MigrationRunner
         return $"{ts.Seconds}s";
     }
 
-    private async Task<int> CountDocumentsAsync(Container container)
+    private async Task<int> CountDocumentsAsync(Container container, CancellationToken cancellationToken)
     {
         var countQuery = new QueryDefinition("SELECT VALUE COUNT(1) FROM c");
         using var iterator = container.GetItemQueryIterator<int>(countQuery);
 
         if (iterator.HasMoreResults)
         {
-            var response = await iterator.ReadNextAsync();
+            var response = await iterator.ReadNextAsync(cancellationToken);
             return response.FirstOrDefault();
         }
 
         return 0;
     }
 
-    private async Task<Container?> CreateDestinationContainerAsync(Database database)
+    private async Task<Container?> CreateDestinationContainerAsync(Database database, CancellationToken cancellationToken)
     {
         // Check if destination already exists
         var containers = database.GetContainerQueryIterator<ContainerProperties>();
         while (containers.HasMoreResults)
         {
-            var response = await containers.ReadNextAsync();
+            var response = await containers.ReadNextAsync(cancellationToken);
             foreach (var containerProps in response)
             {
                 if (containerProps.Id == _options.DestContainerName)
@@ -398,7 +408,7 @@ public class MigrationRunner
             partitionKeyPaths: new List<string> { "/tenantId", "/entityType" }
         );
 
-        var containerResponse = await database.CreateContainerAsync(properties);
+        var containerResponse = await database.CreateContainerAsync(properties, cancellationToken: cancellationToken);
         _writeLine($"Container '{_options.DestContainerName}' created.");
         return containerResponse.Container;
     }

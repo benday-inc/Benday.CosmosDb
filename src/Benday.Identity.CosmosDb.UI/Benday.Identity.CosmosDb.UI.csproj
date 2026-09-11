@@ -20,11 +20,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <TheVersion>6.1.1</TheVersion>
-    <AssemblyVersion>6.1.1.0</AssemblyVersion>
+    <TheVersion>6.2.0</TheVersion>
+    <AssemblyVersion>6.2.0.0</AssemblyVersion>
     <Version>$(TheVersion)</Version>
     <Description>ASP.NET Core Identity UI for Azure Cosmos DB. Provides pre-built Login/Logout/AccessDenied Razor Pages, a RedirectToLogin Blazor component, and AddCosmosIdentityWithUI() convenience method that combines core identity registration with cookie authentication. Built on top of Benday.Identity.CosmosDb.</Description>
     <PackageReleaseNotes>
+v6.2.0 - Released alongside Benday.CosmosDb 6.2.0; the dependency floor moves to Benday.CosmosDb 6.2.*. No functional or API changes in this package;
 v6.1.1 - Enabled Source Link (Microsoft.SourceLink.GitHub) with repository URL publishing and untracked-source embedding so consumers can step directly into the library source while debugging. Enabled XML documentation file generation for richer IntelliSense over the public API. No functional or API changes;
 v6.1 - Bug fixes related to Benday.CosmosDb.CosmosRepository null reference exception;		
 v6.0.10 - Aligned package version with the Benday.CosmosDb v6 core library so the two packages release together. The login page (/Account/Login) now renders the optional CosmosIdentityOptions.LoginPageMessage as an informational banner above the sign-in form when the option is set. Newlines in the message are preserved (CSS white-space: pre-line) and HTML is escaped, so arbitrary multi-line text is safe. Useful for displaying seeded test credentials in dev environments or scheduled-maintenance notices;
@@ -64,6 +65,6 @@ v2.0.0 - BREAKING: AddCosmosIdentity() moved to core Benday.Identity.CosmosDb pa
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseProjectReferences)' != 'true'">
-    <PackageReference Include="Benday.CosmosDb" Version="6.0.*" />
+    <PackageReference Include="Benday.CosmosDb" Version="6.2.*" />
   </ItemGroup>
 </Project>

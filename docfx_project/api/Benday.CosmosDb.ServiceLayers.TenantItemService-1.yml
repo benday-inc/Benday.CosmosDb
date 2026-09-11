@@ -19,19 +19,27 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: TenantItemService
-    path: ../Benday.CosmosDb/ServiceLayers/TenantItemService.cs
-    startLine: 6
+    path: ../src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+    startLine: 12
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: >-
+    Default <xref href="Benday.CosmosDb.ServiceLayers.ITenantItemService%601" data-throw-if-not-resolved="false"></xref> implementation that delegates to an
+
+    <xref href="Benday.CosmosDb.Repositories.ITenantItemRepository%601" data-throw-if-not-resolved="false"></xref>. Virtual members allow per-entity subclasses
+
+    to add domain behavior around the repository calls.
+  example: []
   syntax:
     content: 'public class TenantItemService<T> : ITenantItemService<T>, IAsyncTenantService<T, string>, IAsyncService<T, string> where T : class, ITenantItem, new()'
     typeParameters:
     - id: T
+      description: The tenant-scoped entity type.
     content.vb: Public Class TenantItemService(Of T As {Class, ITenantItem, New}) Implements ITenantItemService(Of T), IAsyncTenantService(Of T, String), IAsyncService(Of T, String)
   inheritance:
   - System.Object
@@ -65,20 +73,23 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/ServiceLayers/TenantItemService.cs
-    startLine: 11
+    path: ../src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+    startLine: 21
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Initializes a new instance backed by the given repository.
+  example: []
   syntax:
     content: public TenantItemService(ITenantItemRepository<T> repository)
     parameters:
     - id: repository
       type: Benday.CosmosDb.Repositories.ITenantItemRepository{{T}}
+      description: The repository this service delegates to.
     content.vb: Public Sub New(repository As ITenantItemRepository(Of T))
   overload: Benday.CosmosDb.ServiceLayers.TenantItemService`1.#ctor*
   nameWithType.vb: TenantItemService(Of T).New(ITenantItemRepository(Of T))
@@ -97,23 +108,26 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetAllAsync
-    path: ../Benday.CosmosDb/ServiceLayers/TenantItemService.cs
-    startLine: 16
+    path: ../src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+    startLine: 27
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Gets all items belonging to the specified tenant.
   example: []
   syntax:
     content: public virtual Task<IEnumerable<T>> GetAllAsync(string tenantId)
     parameters:
     - id: tenantId
       type: System.String
+      description: The tenant identifier.
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+      description: The items for the tenant.
     content.vb: Public Overridable Function GetAllAsync(tenantId As String) As Task(Of IEnumerable(Of T))
   overload: Benday.CosmosDb.ServiceLayers.TenantItemService`1.GetAllAsync*
   implements:
@@ -134,25 +148,29 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetByIdAsync
-    path: ../Benday.CosmosDb/ServiceLayers/TenantItemService.cs
-    startLine: 21
+    path: ../src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+    startLine: 33
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Gets a single item by tenant and id.
   example: []
   syntax:
     content: public virtual Task<T?> GetByIdAsync(string tenantId, string id)
     parameters:
     - id: tenantId
       type: System.String
+      description: The tenant identifier.
     - id: id
       type: System.String
+      description: The item identifier.
     return:
       type: System.Threading.Tasks.Task{{T}}
+      description: The matching item, or null if not found.
     content.vb: Public Overridable Function GetByIdAsync(tenantId As String, id As String) As Task(Of T)
   overload: Benday.CosmosDb.ServiceLayers.TenantItemService`1.GetByIdAsync*
   implements:
@@ -174,23 +192,26 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveAsync
-    path: ../Benday.CosmosDb/ServiceLayers/TenantItemService.cs
-    startLine: 26
+    path: ../src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+    startLine: 39
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Inserts or updates the specified item.
   example: []
   syntax:
     content: public virtual Task<T?> SaveAsync(T item)
     parameters:
     - id: item
       type: '{T}'
+      description: The item to save.
     return:
       type: System.Threading.Tasks.Task{{T}}
+      description: The saved item, including any server-assigned values.
     content.vb: Public Overridable Function SaveAsync(item As T) As Task(Of T)
   overload: Benday.CosmosDb.ServiceLayers.TenantItemService`1.SaveAsync*
   implements:
@@ -210,21 +231,23 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DeleteAsync
-    path: ../Benday.CosmosDb/ServiceLayers/TenantItemService.cs
-    startLine: 31
+    path: ../src/Benday.CosmosDb/ServiceLayers/TenantItemService.cs
+    startLine: 45
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.ServiceLayers
+  summary: Deletes the specified item.
   example: []
   syntax:
     content: public virtual Task DeleteAsync(T item)
     parameters:
     - id: item
       type: '{T}'
+      description: The item to delete.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Public Overridable Function DeleteAsync(item As T) As Task
@@ -235,6 +258,56 @@ items:
   nameWithType.vb: TenantItemService(Of T).DeleteAsync(T)
   fullName.vb: Benday.CosmosDb.ServiceLayers.TenantItemService(Of T).DeleteAsync(T)
 references:
+- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  commentId: T:Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+  href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
+  name: ITenantItemService<T>
+  nameWithType: ITenantItemService<T>
+  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>
+  nameWithType.vb: ITenantItemService(Of T)
+  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T)
+  name.vb: ITenantItemService(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+    name: ITenantItemService
+    href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
+    name: ITenantItemService
+    href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  commentId: T:Benday.CosmosDb.Repositories.ITenantItemRepository`1
+  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  name: ITenantItemRepository<T>
+  nameWithType: ITenantItemRepository<T>
+  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>
+  nameWithType.vb: ITenantItemRepository(Of T)
+  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T)
+  name.vb: ITenantItemRepository(Of T)
+  spec.csharp:
+  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+    name: ITenantItemRepository
+    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
+    name: ITenantItemRepository
+    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Benday.CosmosDb.ServiceLayers
   commentId: N:Benday.CosmosDb.ServiceLayers
   href: Benday.html
@@ -607,31 +680,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
-  commentId: T:Benday.CosmosDb.ServiceLayers.ITenantItemService`1
-  href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
-  name: ITenantItemService<T>
-  nameWithType: ITenantItemService<T>
-  fullName: Benday.CosmosDb.ServiceLayers.ITenantItemService<T>
-  nameWithType.vb: ITenantItemService(Of T)
-  fullName.vb: Benday.CosmosDb.ServiceLayers.ITenantItemService(Of T)
-  name.vb: ITenantItemService(Of T)
-  spec.csharp:
-  - uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
-    name: ITenantItemService
-    href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: Benday.CosmosDb.ServiceLayers.ITenantItemService`1
-    name: ITenantItemService
-    href: Benday.CosmosDb.ServiceLayers.ITenantItemService-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
 - uid: Benday.Common.Interfaces.IAsyncTenantService`2
   commentId: T:Benday.Common.Interfaces.IAsyncTenantService`2
   isExternal: true
@@ -737,31 +785,6 @@ references:
   commentId: T:Benday.CosmosDb.Repositories.ITenantItemRepository{`0}
   parent: Benday.CosmosDb.Repositories
   definition: Benday.CosmosDb.Repositories.ITenantItemRepository`1
-  href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
-  name: ITenantItemRepository<T>
-  nameWithType: ITenantItemRepository<T>
-  fullName: Benday.CosmosDb.Repositories.ITenantItemRepository<T>
-  nameWithType.vb: ITenantItemRepository(Of T)
-  fullName.vb: Benday.CosmosDb.Repositories.ITenantItemRepository(Of T)
-  name.vb: ITenantItemRepository(Of T)
-  spec.csharp:
-  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
-    name: ITenantItemRepository
-    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
-    name: ITenantItemRepository
-    href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: Benday.CosmosDb.Repositories.ITenantItemRepository`1
-  commentId: T:Benday.CosmosDb.Repositories.ITenantItemRepository`1
   href: Benday.CosmosDb.Repositories.ITenantItemRepository-1.html
   name: ITenantItemRepository<T>
   nameWithType: ITenantItemRepository<T>

@@ -1,5 +1,4 @@
 using Benday.AzureStorage.Blobs;
-using Benday.BlobStorage;
 using Benday.CosmosDb.SampleApp.Api.DomainModels;
 using Benday.CosmosDb.ServiceLayers;
 

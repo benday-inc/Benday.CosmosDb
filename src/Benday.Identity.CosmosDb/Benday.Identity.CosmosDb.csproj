@@ -16,11 +16,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>bdc_mark_128_128.png</PackageIcon>
-    <TheVersion>6.1.1</TheVersion>
-    <AssemblyVersion>6.1.1.0</AssemblyVersion>
+    <TheVersion>6.2.0</TheVersion>
+    <AssemblyVersion>6.2.0.0</AssemblyVersion>
     <Version>$(TheVersion)</Version>
     <Description>ASP.NET Core Identity implementation using Azure Cosmos DB as the backing store. Provides user store, role store, claims, lockout, two-factor authentication, and external login support. Built on top of the Benday.CosmosDb repository pattern library.</Description>
     <PackageReleaseNotes>
+v6.2.0 - Released alongside Benday.CosmosDb 6.2.0; the dependency floor moves to Benday.CosmosDb 6.2.*. No functional or API changes in this package;
 v6.1.1 - Enabled Source Link (Microsoft.SourceLink.GitHub) with repository URL publishing and untracked-source embedding so consumers can step directly into the library source while debugging. Enabled XML documentation file generation for richer IntelliSense over the public API. No functional or API changes;
 v6.1 - Bug fixes related to Benday.CosmosDb.CosmosRepository null reference exception;
 v6.0.10 - Aligned package version with the Benday.CosmosDb v6 core library so the two packages release together. Added LoginPageMessage option to CosmosIdentityOptions — an optional informational message rendered above the sign-in form on the UI package's login page (newlines preserved, HTML escaped). When null/empty (the default), nothing is rendered. Useful for displaying seeded test credentials in dev environments or scheduled-maintenance notices;
@@ -57,6 +58,6 @@ v1.0.0 - Initial release with full ASP.NET Core Identity store implementations f
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseProjectReferences)' != 'true'">
-    <PackageReference Include="Benday.CosmosDb" Version="6.1.*" />
+    <PackageReference Include="Benday.CosmosDb" Version="6.2.*" />
   </ItemGroup>
 </Project>

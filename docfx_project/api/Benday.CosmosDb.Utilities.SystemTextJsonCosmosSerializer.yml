@@ -18,11 +18,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+      path: src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SystemTextJsonCosmosSerializer
-    path: ../Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+    path: ../src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
     startLine: 11
   assemblies:
   - Benday.CosmosDb
@@ -57,20 +57,23 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+      path: src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
-    startLine: 16
+    path: ../src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+    startLine: 20
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: Initializes a new instance using the supplied System.Text.Json options.
+  example: []
   syntax:
     content: public SystemTextJsonCosmosSerializer(JsonSerializerOptions jsonSerializerOptions)
     parameters:
     - id: jsonSerializerOptions
       type: System.Text.Json.JsonSerializerOptions
+      description: The serialization options to use for all Cosmos payloads.
     content.vb: Public Sub New(jsonSerializerOptions As JsonSerializerOptions)
   overload: Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.#ctor*
   nameWithType.vb: SystemTextJsonCosmosSerializer.New(JsonSerializerOptions)
@@ -89,34 +92,29 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+      path: src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: FromStream
-    path: ../Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
-    startLine: 22
+    path: ../src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+    startLine: 30
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
-  summary: >-
-    Convert a Stream of JSON to an object. 
-
-    The implementation is responsible for Disposing of the stream,
-
-    including when an exception is thrown, to avoid memory leaks.
+  summary: Deserializes an object of type <code class="typeparamref">T</code> from the given stream.
   example: []
   syntax:
     content: public override T FromStream<T>(Stream stream)
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: The Stream response containing JSON from Cosmos DB.
+      description: The stream containing the serialized payload. The stream is disposed.
     typeParameters:
     - id: T
-      description: Any type passed to <xref href="Microsoft.Azure.Cosmos.Container" data-throw-if-not-resolved="false"></xref>.
+      description: The type to deserialize.
     return:
       type: '{T}'
-      description: The object deserialized from the stream.
+      description: The deserialized instance, or default if the stream is empty.
     content.vb: Public Overrides Function FromStream(Of T)(stream As Stream) As T
   overridden: Microsoft.Azure.Cosmos.CosmosSerializer.FromStream``1(System.IO.Stream)
   overload: Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.FromStream*
@@ -136,33 +134,29 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+      path: src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ToStream
-    path: ../Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
-    startLine: 50
+    path: ../src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+    startLine: 62
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
-  summary: >-
-    Convert the object to a Stream. 
-
-    The caller will take ownership of the stream and ensure it is correctly disposed of.
-
-    <a href="https://docs.microsoft.com/dotnet/api/system.io.stream.canread">Stream.CanRead</a> must be true.
+  summary: Serializes <code class="paramref">input</code> to a new stream positioned at the start.
   example: []
   syntax:
     content: public override Stream ToStream<T>(T input)
     parameters:
     - id: input
       type: '{T}'
-      description: Any type passed to <xref href="Microsoft.Azure.Cosmos.Container" data-throw-if-not-resolved="false"></xref>.
+      description: The object to serialize.
     typeParameters:
     - id: T
+      description: The type to serialize.
     return:
       type: System.IO.Stream
-      description: A readable Stream containing JSON of the serialized object.
+      description: A rewound stream containing the serialized payload.
     content.vb: Public Overrides Function ToStream(Of T)(input As T) As Stream
   overridden: Microsoft.Azure.Cosmos.CosmosSerializer.ToStream``1({T})
   overload: Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.ToStream*
@@ -182,29 +176,31 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+      path: src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SerializeMemberName
-    path: ../Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
-    startLine: 58
+    path: ../src/Benday.CosmosDb/Utilities/SystemTextJsonCosmosSerializer.cs
+    startLine: 77
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
   summary: >-
-    Convert a MemberInfo to a string for use in LINQ query translation.
+    Resolves the serialized JSON name for a member, honoring <xref href="System.Text.Json.Serialization.JsonExtensionDataAttribute" data-throw-if-not-resolved="false"></xref>,
 
-    This must be implemented when using a custom serializer for LINQ queries.
+    <xref href="System.Text.Json.Serialization.JsonPropertyNameAttribute" data-throw-if-not-resolved="false"></xref>, and the configured naming policy. Used by LINQ-to-Cosmos
+
+    translation.
   example: []
   syntax:
     content: public override string? SerializeMemberName(MemberInfo memberInfo)
     parameters:
     - id: memberInfo
       type: System.Reflection.MemberInfo
-      description: Any MemberInfo used in the query.
+      description: The member being serialized.
     return:
       type: System.String
-      description: A serialized representation of the member.
+      description: The serialized name, or null for members that carry extension data.
     content.vb: Public Overrides Function SerializeMemberName(memberInfo As MemberInfo) As String
   overridden: Microsoft.Azure.Cosmos.CosmosLinqSerializer.SerializeMemberName(System.Reflection.MemberInfo)
   overload: Benday.CosmosDb.Utilities.SystemTextJsonCosmosSerializer.SerializeMemberName*
@@ -583,13 +579,6 @@ references:
     name: Json
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json
-- uid: Microsoft.Azure.Cosmos.Container
-  commentId: T:Microsoft.Azure.Cosmos.Container
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.container
-  name: Container
-  nameWithType: Container
-  fullName: Microsoft.Azure.Cosmos.Container
 - uid: Microsoft.Azure.Cosmos.CosmosSerializer.FromStream``1(System.IO.Stream)
   commentId: M:Microsoft.Azure.Cosmos.CosmosSerializer.FromStream``1(System.IO.Stream)
   parent: Microsoft.Azure.Cosmos.CosmosSerializer
@@ -757,6 +746,21 @@ references:
   - name: (
   - name: T
   - name: )
+- uid: System.Text.Json.Serialization.JsonExtensionDataAttribute
+  commentId: T:System.Text.Json.Serialization.JsonExtensionDataAttribute
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonextensiondataattribute
+  name: JsonExtensionDataAttribute
+  nameWithType: JsonExtensionDataAttribute
+  fullName: System.Text.Json.Serialization.JsonExtensionDataAttribute
+- uid: System.Text.Json.Serialization.JsonPropertyNameAttribute
+  commentId: T:System.Text.Json.Serialization.JsonPropertyNameAttribute
+  parent: System.Text.Json.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonpropertynameattribute
+  name: JsonPropertyNameAttribute
+  nameWithType: JsonPropertyNameAttribute
+  fullName: System.Text.Json.Serialization.JsonPropertyNameAttribute
 - uid: Microsoft.Azure.Cosmos.CosmosLinqSerializer.SerializeMemberName(System.Reflection.MemberInfo)
   commentId: M:Microsoft.Azure.Cosmos.CosmosLinqSerializer.SerializeMemberName(System.Reflection.MemberInfo)
   parent: Microsoft.Azure.Cosmos.CosmosLinqSerializer
@@ -812,6 +816,53 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: System.Text.Json.Serialization
+  commentId: N:System.Text.Json.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text.Json.Serialization
+  nameWithType: System.Text.Json.Serialization
+  fullName: System.Text.Json.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  - name: .
+  - uid: System.Text.Json.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  - name: .
+  - uid: System.Text.Json.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization
 - uid: System.Reflection
   commentId: N:System.Reflection
   isExternal: true

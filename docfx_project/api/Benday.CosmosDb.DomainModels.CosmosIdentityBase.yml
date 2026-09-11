@@ -21,11 +21,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      path: src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosIdentityBase
-    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
     startLine: 9
   assemblies:
   - Benday.CosmosDb
@@ -65,11 +65,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      path: src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Id
-    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
     startLine: 14
   assemblies:
   - Benday.CosmosDb
@@ -110,11 +110,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      path: src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: TenantId
-    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
     startLine: 20
   assemblies:
   - Benday.CosmosDb
@@ -155,11 +155,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      path: src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: TimestampUnixStyle
-    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
     startLine: 26
   assemblies:
   - Benday.CosmosDb
@@ -200,11 +200,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      path: src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Timestamp
-    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
     startLine: 32
   assemblies:
   - Benday.CosmosDb
@@ -233,11 +233,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      path: src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Etag
-    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
     startLine: 46
   assemblies:
   - Benday.CosmosDb
@@ -278,11 +278,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      path: src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: EntityType
-    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
     startLine: 52
   assemblies:
   - Benday.CosmosDb
@@ -323,11 +323,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+      path: src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetEntityTypeName
-    path: ../Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/CosmosIdentityBase.cs
     startLine: 70
   assemblies:
   - Benday.CosmosDb

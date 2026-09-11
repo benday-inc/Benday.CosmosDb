@@ -15,11 +15,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosRepositoryDiagnosticsOptions.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosRepositoryDiagnosticsOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosRepositoryDiagnosticsOptions
-    path: ../Benday.CosmosDb/Diagnostics/CosmosRepositoryDiagnosticsOptions.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosRepositoryDiagnosticsOptions.cs
     startLine: 10
   assemblies:
   - Benday.CosmosDb
@@ -62,11 +62,11 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosRepositoryDiagnosticsOptions.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosRepositoryDiagnosticsOptions.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CaptureIndexMetrics
-    path: ../Benday.CosmosDb/Diagnostics/CosmosRepositoryDiagnosticsOptions.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosRepositoryDiagnosticsOptions.cs
     startLine: 21
   assemblies:
   - Benday.CosmosDb

@@ -70,4 +70,15 @@ This migration guide works as a prompt for AI coding agents like Claude Code, Gi
 2. Do a find-and-replace for each rename above, starting with the longest names first
    to avoid partial replacements (e.g., rename `IOwnedItemRepository` before `IOwnedItem`)
 3. Build and fix any remaining compilation errors
-4. Use `cosmosmigrator migrate` to migrate existing container data
+4. Use `cosmosmigrator migrate` to migrate existing container data. The tool defaults to a
+   dry run that reads and transforms without writing; pass `--dry-run=false` to write:
+
+   ```bash
+   cosmosmigrator migrate --database MyDb --source-container Data-v5 --dest-container Data-v6 \
+       --endpoint https://myaccount.documents.azure.com:443/ --use-managed-identity
+   cosmosmigrator migrate --database MyDb --source-container Data-v5 --dest-container Data-v6 \
+       --endpoint https://myaccount.documents.azure.com:443/ --use-managed-identity --dry-run=false
+   ```
+
+   Run `cosmosmigrator migrate --help` for the full argument list. Progress is checkpointed to
+   disk, so an interrupted migration resumes where it stopped.

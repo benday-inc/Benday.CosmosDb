@@ -16,11 +16,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
+      path: src/Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UnixDateTimeConverter
-    path: ../Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
+    path: ../src/Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
     startLine: 9
   assemblies:
   - Benday.CosmosDb
@@ -60,29 +60,29 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
+      path: src/Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Write
-    path: ../Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
-    startLine: 11
+    path: ../src/Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
+    startLine: 15
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
-  summary: Writes a specified value as JSON.
+  summary: Writes a <xref href="System.DateTime" data-throw-if-not-resolved="false"></xref> as a Unix timestamp (seconds since the epoch).
   example: []
   syntax:
     content: public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     parameters:
     - id: writer
       type: System.Text.Json.Utf8JsonWriter
-      description: The writer to write to.
+      description: The JSON writer.
     - id: value
       type: System.DateTime
-      description: The value to convert to JSON.
+      description: The value to write.
     - id: options
       type: System.Text.Json.JsonSerializerOptions
-      description: An object that specifies serialization options to use.
+      description: Serializer options (unused).
     content.vb: Public Overrides Sub Write(writer As Utf8JsonWriter, value As Date, options As JsonSerializerOptions)
   overridden: System.Text.Json.Serialization.JsonConverter{System.DateTime}.Write(System.Text.Json.Utf8JsonWriter,System.DateTime,System.Text.Json.JsonSerializerOptions)
   overload: Benday.CosmosDb.Utilities.UnixDateTimeConverter.Write*
@@ -102,32 +102,32 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
+      path: src/Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Read
-    path: ../Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
-    startLine: 18
+    path: ../src/Benday.CosmosDb/Utilities/UnixDateTimeConverter.cs
+    startLine: 27
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
-  summary: Reads and converts the JSON to type <xref href="System.DateTime" data-throw-if-not-resolved="false"></xref>.
+  summary: Reads a Unix timestamp (seconds since the epoch) into a UTC <xref href="System.DateTime" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     parameters:
     - id: reader
       type: System.Text.Json.Utf8JsonReader
-      description: The reader.
+      description: The JSON reader.
     - id: typeToConvert
       type: System.Type
-      description: The type to convert.
+      description: The type being converted (unused).
     - id: options
       type: System.Text.Json.JsonSerializerOptions
-      description: An object that specifies serialization options to use.
+      description: Serializer options (unused).
     return:
       type: System.DateTime
-      description: The converted value.
+      description: The converted UTC date/time.
     content.vb: Public Overrides Function Read(reader As Utf8JsonReader, typeToConvert As Type, options As JsonSerializerOptions) As Date
   overridden: System.Text.Json.Serialization.JsonConverter{System.DateTime}.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
   overload: Benday.CosmosDb.Utilities.UnixDateTimeConverter.Read*
@@ -844,6 +844,17 @@ references:
   fullName: System.Text.Json.Serialization.JsonConverter<T>.Type
   nameWithType.vb: JsonConverter(Of T).Type
   fullName.vb: System.Text.Json.Serialization.JsonConverter(Of T).Type
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
 - uid: System.Text.Json.Serialization.JsonConverter{System.DateTime}.Write(System.Text.Json.Utf8JsonWriter,System.DateTime,System.Text.Json.JsonSerializerOptions)
   commentId: M:System.Text.Json.Serialization.JsonConverter{System.DateTime}.Write(System.Text.Json.Utf8JsonWriter,System.DateTime,System.Text.Json.JsonSerializerOptions)
   parent: System.Text.Json.Serialization.JsonConverter{System.DateTime}
@@ -915,17 +926,6 @@ references:
   name: Utf8JsonWriter
   nameWithType: Utf8JsonWriter
   fullName: System.Text.Json.Utf8JsonWriter
-- uid: System.DateTime
-  commentId: T:System.DateTime
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.datetime
-  name: DateTime
-  nameWithType: DateTime
-  fullName: System.DateTime
-  nameWithType.vb: Date
-  fullName.vb: Date
-  name.vb: Date
 - uid: System.Text.Json.JsonSerializerOptions
   commentId: T:System.Text.Json.JsonSerializerOptions
   parent: System.Text.Json

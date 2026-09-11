@@ -15,11 +15,11 @@ items:
   type: Interface
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ICosmosQueryLogSink
-    path: ../Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
     startLine: 29
   assemblies:
   - Benday.CosmosDb
@@ -87,11 +87,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Record
-    path: ../Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/ICosmosQueryLogSink.cs
     startLine: 38
   assemblies:
   - Benday.CosmosDb

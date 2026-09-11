@@ -102,7 +102,7 @@ Complete ASP.NET Core Identity implementation for Cosmos DB:
 
 ### Migration Tool
 
-`cosmosmigrator` is a .NET tool (PackAsTool=true) built on `Benday.CommandsFramework`. Migrates Cosmos DB containers from v5 schema (`pk`/`discriminator`) to v6 schema (`tenantId`/`entityType`) with camelCase transformation. Key components: `DocumentTransformer` (JSON-level), `AdaptiveConcurrencyController` (429 throttling), `MigrationRunner`. Supports dry-run and validate-only modes.
+`cosmosmigrator` is a .NET tool (PackAsTool=true) built on `Benday.CommandsFramework`. Migrates Cosmos DB containers from v5 schema (`pk`/`discriminator`) to v6 schema (`tenantId`/`entityType`) with camelCase transformation. Key components: `DocumentTransformer` (JSON-level), `AdaptiveConcurrencyController` (429 throttling), `MigrationRunner`. Supports dry-run and validate-only modes. Built on Benday.CommandsFramework v5: arguments are POSIX-style (`--database MyDb`, `--dry-run=false`), unknown arguments are rejected, and endpoint/credential requirements are declared as argument rules in `GetArguments()` rather than checked in `OnExecute()`.
 
 ## CI/CD
 

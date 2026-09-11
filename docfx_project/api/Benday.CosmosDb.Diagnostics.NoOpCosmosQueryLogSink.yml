@@ -16,11 +16,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: NoOpCosmosQueryLogSink
-    path: ../Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
     startLine: 7
   assemblies:
   - Benday.CosmosDb
@@ -59,11 +59,11 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Instance
-    path: ../Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
     startLine: 14
   assemblies:
   - Benday.CosmosDb
@@ -93,11 +93,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Record
-    path: ../Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/NoOpCosmosQueryLogSink.cs
     startLine: 19
   assemblies:
   - Benday.CosmosDb

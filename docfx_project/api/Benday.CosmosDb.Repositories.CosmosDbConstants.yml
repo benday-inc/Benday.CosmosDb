@@ -21,11 +21,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosDbConstants
-    path: ../Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
     startLine: 5
   assemblies:
   - Benday.CosmosDb
@@ -58,11 +58,11 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PropertyName_EntityType
-    path: ../Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+    path: ../src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
     startLine: 10
   assemblies:
   - Benday.CosmosDb
@@ -87,15 +87,17 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PropertyName_Etag
-    path: ../Benday.CosmosDb/Repositories/CosmosDbConstants.cs
-    startLine: 11
+    path: ../src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+    startLine: 12
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: The JSON property name for the Cosmos DB ETag used for optimistic concurrency.
+  example: []
   syntax:
     content: public const string PropertyName_Etag = "_etag"
     return:
@@ -114,15 +116,17 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PropertyName_Id
-    path: ../Benday.CosmosDb/Repositories/CosmosDbConstants.cs
-    startLine: 12
+    path: ../src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+    startLine: 15
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: The JSON property name for the entity id.
+  example: []
   syntax:
     content: public const string PropertyName_Id = "id"
     return:
@@ -141,15 +145,17 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PropertyName_TenantId
-    path: ../Benday.CosmosDb/Repositories/CosmosDbConstants.cs
-    startLine: 13
+    path: ../src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+    startLine: 18
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: The JSON property name for the tenant id (first-level partition key).
+  example: []
   syntax:
     content: public const string PropertyName_TenantId = "tenantId"
     return:
@@ -168,15 +174,17 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PropertyName_Timestamp
-    path: ../Benday.CosmosDb/Repositories/CosmosDbConstants.cs
-    startLine: 14
+    path: ../src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+    startLine: 21
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: The JSON property name for the Cosmos DB timestamp (<code>_ts</code>).
+  example: []
   syntax:
     content: public const string PropertyName_Timestamp = "_ts"
     return:
@@ -195,12 +203,12 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DefaultPartitionKey
-    path: ../Benday.CosmosDb/Repositories/CosmosDbConstants.cs
-    startLine: 19
+    path: ../src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+    startLine: 26
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
@@ -224,15 +232,17 @@ items:
   type: Field
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+      path: src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DefaultDatabaseThroughput
-    path: ../Benday.CosmosDb/Repositories/CosmosDbConstants.cs
-    startLine: 20
+    path: ../src/Benday.CosmosDb/Repositories/CosmosDbConstants.cs
+    startLine: 29
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Repositories
+  summary: Default provisioned database throughput (RU/s) used when a database is created.
+  example: []
   syntax:
     content: public const int DefaultDatabaseThroughput = 400
     return:

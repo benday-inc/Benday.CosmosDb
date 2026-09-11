@@ -29,11 +29,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosConfigBuilder
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 9
   assemblies:
   - Benday.CosmosDb
@@ -71,11 +71,11 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 16
   assemblies:
   - Benday.CosmosDb
@@ -102,11 +102,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithEndpoint
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 29
   assemblies:
   - Benday.CosmosDb
@@ -140,11 +140,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithAccountKey
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 40
   assemblies:
   - Benday.CosmosDb
@@ -178,11 +178,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseDefaultAzureCredential
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 51
   assemblies:
   - Benday.CosmosDb
@@ -212,11 +212,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithDatabase
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 64
   assemblies:
   - Benday.CosmosDb
@@ -253,11 +253,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithContainer
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 79
   assemblies:
   - Benday.CosmosDb
@@ -291,11 +291,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithPartitionKey
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 91
   assemblies:
   - Benday.CosmosDb
@@ -332,11 +332,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseHierarchicalPartitionKeys
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 102
   assemblies:
   - Benday.CosmosDb
@@ -363,11 +363,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithCreateStructures
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 113
   assemblies:
   - Benday.CosmosDb
@@ -397,11 +397,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseGatewayMode
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 124
   assemblies:
   - Benday.CosmosDb
@@ -431,11 +431,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithBulkExecution
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 135
   assemblies:
   - Benday.CosmosDb
@@ -469,11 +469,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithCamelCase
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 147
   assemblies:
   - Benday.CosmosDb
@@ -510,11 +510,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: FromConfig
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 159
   assemblies:
   - Benday.CosmosDb
@@ -548,11 +548,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ForEmulator
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 183
   assemblies:
   - Benday.CosmosDb
@@ -584,11 +584,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Build
-    path: ../Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfigBuilder.cs
     startLine: 197
   assemblies:
   - Benday.CosmosDb

@@ -15,11 +15,11 @@ items:
   type: Interface
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/IParentedItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/IParentedItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: IParentedItemService
-    path: ../Benday.CosmosDb/ServiceLayers/IParentedItemService.cs
+    path: ../src/Benday.CosmosDb/ServiceLayers/IParentedItemService.cs
     startLine: 8
   assemblies:
   - Benday.CosmosDb
@@ -58,11 +58,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/ServiceLayers/IParentedItemService.cs
+      path: src/Benday.CosmosDb/ServiceLayers/IParentedItemService.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetAllByParentIdAsync
-    path: ../Benday.CosmosDb/ServiceLayers/IParentedItemService.cs
+    path: ../src/Benday.CosmosDb/ServiceLayers/IParentedItemService.cs
     startLine: 18
   assemblies:
   - Benday.CosmosDb

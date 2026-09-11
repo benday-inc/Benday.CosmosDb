@@ -21,11 +21,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: FileCosmosQueryLogSink
-    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
     startLine: 27
   assemblies:
   - Benday.CosmosDb
@@ -85,20 +85,23 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
-    startLine: 44
+    path: ../src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 50
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Diagnostics
+  summary: Initializes a new sink that writes NDJSON to the specified file path.
+  example: []
   syntax:
     content: public FileCosmosQueryLogSink(string filePath)
     parameters:
     - id: filePath
       type: System.String
+      description: Destination file path for the query log.
     content.vb: Public Sub New(filePath As String)
   overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor*
   nameWithType.vb: FileCosmosQueryLogSink.New(String)
@@ -117,15 +120,17 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
-    startLine: 49
+    path: ../src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 56
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Diagnostics
+  summary: Initializes a new sink using default options (including the default file path).
+  example: []
   syntax:
     content: public FileCosmosQueryLogSink()
     content.vb: Public Sub New()
@@ -146,12 +151,12 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
-    startLine: 61
+    path: ../src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 68
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Diagnostics
@@ -199,22 +204,32 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
-    startLine: 67
+    path: ../src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 80
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Diagnostics
+  summary: >-
+    Initializes a new sink from the given options, creating the target directory if needed and
+
+    starting the background writer thread.
+  example: []
   syntax:
     content: public FileCosmosQueryLogSink(CosmosFileLogSinkOptions options)
     parameters:
     - id: options
       type: Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions
+      description: File path and queue-capacity settings for the sink.
     content.vb: Public Sub New(options As CosmosFileLogSinkOptions)
   overload: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">options</code> is null.
   nameWithType.vb: FileCosmosQueryLogSink.New(CosmosFileLogSinkOptions)
   fullName.vb: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.New(Benday.CosmosDb.Diagnostics.CosmosFileLogSinkOptions)
   name.vb: New(CosmosFileLogSinkOptions)
@@ -231,12 +246,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DroppedCount
-    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
-    startLine: 95
+    path: ../src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 108
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Diagnostics
@@ -265,12 +280,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Record
-    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
-    startLine: 98
+    path: ../src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 111
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Diagnostics
@@ -302,12 +317,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+      path: src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Dispose
-    path: ../Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
-    startLine: 159
+    path: ../src/Benday.CosmosDb/Diagnostics/FileCosmosQueryLogSink.cs
+    startLine: 173
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Diagnostics
@@ -736,6 +751,13 @@ references:
     name: Options
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount*
   commentId: Overload:Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.DroppedCount
   href: Benday.CosmosDb.Diagnostics.FileCosmosQueryLogSink.html#Benday_CosmosDb_Diagnostics_FileCosmosQueryLogSink_DroppedCount

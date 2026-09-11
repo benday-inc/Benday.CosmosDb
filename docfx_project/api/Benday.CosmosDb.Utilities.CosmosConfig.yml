@@ -28,15 +28,22 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosConfig
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 5
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 10
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Connection and container settings for a Cosmos DB account. Bound from the
+
+    <code>CosmosConfiguration</code> configuration section and supports connection-string,
+
+    <code>DefaultAzureCredential</code>, and emulator modes.
+  example: []
   syntax:
     content: public class CosmosConfig
     content.vb: Public Class CosmosConfig
@@ -63,15 +70,17 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 7
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 13
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: Initializes a new instance with all string settings defaulted to empty.
+  example: []
   syntax:
     content: public CosmosConfig()
     content.vb: Public Sub New()
@@ -92,12 +101,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: AccountKey
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 25
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 31
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -123,12 +132,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Endpoint
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 30
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 36
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -154,12 +163,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DatabaseName
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 35
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 41
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -185,12 +194,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ContainerName
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 40
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 46
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -216,12 +225,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PartitionKey
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 45
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 51
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -247,12 +256,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CreateStructures
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 50
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 56
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -278,12 +287,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseGatewayMode
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 55
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 61
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -309,12 +318,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseDefaultAzureCredential
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 60
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 66
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -340,12 +349,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseHierarchicalPartitionKey
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 65
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 71
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -371,12 +380,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DatabaseThroughput
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 70
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 76
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -402,12 +411,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: AllowBulkExecution
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 75
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 81
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -433,12 +442,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseCamelCase
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 82
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 88
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -469,12 +478,12 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosConfig.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosConfig.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConnectionString
-    path: ../Benday.CosmosDb/Utilities/CosmosConfig.cs
-    startLine: 87
+    path: ../src/Benday.CosmosDb/Utilities/CosmosConfig.cs
+    startLine: 93
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities

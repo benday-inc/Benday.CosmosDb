@@ -466,12 +466,12 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="diagnostics">Cosmos diagnostics from the response.</param>
     /// <param name="duration">Wall-clock duration of the SDK round trip.</param>
     /// <param name="partitionKey">
-    /// Partition key the operation targeted. Null (the default) records an
-    /// empty <see cref="PartitionKey"/>; callers that know the key should pass it.
+    /// Partition key the operation targeted. Null records an empty
+    /// <see cref="PartitionKey"/>; callers that know the key should pass it.
     /// </param>
     protected void LogPointOperationDiagnostics(
         string operationName, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration,
-        PartitionKey? partitionKey = null)
+        PartitionKey? partitionKey)
     {
         var diagnosticsString = diagnostics.ToString();
         Logger.LogInformation($"Request Charge ({operationName}): {requestCharge}");
@@ -488,6 +488,21 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             RequestCharge = requestCharge,
             Duration = duration,
         });
+    }
+
+    /// <summary>
+    /// Logs diagnostics for a point operation without a partition key. Kept so
+    /// that repositories compiled against 6.1 keep binding at run time; new code
+    /// should pass the partition key.
+    /// </summary>
+    /// <param name="operationName">Name of the operation (e.g. "SaveAsync").</param>
+    /// <param name="requestCharge">RU charge for the operation.</param>
+    /// <param name="diagnostics">Cosmos diagnostics from the response.</param>
+    /// <param name="duration">Wall-clock duration of the SDK round trip.</param>
+    protected void LogPointOperationDiagnostics(
+        string operationName, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration)
+    {
+        LogPointOperationDiagnostics(operationName, requestCharge, diagnostics, duration, partitionKey: null);
     }
 
     /// <summary>

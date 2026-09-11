@@ -8,10 +8,9 @@ namespace Benday.CosmosDb.MigrationTool;
 
 [Command(
     Name = "copycontainer",
-    IsAsync = true,
     Description = "Copy all documents from a remote Cosmos DB container to the local emulator. " +
                   "Useful for setting up test data before running the migrate command.")]
-public class CopyContainerCommand : AsynchronousCommand
+public class CopyContainerCommand : Command
 {
     public CopyContainerCommand(
         CommandExecutionInfo info, ITextOutputProvider outputProvider)
@@ -62,10 +61,13 @@ public class CopyContainerCommand : AsynchronousCommand
             .WithDescription("Max concurrent write operations (default: 5)")
             .WithDefaultValue(5);
 
+        // Enforced before OnExecute runs and carried in the usage text and --json schema.
+        args.AtLeastOneOf("account-key", "use-managed-identity");
+
         return args;
     }
 
-    protected override async Task OnExecute()
+    protected override async Task OnExecute(CancellationToken cancellationToken)
     {
         var sourceEndpoint = Arguments.GetStringValue("endpoint");
         var sourceAccountKey = Arguments.ContainsKey("account-key") && Arguments["account-key"].HasValue
@@ -89,11 +91,6 @@ public class CopyContainerCommand : AsynchronousCommand
             ? Arguments.GetInt32Value("max-concurrency")
             : 5;
 
-        if (!useManagedIdentity && string.IsNullOrWhiteSpace(sourceAccountKey))
-        {
-            throw new KnownException("Source account key is required. Provide /account-key or /use-managed-identity.");
-        }
-
         // Create source client (Azure)
         _OutputProvider.WriteLine($"Connecting to source: {sourceEndpoint}");
         using var sourceClient = CosmosClientFactory.Create(
@@ -110,7 +107,7 @@ public class CopyContainerCommand : AsynchronousCommand
         ContainerProperties sourceProps;
         try
         {
-            var containerResponse = await sourceContainer.ReadContainerAsync();
+            var containerResponse = await sourceContainer.ReadContainerAsync(cancellationToken: cancellationToken);
             sourceProps = containerResponse.Resource;
         }
         catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
@@ -124,18 +121,18 @@ public class CopyContainerCommand : AsynchronousCommand
 
         // Create destination database and container on emulator
         _OutputProvider.WriteLine($"Creating database '{destDatabaseName}' on emulator...");
-        var destDb = (await destClient.CreateDatabaseIfNotExistsAsync(destDatabaseName)).Database;
+        var destDb = (await destClient.CreateDatabaseIfNotExistsAsync(destDatabaseName, cancellationToken: cancellationToken)).Database;
 
         _OutputProvider.WriteLine($"Creating container '{destContainerName}' on emulator with same partition key paths...");
         var destContainerProps = partitionKeyPaths.Count <= 1
             ? new ContainerProperties(destContainerName, partitionKeyPaths.FirstOrDefault() ?? "/id")
             : new ContainerProperties(destContainerName, partitionKeyPaths);
 
-        var destContainer = (await destDb.CreateContainerIfNotExistsAsync(destContainerProps)).Container;
+        var destContainer = (await destDb.CreateContainerIfNotExistsAsync(destContainerProps, cancellationToken: cancellationToken)).Container;
 
         // Count source documents
         _OutputProvider.WriteLine("Counting documents...");
-        var totalDocs = await CountDocumentsAsync(sourceContainer);
+        var totalDocs = await CountDocumentsAsync(sourceContainer, cancellationToken);
         _OutputProvider.WriteLine($"Found {totalDocs} documents to copy.");
 
         // Copy documents
@@ -153,7 +150,9 @@ public class CopyContainerCommand : AsynchronousCommand
 
         while (feedIterator.HasMoreResults)
         {
-            var response = await feedIterator.ReadNextAsync();
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var response = await feedIterator.ReadNextAsync(cancellationToken);
             totalReadRUs += response.RequestCharge;
             var batchRUs = response.RequestCharge;
 
@@ -173,7 +172,7 @@ public class CopyContainerCommand : AsynchronousCommand
             if (batch.Count > 0)
             {
                 var (writeRUs, writeErrors) = await WriteBatchAsync(
-                    destContainer, batch, partitionKeyPaths, maxConcurrency);
+                    destContainer, batch, partitionKeyPaths, maxConcurrency, cancellationToken);
                 totalWriteRUs += writeRUs;
                 batchRUs += writeRUs;
                 writtenCount += batch.Count - writeErrors;
@@ -220,14 +219,14 @@ public class CopyContainerCommand : AsynchronousCommand
         return $"{ts.Seconds}s";
     }
 
-    private async Task<int> CountDocumentsAsync(Container container)
+    private async Task<int> CountDocumentsAsync(Container container, CancellationToken cancellationToken)
     {
         var countQuery = new QueryDefinition("SELECT VALUE COUNT(1) FROM c");
         using var iterator = container.GetItemQueryIterator<int>(countQuery);
 
         if (iterator.HasMoreResults)
         {
-            var response = await iterator.ReadNextAsync();
+            var response = await iterator.ReadNextAsync(cancellationToken);
             return response.FirstOrDefault();
         }
 
@@ -238,7 +237,8 @@ public class CopyContainerCommand : AsynchronousCommand
         Container destContainer,
         List<JsonObject> batch,
         List<string> partitionKeyPaths,
-        int maxConcurrency)
+        int maxConcurrency,
+        CancellationToken cancellationToken)
     {
         var totalRUs = 0.0;
         var ruLock = new object();
@@ -248,15 +248,20 @@ public class CopyContainerCommand : AsynchronousCommand
 
         var tasks = batch.Select(async doc =>
         {
-            await semaphore.WaitAsync();
+            await semaphore.WaitAsync(cancellationToken);
             try
             {
                 var pk = BuildPartitionKey(doc, partitionKeyPaths);
-                var response = await destContainer.UpsertItemAsync(doc, pk);
+                var response = await destContainer.UpsertItemAsync(doc, pk, cancellationToken: cancellationToken);
                 lock (ruLock)
                 {
                     totalRUs += response.RequestCharge;
                 }
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                // A cancelled write is not a write error; let it surface as a cancellation.
+                throw;
             }
             catch (Exception ex)
             {

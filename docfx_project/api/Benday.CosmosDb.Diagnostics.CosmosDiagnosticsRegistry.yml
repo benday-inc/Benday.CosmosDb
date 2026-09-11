@@ -17,11 +17,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosDiagnosticsRegistry
-    path: ../Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
     startLine: 19
   assemblies:
   - Benday.CosmosDb
@@ -72,11 +72,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetFor
-    path: ../Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
     startLine: 29
   assemblies:
   - Benday.CosmosDb
@@ -112,11 +112,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Set
-    path: ../Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
     startLine: 37
   assemblies:
   - Benday.CosmosDb
@@ -153,11 +153,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
+      path: src/Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SetDefault
-    path: ../Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
+    path: ../src/Benday.CosmosDb/Diagnostics/CosmosDiagnosticsRegistry.cs
     startLine: 50
   assemblies:
   - Benday.CosmosDb

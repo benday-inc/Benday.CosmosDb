@@ -16,11 +16,11 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/TenantItemBase.cs
+      path: src/Benday.CosmosDb/DomainModels/TenantItemBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: TenantItemBase
-    path: ../Benday.CosmosDb/DomainModels/TenantItemBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/TenantItemBase.cs
     startLine: 7
   assemblies:
   - Benday.CosmosDb
@@ -68,11 +68,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/TenantItemBase.cs
+      path: src/Benday.CosmosDb/DomainModels/TenantItemBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetEntityTypeName
-    path: ../Benday.CosmosDb/DomainModels/TenantItemBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/TenantItemBase.cs
     startLine: 13
   assemblies:
   - Benday.CosmosDb
@@ -100,11 +100,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/DomainModels/TenantItemBase.cs
+      path: src/Benday.CosmosDb/DomainModels/TenantItemBase.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetBlobPrefix
-    path: ../Benday.CosmosDb/DomainModels/TenantItemBase.cs
+    path: ../src/Benday.CosmosDb/DomainModels/TenantItemBase.cs
     startLine: 22
   assemblies:
   - Benday.CosmosDb

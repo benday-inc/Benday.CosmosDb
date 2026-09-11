@@ -20,11 +20,11 @@ items:
   type: Interface
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: IRepository
-    path: ../Benday.CosmosDb/Repositories/IRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/IRepository.cs
     startLine: 6
   assemblies:
   - Benday.CosmosDb
@@ -53,11 +53,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveAsync
-    path: ../Benday.CosmosDb/Repositories/IRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/IRepository.cs
     startLine: 13
   assemblies:
   - Benday.CosmosDb
@@ -90,11 +90,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: SaveAsync
-    path: ../Benday.CosmosDb/Repositories/IRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/IRepository.cs
     startLine: 20
   assemblies:
   - Benday.CosmosDb
@@ -128,11 +128,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DeleteAsync
-    path: ../Benday.CosmosDb/Repositories/IRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/IRepository.cs
     startLine: 27
   assemblies:
   - Benday.CosmosDb
@@ -166,11 +166,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetByIdAsync
-    path: ../Benday.CosmosDb/Repositories/IRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/IRepository.cs
     startLine: 34
   assemblies:
   - Benday.CosmosDb
@@ -204,11 +204,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetAllAsync
-    path: ../Benday.CosmosDb/Repositories/IRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/IRepository.cs
     startLine: 40
   assemblies:
   - Benday.CosmosDb
@@ -237,11 +237,11 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Repositories/IRepository.cs
+      path: src/Benday.CosmosDb/Repositories/IRepository.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: GetPagedAsync
-    path: ../Benday.CosmosDb/Repositories/IRepository.cs
+    path: ../src/Benday.CosmosDb/Repositories/IRepository.cs
     startLine: 48
   assemblies:
   - Benday.CosmosDb

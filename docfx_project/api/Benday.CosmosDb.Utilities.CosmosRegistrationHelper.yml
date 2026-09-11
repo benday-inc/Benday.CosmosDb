@@ -36,15 +36,24 @@ items:
   type: Class
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: CosmosRegistrationHelper
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 13
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 19
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Registers Cosmos DB repositories and services with the dependency injection
+
+    container. Reads default connection, database, container, and partition-key
+
+    settings from a <xref href="Benday.CosmosDb.Utilities.CosmosConfig" data-throw-if-not-resolved="false"></xref> and exposes them as defaults that
+
+    each per-entity registration call can override.
+  example: []
   syntax:
     content: public class CosmosRegistrationHelper
     content.vb: Public Class CosmosRegistrationHelper
@@ -71,15 +80,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConnectionString
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 15
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 24
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: Cosmos DB account endpoint (or connection string) used when registering repositories.
+  example: []
   syntax:
     content: public string ConnectionString { get; }
     parameters: []
@@ -100,15 +111,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithCreateStructures
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 17
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 29
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: When true, repositories create the database and container structures on startup if missing.
+  example: []
   syntax:
     content: public bool WithCreateStructures { get; }
     parameters: []
@@ -129,15 +142,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseGatewayMode
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 18
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 34
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: When true, the Cosmos client connects in gateway mode instead of direct mode.
+  example: []
   syntax:
     content: public bool UseGatewayMode { get; }
     parameters: []
@@ -158,15 +173,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: AllowBulkExecution
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 19
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 39
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: When true, the Cosmos client enables bulk execution for higher-throughput batch operations. Defaults to true.
+  example: []
   syntax:
     content: public bool AllowBulkExecution { get; }
     parameters: []
@@ -187,15 +204,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseHierarchicalPartitionKey
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 20
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 44
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: When true, containers are created with a hierarchical partition key (default path <code>/tenantId,/entityType</code>).
+  example: []
   syntax:
     content: public bool UseHierarchicalPartitionKey { get; }
     parameters: []
@@ -216,15 +235,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: UseDefaultAzureCredential
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 21
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 49
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: When true, the Cosmos client authenticates with <code>DefaultAzureCredential</code> instead of a connection-string key.
+  example: []
   syntax:
     content: public bool UseDefaultAzureCredential { get; }
     parameters: []
@@ -245,15 +266,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: DatabaseName
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 23
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 54
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: Default database name used when registering repositories.
+  example: []
   syntax:
     content: public string DatabaseName { get; }
     parameters: []
@@ -274,15 +297,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ContainerName
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 25
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 59
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: Default container name used when registering repositories.
+  example: []
   syntax:
     content: public string ContainerName { get; }
     parameters: []
@@ -303,15 +328,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: PartitionKey
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 27
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 64
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: Default partition key path used when registering repositories.
+  example: []
   syntax:
     content: public string PartitionKey { get; }
     parameters: []
@@ -332,15 +359,17 @@ items:
   type: Property
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: Configuration
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 31
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 71
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: The configuration this helper was constructed from, or null if constructed without one.
+  example: []
   syntax:
     content: public CosmosConfig? Configuration { get; }
     parameters: []
@@ -361,22 +390,29 @@ items:
   type: Constructor
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: .ctor
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 33
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 79
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
+  summary: >-
+    Initializes a new instance that reads its defaults from <code class="paramref">config</code> and
+
+    registers the shared Cosmos client on <code class="paramref">services</code>.
+  example: []
   syntax:
     content: public CosmosRegistrationHelper(IServiceCollection services, CosmosConfig config)
     parameters:
     - id: services
       type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection to register repositories and the Cosmos client into.
     - id: config
       type: Benday.CosmosDb.Utilities.CosmosConfig
+      description: Connection and container settings used as registration defaults.
     content.vb: Public Sub New(services As IServiceCollection, config As CosmosConfig)
   overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor*
   nameWithType.vb: CosmosRegistrationHelper.New(IServiceCollection, CosmosConfig)
@@ -395,12 +431,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 54
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 100
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -410,7 +446,7 @@ items:
     content: 'public void RegisterRepository<TEntity>() where TEntity : TenantItemBase, new()'
     typeParameters:
     - id: TEntity
-      description: ''
+      description: Entity type that inherits from <xref href="Benday.CosmosDb.DomainModels.TenantItemBase" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Sub RegisterRepository(Of TEntity As {TenantItemBase, New})()
   overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
   nameWithType.vb: CosmosRegistrationHelper.RegisterRepository(Of TEntity)()
@@ -429,12 +465,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 68
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 114
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -444,11 +480,11 @@ items:
     content: 'public void RegisterRepository<TEntity, TInterface, TImplementation>() where TEntity : TenantItemBase, new() where TInterface : class where TImplementation : class, TInterface'
     typeParameters:
     - id: TEntity
-      description: ''
+      description: Entity type that inherits from <xref href="Benday.CosmosDb.DomainModels.TenantItemBase" data-throw-if-not-resolved="false"></xref>.
     - id: TInterface
-      description: ''
+      description: The repository interface to register.
     - id: TImplementation
-      description: ''
+      description: The repository implementation to register.
     content.vb: Public Sub RegisterRepository(Of TEntity As {TenantItemBase, New}, TInterface As Class, TImplementation As {Class, TInterface})()
   overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
   nameWithType.vb: CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)()
@@ -467,12 +503,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 85
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 138
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -486,25 +522,32 @@ items:
     parameters:
     - id: connectionString
       type: System.String
+      description: Overrides the helper's connection string when set.
     - id: databaseName
       type: System.String
+      description: Overrides the helper's database name when set.
     - id: containerName
       type: System.String
+      description: Overrides the helper's container name when set.
     - id: partitionKey
       type: System.String
+      description: Overrides the helper's partition key when set.
     - id: useHierarchicalPartitionKey
       type: System.Nullable{System.Boolean}
+      description: Overrides the helper's hierarchical partition key flag when set.
     - id: useDefaultAzureCredential
       type: System.Nullable{System.Boolean}
+      description: Overrides the helper's DefaultAzureCredential flag when set.
     - id: withCreateStructures
       type: System.Nullable{System.Boolean}
+      description: Overrides the helper's create-structures flag when set.
     typeParameters:
     - id: TEntity
-      description: ''
+      description: Entity type that inherits from <xref href="Benday.CosmosDb.DomainModels.TenantItemBase" data-throw-if-not-resolved="false"></xref>.
     - id: TInterface
-      description: ''
+      description: The repository interface to register.
     - id: TImplementation
-      description: ''
+      description: The repository implementation to register.
     content.vb: Public Sub RegisterRepository(Of TEntity As {TenantItemBase, New}, TInterface As Class, TImplementation As {Class, TInterface})(connectionString As String = Nothing, databaseName As String = Nothing, containerName As String = Nothing, partitionKey As String = Nothing, useHierarchicalPartitionKey As Boolean? = Nothing, useDefaultAzureCredential As Boolean? = Nothing, withCreateStructures As Boolean? = Nothing)
   overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
   nameWithType.vb: CosmosRegistrationHelper.RegisterRepository(Of TEntity, TInterface, TImplementation)(String, String, String, String, Boolean?, Boolean?, Boolean?)
@@ -523,12 +566,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterRepositoryAndService
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 147
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 200
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -538,7 +581,7 @@ items:
     content: 'public void RegisterRepositoryAndService<TEntity>() where TEntity : TenantItemBase, new()'
     typeParameters:
     - id: TEntity
-      description: ''
+      description: Entity type that inherits from <xref href="Benday.CosmosDb.DomainModels.TenantItemBase" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Sub RegisterRepositoryAndService(Of TEntity As {TenantItemBase, New})()
   overload: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepositoryAndService*
   nameWithType.vb: CosmosRegistrationHelper.RegisterRepositoryAndService(Of TEntity)()
@@ -557,12 +600,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterParentedRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 161
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 214
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -591,12 +634,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterParentedRepository
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 175
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 228
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -629,12 +672,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: RegisterParentedRepositoryAndService
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 189
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 242
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -663,12 +706,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithQueryLogSink
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 221
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 274
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -705,12 +748,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: WithQueryLogSink
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 235
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 288
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -745,12 +788,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureDiagnostics
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 256
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 309
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -794,12 +837,12 @@ items:
   type: Method
   source:
     remote:
-      path: Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+      path: src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
       branch: master
       repo: https://github.com/benday-inc/Benday.CosmosDb.git
     id: ConfigureDiagnosticsDefault
-    path: ../Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
-    startLine: 273
+    path: ../src/Benday.CosmosDb/Utilities/CosmosRegistrationHelper.cs
+    startLine: 326
   assemblies:
   - Benday.CosmosDb
   namespace: Benday.CosmosDb.Utilities
@@ -827,6 +870,13 @@ items:
   fullName.vb: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.ConfigureDiagnosticsDefault(System.Action(Of Benday.CosmosDb.Diagnostics.CosmosRepositoryDiagnosticsOptions))
   name.vb: ConfigureDiagnosticsDefault(Action(Of CosmosRepositoryDiagnosticsOptions))
 references:
+- uid: Benday.CosmosDb.Utilities.CosmosConfig
+  commentId: T:Benday.CosmosDb.Utilities.CosmosConfig
+  parent: Benday.CosmosDb.Utilities
+  href: Benday.CosmosDb.Utilities.CosmosConfig.html
+  name: CosmosConfig
+  nameWithType: CosmosConfig
+  fullName: Benday.CosmosDb.Utilities.CosmosConfig
 - uid: Benday.CosmosDb.Utilities
   commentId: N:Benday.CosmosDb.Utilities
   href: Benday.html
@@ -1176,13 +1226,6 @@ references:
   name: Configuration
   nameWithType: CosmosRegistrationHelper.Configuration
   fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.Configuration
-- uid: Benday.CosmosDb.Utilities.CosmosConfig
-  commentId: T:Benday.CosmosDb.Utilities.CosmosConfig
-  parent: Benday.CosmosDb.Utilities
-  href: Benday.CosmosDb.Utilities.CosmosConfig.html
-  name: CosmosConfig
-  nameWithType: CosmosConfig
-  fullName: Benday.CosmosDb.Utilities.CosmosConfig
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor*
   commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.#ctor
   href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_Benday_CosmosDb_Utilities_CosmosConfig_
@@ -1237,12 +1280,49 @@ references:
     name: DependencyInjection
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: Benday.CosmosDb.DomainModels.TenantItemBase
+  commentId: T:Benday.CosmosDb.DomainModels.TenantItemBase
+  parent: Benday.CosmosDb.DomainModels
+  href: Benday.CosmosDb.DomainModels.TenantItemBase.html
+  name: TenantItemBase
+  nameWithType: TenantItemBase
+  fullName: Benday.CosmosDb.DomainModels.TenantItemBase
 - uid: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository*
   commentId: Overload:Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository
   href: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.html#Benday_CosmosDb_Utilities_CosmosRegistrationHelper_RegisterRepository__1
   name: RegisterRepository
   nameWithType: CosmosRegistrationHelper.RegisterRepository
   fullName: Benday.CosmosDb.Utilities.CosmosRegistrationHelper.RegisterRepository
+- uid: Benday.CosmosDb.DomainModels
+  commentId: N:Benday.CosmosDb.DomainModels
+  href: Benday.html
+  name: Benday.CosmosDb.DomainModels
+  nameWithType: Benday.CosmosDb.DomainModels
+  fullName: Benday.CosmosDb.DomainModels
+  spec.csharp:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
+  spec.vb:
+  - uid: Benday
+    name: Benday
+    href: Benday.html
+  - name: .
+  - uid: Benday.CosmosDb
+    name: CosmosDb
+    href: Benday.CosmosDb.html
+  - name: .
+  - uid: Benday.CosmosDb.DomainModels
+    name: DomainModels
+    href: Benday.CosmosDb.DomainModels.html
 - uid: System.Nullable{System.Boolean}
   commentId: T:System.Nullable{System.Boolean}
   parent: System
