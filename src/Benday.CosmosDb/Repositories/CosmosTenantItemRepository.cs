@@ -30,7 +30,12 @@ public class CosmosTenantItemRepository<T>(
 {
     /// <summary>
     /// Get all items in the repository that have the specified tenant id.
-    /// Default implementation will return items in descending order by timestamp.
+    /// Default implementation will return items in descending order by the
+    /// server-assigned <c>_ts</c> (last-modified) value. <c>_ts</c> is a system
+    /// property that Cosmos DB always indexes, so this ordering works under any
+    /// indexing policy. (Earlier versions ordered by the derived <c>timestamp</c>
+    /// property, which held a stale copy of <c>_ts</c> and required a range index
+    /// on a user path.)
     /// </summary>
     /// <param name="tenantId">Tenant id</param>
     /// <returns></returns>
@@ -40,7 +45,7 @@ public class CosmosTenantItemRepository<T>(
 
         var queryContext = await GetQueryContextAsync(tenantId);
 
-        var query = queryContext.Queryable.OrderByDescending(x => x.Timestamp);
+        var query = queryContext.Queryable.OrderByDescending(x => x.TimestampUnixStyle);
 
         var results = await GetResultsAsync(query,
             GetQueryDescription(nameof(GetAllAsync)), queryContext.PartitionKey);
@@ -86,7 +91,7 @@ public class CosmosTenantItemRepository<T>(
                 stopwatch.Stop();
             }
 
-            LogPointOperationDiagnostics(nameof(GetByIdAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed);
+            LogPointOperationDiagnostics(nameof(GetByIdAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed, pk);
 
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {

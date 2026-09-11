@@ -38,8 +38,9 @@ public class DiagnosticsTestRepository : CosmosTenantItemRepository<TestEntity>
 
     public void CallLogPointOperationDiagnostics(
         string operationName, double requestCharge,
-        CosmosDiagnostics diagnostics, System.TimeSpan duration)
-        => LogPointOperationDiagnostics(operationName, requestCharge, diagnostics, duration);
+        CosmosDiagnostics diagnostics, System.TimeSpan duration,
+        PartitionKey? partitionKey = null)
+        => LogPointOperationDiagnostics(operationName, requestCharge, diagnostics, duration, partitionKey);
 
     public bool CallLogFeedResponseDiagnostics(
         string queryDescription, double requestCharge,

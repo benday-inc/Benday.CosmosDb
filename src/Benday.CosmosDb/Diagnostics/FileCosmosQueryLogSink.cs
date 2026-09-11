@@ -34,6 +34,10 @@ public sealed class FileCosmosQueryLogSink : ICosmosQueryLogSink, IDisposable
         WriteIndented = false
     };
 
+    // Encoding.UTF8 emits a byte-order mark on the first write, which strict
+    // NDJSON readers reject as an invalid leading character on line one.
+    private static readonly UTF8Encoding Utf8NoBom = new(encoderShouldEmitUTF8Identifier: false);
+
     private readonly string _filePath;
     private readonly int _queueCapacity;
     private readonly BlockingCollection<CosmosQueryDiagnostics> _queue;
@@ -125,7 +129,7 @@ public sealed class FileCosmosQueryLogSink : ICosmosQueryLogSink, IDisposable
                 try
                 {
                     var line = Serialize(diagnostics);
-                    File.AppendAllText(_filePath, line + Environment.NewLine, Encoding.UTF8);
+                    File.AppendAllText(_filePath, line + Environment.NewLine, Utf8NoBom);
                 }
                 catch
                 {
@@ -148,6 +152,7 @@ public sealed class FileCosmosQueryLogSink : ICosmosQueryLogSink, IDisposable
             ["eventKind"] = d.EventKind.ToString(),
             ["timestamp"] = d.Timestamp.ToUniversalTime().ToString("o"),
             ["repositoryName"] = d.RepositoryName,
+            ["entityType"] = d.EntityType,
             ["queryDescription"] = d.QueryDescription,
             ["queryText"] = d.QueryText,
             ["parameters"] = d.Parameters,

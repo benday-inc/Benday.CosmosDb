@@ -191,7 +191,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             }
             else
             {
-                LogPointOperationDiagnostics(nameof(DeleteAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed);
+                LogPointOperationDiagnostics(nameof(DeleteAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed, partitionKey);
                 if (response.StatusCode is System.Net.HttpStatusCode.OK or System.Net.HttpStatusCode.NoContent)
                 {
                     return;
@@ -465,8 +465,13 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
     /// <param name="requestCharge">RU charge from the response.</param>
     /// <param name="diagnostics">Cosmos diagnostics from the response.</param>
     /// <param name="duration">Wall-clock duration of the SDK round trip.</param>
+    /// <param name="partitionKey">
+    /// Partition key the operation targeted. Null (the default) records an
+    /// empty <see cref="PartitionKey"/>; callers that know the key should pass it.
+    /// </param>
     protected void LogPointOperationDiagnostics(
-        string operationName, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration)
+        string operationName, double requestCharge, CosmosDiagnostics diagnostics, TimeSpan duration,
+        PartitionKey? partitionKey = null)
     {
         var diagnosticsString = diagnostics.ToString();
         Logger.LogInformation($"Request Charge ({operationName}): {requestCharge}");
@@ -477,7 +482,9 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             EventKind = CosmosQueryEventKind.PointOperation,
             Timestamp = DateTimeOffset.UtcNow,
             RepositoryName = GetType().Name,
+            EntityType = EntityType,
             QueryDescription = GetQueryDescription(operationName),
+            PartitionKey = partitionKey ?? default,
             RequestCharge = requestCharge,
             Duration = duration,
         });
@@ -528,6 +535,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             EventKind = CosmosQueryEventKind.FeedResponsePage,
             Timestamp = DateTimeOffset.UtcNow,
             RepositoryName = GetType().Name,
+            EntityType = EntityType,
             QueryDescription = queryDescription,
             QueryText = queryText,
             Parameters = parameters,
@@ -580,6 +588,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             EventKind = CosmosQueryEventKind.QueryTotal,
             Timestamp = DateTimeOffset.UtcNow,
             RepositoryName = GetType().Name,
+            EntityType = EntityType,
             QueryDescription = queryDescription,
             QueryText = queryText,
             Parameters = parameters,
@@ -750,6 +759,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
             EventKind = CosmosQueryEventKind.QueryTotal,
             Timestamp = DateTimeOffset.UtcNow,
             RepositoryName = GetType().Name,
+            EntityType = EntityType,
             QueryDescription = queryDescription,
             QueryText = queryText,
             Parameters = parameters,
@@ -1025,7 +1035,7 @@ public abstract class CosmosRepository<T> : IRepository<T> where T : class, ICos
                     saveThis.TimestampUnixStyle = response.Resource.TimestampUnixStyle;
                 }
 
-                LogPointOperationDiagnostics(nameof(SaveAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed);
+                LogPointOperationDiagnostics(nameof(SaveAsync), response.RequestCharge, response.Diagnostics, stopwatch.Elapsed, partitionKey);
 
                 if (response.StatusCode is
                     System.Net.HttpStatusCode.OK or System.Net.HttpStatusCode.Created)

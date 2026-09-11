@@ -27,6 +27,15 @@ public sealed class CosmosQueryDiagnostics
     public string RepositoryName { get; init; } = string.Empty;
 
     /// <summary>
+    /// Entity type the repository manages (the repository's
+    /// <c>EntityType</c> value, e.g. "RequirementScore"). Lets sinks
+    /// attribute an event to a domain type even when the repository is a
+    /// generic base class whose <see cref="RepositoryName"/> is the same
+    /// for every entity.
+    /// </summary>
+    public string EntityType { get; init; } = string.Empty;
+
+    /// <summary>
     /// Logging description for the operation, typically the repository
     /// name plus the caller method name, e.g.
     /// "CocktailRecipeRepository - SearchByTitleAsync".

@@ -427,4 +427,43 @@ public class CosmosQueryDiagnosticsFixture
         Assert.Equal(nameof(DiagnosticsTestRepository), evt.RepositoryName);
         Assert.InRange(evt.Timestamp, before, after);
     }
+
+    [Fact]
+    public void LogPointOperation_EntityTypeAndPartitionKey_Populated()
+    {
+        var repo = CreateRepository();
+        var pk = new PartitionKeyBuilder().Add("tenant-1").Add(nameof(TestEntity)).Build();
+
+        repo.CallLogPointOperationDiagnostics(
+            "op", 1.0, CreateDiagnosticsMock().Object, TimeSpan.FromMilliseconds(5), pk);
+
+        var evt = Assert.Single(repo.CapturedEvents);
+        Assert.Equal(nameof(TestEntity), evt.EntityType);
+        Assert.Equal(pk, evt.PartitionKey);
+    }
+
+    [Fact]
+    public void LogPointOperation_NoPartitionKey_RecordsDefault()
+    {
+        var repo = CreateRepository();
+
+        repo.CallLogPointOperationDiagnostics(
+            "op", 1.0, CreateDiagnosticsMock().Object, TimeSpan.FromMilliseconds(5));
+
+        var evt = Assert.Single(repo.CapturedEvents);
+        Assert.Equal(default, evt.PartitionKey);
+    }
+
+    [Fact]
+    public void LogFeedResponse_EntityType_Populated()
+    {
+        var repo = CreateRepository();
+
+        repo.CallLogFeedResponseDiagnostics(
+            "q", 2.0, CreateDiagnosticsMock().Object, TimeSpan.FromMilliseconds(5),
+            resultCount: 1, queryText: "SELECT 1", parameters: null, partitionKey: default);
+
+        var evt = Assert.Single(repo.CapturedEvents);
+        Assert.Equal(nameof(TestEntity), evt.EntityType);
+    }
 }
