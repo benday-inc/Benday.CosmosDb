@@ -49,7 +49,7 @@
             <input type="hidden" asp-for="ReturnUrl" />
             <div class="form-group">
                 <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" type="email" autocomplete="email" autofocus />
+                <input asp-for="Input.Email" type="email" autocomplete="@(Model.EnablePasskeys ? "username webauthn" : "email")" autofocus />
                 <span asp-validation-for="Input.Email" style="color:#d32f2f;font-size:0.8rem;"></span>
             </div>
             <div class="form-group">
@@ -74,6 +74,7 @@
             <form id="passkey-form" method="post" asp-page-handler="PasskeySignIn" style="display:none;">
                 <input type="hidden" asp-for="ReturnUrl" />
                 <input type="hidden" name="PasskeyCredentialJson" id="passkey-credential-json" />
+                <input type="hidden" name="PasskeyRememberMe" id="passkey-remember-me" value="@(Model.PasskeyRememberMe ? "true" : "false")" />
             </form>
         }
         <div class="links">
@@ -89,33 +90,68 @@
     {
         <script src="/_content/Benday.Identity.CosmosDb.UI/js/passkey.js"></script>
         <script>
-            (function () {
+            (async function () {
                 if (!isPasskeySupported()) return;
 
+                var optionsEndpoint = '/Account/Login?handler=PasskeyOptions';
+                // The server keeps the challenge for about 5 minutes, so a pending
+                // autofill request is restarted with a fresh one before that.
+                var autofillRefreshMs = 4 * 60 * 1000;
+                var autofillTimer = null;
+                var buttonSignInActive = false;
+
                 var btn = document.getElementById('passkey-login-btn');
+                var errorEl = document.getElementById('passkey-error');
                 btn.style.display = 'block';
+
+                function submitCredential(credentialJson) {
+                    var rememberMe = document.getElementById('Input_RememberMe');
+                    if (rememberMe) {
+                        document.getElementById('passkey-remember-me').value = rememberMe.checked ? 'true' : 'false';
+                    }
+                    document.getElementById('passkey-credential-json').value = credentialJson;
+                    document.getElementById('passkey-form').submit();
+                }
+
+                var autofillSupported = await isPasskeyAutofillSupported();
+
+                // Offers the user's passkeys in the email field's autofill dropdown.
+                async function startAutofill() {
+                    clearTimeout(autofillTimer);
+                    if (!autofillSupported || buttonSignInActive) return;
+
+                    autofillTimer = setTimeout(startAutofill, autofillRefreshMs);
+
+                    try {
+                        var credentialJson = await startPasskeyLogin(optionsEndpoint, null, 'conditional');
+                        clearTimeout(autofillTimer);
+                        submitCredential(credentialJson);
+                    } catch (err) {
+                        // Replaced by a newer request or unavailable; the button still works.
+                    }
+                }
 
                 btn.addEventListener('click', async function () {
                     btn.disabled = true;
-                    var errorEl = document.getElementById('passkey-error');
+                    buttonSignInActive = true;
+                    clearTimeout(autofillTimer);
                     errorEl.style.display = 'none';
 
                     try {
-                        var credentialJson = await startPasskeyLogin(
-                            '/Account/Login?handler=PasskeyOptions',
-                            '@(Model.ReturnUrl ?? "/")'
-                        );
-
-                        document.getElementById('passkey-credential-json').value = credentialJson;
-                        document.getElementById('passkey-form').submit();
+                        // Cancels the pending autofill request.
+                        submitCredential(await startPasskeyLogin(optionsEndpoint));
                     } catch (err) {
                         if (err.name !== 'AbortError' && err.name !== 'NotAllowedError') {
                             errorEl.textContent = 'Passkey authentication failed. Please try again.';
                             errorEl.style.display = 'block';
                         }
                         btn.disabled = false;
+                        buttonSignInActive = false;
+                        startAutofill();
                     }
                 });
+
+                startAutofill();
             })();
         </script>
     }

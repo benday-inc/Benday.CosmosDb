@@ -83,6 +83,11 @@ public static class CosmosIdentityUIServiceCollectionExtensions
                 {
                     passkeyOptions.ServerDomain = options.PasskeyServerDomain;
                 }
+
+                if (!string.IsNullOrEmpty(options.PasskeyResidentKeyRequirement))
+                {
+                    passkeyOptions.ResidentKeyRequirement = options.PasskeyResidentKeyRequirement;
+                }
             });
         }
 

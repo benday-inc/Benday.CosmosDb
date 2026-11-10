@@ -105,6 +105,15 @@ public class CosmosIdentityOptions
     public string? PasskeyServerDomain { get; set; }
 
     /// <summary>
+    /// Whether newly registered passkeys must be discoverable ("resident") credentials:
+    /// "required", "preferred", or "discouraged". Default: null (uses the ASP.NET Core
+    /// Identity default, "preferred").
+    /// Only discoverable passkeys are offered by the login page's passkey autofill, so
+    /// set this to "required" to guarantee every new passkey shows up there.
+    /// </summary>
+    public string? PasskeyResidentKeyRequirement { get; set; }
+
+    /// <summary>
     /// The tenant ID used for all identity data stored in Cosmos DB.
     /// Defaults to <see cref="CosmosIdentityConstants.SystemTenantId"/> ("SYSTEM").
     /// Override this if you need identity data partitioned under a different tenant.

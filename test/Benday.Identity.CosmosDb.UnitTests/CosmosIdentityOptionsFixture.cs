@@ -32,5 +32,6 @@ public class CosmosIdentityOptionsFixture : TestClassBase
         Assert.True(options.RememberMeDefaultValue);
         Assert.True(options.EnablePasskeys);
         Assert.Null(options.PasskeyServerDomain);
+        Assert.Null(options.PasskeyResidentKeyRequirement);
     }
 }
