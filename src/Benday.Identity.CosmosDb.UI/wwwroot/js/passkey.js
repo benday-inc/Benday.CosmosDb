@@ -34,14 +34,44 @@ function getAntiForgeryToken() {
     return tokenInput ? tokenInput.value : '';
 }
 
-async function startPasskeyLogin(optionsEndpoint, returnUrl) {
+// True when the browser can offer passkeys in a text field's autofill
+// dropdown (WebAuthn conditional mediation).
+async function isPasskeyAutofillSupported() {
+    if (!isPasskeySupported() ||
+        typeof PublicKeyCredential.isConditionalMediationAvailable !== 'function') {
+        return false;
+    }
+
+    try {
+        return await PublicKeyCredential.isConditionalMediationAvailable();
+    } catch (err) {
+        return false;
+    }
+}
+
+// Only one WebAuthn request can be pending at a time, so each login request
+// aborts the one before it.
+var passkeyLoginAbortController = null;
+
+// mediation: optional. Pass 'conditional' to offer passkeys through autofill on
+// an input with autocomplete="username webauthn" instead of showing a prompt.
+// returnUrl is unused and kept for backward compatibility.
+async function startPasskeyLogin(optionsEndpoint, returnUrl, mediation) {
+    if (passkeyLoginAbortController) {
+        passkeyLoginAbortController.abort();
+    }
+
+    var abortController = new AbortController();
+    passkeyLoginAbortController = abortController;
+
     // Request assertion options from server
     var optionsResponse = await fetch(optionsEndpoint, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'RequestVerificationToken': getAntiForgeryToken()
-        }
+        },
+        signal: abortController.signal
     });
 
     if (!optionsResponse.ok) {
@@ -52,7 +82,13 @@ async function startPasskeyLogin(optionsEndpoint, returnUrl) {
 
     // Parse and call WebAuthn API
     var options = PublicKeyCredential.parseRequestOptionsFromJSON(optionsJson);
-    var credential = await navigator.credentials.get({ publicKey: options });
+    var request = { publicKey: options, signal: abortController.signal };
+
+    if (mediation) {
+        request.mediation = mediation;
+    }
+
+    var credential = await navigator.credentials.get(request);
 
     // Serialize credential to JSON
     if (credential.toJSON) {

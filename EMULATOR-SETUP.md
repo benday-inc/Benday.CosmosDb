@@ -107,6 +107,17 @@ If you need full control, you can still configure everything manually:
 }
 ```
 
+### TLS certificate validation
+
+The emulator uses a self-signed certificate. The library skips server certificate
+validation only when the endpoint is a loopback address (`localhost`, `127.0.0.1`, `::1`),
+which covers `UseEmulator: true` and the manual configuration above. Every other endpoint
+is validated normally.
+
+If your app reaches the emulator through a different host name (for example a Docker
+Compose service name), configure the endpoint manually and add
+`"DisableServerCertificateValidation": true`. Never set this for a real Cosmos DB account.
+
 ## Docker Compose Example
 
 Here's a complete setup with the Linux emulator:

@@ -33,7 +33,8 @@ public class CosmosEmulatorFixture : IAsyncLifetime
         var clientOptions = CosmosClientOptionsUtilities.GetCosmosDbClientOptions(
             jsonNamingPolicy: null,
             connectionMode: ConnectionMode.Gateway,
-            allowBulkExecution: false);
+            allowBulkExecution: false,
+            disableServerCertificateValidation: true);
 
         Client = new CosmosClient(Config.ConnectionString, clientOptions);
 

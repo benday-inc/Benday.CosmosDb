@@ -131,6 +131,8 @@ public static class CosmosClientOptionsUtilities
             GetBoolean(configuration, "CosmosConfiguration:AllowBulkExecution", true);
         var useCamelCase =
             GetBoolean(configuration, "CosmosConfiguration:UseCamelCase", true);
+        var disableServerCertificateValidation =
+            GetBoolean(configuration, "CosmosConfiguration:DisableServerCertificateValidation", false);
 
         var temp = new CosmosConfig
         {
@@ -145,7 +147,8 @@ public static class CosmosClientOptionsUtilities
             UseHierarchicalPartitionKey = useHierarchicalPartitionKey,
             AllowBulkExecution = allowBulkExecution,
             UseDefaultAzureCredential = useDefaultAzureCredential,
-            UseCamelCase = useCamelCase
+            UseCamelCase = useCamelCase,
+            DisableServerCertificateValidation = disableServerCertificateValidation
         };
 
         return temp;
@@ -184,6 +187,30 @@ public static class CosmosClientOptionsUtilities
         ConnectionMode connectionMode = ConnectionMode.Gateway,
         bool allowBulkExecution = true)
     {
+        return GetCosmosDbClientOptions(
+            jsonNamingPolicy, connectionMode, allowBulkExecution,
+            disableServerCertificateValidation: false);
+    }
+
+    /// <summary>
+    /// Gets the default CosmosClientOptions for a Cosmos DB client that uses System.Text.Json
+    /// and optionally skips TLS server certificate validation.
+    /// </summary>
+    /// <param name="jsonNamingPolicy">Naming policy or null to not use a policy</param>
+    /// <param name="connectionMode">Connection mode</param>
+    /// <param name="allowBulkExecution">Allow bulk execution.</param>
+    /// <param name="disableServerCertificateValidation">
+    /// When true, the client accepts any server certificate. Only use this for the
+    /// Cosmos DB emulator, which uses a self-signed certificate. Never use it against
+    /// a real Cosmos DB account.
+    /// </param>
+    /// <returns>Client options object</returns>
+    public static CosmosClientOptions GetCosmosDbClientOptions(
+        JsonNamingPolicy? jsonNamingPolicy,
+        ConnectionMode connectionMode,
+        bool allowBulkExecution,
+        bool disableServerCertificateValidation)
+    {
         var options = new CosmosClientOptions
         {
             AllowBulkExecution = allowBulkExecution,
@@ -193,16 +220,48 @@ public static class CosmosClientOptionsUtilities
                 WriteIndented = true,
                 PropertyNameCaseInsensitive = true,                
             }),
-            ConnectionMode = connectionMode,
-            HttpClientFactory = () =>
+            ConnectionMode = connectionMode
+        };
+
+        if (disableServerCertificateValidation == true)
+        {
+            options.HttpClientFactory = () =>
             {
                 HttpClientHandler httpClientHandler = new HttpClientHandler();
                 httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
                 return new HttpClient(httpClientHandler);
-            }
-        };
+            };
+        }
 
         return options;
+    }
+
+    /// <summary>
+    /// True when the endpoint points at this machine (localhost, 127.0.0.1, ::1),
+    /// which is where the Cosmos DB emulator and its self-signed certificate live.
+    /// </summary>
+    private static bool IsLoopbackEndpoint(string? endpoint)
+    {
+        return string.IsNullOrWhiteSpace(endpoint) == false &&
+            Uri.TryCreate(endpoint!.Trim(), UriKind.Absolute, out var uri) &&
+            uri.IsLoopback;
+    }
+
+    private static string? GetEndpointFromConnectionString(string? connectionString)
+    {
+        const string key = "AccountEndpoint=";
+
+        foreach (var part in (connectionString ?? string.Empty).Split(';'))
+        {
+            var trimmed = part.Trim();
+
+            if (trimmed.StartsWith(key, StringComparison.OrdinalIgnoreCase) == true)
+            {
+                return trimmed.Substring(key.Length);
+            }
+        }
+
+        return null;
     }
 
     /// <summary>
@@ -227,7 +286,9 @@ public static class CosmosClientOptionsUtilities
             connectionMode = ConnectionMode.Gateway;
         }        
 
-        var options = GetCosmosDbClientOptions(jsonNamingPolicy, connectionMode, allowBulkExecution);
+        // The emulator's self-signed certificate is only trusted on a loopback endpoint.
+        var options = GetCosmosDbClientOptions(jsonNamingPolicy, connectionMode, allowBulkExecution,
+            IsLoopbackEndpoint(GetEndpointFromConnectionString(connectionString)));
 
         services.AddSingleton(new CosmosClient(connectionString, options));
 
@@ -255,7 +316,8 @@ public static class CosmosClientOptionsUtilities
             ? JsonNamingPolicy.CamelCase
             : null;
 
-        var options = GetCosmosDbClientOptions(namingPolicy, connectionMode, cosmosConfig.AllowBulkExecution);
+        var options = GetCosmosDbClientOptions(namingPolicy, connectionMode, cosmosConfig.AllowBulkExecution,
+            cosmosConfig.DisableServerCertificateValidation || IsLoopbackEndpoint(cosmosConfig.Endpoint));
 
         if (cosmosConfig.UseDefaultAzureCredential == true)
         {

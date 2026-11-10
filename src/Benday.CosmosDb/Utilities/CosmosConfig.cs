@@ -89,6 +89,14 @@ public class CosmosConfig
     public bool UseCamelCase { get; set; } = true;
 
     /// <summary>
+    /// Accept any TLS server certificate. This is disabled by default.
+    /// Only enable it for a Cosmos DB emulator reached through a non-localhost address
+    /// (for example a Docker Compose service name). Localhost endpoints already accept the
+    /// emulator's self-signed certificate. Never enable it against a real Cosmos DB account.
+    /// </summary>
+    public bool DisableServerCertificateValidation { get; set; }
+
+    /// <summary>
     /// Gets the connection string for the Cosmos DB account.
     /// </summary>
     public string ConnectionString
