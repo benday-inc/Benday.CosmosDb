@@ -23,7 +23,7 @@ v1.0.0 - Initial release;
     <ItemGroup>
         <PackageReference Include="Azure.Identity" Version="1.21.0" />
         <PackageReference Include="Benday.CommandsFramework" Version="5.1.1" />
-        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.63.0" />
+        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.64.0" />
 		<!-- The Newtonsoft.Json package reference is required to fix a cosmos sdk startup problem -->
         <PackageReference Include="Newtonsoft.Json" Version="13.*" />
     </ItemGroup>

@@ -70,7 +70,7 @@ v1.0 - Adding initial version of the CosmosDb Domain Model &amp; Repository util
     <PackageReference Include="Azure.Identity" Version="1.21.0" />
     <PackageReference Include="Benday.Common" Version="10.1.3" />
     <PackageReference Include="Benday.Common.Interfaces" Version="1.0.3" />
-    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.63.0" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.64.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.*" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.*" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="10.*" />

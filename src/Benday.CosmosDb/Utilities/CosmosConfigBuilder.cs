@@ -172,6 +172,7 @@ public class CosmosConfigBuilder
         builder._config.AllowBulkExecution = config.AllowBulkExecution;
         builder._config.UseDefaultAzureCredential = config.UseDefaultAzureCredential;
         builder._config.UseCamelCase = config.UseCamelCase;
+        builder._config.DisableServerCertificateValidation = config.DisableServerCertificateValidation;
         return builder;
     }
 
